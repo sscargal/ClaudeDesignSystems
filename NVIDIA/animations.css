@@ -1,0 +1,618 @@
+/* =============================================================================
+   NVIDIA Design System — Animations
+   Version 1.0.0 | Cinematic · GPU-Powered Aesthetics
+   ============================================================================= */
+
+/* =============================================================================
+   BASE KEYFRAMES
+   ============================================================================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =============================================================================
+   NVIDIA GREEN GLOW — Signature Brand Animation
+   ============================================================================= */
+
+/* Box-shadow pulse — cards, buttons, borders */
+@keyframes greenGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 12px rgba(118, 185, 0, 0.20),
+      0 0 24px rgba(118, 185, 0, 0.10);
+  }
+  50% {
+    box-shadow:
+      0 0 24px rgba(118, 185, 0, 0.50),
+      0 0 48px rgba(118, 185, 0, 0.25),
+      0 0 72px rgba(118, 185, 0, 0.10);
+  }
+}
+
+/* Opacity pulse — green text, icons, decorative elements */
+@keyframes greenPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+/* Text-shadow glow pulse */
+@keyframes greenTextGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(118, 185, 0, 0.30);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(118, 185, 0, 0.70), 0 0 40px rgba(118, 185, 0, 0.30);
+  }
+}
+
+/* Animated green border glow — hover/active states */
+@keyframes borderGlow {
+  0%, 100% {
+    border-color: rgba(118, 185, 0, 0.30);
+    box-shadow: 0 0 8px rgba(118, 185, 0, 0.10);
+  }
+  50% {
+    border-color: rgba(118, 185, 0, 0.80);
+    box-shadow: 0 0 20px rgba(118, 185, 0, 0.35), 0 0 40px rgba(118, 185, 0, 0.15);
+  }
+}
+
+/* =============================================================================
+   GPU AESTHETIC — Scanline, Data Stream
+   ============================================================================= */
+
+/* Moving horizontal scan line — GPU / terminal aesthetic */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Vertical scanline overlay on elements */
+@keyframes scanlineOverlay {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+/* Data stream — numbers scrolling effect */
+@keyframes dataStream {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+/* =============================================================================
+   SKELETON LOADING — Shimmer
+   ============================================================================= */
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* =============================================================================
+   BENCHMARK / COUNT-UP — Performance Numbers
+   ============================================================================= */
+
+/* Visual reveal effect for large benchmark numbers */
+@keyframes countUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+    filter: blur(4px);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* Performance bar fill animation */
+@keyframes fillBar {
+  from {
+    width: 0%;
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* =============================================================================
+   PARTICLE FLOAT — AI / Data Aesthetic
+   ============================================================================= */
+
+/* Base particle float — upward drift */
+@keyframes particleFloat {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(var(--particle-drift, 20px)) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* Variations for staggered particles */
+@keyframes particleFloat2 {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  85% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-80vh) translateX(calc(var(--particle-drift, -15px) * -1));
+    opacity: 0;
+  }
+}
+
+@keyframes particleFloat3 {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-90vh) translateX(30px) scale(0.3);
+    opacity: 0;
+  }
+}
+
+@keyframes particleFloat4 {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-110vh) translateX(-40px);
+    opacity: 0;
+  }
+}
+
+/* =============================================================================
+   SPIN
+   ============================================================================= */
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes spinReverse {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+/* =============================================================================
+   SPRING / BOUNCE — Interactive Feedback
+   ============================================================================= */
+
+@keyframes springIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.88) translateY(16px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.02) translateY(-2px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =============================================================================
+   GPU CARD REVEAL — Hover/Interaction
+   ============================================================================= */
+
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(32px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Corner accent sweep */
+@keyframes cornerSweep {
+  from {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    width: 40px;
+    height: 40px;
+    opacity: 1;
+  }
+}
+
+/* =============================================================================
+   GRADIENT ANIMATION — Hero backgrounds
+   ============================================================================= */
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* =============================================================================
+   UTILITY ANIMATION CLASSES
+   ============================================================================= */
+
+/* Fade */
+.animate-fade-in   { animation: fadeIn var(--duration-moderate) var(--ease-out) both; }
+.animate-fade-out  { animation: fadeOut var(--duration-normal) var(--ease-in) both; }
+
+/* Slide */
+.animate-slide-up    { animation: slideInUp var(--duration-moderate) var(--ease-out) both; }
+.animate-slide-down  { animation: slideInDown var(--duration-moderate) var(--ease-out) both; }
+.animate-slide-left  { animation: slideInLeft var(--duration-moderate) var(--ease-out) both; }
+.animate-slide-right { animation: slideInRight var(--duration-moderate) var(--ease-out) both; }
+
+/* Scale */
+.animate-scale-in  { animation: scaleIn var(--duration-moderate) var(--ease-spring) both; }
+.animate-spring-in { animation: springIn var(--duration-slow) var(--ease-spring) both; }
+
+/* Green glow */
+.animate-green-glow   { animation: greenGlow 2.5s var(--ease-nvidia) infinite; }
+.animate-green-pulse  { animation: greenPulse 2s ease-in-out infinite; }
+.animate-green-text-glow { animation: greenTextGlow 2.5s ease-in-out infinite; }
+.animate-border-glow  { animation: borderGlow 2s ease-in-out infinite; }
+
+/* GPU aesthetic */
+.animate-scanline    { animation: scanline 4s linear infinite; }
+.animate-shimmer     { animation: shimmer 2s linear infinite; }
+.animate-count-up    { animation: countUp var(--duration-slow) var(--ease-out) both; }
+.animate-spin        { animation: spin 0.75s linear infinite; }
+
+/* Card */
+.animate-card-reveal { animation: cardReveal var(--duration-slow) var(--ease-out) both; }
+
+/* =============================================================================
+   ANIMATION DELAYS
+   ============================================================================= */
+
+.delay-0    { animation-delay: 0ms; }
+.delay-50   { animation-delay: 50ms; }
+.delay-100  { animation-delay: 100ms; }
+.delay-150  { animation-delay: 150ms; }
+.delay-200  { animation-delay: 200ms; }
+.delay-300  { animation-delay: 300ms; }
+.delay-400  { animation-delay: 400ms; }
+.delay-500  { animation-delay: 500ms; }
+.delay-600  { animation-delay: 600ms; }
+.delay-800  { animation-delay: 800ms; }
+.delay-1000 { animation-delay: 1000ms; }
+
+/* Stagger helpers for grids/lists */
+.stagger > *:nth-child(1) { animation-delay: 0ms; }
+.stagger > *:nth-child(2) { animation-delay: 80ms; }
+.stagger > *:nth-child(3) { animation-delay: 160ms; }
+.stagger > *:nth-child(4) { animation-delay: 240ms; }
+.stagger > *:nth-child(5) { animation-delay: 320ms; }
+.stagger > *:nth-child(6) { animation-delay: 400ms; }
+
+/* =============================================================================
+   SKELETON / SHIMMER LOADING STATES
+   ============================================================================= */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-2) 0%,
+    var(--color-surface-3) 50%,
+    var(--color-surface-2) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s linear infinite;
+  border-radius: var(--radius-sharp);
+}
+
+.skeleton-text {
+  height: 16px;
+  border-radius: var(--radius-sharp);
+}
+
+.skeleton-title {
+  height: 24px;
+  width: 60%;
+  border-radius: var(--radius-sharp);
+}
+
+.skeleton-card {
+  height: 200px;
+  border-radius: var(--radius-card);
+}
+
+/* =============================================================================
+   PARTICLE CONTAINER — CSS-only floating particles
+   ============================================================================= */
+
+.particle-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: var(--particle-size, 3px);
+  height: var(--particle-size, 3px);
+  border-radius: 50%;
+  background: var(--particle-color, rgba(118, 185, 0, 0.60));
+  bottom: -10px;
+}
+
+.particle:nth-child(1) {
+  left: 15%;
+  animation: particleFloat 8s var(--ease-out) infinite;
+  animation-delay: 0s;
+  --particle-drift: 20px;
+}
+
+.particle:nth-child(2) {
+  left: 35%;
+  animation: particleFloat2 10s var(--ease-out) infinite;
+  animation-delay: 2s;
+  width: 4px;
+  height: 4px;
+}
+
+.particle:nth-child(3) {
+  left: 55%;
+  animation: particleFloat3 7s var(--ease-out) infinite;
+  animation-delay: 1s;
+}
+
+.particle:nth-child(4) {
+  left: 72%;
+  animation: particleFloat4 9s var(--ease-out) infinite;
+  animation-delay: 3s;
+  width: 2px;
+  height: 2px;
+  opacity: 0.5;
+}
+
+.particle:nth-child(5) {
+  left: 88%;
+  animation: particleFloat 11s var(--ease-out) infinite;
+  animation-delay: 4.5s;
+  --particle-drift: -25px;
+}
+
+.particle:nth-child(6) {
+  left: 8%;
+  animation: particleFloat2 9.5s var(--ease-out) infinite;
+  animation-delay: 1.5s;
+  width: 2px;
+  height: 2px;
+}
+
+.particle:nth-child(7) {
+  left: 47%;
+  animation: particleFloat3 12s var(--ease-out) infinite;
+  animation-delay: 6s;
+  width: 4px;
+  height: 4px;
+  background: rgba(0, 163, 224, 0.40);
+}
+
+.particle:nth-child(8) {
+  left: 63%;
+  animation: particleFloat4 8.5s var(--ease-out) infinite;
+  animation-delay: 0.8s;
+  background: rgba(118, 185, 0, 0.30);
+}
+
+/* =============================================================================
+   SCANLINE OVERLAY — GPU terminal aesthetic
+   ============================================================================= */
+
+.scanline-overlay {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent calc(var(--scanline-size, 2px) * 2 - 1px),
+    var(--scanline-color, rgba(118, 185, 0, 0.03)) calc(var(--scanline-size, 2px) * 2)
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.scanline-beam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(118, 185, 0, 0.15) 30%,
+    rgba(118, 185, 0, 0.30) 50%,
+    rgba(118, 185, 0, 0.15) 70%,
+    transparent 100%
+  );
+  animation: scanline 6s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* =============================================================================
+   MOTION PREFERENCE — Respect user settings
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Preserve essential visibility for reduced-motion users */
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-slide-down,
+  .animate-slide-left,
+  .animate-slide-right,
+  .animate-scale-in,
+  .animate-spring-in,
+  .animate-card-reveal,
+  .animate-count-up {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    animation: none;
+  }
+
+  /* Hide purely decorative animations */
+  .particle-field,
+  .scanline-overlay,
+  .scanline-beam {
+    display: none;
+  }
+}

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navigation — NVIDIA Design System</title>
+  <link rel="stylesheet" href="../tokens.css" />
+  <link rel="stylesheet" href="../typography.css" />
+  <link rel="stylesheet" href="../animations.css" />
+  <link rel="stylesheet" href="../components.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg-primary);
+      color: var(--color-label-primary);
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: var(--space-20);
+    }
+    .section-block {
+      padding: var(--space-12) 0;
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+    .section-block:last-child { border-bottom: none; }
+    .section-label {
+      font-size: var(--text-12);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-label);
+      text-transform: uppercase;
+      color: var(--color-green);
+      margin-bottom: var(--space-2);
+      display: block;
+    }
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: var(--text-28);
+      font-weight: var(--weight-bold);
+      color: var(--color-label-primary);
+      margin-bottom: var(--space-2);
+      letter-spacing: var(--tracking-heading);
+    }
+    .section-desc {
+      font-size: var(--text-14);
+      color: var(--color-label-secondary);
+      margin-bottom: var(--space-8);
+    }
+    .demo-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-12);
+      color: var(--color-label-tertiary);
+      margin-top: var(--space-3);
+    }
+    .nav-demo-wrapper {
+      background: var(--color-bg-pure-black);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      margin-bottom: var(--space-4);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Live nav at top of page -->
+  <nav class="nav-global" role="navigation" aria-label="Main navigation">
+    <div class="nav-global-inner">
+      <a href="../index.html" class="nav-brand" aria-label="NVIDIA Home">
+        <svg width="108" height="22" viewBox="0 0 108 22" aria-hidden="true">
+          <rect x="0" y="1" width="20" height="20" rx="2" fill="#76B900"/>
+          <path d="M10 5 C6.5 5 3.5 7.5 3.5 11 C3.5 14.5 6.5 17 10 17 C13.5 17 16.5 14.5 16.5 11 C16.5 7.5 13.5 5 10 5Z" fill="black"/>
+          <circle cx="10" cy="11" r="3.2" fill="#76B900"/>
+          <text x="27" y="16" font-family="DM Sans, Inter, sans-serif" font-size="15" font-weight="800" fill="white" letter-spacing="1">NVIDIA</text>
+          <text x="97" y="10" font-family="DM Sans, Inter, sans-serif" font-size="8" font-weight="400" fill="white" opacity="0.6">®</text>
+        </svg>
+      </a>
+      <ul class="nav-links" role="list">
+        <li class="nav-links-item">
+          <a href="#">Products <span class="nav-chevron">▾</span></a>
+          <div class="nav-dropdown">
+            <div class="nav-dropdown-grid">
+              <div>
+                <div class="nav-dropdown-section-title">GeForce</div>
+                <a href="#" class="nav-dropdown-item">
+                  <span class="nav-dropdown-item-name">RTX 40 Series</span>
+                  <span class="nav-dropdown-item-desc">Ada Lovelace architecture</span>
+                </a>
+                <a href="#" class="nav-dropdown-item">
+                  <span class="nav-dropdown-item-name">RTX 30 Series</span>
+                  <span class="nav-dropdown-item-desc">Ampere architecture</span>
+                </a>
+              </div>
+              <div>
+                <div class="nav-dropdown-section-title">Data Center</div>
+                <a href="#" class="nav-dropdown-item">
+                  <span class="nav-dropdown-item-name">H100 / H200</span>
+                  <span class="nav-dropdown-item-desc">Hopper AI GPU</span>
+                </a>
+                <a href="#" class="nav-dropdown-item">
+                  <span class="nav-dropdown-item-name">L40S</span>
+                  <span class="nav-dropdown-item-desc">Professional AI</span>
+                </a>
+              </div>
+              <div>
+                <div class="nav-dropdown-section-title">Platforms</div>
+                <a href="#" class="nav-dropdown-item">
+                  <span class="nav-dropdown-item-name">DGX Systems</span>
+                  <span class="nav-dropdown-item-desc">AI supercomputers</span>
+                </a>
+                <a href="#" class="nav-dropdown-item">
+                  <span class="nav-dropdown-item-name">HGX H100</span>
+                  <span class="nav-dropdown-item-desc">Hyperscale clusters</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-links-item active"><a href="#">Navigation</a></li>
+        <li class="nav-links-item"><a href="#">Developers</a></li>
+        <li class="nav-links-item"><a href="#">GTC</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="#" class="btn btn-ghost btn-sm">Sign In</a>
+        <a href="#" class="btn btn-primary btn-sm">Shop</a>
+      </div>
+      <button class="nav-mobile-toggle" aria-label="Open menu">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <rect y="3" width="20" height="2" rx="1" fill="currentColor"/>
+          <rect y="9" width="20" height="2" rx="1" fill="currentColor"/>
+          <rect y="15" width="20" height="2" rx="1" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="container" style="padding-top:var(--space-12);">
+
+    <!-- Page heading -->
+    <span class="section-label" style="margin-bottom:var(--space-2);">Components</span>
+    <h1 class="display" style="margin-bottom:var(--space-3);">Navigation</h1>
+    <p class="subhead" style="color:var(--color-label-secondary);margin-bottom:var(--space-12);">Global nav, mega-menu dropdown, breadcrumb, notification bar, and brand logo variants.</p>
+
+    <!-- ============================================================
+         NOTIFICATION BAR
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Announcement</span>
+      <h2 class="section-heading">Notification Bar</h2>
+      <p class="section-desc">Full-width green banner for product announcements. Sits above the navigation bar in page hierarchy.</p>
+
+      <div class="nav-demo-wrapper">
+        <div class="notification-bar" role="banner">
+          <span class="notification-bar-badge">New</span>
+          <span>NVIDIA H200 — 141 GB HBM3e Now Shipping&ensp;</span>
+          <a href="#" class="notification-bar-cta">Learn More</a>
+          <button class="notification-bar-close" aria-label="Close notification">×</button>
+        </div>
+        <div class="notification-bar" style="background:var(--color-accent-blue);" role="banner">
+          <span class="notification-bar-badge" style="background:#fff;color:var(--color-accent-blue);">Update</span>
+          <span>Game Ready Driver 551.86 — Download now&ensp;</span>
+          <a href="#" class="notification-bar-cta">Download</a>
+        </div>
+      </div>
+      <div class="demo-label">.notification-bar — green (default) and blue variants</div>
+    </div>
+
+    <!-- ============================================================
+         GLOBAL NAV ANATOMY
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Global</span>
+      <h2 class="section-heading">Global Navigation Anatomy</h2>
+      <p class="section-desc">Pure black nav bar. Logo left, uppercase 12px links center, CTA right. 64px height. Sticky positioning, border-bottom on scroll. See live example at the top of this page — hover "Products" for mega-menu.</p>
+
+      <div style="background:var(--color-surface-1);border:1px solid var(--color-border-subtle);border-radius:var(--radius-card);padding:var(--space-6);">
+        <div class="grid-3" style="gap:var(--space-4);">
+          <div style="background:var(--color-surface-2);border:1px solid var(--color-border-subtle);border-radius:var(--radius-card);padding:var(--space-4);">
+            <div class="label text-green" style="margin-bottom:var(--space-2);">Left — Brand</div>
+            <p class="body-sm" style="color:var(--color-label-secondary);">.nav-brand — NVIDIA logo SVG. 108×22px mark. No underline on hover, 85% opacity.</p>
+          </div>
+          <div style="background:var(--color-surface-2);border:1px solid var(--color-border-subtle);border-radius:var(--radius-card);padding:var(--space-4);">
+            <div class="label text-green" style="margin-bottom:var(--space-2);">Center — Links</div>
+            <p class="body-sm" style="color:var(--color-label-secondary);">.nav-links — 12px uppercase label weight-bold. Secondary color at rest, white on hover/active. Dropdowns on hover.</p>
+          </div>
+          <div style="background:var(--color-surface-2);border:1px solid var(--color-border-subtle);border-radius:var(--radius-card);padding:var(--space-4);">
+            <div class="label text-green" style="margin-bottom:var(--space-2);">Right — Actions</div>
+            <p class="body-sm" style="color:var(--color-label-secondary);">.nav-actions — Ghost "Sign In" + Primary "Shop" button. 32px height (sm). Gap: 12px.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         MEGA DROPDOWN ANATOMY
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Dropdown</span>
+      <h2 class="section-heading">Mega-Menu Dropdown</h2>
+      <p class="section-desc">Hover the "Products" link in the top nav to see it live. Dark surface-1 background, green top border 2px, organized in 3-column grid. Slides in with opacity + translateY animation.</p>
+
+      <!-- Static preview of dropdown -->
+      <div style="position:relative;">
+        <div class="nav-dropdown" style="position:static;opacity:1;visibility:visible;transform:none;max-width:640px;">
+          <div class="nav-dropdown-grid" style="grid-template-columns:repeat(3,1fr);">
+            <div>
+              <div class="nav-dropdown-section-title">GeForce</div>
+              <a href="#" class="nav-dropdown-item">
+                <span class="nav-dropdown-item-name">RTX 50 Series</span>
+                <span class="nav-dropdown-item-desc">Blackwell architecture</span>
+              </a>
+              <a href="#" class="nav-dropdown-item">
+                <span class="nav-dropdown-item-name">RTX 40 Series</span>
+                <span class="nav-dropdown-item-desc">Ada Lovelace architecture</span>
+              </a>
+              <a href="#" class="nav-dropdown-item">
+                <span class="nav-dropdown-item-name">RTX 30 Series</span>
+                <span class="nav-dropdown-item-desc">Ampere architecture</span>
+              </a>
+            </div>
+            <div>
+              <div class="nav-dropdown-section-title">Data Center</div>
+              <a href="#" class="nav-dropdown-item">
+                <span class="nav-dropdown-item-name">H200 SXM5</span>
+                <span class="nav-dropdown-item-desc">141 GB HBM3e</span>
+              </a>
+              <a href="#" class="nav-dropdown-item">
+                <span class="nav-dropdown-item-name">H100 SXM5 / PCIe</span>
+                <span class="nav-dropdown-item-desc">Training &amp; inference</span>
+              </a>
+              <a href="#" class="nav-dropdown-item">
+                <span class="nav-dropdown-item-name">L40S</span>
+                <span class="nav-dropdown-item-desc">Professional workloads</span>
+              </a>
+            </div>
+            <div>
+              <div class="nav-dropdown-section-title">Platforms</div>
+              <a href="#" class="nav-dropdown-item">
+                <span class="nav-dropdown-item-name">DGX H200</span>
+                <span class="nav-dropdown-item-desc">AI supercomputer</span>
+              </a>
+              <a href="#" class="nav-dropdown-item">
+                <span class="nav-dropdown-item-name">HGX H100</span>
+                <span class="nav-dropdown-item-desc">Hyperscale</span>
+              </a>
+              <a href="#" class="nav-dropdown-item">
+                <span class="nav-dropdown-item-name">EGX Edge AI</span>
+                <span class="nav-dropdown-item-desc">Real-time at the edge</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-label">.nav-dropdown static preview — dark surface-1 + green 2px top border</div>
+    </div>
+
+    <!-- ============================================================
+         BREADCRUMBS
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Wayfinding</span>
+      <h2 class="section-heading">Breadcrumbs</h2>
+      <p class="section-desc">12px uppercase bold labels separated by slash. Tertiary color for ancestors, green for current page.</p>
+
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+        <div>
+          <nav aria-label="Breadcrumb — 2 levels">
+            <ul class="nav-breadcrumb">
+              <li class="nav-breadcrumb-item"><a href="#">Home</a></li>
+              <span class="nav-breadcrumb-separator" aria-hidden="true">/</span>
+              <li class="nav-breadcrumb-item"><a href="#">Products</a></li>
+            </ul>
+          </nav>
+          <div class="demo-label">2-level breadcrumb</div>
+        </div>
+
+        <div>
+          <nav aria-label="Breadcrumb — 3 levels">
+            <ul class="nav-breadcrumb">
+              <li class="nav-breadcrumb-item"><a href="#">Home</a></li>
+              <span class="nav-breadcrumb-separator" aria-hidden="true">/</span>
+              <li class="nav-breadcrumb-item"><a href="#">Products</a></li>
+              <span class="nav-breadcrumb-separator" aria-hidden="true">/</span>
+              <li class="nav-breadcrumb-item"><a href="#">GeForce</a></li>
+            </ul>
+          </nav>
+          <div class="demo-label">3-level breadcrumb</div>
+        </div>
+
+        <div>
+          <nav aria-label="Breadcrumb — 4 levels">
+            <ul class="nav-breadcrumb">
+              <li class="nav-breadcrumb-item"><a href="#">Home</a></li>
+              <span class="nav-breadcrumb-separator" aria-hidden="true">/</span>
+              <li class="nav-breadcrumb-item"><a href="#">Products</a></li>
+              <span class="nav-breadcrumb-separator" aria-hidden="true">/</span>
+              <li class="nav-breadcrumb-item"><a href="#">GeForce RTX</a></li>
+              <span class="nav-breadcrumb-separator" aria-hidden="true">/</span>
+              <li class="nav-breadcrumb-item"><a href="#">RTX 4090</a></li>
+            </ul>
+          </nav>
+          <div class="demo-label">4-level — current page in green</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         BRAND LOGO
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Identity</span>
+      <h2 class="section-heading">Brand Logo Component</h2>
+      <p class="section-desc">.brand-logo with size variants. Replace SVG with the licensed NVIDIA eye-and-wordmark. Available in sm/md/lg/xl, icon-only, and wordmark-only modes.</p>
+
+      <div style="background:var(--color-bg-pure-black);border:1px solid var(--color-border-subtle);border-radius:var(--radius-card);padding:var(--space-8);">
+        <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:var(--space-8);">
+
+          <div>
+            <a href="#" class="brand-logo brand-logo--sm" aria-label="NVIDIA">
+              <div class="brand-logo-mark">
+                <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+                  <rect width="20" height="20" rx="2" fill="#76B900"/>
+                  <circle cx="10" cy="10" r="5.5" fill="black"/>
+                  <circle cx="10" cy="10" r="2.5" fill="#76B900"/>
+                </svg>
+              </div>
+              <span class="brand-logo-wordmark">NVIDIA</span>
+            </a>
+            <div class="demo-label">brand-logo--sm</div>
+          </div>
+
+          <div>
+            <a href="#" class="brand-logo brand-logo--md" aria-label="NVIDIA">
+              <div class="brand-logo-mark">
+                <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+                  <rect width="32" height="32" rx="3" fill="#76B900"/>
+                  <circle cx="16" cy="16" r="9" fill="black"/>
+                  <circle cx="16" cy="16" r="4" fill="#76B900"/>
+                </svg>
+              </div>
+              <span class="brand-logo-wordmark" style="font-size:17px;">NVIDIA</span>
+            </a>
+            <div class="demo-label">brand-logo--md</div>
+          </div>
+
+          <div>
+            <a href="#" class="brand-logo brand-logo--lg" aria-label="NVIDIA">
+              <div class="brand-logo-mark">
+                <svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
+                  <rect width="48" height="48" rx="4" fill="#76B900"/>
+                  <circle cx="24" cy="24" r="14" fill="black"/>
+                  <circle cx="24" cy="24" r="6" fill="#76B900"/>
+                </svg>
+              </div>
+              <span class="brand-logo-wordmark" style="font-size:22px;">NVIDIA</span>
+            </a>
+            <div class="demo-label">brand-logo--lg</div>
+          </div>
+
+          <div>
+            <a href="#" class="brand-logo brand-logo--xl" aria-label="NVIDIA">
+              <div class="brand-logo-mark">
+                <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true">
+                  <rect width="64" height="64" rx="6" fill="#76B900"/>
+                  <circle cx="32" cy="32" r="18" fill="black"/>
+                  <circle cx="32" cy="32" r="8" fill="#76B900"/>
+                </svg>
+              </div>
+              <span class="brand-logo-wordmark" style="font-size:32px;">NVIDIA</span>
+            </a>
+            <div class="demo-label">brand-logo--xl</div>
+          </div>
+
+          <div>
+            <a href="#" class="brand-logo brand-logo--icon-only" aria-label="NVIDIA" style="--icon-size:40px;">
+              <div class="brand-logo-mark" style="width:40px;height:40px;">
+                <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+                  <rect width="40" height="40" rx="4" fill="#76B900"/>
+                  <circle cx="20" cy="20" r="11" fill="black"/>
+                  <circle cx="20" cy="20" r="5" fill="#76B900"/>
+                </svg>
+              </div>
+            </a>
+            <div class="demo-label">icon-only</div>
+          </div>
+
+          <div>
+            <div class="brand-logo-placeholder">NVIDIA Logo</div>
+            <div class="demo-label">brand-logo-placeholder</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         FOOTER NAV PATTERN
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Footer</span>
+      <h2 class="section-heading">Footer Navigation</h2>
+      <p class="section-desc">Multi-column footer link grid. Uppercase bold column titles, 13px tertiary color links. Copyright and legal links row at the bottom.</p>
+
+      <div style="background:var(--color-bg-pure-black);border:1px solid var(--color-border-subtle);border-radius:var(--radius-card);overflow:hidden;">
+        <footer class="footer" style="border-top:none;padding:var(--space-10) 0 var(--space-6);">
+          <div style="padding-inline:var(--space-6);">
+            <div class="footer-grid" style="grid-template-columns:2fr 1fr 1fr 1fr 1fr;">
+              <div>
+                <a href="#" class="nav-brand" style="margin-bottom:var(--space-4);display:inline-flex;" aria-label="NVIDIA">
+                  <svg width="80" height="18" viewBox="0 0 80 18" aria-hidden="true">
+                    <rect x="0" y="0" width="18" height="18" rx="2" fill="#76B900"/>
+                    <circle cx="9" cy="9" r="5" fill="black"/>
+                    <circle cx="9" cy="9" r="2.5" fill="#76B900"/>
+                    <text x="24" y="13" font-family="DM Sans, Inter, sans-serif" font-size="12" font-weight="800" fill="white" letter-spacing="1">NVIDIA</text>
+                  </svg>
+                </a>
+                <p class="footer-brand-desc">NVIDIA invented the GPU and is now the AI company powering the next era of computing.</p>
+              </div>
+              <div>
+                <div class="footer-col-title">Products</div>
+                <ul class="footer-links">
+                  <li><a href="#">GeForce RTX</a></li>
+                  <li><a href="#">NVIDIA H100</a></li>
+                  <li><a href="#">DGX Systems</a></li>
+                  <li><a href="#">Jetson</a></li>
+                </ul>
+              </div>
+              <div>
+                <div class="footer-col-title">Solutions</div>
+                <ul class="footer-links">
+                  <li><a href="#">AI & ML</a></li>
+                  <li><a href="#">Data Center</a></li>
+                  <li><a href="#">Gaming</a></li>
+                  <li><a href="#">Robotics</a></li>
+                </ul>
+              </div>
+              <div>
+                <div class="footer-col-title">Developers</div>
+                <ul class="footer-links">
+                  <li><a href="#">CUDA Toolkit</a></li>
+                  <li><a href="#">NGC Catalog</a></li>
+                  <li><a href="#">Docs</a></li>
+                  <li><a href="#">Forums</a></li>
+                </ul>
+              </div>
+              <div>
+                <div class="footer-col-title">Company</div>
+                <ul class="footer-links">
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Careers</a></li>
+                  <li><a href="#">Newsroom</a></li>
+                  <li><a href="#">GTC</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="footer-bottom" style="margin-top:var(--space-8);">
+              <p class="footer-copyright">© 2025 NVIDIA Corporation. All rights reserved.</p>
+              <nav class="footer-legal-links" aria-label="Legal links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Cookies</a>
+                <a href="#">Accessibility</a>
+              </nav>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <div class="demo-label">.footer — black bg, multi-column grid</div>
+    </div>
+
+  </div>
+</body>
+</html>

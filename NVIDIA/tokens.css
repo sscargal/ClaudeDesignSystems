@@ -1,0 +1,330 @@
+/* =============================================================================
+   NVIDIA Design System — Design Tokens
+   Version 1.0.0 | Built on NVIDIA's Brand Identity
+   AI Supremacy · GPU Power · Dark-First
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     NVIDIA BRAND COLORS — Core Palette
+     --------------------------------------------------------------------------- */
+
+  /* NVIDIA Green — Primary Brand */
+  --color-green:               #76B900;
+  --color-green-light:         #8ED400;
+  --color-green-dark:          #5A8C00;
+  --color-green-glow:          rgba(118, 185, 0, 0.40);
+  --color-green-glow-strong:   rgba(118, 185, 0, 0.60);
+  --color-green-glow-subtle:   rgba(118, 185, 0, 0.20);
+  --color-green-surface:       rgba(118, 185, 0, 0.10);
+  --color-green-50:            rgba(118, 185, 0, 0.05);
+
+  /* Backgrounds — Dark-first */
+  --color-bg-primary:          #1A1A1A;
+  --color-bg-pure-black:       #000000;
+  --color-bg-hero:             #000000;
+
+  /* Surfaces */
+  --color-surface-1:           #222222;
+  --color-surface-2:           #2D2D2D;
+  --color-surface-3:           #383838;
+  --color-surface-4:           #404040;
+  --color-surface-overlay:     rgba(0, 0, 0, 0.85);
+  --color-surface-glass:       rgba(34, 34, 34, 0.80);
+
+  /* Labels */
+  --color-label-primary:       #FFFFFF;
+  --color-label-secondary:     #A0A0A0;
+  --color-label-tertiary:      #606060;
+  --color-label-disabled:      #404040;
+
+  /* Borders */
+  --color-border-subtle:       #333333;
+  --color-border-default:      #444444;
+  --color-border-strong:       #555555;
+  --color-border-green:        rgba(118, 185, 0, 0.50);
+  --color-border-green-strong: rgba(118, 185, 0, 0.80);
+
+  /* Accent — Secondary */
+  --color-accent-blue:         #00A3E0;
+  --color-accent-blue-hover:   #00C2FF;
+  --color-accent-blue-light:   rgba(0, 163, 224, 0.15);
+  --color-accent-cyan:         #00D4FF;
+
+  /* Semantic States */
+  --color-error:               #FF4444;
+  --color-error-hover:         #FF6666;
+  --color-error-surface:       rgba(255, 68, 68, 0.12);
+  --color-warning:             #FFB300;
+  --color-warning-surface:     rgba(255, 179, 0, 0.12);
+  --color-success:             #76B900;
+  --color-success-surface:     rgba(118, 185, 0, 0.12);
+  --color-info:                #00A3E0;
+  --color-info-surface:        rgba(0, 163, 224, 0.12);
+
+  /* ---------------------------------------------------------------------------
+     SEMANTIC COLOR MAPPINGS
+     --------------------------------------------------------------------------- */
+
+  /* Background semantics */
+  --bg-page:                   var(--color-bg-primary);
+  --bg-hero:                   var(--color-bg-pure-black);
+  --bg-card:                   var(--color-surface-1);
+  --bg-card-elevated:          var(--color-surface-2);
+  --bg-input:                  var(--color-surface-2);
+  --bg-input-hover:            var(--color-surface-3);
+  --bg-overlay:                var(--color-surface-overlay);
+  --bg-nav:                    var(--color-bg-pure-black);
+
+  /* Text semantics */
+  --text-primary:              var(--color-label-primary);
+  --text-secondary:            var(--color-label-secondary);
+  --text-tertiary:             var(--color-label-tertiary);
+  --text-accent:               var(--color-green);
+  --text-link:                 var(--color-accent-blue);
+  --text-disabled:             var(--color-label-disabled);
+
+  /* Border semantics */
+  --border-subtle:             var(--color-border-subtle);
+  --border-default:            var(--color-border-default);
+  --border-accent:             var(--color-border-green);
+  --border-focus:              var(--color-green);
+
+  /* ---------------------------------------------------------------------------
+     TYPOGRAPHY
+     --------------------------------------------------------------------------- */
+
+  --font-display: "NVIDIA Sans", "DM Sans", "Inter", system-ui, -apple-system, sans-serif;
+  --font-body:    "NVIDIA Sans", "DM Sans", "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono:    "DM Mono", "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+
+  /* Type Scale */
+  --text-80:   80px;
+  --text-64:   64px;
+  --text-48:   48px;
+  --text-36:   36px;
+  --text-28:   28px;
+  --text-22:   22px;
+  --text-18:   18px;
+  --text-16:   16px;
+  --text-14:   14px;
+  --text-13:   13px;
+  --text-12:   12px;
+
+  /* Font Weights */
+  --weight-regular:   400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+  --weight-bold:      700;
+  --weight-extrabold: 800;
+
+  /* Line Heights */
+  --leading-display:  1.05;
+  --leading-heading:  1.15;
+  --leading-body:     1.60;
+  --leading-body-lg:  1.65;
+  --leading-loose:    1.80;
+
+  /* Letter Spacing */
+  --tracking-display:  -0.03em;
+  --tracking-display-lg: -0.02em;
+  --tracking-heading:  -0.01em;
+  --tracking-body:      0em;
+  --tracking-wide:      0.02em;
+  --tracking-widest:    0.08em;
+  --tracking-label:     0.10em;
+
+  /* ---------------------------------------------------------------------------
+     SPACING — 4px Base Grid
+     --------------------------------------------------------------------------- */
+
+  --space-1:    4px;
+  --space-2:    8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-32: 128px;
+
+  /* ---------------------------------------------------------------------------
+     BORDER RADIUS — NVIDIA is sharp and precise
+     --------------------------------------------------------------------------- */
+
+  --radius-none:    0px;
+  --radius-sharp:   2px;   /* chips, small elements */
+  --radius-button:  4px;   /* buttons — NVIDIA specific */
+  --radius-card:    8px;   /* cards */
+  --radius-modal:  12px;   /* modals, popovers */
+  --radius-xl:     16px;
+  --radius-pill:   9999px; /* pills, toggles */
+
+  /* ---------------------------------------------------------------------------
+     SHADOWS & GLOWS — NVIDIA Green Energy
+     --------------------------------------------------------------------------- */
+
+  /* Standard shadows — deep for dark-mode */
+  --shadow-sm:       0 2px 8px rgba(0, 0, 0, 0.40);
+  --shadow-md:       0 4px 16px rgba(0, 0, 0, 0.50);
+  --shadow-lg:       0 8px 32px rgba(0, 0, 0, 0.60);
+  --shadow-xl:       0 4px 24px rgba(0, 0, 0, 0.60), 0 16px 48px rgba(0, 0, 0, 0.50);
+  --shadow-2xl:      0 8px 48px rgba(0, 0, 0, 0.70), 0 32px 80px rgba(0, 0, 0, 0.60);
+  --shadow-overlay:  0 24px 80px rgba(0, 0, 0, 0.80), 0 8px 32px rgba(0, 0, 0, 0.60);
+
+  /* NVIDIA Green Glows — signature visual */
+  --glow-green-sm:   0 0 12px rgba(118, 185, 0, 0.25);
+  --glow-green:      0 0 20px rgba(118, 185, 0, 0.30), 0 0 40px rgba(118, 185, 0, 0.15);
+  --glow-green-lg:   0 0 40px rgba(118, 185, 0, 0.40), 0 0 80px rgba(118, 185, 0, 0.20);
+  --glow-green-xl:   0 0 60px rgba(118, 185, 0, 0.50), 0 0 120px rgba(118, 185, 0, 0.25);
+  --glow-card:       0 0 0 1px rgba(118, 185, 0, 0.30), 0 0 24px rgba(118, 185, 0, 0.15);
+  --glow-focus:      0 0 0 2px rgba(118, 185, 0, 0.40);
+  --glow-focus-wide: 0 0 0 3px rgba(118, 185, 0, 0.35);
+
+  /* Blue accent glow */
+  --glow-blue:       0 0 20px rgba(0, 163, 224, 0.30);
+
+  /* ---------------------------------------------------------------------------
+     MOTION — Cinematic Timing
+     --------------------------------------------------------------------------- */
+
+  --duration-instant:    50ms;
+  --duration-fast:      150ms;
+  --duration-normal:    200ms;
+  --duration-moderate:  350ms;
+  --duration-slow:      600ms;
+  --duration-slower:    900ms;
+  --duration-crawl:    1200ms;
+
+  /* NVIDIA brand easing */
+  --ease-nvidia:     cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out:        cubic-bezier(0.00, 0.00, 0.20, 1.00);
+  --ease-in:         cubic-bezier(0.40, 0.00, 1.00, 1.00);
+  --ease-spring:     cubic-bezier(0.34, 1.30, 0.64, 1.00);
+  --ease-bounce:     cubic-bezier(0.34, 1.56, 0.64, 1.00);
+
+  /* Transition presets */
+  --transition-fast:     all var(--duration-fast) var(--ease-nvidia);
+  --transition-normal:   all var(--duration-normal) var(--ease-nvidia);
+  --transition-moderate: all var(--duration-moderate) var(--ease-nvidia);
+  --transition-slow:     all var(--duration-slow) var(--ease-nvidia);
+
+  /* ---------------------------------------------------------------------------
+     Z-INDEX SCALE
+     --------------------------------------------------------------------------- */
+
+  --z-base:      0;
+  --z-raised:   10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-toast:    500;
+  --z-tooltip:  600;
+
+  /* ---------------------------------------------------------------------------
+     COMPONENT DIMENSIONS
+     --------------------------------------------------------------------------- */
+
+  --btn-height-sm:    32px;
+  --btn-height-md:    44px;
+  --btn-height-lg:    52px;
+
+  --input-height-sm:  36px;
+  --input-height-md:  44px;
+  --input-height-lg:  52px;
+
+  --nav-height:       64px;
+  --notification-bar-height: 44px;
+
+  --sidebar-width:    240px;
+  --max-width-site:  1200px;
+  --max-width-wide:  1440px;
+  --max-width-text:   720px;
+
+  /* ---------------------------------------------------------------------------
+     GPU AESTHETIC TOKENS
+     --------------------------------------------------------------------------- */
+
+  /* Scanline effect */
+  --scanline-color:    rgba(118, 185, 0, 0.04);
+  --scanline-size:     2px;
+
+  /* Particle config */
+  --particle-color:    rgba(118, 185, 0, 0.60);
+  --particle-size:     3px;
+
+  /* Gradient presets */
+  --gradient-hero:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(118, 185, 0, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 20% 80%, rgba(0, 163, 224, 0.06) 0%, transparent 60%);
+  --gradient-green-to-black: linear-gradient(180deg, #76B900 0%, #000000 100%);
+  --gradient-card-feature:   linear-gradient(135deg, #000000 0%, #1a2a00 100%);
+  --gradient-text-green:     linear-gradient(90deg, #76B900 0%, #FFFFFF 100%);
+  --gradient-text-ai:        linear-gradient(90deg, #76B900 0%, #00A3E0 100%);
+}
+
+/* =============================================================================
+   LIGHT MODE OVERRIDE
+   ============================================================================= */
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Backgrounds */
+    --color-bg-primary:          #F0F0F0;
+    --color-bg-pure-black:       #FFFFFF;
+    --color-bg-hero:             #FFFFFF;
+
+    /* Surfaces */
+    --color-surface-1:           #FFFFFF;
+    --color-surface-2:           #F5F5F5;
+    --color-surface-3:           #EBEBEB;
+    --color-surface-4:           #E0E0E0;
+    --color-surface-overlay:     rgba(0, 0, 0, 0.60);
+    --color-surface-glass:       rgba(255, 255, 255, 0.85);
+
+    /* Labels */
+    --color-label-primary:       #1A1A1A;
+    --color-label-secondary:     #555555;
+    --color-label-tertiary:      #888888;
+    --color-label-disabled:      #BBBBBB;
+
+    /* Borders */
+    --color-border-subtle:       #E0E0E0;
+    --color-border-default:      #CCCCCC;
+    --color-border-strong:       #AAAAAA;
+
+    /* Shadows lighter */
+    --shadow-sm:       0 1px 4px rgba(0, 0, 0, 0.10);
+    --shadow-md:       0 2px 8px rgba(0, 0, 0, 0.12);
+    --shadow-lg:       0 4px 16px rgba(0, 0, 0, 0.14);
+    --shadow-xl:       0 8px 32px rgba(0, 0, 0, 0.16);
+    --shadow-2xl:      0 16px 48px rgba(0, 0, 0, 0.18);
+    --shadow-overlay:  0 24px 64px rgba(0, 0, 0, 0.24);
+
+    /* Semantic re-maps */
+    --bg-page:              var(--color-bg-primary);
+    --bg-hero:              var(--color-bg-pure-black);
+    --bg-card:              var(--color-surface-1);
+    --bg-card-elevated:     var(--color-surface-2);
+    --bg-input:             var(--color-surface-2);
+    --bg-input-hover:       var(--color-surface-3);
+    --bg-nav:               var(--color-bg-pure-black);
+
+    --text-primary:         var(--color-label-primary);
+    --text-secondary:       var(--color-label-secondary);
+    --text-tertiary:        var(--color-label-tertiary);
+    --border-subtle:        var(--color-border-subtle);
+    --border-default:       var(--color-border-default);
+
+    --gradient-hero:
+      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(118, 185, 0, 0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 30% at 20% 80%, rgba(0, 163, 224, 0.05) 0%, transparent 60%);
+    --gradient-card-feature: linear-gradient(135deg, #1a2a00 0%, #000000 100%);
+  }
+}

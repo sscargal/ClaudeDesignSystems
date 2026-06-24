@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modals — NVIDIA Design System</title>
+  <link rel="stylesheet" href="../tokens.css" />
+  <link rel="stylesheet" href="../typography.css" />
+  <link rel="stylesheet" href="../animations.css" />
+  <link rel="stylesheet" href="../components.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg-primary);
+      color: var(--color-label-primary);
+      -webkit-font-smoothing: antialiased;
+      padding: var(--space-8) 0 var(--space-20);
+    }
+    .page-header {
+      background: var(--color-bg-pure-black);
+      border-bottom: 1px solid var(--color-border-subtle);
+      padding: var(--space-8) 0;
+      margin-bottom: var(--space-12);
+    }
+    .section-block { margin-bottom: var(--space-12); }
+    .section-label {
+      font-size: var(--text-12);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-label);
+      text-transform: uppercase;
+      color: var(--color-green);
+      margin-bottom: var(--space-2);
+      display: block;
+    }
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: var(--text-28);
+      font-weight: var(--weight-bold);
+      color: var(--color-label-primary);
+      margin-bottom: var(--space-2);
+      letter-spacing: var(--tracking-heading);
+    }
+    .section-desc {
+      font-size: var(--text-14);
+      color: var(--color-label-secondary);
+      margin-bottom: var(--space-6);
+    }
+    .demo-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-12);
+      color: var(--color-label-tertiary);
+      margin-top: var(--space-3);
+    }
+    .divider-section {
+      border: none;
+      border-top: 1px solid var(--color-border-subtle);
+      margin: var(--space-10) 0;
+    }
+    /* Static overlay preview for the page (not fixed) */
+    .modal-preview-bg {
+      background: rgba(0,0,0,0.60);
+      border-radius: var(--radius-card);
+      padding: var(--space-10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ul class="nav-breadcrumb">
+          <li class="nav-breadcrumb-item"><a href="../index.html">NVIDIA Design System</a></li>
+          <span class="nav-breadcrumb-separator">/</span>
+          <li class="nav-breadcrumb-item"><a href="#">Components</a></li>
+          <span class="nav-breadcrumb-separator">/</span>
+          <li class="nav-breadcrumb-item"><a href="#">Modals</a></li>
+        </ul>
+      </nav>
+      <h1 class="display" style="margin-top:var(--space-5);">Modals &amp; Overlays</h1>
+      <p class="subhead" style="color:var(--color-label-secondary);margin-top:var(--space-3);">Dark surface modals, notification banners, and toast system — all with NVIDIA green accents.</p>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ============================================================
+         STANDARD MODAL
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Dialog</span>
+      <h2 class="section-heading">Standard Modal</h2>
+      <p class="section-desc">Dark surface-2 background, 2px green top-border accent, 12px radius, springIn animation. 85% black overlay backdrop. Max-width 560px.</p>
+
+      <div class="modal-preview-bg" style="margin-bottom:var(--space-3);">
+        <div class="modal" style="animation:none; position:relative;">
+          <div class="modal-header">
+            <div>
+              <h3 class="modal-title">Confirm Purchase</h3>
+              <p class="modal-subtitle">NVIDIA GeForce RTX 4090 · 24 GB GDDR6X</p>
+            </div>
+            <button class="modal-close" aria-label="Close modal">×</button>
+          </div>
+          <div class="modal-body">
+            <p style="margin-bottom:var(--space-4);">You're about to purchase the NVIDIA GeForce RTX 4090. This item ships within 2–3 business days from our US warehouse.</p>
+            <div style="background:var(--color-surface-1);border:1px solid var(--color-border-subtle);border-radius:var(--radius-card);overflow:hidden;">
+              <div class="spec-row" style="padding:var(--space-4) var(--space-5);">
+                <span class="spec-row-label">Unit Price</span>
+                <span class="spec-row-value">$1,599.00</span>
+              </div>
+              <div class="spec-row" style="padding:var(--space-3) var(--space-5);">
+                <span class="spec-row-label">Shipping</span>
+                <span class="spec-row-value">Free (2–3 days)</span>
+              </div>
+              <div class="spec-row" style="padding:var(--space-3) var(--space-5);">
+                <span class="spec-row-label">Tax</span>
+                <span class="spec-row-value">$143.91</span>
+              </div>
+              <div class="spec-row" style="padding:var(--space-4) var(--space-5);background:rgba(118,185,0,0.05);">
+                <span class="spec-row-label" style="font-weight:700;color:var(--color-label-primary);">Total</span>
+                <span class="spec-row-value" style="color:var(--color-green);font-size:var(--text-18);">$1,742.91</span>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-ghost btn-sm">Cancel</button>
+            <button class="btn btn-primary">Confirm Purchase</button>
+          </div>
+        </div>
+      </div>
+      <div class="demo-label">.modal + .modal-header + .modal-body + .modal-footer</div>
+    </div>
+
+    <hr class="divider-section" />
+
+    <!-- ============================================================
+         CONFIRMATION MODAL
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Destructive</span>
+      <h2 class="section-heading">Confirmation / Destructive Modal</h2>
+      <p class="section-desc">Used for irreversible actions. Red accent on destructive button. Centered layout.</p>
+
+      <div class="modal-preview-bg" style="margin-bottom:var(--space-3);">
+        <div class="modal" style="animation:none;max-width:440px;">
+          <div class="modal-header">
+            <div>
+              <h3 class="modal-title">Delete Configuration?</h3>
+              <p class="modal-subtitle">This action cannot be undone.</p>
+            </div>
+            <button class="modal-close" aria-label="Close">×</button>
+          </div>
+          <div class="modal-body">
+            <p>You are about to delete the benchmark configuration <strong style="color:var(--color-label-primary);">"RTX 4090 Gaming Preset"</strong>. All test results and settings will be permanently removed.</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-ghost btn-sm">Cancel</button>
+            <button class="btn btn-danger btn-sm">Delete Forever</button>
+          </div>
+        </div>
+      </div>
+      <div class="demo-label">.modal with .btn-danger destructive action</div>
+    </div>
+
+    <hr class="divider-section" />
+
+    <!-- ============================================================
+         PRODUCT MODAL — Wide
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Product</span>
+      <h2 class="section-heading">GPU Quick View Modal</h2>
+      <p class="section-desc">Wider modal (up to 720px) for product quick-view. Image/spec side-by-side on desktop.</p>
+
+      <div class="modal-preview-bg" style="margin-bottom:var(--space-3);">
+        <div class="modal" style="animation:none;max-width:680px;">
+          <div class="modal-header">
+            <div>
+              <h3 class="modal-title">NVIDIA GeForce RTX 4090</h3>
+              <p class="modal-subtitle">Ada Lovelace · PCI Express 4.0 · 16-pin Power Connector</p>
+            </div>
+            <button class="modal-close" aria-label="Close">×</button>
+          </div>
+          <div class="modal-body">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);">
+              <!-- Image placeholder -->
+              <div style="background:linear-gradient(135deg,#0f0f0f 0%,#1e1e1e 50%,#0a1400 100%);border-radius:var(--radius-card);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+                <div style="position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 40px 40px 0;border-color:transparent #76B900 transparent transparent;opacity:0.70;"></div>
+                <span style="font-family:var(--font-mono);font-size:var(--text-12);color:rgba(118,185,0,0.40);text-transform:uppercase;letter-spacing:var(--tracking-label);">GPU Render</span>
+              </div>
+
+              <!-- Specs -->
+              <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+                <div class="spec-value animate-count-up" style="font-size:40px;">82.6<span style="font-size:0.45em;vertical-align:super;opacity:0.7;"> TFLOPS</span></div>
+                <div style="display:flex;flex-direction:column;gap:var(--space-1);">
+                  <div class="spec-row" style="padding:var(--space-2) 0;border-bottom:1px solid var(--color-border-subtle);">
+                    <span class="spec-row-label">CUDA Cores</span>
+                    <span class="spec-row-value">16,384</span>
+                  </div>
+                  <div class="spec-row" style="padding:var(--space-2) 0;border-bottom:1px solid var(--color-border-subtle);">
+                    <span class="spec-row-label">Memory</span>
+                    <span class="spec-row-value text-green">24 GB GDDR6X</span>
+                  </div>
+                  <div class="spec-row" style="padding:var(--space-2) 0;border-bottom:1px solid var(--color-border-subtle);">
+                    <span class="spec-row-label">Bandwidth</span>
+                    <span class="spec-row-value">1,008 GB/s</span>
+                  </div>
+                  <div class="spec-row" style="padding:var(--space-2) 0;">
+                    <span class="spec-row-label">TDP</span>
+                    <span class="spec-row-value">450 W</span>
+                  </div>
+                </div>
+                <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;margin-top:var(--space-2);">
+                  <span class="badge badge-rtx">RTX</span>
+                  <span class="badge badge-ai">AI</span>
+                  <span class="badge badge-green">Ada Lovelace</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-ghost btn-sm">View Full Specs</a>
+            <div style="display:flex;gap:var(--space-3);">
+              <span style="font-family:var(--font-mono);font-size:var(--text-18);font-weight:700;color:var(--color-green);line-height:var(--btn-height-sm);align-self:center;">$1,599</span>
+              <a href="#" class="btn btn-primary">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-label">.modal — wide product quick-view (680px max-width)</div>
+    </div>
+
+    <hr class="divider-section" />
+
+    <!-- ============================================================
+         TOAST NOTIFICATIONS
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Notifications</span>
+      <h2 class="section-heading">Toast Notifications</h2>
+      <p class="section-desc">Fixed top-right toasts. 2px colored top-border per state. toastIn animation: translateY(-16px) to 0 + scale(0.96) to 1. Max-width 360px.</p>
+
+      <div style="display:flex;flex-direction:column;gap:var(--space-3);max-width:380px;">
+        <div class="toast success" style="animation:none;">
+          <div class="toast-icon">✓</div>
+          <div class="toast-content">
+            <div class="toast-title">Driver Installed</div>
+            <div class="toast-message">WHQL 551.86 — Game Ready Driver active.</div>
+          </div>
+          <button class="toast-close" aria-label="Dismiss">×</button>
+        </div>
+
+        <div class="toast error" style="animation:none;">
+          <div class="toast-icon">!</div>
+          <div class="toast-content">
+            <div class="toast-title">GPU Error Detected</div>
+            <div class="toast-message">Thermal throttling — check cooling system.</div>
+          </div>
+          <button class="toast-close" aria-label="Dismiss">×</button>
+        </div>
+
+        <div class="toast warning" style="animation:none;">
+          <div class="toast-icon">⚠</div>
+          <div class="toast-content">
+            <div class="toast-title">Power Limit Reached</div>
+            <div class="toast-message">GPU operating at 450W TDP maximum.</div>
+          </div>
+          <button class="toast-close" aria-label="Dismiss">×</button>
+        </div>
+
+        <div class="toast info" style="animation:none;">
+          <div class="toast-icon">i</div>
+          <div class="toast-content">
+            <div class="toast-title">New GPU Available</div>
+            <div class="toast-message">RTX 5090 now in stock in your region.</div>
+          </div>
+          <button class="toast-close" aria-label="Dismiss">×</button>
+        </div>
+      </div>
+      <div class="demo-label">.toast — success / error / warning / info variants</div>
+    </div>
+
+    <hr class="divider-section" />
+
+    <!-- ============================================================
+         NOTIFICATION BAR
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Announcement</span>
+      <h2 class="section-heading">Notification Bar</h2>
+      <p class="section-desc">Full-width announcement banner in NVIDIA Green. Sits above the global nav. Dismissible. Used for product launches, promotions, and system notices.</p>
+
+      <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+        <div class="notification-bar" role="banner">
+          <span class="notification-bar-badge">New</span>
+          <span>NVIDIA B200 — Blackwell Architecture now shipping&ensp;</span>
+          <a href="#" class="notification-bar-cta">Order Now</a>
+          <button class="notification-bar-close" aria-label="Close">×</button>
+        </div>
+        <div class="notification-bar" style="background:var(--color-accent-blue);" role="banner">
+          <span class="notification-bar-badge" style="background:#fff;color:var(--color-accent-blue);">Live</span>
+          <span>GTC 2025 Keynote streaming now — Jensen Huang&ensp;</span>
+          <a href="#" class="notification-bar-cta">Watch Live</a>
+        </div>
+        <div class="notification-bar" style="background:var(--color-warning);color:#1a1a1a;" role="banner">
+          <span class="notification-bar-badge" style="background:rgba(0,0,0,0.20);color:#1a1a1a;">Alert</span>
+          <span>Driver 551.86 — Scheduled maintenance tonight 2AM PT&ensp;</span>
+          <a href="#" class="notification-bar-cta" style="color:#1a1a1a;">Details</a>
+        </div>
+      </div>
+      <div class="demo-label">.notification-bar — green / blue / warning variants</div>
+    </div>
+
+    <hr class="divider-section" />
+
+    <!-- ============================================================
+         INTERACTIVE TRIGGER
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Interactive</span>
+      <h2 class="section-heading">Open a Modal</h2>
+      <p class="section-desc">Click to open the full overlay experience with 85% black backdrop and springIn animation.</p>
+
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="document.getElementById('demo-modal').style.display='flex'" aria-haspopup="dialog">
+          Open Purchase Modal
+        </button>
+        <button class="btn btn-danger" onclick="document.getElementById('confirm-modal').style.display='flex'" aria-haspopup="dialog">
+          Open Confirm Delete
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============================================================
+       LIVE MODALS (hidden by default, shown on button click)
+       ============================================================ -->
+
+  <!-- Purchase modal -->
+  <div id="demo-modal" class="modal-overlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="dm-title" onclick="if(event.target===this)this.style.display='none'">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title" id="dm-title">Add to Cart</h2>
+          <p class="modal-subtitle">NVIDIA GeForce RTX 4090 — Founders Edition</p>
+        </div>
+        <button class="modal-close" onclick="document.getElementById('demo-modal').style.display='none'" aria-label="Close modal">×</button>
+      </div>
+      <div class="modal-body">
+        <p style="margin-bottom:var(--space-5);">Review your order before proceeding to checkout.</p>
+        <div style="background:var(--color-surface-1);border:1px solid var(--color-border-subtle);border-radius:var(--radius-card);overflow:hidden;">
+          <div class="spec-row" style="padding:var(--space-4) var(--space-5);">
+            <span class="spec-row-label">GeForce RTX 4090 Founders Edition</span>
+            <span class="spec-row-value">$1,599.00</span>
+          </div>
+          <div class="spec-row" style="padding:var(--space-3) var(--space-5);">
+            <span class="spec-row-label">Shipping</span>
+            <span class="spec-row-value">Free</span>
+          </div>
+          <div class="spec-row" style="padding:var(--space-3) var(--space-5);">
+            <span class="spec-row-label">Estimated Tax</span>
+            <span class="spec-row-value">$143.91</span>
+          </div>
+          <div class="spec-row" style="padding:var(--space-4) var(--space-5);background:rgba(118,185,0,0.05);">
+            <span class="spec-row-label" style="font-weight:700;color:var(--color-label-primary);">Order Total</span>
+            <span class="spec-row-value" style="color:var(--color-green);font-size:var(--text-18);">$1,742.91</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost btn-sm" onclick="document.getElementById('demo-modal').style.display='none'">Cancel</button>
+        <button class="btn btn-primary">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirm delete modal -->
+  <div id="confirm-modal" class="modal-overlay" style="display:none;" role="alertdialog" aria-modal="true" aria-labelledby="cm-title" onclick="if(event.target===this)this.style.display='none'">
+    <div class="modal" style="max-width:420px;" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title" id="cm-title">Delete GPU Profile?</h2>
+          <p class="modal-subtitle">This cannot be undone.</p>
+        </div>
+        <button class="modal-close" onclick="document.getElementById('confirm-modal').style.display='none'" aria-label="Close">×</button>
+      </div>
+      <div class="modal-body">
+        <p>The overclocking profile <strong style="color:var(--color-label-primary);">"RTX 4090 Max OC"</strong> and all its benchmark results will be permanently deleted from your NVIDIA app.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost btn-sm" onclick="document.getElementById('confirm-modal').style.display='none'">Keep Profile</button>
+        <button class="btn btn-danger btn-sm" onclick="document.getElementById('confirm-modal').style.display='none'">Delete Forever</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

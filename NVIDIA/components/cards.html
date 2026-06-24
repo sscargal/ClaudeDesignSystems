@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cards — NVIDIA Design System</title>
+  <link rel="stylesheet" href="../tokens.css" />
+  <link rel="stylesheet" href="../typography.css" />
+  <link rel="stylesheet" href="../animations.css" />
+  <link rel="stylesheet" href="../components.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg-primary);
+      color: var(--color-label-primary);
+      -webkit-font-smoothing: antialiased;
+      padding: var(--space-8) 0 var(--space-20);
+    }
+    .page-header {
+      background: var(--color-bg-pure-black);
+      border-bottom: 1px solid var(--color-border-subtle);
+      padding: var(--space-8) 0;
+      margin-bottom: var(--space-12);
+    }
+    .section-block { margin-bottom: var(--space-12); }
+    .section-label {
+      font-size: var(--text-12);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-label);
+      text-transform: uppercase;
+      color: var(--color-green);
+      margin-bottom: var(--space-2);
+      display: block;
+    }
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: var(--text-28);
+      font-weight: var(--weight-bold);
+      color: var(--color-label-primary);
+      margin-bottom: var(--space-2);
+      letter-spacing: var(--tracking-heading);
+    }
+    .section-desc {
+      font-size: var(--text-14);
+      color: var(--color-label-secondary);
+      margin-bottom: var(--space-6);
+    }
+    .divider-section {
+      border: none;
+      border-top: 1px solid var(--color-border-subtle);
+      margin: var(--space-10) 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ul class="nav-breadcrumb">
+          <li class="nav-breadcrumb-item"><a href="../index.html">NVIDIA Design System</a></li>
+          <span class="nav-breadcrumb-separator">/</span>
+          <li class="nav-breadcrumb-item"><a href="#">Components</a></li>
+          <span class="nav-breadcrumb-separator">/</span>
+          <li class="nav-breadcrumb-item"><a href="#">Cards</a></li>
+        </ul>
+      </nav>
+      <h1 class="display" style="margin-top:var(--space-5);">Cards</h1>
+      <p class="subhead" style="color:var(--color-label-secondary);margin-top:var(--space-3);">GPU product cards, data center cards, feature cards, spec cards, and event cards — NVIDIA's dark canvas presentation.</p>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- GPU Product Cards -->
+    <div class="section-block">
+      <span class="section-label">Product</span>
+      <h2 class="section-heading">GPU Product Cards</h2>
+      <p class="section-desc">NVIDIA's signature card. Dark surface, green corner triangle accent, cinematic lift on hover. 4/3 aspect-ratio image area with gradient placeholder.</p>
+
+      <div class="grid-4 stagger">
+        <article class="card-gpu animate-card-reveal">
+          <div class="card-gpu-image">
+            <div class="card-gpu-badge card-gpu-badge--rtx">RTX 4090</div>
+            <div class="card-gpu-placeholder">GeForce RTX 4090</div>
+          </div>
+          <div class="card-gpu-body">
+            <h3 class="card-gpu-name">GeForce RTX 4090</h3>
+            <div class="card-gpu-spec">24 GB GDDR6X | 16384 CUDA Cores<br/>512-bit | 1008 GB/s</div>
+            <div class="card-gpu-price">$1,599</div>
+            <a href="#" class="card-gpu-cta">Buy Now</a>
+          </div>
+        </article>
+
+        <article class="card-gpu animate-card-reveal delay-100">
+          <div class="card-gpu-image">
+            <div class="card-gpu-badge card-gpu-badge--rtx">RTX 4080 Super</div>
+            <div class="card-gpu-placeholder">GeForce RTX 4080S</div>
+          </div>
+          <div class="card-gpu-body">
+            <h3 class="card-gpu-name">GeForce RTX 4080 Super</h3>
+            <div class="card-gpu-spec">16 GB GDDR6X | 10240 CUDA Cores<br/>256-bit | 736 GB/s</div>
+            <div class="card-gpu-price">$999</div>
+            <a href="#" class="card-gpu-cta">Buy Now</a>
+          </div>
+        </article>
+
+        <article class="card-gpu animate-card-reveal delay-200">
+          <div class="card-gpu-image">
+            <div class="card-gpu-badge card-gpu-badge--datacenter">H100</div>
+            <div class="card-gpu-placeholder" style="color:rgba(0,163,224,0.50);border-color:rgba(0,163,224,0.20);background:linear-gradient(135deg,rgba(0,163,224,0.10) 0%,rgba(0,163,224,0.03) 100%);">NVIDIA H100 SXM5</div>
+          </div>
+          <div class="card-gpu-body">
+            <h3 class="card-gpu-name">NVIDIA H100 SXM5</h3>
+            <div class="card-gpu-spec">80 GB HBM3 | 16896 CUDA Cores<br/>5120-bit | 3.35 TB/s | Hopper</div>
+            <div class="card-gpu-price" style="color:var(--color-accent-blue);">Contact Sales</div>
+            <a href="#" class="card-gpu-cta" style="background:var(--color-accent-blue);border-color:var(--color-accent-blue);">Request Quote</a>
+          </div>
+        </article>
+
+        <article class="card-gpu animate-card-reveal delay-300">
+          <div class="card-gpu-image">
+            <span class="badge badge-new" style="position:absolute;top:var(--space-3);left:var(--space-3);z-index:2;">New</span>
+            <div class="card-gpu-placeholder">GeForce RTX 4070 Ti</div>
+          </div>
+          <div class="card-gpu-body">
+            <h3 class="card-gpu-name">GeForce RTX 4070 Ti</h3>
+            <div class="card-gpu-spec">12 GB GDDR6X | 7680 CUDA Cores<br/>192-bit | 504 GB/s</div>
+            <div class="card-gpu-price">$799</div>
+            <a href="#" class="card-gpu-cta">Buy Now</a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <hr class="divider-section" />
+
+    <!-- Data Center Cards -->
+    <div class="section-block">
+      <span class="section-label">Enterprise</span>
+      <h2 class="section-heading">AI &amp; Data Center Cards</h2>
+      <p class="section-desc">Wide cards with 4px green left-border accent. Used for enterprise product lines, platforms, and solutions.</p>
+
+      <div class="grid-3 stagger">
+        <article class="card-datacenter animate-slide-up">
+          <span class="card-datacenter-overline">Data Center GPU</span>
+          <h3 class="card-datacenter-name">NVIDIA H200</h3>
+          <p class="card-datacenter-desc">141 GB HBM3e memory with 4.8 TB/s bandwidth — the highest-capacity, fastest GPU memory ever used in a data center product.</p>
+          <a href="#" class="card-datacenter-link">Learn more</a>
+        </article>
+
+        <article class="card-datacenter animate-slide-up delay-100">
+          <span class="card-datacenter-overline">AI Platform</span>
+          <h3 class="card-datacenter-name">NVIDIA DGX B200</h3>
+          <p class="card-datacenter-desc">8× Blackwell B200 GPUs. 1.4 TB/s NVLink fabric. 1.4 petaFLOPS of AI compute in a single system for training frontier models.</p>
+          <a href="#" class="card-datacenter-link">Learn more</a>
+        </article>
+
+        <article class="card-datacenter animate-slide-up delay-200">
+          <span class="card-datacenter-overline">Inference</span>
+          <h3 class="card-datacenter-name">NVIDIA L40S</h3>
+          <p class="card-datacenter-desc">48 GB GDDR6 with ECC — the professional GPU for generative AI, large language model inference, and 3D rendering workloads.</p>
+          <a href="#" class="card-datacenter-link">Learn more</a>
+        </article>
+      </div>
+    </div>
+
+    <hr class="divider-section" />
+
+    <!-- Feature Cards -->
+    <div class="section-block">
+      <span class="section-label">Feature</span>
+      <h2 class="section-heading">Feature Cards</h2>
+      <p class="section-desc">Full-width or half-width dark-to-deep-green gradient backgrounds. Used for platform/product highlights on landing pages.</p>
+
+      <div class="grid-2">
+        <article class="card-feature animate-fade-in">
+          <span class="card-feature-overline">Gaming</span>
+          <h3 class="card-feature-title">DLSS 3<br/>Frame Generation</h3>
+          <p class="card-feature-desc">AI-powered performance multiplier. Up to 4× more frames than traditional rendering using NVIDIA Optical Flow technology.</p>
+          <a href="#" class="btn btn-primary">Explore DLSS</a>
+        </article>
+        <article class="card-feature animate-fade-in delay-100" style="background:linear-gradient(135deg,#000000 0%,#001a33 100%);">
+          <span class="card-feature-overline">AI Enterprise</span>
+          <h3 class="card-feature-title">NVIDIA NIM<br/>Microservices</h3>
+          <p class="card-feature-desc">Optimized AI inference microservices for deploying NVIDIA AI Foundation models at scale across cloud, data center, and workstations.</p>
+          <a href="#" class="btn btn-blue">Try NIM Free</a>
+        </article>
+      </div>
+
+      <!-- Single full-width feature card -->
+      <div style="margin-top:var(--space-6);">
+        <article class="card-feature animate-fade-in delay-200" style="min-height:240px;background:linear-gradient(135deg,#000000 0%,#0d1a00 50%,#001122 100%);">
+          <span class="card-feature-overline">Next Generation</span>
+          <h3 class="card-feature-title" style="font-size:clamp(28px,4vw,48px);">Blackwell — The World's Most Powerful Chip</h3>
+          <p class="card-feature-desc">208 billion transistors. 5× faster AI training and 30× faster inference than Hopper. Designed for trillion-parameter models.</p>
+          <div class="btn-group">
+            <a href="#" class="btn btn-primary">Learn About Blackwell</a>
+            <a href="#" class="btn btn-secondary">View Architecture</a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <hr class="divider-section" />
+
+    <!-- Spec Cards -->
+    <div class="section-block">
+      <span class="section-label">Performance</span>
+      <h2 class="section-heading">Spec &amp; Benchmark Cards</h2>
+      <p class="section-desc">Centered dark cards with oversized green monospace spec values. Glow text-shadow on the number.</p>
+
+      <div class="grid-4 stagger">
+        <div class="card-spec animate-count-up">
+          <div class="card-spec-value">82.6<span class="card-spec-unit">T</span></div>
+          <div class="card-spec-label">FP32 TFLOPS</div>
+          <div class="card-spec-bar"><div class="card-spec-bar-fill" style="width:100%;"></div></div>
+        </div>
+        <div class="card-spec animate-count-up delay-100">
+          <div class="card-spec-value">24<span class="card-spec-unit">GB</span></div>
+          <div class="card-spec-label">VRAM GDDR6X</div>
+          <div class="card-spec-bar"><div class="card-spec-bar-fill" style="width:75%;"></div></div>
+        </div>
+        <div class="card-spec animate-count-up delay-200">
+          <div class="card-spec-value">1008<span class="card-spec-unit" style="font-size:0.35em;">GB/s</span></div>
+          <div class="card-spec-label">Memory Bandwidth</div>
+          <div class="card-spec-bar"><div class="card-spec-bar-fill" style="width:90%;"></div></div>
+        </div>
+        <div class="card-spec animate-count-up delay-300">
+          <div class="card-spec-value">16384</div>
+          <div class="card-spec-label">CUDA Cores</div>
+          <div class="card-spec-bar"><div class="card-spec-bar-fill" style="width:85%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider-section" />
+
+    <!-- Event Cards -->
+    <div class="section-block">
+      <span class="section-label">Events</span>
+      <h2 class="section-heading">Event &amp; GTC Cards</h2>
+      <p class="section-desc">Conference and event cards with animated gradient border on hover. Green pulse dot on date field.</p>
+
+      <div class="grid-3 stagger">
+        <article class="card-event animate-slide-up">
+          <div class="card-event-date">March 17–21, 2025 · San Jose</div>
+          <h3 class="card-event-title">GTC 2025</h3>
+          <p class="card-event-subtitle">The AI Conference. Jensen Huang keynote + 1,000+ technical sessions on generative AI, robotics, autonomous vehicles, and HPC.</p>
+          <div class="btn-group">
+            <a href="#" class="btn btn-primary btn-sm">Register</a>
+            <a href="#" class="btn btn-ghost btn-sm">Sessions</a>
+          </div>
+        </article>
+
+        <article class="card-event animate-slide-up delay-100">
+          <div class="card-event-date">June 2025 · Online</div>
+          <h3 class="card-event-title">NVIDIA AI Summit</h3>
+          <p class="card-event-subtitle">Deep-dive sessions on deploying AI in production. Hands-on workshops with CUDA, TensorRT, and NVIDIA NIM microservices.</p>
+          <div class="btn-group">
+            <a href="#" class="btn btn-primary btn-sm">Learn More</a>
+          </div>
+        </article>
+
+        <article class="card-event animate-slide-up delay-200">
+          <div class="card-event-date">On Demand · Anytime</div>
+          <h3 class="card-event-title">GTC On Demand</h3>
+          <p class="card-event-subtitle">Access thousands of sessions from past GTC conferences. Free technical content on AI, computer vision, autonomous machines, and more.</p>
+          <div class="btn-group">
+            <a href="#" class="btn btn-secondary btn-sm">Watch Free</a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

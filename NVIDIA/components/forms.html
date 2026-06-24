@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forms — NVIDIA Design System</title>
+  <link rel="stylesheet" href="../tokens.css" />
+  <link rel="stylesheet" href="../typography.css" />
+  <link rel="stylesheet" href="../animations.css" />
+  <link rel="stylesheet" href="../components.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg-primary);
+      color: var(--color-label-primary);
+      -webkit-font-smoothing: antialiased;
+      padding: var(--space-8) 0 var(--space-20);
+    }
+    .page-header {
+      background: var(--color-bg-pure-black);
+      border-bottom: 1px solid var(--color-border-subtle);
+      padding: var(--space-8) 0;
+      margin-bottom: var(--space-12);
+    }
+    .section-block { margin-bottom: var(--space-12); }
+    .section-label {
+      font-size: var(--text-12);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-label);
+      text-transform: uppercase;
+      color: var(--color-green);
+      margin-bottom: var(--space-2);
+      display: block;
+    }
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: var(--text-28);
+      font-weight: var(--weight-bold);
+      color: var(--color-label-primary);
+      margin-bottom: var(--space-2);
+      letter-spacing: var(--tracking-heading);
+    }
+    .section-desc {
+      font-size: var(--text-14);
+      color: var(--color-label-secondary);
+      margin-bottom: var(--space-6);
+    }
+    .divider-section {
+      border: none;
+      border-top: 1px solid var(--color-border-subtle);
+      margin: var(--space-10) 0;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: var(--space-8);
+    }
+    .demo-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-12);
+      color: var(--color-label-tertiary);
+      margin-top: var(--space-2);
+    }
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ul class="nav-breadcrumb">
+          <li class="nav-breadcrumb-item"><a href="../index.html">NVIDIA Design System</a></li>
+          <span class="nav-breadcrumb-separator">/</span>
+          <li class="nav-breadcrumb-item"><a href="#">Components</a></li>
+          <span class="nav-breadcrumb-separator">/</span>
+          <li class="nav-breadcrumb-item"><a href="#">Forms</a></li>
+        </ul>
+      </nav>
+      <h1 class="display" style="margin-top:var(--space-5);">Forms</h1>
+      <p class="subhead" style="color:var(--color-label-secondary);margin-top:var(--space-3);">Text inputs, selects, checkboxes, radios, toggles — dark surface, green focus ring, sharp 4px radius.</p>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ============================================================
+         TEXT INPUTS
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Inputs</span>
+      <h2 class="section-heading">Text Inputs</h2>
+      <p class="section-desc">44px height, dark surface-2 background. Green focus ring: 0 0 0 2px rgba(118,185,0,0.40). 4px radius.</p>
+
+      <div class="form-grid">
+        <div style="display:flex;flex-direction:column;gap:var(--space-5);">
+          <div class="form-group">
+            <label class="form-label" for="i-default">Default Input</label>
+            <input class="input" id="i-default" type="text" placeholder="Enter value…" />
+            <div class="demo-label">.input — default state</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label required" for="i-required">Required Field</label>
+            <input class="input" id="i-required" type="text" placeholder="Required value" />
+            <span class="form-helper">This field is required.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="i-prefilled">Pre-filled</label>
+            <input class="input" id="i-prefilled" type="text" value="GeForce RTX 4090" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="i-error">Error State</label>
+            <input class="input error" id="i-error" type="text" value="invalid-key-123" />
+            <span class="form-error">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M6 3.5V6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="8.5" r="0.75" fill="currentColor"/></svg>
+              Invalid license key format.
+            </span>
+            <div class="demo-label">.input.error</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="i-success">Success State</label>
+            <input class="input success" id="i-success" type="text" value="NVID-A2B3-C4D5" />
+            <span class="form-helper" style="color:var(--color-green);">License key validated.</span>
+            <div class="demo-label">.input.success</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="i-disabled">Disabled</label>
+            <input class="input" id="i-disabled" type="text" value="Read only value" disabled />
+            <div class="demo-label">.input[disabled]</div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:var(--space-5);">
+          <div class="form-group">
+            <label class="form-label" for="i-email">Email Address</label>
+            <input class="input" id="i-email" type="email" placeholder="your@email.com" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="i-pass">Password</label>
+            <input class="input" id="i-pass" type="password" placeholder="••••••••••" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="i-number">VRAM (GB)</label>
+            <input class="input" id="i-number" type="number" placeholder="24" min="1" max="192" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="i-search">Search GPUs</label>
+            <div class="input-search-wrapper">
+              <span class="input-search-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <input class="input-search" id="i-search" type="search" placeholder="Search RTX, H100, DGX…" />
+            </div>
+            <div class="demo-label">.input-search</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="i-icon-left">With Icon</label>
+            <div class="input-wrapper">
+              <div class="input-icon-left" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M2 7H14" stroke="currentColor" stroke-width="1.5"/><path d="M5 2V4M11 2V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <input class="input has-icon-left" id="i-icon-left" type="text" placeholder="Order date" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="i-textarea">Project Description</label>
+            <textarea class="textarea" id="i-textarea" rows="4" placeholder="Describe your AI workload or deployment requirements…"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider-section" />
+
+    <!-- ============================================================
+         SELECT
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Select</span>
+      <h2 class="section-heading">Dropdowns</h2>
+      <p class="section-desc">Custom dark select with SVG chevron. Green focus ring consistent with other form controls.</p>
+
+      <div style="max-width:480px;display:flex;flex-direction:column;gap:var(--space-5);">
+        <div class="form-group">
+          <label class="form-label" for="s-gpu">GPU Product Line</label>
+          <div class="select-wrapper">
+            <select class="select" id="s-gpu">
+              <option value="">Select a GPU series…</option>
+              <optgroup label="GeForce">
+                <option>GeForce RTX 40 Series</option>
+                <option>GeForce RTX 30 Series</option>
+                <option>GeForce RTX 20 Series</option>
+              </optgroup>
+              <optgroup label="Data Center">
+                <option>NVIDIA H100 / H200</option>
+                <option>NVIDIA L40S</option>
+                <option>NVIDIA A100</option>
+              </optgroup>
+              <optgroup label="Professional">
+                <option>RTX 6000 Ada</option>
+                <option>RTX 5000 Ada</option>
+              </optgroup>
+            </select>
+            <span class="select-chevron" aria-hidden="true">▾</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="s-vram">Memory Capacity</label>
+          <div class="select-wrapper">
+            <select class="select" id="s-vram">
+              <option>8 GB</option>
+              <option>12 GB</option>
+              <option selected>16 GB</option>
+              <option>24 GB</option>
+              <option>48 GB</option>
+              <option>80 GB</option>
+            </select>
+            <span class="select-chevron" aria-hidden="true">▾</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="s-disabled">Region (Disabled)</label>
+          <div class="select-wrapper">
+            <select class="select" id="s-disabled" disabled>
+              <option>United States</option>
+            </select>
+            <span class="select-chevron" aria-hidden="true">▾</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider-section" />
+
+    <!-- ============================================================
+         CHECKBOXES
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Selection</span>
+      <h2 class="section-heading">Checkboxes</h2>
+      <p class="section-desc">16px square, 2px radius. Green fill + black checkmark when checked. Smooth scale transition.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--space-8);">
+        <div class="control-group">
+          <div class="label" style="margin-bottom:var(--space-2);">GPU Features</div>
+          <label class="checkbox-wrapper">
+            <div class="checkbox"><input type="checkbox" checked /><div class="checkbox-box"></div></div>
+            <span class="checkbox-label">Ray Tracing (RT Cores)</span>
+          </label>
+          <label class="checkbox-wrapper">
+            <div class="checkbox"><input type="checkbox" checked /><div class="checkbox-box"></div></div>
+            <span class="checkbox-label">DLSS 3 Frame Generation</span>
+          </label>
+          <label class="checkbox-wrapper">
+            <div class="checkbox"><input type="checkbox" /><div class="checkbox-box"></div></div>
+            <span class="checkbox-label">Tensor Cores</span>
+          </label>
+          <label class="checkbox-wrapper">
+            <div class="checkbox"><input type="checkbox" /><div class="checkbox-box"></div></div>
+            <span class="checkbox-label">NVLink Support</span>
+          </label>
+          <label class="checkbox-wrapper">
+            <div class="checkbox"><input type="checkbox" /><div class="checkbox-box"></div></div>
+            <span class="checkbox-label">ECC Memory</span>
+          </label>
+          <label class="checkbox-wrapper">
+            <div class="checkbox"><input type="checkbox" disabled /><div class="checkbox-box"></div></div>
+            <span class="checkbox-label" style="opacity:0.38;">NVSwitch (disabled)</span>
+          </label>
+        </div>
+
+        <div class="control-group">
+          <div class="label" style="margin-bottom:var(--space-2);">Price Range</div>
+          <label class="checkbox-wrapper">
+            <div class="checkbox"><input type="checkbox" checked /><div class="checkbox-box"></div></div>
+            <span class="checkbox-label">Under $500</span>
+          </label>
+          <label class="checkbox-wrapper">
+            <div class="checkbox"><input type="checkbox" checked /><div class="checkbox-box"></div></div>
+            <span class="checkbox-label">$500 – $1,000</span>
+          </label>
+          <label class="checkbox-wrapper">
+            <div class="checkbox"><input type="checkbox" /><div class="checkbox-box"></div></div>
+            <span class="checkbox-label">$1,000 – $2,000</span>
+          </label>
+          <label class="checkbox-wrapper">
+            <div class="checkbox"><input type="checkbox" /><div class="checkbox-box"></div></div>
+            <span class="checkbox-label">$2,000+</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider-section" />
+
+    <!-- ============================================================
+         RADIO BUTTONS
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Selection</span>
+      <h2 class="section-heading">Radio Buttons</h2>
+      <p class="section-desc">16px circle. Green filled inner dot when selected. Spring scale transition.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--space-8);">
+        <div class="control-group">
+          <div class="label" style="margin-bottom:var(--space-2);">Product Segment</div>
+          <label class="radio-wrapper">
+            <div class="radio"><input type="radio" name="segment" checked /><div class="radio-circle"></div></div>
+            <span class="radio-label">Consumer — GeForce</span>
+          </label>
+          <label class="radio-wrapper">
+            <div class="radio"><input type="radio" name="segment" /><div class="radio-circle"></div></div>
+            <span class="radio-label">Professional — RTX Ada</span>
+          </label>
+          <label class="radio-wrapper">
+            <div class="radio"><input type="radio" name="segment" /><div class="radio-circle"></div></div>
+            <span class="radio-label">Data Center — H/A/L Series</span>
+          </label>
+          <label class="radio-wrapper">
+            <div class="radio"><input type="radio" name="segment" /><div class="radio-circle"></div></div>
+            <span class="radio-label">Automotive — DRIVE</span>
+          </label>
+        </div>
+
+        <div class="control-group">
+          <div class="label" style="margin-bottom:var(--space-2);">Precision Mode</div>
+          <label class="radio-wrapper">
+            <div class="radio"><input type="radio" name="precision" /><div class="radio-circle"></div></div>
+            <span class="radio-label">FP64 (Double)</span>
+          </label>
+          <label class="radio-wrapper">
+            <div class="radio"><input type="radio" name="precision" checked /><div class="radio-circle"></div></div>
+            <span class="radio-label">FP32 (Single)</span>
+          </label>
+          <label class="radio-wrapper">
+            <div class="radio"><input type="radio" name="precision" /><div class="radio-circle"></div></div>
+            <span class="radio-label">FP16 (Half)</span>
+          </label>
+          <label class="radio-wrapper">
+            <div class="radio"><input type="radio" name="precision" /><div class="radio-circle"></div></div>
+            <span class="radio-label">INT8 (Inference)</span>
+          </label>
+          <label class="radio-wrapper">
+            <div class="radio"><input type="radio" name="precision" disabled /><div class="radio-circle"></div></div>
+            <span class="radio-label" style="opacity:0.38;">FP8 (Hopper only)</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider-section" />
+
+    <!-- ============================================================
+         TOGGLES
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Toggle</span>
+      <h2 class="section-heading">Toggle Switches</h2>
+      <p class="section-desc">44px × 24px pill toggle. Green track + green glow when on. White thumb with shadow. Spring translation.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--space-8);">
+        <div class="control-group">
+          <div class="label" style="margin-bottom:var(--space-2);">Gaming Features</div>
+          <label class="toggle-label">
+            <div class="toggle">
+              <input type="checkbox" checked />
+              <div class="toggle-track"></div>
+              <div class="toggle-thumb"></div>
+            </div>
+            <span class="body-sm">DLSS 3 Frame Generation</span>
+          </label>
+          <label class="toggle-label">
+            <div class="toggle">
+              <input type="checkbox" checked />
+              <div class="toggle-track"></div>
+              <div class="toggle-thumb"></div>
+            </div>
+            <span class="body-sm">Ray Tracing</span>
+          </label>
+          <label class="toggle-label">
+            <div class="toggle">
+              <input type="checkbox" />
+              <div class="toggle-track"></div>
+              <div class="toggle-thumb"></div>
+            </div>
+            <span class="body-sm">NVIDIA Reflex Low Latency</span>
+          </label>
+          <label class="toggle-label">
+            <div class="toggle">
+              <input type="checkbox" checked />
+              <div class="toggle-track"></div>
+              <div class="toggle-thumb"></div>
+            </div>
+            <span class="body-sm">G-SYNC Compatible</span>
+          </label>
+        </div>
+
+        <div class="control-group">
+          <div class="label" style="margin-bottom:var(--space-2);">Developer Settings</div>
+          <label class="toggle-label">
+            <div class="toggle">
+              <input type="checkbox" />
+              <div class="toggle-track"></div>
+              <div class="toggle-thumb"></div>
+            </div>
+            <span class="body-sm">ECC Memory (error correction)</span>
+          </label>
+          <label class="toggle-label">
+            <div class="toggle">
+              <input type="checkbox" checked />
+              <div class="toggle-track"></div>
+              <div class="toggle-thumb"></div>
+            </div>
+            <span class="body-sm">Persistence Mode</span>
+          </label>
+          <label class="toggle-label">
+            <div class="toggle">
+              <input type="checkbox" />
+              <div class="toggle-track"></div>
+              <div class="toggle-thumb"></div>
+            </div>
+            <span class="body-sm">MIG (Multi-Instance GPU)</span>
+          </label>
+          <label class="toggle-label" style="opacity:0.38;pointer-events:none;">
+            <div class="toggle">
+              <input type="checkbox" disabled />
+              <div class="toggle-track"></div>
+              <div class="toggle-thumb"></div>
+            </div>
+            <span class="body-sm">NVSwitch Fabric (disabled)</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider-section" />
+
+    <!-- ============================================================
+         COMPLETE FORM EXAMPLE
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Full Example</span>
+      <h2 class="section-heading">Enterprise Inquiry Form</h2>
+      <p class="section-desc">A complete form composition using all available controls on a dark background.</p>
+
+      <form style="background:var(--color-surface-1);border:1px solid var(--color-border-subtle);border-top:2px solid var(--color-green);border-radius:var(--radius-card);padding:var(--space-8);max-width:720px;" aria-label="Enterprise inquiry" onsubmit="return false;">
+        <h3 class="heading-2" style="margin-bottom:var(--space-6);">Talk to a Data Center Expert</h3>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5);">
+          <div class="form-group">
+            <label class="form-label required" for="ef-fname">First Name</label>
+            <input class="input" id="ef-fname" type="text" placeholder="Jensen" />
+          </div>
+          <div class="form-group">
+            <label class="form-label required" for="ef-lname">Last Name</label>
+            <input class="input" id="ef-lname" type="text" placeholder="Huang" />
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5);margin-top:var(--space-5);">
+          <div class="form-group">
+            <label class="form-label required" for="ef-email">Work Email</label>
+            <input class="input" id="ef-email" type="email" placeholder="you@company.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="ef-company">Company</label>
+            <input class="input" id="ef-company" type="text" placeholder="NVIDIA Corporation" />
+          </div>
+        </div>
+
+        <div style="margin-top:var(--space-5);">
+          <div class="form-group">
+            <label class="form-label required" for="ef-interest">Area of Interest</label>
+            <div class="select-wrapper">
+              <select class="select" id="ef-interest">
+                <option value="">Select your use case…</option>
+                <option>Large Language Model Training</option>
+                <option>AI Inference / Production Serving</option>
+                <option>High-Performance Computing</option>
+                <option>Computer Vision</option>
+                <option>Autonomous Vehicles</option>
+                <option>Scientific Simulation</option>
+              </select>
+              <span class="select-chevron" aria-hidden="true">▾</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:var(--space-5);">
+          <div class="form-group">
+            <label class="form-label" for="ef-message">Tell Us About Your Project</label>
+            <textarea class="textarea" id="ef-message" rows="4" placeholder="Describe your scale, current infrastructure, and AI goals…"></textarea>
+          </div>
+        </div>
+
+        <div style="margin-top:var(--space-5);">
+          <div class="label" style="margin-bottom:var(--space-3);">GPU Interests (select all that apply)</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:var(--space-3);">
+            <label class="checkbox-wrapper">
+              <div class="checkbox"><input type="checkbox" checked /><div class="checkbox-box"></div></div>
+              <span class="checkbox-label">NVIDIA H200</span>
+            </label>
+            <label class="checkbox-wrapper">
+              <div class="checkbox"><input type="checkbox" /><div class="checkbox-box"></div></div>
+              <span class="checkbox-label">NVIDIA H100</span>
+            </label>
+            <label class="checkbox-wrapper">
+              <div class="checkbox"><input type="checkbox" /><div class="checkbox-box"></div></div>
+              <span class="checkbox-label">NVIDIA L40S</span>
+            </label>
+            <label class="checkbox-wrapper">
+              <div class="checkbox"><input type="checkbox" /><div class="checkbox-box"></div></div>
+              <span class="checkbox-label">DGX Systems</span>
+            </label>
+          </div>
+        </div>
+
+        <div style="margin-top:var(--space-6);">
+          <label class="toggle-label">
+            <div class="toggle">
+              <input type="checkbox" />
+              <div class="toggle-track"></div>
+              <div class="toggle-thumb"></div>
+            </div>
+            <span class="body-sm">Subscribe to NVIDIA Enterprise newsletter</span>
+          </label>
+        </div>
+
+        <div style="margin-top:var(--space-6);display:flex;gap:var(--space-3);">
+          <button type="submit" class="btn btn-primary btn-lg">Submit Inquiry</button>
+          <button type="reset" class="btn btn-ghost btn-lg">Reset</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</body>
+</html>

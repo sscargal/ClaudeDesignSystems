@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buttons — NVIDIA Design System</title>
+  <link rel="stylesheet" href="../tokens.css" />
+  <link rel="stylesheet" href="../typography.css" />
+  <link rel="stylesheet" href="../animations.css" />
+  <link rel="stylesheet" href="../components.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg-primary);
+      color: var(--color-label-primary);
+      -webkit-font-smoothing: antialiased;
+      padding: var(--space-8) 0;
+    }
+    .page-header {
+      background: var(--color-bg-pure-black);
+      border-bottom: 1px solid var(--color-border-subtle);
+      padding: var(--space-8) 0;
+      margin-bottom: var(--space-12);
+    }
+    .section-block {
+      margin-bottom: var(--space-12);
+    }
+    .section-label {
+      font-size: var(--text-12);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-label);
+      text-transform: uppercase;
+      color: var(--color-green);
+      margin-bottom: var(--space-2);
+      display: block;
+    }
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: var(--text-28);
+      font-weight: var(--weight-bold);
+      color: var(--color-label-primary);
+      margin-bottom: var(--space-2);
+      letter-spacing: var(--tracking-heading);
+    }
+    .section-desc {
+      font-size: var(--text-14);
+      color: var(--color-label-secondary);
+      margin-bottom: var(--space-6);
+    }
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-6);
+      background: var(--color-surface-1);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-card);
+      margin-bottom: var(--space-4);
+    }
+    .demo-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-2);
+    }
+    .demo-tag {
+      font-family: var(--font-mono);
+      font-size: var(--text-12);
+      color: var(--color-label-tertiary);
+    }
+    .divider-section {
+      border: none;
+      border-top: 1px solid var(--color-border-subtle);
+      margin: var(--space-10) 0;
+    }
+    .dark-bg-demo {
+      background: var(--color-bg-pure-black);
+      padding: var(--space-6);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--color-border-subtle);
+      margin-bottom: var(--space-4);
+    }
+    .state-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--space-4);
+    }
+    .state-cell {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      padding: var(--space-4);
+      background: var(--color-surface-1);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-card);
+    }
+    .state-label {
+      font-size: var(--text-12);
+      color: var(--color-label-tertiary);
+      font-family: var(--font-mono);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ul class="nav-breadcrumb">
+          <li class="nav-breadcrumb-item"><a href="../index.html">NVIDIA Design System</a></li>
+          <span class="nav-breadcrumb-separator">/</span>
+          <li class="nav-breadcrumb-item"><a href="#">Components</a></li>
+          <span class="nav-breadcrumb-separator">/</span>
+          <li class="nav-breadcrumb-item"><a href="#">Buttons</a></li>
+        </ul>
+      </nav>
+      <h1 class="display" style="margin-top:var(--space-5);">Buttons</h1>
+      <p class="subhead" style="color:var(--color-label-secondary);margin-top:var(--space-3);">All button variants, sizes, and states. Sharp 4px radius — NVIDIA's precision aesthetic.</p>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ============================================================
+         STYLE VARIANTS
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Variants</span>
+      <h2 class="section-heading">Button Styles</h2>
+      <p class="section-desc">Six core button types covering all interaction contexts from purchase CTAs to ghost utility actions.</p>
+
+      <div class="demo-row">
+        <div class="demo-item">
+          <button class="btn btn-primary">Buy Now</button>
+          <span class="demo-tag">.btn-primary</span>
+        </div>
+        <div class="demo-item">
+          <button class="btn btn-secondary">Learn More</button>
+          <span class="demo-tag">.btn-secondary</span>
+        </div>
+        <div class="demo-item">
+          <button class="btn btn-outline">View Specs</button>
+          <span class="demo-tag">.btn-outline</span>
+        </div>
+        <div class="demo-item">
+          <button class="btn btn-ghost">Compare</button>
+          <span class="demo-tag">.btn-ghost</span>
+        </div>
+        <div class="demo-item">
+          <button class="btn btn-blue">Download Driver</button>
+          <span class="demo-tag">.btn-blue</span>
+        </div>
+        <div class="demo-item">
+          <button class="btn btn-danger">Delete</button>
+          <span class="demo-tag">.btn-danger</span>
+        </div>
+      </div>
+
+      <!-- On pure black bg -->
+      <div class="dark-bg-demo">
+        <p class="caption" style="margin-bottom:var(--space-4);">On pure black background (hero sections):</p>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);align-items:center;">
+          <button class="btn btn-primary">Shop GPUs</button>
+          <button class="btn btn-secondary">Watch Keynote</button>
+          <button class="btn btn-outline">View All</button>
+          <button class="btn btn-ghost">Compare</button>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider-section" />
+
+    <!-- ============================================================
+         SIZES
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Sizes</span>
+      <h2 class="section-heading">Button Sizes</h2>
+      <p class="section-desc">Three sizes — 32px SM for compact UI, 44px MD for standard touch targets, 52px LG for CTAs.</p>
+
+      <div class="demo-row" style="align-items:flex-end;">
+        <div class="demo-item">
+          <button class="btn btn-primary btn-sm">Buy Now</button>
+          <span class="demo-tag">btn-sm — 32px</span>
+        </div>
+        <div class="demo-item">
+          <button class="btn btn-primary">Buy Now</button>
+          <span class="demo-tag">btn-md — 44px</span>
+        </div>
+        <div class="demo-item">
+          <button class="btn btn-primary btn-lg">Buy Now</button>
+          <span class="demo-tag">btn-lg — 52px</span>
+        </div>
+      </div>
+
+      <div class="demo-row" style="align-items:flex-end;">
+        <div class="demo-item">
+          <button class="btn btn-secondary btn-sm">Learn More</button>
+          <span class="demo-tag">secondary sm</span>
+        </div>
+        <div class="demo-item">
+          <button class="btn btn-secondary">Learn More</button>
+          <span class="demo-tag">secondary md</span>
+        </div>
+        <div class="demo-item">
+          <button class="btn btn-secondary btn-lg">Learn More</button>
+          <span class="demo-tag">secondary lg</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider-section" />
+
+    <!-- ============================================================
+         CTA — FULL WIDTH
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Product CTA</span>
+      <h2 class="section-heading">Full-Width CTA</h2>
+      <p class="section-desc">52px height, full-width green fill. Used at the bottom of product cards and landing sections.</p>
+
+      <div style="max-width:480px;display:flex;flex-direction:column;gap:var(--space-4);">
+        <div class="demo-item" style="width:100%;">
+          <button class="btn btn-cta">Add to Cart — $1,599</button>
+          <span class="demo-tag">.btn-cta — full width</span>
+        </div>
+        <div class="demo-item" style="width:100%;">
+          <button class="btn btn-cta" style="background:var(--color-accent-blue);border-color:var(--color-accent-blue);">Request Enterprise Quote</button>
+          <span class="demo-tag">.btn-cta with .btn-blue color</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider-section" />
+
+    <!-- ============================================================
+         STATES
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">States</span>
+      <h2 class="section-heading">Button States</h2>
+      <p class="section-desc">Default, hover (simulated), active (scale 0.98), disabled (38% opacity), and loading states.</p>
+
+      <div class="state-grid">
+        <div class="state-cell">
+          <span class="state-label">Default</span>
+          <button class="btn btn-primary">Buy Now</button>
+        </div>
+        <div class="state-cell">
+          <span class="state-label">Disabled</span>
+          <button class="btn btn-primary" disabled>Out of Stock</button>
+        </div>
+        <div class="state-cell">
+          <span class="state-label">Loading</span>
+          <button class="btn btn-primary loading" aria-label="Loading, please wait">Loading</button>
+        </div>
+        <div class="state-cell">
+          <span class="state-label">Disabled — Secondary</span>
+          <button class="btn btn-secondary" disabled>Unavailable</button>
+        </div>
+        <div class="state-cell">
+          <span class="state-label">Disabled — Ghost</span>
+          <button class="btn btn-ghost" disabled>Compare</button>
+        </div>
+        <div class="state-cell">
+          <span class="state-label">Loading — Secondary</span>
+          <button class="btn btn-secondary loading" aria-label="Loading">Loading</button>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider-section" />
+
+    <!-- ============================================================
+         GROUPS
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Groups</span>
+      <h2 class="section-heading">Button Groups</h2>
+      <p class="section-desc">Flex-wrapped groups with consistent 12px / 16px gaps for action clusters.</p>
+
+      <div style="display:flex;flex-direction:column;gap:var(--space-5);">
+        <div class="demo-item">
+          <div class="btn-group">
+            <button class="btn btn-primary">Buy Now</button>
+            <button class="btn btn-secondary">Add to Wishlist</button>
+            <button class="btn btn-ghost">Compare</button>
+          </div>
+          <span class="demo-tag">.btn-group — primary, secondary, ghost</span>
+        </div>
+
+        <div class="demo-item">
+          <div class="btn-group">
+            <button class="btn btn-outline btn-sm">RTX 40</button>
+            <button class="btn btn-outline btn-sm">RTX 30</button>
+            <button class="btn btn-outline btn-sm">Titan</button>
+          </div>
+          <span class="demo-tag">.btn-group — filter chips</span>
+        </div>
+
+        <div class="demo-item">
+          <div class="btn-group">
+            <a href="#" class="btn btn-primary btn-lg">Explore GPUs</a>
+            <a href="#" class="btn btn-secondary btn-lg">Watch GTC Keynote</a>
+          </div>
+          <span class="demo-tag">.btn-group — hero CTAs (lg)</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider-section" />
+
+    <!-- ============================================================
+         ICON BUTTONS
+         ============================================================ -->
+    <div class="section-block">
+      <span class="section-label">Icon Buttons</span>
+      <h2 class="section-heading">Icon-Only Buttons</h2>
+      <p class="section-desc">Square touch targets. Used for toolbar actions, close buttons, and social icons.</p>
+
+      <div class="demo-row" style="align-items:flex-end;">
+        <div class="demo-item">
+          <button class="btn btn-primary btn-icon btn-sm" aria-label="Search">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="5.5" cy="5.5" r="4.25" stroke="currentColor" stroke-width="1.5"/><path d="M9.25 9.25L12.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <span class="demo-tag">icon-sm</span>
+        </div>
+        <div class="demo-item">
+          <button class="btn btn-primary btn-icon" aria-label="Search">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <span class="demo-tag">icon-md</span>
+        </div>
+        <div class="demo-item">
+          <button class="btn btn-primary btn-icon btn-lg" aria-label="Search">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M13 13L18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <span class="demo-tag">icon-lg</span>
+        </div>
+        <div class="demo-item">
+          <button class="btn btn-outline btn-icon" aria-label="Share">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="13" cy="3" r="2" stroke="currentColor" stroke-width="1.5"/><circle cx="13" cy="13" r="2" stroke="currentColor" stroke-width="1.5"/><circle cx="3" cy="8" r="2" stroke="currentColor" stroke-width="1.5"/><path d="M5 7L11 4M5 9L11 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <span class="demo-tag">icon-outline</span>
+        </div>
+        <div class="demo-item">
+          <button class="btn btn-ghost btn-icon" aria-label="Close">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <span class="demo-tag">icon-ghost</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

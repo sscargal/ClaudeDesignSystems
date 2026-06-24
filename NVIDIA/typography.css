@@ -1,0 +1,346 @@
+/* =============================================================================
+   NVIDIA Design System — Typography
+   Version 1.0.0 | Bold · Tight · Authoritative
+   ============================================================================= */
+
+/* =============================================================================
+   DISPLAY — Hero Headlines (NVIDIA's massive, impactful type)
+   ============================================================================= */
+
+.display-hero {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 8vw, var(--text-80));
+  font-weight: var(--weight-extrabold);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.display-large {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 6.5vw, var(--text-64));
+  font-weight: var(--weight-extrabold);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display-lg);
+  color: var(--text-primary);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, var(--text-48));
+  font-weight: var(--weight-bold);
+  line-height: 1.08;
+  letter-spacing: var(--tracking-heading);
+  color: var(--text-primary);
+}
+
+/* =============================================================================
+   HEADINGS
+   ============================================================================= */
+
+.heading-1 {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 4vw, var(--text-36));
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  color: var(--text-primary);
+}
+
+.heading-2 {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 3vw, var(--text-28));
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-heading);
+  letter-spacing: -0.005em;
+  color: var(--text-primary);
+}
+
+.heading-3 {
+  font-family: var(--font-display);
+  font-size: var(--text-22);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-heading);
+  letter-spacing: 0;
+  color: var(--text-primary);
+}
+
+/* =============================================================================
+   BODY TEXT
+   ============================================================================= */
+
+.subhead {
+  font-family: var(--font-body);
+  font-size: var(--text-18);
+  font-weight: var(--weight-medium);
+  line-height: 1.50;
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-secondary);
+}
+
+.body-lg {
+  font-family: var(--font-body);
+  font-size: var(--text-18);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body-lg);
+  letter-spacing: var(--tracking-body);
+  color: var(--text-primary);
+}
+
+.body {
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+  color: var(--text-primary);
+}
+
+.body-sm {
+  font-family: var(--font-body);
+  font-size: var(--text-14);
+  font-weight: var(--weight-regular);
+  line-height: 1.55;
+  letter-spacing: var(--tracking-body);
+  color: var(--text-primary);
+}
+
+/* =============================================================================
+   UTILITY TEXT STYLES
+   ============================================================================= */
+
+.caption {
+  font-family: var(--font-body);
+  font-size: var(--text-13);
+  font-weight: var(--weight-regular);
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  color: var(--text-secondary);
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: var(--text-12);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+/* =============================================================================
+   MONO / TECHNICAL — Specs, Benchmarks, Code
+   ============================================================================= */
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-13);
+  font-weight: var(--weight-regular);
+  line-height: 1.50;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+}
+
+/* The hero benchmark number — green mono, oversized */
+.spec-value {
+  font-family: var(--font-mono);
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-green);
+  /* Optional glow on dark backgrounds */
+  text-shadow: 0 0 20px rgba(118, 185, 0, 0.40);
+}
+
+.spec-value--sm {
+  font-size: var(--text-28);
+}
+
+.spec-value--lg {
+  font-size: clamp(48px, 7vw, 96px);
+}
+
+/* =============================================================================
+   GRADIENT TEXT — NVIDIA Signature Effects
+   ============================================================================= */
+
+/* Green to White — product headlines */
+.text-green-gradient {
+  background: var(--gradient-text-green);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Green to Cyan — AI/data center theme */
+.text-ai-gradient {
+  background: var(--gradient-text-ai);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* White to transparent — fade out effect */
+.text-fade-gradient {
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.40) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* =============================================================================
+   COLOR UTILITIES
+   ============================================================================= */
+
+.text-green     { color: var(--color-green); }
+.text-green-light { color: var(--color-green-light); }
+.text-blue      { color: var(--color-accent-blue); }
+.text-white     { color: #FFFFFF; }
+.text-primary   { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-tertiary  { color: var(--text-tertiary); }
+.text-error     { color: var(--color-error); }
+.text-warning   { color: var(--color-warning); }
+
+/* =============================================================================
+   TEXT TRANSFORMS & DECORATION
+   ============================================================================= */
+
+.text-upper     { text-transform: uppercase; }
+.text-tight     { letter-spacing: -0.02em; }
+.text-wide      { letter-spacing: var(--tracking-wide); }
+.text-widest    { letter-spacing: var(--tracking-label); }
+
+.text-center    { text-align: center; }
+.text-left      { text-align: left; }
+.text-right     { text-align: right; }
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* =============================================================================
+   LINKS
+   ============================================================================= */
+
+a {
+  color: var(--color-accent-blue);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-nvidia);
+}
+
+a:hover {
+  color: var(--color-accent-blue-hover);
+  text-decoration: underline;
+}
+
+.link-green {
+  color: var(--color-green);
+}
+
+.link-green:hover {
+  color: var(--color-green-light);
+  text-decoration: none;
+}
+
+.link-arrow::after {
+  content: ' →';
+  display: inline;
+}
+
+/* =============================================================================
+   PROSE — Long-form content
+   ============================================================================= */
+
+.prose {
+  max-width: var(--max-width-text);
+  color: var(--text-primary);
+}
+
+.prose h1 { @apply display; margin-bottom: var(--space-6); }
+.prose h2 { @apply heading-1; margin-bottom: var(--space-4); margin-top: var(--space-12); }
+.prose h3 { @apply heading-2; margin-bottom: var(--space-3); margin-top: var(--space-8); }
+.prose p  { @apply body-lg; margin-bottom: var(--space-5); color: var(--text-secondary); }
+
+.prose ul,
+.prose ol {
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-5);
+}
+
+.prose li {
+  font-size: var(--text-16);
+  line-height: var(--leading-body);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sharp);
+  padding: 2px 6px;
+  color: var(--color-green);
+}
+
+/* =============================================================================
+   OVERLINE — Section labels above headings
+   ============================================================================= */
+
+.overline {
+  font-family: var(--font-body);
+  font-size: var(--text-12);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-green);
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+/* =============================================================================
+   SECTION HEADER COMPOSITIONS
+   ============================================================================= */
+
+.section-header {
+  margin-bottom: var(--space-12);
+}
+
+.section-overline {
+  font-size: var(--text-12);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-green);
+  margin-bottom: var(--space-3);
+  display: block;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-28), 4vw, var(--text-48));
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-heading);
+  line-height: var(--leading-heading);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-4);
+}
+
+.section-subtitle {
+  font-size: var(--text-18);
+  color: var(--text-secondary);
+  line-height: var(--leading-body-lg);
+  max-width: 560px;
+  margin: 0;
+}
