@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Design System — Anthropic</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="typography.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    /* ── Page-level styles not in the system ── */
+    .showcase-section {
+      padding: var(--space-20) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .showcase-section:last-of-type { border-bottom: none; }
+
+    .showcase-label {
+      font-size: var(--text-11);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-2);
+      display: block;
+    }
+
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .swatch-item { display: flex; flex-direction: column; }
+
+    .type-row {
+      padding: var(--space-5) 0;
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-6);
+    }
+    .type-row:last-child { border-bottom: none; }
+    .type-meta {
+      width: 120px;
+      flex-shrink: 0;
+      font-size: var(--text-11);
+      color: var(--color-text-tertiary);
+      font-family: var(--font-mono);
+    }
+
+    .demo-conversation {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .demo-conversation-header {
+      background: var(--color-bg-warm);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-3) var(--space-5);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .demo-conversation-dots {
+      display: flex; gap: 6px;
+    }
+    .demo-conversation-dots span {
+      width: 12px; height: 12px; border-radius: 50%; background: var(--color-bg-muted);
+    }
+
+    .demo-thread {
+      padding: var(--space-6);
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .component-nav {
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-10);
+    }
+
+    .component-nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-pill);
+      font-size: var(--text-14);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      transition: all var(--duration-fast) var(--ease-standard);
+    }
+    .component-nav a:hover {
+      background: var(--color-bg-muted);
+      border-color: var(--color-coral);
+      color: var(--color-coral);
+      opacity: 1;
+    }
+
+    .motion-demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--space-5);
+    }
+
+    .motion-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-5);
+      text-align: center;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .input-demo-stack {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      max-width: 480px;
+    }
+
+    @media (max-width: 768px) {
+      .showcase-section { padding: var(--space-12) 0; }
+      .type-meta { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════ NAV -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="#" class="navbar-brand">
+        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#DA7756"/>
+          <path d="M16 6C10.477 6 6 10.477 6 16s4.477 10 10 10 10-4.477 10-10S21.523 6 16 6zm0 3a7 7 0 110 14A7 7 0 0116 9zm0 2a5 5 0 100 10A5 5 0 0016 11z" fill="white" opacity="0.9"/>
+        </svg>
+        Claude
+      </a>
+      <ul class="navbar-nav">
+        <li class="navbar-nav-item"><a href="#conversation">Conversation</a></li>
+        <li class="navbar-nav-item"><a href="#colors">Colors</a></li>
+        <li class="navbar-nav-item"><a href="#typography">Typography</a></li>
+        <li class="navbar-nav-item"><a href="#components">Components</a></li>
+        <li class="navbar-nav-item"><a href="#motion">Motion</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <span class="badge badge-coral">v1.0</span>
+        <div class="nav-avatar" aria-label="User account">S</div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════ HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content animate-fade-in-up">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Claude Design System · Anthropic
+      </div>
+      <h1 class="hero-title">
+        Talk to <span class="text-gradient-coral">Claude</span>
+      </h1>
+      <p class="hero-subtitle">
+        A warm, intelligent design language for conversation-first products. Every token, component, and motion tells the story of a mind that listens.
+      </p>
+      <div class="btn-group" style="justify-content:center; flex-wrap:wrap;">
+        <a href="#conversation" class="btn btn-primary btn-lg">See the system</a>
+        <a href="components/buttons.html" class="btn btn-secondary btn-lg">Components</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ COMPONENT PAGES NAV -->
+  <div class="showcase-section" style="padding: var(--space-12) 0;">
+    <div class="container">
+      <span class="showcase-label">Component Pages</span>
+      <div class="component-nav">
+        <a href="components/buttons.html">Buttons &amp; Actions</a>
+        <a href="components/cards.html">Cards</a>
+        <a href="components/forms.html">Forms &amp; Inputs</a>
+        <a href="components/navigation.html">Navigation</a>
+        <a href="components/modals.html">Modals &amp; Overlays</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ CONVERSATION DEMO -->
+  <section class="showcase-section" id="conversation">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-overline">Centerpiece</span>
+        <h2 class="section-title">Conversation Thread</h2>
+        <p class="section-subtitle">Human messages float right with a clean bubble. Claude's responses flow left, free of a box — text as thought, unenclosed.</p>
+      </div>
+
+      <div class="demo-conversation">
+        <div class="demo-conversation-header">
+          <div class="demo-conversation-dots">
+            <span style="background:#E05D5D;"></span>
+            <span style="background:#F0AD3E;"></span>
+            <span style="background:#52C47A;"></span>
+          </div>
+          <div class="model-selector" style="margin-left:auto;">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M7 4v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span class="model-selector-name">Claude Sonnet</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="demo-thread conversation-thread">
+
+          <!-- Exchange 1 -->
+          <div class="message message--human animate-message-in">
+            <div class="message-avatar message-avatar--human">S</div>
+            <div class="message-content-wrap">
+              <div class="message-bubble--human conversation-body">
+                <p>Can you help me understand how transformer attention works? I keep reading about it but the math isn't clicking.</p>
+              </div>
+              <span class="message-timestamp">2:14 PM</span>
+            </div>
+          </div>
+
+          <div class="message message--assistant animate-message-in delay-100">
+            <div class="message-avatar message-avatar--claude">C</div>
+            <div class="message-content-wrap">
+              <div class="message-content conversation-body">
+                <p>Happy to walk through it. Think of attention as a soft, learned lookup table — rather than fetching one specific value, you retrieve a <em>weighted blend</em> of all values based on how relevant each one is to your query.</p>
+                <p>The core operation is:</p>
+                <pre><code>Attention(Q, K, V) = softmax(QKᵀ / √dₖ) · V</code></pre>
+                <p>Three matrices — <strong>queries</strong>, <strong>keys</strong>, and <strong>values</strong>. Each token in your sequence produces one of each. The dot-product of a query with all keys gives you relevance scores; softmax turns those into probabilities; multiply by values to get the output.</p>
+                <p>What part would you like to dig into first — the intuition, the scaling factor, or multi-head attention?</p>
+              </div>
+              <span class="message-timestamp">2:14 PM</span>
+            </div>
+          </div>
+
+          <!-- Exchange 2 -->
+          <div class="message message--human animate-message-in delay-200">
+            <div class="message-avatar message-avatar--human">S</div>
+            <div class="message-content-wrap">
+              <div class="message-bubble--human conversation-body">
+                <p>The scaling factor — why divide by √dₖ specifically?</p>
+              </div>
+              <span class="message-timestamp">2:16 PM</span>
+            </div>
+          </div>
+
+          <div class="message message--assistant animate-message-in delay-300">
+            <div class="message-avatar message-avatar--claude">C</div>
+            <div class="message-content-wrap">
+              <div class="message-content conversation-body">
+                <p>Good instinct to pull on that thread. When dₖ is large, dot products grow proportionally — their variance scales with dₖ. Without the scaling, the softmax input sits in a region where gradients are extremely small (the "saturated" regime), which slows or stalls learning.</p>
+                <p>Dividing by √dₖ keeps the dot products at roughly unit variance regardless of dimension size, which keeps the softmax outputs well-spread rather than collapsing to a one-hot distribution.</p>
+                <blockquote>If you've worked with layer normalization, it's the same intuition — you're stabilizing the scale of activations to keep gradients healthy.</blockquote>
+              </div>
+              <span class="message-timestamp">2:17 PM</span>
+            </div>
+          </div>
+
+          <!-- Exchange 3 — thinking state -->
+          <div class="message message--human animate-message-in delay-400">
+            <div class="message-avatar message-avatar--human">S</div>
+            <div class="message-content-wrap">
+              <div class="message-bubble--human conversation-body">
+                <p>That makes total sense. Now explain multi-head attention in one sentence.</p>
+              </div>
+              <span class="message-timestamp">2:19 PM</span>
+            </div>
+          </div>
+
+          <div class="message message--assistant animate-message-in delay-500">
+            <div class="message-avatar message-avatar--claude">C</div>
+            <div class="message-content-wrap">
+              <div class="message-thinking">
+                <div class="thinking-indicator">
+                  <span class="thinking-dot"></span>
+                  <span class="thinking-dot"></span>
+                  <span class="thinking-dot"></span>
+                </div>
+                <span class="message-thinking-label">Thinking…</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Input area -->
+        <div class="conversation-input-area" style="position:relative;">
+          <div class="conversation-input-inner">
+            <div class="attachment-row">
+              <div class="attachment-pill">
+                <div class="attachment-pill-icon">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2h8v8H2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="attachment-pill-name">attention_paper.pdf</span>
+                <span class="attachment-pill-size">2.4 MB</span>
+                <button class="attachment-pill-remove" aria-label="Remove">✕</button>
+              </div>
+            </div>
+            <div class="conversation-input-box">
+              <textarea class="conversation-input" placeholder="Ask a follow-up…" rows="1"></textarea>
+              <div class="input-toolbar">
+                <div class="input-toolbar-left">
+                  <button class="input-toolbar-btn" aria-label="Attach file">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.5 7.5l-6 6a4 4 0 01-5.657-5.657l6-6a2.5 2.5 0 013.535 3.536l-6.001 6a1 1 0 01-1.414-1.414l5.25-5.25" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                  </button>
+                  <button class="input-toolbar-btn" aria-label="Image">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><circle cx="5.5" cy="5.5" r="1" fill="currentColor"/><path d="M2 11l3-3 2.5 2.5L11 7l3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                </div>
+                <button class="btn-send" aria-label="Send message">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="prompt-chips-row">
+              <button class="prompt-suggestion-chip">Give an example</button>
+              <button class="prompt-suggestion-chip">Compare to RNNs</button>
+              <button class="prompt-suggestion-chip">Show the code</button>
+              <button class="prompt-suggestion-chip">Explain positional encoding</button>
+              <button class="prompt-suggestion-chip">What is self-attention?</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ COLORS -->
+  <section class="showcase-section" id="colors">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-overline">Foundation</span>
+        <h2 class="section-title">Color Palette</h2>
+        <p class="section-subtitle">Warm cream and deep brown-black — never cold, never sterile. Coral anchors the brand.</p>
+      </div>
+
+      <span class="showcase-label">Brand</span>
+      <div class="swatch-grid" style="margin-bottom:var(--space-8);">
+        <div class="swatch-item">
+          <div class="color-swatch" style="background:#DA7756; height:80px;"></div>
+          <span class="color-swatch-name">Coral</span>
+          <span class="color-swatch-value">#DA7756</span>
+        </div>
+        <div class="swatch-item">
+          <div class="color-swatch" style="background:#C0624A; height:80px;"></div>
+          <span class="color-swatch-name">Coral Dark</span>
+          <span class="color-swatch-value">#C0624A</span>
+        </div>
+        <div class="swatch-item">
+          <div class="color-swatch" style="background:rgba(218,119,86,0.15); height:80px;"></div>
+          <span class="color-swatch-name">Coral Light</span>
+          <span class="color-swatch-value">rgba 15%</span>
+        </div>
+        <div class="swatch-item">
+          <div class="color-swatch" style="background:rgba(218,119,86,0.08); height:80px;"></div>
+          <span class="color-swatch-name">Coral Subtle</span>
+          <span class="color-swatch-value">rgba 8%</span>
+        </div>
+      </div>
+
+      <span class="showcase-label">Backgrounds — Light</span>
+      <div class="swatch-grid" style="margin-bottom:var(--space-8);">
+        <div class="swatch-item">
+          <div class="color-swatch" style="background:#FAF9F5; height:60px;"></div>
+          <span class="color-swatch-name">BG Primary</span>
+          <span class="color-swatch-value">#FAF9F5</span>
+        </div>
+        <div class="swatch-item">
+          <div class="color-swatch" style="background:#FFFFFF; height:60px;"></div>
+          <span class="color-swatch-name">Surface White</span>
+          <span class="color-swatch-value">#FFFFFF</span>
+        </div>
+        <div class="swatch-item">
+          <div class="color-swatch" style="background:#F3F1EB; height:60px;"></div>
+          <span class="color-swatch-name">BG Warm</span>
+          <span class="color-swatch-value">#F3F1EB</span>
+        </div>
+        <div class="swatch-item">
+          <div class="color-swatch" style="background:#E8E5DC; height:60px;"></div>
+          <span class="color-swatch-name">BG Muted</span>
+          <span class="color-swatch-value">#E8E5DC</span>
+        </div>
+        <div class="swatch-item">
+          <div class="color-swatch" style="background:#E0DDD5; height:60px;"></div>
+          <span class="color-swatch-name">Border</span>
+          <span class="color-swatch-value">#E0DDD5</span>
+        </div>
+      </div>
+
+      <span class="showcase-label">Backgrounds — Dark</span>
+      <div class="swatch-grid" style="margin-bottom:var(--space-8);">
+        <div class="swatch-item">
+          <div class="color-swatch" style="background:#1A1310; height:60px;"></div>
+          <span class="color-swatch-name">Dark Primary</span>
+          <span class="color-swatch-value">#1A1310</span>
+        </div>
+        <div class="swatch-item">
+          <div class="color-swatch" style="background:#231F1C; height:60px;"></div>
+          <span class="color-swatch-name">Dark Surface 1</span>
+          <span class="color-swatch-value">#231F1C</span>
+        </div>
+        <div class="swatch-item">
+          <div class="color-swatch" style="background:#2D2825; height:60px;"></div>
+          <span class="color-swatch-name">Dark Surface 2</span>
+          <span class="color-swatch-value">#2D2825</span>
+        </div>
+        <div class="swatch-item">
+          <div class="color-swatch" style="background:#3A3530; height:60px;"></div>
+          <span class="color-swatch-name">Dark Border</span>
+          <span class="color-swatch-value">#3A3530</span>
+        </div>
+      </div>
+
+      <span class="showcase-label">Semantic</span>
+      <div class="swatch-grid">
+        <div class="swatch-item">
+          <div class="color-swatch" style="background:#3D9970; height:60px;"></div>
+          <span class="color-swatch-name">Success</span>
+          <span class="color-swatch-value">#3D9970</span>
+        </div>
+        <div class="swatch-item">
+          <div class="color-swatch" style="background:#D4A017; height:60px;"></div>
+          <span class="color-swatch-name">Warning</span>
+          <span class="color-swatch-value">#D4A017</span>
+        </div>
+        <div class="swatch-item">
+          <div class="color-swatch" style="background:#C0392B; height:60px;"></div>
+          <span class="color-swatch-name">Error</span>
+          <span class="color-swatch-value">#C0392B</span>
+        </div>
+        <div class="swatch-item">
+          <div class="color-swatch" style="background:#2C7BE5; height:60px;"></div>
+          <span class="color-swatch-name">Info</span>
+          <span class="color-swatch-value">#2C7BE5</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ TYPOGRAPHY -->
+  <section class="showcase-section" id="typography">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-overline">Foundation</span>
+        <h2 class="section-title">Typography Scale</h2>
+        <p class="section-subtitle">Styrene A for display; system-ui for reading. Every weight and size serves a purpose.</p>
+      </div>
+
+      <div>
+        <div class="type-row">
+          <div class="type-meta">display · 48px · bold</div>
+          <span class="display">The thinking machine</span>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">heading-1 · 36px · bold</div>
+          <span class="heading-1">Intelligent conversations</span>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">heading-2 · 28px · semibold</div>
+          <span class="heading-2">Understanding context deeply</span>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">heading-3 · 22px · semibold</div>
+          <span class="heading-3">Warm, capable, honest</span>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">subhead · 18px · medium</div>
+          <span class="subhead">Ready to help with anything</span>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">body · 17px · regular</div>
+          <span class="body" style="margin:0;">Claude is trained by Anthropic, and our mission is the responsible development and maintenance of advanced AI for the long-term benefit of humanity.</span>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">body-sm · 15px</div>
+          <span class="body-sm">Supplemental information, card descriptions, and secondary content lives here.</span>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">caption · 13px</div>
+          <span class="caption">File uploaded · 2 minutes ago · 2.4 MB</span>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">label · 11px · caps</div>
+          <span class="label">Context window</span>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">mono · 14px</div>
+          <code class="mono">const response = await claude.messages.create()</code>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">gradient text</div>
+          <span class="display text-gradient-coral" style="font-size:var(--text-36);">Talk to Claude</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ COMPONENTS -->
+  <section class="showcase-section" id="components">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-overline">Components</span>
+        <h2 class="section-title">UI Building Blocks</h2>
+      </div>
+
+      <!-- Buttons -->
+      <span class="showcase-label">Buttons</span>
+      <div class="btn-row" style="margin-bottom:var(--space-3);">
+        <button class="btn btn-primary">Start conversation</button>
+        <button class="btn btn-secondary">Settings</button>
+        <button class="btn btn-ghost">Cancel</button>
+        <button class="btn btn-danger">Delete</button>
+      </div>
+      <div class="btn-row" style="margin-bottom:var(--space-3);">
+        <button class="btn btn-primary btn-sm">Small primary</button>
+        <button class="btn btn-secondary btn-sm">Small secondary</button>
+        <button class="btn btn-primary btn-lg">Large primary</button>
+      </div>
+      <div class="btn-row" style="margin-bottom:var(--space-6);">
+        <button class="btn btn-primary" disabled>Disabled</button>
+        <button class="btn btn-primary is-loading">Loading</button>
+        <button class="btn btn-secondary btn-icon" aria-label="Settings">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.42 1.42M11.54 11.54l1.41 1.41M3.05 12.95l1.42-1.41M11.54 4.46l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <button class="btn-send" aria-label="Send">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <!-- Model Selector -->
+      <span class="showcase-label">Model Selector</span>
+      <div style="display:flex; gap:var(--space-3); flex-wrap:wrap; margin-bottom:var(--space-6);">
+        <div class="model-selector">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M7 4v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span class="model-selector-name">Claude Opus</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="model-selector">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M7 4v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span class="model-selector-name">Claude Sonnet</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="model-selector">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M7 4v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span class="model-selector-name">Claude Haiku</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- Model Dropdown -->
+      <span class="showcase-label">Model Dropdown</span>
+      <div style="margin-bottom:var(--space-8); max-width:320px;">
+        <div class="model-dropdown">
+          <div class="model-dropdown-header">Select a model</div>
+          <div class="model-option is-selected">
+            <div class="model-option-indicator"></div>
+            <div class="model-option-info">
+              <div class="model-option-name">Claude Sonnet</div>
+              <div class="model-option-desc">Best balance of speed and intelligence</div>
+            </div>
+            <div class="model-option-badge">Default</div>
+          </div>
+          <div class="model-option">
+            <div class="model-option-indicator"></div>
+            <div class="model-option-info">
+              <div class="model-option-name">Claude Opus</div>
+              <div class="model-option-desc">Most capable, best for complex tasks</div>
+            </div>
+          </div>
+          <div class="model-option">
+            <div class="model-option-indicator"></div>
+            <div class="model-option-info">
+              <div class="model-option-name">Claude Haiku</div>
+              <div class="model-option-desc">Fastest, great for lightweight tasks</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards -->
+      <span class="showcase-label">Capability Cards</span>
+      <div class="grid-3" style="margin-bottom:var(--space-8);">
+        <div class="card-capability">
+          <div class="card-capability-icon">🧠</div>
+          <div class="card-capability-title">Deep reasoning</div>
+          <div class="card-capability-desc">Multi-step analysis across complex domains — science, law, finance, code.</div>
+        </div>
+        <div class="card-capability">
+          <div class="card-capability-icon">✍️</div>
+          <div class="card-capability-title">Creative writing</div>
+          <div class="card-capability-desc">Stories, essays, poetry, and scripts with genuine narrative intelligence.</div>
+        </div>
+        <div class="card-capability">
+          <div class="card-capability-icon">💻</div>
+          <div class="card-capability-title">Code generation</div>
+          <div class="card-capability-desc">Ship production-ready code across languages with thorough explanations.</div>
+        </div>
+      </div>
+
+      <span class="showcase-label">Plan Cards</span>
+      <div class="grid-3" style="margin-bottom:var(--space-8);">
+        <div class="card-plan">
+          <div class="card-plan-name">Free</div>
+          <div class="card-plan-price">$0</div>
+          <div class="card-plan-period">forever</div>
+          <ul class="card-plan-features">
+            <li class="card-plan-feature">
+              <span class="card-plan-check">✓</span>
+              Claude Haiku access
+            </li>
+            <li class="card-plan-feature">
+              <span class="card-plan-check">✓</span>
+              Basic conversations
+            </li>
+            <li class="card-plan-feature">
+              <span class="card-plan-check">✓</span>
+              Web interface
+            </li>
+          </ul>
+          <button class="btn btn-secondary" style="width:100%;">Get started</button>
+        </div>
+        <div class="card-plan is-featured">
+          <div class="card-plan-name">Pro</div>
+          <div class="card-plan-price">$20</div>
+          <div class="card-plan-period">per month</div>
+          <ul class="card-plan-features">
+            <li class="card-plan-feature">
+              <span class="card-plan-check">✓</span>
+              Claude Opus &amp; Sonnet
+            </li>
+            <li class="card-plan-feature">
+              <span class="card-plan-check">✓</span>
+              5× more usage
+            </li>
+            <li class="card-plan-feature">
+              <span class="card-plan-check">✓</span>
+              Priority access
+            </li>
+            <li class="card-plan-feature">
+              <span class="card-plan-check">✓</span>
+              Projects &amp; artifacts
+            </li>
+          </ul>
+          <button class="btn" style="width:100%;background:white;color:var(--color-coral);">Upgrade to Pro</button>
+        </div>
+        <div class="card-plan">
+          <div class="card-plan-name">Team</div>
+          <div class="card-plan-price">$30</div>
+          <div class="card-plan-period">per user / month</div>
+          <ul class="card-plan-features">
+            <li class="card-plan-feature">
+              <span class="card-plan-check">✓</span>
+              Everything in Pro
+            </li>
+            <li class="card-plan-feature">
+              <span class="card-plan-check">✓</span>
+              Shared projects
+            </li>
+            <li class="card-plan-feature">
+              <span class="card-plan-check">✓</span>
+              Admin controls
+            </li>
+            <li class="card-plan-feature">
+              <span class="card-plan-check">✓</span>
+              SSO &amp; audit logs
+            </li>
+          </ul>
+          <button class="btn btn-secondary" style="width:100%;">Contact sales</button>
+        </div>
+      </div>
+
+      <span class="showcase-label">Feature Card</span>
+      <div style="max-width:420px; margin-bottom:var(--space-8);">
+        <div class="card-feature">
+          <h3 class="card-title">Projects</h3>
+          <p class="card-subtitle">Organize your conversations with persistent context, custom instructions, and shared files.</p>
+        </div>
+      </div>
+
+      <!-- Forms -->
+      <span class="showcase-label">Form Inputs</span>
+      <div class="input-demo-stack" style="margin-bottom:var(--space-6);">
+        <div class="form-group">
+          <label class="form-label is-required">Full name</label>
+          <input class="input" type="text" placeholder="e.g. Alex Rivera">
+          <span class="form-helper">Your name as it appears on your account.</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email address</label>
+          <input class="input is-error" type="email" value="not-an-email" aria-invalid="true">
+          <span class="form-error">⚠ Please enter a valid email address.</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="textarea" placeholder="Describe what you'd like to build…" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Model</label>
+          <div class="select-wrapper">
+            <select class="select">
+              <option>Claude Sonnet (default)</option>
+              <option>Claude Opus</option>
+              <option>Claude Haiku</option>
+            </select>
+            <span class="select-chevron">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:var(--space-3);">
+          <label class="checkbox-wrapper">
+            <span class="checkbox">
+              <input type="checkbox" checked>
+              <span class="checkbox-box"></span>
+            </span>
+            <span>Remember model preference</span>
+          </label>
+          <label class="checkbox-wrapper">
+            <span class="checkbox">
+              <input type="checkbox">
+              <span class="checkbox-box"></span>
+            </span>
+            <span>Email me usage summaries</span>
+          </label>
+          <label class="radio-wrapper">
+            <span class="radio">
+              <input type="radio" name="theme" checked>
+              <span class="radio-circle"></span>
+            </span>
+            <span>System theme</span>
+          </label>
+          <label class="radio-wrapper">
+            <span class="radio">
+              <input type="radio" name="theme">
+              <span class="radio-circle"></span>
+            </span>
+            <span>Light mode</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Token Meter -->
+      <span class="showcase-label">Token Usage Meter</span>
+      <div style="display:flex; flex-direction:column; gap:var(--space-5); max-width:420px; margin-bottom:var(--space-6);">
+        <div class="token-meter">
+          <div class="token-meter-label">
+            <span class="token-meter-count">12,540</span>
+            <span class="token-meter-limit">of 200,000 tokens</span>
+          </div>
+          <div class="token-meter-bar">
+            <div class="token-meter-fill" style="width:6%;"></div>
+          </div>
+        </div>
+        <div class="token-meter token-meter--warning">
+          <div class="token-meter-label">
+            <span class="token-meter-count">140,000</span>
+            <span class="token-meter-limit">of 200,000 tokens</span>
+          </div>
+          <div class="token-meter-bar">
+            <div class="token-meter-fill" style="width:70%;"></div>
+          </div>
+        </div>
+        <div class="token-meter token-meter--critical">
+          <div class="token-meter-label">
+            <span class="token-meter-count">192,800</span>
+            <span class="token-meter-limit">of 200,000 tokens</span>
+          </div>
+          <div class="token-meter-bar">
+            <div class="token-meter-fill" style="width:96%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings Panel -->
+      <span class="showcase-label">Settings Panel</span>
+      <div style="max-width:480px; margin-bottom:var(--space-8);">
+        <div class="settings-section">
+          <span class="settings-section-label">Preferences</span>
+          <div class="settings-group">
+            <div class="settings-row">
+              <div class="settings-row-icon" style="background:var(--color-coral-subtle);">🎨</div>
+              <div class="settings-row-content">
+                <div class="settings-row-label">Appearance</div>
+                <div class="settings-row-sublabel">System (auto)</div>
+              </div>
+              <span class="settings-row-chevron">›</span>
+            </div>
+            <div class="settings-row">
+              <div class="settings-row-icon" style="background:rgba(44,123,229,0.10);">🌐</div>
+              <div class="settings-row-content">
+                <div class="settings-row-label">Language</div>
+                <div class="settings-row-sublabel">English (US)</div>
+              </div>
+              <span class="settings-row-chevron">›</span>
+            </div>
+            <div class="settings-row">
+              <div class="settings-row-icon" style="background:var(--color-success-light);">💬</div>
+              <div class="settings-row-content">
+                <div class="settings-row-label">Streaming responses</div>
+              </div>
+              <label class="settings-toggle">
+                <input type="checkbox" checked>
+                <span class="toggle-track"></span>
+                <span class="toggle-thumb"></span>
+              </label>
+            </div>
+            <div class="settings-row">
+              <div class="settings-row-icon" style="background:var(--color-warning-light);">🔔</div>
+              <div class="settings-row-content">
+                <div class="settings-row-label">Notifications</div>
+              </div>
+              <label class="settings-toggle">
+                <input type="checkbox">
+                <span class="toggle-track"></span>
+                <span class="toggle-thumb"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- File Attachment Pills -->
+      <span class="showcase-label">File Attachment Pills</span>
+      <div class="attachment-row" style="margin-bottom:var(--space-8);">
+        <div class="attachment-pill">
+          <div class="attachment-pill-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 1h6l3 3v7H2V1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+          </div>
+          <span class="attachment-pill-name">research_notes.pdf</span>
+          <span class="attachment-pill-size">1.2 MB</span>
+          <button class="attachment-pill-remove" aria-label="Remove">✕</button>
+        </div>
+        <div class="attachment-pill">
+          <div class="attachment-pill-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 3h10M1 6h10M1 9h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </div>
+          <span class="attachment-pill-name">project_plan.docx</span>
+          <span class="attachment-pill-size">84 KB</span>
+          <button class="attachment-pill-remove" aria-label="Remove">✕</button>
+        </div>
+        <div class="attachment-pill">
+          <div class="attachment-pill-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="1" width="10" height="10" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M1 5h10" stroke="currentColor" stroke-width="1.2"/><path d="M4 1v10" stroke="currentColor" stroke-width="1.2"/></svg>
+          </div>
+          <span class="attachment-pill-name">data_export.csv</span>
+          <span class="attachment-pill-size">240 KB</span>
+          <button class="attachment-pill-remove" aria-label="Remove">✕</button>
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <span class="showcase-label">Badges</span>
+      <div style="display:flex; gap:var(--space-2); flex-wrap:wrap; margin-bottom:var(--space-8);">
+        <span class="badge badge-coral"><span class="badge-dot"></span>Live</span>
+        <span class="badge badge-success"><span class="badge-dot"></span>Active</span>
+        <span class="badge badge-warning"><span class="badge-dot"></span>Limited</span>
+        <span class="badge badge-error"><span class="badge-dot"></span>Error</span>
+        <span class="badge badge-neutral">Beta</span>
+        <span class="badge badge-coral">Pro</span>
+        <span class="badge badge-success">New</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ MOTION -->
+  <section class="showcase-section" id="motion">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-overline">Motion</span>
+        <h2 class="section-title">Animation &amp; Motion</h2>
+        <p class="section-subtitle">Gentle, unhurried motion that respects user attention. Every animation has meaning.</p>
+      </div>
+
+      <div class="motion-demo-grid">
+
+        <!-- Thinking indicator -->
+        <div class="motion-card">
+          <p class="caption" style="margin-bottom:var(--space-4);">Thinking indicator</p>
+          <div class="thinking-area">
+            <div class="thinking-indicator">
+              <span class="thinking-dot"></span>
+              <span class="thinking-dot"></span>
+              <span class="thinking-dot"></span>
+            </div>
+            <span>Claude is thinking…</span>
+          </div>
+        </div>
+
+        <!-- Typing cursor -->
+        <div class="motion-card">
+          <p class="caption" style="margin-bottom:var(--space-4);">Typing cursor</p>
+          <p class="conversation-body" style="margin:0;">Here is Claude's response<span class="typing-cursor"></span></p>
+        </div>
+
+        <!-- Spinner -->
+        <div class="motion-card" style="text-align:center;">
+          <p class="caption" style="margin-bottom:var(--space-4);">Spinner</p>
+          <div style="display:flex; align-items:center; justify-content:center; gap:var(--space-4);">
+            <div class="spinner spinner-sm"></div>
+            <div class="spinner"></div>
+            <div class="spinner spinner-lg"></div>
+          </div>
+        </div>
+
+        <!-- Skeleton loading -->
+        <div class="motion-card">
+          <p class="caption" style="margin-bottom:var(--space-4);">Skeleton loading</p>
+          <div class="skeleton-message">
+            <div class="skeleton skeleton-avatar"></div>
+            <div class="skeleton-content">
+              <div class="skeleton skeleton-text long"></div>
+              <div class="skeleton skeleton-text medium"></div>
+              <div class="skeleton skeleton-text short"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coral pulse -->
+        <div class="motion-card" style="text-align:center;">
+          <p class="caption" style="margin-bottom:var(--space-4);">Coral pulse (active state)</p>
+          <button class="btn btn-primary animate-coral-pulse">Processing…</button>
+        </div>
+
+        <!-- Fade in up -->
+        <div class="motion-card">
+          <p class="caption" style="margin-bottom:var(--space-4);">Message entrance</p>
+          <div class="animate-message-in" style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl) var(--radius-xl) 4px var(--radius-xl);padding:var(--space-3) var(--space-4);font-size:var(--text-15);">
+            New message arrives
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Toast demo (static) -->
+      <div style="margin-top:var(--space-8);">
+        <span class="showcase-label">Toast Notifications (static demo)</span>
+        <div style="display:flex; flex-direction:column; gap:var(--space-2); max-width:380px;">
+          <div class="toast">
+            <div class="toast-icon">✓</div>
+            <span class="toast-message">Conversation saved to Projects</span>
+            <button class="toast-close">✕</button>
+          </div>
+          <div class="toast" style="background:var(--color-error);">
+            <div class="toast-icon">⚠</div>
+            <span class="toast-message">Failed to send — check your connection</span>
+            <button class="toast-close">✕</button>
+          </div>
+          <div class="toast" style="background:var(--color-success);">
+            <div class="toast-icon">✓</div>
+            <span class="toast-message">File uploaded successfully</span>
+            <button class="toast-close">✕</button>
+          </div>
+          <div class="toast" style="background:var(--color-warning); color:var(--color-label-primary);">
+            <div class="toast-icon">⚡</div>
+            <span class="toast-message" style="color:var(--color-label-primary);">Approaching token limit</span>
+            <button class="toast-close" style="color:rgba(26,19,16,0.5);">✕</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ FOOTER -->
+  <footer style="padding:var(--space-10) 0; border-top:1px solid var(--color-border); text-align:center;">
+    <p class="caption" style="margin:0;">Anthropic &middot; Claude Design System &middot; MIT License</p>
+  </footer>
+
+</body>
+</html>

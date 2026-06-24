@@ -1,0 +1,471 @@
+/* =============================================================================
+   Claude Design System — Typography
+   Version 1.0.0 | Styrene A display + system-ui body
+   Warm, legible, conversation-optimized
+   ============================================================================= */
+
+/* =============================================================================
+   BASE RESET & DEFAULTS
+   ============================================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font-size: 17px;
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-text);
+  font-size: var(--text-17);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  margin: 0;
+  padding: 0;
+}
+
+/* =============================================================================
+   HEADING STYLES
+   ============================================================================= */
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  color: var(--color-text);
+}
+
+/* Display — 48px, Styrene/serif, hero text */
+.display,
+h1.display {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-28), 5vw, var(--text-48));
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  color: var(--color-text);
+}
+
+/* Heading 1 — 36px */
+.heading-1,
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-22), 4vw, var(--text-36));
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-text);
+}
+
+/* Heading 2 — 28px */
+.heading-2,
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-22), 3vw, var(--text-28));
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-text);
+}
+
+/* Heading 3 — 22px */
+.heading-3,
+h3 {
+  font-family: var(--font-text);
+  font-size: var(--text-22);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-subhead);
+  color: var(--color-text);
+}
+
+/* Subhead — 18px */
+.subhead,
+h4 {
+  font-family: var(--font-text);
+  font-size: var(--text-18);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-subhead);
+  color: var(--color-text);
+}
+
+/* Body — 17px, system-ui, the base reading style */
+.body,
+p {
+  font-family: var(--font-text);
+  font-size: var(--text-17);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  color: var(--color-text);
+  margin: 0 0 1em;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* Body Small — 15px */
+.body-sm {
+  font-family: var(--font-text);
+  font-size: var(--text-15);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  color: var(--color-text);
+}
+
+/* Conversation Body — 17px, line-height 1.7, optimized for long reading */
+.conversation-body {
+  font-family: var(--font-text);
+  font-size: var(--text-17);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-conversation);
+  color: var(--color-text);
+}
+
+.conversation-body p {
+  margin: 0 0 0.9em;
+}
+
+.conversation-body p:last-child {
+  margin-bottom: 0;
+}
+
+.conversation-body ul,
+.conversation-body ol {
+  padding-left: var(--space-5);
+  margin: 0 0 0.9em;
+}
+
+.conversation-body li {
+  margin-bottom: 0.4em;
+  line-height: var(--leading-conversation);
+}
+
+.conversation-body li:last-child {
+  margin-bottom: 0;
+}
+
+.conversation-body strong,
+.conversation-body b {
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+}
+
+.conversation-body em {
+  font-style: italic;
+}
+
+.conversation-body code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--color-bg-muted);
+  color: var(--color-coral-dark);
+  border-radius: var(--radius-xs);
+  padding: 0.1em 0.4em;
+  border: 1px solid var(--color-border);
+}
+
+.conversation-body pre {
+  background: var(--color-bg-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  overflow-x: auto;
+  margin: 0 0 0.9em;
+}
+
+.conversation-body pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-text);
+  font-size: var(--text-14);
+  line-height: 1.55;
+}
+
+.conversation-body blockquote {
+  margin: var(--space-4) 0;
+  padding: var(--space-3) var(--space-4);
+  border-left: 3px solid var(--color-coral);
+  background: var(--color-coral-subtle);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  font-style: italic;
+  color: var(--color-text-secondary);
+}
+
+.conversation-body h1,
+.conversation-body h2,
+.conversation-body h3,
+.conversation-body h4 {
+  font-family: var(--font-text);
+  font-weight: var(--weight-semibold);
+  margin: 1.2em 0 0.4em;
+  color: var(--color-text);
+}
+
+.conversation-body h1 { font-size: var(--text-22); }
+.conversation-body h2 { font-size: var(--text-18); }
+.conversation-body h3 { font-size: var(--text-17); }
+.conversation-body h4 { font-size: var(--text-15); }
+
+/* Caption — 13px, label-secondary */
+.caption {
+  font-family: var(--font-text);
+  font-size: var(--text-13);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-caption);
+  color: var(--color-text-tertiary);
+}
+
+/* Label — 11px, uppercase, tracking */
+.label {
+  font-family: var(--font-text);
+  font-size: var(--text-11);
+  font-weight: var(--weight-semibold);
+  line-height: 1.2;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+/* Mono — for code in conversations */
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-14);
+  line-height: 1.55;
+}
+
+/* =============================================================================
+   INLINE ELEMENTS
+   ============================================================================= */
+
+a {
+  color: var(--color-coral);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-standard),
+              opacity var(--duration-fast) var(--ease-standard);
+}
+
+a:hover {
+  color: var(--color-coral-dark);
+  opacity: 0.85;
+}
+
+a:active {
+  opacity: 0.65;
+}
+
+strong, b {
+  font-weight: var(--weight-semibold);
+}
+
+em, i {
+  font-style: italic;
+}
+
+mark {
+  background: rgba(218, 119, 86, 0.18);
+  color: inherit;
+  padding: 0.05em 0.2em;
+  border-radius: var(--radius-xs);
+}
+
+abbr[title] {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
+/* =============================================================================
+   CODE BLOCKS (global)
+   ============================================================================= */
+
+code,
+kbd,
+samp {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--color-bg-muted);
+  border-radius: var(--radius-xs);
+  padding: 0.1em 0.35em;
+  border: 1px solid var(--color-border);
+}
+
+pre {
+  display: block;
+  background: var(--color-bg-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  overflow-x: auto;
+  line-height: 1.55;
+  font-size: var(--text-14);
+  margin: 0 0 1em;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* =============================================================================
+   LISTS
+   ============================================================================= */
+
+ul, ol {
+  padding-left: var(--space-5);
+  margin: 0 0 1em;
+}
+
+li {
+  margin-bottom: 0.35em;
+  line-height: var(--leading-body);
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
+/* =============================================================================
+   BLOCKQUOTE
+   ============================================================================= */
+
+blockquote {
+  margin: var(--space-6) 0;
+  padding: var(--space-4) var(--space-5);
+  border-left: 3px solid var(--color-coral);
+  background: var(--color-coral-subtle);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-style: italic;
+  color: var(--color-text-secondary);
+}
+
+blockquote cite {
+  display: block;
+  margin-top: var(--space-2);
+  font-size: var(--text-13);
+  font-style: normal;
+  color: var(--color-text-tertiary);
+}
+
+/* =============================================================================
+   GRADIENT TEXT
+   ============================================================================= */
+
+.text-gradient-coral {
+  background: linear-gradient(
+    135deg,
+    var(--color-coral) 0%,
+    var(--color-coral-dark) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-warm {
+  background: linear-gradient(
+    135deg,
+    #DA7756 0%,
+    #C0624A 45%,
+    #8B4C3E 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* =============================================================================
+   COLOR UTILITIES
+   ============================================================================= */
+
+.text-primary   { color: var(--color-text); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-tertiary  { color: var(--color-text-tertiary); }
+.text-coral     { color: var(--color-coral); }
+.text-success   { color: var(--color-success); }
+.text-warning   { color: var(--color-warning); }
+.text-error     { color: var(--color-error); }
+
+/* =============================================================================
+   WEIGHT UTILITIES
+   ============================================================================= */
+
+.font-regular  { font-weight: var(--weight-regular); }
+.font-medium   { font-weight: var(--weight-medium); }
+.font-semibold { font-weight: var(--weight-semibold); }
+.font-bold     { font-weight: var(--weight-bold); }
+
+/* =============================================================================
+   ALIGNMENT
+   ============================================================================= */
+
+.text-left   { text-align: left; }
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+
+/* =============================================================================
+   TRUNCATION
+   ============================================================================= */
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* =============================================================================
+   RESPONSIVE TYPOGRAPHY
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  .display {
+    font-size: var(--text-36);
+  }
+
+  .heading-1, h1 {
+    font-size: var(--text-28);
+  }
+
+  .heading-2, h2 {
+    font-size: var(--text-22);
+  }
+
+  .heading-3, h3 {
+    font-size: var(--text-18);
+  }
+}
+
+/* =============================================================================
+   REDUCED MOTION
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

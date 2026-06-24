@@ -1,0 +1,302 @@
+/* =============================================================================
+   Claude Design System — Design Tokens
+   Version 1.0.0 | claude.ai by Anthropic
+   Warm, intelligent, conversation-first aesthetic
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     BRAND COLORS — Claude's Signature Palette
+     --------------------------------------------------------------------------- */
+
+  /* Claude Coral — the primary brand accent */
+  --color-coral:              #DA7756;
+  --color-coral-dark:         #C0624A;
+  --color-coral-light:        rgba(218, 119, 86, 0.15);
+  --color-coral-subtle:       rgba(218, 119, 86, 0.08);
+  --color-coral-glow:         0 0 0 3px rgba(218, 119, 86, 0.18);
+
+  /* ---------------------------------------------------------------------------
+     BACKGROUNDS — Light Mode
+     Warm cream dominant; never cold or sterile
+     --------------------------------------------------------------------------- */
+
+  --color-bg-primary:         #FAF9F5;   /* Warm Cream — main page background */
+  --color-bg-secondary:       #FFFFFF;   /* Surface white */
+  --color-bg-warm:            #F3F1EB;   /* Surface warm — sidebar, input area */
+  --color-bg-muted:           #E8E5DC;   /* Surface muted — hover states, chips */
+  --color-bg-border:          #E0DDD5;   /* Subtle warm border */
+
+  /* ---------------------------------------------------------------------------
+     DARK MODE BACKGROUNDS
+     Deep brown-black; never pure #000
+     --------------------------------------------------------------------------- */
+
+  --color-dark-bg-primary:    #1A1310;   /* Deep brown-black */
+  --color-dark-surface-1:     #231F1C;   /* Dark surface 1 */
+  --color-dark-surface-2:     #2D2825;   /* Dark surface 2 */
+  --color-dark-border:        #3A3530;   /* Dark border */
+
+  /* ---------------------------------------------------------------------------
+     LABEL COLORS — Light Mode
+     --------------------------------------------------------------------------- */
+
+  --color-label-primary:      #1A1310;   /* Deep brown-black text */
+  --color-label-secondary:    #6B6560;   /* Mid-warm gray */
+  --color-label-tertiary:     #9E9890;   /* Quiet label */
+  --color-label-quaternary:   rgba(26, 19, 16, 0.18);
+
+  /* ---------------------------------------------------------------------------
+     LABEL COLORS — Dark Mode (defined in media query below)
+     --------------------------------------------------------------------------- */
+
+  /* Semantic aliases — light mode defaults */
+  --color-bg:                 var(--color-bg-primary);
+  --color-surface:            var(--color-bg-secondary);
+  --color-surface-raised:     var(--color-bg-warm);
+  --color-surface-overlay:    rgba(26, 19, 16, 0.50);
+  --color-border:             var(--color-bg-border);
+  --color-text:               var(--color-label-primary);
+  --color-text-secondary:     var(--color-label-secondary);
+  --color-text-tertiary:      var(--color-label-tertiary);
+  --color-accent:             var(--color-coral);
+  --color-accent-hover:       var(--color-coral-dark);
+  --color-accent-light:       var(--color-coral-light);
+
+  /* ---------------------------------------------------------------------------
+     CONVERSATION BUBBLE COLORS
+     --------------------------------------------------------------------------- */
+
+  --color-bubble-human-bg:    #FFFFFF;
+  --color-bubble-human-border: var(--color-bg-border);
+  --color-bubble-assistant-bg: transparent;  /* no bubble — text flows free */
+
+  /* ---------------------------------------------------------------------------
+     SEMANTIC SYSTEM COLORS
+     --------------------------------------------------------------------------- */
+
+  --color-success:            #3D9970;
+  --color-success-light:      rgba(61, 153, 112, 0.12);
+  --color-warning:            #D4A017;
+  --color-warning-light:      rgba(212, 160, 23, 0.12);
+  --color-error:              #C0392B;
+  --color-error-light:        rgba(192, 57, 43, 0.12);
+  --color-info:               #2C7BE5;
+  --color-info-light:         rgba(44, 123, 229, 0.12);
+
+  /* ---------------------------------------------------------------------------
+     TYPOGRAPHY
+     --------------------------------------------------------------------------- */
+
+  /* Font stacks */
+  --font-display:  "Styrene A", "Söhne", Georgia, "Times New Roman", serif;
+  --font-text:     system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:     ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* Type scale */
+  --text-48:  48px;
+  --text-36:  36px;
+  --text-28:  28px;
+  --text-22:  22px;
+  --text-18:  18px;
+  --text-17:  17px;
+  --text-15:  15px;
+  --text-14:  14px;
+  --text-13:  13px;
+  --text-11:  11px;
+
+  /* Font weights */
+  --weight-regular:   400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+  --weight-bold:      700;
+
+  /* Line heights */
+  --leading-display:      1.08;
+  --leading-heading:      1.15;
+  --leading-subhead:      1.30;
+  --leading-body:         1.65;
+  --leading-conversation: 1.70;
+  --leading-caption:      1.40;
+
+  /* Letter spacing */
+  --tracking-display:  -0.02em;
+  --tracking-heading:  -0.01em;
+  --tracking-body:      0em;
+  --tracking-caps:      0.08em;
+
+  /* ---------------------------------------------------------------------------
+     SPACING — 4px Base Grid
+     --------------------------------------------------------------------------- */
+
+  --space-1:    4px;
+  --space-2:    8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+
+  /* ---------------------------------------------------------------------------
+     BORDER RADIUS
+     --------------------------------------------------------------------------- */
+
+  --radius-none:    0px;
+  --radius-xs:      4px;
+  --radius-sm:      8px;    /* inputs, small elements */
+  --radius-md:     12px;    /* cards */
+  --radius-lg:     16px;    /* modals */
+  --radius-xl:     20px;    /* conversation bubbles */
+  --radius-2xl:    24px;
+  --radius-pill:   9999px;  /* pills, buttons, tags */
+
+  --radius-input:     var(--radius-sm);
+  --radius-card:      var(--radius-md);
+  --radius-modal:     var(--radius-lg);
+  --radius-bubble:    var(--radius-xl);
+  --radius-button:    var(--radius-pill);
+  --radius-chip:      var(--radius-pill);
+
+  /* ---------------------------------------------------------------------------
+     SHADOWS — Warm-tinted, never cold blue
+     --------------------------------------------------------------------------- */
+
+  --shadow-xs:    0 1px 2px rgba(26, 19, 16, 0.06);
+  --shadow-sm:    0 1px 4px rgba(26, 19, 16, 0.08);
+  --shadow-md:    0 4px 16px rgba(26, 19, 16, 0.10);
+  --shadow-lg:    0 8px 24px rgba(26, 19, 16, 0.12);
+  --shadow-xl:    0 16px 48px rgba(26, 19, 16, 0.14), 0 4px 12px rgba(26, 19, 16, 0.08);
+  --shadow-2xl:   0 24px 64px rgba(26, 19, 16, 0.18), 0 8px 24px rgba(26, 19, 16, 0.10);
+
+  --shadow-coral: 0 8px 24px rgba(218, 119, 86, 0.28);
+  --shadow-inset: inset 0 1px 3px rgba(26, 19, 16, 0.06);
+
+  /* ---------------------------------------------------------------------------
+     MOTION — Gentle, unhurried
+     --------------------------------------------------------------------------- */
+
+  --duration-instant:   100ms;
+  --duration-fast:      150ms;
+  --duration-normal:    200ms;
+  --duration-moderate:  350ms;
+  --duration-slow:      500ms;
+  --duration-blink:     530ms;  /* typing cursor blink interval */
+
+  --ease-standard:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-decelerate: cubic-bezier(0.00, 0.00, 0.20, 1.00);
+  --ease-accelerate: cubic-bezier(0.40, 0.00, 1.00, 1.00);
+  --ease-spring:     cubic-bezier(0.34, 1.40, 0.64, 1.00);
+
+  --transition-fast:     all var(--duration-fast)     var(--ease-standard);
+  --transition-normal:   all var(--duration-normal)   var(--ease-standard);
+  --transition-moderate: all var(--duration-moderate) var(--ease-standard);
+  --transition-spring:   all var(--duration-moderate) var(--ease-spring);
+
+  /* ---------------------------------------------------------------------------
+     BORDERS
+     --------------------------------------------------------------------------- */
+
+  --border-default:      1px solid var(--color-border);
+  --border-focused:      1.5px solid var(--color-coral);
+  --border-separator:    1px solid rgba(26, 19, 16, 0.08);
+
+  /* ---------------------------------------------------------------------------
+     Z-INDEX SCALE
+     --------------------------------------------------------------------------- */
+
+  --z-base:       0;
+  --z-raised:    10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-toast:    500;
+  --z-tooltip:  600;
+
+  /* ---------------------------------------------------------------------------
+     COMPONENT DIMENSIONS
+     --------------------------------------------------------------------------- */
+
+  --btn-height-sm:    32px;
+  --btn-height-md:    40px;
+  --btn-height-lg:    48px;
+  --input-height-sm:  36px;
+  --input-height-md:  40px;
+  --input-height-lg:  48px;
+  --nav-height:       56px;
+  --sidebar-width:   260px;
+  --thread-max-width: 680px;
+  --max-width-site:   980px;
+  --max-width-wide:  1200px;
+
+  /* ---------------------------------------------------------------------------
+     AVATAR SIZES
+     --------------------------------------------------------------------------- */
+
+  --avatar-size-sm:   24px;
+  --avatar-size-md:   32px;
+  --avatar-size-lg:   40px;
+  --avatar-size-xl:   56px;
+
+  /* ---------------------------------------------------------------------------
+     BLUR
+     --------------------------------------------------------------------------- */
+
+  --blur-sm:  blur(8px);
+  --blur-md:  blur(16px);
+  --blur-lg:  blur(24px);
+}
+
+/* =============================================================================
+   DARK MODE — First-class; equally polished
+   ============================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Override backgrounds */
+    --color-bg-primary:       #1A1310;
+    --color-bg-secondary:     #231F1C;
+    --color-bg-warm:          #231F1C;
+    --color-bg-muted:         #2D2825;
+    --color-bg-border:        #3A3530;
+
+    /* Override labels */
+    --color-label-primary:    #FAF9F5;
+    --color-label-secondary:  #A09890;
+    --color-label-tertiary:   #6B6560;
+    --color-label-quaternary: rgba(250, 249, 245, 0.18);
+
+    /* Override semantic aliases */
+    --color-bg:               #1A1310;
+    --color-surface:          #231F1C;
+    --color-surface-raised:   #2D2825;
+    --color-surface-overlay:  rgba(10, 8, 7, 0.72);
+    --color-border:           #3A3530;
+    --color-text:             #FAF9F5;
+    --color-text-secondary:   #A09890;
+    --color-text-tertiary:    #6B6560;
+
+    /* Conversation bubbles — dark */
+    --color-bubble-human-bg:    #2D2825;
+    --color-bubble-human-border: #3A3530;
+
+    /* Shadows are deeper in dark mode */
+    --shadow-xs:   0 1px 2px rgba(0, 0, 0, 0.28);
+    --shadow-sm:   0 1px 4px rgba(0, 0, 0, 0.36);
+    --shadow-md:   0 4px 16px rgba(0, 0, 0, 0.48);
+    --shadow-lg:   0 8px 24px rgba(0, 0, 0, 0.56);
+    --shadow-xl:   0 16px 48px rgba(0, 0, 0, 0.64), 0 4px 12px rgba(0, 0, 0, 0.40);
+    --shadow-2xl:  0 24px 64px rgba(0, 0, 0, 0.72), 0 8px 24px rgba(0, 0, 0, 0.52);
+    --shadow-inset: inset 0 1px 3px rgba(0, 0, 0, 0.24);
+
+    /* Coral remains the same — brand consistency */
+    /* --color-coral: stays #DA7756 */
+    /* --color-coral-dark: stays #C0624A */
+  }
+}

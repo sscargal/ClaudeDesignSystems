@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms — Claude Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .page-header {
+      background: var(--color-bg-warm);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-4) var(--space-6);
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      position: sticky;
+      top: 0;
+      z-index: var(--z-sticky);
+    }
+    .page-header-back {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-14);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-pill);
+      transition: background var(--duration-fast) var(--ease-standard),
+                  color var(--duration-fast) var(--ease-standard);
+    }
+    .page-header-back:hover { background: var(--color-bg-muted); color: var(--color-text); opacity: 1; }
+    .page-title { font-family: var(--font-display); font-size: var(--text-18); font-weight: var(--weight-bold); color: var(--color-text); }
+    .content { padding: var(--space-12) var(--space-6); max-width: 720px; margin: 0 auto; }
+    .showcase-block { margin-bottom: var(--space-12); }
+    .showcase-label {
+      font-size: var(--text-11);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      display: block;
+      margin-bottom: var(--space-2);
+    }
+    .showcase-desc {
+      font-size: var(--text-14);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-5);
+      line-height: var(--leading-body);
+    }
+    .demo-surface {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+    }
+    hr.divider { border: none; border-top: 1px solid var(--color-border); margin: var(--space-10) 0; }
+    .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+    @media (max-width: 600px) { .input-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <a href="../index.html" class="page-header-back">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M9 3L5 7l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Back
+    </a>
+    <span class="page-title">Forms &amp; Inputs</span>
+  </header>
+
+  <main class="content">
+
+    <!-- ── TEXT INPUT STATES ── -->
+    <div class="showcase-block">
+      <span class="showcase-label">Text Input — All States</span>
+      <p class="showcase-desc">Inputs use <code>--color-coral</code> for focus ring and border. Error state uses red. Disabled reduces opacity.</p>
+      <div class="demo-surface" style="display:flex;flex-direction:column;gap:var(--space-5);">
+        <div class="form-group">
+          <label class="form-label">Default state</label>
+          <input class="input" type="text" placeholder="e.g. Alex Rivera">
+          <span class="form-helper">Helper text appears below.</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Focus state (tab to focus)</label>
+          <input class="input" type="text" placeholder="Focus me">
+        </div>
+        <div class="form-group">
+          <label class="form-label is-required">Required field</label>
+          <input class="input" type="text" placeholder="This field is required">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Success / validated</label>
+          <input class="input is-success" type="email" value="alex@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Error state</label>
+          <input class="input is-error" type="email" value="not-valid" aria-invalid="true">
+          <span class="form-error">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M6 4v3M6 8.5v.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Please enter a valid email address.
+          </span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Disabled state</label>
+          <input class="input" type="text" value="Cannot be edited" disabled>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── SIZE VARIANTS ── -->
+    <div class="showcase-block">
+      <span class="showcase-label">Input Size Variants</span>
+      <p class="showcase-desc">Three heights: 36px (sm), 40px (md, default), 48px (lg).</p>
+      <div class="demo-surface" style="display:flex;flex-direction:column;gap:var(--space-4);">
+        <input class="input" type="text" placeholder="Small input" style="height:var(--input-height-sm);font-size:var(--text-15);">
+        <input class="input" type="text" placeholder="Medium input (default)">
+        <input class="input" type="text" placeholder="Large input" style="height:var(--input-height-lg);font-size:var(--text-18);">
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── TEXTAREA ── -->
+    <div class="showcase-block">
+      <span class="showcase-label">Textarea</span>
+      <p class="showcase-desc">Same visual language as the input — warm border, coral focus ring, vertically resizable.</p>
+      <div class="demo-surface" style="display:flex;flex-direction:column;gap:var(--space-5);">
+        <div class="form-group">
+          <label class="form-label">System prompt</label>
+          <textarea class="textarea" rows="4" placeholder="You are a helpful assistant specialized in…"></textarea>
+          <span class="form-helper">This will appear at the start of every conversation.</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Feedback (error)</label>
+          <textarea class="textarea" style="border-color:var(--color-error);box-shadow:0 0 0 3px rgba(192,57,43,0.15);" rows="3">Too short</textarea>
+          <span class="form-error">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M6 4v3M6 8.5v.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Feedback must be at least 20 characters.
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── SELECT ── -->
+    <div class="showcase-block">
+      <span class="showcase-label">Select / Dropdown</span>
+      <p class="showcase-desc">Custom chevron via <code>.select-wrapper</code>. Native <code>&lt;select&gt;</code> with appearance reset.</p>
+      <div class="demo-surface" style="display:flex;flex-direction:column;gap:var(--space-5);">
+        <div class="form-group">
+          <label class="form-label">Default model</label>
+          <div class="select-wrapper">
+            <select class="select">
+              <option>Claude Sonnet (recommended)</option>
+              <option>Claude Opus</option>
+              <option>Claude Haiku</option>
+            </select>
+            <span class="select-chevron">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+          <span class="form-helper">Used when no model is specified in your request.</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Output language</label>
+          <div class="select-wrapper">
+            <select class="select">
+              <option>English (US)</option>
+              <option>English (UK)</option>
+              <option>French</option>
+              <option>German</option>
+              <option>Spanish</option>
+              <option>Japanese</option>
+            </select>
+            <span class="select-chevron">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── CHECKBOX ── -->
+    <div class="showcase-block">
+      <span class="showcase-label">Checkboxes</span>
+      <p class="showcase-desc">Custom coral checkbox with spring-animated checkmark. Fully accessible via hidden native input.</p>
+      <div class="demo-surface" style="display:flex;flex-direction:column;gap:var(--space-4);">
+        <label class="checkbox-wrapper">
+          <span class="checkbox">
+            <input type="checkbox" checked>
+            <span class="checkbox-box"></span>
+          </span>
+          <span>Remember my model preference</span>
+        </label>
+        <label class="checkbox-wrapper">
+          <span class="checkbox">
+            <input type="checkbox">
+            <span class="checkbox-box"></span>
+          </span>
+          <span>Enable streaming responses</span>
+        </label>
+        <label class="checkbox-wrapper">
+          <span class="checkbox">
+            <input type="checkbox" checked>
+            <span class="checkbox-box"></span>
+          </span>
+          <span>Email me when conversations are shared</span>
+        </label>
+        <label class="checkbox-wrapper" style="opacity:0.5;cursor:not-allowed;">
+          <span class="checkbox">
+            <input type="checkbox" disabled>
+            <span class="checkbox-box"></span>
+          </span>
+          <span>Feature not available on Free plan</span>
+        </label>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── RADIO ── -->
+    <div class="showcase-block">
+      <span class="showcase-label">Radio Buttons</span>
+      <p class="showcase-desc">Coral fill with spring-in animation on the inner dot. Group with a shared <code>name</code> attribute.</p>
+      <div class="demo-surface" style="display:flex;flex-direction:column;gap:var(--space-4);">
+        <label class="radio-wrapper">
+          <span class="radio">
+            <input type="radio" name="appearance" checked>
+            <span class="radio-circle"></span>
+          </span>
+          <span>System (auto — follows your OS setting)</span>
+        </label>
+        <label class="radio-wrapper">
+          <span class="radio">
+            <input type="radio" name="appearance">
+            <span class="radio-circle"></span>
+          </span>
+          <span>Light mode</span>
+        </label>
+        <label class="radio-wrapper">
+          <span class="radio">
+            <input type="radio" name="appearance">
+            <span class="radio-circle"></span>
+          </span>
+          <span>Dark mode</span>
+        </label>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── TOGGLES ── -->
+    <div class="showcase-block">
+      <span class="showcase-label">iOS-style Toggles</span>
+      <p class="showcase-desc">Used in Settings rows. Coral when on, muted grey when off. The thumb slides with a spring transition.</p>
+      <div class="demo-surface" style="display:flex;flex-direction:column;gap:var(--space-5);">
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div>
+            <p style="font-size:var(--text-17);color:var(--color-text);margin:0;">Streaming responses</p>
+            <p class="caption" style="margin:0;">Text streams in as Claude generates it</p>
+          </div>
+          <label class="settings-toggle">
+            <input type="checkbox" checked>
+            <span class="toggle-track"></span>
+            <span class="toggle-thumb"></span>
+          </label>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div>
+            <p style="font-size:var(--text-17);color:var(--color-text);margin:0;">Sound effects</p>
+            <p class="caption" style="margin:0;">Play a tone when responses complete</p>
+          </div>
+          <label class="settings-toggle">
+            <input type="checkbox">
+            <span class="toggle-track"></span>
+            <span class="toggle-thumb"></span>
+          </label>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div>
+            <p style="font-size:var(--text-17);color:var(--color-text);margin:0;">Save conversation history</p>
+          </div>
+          <label class="settings-toggle">
+            <input type="checkbox" checked>
+            <span class="toggle-track"></span>
+            <span class="toggle-thumb"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── CONVERSATION INPUT AREA ── -->
+    <div class="showcase-block">
+      <span class="showcase-label">Conversation Input Area</span>
+      <p class="showcase-desc">The full input UI — attachment row, input box with toolbar, prompt suggestion chips. Sticky at page bottom.</p>
+      <div style="background:var(--color-bg-warm);border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden;">
+        <div style="padding:var(--space-3) var(--space-4) var(--space-4);">
+          <div class="attachment-row">
+            <div class="attachment-pill">
+              <div class="attachment-pill-icon">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 1h6l3 3v7H2V1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="attachment-pill-name">brief.pdf</span>
+              <span class="attachment-pill-size">420 KB</span>
+              <button class="attachment-pill-remove" aria-label="Remove">✕</button>
+            </div>
+          </div>
+          <div class="conversation-input-box">
+            <textarea class="conversation-input" placeholder="Message Claude…" rows="2"></textarea>
+            <div class="input-toolbar">
+              <div class="input-toolbar-left">
+                <button class="input-toolbar-btn" aria-label="Attach file">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.5 7.5l-6 6a4 4 0 01-5.657-5.657l6-6a2.5 2.5 0 013.535 3.536l-6.001 6a1 1 0 01-1.414-1.414l5.25-5.25" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                </button>
+                <button class="input-toolbar-btn" aria-label="Image">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><circle cx="5.5" cy="5.5" r="1" fill="currentColor"/><path d="M2 11l3-3 2.5 2.5L11 7l3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button class="input-toolbar-btn" aria-label="More tools">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="4" cy="8" r="1.2" fill="currentColor"/><circle cx="8" cy="8" r="1.2" fill="currentColor"/><circle cx="12" cy="8" r="1.2" fill="currentColor"/></svg>
+                </button>
+              </div>
+              <button class="btn-send" aria-label="Send message">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="prompt-chips-row" style="margin-top:var(--space-2);">
+            <button class="prompt-suggestion-chip">Summarize this</button>
+            <button class="prompt-suggestion-chip">Find key themes</button>
+            <button class="prompt-suggestion-chip">Write a response</button>
+            <button class="prompt-suggestion-chip">Extract action items</button>
+            <button class="prompt-suggestion-chip">Translate to French</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── FULL FORM EXAMPLE ── -->
+    <div class="showcase-block">
+      <span class="showcase-label">Complete Form Example</span>
+      <p class="showcase-desc">A realistic account settings form showing all elements working together in context.</p>
+      <div class="demo-surface">
+        <h3 class="heading-3" style="margin-bottom:var(--space-6);">Profile settings</h3>
+        <div style="display:flex;flex-direction:column;gap:var(--space-5);">
+          <div class="input-row">
+            <div class="form-group">
+              <label class="form-label is-required">First name</label>
+              <input class="input" type="text" value="Alex">
+            </div>
+            <div class="form-group">
+              <label class="form-label is-required">Last name</label>
+              <input class="input" type="text" value="Rivera">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label is-required">Email</label>
+            <input class="input is-success" type="email" value="alex@example.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Default model</label>
+            <div class="select-wrapper">
+              <select class="select">
+                <option selected>Claude Sonnet (recommended)</option>
+                <option>Claude Opus</option>
+                <option>Claude Haiku</option>
+              </select>
+              <span class="select-chevron">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Bio</label>
+            <textarea class="textarea" rows="3" placeholder="Tell us a little about yourself…"></textarea>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:var(--space-3);padding-top:var(--space-2);">
+            <label class="checkbox-wrapper">
+              <span class="checkbox"><input type="checkbox" checked><span class="checkbox-box"></span></span>
+              <span>Receive product updates and announcements</span>
+            </label>
+            <label class="checkbox-wrapper">
+              <span class="checkbox"><input type="checkbox"><span class="checkbox-box"></span></span>
+              <span>Opt into early feature previews</span>
+            </label>
+          </div>
+          <div class="btn-group" style="margin-top:var(--space-2);">
+            <button class="btn btn-ghost">Cancel</button>
+            <button class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>

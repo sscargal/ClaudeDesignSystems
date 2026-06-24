@@ -1,0 +1,445 @@
+/* =============================================================================
+   Claude Design System — Animations & Motion
+   Version 1.0.0 | Gentle, unhurried, conversation-native
+   ============================================================================= */
+
+/* =============================================================================
+   KEYFRAMES
+   ============================================================================= */
+
+/* --- Fade --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Slide --- */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+
+@keyframes slideOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* --- Message entrance — Claude's signature component animation --- */
+@keyframes messageIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Typing cursor blink — 530ms interval --- */
+@keyframes typing {
+  0%,
+  49.9% { opacity: 1; }
+  50%,
+  100%  { opacity: 0; }
+}
+
+/* --- Thinking pulse — 3 dots in sequence --- */
+@keyframes thinkingDot {
+  0%,
+  60%,
+  100% {
+    transform: scale(1);
+    opacity: 0.35;
+  }
+  30% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+}
+
+/* --- Coral pulse — active states, processing --- */
+@keyframes coralPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(218, 119, 86, 0.40);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(218, 119, 86, 0);
+  }
+}
+
+/* --- Shimmer — loading skeletons --- */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* --- Scale in --- */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.90);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- Spring in (modals, popovers) --- */
+@keyframes springIn {
+  0%   { opacity: 0; transform: scale(0.88); }
+  60%  { opacity: 1; transform: scale(1.02); }
+  80%  { transform: scale(0.99); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* --- Toast notification --- */
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(-100%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes toastOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100%) scale(0.95);
+  }
+}
+
+/* --- Artifact panel slide in from right --- */
+@keyframes panelSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* --- Pulse (generic) --- */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+/* --- Spin --- */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* --- Float (gentle levitation for decoration) --- */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* --- Gradient flow (hero ambient animation) --- */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- Shake (error state) --- */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-5px); }
+  40%       { transform: translateX(5px); }
+  60%       { transform: translateX(-3px); }
+  80%       { transform: translateX(3px); }
+}
+
+/* =============================================================================
+   CLAUDE-SPECIFIC COMPONENTS
+   ============================================================================= */
+
+/* Typing cursor — 2px wide, 18px tall, coral */
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 18px;
+  background-color: var(--color-coral);
+  border-radius: 1px;
+  vertical-align: text-bottom;
+  margin-left: 1px;
+  animation: typing var(--duration-blink) step-end infinite;
+}
+
+/* Thinking indicator — 3 coral dots pulsing in sequence */
+.thinking-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: var(--space-2) 0;
+}
+
+.thinking-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-coral);
+  opacity: 0.35;
+  animation: thinkingDot 1.4s var(--ease-standard) infinite;
+}
+
+.thinking-dot:nth-child(2) {
+  animation-delay: 160ms;
+}
+
+.thinking-dot:nth-child(3) {
+  animation-delay: 320ms;
+}
+
+/* Thinking area wrapper */
+.thinking-area {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  color: var(--color-text-secondary);
+  font-size: var(--text-15);
+}
+
+/* =============================================================================
+   ANIMATION UTILITY CLASSES
+   ============================================================================= */
+
+/* Fade */
+.animate-fade-in      { animation: fadeIn      var(--duration-moderate) var(--ease-decelerate) both; }
+.animate-fade-out     { animation: fadeOut      var(--duration-normal)   var(--ease-accelerate) both; }
+.animate-fade-in-up   { animation: fadeInUp     var(--duration-moderate) var(--ease-decelerate) both; }
+.animate-fade-in-down { animation: fadeInDown   var(--duration-moderate) var(--ease-decelerate) both; }
+
+/* Slide */
+.animate-slide-in-up    { animation: slideInUp    var(--duration-moderate) var(--ease-decelerate) both; }
+.animate-slide-in-right { animation: slideInRight  var(--duration-moderate) var(--ease-decelerate) both; }
+.animate-slide-out-down { animation: slideOutDown  var(--duration-normal)   var(--ease-accelerate) both; }
+
+/* Message */
+.animate-message-in { animation: messageIn var(--duration-moderate) var(--ease-decelerate) both; }
+
+/* Scale */
+.animate-scale-in  { animation: scaleIn  var(--duration-moderate) var(--ease-decelerate) both; }
+.animate-spring-in { animation: springIn var(--duration-slow)      var(--ease-spring)     both; }
+
+/* Ongoing */
+.animate-pulse      { animation: pulse       2s   var(--ease-standard) infinite; }
+.animate-spin       { animation: spin        0.8s linear infinite; }
+.animate-float      { animation: float       4s   var(--ease-standard) infinite; }
+.animate-coral-pulse { animation: coralPulse 2s   ease-in-out infinite; }
+.animate-gradient   {
+  background-size: 300% 300%;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* Toast */
+.animate-toast-in  { animation: toastIn  var(--duration-moderate) var(--ease-spring)     both; }
+.animate-toast-out { animation: toastOut var(--duration-normal)    var(--ease-accelerate) both; }
+
+/* Panel */
+.animate-panel-in  { animation: panelSlideIn var(--duration-moderate) var(--ease-decelerate) both; }
+
+/* =============================================================================
+   DELAY UTILITIES
+   ============================================================================= */
+
+.delay-50   { animation-delay:  50ms; }
+.delay-100  { animation-delay: 100ms; }
+.delay-150  { animation-delay: 150ms; }
+.delay-200  { animation-delay: 200ms; }
+.delay-300  { animation-delay: 300ms; }
+.delay-400  { animation-delay: 400ms; }
+.delay-500  { animation-delay: 500ms; }
+.delay-600  { animation-delay: 600ms; }
+.delay-800  { animation-delay: 800ms; }
+
+/* =============================================================================
+   TRANSITION UTILITIES
+   ============================================================================= */
+
+.transition-none     { transition: none; }
+.transition-fast     { transition: var(--transition-fast); }
+.transition-normal   { transition: var(--transition-normal); }
+.transition-moderate { transition: var(--transition-moderate); }
+.transition-spring   { transition: var(--transition-spring); }
+
+/* =============================================================================
+   HOVER EFFECTS
+   ============================================================================= */
+
+.hover-lift {
+  transition: transform var(--duration-normal) var(--ease-spring),
+              box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hover-scale {
+  transition: transform var(--duration-normal) var(--ease-spring);
+}
+
+.hover-scale:hover  { transform: scale(1.02); }
+.hover-scale:active { transform: scale(0.98); }
+
+/* =============================================================================
+   SKELETON / SHIMMER LOADING
+   ============================================================================= */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-muted) 25%,
+    var(--color-bg-warm)  50%,
+    var(--color-bg-muted) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s var(--ease-standard) infinite;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-text {
+  height: 1em;
+  margin-bottom: 0.5em;
+  border-radius: var(--radius-xs);
+}
+
+.skeleton-text.short  { width: 38%; }
+.skeleton-text.medium { width: 62%; }
+.skeleton-text.long   { width: 88%; }
+
+.skeleton-circle { border-radius: var(--radius-pill); }
+.skeleton-rect   { border-radius: var(--radius-sm); }
+
+/* Conversation message skeleton */
+.skeleton-message {
+  display: flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.skeleton-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.skeleton-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-top: 4px;
+}
+
+/* =============================================================================
+   REDUCED MOTION — Respect user preference
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .skeleton {
+    animation: none;
+    background: var(--color-bg-muted);
+  }
+
+  .thinking-dot {
+    animation: none;
+    opacity: 0.6;
+  }
+
+  .typing-cursor {
+    animation: none;
+    opacity: 1;
+  }
+
+  .animate-gradient {
+    animation: none;
+  }
+}

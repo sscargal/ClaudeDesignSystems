@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cards — Claude Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .page-header {
+      background: var(--color-bg-warm);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-4) var(--space-6);
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      position: sticky;
+      top: 0;
+      z-index: var(--z-sticky);
+    }
+    .page-header-back {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-14);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-pill);
+      transition: background var(--duration-fast) var(--ease-standard),
+                  color var(--duration-fast) var(--ease-standard);
+    }
+    .page-header-back:hover { background: var(--color-bg-muted); color: var(--color-text); opacity: 1; }
+    .page-title { font-family: var(--font-display); font-size: var(--text-18); font-weight: var(--weight-bold); color: var(--color-text); }
+    .content { padding: var(--space-12) var(--space-6); max-width: 960px; margin: 0 auto; }
+    .showcase-block { margin-bottom: var(--space-16); }
+    .showcase-label {
+      font-size: var(--text-11);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      display: block;
+      margin-bottom: var(--space-2);
+    }
+    .showcase-desc {
+      font-size: var(--text-14);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-6);
+      line-height: var(--leading-body);
+    }
+    hr.divider { border: none; border-top: 1px solid var(--color-border); margin: var(--space-12) 0; }
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <a href="../index.html" class="page-header-back">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M9 3L5 7l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Back
+    </a>
+    <span class="page-title">Cards</span>
+  </header>
+
+  <main class="content">
+
+    <!-- ── CAPABILITY CARDS ── -->
+    <div class="showcase-block">
+      <span class="showcase-label">Capability Cards</span>
+      <p class="showcase-desc">Icon + title + description. Used on landing pages and onboarding flows to communicate what Claude can do. Lifts on hover.</p>
+      <div class="grid-3">
+        <div class="card-capability">
+          <div class="card-capability-icon">🧠</div>
+          <div class="card-capability-title">Deep reasoning</div>
+          <div class="card-capability-desc">Multi-step analysis across complex domains — science, law, finance, and engineering.</div>
+        </div>
+        <div class="card-capability">
+          <div class="card-capability-icon">✍️</div>
+          <div class="card-capability-title">Creative writing</div>
+          <div class="card-capability-desc">Stories, essays, poetry, and scripts written with genuine narrative intelligence.</div>
+        </div>
+        <div class="card-capability">
+          <div class="card-capability-icon">💻</div>
+          <div class="card-capability-title">Code generation</div>
+          <div class="card-capability-desc">Production-ready code across languages — Python, TypeScript, Rust, SQL, and more.</div>
+        </div>
+        <div class="card-capability">
+          <div class="card-capability-icon">📊</div>
+          <div class="card-capability-title">Data analysis</div>
+          <div class="card-capability-desc">Interpret charts, datasets, and research papers. Surface insights you'd miss.</div>
+        </div>
+        <div class="card-capability">
+          <div class="card-capability-icon">🔍</div>
+          <div class="card-capability-title">Research synthesis</div>
+          <div class="card-capability-desc">Summarize long documents, compare sources, and organize complex literature.</div>
+        </div>
+        <div class="card-capability">
+          <div class="card-capability-icon">🌐</div>
+          <div class="card-capability-title">Multilingual</div>
+          <div class="card-capability-desc">Read, write, and translate across dozens of languages with cultural fluency.</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── PLAN / PRICING CARDS ── -->
+    <div class="showcase-block">
+      <span class="showcase-label">Plan / Pricing Cards</span>
+      <p class="showcase-desc">The featured plan uses coral fill with white text. Includes price, period, feature list with checkmarks, and a CTA.</p>
+      <div class="grid-3">
+        <div class="card-plan">
+          <div class="card-plan-name">Free</div>
+          <div class="card-plan-price">$0</div>
+          <div class="card-plan-period">forever</div>
+          <ul class="card-plan-features">
+            <li class="card-plan-feature"><span class="card-plan-check">✓</span>Claude Haiku access</li>
+            <li class="card-plan-feature"><span class="card-plan-check">✓</span>Basic conversations</li>
+            <li class="card-plan-feature"><span class="card-plan-check">✓</span>Web interface</li>
+            <li class="card-plan-feature"><span class="card-plan-check">✓</span>Public knowledge</li>
+          </ul>
+          <button class="btn btn-secondary" style="width:100%;">Get started free</button>
+        </div>
+
+        <div class="card-plan is-featured">
+          <div class="card-plan-name">Pro</div>
+          <div class="card-plan-price">$20</div>
+          <div class="card-plan-period">per month</div>
+          <ul class="card-plan-features">
+            <li class="card-plan-feature"><span class="card-plan-check">✓</span>Claude Opus &amp; Sonnet</li>
+            <li class="card-plan-feature"><span class="card-plan-check">✓</span>5× more usage</li>
+            <li class="card-plan-feature"><span class="card-plan-check">✓</span>Priority queue access</li>
+            <li class="card-plan-feature"><span class="card-plan-check">✓</span>Projects &amp; artifacts</li>
+            <li class="card-plan-feature"><span class="card-plan-check">✓</span>File uploads</li>
+          </ul>
+          <button class="btn" style="width:100%;background:white;color:var(--color-coral);font-weight:var(--weight-semibold);border-radius:var(--radius-pill);">Upgrade to Pro</button>
+        </div>
+
+        <div class="card-plan">
+          <div class="card-plan-name">Team</div>
+          <div class="card-plan-price">$30</div>
+          <div class="card-plan-period">per user / month</div>
+          <ul class="card-plan-features">
+            <li class="card-plan-feature"><span class="card-plan-check">✓</span>Everything in Pro</li>
+            <li class="card-plan-feature"><span class="card-plan-check">✓</span>Shared Projects</li>
+            <li class="card-plan-feature"><span class="card-plan-check">✓</span>Admin controls</li>
+            <li class="card-plan-feature"><span class="card-plan-check">✓</span>SSO &amp; audit logs</li>
+            <li class="card-plan-feature"><span class="card-plan-check">✓</span>Usage analytics</li>
+          </ul>
+          <button class="btn btn-secondary" style="width:100%;">Contact sales</button>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── FEATURE CARD ── -->
+    <div class="showcase-block">
+      <span class="showcase-label">Feature Card</span>
+      <p class="showcase-desc">Coral gradient background, white text. Used as a centrepiece hero element for a major feature launch or highlighted capability.</p>
+      <div class="grid-2">
+        <div class="card-feature">
+          <h3 class="card-title">Projects</h3>
+          <p class="card-subtitle">Organize your work with persistent context, custom instructions, and shared knowledge across every conversation.</p>
+        </div>
+        <div class="card-feature">
+          <h3 class="card-title">Artifacts</h3>
+          <p class="card-subtitle">Claude renders code, documents, and diagrams live — right beside your conversation, ready to preview and iterate.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── STANDARD CARD ── -->
+    <div class="showcase-block">
+      <span class="showcase-label">Standard Card</span>
+      <p class="showcase-desc">The base <code>.card</code> component with optional <code>.card-header</code>, <code>.card-body</code>, and <code>.card-footer</code> sections. Compose freely.</p>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title">Getting started</p>
+            <p class="card-subtitle">Learn the basics of working with Claude — from crafting prompts to using Projects.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:var(--space-4);">
+              <span class="badge badge-coral">New</span>
+              <span class="caption">3 min read</span>
+            </div>
+            <p class="card-title">API documentation</p>
+          </div>
+          <div class="card-body" style="padding-top:var(--space-3);">
+            <p class="card-subtitle">Full reference for the Anthropic API — models, rate limits, message formatting, and streaming.</p>
+          </div>
+          <div class="card-footer" style="padding-top:var(--space-3);">
+            <a href="#" class="btn btn-ghost btn-sm" style="padding:0;color:var(--color-coral);">Read the docs →</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-3);">
+              <div class="avatar avatar-md" style="background:var(--color-coral-light);color:var(--color-coral);">A</div>
+              <div>
+                <p style="font-size:var(--text-15);font-weight:var(--weight-semibold);color:var(--color-text);margin:0;">Alex Rivera</p>
+                <p class="caption" style="margin:0;">Member since Jan 2024</p>
+              </div>
+            </div>
+            <p class="card-subtitle">42 conversations · 3 Projects · Pro plan</p>
+          </div>
+        </div>
+
+        <!-- Wide card spanning two columns -->
+        <div class="card" style="grid-column: span 2;">
+          <div class="card-body" style="display:flex;align-items:flex-start;gap:var(--space-6);">
+            <div class="card-capability-icon" style="margin-bottom:0;flex-shrink:0;">📚</div>
+            <div>
+              <p class="card-title">Prompt Library</p>
+              <p class="card-subtitle">A curated collection of expert prompts for writing, coding, research, and strategy — saved directly to your account and ready to use in any conversation.</p>
+              <div class="btn-group" style="margin-top:var(--space-4);">
+                <button class="btn btn-primary btn-sm">Browse prompts</button>
+                <button class="btn btn-ghost btn-sm">Save your own</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body" style="text-align:center;">
+            <p style="font-size:var(--text-36);margin-bottom:var(--space-2);">🎉</p>
+            <p class="card-title" style="margin-bottom:var(--space-2);">You're all set!</p>
+            <p class="card-subtitle">Your account is ready. Start your first conversation with Claude.</p>
+            <button class="btn btn-primary" style="margin-top:var(--space-4);width:100%;">Start chatting</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── CARD GRID ── -->
+    <div class="showcase-block">
+      <span class="showcase-label">Card Grid (auto-fill)</span>
+      <p class="showcase-desc">Use <code>.card-grid</code> for responsive auto-fill layouts. Min card width 260px, gap 20px.</p>
+      <div class="card-grid">
+        <div class="card-capability">
+          <div class="card-capability-icon">⚡</div>
+          <div class="card-capability-title">Instant responses</div>
+          <div class="card-capability-desc">Haiku delivers answers in under a second for high-frequency tasks.</div>
+        </div>
+        <div class="card-capability">
+          <div class="card-capability-icon">🔒</div>
+          <div class="card-capability-title">Private by default</div>
+          <div class="card-capability-desc">Your conversations are never used to train Claude without your consent.</div>
+        </div>
+        <div class="card-capability">
+          <div class="card-capability-icon">🛠</div>
+          <div class="card-capability-title">Tool use</div>
+          <div class="card-capability-desc">Claude can call APIs, run code, and use web search through structured tools.</div>
+        </div>
+        <div class="card-capability">
+          <div class="card-capability-icon">📎</div>
+          <div class="card-capability-title">File analysis</div>
+          <div class="card-capability-desc">Upload PDFs, images, spreadsheets — Claude reads and reasons over them.</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>

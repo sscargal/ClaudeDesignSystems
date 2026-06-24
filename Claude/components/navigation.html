@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation — Claude Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .page-header {
+      background: var(--color-bg-warm);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-4) var(--space-6);
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      position: sticky;
+      top: 0;
+      z-index: var(--z-sticky);
+    }
+    .page-header-back {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-14);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-pill);
+      transition: background var(--duration-fast) var(--ease-standard),
+                  color var(--duration-fast) var(--ease-standard);
+    }
+    .page-header-back:hover { background: var(--color-bg-muted); color: var(--color-text); opacity: 1; }
+    .page-title { font-family: var(--font-display); font-size: var(--text-18); font-weight: var(--weight-bold); color: var(--color-text); }
+    .content { padding: var(--space-12) var(--space-6); max-width: 960px; margin: 0 auto; }
+    .showcase-block { margin-bottom: var(--space-12); }
+    .showcase-label {
+      font-size: var(--text-11);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      display: block;
+      margin-bottom: var(--space-2);
+    }
+    .showcase-desc {
+      font-size: var(--text-14);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-5);
+      line-height: var(--leading-body);
+    }
+    hr.divider { border: none; border-top: 1px solid var(--color-border); margin: var(--space-10) 0; }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid var(--color-border);
+      gap: 0;
+    }
+    .tab {
+      padding: var(--space-3) var(--space-5);
+      font-size: var(--text-15);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-secondary);
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color var(--duration-fast) var(--ease-standard),
+                  border-color var(--duration-fast) var(--ease-standard);
+    }
+    .tab:hover { color: var(--color-text); }
+    .tab.is-active {
+      color: var(--color-coral);
+      border-bottom-color: var(--color-coral);
+    }
+
+    /* Breadcrumbs */
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-14);
+      color: var(--color-text-secondary);
+      flex-wrap: wrap;
+    }
+    .breadcrumbs a {
+      color: var(--color-text-secondary);
+      font-weight: var(--weight-medium);
+      text-decoration: none;
+      transition: color var(--duration-fast) var(--ease-standard);
+    }
+    .breadcrumbs a:hover { color: var(--color-coral); opacity: 1; }
+    .breadcrumb-sep { color: var(--color-text-tertiary); }
+    .breadcrumbs span.current { color: var(--color-text); font-weight: var(--weight-medium); }
+
+    .demo-frame {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <a href="../index.html" class="page-header-back">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M9 3L5 7l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Back
+    </a>
+    <span class="page-title">Navigation</span>
+  </header>
+
+  <main class="content">
+
+    <!-- ── TOP NAVBAR ── -->
+    <div class="showcase-block">
+      <span class="showcase-label">Top Navigation Bar</span>
+      <p class="showcase-desc">Sticky, frosted-glass background. Contains wordmark, centered nav links, and action area (model selector + user avatar).</p>
+      <div class="demo-frame">
+        <nav class="navbar" style="position:relative;">
+          <div class="navbar-inner">
+            <a href="#" class="navbar-brand">
+              <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                <rect width="32" height="32" rx="8" fill="#DA7756"/>
+                <path d="M16 6C10.477 6 6 10.477 6 16s4.477 10 10 10 10-4.477 10-10S21.523 6 16 6zm0 3a7 7 0 110 14A7 7 0 0116 9zm0 2a5 5 0 100 10A5 5 0 0016 11z" fill="white" opacity="0.9"/>
+              </svg>
+              Claude
+            </a>
+            <ul class="navbar-nav">
+              <li class="navbar-nav-item is-active"><a href="#">Conversations</a></li>
+              <li class="navbar-nav-item"><a href="#">Projects</a></li>
+              <li class="navbar-nav-item"><a href="#">Explore</a></li>
+              <li class="navbar-nav-item"><a href="#">API</a></li>
+            </ul>
+            <div class="navbar-actions">
+              <div class="model-selector">
+                <span class="model-selector-name">Sonnet</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="nav-avatar">A</div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── SIDEBAR ── -->
+    <div class="showcase-block">
+      <span class="showcase-label">Sidebar Navigation</span>
+      <p class="showcase-desc">Fixed-width (260px) panel with warm background. Contains conversation list, project tree, section labels, and a "New conversation" entry.</p>
+      <div class="demo-frame" style="display:flex;height:560px;">
+        <div class="sidebar" style="position:relative;height:100%;">
+          <div class="sidebar-header">
+            <span style="font-family:var(--font-display);font-size:var(--text-17);font-weight:var(--weight-bold);color:var(--color-text);">Claude</span>
+            <button class="btn btn-ghost btn-icon btn-sm" aria-label="New conversation">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <div class="sidebar-scroll">
+            <div class="sidebar-section">
+              <a class="sidebar-item sidebar-item--new" href="#">
+                <span class="sidebar-item-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                </span>
+                <span class="sidebar-item-label">New conversation</span>
+              </a>
+            </div>
+
+            <div class="sidebar-section">
+              <span class="sidebar-section-label">Projects</span>
+              <a class="sidebar-item is-active" href="#">
+                <span class="sidebar-item-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M2 6h12" stroke="currentColor" stroke-width="1.4"/></svg>
+                </span>
+                <span class="sidebar-item-label">ML Research Notes</span>
+              </a>
+              <a class="sidebar-item" href="#">
+                <span class="sidebar-item-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M2 6h12" stroke="currentColor" stroke-width="1.4"/></svg>
+                </span>
+                <span class="sidebar-item-label">Q4 Strategy Deck</span>
+              </a>
+              <a class="sidebar-item" href="#">
+                <span class="sidebar-item-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M2 6h12" stroke="currentColor" stroke-width="1.4"/></svg>
+                </span>
+                <span class="sidebar-item-label">Brand Voice Guide</span>
+              </a>
+            </div>
+
+            <div class="sidebar-section">
+              <span class="sidebar-section-label">Today</span>
+              <a class="conversation-list-item" href="#">
+                <span class="conversation-list-title">Transformer attention mechanisms</span>
+                <span class="conversation-list-date">2:19 PM</span>
+              </a>
+              <a class="conversation-list-item" href="#">
+                <span class="conversation-list-title">Python script for batch renaming</span>
+                <span class="conversation-list-date">11:04 AM</span>
+              </a>
+              <a class="conversation-list-item" href="#">
+                <span class="conversation-list-title">Cover letter for UX role at Stripe</span>
+                <span class="conversation-list-date">9:30 AM</span>
+              </a>
+            </div>
+
+            <div class="sidebar-section">
+              <span class="sidebar-section-label">Yesterday</span>
+              <a class="conversation-list-item" href="#">
+                <span class="conversation-list-title">Explain Bayesian inference</span>
+                <span class="conversation-list-date">Jun 23</span>
+              </a>
+              <a class="conversation-list-item" href="#">
+                <span class="conversation-list-title">React vs Vue 3 comparison</span>
+                <span class="conversation-list-date">Jun 23</span>
+              </a>
+            </div>
+
+            <div class="sidebar-section">
+              <span class="sidebar-section-label">Tools</span>
+              <a class="sidebar-item" href="#">
+                <span class="sidebar-item-icon">⚙️</span>
+                <span class="sidebar-item-label">Settings</span>
+              </a>
+              <a class="sidebar-item" href="#">
+                <span class="sidebar-item-icon">❓</span>
+                <span class="sidebar-item-label">Help &amp; support</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div style="flex:1;padding:var(--space-6);background:var(--color-bg);">
+          <p class="caption">← Sidebar to the left</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── TABS ── -->
+    <div class="showcase-block">
+      <span class="showcase-label">Tabs</span>
+      <p class="showcase-desc">Underline style tabs — coral active indicator with 2px border-bottom. Used in artifact panels, settings sections, and detail views.</p>
+      <div class="demo-frame" style="padding:var(--space-5);">
+        <div class="tabs">
+          <button class="tab is-active">Conversation</button>
+          <button class="tab">Projects</button>
+          <button class="tab">Shared</button>
+          <button class="tab">Starred</button>
+        </div>
+        <div style="padding:var(--space-5);color:var(--color-text-secondary);font-size:var(--text-15);">
+          Tab content area — switch tab to see the active indicator change.
+        </div>
+      </div>
+
+      <div style="margin-top:var(--space-4);">
+        <div class="demo-frame" style="overflow:hidden;">
+          <div class="artifact-tabs">
+            <button class="artifact-tab is-active">Code</button>
+            <button class="artifact-tab">Preview</button>
+          </div>
+          <div style="padding:var(--space-4);font-size:var(--text-14);color:var(--color-text-secondary);">Artifact panel tabs (used inside the artifact panel)</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── BREADCRUMBS ── -->
+    <div class="showcase-block">
+      <span class="showcase-label">Breadcrumbs</span>
+      <p class="showcase-desc">Lightweight path navigation. Links are label-secondary; the current page is label-primary. Separator is a warm grey chevron.</p>
+      <div class="demo-frame" style="padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-4);">
+        <div class="breadcrumbs">
+          <a href="#">Home</a>
+          <span class="breadcrumb-sep">›</span>
+          <a href="#">Projects</a>
+          <span class="breadcrumb-sep">›</span>
+          <span class="current">ML Research Notes</span>
+        </div>
+        <div class="breadcrumbs">
+          <a href="#">Settings</a>
+          <span class="breadcrumb-sep">›</span>
+          <a href="#">Account</a>
+          <span class="breadcrumb-sep">›</span>
+          <span class="current">Billing &amp; plan</span>
+        </div>
+        <div class="breadcrumbs">
+          <a href="#">Docs</a>
+          <span class="breadcrumb-sep">›</span>
+          <a href="#">API Reference</a>
+          <span class="breadcrumb-sep">›</span>
+          <a href="#">Messages</a>
+          <span class="breadcrumb-sep">›</span>
+          <span class="current">Tool use</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── MODEL SELECTOR DROPDOWN ── -->
+    <div class="showcase-block">
+      <span class="showcase-label">Model Selector &amp; Dropdown</span>
+      <p class="showcase-desc">Pill-shaped trigger that opens a popover with radio-style model options. Selected item shows coral fill indicator and a badge.</p>
+      <div class="demo-frame" style="padding:var(--space-5);">
+        <div style="display:flex;align-items:flex-start;gap:var(--space-6);flex-wrap:wrap;">
+          <div>
+            <p class="showcase-label" style="margin-bottom:var(--space-3);">Trigger variants</p>
+            <div style="display:flex;flex-direction:column;gap:var(--space-2);">
+              <div class="model-selector">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M7 4v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span class="model-selector-name">Claude Opus</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="model-selector">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M7 4v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span class="model-selector-name">Claude Sonnet</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="model-selector">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M7 4v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span class="model-selector-name">Claude Haiku</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="showcase-label" style="margin-bottom:var(--space-3);">Open dropdown</p>
+            <div class="model-dropdown" style="position:relative;animation:none;">
+              <div class="model-dropdown-header">Select a model</div>
+              <div class="model-option is-selected">
+                <div class="model-option-indicator"></div>
+                <div class="model-option-info">
+                  <div class="model-option-name">Claude Sonnet</div>
+                  <div class="model-option-desc">Best balance of speed and intelligence</div>
+                </div>
+                <div class="model-option-badge">Default</div>
+              </div>
+              <div class="model-option">
+                <div class="model-option-indicator"></div>
+                <div class="model-option-info">
+                  <div class="model-option-name">Claude Opus</div>
+                  <div class="model-option-desc">Most capable for complex reasoning</div>
+                </div>
+              </div>
+              <div class="model-option">
+                <div class="model-option-indicator"></div>
+                <div class="model-option-info">
+                  <div class="model-option-name">Claude Haiku</div>
+                  <div class="model-option-desc">Fast, lightweight, cost-effective</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>
