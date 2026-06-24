@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Material You — Google Design System Showcase</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="typography.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    /* Page-level layout */
+    .showcase-main {
+      padding-bottom: 120px;
+    }
+    .section {
+      padding: var(--space-12) 0;
+      border-bottom: 1px solid var(--color-outline-variant);
+    }
+    .section:last-of-type { border-bottom: none; }
+    .section-label {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: var(--typescale-label-medium-size);
+      font-weight: var(--typescale-label-medium-weight);
+      letter-spacing: var(--typescale-label-medium-tracking);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      margin-bottom: var(--space-2);
+    }
+    .section-title {
+      font-family: var(--font-brand);
+      font-size: var(--typescale-headline-medium-size);
+      font-weight: 400;
+      color: var(--color-on-surface);
+      margin-bottom: var(--space-2);
+    }
+    .section-desc {
+      font-size: var(--typescale-body-medium-size);
+      color: var(--color-on-surface-variant);
+      margin-bottom: var(--space-8);
+      max-width: 600px;
+    }
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+    .demo-label {
+      font-size: var(--typescale-label-small-size);
+      color: var(--color-on-surface-variant);
+      letter-spacing: var(--typescale-label-small-tracking);
+      margin-bottom: var(--space-2);
+      display: block;
+    }
+    .demo-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    /* Hero */
+    .hero-section {
+      background: linear-gradient(135deg,
+        var(--color-primary-container) 0%,
+        var(--color-tertiary-container) 50%,
+        var(--color-secondary-container) 100%);
+      padding: var(--space-20) 0;
+      border-bottom: 1px solid var(--color-outline-variant);
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-1) var(--space-4);
+      background: var(--color-primary);
+      color: var(--color-on-primary);
+      border-radius: var(--shape-full);
+      font-size: var(--typescale-label-medium-size);
+      font-weight: var(--typescale-label-medium-weight);
+      letter-spacing: var(--typescale-label-medium-tracking);
+      margin-bottom: var(--space-6);
+    }
+    .hero-title {
+      margin-bottom: var(--space-6);
+      color: var(--color-on-primary-container);
+    }
+    .hero-subtitle {
+      color: var(--color-on-primary-container);
+      opacity: 0.85;
+      margin-bottom: var(--space-8);
+      max-width: 560px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-bottom: var(--space-12);
+    }
+
+    /* Tonal palette swatches */
+    .palette-strip {
+      display: flex;
+      border-radius: var(--shape-medium);
+      overflow: hidden;
+      height: 64px;
+    }
+    .palette-stop {
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: var(--space-1);
+    }
+    .palette-stop span {
+      font-size: 9px;
+      font-weight: 500;
+      mix-blend-mode: difference;
+      color: white;
+      opacity: 0.8;
+    }
+
+    /* Color system swatches */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: var(--space-3);
+    }
+    .color-swatch {
+      border-radius: var(--shape-medium);
+      overflow: hidden;
+      box-shadow: var(--shadow-elevation-1);
+    }
+    .color-swatch-block {
+      height: 80px;
+      display: flex;
+      align-items: flex-end;
+      padding: var(--space-2) var(--space-3);
+    }
+    .color-swatch-info {
+      padding: var(--space-2) var(--space-3);
+      background: var(--color-surface-container-low);
+    }
+    .color-swatch-name {
+      font-size: var(--typescale-label-medium-size);
+      font-weight: var(--typescale-label-medium-weight);
+      color: var(--color-on-surface);
+    }
+    .color-swatch-hex {
+      font-family: var(--font-mono);
+      font-size: var(--typescale-label-small-size);
+      color: var(--color-on-surface-variant);
+    }
+
+    /* Type scale rows */
+    .type-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-6);
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--color-outline-variant);
+    }
+    .type-row:last-child { border-bottom: none; }
+    .type-meta {
+      flex-shrink: 0;
+      width: 180px;
+    }
+    .type-meta-name {
+      font-size: var(--typescale-label-medium-size);
+      font-weight: var(--typescale-label-medium-weight);
+      color: var(--color-primary);
+    }
+    .type-meta-detail {
+      font-size: var(--typescale-label-small-size);
+      color: var(--color-on-surface-variant);
+      font-family: var(--font-mono);
+    }
+
+    /* Component nav pills */
+    .component-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      padding: var(--space-4) 0;
+    }
+    .component-nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: var(--color-surface-container);
+      border-radius: var(--shape-full);
+      font-size: var(--typescale-label-large-size);
+      font-weight: var(--typescale-label-large-weight);
+      color: var(--color-on-surface);
+      text-decoration: none;
+      transition: background-color var(--motion-duration-short-4) var(--motion-easing-standard);
+    }
+    .component-nav a:hover {
+      background: var(--color-surface-container-high);
+      text-decoration: none;
+    }
+
+    /* Static nav bar demo */
+    .nav-bar-demo {
+      position: static;
+      border-radius: var(--shape-medium);
+      border: 1px solid var(--color-outline-variant);
+    }
+    /* Static nav rail demo */
+    .nav-rail-demo {
+      position: static;
+      height: 320px;
+      border-radius: var(--shape-medium);
+      min-height: unset;
+    }
+    /* Static dialog demo */
+    .dialog-static {
+      position: static;
+      display: flex;
+      flex-direction: column;
+      max-width: 400px;
+      background: var(--elevation-3);
+      border-radius: var(--shape-dialog);
+      box-shadow: var(--shadow-elevation-3);
+      overflow: hidden;
+    }
+    /* Static bottom sheet demo */
+    .bottom-sheet-static {
+      position: static;
+      border-radius: var(--shape-bottom-sheet) var(--shape-bottom-sheet) 0 0;
+      background: var(--color-surface-container-low);
+      box-shadow: var(--shadow-elevation-3);
+    }
+    /* Static snackbar demo */
+    .snackbar-static {
+      position: static;
+      transform: none;
+      width: auto;
+    }
+    /* Menu demo wrapper */
+    .menu-demo-wrap {
+      position: relative;
+      display: inline-block;
+    }
+    .menu-static {
+      position: static;
+    }
+
+    /* Ripple demo */
+    .ripple-demo-box {
+      width: 120px;
+      height: 80px;
+      border-radius: var(--shape-medium);
+      background: var(--color-primary-container);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+      color: var(--color-on-primary-container);
+      font-size: var(--typescale-label-medium-size);
+      font-weight: var(--typescale-label-medium-weight);
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #202124;
+      color: #e8eaed;
+      padding: var(--space-12) 0 var(--space-8);
+    }
+    .footer-logo {
+      font-family: var(--font-brand);
+      font-size: var(--typescale-title-large-size);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: var(--space-2);
+    }
+    .footer-logo span { color: #4285F4; }
+    .footer-tagline {
+      color: #9aa0a6;
+      font-size: var(--typescale-body-medium-size);
+      margin-bottom: var(--space-8);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: var(--space-8);
+      margin-bottom: var(--space-8);
+    }
+    .footer-heading {
+      font-size: var(--typescale-label-medium-size);
+      font-weight: var(--typescale-label-medium-weight);
+      letter-spacing: var(--typescale-label-medium-tracking);
+      color: #9aa0a6;
+      text-transform: uppercase;
+      margin-bottom: var(--space-3);
+    }
+    .footer-links { list-style: none; padding: 0; margin: 0; }
+    .footer-links li { margin-bottom: var(--space-2); }
+    .footer-links a {
+      color: #bdc1c6;
+      font-size: var(--typescale-body-medium-size);
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: #fff; text-decoration: none; }
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-4);
+      padding-top: var(--space-6);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #9aa0a6;
+      font-size: var(--typescale-body-small-size);
+    }
+
+    /* Elevation demo */
+    .elevation-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+    .elevation-card {
+      flex: 1;
+      min-width: 100px;
+      height: 80px;
+      border-radius: var(--shape-medium);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+    .elevation-name {
+      font-size: var(--typescale-label-medium-size);
+      font-weight: var(--typescale-label-medium-weight);
+      color: var(--color-on-surface);
+    }
+    .elevation-level {
+      font-size: var(--typescale-label-small-size);
+      color: var(--color-on-surface-variant);
+    }
+
+    @media (max-width: 768px) {
+      .type-meta { width: 120px; }
+      .hero-section { padding: var(--space-12) 0; }
+    }
+    @media (max-width: 480px) {
+      .type-meta { display: none; }
+      .palette-stop span { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP APP BAR -->
+  <header class="app-bar-m3" role="banner">
+    <div class="app-bar-nav">
+      <button class="btn-icon-m3 btn-icon-standard" aria-label="Open navigation menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+      </button>
+    </div>
+    <span class="app-bar-title">Material You Design System</span>
+    <div class="app-bar-actions">
+      <div class="badge-wrapper tooltip-m3" data-tooltip="3 notifications">
+        <button class="btn-icon-m3 btn-icon-standard" aria-label="Notifications">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+        </button>
+        <span class="badge-m3">3</span>
+      </div>
+      <button class="btn-icon-m3 btn-icon-standard" aria-label="Search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+      </button>
+      <button class="btn-icon-m3 btn-icon-standard" aria-label="More options">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- COMPONENT QUICK NAV -->
+  <nav class="container" aria-label="Component sections">
+    <div class="component-nav">
+      <a href="#colors">Colors</a>
+      <a href="#typography">Typography</a>
+      <a href="#buttons">Buttons</a>
+      <a href="#chips">Chips</a>
+      <a href="#fields">Text Fields</a>
+      <a href="#selection">Selection</a>
+      <a href="#navigation">Navigation</a>
+      <a href="#cards">Cards</a>
+      <a href="#lists">Lists</a>
+      <a href="#sliders">Sliders</a>
+      <a href="#progress">Progress</a>
+      <a href="#dialogs">Dialogs</a>
+      <a href="#overlays">Overlays</a>
+      <a href="#motion">Motion</a>
+    </div>
+  </nav>
+
+  <main class="showcase-main">
+
+    <!-- HERO -->
+    <section class="hero-section" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          Material Design 3 · Material You
+        </div>
+        <h1 class="display-large hero-title" id="hero-title">
+          Adaptive.<br>Expressive.<br>Personal.
+        </h1>
+        <p class="body-large hero-subtitle">
+          Material You is Google's design system built for dynamic color, expressive motion, and personalized experiences across every Android, Web, and Flutter surface.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-m3 btn-filled">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+            Get Started
+          </button>
+          <button class="btn-m3 btn-filled-tonal">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+            Component Library
+          </button>
+          <a href="https://m3.material.io" target="_blank" rel="noopener" class="btn-m3 btn-outlined">m3.material.io</a>
+        </div>
+
+        <!-- Tonal Palette -->
+        <p class="demo-label">Primary tonal palette — seed color #4285F4</p>
+        <div class="palette-strip" role="img" aria-label="Primary tonal palette from tone 0 to 100">
+          <div class="palette-stop" style="background:var(--palette-primary-0)"><span>0</span></div>
+          <div class="palette-stop" style="background:var(--palette-primary-10)"><span>10</span></div>
+          <div class="palette-stop" style="background:var(--palette-primary-20)"><span>20</span></div>
+          <div class="palette-stop" style="background:var(--palette-primary-30)"><span>30</span></div>
+          <div class="palette-stop" style="background:var(--palette-primary-40)"><span>40</span></div>
+          <div class="palette-stop" style="background:var(--palette-primary-50)"><span>50</span></div>
+          <div class="palette-stop" style="background:var(--palette-primary-60)"><span>60</span></div>
+          <div class="palette-stop" style="background:var(--palette-primary-70)"><span>70</span></div>
+          <div class="palette-stop" style="background:var(--palette-primary-80)"><span>80</span></div>
+          <div class="palette-stop" style="background:var(--palette-primary-90)"><span>90</span></div>
+          <div class="palette-stop" style="background:var(--palette-primary-95)"><span>95</span></div>
+          <div class="palette-stop" style="background:var(--palette-primary-99)"><span>99</span></div>
+          <div class="palette-stop" style="background:var(--palette-primary-100); border: 1px solid var(--color-outline-variant)"><span>100</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLOR SYSTEM -->
+    <section class="section" id="colors" aria-labelledby="colors-title">
+      <div class="container">
+        <span class="section-label">Foundations</span>
+        <h2 class="section-title" id="colors-title">Color System</h2>
+        <p class="section-desc">Material You's dynamic color uses a tonal palette derived from a single seed color. Each role has a paired "on" color for accessible contrast.</p>
+
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Primary roles</h3>
+        <div class="color-grid" style="margin-bottom:var(--space-8)">
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background:var(--color-primary);color:var(--color-on-primary)"><span class="label-small" style="color:var(--color-on-primary)">on-primary</span></div>
+            <div class="color-swatch-info"><div class="color-swatch-name">Primary</div><div class="color-swatch-hex">#4285F4</div></div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background:var(--color-on-primary);color:var(--color-primary)"><span class="label-small" style="color:var(--color-primary)">primary</span></div>
+            <div class="color-swatch-info"><div class="color-swatch-name">On Primary</div><div class="color-swatch-hex">#FFFFFF</div></div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background:var(--color-primary-container);color:var(--color-on-primary-container)"><span class="label-small" style="color:var(--color-on-primary-container)">on-primary-container</span></div>
+            <div class="color-swatch-info"><div class="color-swatch-name">Primary Container</div><div class="color-swatch-hex">#D3E4FF</div></div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background:var(--color-on-primary-container);color:var(--color-primary-container)"><span class="label-small" style="color:var(--color-primary-container)">primary-container</span></div>
+            <div class="color-swatch-info"><div class="color-swatch-name">On Primary Container</div><div class="color-swatch-hex">#001C3B</div></div>
+          </div>
+        </div>
+
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Secondary roles</h3>
+        <div class="color-grid" style="margin-bottom:var(--space-8)">
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background:var(--color-secondary);"><span class="label-small" style="color:var(--color-on-secondary)">on-secondary</span></div>
+            <div class="color-swatch-info"><div class="color-swatch-name">Secondary</div><div class="color-swatch-hex">#5A6472</div></div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background:var(--color-secondary-container);"><span class="label-small" style="color:var(--color-on-secondary-container)">on-secondary-container</span></div>
+            <div class="color-swatch-info"><div class="color-swatch-name">Secondary Container</div><div class="color-swatch-hex">#DCE4F0</div></div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background:var(--color-tertiary);"><span class="label-small" style="color:var(--color-on-tertiary)">on-tertiary</span></div>
+            <div class="color-swatch-info"><div class="color-swatch-name">Tertiary</div><div class="color-swatch-hex">#6D5778</div></div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background:var(--color-tertiary-container);"><span class="label-small" style="color:var(--color-on-tertiary-container)">on-tertiary-container</span></div>
+            <div class="color-swatch-info"><div class="color-swatch-name">Tertiary Container</div><div class="color-swatch-hex">#F4DAFF</div></div>
+          </div>
+        </div>
+
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Surface roles</h3>
+        <div class="color-grid" style="margin-bottom:var(--space-8)">
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background:var(--color-surface);border:1px solid var(--color-outline-variant);border-bottom:none;"></div>
+            <div class="color-swatch-info"><div class="color-swatch-name">Surface</div></div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background:var(--color-surface-container-low);"></div>
+            <div class="color-swatch-info"><div class="color-swatch-name">Surface Container Low</div></div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background:var(--color-surface-container);"></div>
+            <div class="color-swatch-info"><div class="color-swatch-name">Surface Container</div></div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background:var(--color-surface-container-high);"></div>
+            <div class="color-swatch-info"><div class="color-swatch-name">Surface Container High</div></div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background:var(--color-surface-container-highest);"></div>
+            <div class="color-swatch-info"><div class="color-swatch-name">Surface Container Highest</div></div>
+          </div>
+        </div>
+
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Error &amp; Outline</h3>
+        <div class="color-grid" style="margin-bottom:var(--space-8)">
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background:var(--color-error);"><span class="label-small" style="color:var(--color-on-error)">on-error</span></div>
+            <div class="color-swatch-info"><div class="color-swatch-name">Error</div><div class="color-swatch-hex">#BA1A1A</div></div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background:var(--color-error-container);"><span class="label-small" style="color:var(--color-on-error-container)">on-error-container</span></div>
+            <div class="color-swatch-info"><div class="color-swatch-name">Error Container</div><div class="color-swatch-hex">#FFDAD6</div></div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background:var(--color-outline);"></div>
+            <div class="color-swatch-info"><div class="color-swatch-name">Outline</div></div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background:var(--color-outline-variant);"></div>
+            <div class="color-swatch-info"><div class="color-swatch-name">Outline Variant</div></div>
+          </div>
+        </div>
+
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Elevation — Surface Tint Levels</h3>
+        <div class="elevation-row">
+          <div class="elevation-card" style="background:var(--elevation-0);border:1px solid var(--color-outline-variant)">
+            <span class="elevation-name">Level 0</span><span class="elevation-level">0% tint</span>
+          </div>
+          <div class="elevation-card" style="background:var(--elevation-1);box-shadow:var(--shadow-elevation-1)">
+            <span class="elevation-name">Level 1</span><span class="elevation-level">5% tint</span>
+          </div>
+          <div class="elevation-card" style="background:var(--elevation-2);box-shadow:var(--shadow-elevation-2)">
+            <span class="elevation-name">Level 2</span><span class="elevation-level">8% tint</span>
+          </div>
+          <div class="elevation-card" style="background:var(--elevation-3);box-shadow:var(--shadow-elevation-3)">
+            <span class="elevation-name">Level 3</span><span class="elevation-level">11% tint</span>
+          </div>
+          <div class="elevation-card" style="background:var(--elevation-4);box-shadow:var(--shadow-elevation-4)">
+            <span class="elevation-name">Level 4</span><span class="elevation-level">12% tint</span>
+          </div>
+          <div class="elevation-card" style="background:var(--elevation-5);box-shadow:var(--shadow-elevation-5)">
+            <span class="elevation-name">Level 5</span><span class="elevation-level">14% tint</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TYPOGRAPHY -->
+    <section class="section" id="typography" aria-labelledby="type-title">
+      <div class="container">
+        <span class="section-label">Foundations</span>
+        <h2 class="section-title" id="type-title">Type Scale</h2>
+        <p class="section-desc">15 type styles across Display, Headline, Title, Body, and Label — Google Sans for expressive moments, Roboto for readable UI text.</p>
+
+        <div role="list">
+          <div class="type-row" role="listitem">
+            <div class="type-meta"><div class="type-meta-name">Display Large</div><div class="type-meta-detail">57/64 · wt400</div></div>
+            <p class="display-large" style="font-size:clamp(32px,5vw,57px);line-height:1.1">Material You</p>
+          </div>
+          <div class="type-row" role="listitem">
+            <div class="type-meta"><div class="type-meta-name">Display Medium</div><div class="type-meta-detail">45/52 · wt400</div></div>
+            <p class="display-medium" style="font-size:clamp(28px,4vw,45px)">Adaptive Design</p>
+          </div>
+          <div class="type-row" role="listitem">
+            <div class="type-meta"><div class="type-meta-name">Display Small</div><div class="type-meta-detail">36/44 · wt400</div></div>
+            <p class="display-small">Dynamic Color</p>
+          </div>
+          <div class="type-row" role="listitem">
+            <div class="type-meta"><div class="type-meta-name">Headline Large</div><div class="type-meta-detail">32/40 · wt400</div></div>
+            <p class="headline-large">Expressive Motion</p>
+          </div>
+          <div class="type-row" role="listitem">
+            <div class="type-meta"><div class="type-meta-name">Headline Medium</div><div class="type-meta-detail">28/36 · wt400</div></div>
+            <p class="headline-medium">Tonal Palettes</p>
+          </div>
+          <div class="type-row" role="listitem">
+            <div class="type-meta"><div class="type-meta-name">Headline Small</div><div class="type-meta-detail">24/32 · wt400</div></div>
+            <p class="headline-small">Component Library</p>
+          </div>
+          <div class="type-row" role="listitem">
+            <div class="type-meta"><div class="type-meta-name">Title Large</div><div class="type-meta-detail">22/28 · wt400</div></div>
+            <p class="title-large">Google Sans Typeface</p>
+          </div>
+          <div class="type-row" role="listitem">
+            <div class="type-meta"><div class="type-meta-name">Title Medium</div><div class="type-meta-detail">16/24 · wt500</div></div>
+            <p class="title-medium">Semantic Color Tokens</p>
+          </div>
+          <div class="type-row" role="listitem">
+            <div class="type-meta"><div class="type-meta-name">Title Small</div><div class="type-meta-detail">14/20 · wt500</div></div>
+            <p class="title-small">Shape Scale · 4px Grid</p>
+          </div>
+          <div class="type-row" role="listitem">
+            <div class="type-meta"><div class="type-meta-name">Body Large</div><div class="type-meta-detail">16/24 · wt400</div></div>
+            <p class="body-large">The quick brown fox jumps over the lazy dog. Roboto is the default body typeface across Android and Web surfaces.</p>
+          </div>
+          <div class="type-row" role="listitem">
+            <div class="type-meta"><div class="type-meta-name">Body Medium</div><div class="type-meta-detail">14/20 · wt400</div></div>
+            <p class="body-medium">Supporting body text used in cards, dialogs, and list items for secondary descriptions and details.</p>
+          </div>
+          <div class="type-row" role="listitem">
+            <div class="type-meta"><div class="type-meta-name">Body Small</div><div class="type-meta-detail">12/16 · wt400</div></div>
+            <p class="body-small">Caption text for timestamps, metadata, and helper messages below form fields.</p>
+          </div>
+          <div class="type-row" role="listitem">
+            <div class="type-meta"><div class="type-meta-name">Label Large</div><div class="type-meta-detail">14/20 · wt500</div></div>
+            <p class="label-large">Button Label · Chip Label · Tab Label</p>
+          </div>
+          <div class="type-row" role="listitem">
+            <div class="type-meta"><div class="type-meta-name">Label Medium</div><div class="type-meta-detail">12/16 · wt500</div></div>
+            <p class="label-medium">Navigation Bar Label · Badge</p>
+          </div>
+          <div class="type-row" role="listitem">
+            <div class="type-meta"><div class="type-meta-name">Label Small</div><div class="type-meta-detail">11/16 · wt500</div></div>
+            <p class="label-small">Overline · Timestamp · Trailing label</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUTTONS -->
+    <section class="section" id="buttons" aria-labelledby="buttons-title">
+      <div class="container">
+        <span class="section-label">Components</span>
+        <h2 class="section-title" id="buttons-title">Buttons</h2>
+        <p class="section-desc">5 button variants ordered by emphasis. All use the full pill shape. State layers via ::before pseudo-element. <a href="components/buttons.html">View full page →</a></p>
+
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Standard buttons</h3>
+        <div class="demo-row">
+          <div class="demo-group">
+            <span class="demo-label">Filled</span>
+            <button class="btn-m3 btn-filled">Get Started</button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Filled Tonal</span>
+            <button class="btn-m3 btn-filled-tonal">Learn More</button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Elevated</span>
+            <button class="btn-m3 btn-elevated">Explore</button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Outlined</span>
+            <button class="btn-m3 btn-outlined">Cancel</button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Text</span>
+            <button class="btn-m3 btn-text">Skip</button>
+          </div>
+        </div>
+
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">With leading icons</h3>
+        <div class="demo-row">
+          <button class="btn-m3 btn-filled">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            Add Item
+          </button>
+          <button class="btn-m3 btn-filled-tonal">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg>
+            Save Draft
+          </button>
+          <button class="btn-m3 btn-outlined">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            Download
+          </button>
+          <button class="btn-m3 btn-text">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+            Delete
+          </button>
+        </div>
+
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Disabled states</h3>
+        <div class="demo-row">
+          <button class="btn-m3 btn-filled" disabled>Filled</button>
+          <button class="btn-m3 btn-filled-tonal" disabled>Tonal</button>
+          <button class="btn-m3 btn-elevated" disabled>Elevated</button>
+          <button class="btn-m3 btn-outlined" disabled>Outlined</button>
+          <button class="btn-m3 btn-text" disabled>Text</button>
+        </div>
+
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">FAB — Floating Action Button</h3>
+        <div class="demo-row" style="align-items:flex-end">
+          <div class="demo-group">
+            <span class="demo-label">Small FAB</span>
+            <button class="fab fab--small" aria-label="Add">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            </button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">FAB (default)</span>
+            <button class="fab" aria-label="Compose">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+            </button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Large FAB</span>
+            <button class="fab fab--large" aria-label="Create">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            </button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Extended FAB</span>
+            <button class="fab fab--extended fab--primary" aria-label="New message">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+              New Message
+            </button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">FAB Primary</span>
+            <button class="fab fab--primary" aria-label="Primary action">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Icon buttons</h3>
+        <div class="demo-row">
+          <div class="demo-group">
+            <span class="demo-label">Standard</span>
+            <button class="btn-icon-m3 btn-icon-standard" aria-label="Favorite">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Filled</span>
+            <button class="btn-icon-m3 btn-icon-filled" aria-label="Bookmark">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/></svg>
+            </button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Tonal</span>
+            <button class="btn-icon-m3 btn-icon-tonal" aria-label="Settings">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+            </button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Outlined</span>
+            <button class="btn-icon-m3 btn-icon-outlined" aria-label="Share">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHIPS -->
+    <section class="section" id="chips" aria-labelledby="chips-title">
+      <div class="container">
+        <span class="section-label">Components</span>
+        <h2 class="section-title" id="chips-title">Chips</h2>
+        <p class="section-desc">4 chip types for different purposes: Assist, Filter, Input, and Suggestion.</p>
+
+        <div class="demo-row" style="flex-wrap:wrap">
+          <div class="demo-group">
+            <span class="demo-label">Assist chip</span>
+            <button class="chip chip-assist">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              Assist
+            </button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Filter chip</span>
+            <button class="chip chip-filter">Price</button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Filter selected</span>
+            <button class="chip chip-filter selected" aria-selected="true">
+              <svg class="chip-filter-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              In Stock
+            </button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Input chip</span>
+            <div class="chip chip-input">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+              John Smith
+              <span class="chip-input-close" role="button" aria-label="Remove John Smith">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </span>
+            </div>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Suggestion chip</span>
+            <button class="chip chip-suggestion">Take photo</button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Disabled</span>
+            <button class="chip chip-filter" disabled>Disabled</button>
+          </div>
+        </div>
+
+        <div class="demo-row" style="flex-wrap:wrap">
+          <button class="chip chip-suggestion">Nearby</button>
+          <button class="chip chip-suggestion">Under $50</button>
+          <button class="chip chip-suggestion">Open now</button>
+          <button class="chip chip-suggestion">4+ stars</button>
+          <button class="chip chip-filter selected" aria-selected="true">
+            <svg class="chip-filter-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Free delivery
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEXT FIELDS -->
+    <section class="section" id="fields" aria-labelledby="fields-title">
+      <div class="container">
+        <span class="section-label">Components</span>
+        <h2 class="section-title" id="fields-title">Text Fields</h2>
+        <p class="section-desc">Filled and Outlined variants. Labels float on focus. <a href="components/forms.html">View full forms page →</a></p>
+
+        <div class="grid grid-2" style="max-width:720px;gap:var(--space-6)">
+          <!-- Filled default -->
+          <div class="textfield-m3 textfield-filled">
+            <div class="field-container">
+              <label class="field-label" for="tf-name">Full Name</label>
+              <input id="tf-name" type="text" autocomplete="name">
+            </div>
+            <span class="field-supporting-text">Enter your legal full name</span>
+          </div>
+          <!-- Filled with value -->
+          <div class="textfield-m3 textfield-filled has-value">
+            <div class="field-container">
+              <label class="field-label" for="tf-email">Email Address</label>
+              <input id="tf-email" type="email" value="hello@example.com" autocomplete="email">
+            </div>
+          </div>
+          <!-- Outlined default -->
+          <div class="textfield-m3 textfield-outlined">
+            <div class="field-container">
+              <label class="field-label" for="tf-user">Username</label>
+              <input id="tf-user" type="text" autocomplete="username">
+            </div>
+          </div>
+          <!-- Outlined with value -->
+          <div class="textfield-m3 textfield-outlined has-value">
+            <div class="field-container">
+              <label class="field-label" for="tf-phone">Phone</label>
+              <input id="tf-phone" type="tel" value="+1 (555) 000-0000" autocomplete="tel">
+            </div>
+          </div>
+          <!-- Filled error -->
+          <div class="textfield-m3 textfield-filled error has-value">
+            <div class="field-container">
+              <label class="field-label" for="tf-pass">Password</label>
+              <input id="tf-pass" type="password" value="abc">
+            </div>
+            <span class="field-supporting-text error">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+              Password too short — minimum 8 characters
+            </span>
+          </div>
+          <!-- Outlined disabled -->
+          <div class="textfield-m3 textfield-outlined disabled has-value">
+            <div class="field-container">
+              <label class="field-label" for="tf-dis">Account ID</label>
+              <input id="tf-dis" type="text" value="ACC-88291-X" disabled>
+            </div>
+            <span class="field-supporting-text">Cannot be changed</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELECTION CONTROLS -->
+    <section class="section" id="selection" aria-labelledby="selection-title">
+      <div class="container">
+        <span class="section-label">Components</span>
+        <h2 class="section-title" id="selection-title">Selection Controls</h2>
+        <p class="section-desc">Checkboxes, radio buttons, and switches for boolean and grouped choices.</p>
+
+        <div class="grid grid-3" style="gap:var(--space-8)">
+          <div>
+            <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Checkboxes</h3>
+            <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+              <label class="checkbox-m3">
+                <input type="checkbox" checked>
+                <span class="checkbox-box"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                <span class="checkbox-label">Checked</span>
+              </label>
+              <label class="checkbox-m3">
+                <input type="checkbox">
+                <span class="checkbox-box"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                <span class="checkbox-label">Unchecked</span>
+              </label>
+              <label class="checkbox-m3">
+                <input type="checkbox" disabled>
+                <span class="checkbox-box"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                <span class="checkbox-label">Disabled</span>
+              </label>
+              <label class="checkbox-m3">
+                <input type="checkbox" checked disabled>
+                <span class="checkbox-box"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                <span class="checkbox-label">Checked Disabled</span>
+              </label>
+            </div>
+          </div>
+          <div>
+            <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Radio Buttons</h3>
+            <div style="display:flex;flex-direction:column;gap:var(--space-4)" role="radiogroup" aria-labelledby="radio-group">
+              <label class="radio-m3">
+                <input type="radio" name="demo-radio" checked>
+                <span class="radio-circle"><span class="radio-dot"></span></span>
+                <span class="radio-label">Selected</span>
+              </label>
+              <label class="radio-m3">
+                <input type="radio" name="demo-radio">
+                <span class="radio-circle"><span class="radio-dot"></span></span>
+                <span class="radio-label">Unselected</span>
+              </label>
+              <label class="radio-m3">
+                <input type="radio" name="demo-radio">
+                <span class="radio-circle"><span class="radio-dot"></span></span>
+                <span class="radio-label">Another Option</span>
+              </label>
+              <label class="radio-m3">
+                <input type="radio" name="demo-radio-dis" disabled>
+                <span class="radio-circle"><span class="radio-dot"></span></span>
+                <span class="radio-label">Disabled</span>
+              </label>
+            </div>
+          </div>
+          <div>
+            <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Switches</h3>
+            <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+              <label class="switch-m3">
+                <input type="checkbox" checked>
+                <span class="switch-track">
+                  <span class="switch-thumb">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                  </span>
+                </span>
+                <span class="switch-label">On</span>
+              </label>
+              <label class="switch-m3">
+                <input type="checkbox">
+                <span class="switch-track">
+                  <span class="switch-thumb"></span>
+                </span>
+                <span class="switch-label">Off</span>
+              </label>
+              <label class="switch-m3">
+                <input type="checkbox" checked disabled>
+                <span class="switch-track">
+                  <span class="switch-thumb"></span>
+                </span>
+                <span class="switch-label">On Disabled</span>
+              </label>
+              <label class="switch-m3">
+                <input type="checkbox" disabled>
+                <span class="switch-track">
+                  <span class="switch-thumb"></span>
+                </span>
+                <span class="switch-label">Off Disabled</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NAVIGATION -->
+    <section class="section" id="navigation" aria-labelledby="nav-title">
+      <div class="container">
+        <span class="section-label">Components</span>
+        <h2 class="section-title" id="nav-title">Navigation</h2>
+        <p class="section-desc">Navigation Bar (mobile bottom), Navigation Rail (tablet/desktop side), and Tabs. <a href="components/navigation.html">View full page →</a></p>
+
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Navigation Bar</h3>
+        <nav class="nav-bar nav-bar-demo" aria-label="Bottom navigation demo">
+          <button class="nav-bar-item active" aria-selected="true" aria-label="Home">
+            <span class="nav-bar-indicator">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            </span>
+            <span class="nav-bar-label">Home</span>
+          </button>
+          <button class="nav-bar-item" aria-label="Search">
+            <span class="nav-bar-indicator">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </span>
+            <span class="nav-bar-label">Search</span>
+          </button>
+          <button class="nav-bar-item" aria-label="Saved">
+            <span class="nav-bar-indicator">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/></svg>
+            </span>
+            <span class="nav-bar-label">Saved</span>
+          </button>
+          <button class="nav-bar-item" aria-label="Profile">
+            <span class="nav-bar-indicator">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            </span>
+            <span class="nav-bar-label">Profile</span>
+          </button>
+        </nav>
+
+        <h3 class="title-small" style="margin-top:var(--space-8);margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Navigation Rail</h3>
+        <nav class="nav-rail nav-rail-demo" aria-label="Navigation rail demo">
+          <div class="nav-rail-fab">
+            <button class="fab fab--small" aria-label="Compose">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+            </button>
+          </div>
+          <div class="nav-rail-group">
+            <button class="nav-rail-item active" aria-selected="true" aria-label="Home">
+              <span class="nav-rail-indicator"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></span>
+              <span class="nav-rail-label">Home</span>
+            </button>
+            <button class="nav-rail-item" aria-label="Search">
+              <span class="nav-rail-indicator"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></span>
+              <span class="nav-rail-label">Search</span>
+            </button>
+            <button class="nav-rail-item" aria-label="Library">
+              <span class="nav-rail-indicator"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/></svg></span>
+              <span class="nav-rail-label">Library</span>
+            </button>
+            <button class="nav-rail-item" aria-label="Settings">
+              <span class="nav-rail-indicator"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg></span>
+              <span class="nav-rail-label">Settings</span>
+            </button>
+          </div>
+        </nav>
+
+        <h3 class="title-small" style="margin-top:var(--space-8);margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Primary Tabs</h3>
+        <div class="tabs-m3" role="tablist" aria-label="Content tabs">
+          <button class="tab-item active" role="tab" aria-selected="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            Home
+          </button>
+          <button class="tab-item" role="tab" aria-selected="false">Flights</button>
+          <button class="tab-item" role="tab" aria-selected="false">Hotels</button>
+          <button class="tab-item" role="tab" aria-selected="false">Activities</button>
+          <button class="tab-item" role="tab" aria-selected="false">Packages</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARDS -->
+    <section class="section" id="cards" aria-labelledby="cards-title">
+      <div class="container">
+        <span class="section-label">Components</span>
+        <h2 class="section-title" id="cards-title">Cards</h2>
+        <p class="section-desc">3 card types — Elevated, Filled, and Outlined. <a href="components/cards.html">View full page →</a></p>
+
+        <div class="grid grid-3">
+          <!-- Elevated card -->
+          <article class="card-m3 card-elevated" tabindex="0">
+            <div class="card-media" style="background:linear-gradient(135deg,var(--color-primary-container),var(--color-secondary-container));display:flex;align-items:center;justify-content:center;">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="var(--color-primary)" aria-hidden="true"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            </div>
+            <div class="card-header">
+              <div class="card-avatar" style="background:var(--color-primary-container);display:flex;align-items:center;justify-content:center;color:var(--color-on-primary-container);font-weight:700">G</div>
+              <div class="card-title-group">
+                <p class="card-title">Elevated Card</p>
+                <p class="card-subtitle">Surface tint · Level 1</p>
+              </div>
+            </div>
+            <div class="card-content">
+              <p class="card-body">Elevated cards use a tinted surface background and a subtle drop shadow to create visual depth above the background surface.</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn-m3 btn-text">Dismiss</button>
+              <button class="btn-m3 btn-filled">Explore</button>
+            </div>
+          </article>
+
+          <!-- Filled card -->
+          <article class="card-m3 card-filled" tabindex="0">
+            <div class="card-media" style="background:linear-gradient(135deg,var(--color-secondary-container),var(--color-tertiary-container));display:flex;align-items:center;justify-content:center;">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="var(--color-secondary)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <div class="card-header">
+              <div class="card-avatar" style="background:var(--color-secondary-container);display:flex;align-items:center;justify-content:center;color:var(--color-on-secondary-container);font-weight:700">M</div>
+              <div class="card-title-group">
+                <p class="card-title">Filled Card</p>
+                <p class="card-subtitle">Surface container highest</p>
+              </div>
+            </div>
+            <div class="card-content">
+              <p class="card-body">Filled cards use the surface-container-highest color for differentiation without shadow, blending into the background more subtly.</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn-m3 btn-text">Skip</button>
+              <button class="btn-m3 btn-filled-tonal">Learn More</button>
+            </div>
+          </article>
+
+          <!-- Outlined card -->
+          <article class="card-m3 card-outlined" tabindex="0">
+            <div class="card-media" style="background:linear-gradient(135deg,var(--color-tertiary-container),var(--color-primary-container));display:flex;align-items:center;justify-content:center;">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="var(--color-tertiary)" aria-hidden="true"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+            </div>
+            <div class="card-header">
+              <div class="card-avatar" style="background:var(--color-tertiary-container);display:flex;align-items:center;justify-content:center;color:var(--color-on-tertiary-container);font-weight:700">T</div>
+              <div class="card-title-group">
+                <p class="card-title">Outlined Card</p>
+                <p class="card-subtitle">Surface · outline border</p>
+              </div>
+            </div>
+            <div class="card-content">
+              <p class="card-body">Outlined cards use a border to separate content from the background, offering a clean look without elevation or fill.</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn-m3 btn-outlined">Details</button>
+              <button class="btn-m3 btn-filled">Select</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- LISTS -->
+    <section class="section" id="lists" aria-labelledby="lists-title">
+      <div class="container">
+        <span class="section-label">Components</span>
+        <h2 class="section-title" id="lists-title">Lists</h2>
+        <p class="section-desc">One-line, two-line, and three-line list items with leading and trailing elements.</p>
+
+        <div class="grid grid-2" style="gap:var(--space-6)">
+          <div>
+            <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">One-line items</h3>
+            <ul class="list-m3" role="list">
+              <li class="list-item-m3" tabindex="0" role="button">
+                <span class="list-item-leading">
+                  <svg class="list-item-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </span>
+                <div class="list-item-content">
+                  <span class="list-item-headline">Email preferences</span>
+                </div>
+                <span class="list-item-trailing">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                </span>
+              </li>
+              <hr class="divider-m3 divider-m3--inset">
+              <li class="list-item-m3" tabindex="0" role="button">
+                <span class="list-item-leading">
+                  <svg class="list-item-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+                </span>
+                <div class="list-item-content">
+                  <span class="list-item-headline">Notifications</span>
+                </div>
+                <div class="list-item-trailing"><span class="badge-m3">12</span></div>
+              </li>
+              <hr class="divider-m3 divider-m3--inset">
+              <li class="list-item-m3" tabindex="0" role="button">
+                <span class="list-item-leading">
+                  <svg class="list-item-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+                </span>
+                <div class="list-item-content">
+                  <span class="list-item-headline">Privacy &amp; Security</span>
+                </div>
+                <span class="list-item-trailing">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                </span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Two-line items</h3>
+            <ul class="list-m3" role="list">
+              <li class="list-item-m3 list-item-m3--two-line" tabindex="0" role="button">
+                <div class="list-item-leading">
+                  <div class="list-item-avatar">A</div>
+                </div>
+                <div class="list-item-content">
+                  <span class="list-item-headline">Alice Johnson</span>
+                  <span class="list-item-supporting">Hey, are you free Thursday?</span>
+                </div>
+                <span class="list-item-trailing">2m ago</span>
+              </li>
+              <hr class="divider-m3 divider-m3--inset-with-avatar">
+              <li class="list-item-m3 list-item-m3--two-line" tabindex="0" role="button">
+                <div class="list-item-leading">
+                  <div class="list-item-avatar">B</div>
+                </div>
+                <div class="list-item-content">
+                  <span class="list-item-headline">Bob Chen</span>
+                  <span class="list-item-supporting">The report looks great!</span>
+                </div>
+                <span class="list-item-trailing">1h ago</span>
+              </li>
+              <hr class="divider-m3 divider-m3--inset-with-avatar">
+              <li class="list-item-m3 list-item-m3--two-line" tabindex="0" role="button">
+                <div class="list-item-leading">
+                  <div class="list-item-avatar">C</div>
+                </div>
+                <div class="list-item-content">
+                  <span class="list-item-headline">Carol Davis</span>
+                  <span class="list-item-supporting">Meeting rescheduled to 3pm</span>
+                </div>
+                <span class="list-item-trailing">Yesterday</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDERS -->
+    <section class="section" id="sliders" aria-labelledby="sliders-title">
+      <div class="container">
+        <span class="section-label">Components</span>
+        <h2 class="section-title" id="sliders-title">Sliders</h2>
+        <p class="section-desc">Range inputs styled with M3 track and thumb. Use CSS custom property <code>--slider-value</code> to fill the active track.</p>
+
+        <div style="max-width:480px;display:flex;flex-direction:column;gap:var(--space-8)">
+          <div>
+            <span class="slider-label">Volume — 65%</span>
+            <div class="slider-m3" style="--slider-value:65%">
+              <input type="range" min="0" max="100" value="65" aria-label="Volume">
+            </div>
+          </div>
+          <div>
+            <span class="slider-label">Brightness — 40%</span>
+            <div class="slider-m3" style="--slider-value:40%">
+              <input type="range" min="0" max="100" value="40" aria-label="Brightness">
+            </div>
+          </div>
+          <div>
+            <span class="slider-label">Font size — 80%</span>
+            <div class="slider-m3" style="--slider-value:80%">
+              <input type="range" min="0" max="100" value="80" aria-label="Font size">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRESS -->
+    <section class="section" id="progress" aria-labelledby="progress-title">
+      <div class="container">
+        <span class="section-label">Components</span>
+        <h2 class="section-title" id="progress-title">Progress Indicators</h2>
+        <p class="section-desc">Linear determinate/indeterminate and circular determinate/indeterminate.</p>
+
+        <div style="max-width:560px;display:flex;flex-direction:column;gap:var(--space-8)">
+          <div>
+            <span class="demo-label">Linear — determinate (68%)</span>
+            <div class="progress-linear" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-linear-fill" style="width:68%"></div>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">Linear — indeterminate</span>
+            <div class="progress-linear progress-linear--indeterminate" role="progressbar" aria-label="Loading">
+              <div class="progress-linear-fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-row" style="margin-top:var(--space-8);align-items:flex-start">
+          <div class="demo-group">
+            <span class="demo-label">Circular — 75%</span>
+            <div class="progress-circular" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="--progress-value:0.75">
+              <svg viewBox="0 0 44 44" aria-hidden="true">
+                <circle class="progress-circular-track" cx="22" cy="22" r="20"/>
+                <circle class="progress-circular-fill" cx="22" cy="22" r="20"/>
+              </svg>
+            </div>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Circular — indeterminate</span>
+            <div class="progress-circular progress-circular--indeterminate" role="progressbar" aria-label="Loading">
+              <svg viewBox="0 0 44 44" aria-hidden="true">
+                <circle class="progress-circular-fill" cx="22" cy="22" r="20"/>
+              </svg>
+            </div>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Small indeterminate</span>
+            <div class="progress-circular progress-circular--sm progress-circular--indeterminate" role="progressbar" aria-label="Loading">
+              <svg viewBox="0 0 44 44" aria-hidden="true">
+                <circle class="progress-circular-fill" cx="22" cy="22" r="20"/>
+              </svg>
+            </div>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Large — 40%</span>
+            <div class="progress-circular progress-circular--lg" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="--progress-value:0.4">
+              <svg viewBox="0 0 44 44" aria-hidden="true">
+                <circle class="progress-circular-track" cx="22" cy="22" r="20"/>
+                <circle class="progress-circular-fill" cx="22" cy="22" r="20"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIALOGS & OVERLAYS -->
+    <section class="section" id="dialogs" aria-labelledby="dialogs-title">
+      <div class="container">
+        <span class="section-label">Components</span>
+        <h2 class="section-title" id="dialogs-title">Dialogs</h2>
+        <p class="section-desc">M3 Dialogs with and without icons. Static rendering for showcase. <a href="components/modals.html">View modals page →</a></p>
+
+        <div class="grid grid-2" style="gap:var(--space-6)">
+          <div>
+            <span class="demo-label">Dialog with icon</span>
+            <div class="dialog-static" role="dialog" aria-modal="true" aria-labelledby="dlg1-title">
+              <div class="dialog-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+              </div>
+              <h2 class="dialog-headline" id="dlg1-title">Permanently delete?</h2>
+              <div class="dialog-body">Deleting this file is permanent and cannot be undone. All data associated with this file will be removed.</div>
+              <div class="dialog-actions">
+                <button class="btn-m3 btn-text">Cancel</button>
+                <button class="btn-m3 btn-filled" style="background:var(--color-error)">Delete</button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">Dialog without icon</span>
+            <div class="dialog-static" role="dialog" aria-modal="true" aria-labelledby="dlg2-title">
+              <h2 class="dialog-headline dialog-headline--left" id="dlg2-title" style="padding-bottom:0">Use location services?</h2>
+              <div class="dialog-body">Allow Maps to access your device location to show nearby results and navigation. You can change this at any time in Settings.</div>
+              <div class="dialog-actions">
+                <button class="btn-m3 btn-text">Deny</button>
+                <button class="btn-m3 btn-text">Allow</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OVERLAYS (Bottom Sheet, Snackbar, Menu, Badges) -->
+    <section class="section" id="overlays" aria-labelledby="overlays-title">
+      <div class="container">
+        <span class="section-label">Components</span>
+        <h2 class="section-title" id="overlays-title">Overlays &amp; Feedback</h2>
+        <p class="section-desc">Bottom sheets, snackbars, menus, and badges.</p>
+
+        <div class="grid grid-2" style="gap:var(--space-6);margin-bottom:var(--space-8)">
+          <div>
+            <span class="demo-label">Bottom Sheet (static preview)</span>
+            <div class="bottom-sheet-static" role="dialog" aria-modal="true" aria-labelledby="bs-title">
+              <div class="bottom-sheet-handle"></div>
+              <div class="bottom-sheet-header">
+                <p class="bottom-sheet-headline" id="bs-title">Share this track</p>
+              </div>
+              <div class="bottom-sheet-content">
+                <div class="demo-row" style="margin:0">
+                  <button class="chip chip-assist">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+                    Copy link
+                  </button>
+                  <button class="chip chip-assist">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    Send email
+                  </button>
+                  <button class="chip chip-assist">Message</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">Dropdown Menu (static)</span>
+            <div class="menu-m3 menu-static" role="menu">
+              <div class="menu-label">Edit</div>
+              <button class="menu-item-m3" role="menuitem">
+                <svg class="menu-item-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                <span class="menu-item-label">Rename</span>
+                <span class="menu-item-trailing">⌘R</span>
+              </button>
+              <button class="menu-item-m3" role="menuitem">
+                <svg class="menu-item-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span class="menu-item-label">Duplicate</span>
+                <span class="menu-item-trailing">⌘D</span>
+              </button>
+              <div class="menu-divider"></div>
+              <button class="menu-item-m3" role="menuitem">
+                <svg class="menu-item-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                <span class="menu-item-label">Delete</span>
+              </button>
+              <button class="menu-item-m3" role="menuitem" disabled>
+                <svg class="menu-item-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+                <span class="menu-item-label">Share (unavailable)</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Snackbar demos -->
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Snackbars</h3>
+        <div style="display:flex;flex-direction:column;gap:var(--space-3);max-width:600px">
+          <div class="snackbar-m3" style="position:static;animation:none">
+            <span class="snackbar-text">File deleted successfully</span>
+            <button class="snackbar-action">Undo</button>
+          </div>
+          <div class="snackbar-m3" style="position:static;animation:none">
+            <span class="snackbar-text">Message sent to 3 recipients</span>
+            <button class="snackbar-close" aria-label="Dismiss">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Badges -->
+        <h3 class="title-small" style="margin-top:var(--space-8);margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Badges</h3>
+        <div class="demo-row">
+          <div class="demo-group">
+            <span class="demo-label">Dot badge</span>
+            <div class="badge-wrapper">
+              <button class="btn-icon-m3 btn-icon-standard" aria-label="Notifications with new activity">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+              </button>
+              <span class="badge-m3 badge-m3--dot" aria-label="New notifications"></span>
+            </div>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Numbered badge</span>
+            <div class="badge-wrapper">
+              <button class="btn-icon-m3 btn-icon-standard" aria-label="Messages, 5 unread">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              </button>
+              <span class="badge-m3" aria-label="5 unread messages">5</span>
+            </div>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Large badge</span>
+            <div class="badge-wrapper">
+              <button class="btn-icon-m3 btn-icon-tonal" aria-label="Cart, 99+ items">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.1 17 7 17h11v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63H19c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+              </button>
+              <span class="badge-m3 badge-m3--lg" aria-label="99 plus items in cart">99+</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOTION -->
+    <section class="section" id="motion" aria-labelledby="motion-title">
+      <div class="container">
+        <span class="section-label">Motion</span>
+        <h2 class="section-title" id="motion-title">Motion &amp; State Layers</h2>
+        <p class="section-desc">Hover over elements to see M3 state layers. Click to trigger ripple. Tokens define easing curves and durations.</p>
+
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">State layers on hover</h3>
+        <div class="demo-row">
+          <div class="state-layer state-layer-primary" style="padding:var(--space-4) var(--space-6);border-radius:var(--shape-medium);background:var(--color-primary-container);color:var(--color-on-primary-container);cursor:pointer">
+            Primary state layer
+          </div>
+          <div class="state-layer" style="padding:var(--space-4) var(--space-6);border-radius:var(--shape-medium);background:var(--color-surface-container);color:var(--color-on-surface);cursor:pointer;border:1px solid var(--color-outline-variant)">
+            Surface state layer
+          </div>
+        </div>
+
+        <h3 class="title-small" style="margin-top:var(--space-8);margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Ripple demo (click)</h3>
+        <div class="demo-row">
+          <div class="ripple-demo-box ripple-container" id="ripple-box" role="button" tabindex="0" aria-label="Click for ripple demo">
+            Click me
+          </div>
+          <div style="display:flex;flex-direction:column;gap:var(--space-2)">
+            <span class="body-small">Hover: 8% state layer</span>
+            <span class="body-small">Focus: 12% state layer</span>
+            <span class="body-small">Press: 12% state layer</span>
+            <span class="body-small">Drag: 16% state layer</span>
+          </div>
+        </div>
+
+        <h3 class="title-small" style="margin-top:var(--space-8);margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">M3 easing curves</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--space-4)">
+          <div style="padding:var(--space-4);background:var(--color-surface-container);border-radius:var(--shape-medium)">
+            <div class="label-medium" style="color:var(--color-primary);margin-bottom:var(--space-1)">Standard</div>
+            <code style="font-size:11px">cubic-bezier(0.2, 0, 0, 1)</code>
+            <div class="body-small" style="margin-top:var(--space-2)">Default transitions for most motion</div>
+          </div>
+          <div style="padding:var(--space-4);background:var(--color-surface-container);border-radius:var(--shape-medium)">
+            <div class="label-medium" style="color:var(--color-tertiary);margin-bottom:var(--space-1)">Emphasized</div>
+            <code style="font-size:11px">cubic-bezier(0.2, 0, 0, 1)</code>
+            <div class="body-small" style="margin-top:var(--space-2)">Expressive, spatial transitions</div>
+          </div>
+          <div style="padding:var(--space-4);background:var(--color-surface-container);border-radius:var(--shape-medium)">
+            <div class="label-medium" style="color:var(--color-secondary);margin-bottom:var(--space-1)">Emphasized Decelerate</div>
+            <code style="font-size:11px">cubic-bezier(0.05, 0.7, 0.1, 1)</code>
+            <div class="body-small" style="margin-top:var(--space-2)">Enters — dialog, sheet, menu</div>
+          </div>
+          <div style="padding:var(--space-4);background:var(--color-surface-container);border-radius:var(--shape-medium)">
+            <div class="label-medium" style="color:var(--color-error);margin-bottom:var(--space-1)">Emphasized Accelerate</div>
+            <code style="font-size:11px">cubic-bezier(0.3, 0, 0.8, 0.15)</code>
+            <div class="body-small" style="margin-top:var(--space-2)">Exits — dismiss, close</div>
+          </div>
+        </div>
+
+        <h3 class="title-small" style="margin-top:var(--space-8);margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Skeleton loading</h3>
+        <div style="max-width:400px;display:flex;flex-direction:column;gap:var(--space-3)">
+          <div style="display:flex;gap:var(--space-3);align-items:center">
+            <div class="skeleton skeleton-circle" style="width:40px;height:40px;flex-shrink:0"></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:var(--space-2)">
+              <div class="skeleton skeleton-text medium"></div>
+              <div class="skeleton skeleton-text short"></div>
+            </div>
+          </div>
+          <div class="skeleton skeleton-rect" style="width:100%;height:120px"></div>
+          <div class="skeleton skeleton-text long"></div>
+          <div class="skeleton skeleton-text medium"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- BOTTOM NAVIGATION BAR (fixed) -->
+  <nav class="nav-bar" aria-label="Primary navigation">
+    <button class="nav-bar-item active" aria-selected="true" aria-label="Home">
+      <span class="nav-bar-indicator">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      </span>
+      <span class="nav-bar-label">Home</span>
+    </button>
+    <button class="nav-bar-item" aria-label="Components">
+      <span class="nav-bar-indicator">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/></svg>
+      </span>
+      <span class="nav-bar-label">Components</span>
+    </button>
+    <button class="nav-bar-item" aria-label="Tokens">
+      <span class="nav-bar-indicator">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 8C8 10 5.9 16.17 3.82 21H5.71c.51-1.2 1.06-2.38 1.7-3.49A8.002 8.002 0 0019.88 8H17zm0 0"/></svg>
+      </span>
+      <span class="nav-bar-label">Tokens</span>
+    </button>
+    <button class="nav-bar-item" aria-label="Docs">
+      <span class="nav-bar-indicator">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg>
+      </span>
+      <span class="nav-bar-label">Docs</span>
+    </button>
+  </nav>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-logo"><span>G</span>oogle Material You</div>
+      <p class="footer-tagline">Material Design 3 — Adaptive, Expressive, Personal</p>
+      <div class="footer-grid">
+        <div>
+          <div class="footer-heading">Design System</div>
+          <ul class="footer-links">
+            <li><a href="#colors">Color System</a></li>
+            <li><a href="#typography">Typography</a></li>
+            <li><a href="#motion">Motion</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Components</div>
+          <ul class="footer-links">
+            <li><a href="components/buttons.html">Buttons &amp; FAB</a></li>
+            <li><a href="components/cards.html">Cards</a></li>
+            <li><a href="components/forms.html">Forms</a></li>
+            <li><a href="components/navigation.html">Navigation</a></li>
+            <li><a href="components/modals.html">Modals &amp; Overlays</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Resources</div>
+          <ul class="footer-links">
+            <li><a href="https://m3.material.io" target="_blank" rel="noopener">m3.material.io</a></li>
+            <li><a href="https://fonts.google.com" target="_blank" rel="noopener">Google Fonts</a></li>
+            <li><a href="https://material.io/blog" target="_blank" rel="noopener">Material Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Files</div>
+          <ul class="footer-links">
+            <li><a href="tokens.css">tokens.css</a></li>
+            <li><a href="typography.css">typography.css</a></li>
+            <li><a href="animations.css">animations.css</a></li>
+            <li><a href="components.css">components.css</a></li>
+            <li><a href="prompt.md">prompt.md</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Material Design 3 &copy; 2024 Google LLC. Showcased by Claude.</span>
+        <span>Seed color: #4285F4 — Google Blue</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Ripple effect
+    document.querySelectorAll('.ripple-container').forEach(el => {
+      el.addEventListener('click', function(e) {
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const wave = document.createElement('span');
+        wave.className = 'ripple-wave';
+        const size = Math.max(rect.width, rect.height) * 2;
+        wave.style.cssText = `width:${size}px;height:${size}px;left:${x - size/2}px;top:${y - size/2}px`;
+        el.appendChild(wave);
+        wave.addEventListener('animationend', () => wave.remove());
+      });
+    });
+
+    // Scroll-aware app bar
+    const appBar = document.querySelector('.app-bar-m3');
+    window.addEventListener('scroll', () => {
+      appBar.classList.toggle('app-bar-m3--scrolled', window.scrollY > 8);
+    }, { passive: true });
+
+    // Sync text field float state with JS for existing values
+    document.querySelectorAll('.textfield-m3 input, .textfield-m3 textarea').forEach(input => {
+      const update = () => {
+        input.closest('.textfield-m3').classList.toggle('has-value', input.value.length > 0);
+      };
+      input.addEventListener('input', update);
+      update();
+    });
+  </script>
+</body>
+</html>

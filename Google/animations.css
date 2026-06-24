@@ -1,0 +1,439 @@
+/* =============================================================================
+   Google Material You Design System — Animations & Motion
+   Version 1.0.0 | Material Design 3 Motion System
+   Reference: m3.material.io/styles/motion
+   ============================================================================= */
+
+/* =============================================================================
+   KEYFRAMES — Core M3 Motion Patterns
+   ============================================================================= */
+
+/* --- Fade --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* --- M3 Slide Up (Bottom Sheets, Snackbars) ---
+   Elements enter from below with decelerate easing */
+@keyframes m3SlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes m3SlideDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+/* --- M3 Scale In (Dialogs, Menus) ---
+   Elements enter with a slight scale from 0.8 → 1, fade in */
+@keyframes m3ScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes m3ScaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+/* --- M3 Ripple --- */
+@keyframes m3Ripple {
+  0% {
+    transform: scale(0);
+    opacity: var(--state-pressed-opacity);
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* --- FAB Extend (label expands from icon) --- */
+@keyframes fabExtend {
+  from {
+    width: var(--fab-size);
+    opacity: 0;
+  }
+  to {
+    width: auto;
+    opacity: 1;
+  }
+}
+
+/* FAB label text reveal */
+@keyframes fabLabelReveal {
+  from {
+    opacity: 0;
+    max-width: 0;
+    margin-left: 0;
+  }
+  to {
+    opacity: 1;
+    max-width: 200px;
+    margin-left: var(--space-3);
+  }
+}
+
+/* --- Shimmer / Skeleton Loading --- */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* --- M3 State Layer Fade (hover feedback) --- */
+@keyframes m3StateLayer {
+  from { opacity: 0; }
+  to   { opacity: var(--state-hover-opacity); }
+}
+
+/* --- Progress — Linear Indeterminate ---
+   Two segments sweep across the track */
+@keyframes m3LinearIndeterminate1 {
+  0%   { transform: translateX(0) scaleX(0.08); }
+  36.65% { animation-timing-function: cubic-bezier(0.33473, 0.12482, 0.78584, 1); transform: translateX(0) scaleX(0.08); }
+  69.15% { animation-timing-function: cubic-bezier(0.06, 0.11, 0.6, 1); transform: translateX(83.67%) scaleX(0.66198); }
+  100%  { transform: translateX(200.611%) scaleX(0.08); }
+}
+
+@keyframes m3LinearIndeterminate2 {
+  0%   { animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969); transform: translateX(0) scaleX(0.08); }
+  25%  { animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371); transform: translateX(37.65191%) scaleX(0.4352); }
+  48.35% { animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203); transform: translateX(84.38617%) scaleX(0.82897); }
+  100%   { transform: translateX(160.27778%) scaleX(0.08); }
+}
+
+/* --- Progress — Circular Spinner --- */
+@keyframes m3CircularSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes m3CircularDash {
+  0%   { stroke-dashoffset: 282; }
+  50%  { stroke-dashoffset: 56;  stroke-dasharray: 282; }
+  100% { stroke-dashoffset: 282; }
+}
+
+/* --- Snackbar slide from bottom --- */
+@keyframes m3SnackbarIn {
+  from {
+    opacity: 0;
+    transform: translateY(100%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes m3SnackbarOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100%) scale(0.95);
+  }
+}
+
+/* --- Navigation Rail indicator pill --- */
+@keyframes m3NavIndicator {
+  from {
+    transform: scaleX(0.7) scaleY(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1) scaleY(1);
+    opacity: 1;
+  }
+}
+
+/* --- Chip selection checkmark --- */
+@keyframes m3CheckmarkIn {
+  from {
+    transform: scale(0) rotate(-45deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* --- Spin --- */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* --- Pulse --- */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+/* --- Bounce --- */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* --- Float --- */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* --- Gradient flow (hero backgrounds) --- */
+@keyframes gradientFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- Glow pulse (primary color) --- */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(66, 133, 244, 0.4); }
+  50%       { box-shadow: 0 0 0 12px rgba(66, 133, 244, 0); }
+}
+
+/* --- Shake (form validation) --- */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+
+/* =============================================================================
+   RIPPLE EFFECT — M3 State Layer Ripple
+   JavaScript enhancement needed for positioned ripple from click point.
+   CSS-only version uses ::after pseudo-element centered.
+   ============================================================================= */
+
+.ripple-container {
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ripple-container .ripple-wave {
+  position: absolute;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: var(--state-pressed-opacity);
+  transform: scale(0);
+  animation: m3Ripple 600ms var(--motion-easing-standard-decelerate) forwards;
+  pointer-events: none;
+}
+
+/* =============================================================================
+   STATE LAYER — M3 Interaction Pattern
+   Applied via ::before pseudo-element on all interactive components.
+   ============================================================================= */
+
+/* Base state layer setup */
+.state-layer {
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.state-layer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--color-on-surface);
+  opacity: 0;
+  transition: opacity var(--motion-duration-short-4) var(--motion-easing-standard);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.state-layer:hover::before  { opacity: var(--state-hover-opacity); }
+.state-layer:focus::before  { opacity: var(--state-focus-opacity); }
+.state-layer:active::before { opacity: var(--state-pressed-opacity); }
+
+/* Primary color state layer variant */
+.state-layer-primary::before {
+  background: var(--color-primary);
+}
+
+/* On-primary state layer variant */
+.state-layer-on-primary::before {
+  background: var(--color-on-primary);
+}
+
+/* =============================================================================
+   ANIMATION UTILITY CLASSES
+   ============================================================================= */
+
+/* Fade */
+.animate-fade-in     { animation: fadeIn var(--motion-duration-medium-2) var(--motion-easing-standard-decelerate) both; }
+.animate-fade-out    { animation: fadeOut var(--motion-duration-short-4) var(--motion-easing-standard-accelerate) both; }
+
+/* Slide */
+.animate-slide-up    { animation: m3SlideUp var(--motion-duration-medium-4) var(--motion-easing-emphasized-decelerate) both; }
+.animate-slide-down  { animation: m3SlideDown var(--motion-duration-short-4) var(--motion-easing-emphasized-accelerate) both; }
+
+/* Scale */
+.animate-scale-in    { animation: m3ScaleIn var(--motion-duration-medium-4) var(--motion-easing-emphasized-decelerate) both; }
+.animate-scale-out   { animation: m3ScaleOut var(--motion-duration-medium-1) var(--motion-easing-emphasized-accelerate) both; }
+
+/* Ongoing */
+.animate-spin        { animation: spin 1s linear infinite; }
+.animate-pulse       { animation: pulse 2s var(--motion-easing-standard) infinite; }
+.animate-bounce      { animation: bounce 1.5s var(--motion-easing-standard) infinite; }
+.animate-float       { animation: float 3s ease-in-out infinite; }
+.animate-glow-pulse  { animation: glowPulse 2s ease-in-out infinite; }
+
+/* Snackbar */
+.animate-snackbar-in  { animation: m3SnackbarIn var(--motion-duration-medium-4) var(--motion-easing-emphasized-decelerate) both; }
+.animate-snackbar-out { animation: m3SnackbarOut var(--motion-duration-short-4) var(--motion-easing-emphasized-accelerate) both; }
+
+/* Gradient */
+.animate-gradient {
+  background-size: 300% 300%;
+  animation: gradientFlow 8s ease infinite;
+}
+
+/* Shake */
+.animate-shake { animation: shake 400ms var(--motion-easing-standard) both; }
+
+/* =============================================================================
+   SHIMMER / SKELETON LOADING
+   ============================================================================= */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-container) 25%,
+    var(--color-surface-container-high) 50%,
+    var(--color-surface-container) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s var(--motion-easing-standard) infinite;
+  border-radius: var(--shape-extra-small);
+}
+
+.skeleton-text {
+  height: 1em;
+  margin-bottom: var(--space-2);
+  border-radius: var(--shape-extra-small);
+}
+
+.skeleton-text.short  { width: 40%; }
+.skeleton-text.medium { width: 65%; }
+.skeleton-text.long   { width: 90%; }
+
+.skeleton-circle { border-radius: var(--shape-full); }
+.skeleton-rect   { border-radius: var(--shape-medium); }
+
+/* =============================================================================
+   DELAY UTILITIES
+   ============================================================================= */
+
+.delay-50   { animation-delay: 50ms; }
+.delay-100  { animation-delay: 100ms; }
+.delay-150  { animation-delay: 150ms; }
+.delay-200  { animation-delay: 200ms; }
+.delay-300  { animation-delay: 300ms; }
+.delay-400  { animation-delay: 400ms; }
+.delay-500  { animation-delay: 500ms; }
+.delay-600  { animation-delay: 600ms; }
+.delay-800  { animation-delay: 800ms; }
+.delay-1000 { animation-delay: 1000ms; }
+
+/* =============================================================================
+   TRANSITION UTILITIES
+   ============================================================================= */
+
+.transition-none      { transition: none; }
+.transition-standard  { transition: var(--transition-standard); }
+.transition-emphasized{ transition: var(--transition-emphasized); }
+.transition-decelerate{ transition: var(--transition-decelerate); }
+.transition-accelerate{ transition: var(--transition-accelerate); }
+
+/* =============================================================================
+   HOVER EFFECTS
+   ============================================================================= */
+
+.hover-lift {
+  transition: transform var(--motion-duration-short-4) var(--motion-easing-standard),
+              box-shadow var(--motion-duration-short-4) var(--motion-easing-standard);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-elevation-3);
+}
+
+.hover-scale {
+  transition: transform var(--motion-duration-short-4) var(--motion-easing-standard);
+}
+
+.hover-scale:hover  { transform: scale(1.02); }
+.hover-scale:active { transform: scale(0.98); }
+
+/* =============================================================================
+   REDUCED MOTION — Respect User Preference
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .skeleton {
+    animation: none;
+    background: var(--color-surface-container);
+  }
+
+  .animate-gradient {
+    animation: none;
+  }
+
+  /* Keep focus visible without animation */
+  .state-layer:focus-visible::before {
+    opacity: var(--state-focus-opacity);
+  }
+}

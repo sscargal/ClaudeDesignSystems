@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms — Material You Components</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .page-header {
+      position: sticky; top: 0; z-index: var(--z-app-bar);
+      background: var(--elevation-2);
+      border-bottom: 1px solid var(--color-outline-variant);
+      display: flex; align-items: center; gap: var(--space-4);
+      padding: 0 var(--space-6); height: var(--app-bar-height);
+    }
+    .page-header a {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      color: var(--color-primary); font-size: var(--typescale-label-large-size);
+      font-weight: var(--typescale-label-large-weight); text-decoration: none;
+    }
+    .page-header a:hover { text-decoration: underline; }
+    .page-title { font-family: var(--font-brand); font-size: var(--typescale-title-large-size); font-weight: 400; color: var(--color-on-surface); }
+    .content { padding: var(--space-8) 0 var(--space-16); }
+    .section { padding: var(--space-8) 0; border-bottom: 1px solid var(--color-outline-variant); }
+    .section:last-child { border-bottom: none; }
+    .section-title { font-family: var(--font-brand); font-size: var(--typescale-headline-small-size); font-weight: 400; color: var(--color-on-surface); margin-bottom: var(--space-2); }
+    .section-desc { font-size: var(--typescale-body-medium-size); color: var(--color-on-surface-variant); margin-bottom: var(--space-6); max-width: 600px; }
+    .demo-label { font-size: var(--typescale-label-small-size); letter-spacing: var(--typescale-label-small-tracking); color: var(--color-on-surface-variant); display: block; margin-bottom: var(--space-2); }
+    .demo-group { display: flex; flex-direction: column; gap: var(--space-2); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+    .form-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+    /* Custom native select styling */
+    .select-m3 {
+      appearance: none; -webkit-appearance: none;
+      width: 100%; height: var(--textfield-height);
+      padding: 0 var(--space-10) 0 var(--space-4);
+      border: 1px solid var(--color-outline);
+      border-radius: var(--shape-extra-small);
+      background: transparent;
+      font-family: var(--font-body);
+      font-size: var(--typescale-body-large-size);
+      color: var(--color-on-surface);
+      cursor: pointer;
+      outline: none;
+    }
+    .select-m3:focus {
+      border-color: var(--color-primary);
+      border-width: 2px;
+    }
+    .select-wrapper {
+      position: relative;
+    }
+    .select-wrapper::after {
+      content: '';
+      position: absolute;
+      right: var(--space-4);
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0; height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid var(--color-on-surface-variant);
+      pointer-events: none;
+    }
+    /* Textarea M3 */
+    .textarea-m3 {
+      resize: vertical;
+      min-height: 120px;
+      height: auto;
+      padding-top: var(--space-4);
+    }
+    .textfield-filled .textarea-m3 {
+      padding-top: calc(var(--space-8) + var(--space-1));
+    }
+    /* Full sample form */
+    .sample-form {
+      background: var(--color-surface-container-low);
+      border-radius: var(--shape-extra-large);
+      padding: var(--space-8);
+      max-width: 680px;
+    }
+    .form-section-header {
+      font-family: var(--font-brand);
+      font-size: var(--typescale-title-medium-size);
+      font-weight: var(--typescale-title-medium-weight);
+      color: var(--color-primary);
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-2);
+      border-bottom: 1px solid var(--color-outline-variant);
+    }
+    @media (max-width: 640px) {
+      .form-grid, .form-grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="page-header" role="banner">
+    <a href="../index.html" aria-label="Back to index">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+      Back
+    </a>
+    <h1 class="page-title">Forms</h1>
+  </header>
+
+  <main class="content">
+    <div class="container">
+
+      <!-- FILLED TEXT FIELDS -->
+      <section class="section">
+        <h2 class="section-title">Filled Text Fields</h2>
+        <p class="section-desc">Filled fields use <code>--color-surface-container-highest</code> background with a bottom indicator line. The label floats to the top on focus or when a value is present.</p>
+
+        <div class="form-grid" style="max-width:720px">
+          <div>
+            <span class="demo-label">Default (empty)</span>
+            <div class="textfield-m3 textfield-filled">
+              <div class="field-container">
+                <label class="field-label" for="f-name">Full Name</label>
+                <input id="f-name" type="text" autocomplete="name">
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">With value (has-value)</span>
+            <div class="textfield-m3 textfield-filled has-value">
+              <div class="field-container">
+                <label class="field-label" for="f-email">Email</label>
+                <input id="f-email" type="email" value="user@example.com" autocomplete="email">
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">With helper text</span>
+            <div class="textfield-m3 textfield-filled">
+              <div class="field-container">
+                <label class="field-label" for="f-user">Username</label>
+                <input id="f-user" type="text" autocomplete="username">
+              </div>
+              <span class="field-supporting-text">Must be 3–20 characters</span>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">With trailing icon + counter</span>
+            <div class="textfield-m3 textfield-filled has-value">
+              <div class="field-container">
+                <label class="field-label" for="f-search">Search</label>
+                <input id="f-search" type="search" value="Material You" maxlength="50">
+                <span class="field-trailing-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </span>
+              </div>
+              <span class="field-counter">12/50</span>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">Error state</span>
+            <div class="textfield-m3 textfield-filled error has-value">
+              <div class="field-container">
+                <label class="field-label" for="f-pass">Password</label>
+                <input id="f-pass" type="password" value="abc">
+                <span class="field-trailing-icon">
+                  <svg viewBox="0 0 24 24" fill="var(--color-error)" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                </span>
+              </div>
+              <span class="field-supporting-text error">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                Must be at least 8 characters
+              </span>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">Disabled</span>
+            <div class="textfield-m3 textfield-filled disabled has-value">
+              <div class="field-container">
+                <label class="field-label" for="f-acc">Account ID</label>
+                <input id="f-acc" type="text" value="ACC-82910-Z" disabled>
+              </div>
+              <span class="field-supporting-text">Read-only field</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:var(--space-6);max-width:720px">
+          <span class="demo-label">With leading icon</span>
+          <div class="form-grid">
+            <div class="textfield-m3 textfield-filled has-leading-icon">
+              <div class="field-container">
+                <span class="field-leading-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                </span>
+                <label class="field-label" for="f-phone">Phone number</label>
+                <input id="f-phone" type="tel" autocomplete="tel">
+              </div>
+            </div>
+            <div class="textfield-m3 textfield-filled has-value has-leading-icon">
+              <div class="field-container">
+                <span class="field-leading-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </span>
+                <label class="field-label" for="f-loc">Location</label>
+                <input id="f-loc" type="text" value="Mountain View, CA">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:var(--space-6);max-width:720px">
+          <span class="demo-label">Textarea (filled)</span>
+          <div class="textfield-m3 textfield-filled" style="height:auto">
+            <div class="field-container" style="height:auto;align-items:flex-start;padding-top:var(--space-4)">
+              <label class="field-label" for="f-bio" style="top:var(--space-4);transform:none;font-size:var(--typescale-label-medium-size);color:var(--color-primary)">Bio</label>
+              <textarea id="f-bio" class="textarea-m3" rows="4" style="padding-top:var(--space-4);padding-bottom:var(--space-2);background:transparent;border:none;outline:none;font-family:var(--font-body);font-size:var(--typescale-body-large-size);color:var(--color-on-surface);width:100%;resize:vertical">Material Design enthusiast building expressive, accessible UIs with Google's M3 system.</textarea>
+            </div>
+            <div style="display:flex;justify-content:space-between">
+              <span class="field-supporting-text">Tell us about yourself</span>
+              <span class="field-counter">87/200</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- OUTLINED TEXT FIELDS -->
+      <section class="section">
+        <h2 class="section-title">Outlined Text Fields</h2>
+        <p class="section-desc">Outlined fields use a transparent background with a 1px border that thickens to 2px on focus. The label notches into the border when floating.</p>
+
+        <div class="form-grid" style="max-width:720px">
+          <div>
+            <span class="demo-label">Default</span>
+            <div class="textfield-m3 textfield-outlined">
+              <div class="field-container">
+                <label class="field-label" for="o-first">First Name</label>
+                <input id="o-first" type="text" autocomplete="given-name">
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">With value</span>
+            <div class="textfield-m3 textfield-outlined has-value">
+              <div class="field-container">
+                <label class="field-label" for="o-last">Last Name</label>
+                <input id="o-last" type="text" value="Thompson" autocomplete="family-name">
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">With helper text</span>
+            <div class="textfield-m3 textfield-outlined">
+              <div class="field-container">
+                <label class="field-label" for="o-code">Promo code</label>
+                <input id="o-code" type="text" autocomplete="off">
+              </div>
+              <span class="field-supporting-text">Enter your discount code</span>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">With trailing icon</span>
+            <div class="textfield-m3 textfield-outlined has-value">
+              <div class="field-container">
+                <label class="field-label" for="o-pass2">Password</label>
+                <input id="o-pass2" type="password" value="password123">
+                <span class="field-trailing-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">Error state</span>
+            <div class="textfield-m3 textfield-outlined error has-value">
+              <div class="field-container">
+                <label class="field-label" for="o-email2">Email</label>
+                <input id="o-email2" type="email" value="not-an-email">
+              </div>
+              <span class="field-supporting-text error">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                Enter a valid email address
+              </span>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">Disabled</span>
+            <div class="textfield-m3 textfield-outlined disabled has-value">
+              <div class="field-container">
+                <label class="field-label" for="o-uid">User ID</label>
+                <input id="o-uid" type="text" value="usr_8x92k1" disabled>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:var(--space-6);max-width:720px">
+          <span class="demo-label">Select / Dropdown</span>
+          <div class="form-grid">
+            <div>
+              <label class="demo-label" for="sel-country" style="margin-bottom:var(--space-2)">Country</label>
+              <div class="select-wrapper">
+                <select class="select-m3" id="sel-country">
+                  <option value="">Select country</option>
+                  <option value="us" selected>United States</option>
+                  <option value="uk">United Kingdom</option>
+                  <option value="ca">Canada</option>
+                  <option value="au">Australia</option>
+                  <option value="de">Germany</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="demo-label" for="sel-timezone" style="margin-bottom:var(--space-2)">Timezone</label>
+              <div class="select-wrapper">
+                <select class="select-m3" id="sel-timezone">
+                  <option value="">Select timezone</option>
+                  <option value="pst">Pacific Time (PST)</option>
+                  <option value="mst">Mountain Time (MST)</option>
+                  <option value="cst">Central Time (CST)</option>
+                  <option value="est" selected>Eastern Time (EST)</option>
+                  <option value="utc">UTC</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CHECKBOXES -->
+      <section class="section">
+        <h2 class="section-title">Checkboxes</h2>
+        <p class="section-desc">M3 checkboxes use a custom visual with a 40px touch target (via the <code>::before</code> state layer). The checkmark animates in on selection.</p>
+
+        <div class="form-grid-3">
+          <div>
+            <span class="demo-label">All states</span>
+            <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+              <label class="checkbox-m3">
+                <input type="checkbox">
+                <span class="checkbox-box"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                <span class="checkbox-label">Unchecked</span>
+              </label>
+              <label class="checkbox-m3">
+                <input type="checkbox" checked>
+                <span class="checkbox-box"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                <span class="checkbox-label">Checked</span>
+              </label>
+              <label class="checkbox-m3">
+                <input type="checkbox" disabled>
+                <span class="checkbox-box"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                <span class="checkbox-label">Disabled</span>
+              </label>
+              <label class="checkbox-m3">
+                <input type="checkbox" checked disabled>
+                <span class="checkbox-box"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                <span class="checkbox-label">Checked + Disabled</span>
+              </label>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">In a list</span>
+            <ul class="list-m3" role="list">
+              <li class="list-item-m3" role="listitem">
+                <span class="list-item-leading">
+                  <label class="checkbox-m3" style="gap:0">
+                    <input type="checkbox" checked aria-label="Notifications">
+                    <span class="checkbox-box"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                  </label>
+                </span>
+                <div class="list-item-content"><span class="list-item-headline">Notifications</span></div>
+              </li>
+              <hr class="divider-m3">
+              <li class="list-item-m3" role="listitem">
+                <span class="list-item-leading">
+                  <label class="checkbox-m3" style="gap:0">
+                    <input type="checkbox" aria-label="Location">
+                    <span class="checkbox-box"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                  </label>
+                </span>
+                <div class="list-item-content"><span class="list-item-headline">Location</span></div>
+              </li>
+              <hr class="divider-m3">
+              <li class="list-item-m3" role="listitem">
+                <span class="list-item-leading">
+                  <label class="checkbox-m3" style="gap:0">
+                    <input type="checkbox" checked aria-label="Analytics">
+                    <span class="checkbox-box"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                  </label>
+                </span>
+                <div class="list-item-content"><span class="list-item-headline">Analytics</span></div>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <span class="demo-label">Agreement</span>
+            <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+              <label class="checkbox-m3" style="align-items:flex-start">
+                <input type="checkbox">
+                <span class="checkbox-box" style="margin-top:3px"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                <span class="checkbox-label" style="font-size:var(--typescale-body-medium-size)">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
+              </label>
+              <label class="checkbox-m3" style="align-items:flex-start">
+                <input type="checkbox">
+                <span class="checkbox-box" style="margin-top:3px"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                <span class="checkbox-label" style="font-size:var(--typescale-body-medium-size)">Subscribe to product updates and announcements</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RADIO BUTTONS -->
+      <section class="section">
+        <h2 class="section-title">Radio Buttons</h2>
+        <p class="section-desc">Radio buttons use a 20px circle with an animated dot. Only one selection per group. The dot scales from 0 to 1 on selection.</p>
+
+        <div class="form-grid-3">
+          <div>
+            <span class="demo-label">All states</span>
+            <div style="display:flex;flex-direction:column;gap:var(--space-4)" role="radiogroup">
+              <label class="radio-m3">
+                <input type="radio" name="r1">
+                <span class="radio-circle"><span class="radio-dot"></span></span>
+                <span class="radio-label">Unselected</span>
+              </label>
+              <label class="radio-m3">
+                <input type="radio" name="r1" checked>
+                <span class="radio-circle"><span class="radio-dot"></span></span>
+                <span class="radio-label">Selected</span>
+              </label>
+              <label class="radio-m3">
+                <input type="radio" name="r2" disabled>
+                <span class="radio-circle"><span class="radio-dot"></span></span>
+                <span class="radio-label">Disabled</span>
+              </label>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">Notification frequency</span>
+            <div style="display:flex;flex-direction:column;gap:var(--space-4)" role="radiogroup" aria-labelledby="notif-label">
+              <p id="notif-label" class="body-small" style="margin-bottom:var(--space-2);color:var(--color-on-surface)">How often should we notify you?</p>
+              <label class="radio-m3">
+                <input type="radio" name="notif" checked>
+                <span class="radio-circle"><span class="radio-dot"></span></span>
+                <span class="radio-label">Immediately</span>
+              </label>
+              <label class="radio-m3">
+                <input type="radio" name="notif">
+                <span class="radio-circle"><span class="radio-dot"></span></span>
+                <span class="radio-label">Daily digest</span>
+              </label>
+              <label class="radio-m3">
+                <input type="radio" name="notif">
+                <span class="radio-circle"><span class="radio-dot"></span></span>
+                <span class="radio-label">Weekly summary</span>
+              </label>
+              <label class="radio-m3">
+                <input type="radio" name="notif">
+                <span class="radio-circle"><span class="radio-dot"></span></span>
+                <span class="radio-label">Never</span>
+              </label>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">Subscription tier</span>
+            <div style="display:flex;flex-direction:column;gap:var(--space-3)" role="radiogroup">
+              <label style="display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3);border:1px solid var(--color-outline-variant);border-radius:var(--shape-medium);cursor:pointer">
+                <label class="radio-m3" style="gap:0">
+                  <input type="radio" name="tier" id="tier-free">
+                  <span class="radio-circle"><span class="radio-dot"></span></span>
+                </label>
+                <div>
+                  <p style="font-weight:500;font-size:var(--typescale-body-medium-size);color:var(--color-on-surface)">Free</p>
+                  <p class="body-small">15 GB storage</p>
+                </div>
+              </label>
+              <label style="display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3);border:2px solid var(--color-primary);border-radius:var(--shape-medium);cursor:pointer;background:var(--color-primary-container)">
+                <label class="radio-m3" style="gap:0">
+                  <input type="radio" name="tier" id="tier-pro" checked>
+                  <span class="radio-circle"><span class="radio-dot"></span></span>
+                </label>
+                <div style="flex:1">
+                  <p style="font-weight:500;font-size:var(--typescale-body-medium-size);color:var(--color-on-primary-container)">Pro — $9.99/mo</p>
+                  <p class="body-small" style="color:var(--color-on-primary-container)">2 TB storage + VPN</p>
+                </div>
+                <span style="font-size:var(--typescale-label-small-size);background:var(--color-primary);color:var(--color-on-primary);padding:2px 8px;border-radius:var(--shape-full)">Popular</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SWITCHES -->
+      <section class="section">
+        <h2 class="section-title">Switches</h2>
+        <p class="section-desc">M3 switches have a 52×32px track and an animated thumb that expands on hover. The thumb shows a checkmark icon when the switch is on.</p>
+
+        <div class="form-grid-3">
+          <div>
+            <span class="demo-label">All states</span>
+            <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+              <label class="switch-m3">
+                <input type="checkbox">
+                <span class="switch-track"><span class="switch-thumb"></span></span>
+                <span class="switch-label">Off</span>
+              </label>
+              <label class="switch-m3">
+                <input type="checkbox" checked>
+                <span class="switch-track"><span class="switch-thumb"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span></span>
+                <span class="switch-label">On</span>
+              </label>
+              <label class="switch-m3">
+                <input type="checkbox" disabled>
+                <span class="switch-track"><span class="switch-thumb"></span></span>
+                <span class="switch-label">Off Disabled</span>
+              </label>
+              <label class="switch-m3">
+                <input type="checkbox" checked disabled>
+                <span class="switch-track"><span class="switch-thumb"></span></span>
+                <span class="switch-label">On Disabled</span>
+              </label>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">App settings</span>
+            <div style="background:var(--color-surface-container);border-radius:var(--shape-medium);overflow:hidden">
+              <div style="padding:var(--space-4);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--color-outline-variant)">
+                <div>
+                  <p style="font-size:var(--typescale-body-large-size);color:var(--color-on-surface);font-weight:400">Dark mode</p>
+                  <p class="body-small">Follow system setting</p>
+                </div>
+                <label class="switch-m3">
+                  <input type="checkbox" checked>
+                  <span class="switch-track"><span class="switch-thumb"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span></span>
+                </label>
+              </div>
+              <div style="padding:var(--space-4);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--color-outline-variant)">
+                <div>
+                  <p style="font-size:var(--typescale-body-large-size);color:var(--color-on-surface);font-weight:400">Push notifications</p>
+                  <p class="body-small">All apps and alerts</p>
+                </div>
+                <label class="switch-m3">
+                  <input type="checkbox">
+                  <span class="switch-track"><span class="switch-thumb"></span></span>
+                </label>
+              </div>
+              <div style="padding:var(--space-4);display:flex;align-items:center;justify-content:space-between">
+                <div>
+                  <p style="font-size:var(--typescale-body-large-size);color:var(--color-on-surface);font-weight:400">Auto-update</p>
+                  <p class="body-small">Wi-Fi only</p>
+                </div>
+                <label class="switch-m3">
+                  <input type="checkbox" checked>
+                  <span class="switch-track"><span class="switch-thumb"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span></span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">No labels</span>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-4)">
+              <label class="switch-m3">
+                <input type="checkbox" checked aria-label="Feature A">
+                <span class="switch-track"><span class="switch-thumb"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span></span>
+              </label>
+              <label class="switch-m3">
+                <input type="checkbox" aria-label="Feature B">
+                <span class="switch-track"><span class="switch-thumb"></span></span>
+              </label>
+              <label class="switch-m3">
+                <input type="checkbox" checked aria-label="Feature C">
+                <span class="switch-track"><span class="switch-thumb"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDERS -->
+      <section class="section">
+        <h2 class="section-title">Sliders</h2>
+        <p class="section-desc">M3 sliders use a 4px track with primary-colored fill and a 20px thumb. Set <code>--slider-value</code> as a percentage to fill the active track portion via CSS gradient.</p>
+
+        <div style="max-width:560px;display:flex;flex-direction:column;gap:var(--space-8)">
+          <div>
+            <span class="slider-label">Volume — 70%</span>
+            <div class="slider-m3" style="--slider-value:70%">
+              <input type="range" min="0" max="100" value="70" aria-label="Volume">
+            </div>
+          </div>
+          <div>
+            <span class="slider-label">Playback speed — 1.25x</span>
+            <div class="slider-m3" style="--slider-value:37.5%">
+              <input type="range" min="0.5" max="2" step="0.25" value="1.25" aria-label="Playback speed">
+            </div>
+          </div>
+          <div>
+            <span class="slider-label">Opacity — 55%</span>
+            <div class="slider-m3" style="--slider-value:55%">
+              <input type="range" min="0" max="100" value="55" aria-label="Opacity">
+            </div>
+          </div>
+          <div>
+            <span class="slider-label" id="font-size-label">Font size — 16px</span>
+            <div class="slider-m3" style="--slider-value:50%">
+              <input type="range" min="12" max="24" value="16" aria-labelledby="font-size-label" id="font-size-slider">
+            </div>
+            <div style="display:flex;justify-content:space-between">
+              <span class="body-small">12px</span>
+              <span class="body-small">24px</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPLETE FORM -->
+      <section class="section">
+        <h2 class="section-title">Complete Form Example</h2>
+        <p class="section-desc">A realistic M3-styled account creation form using filled and outlined fields with proper layout, labels, and actions.</p>
+
+        <form class="sample-form" novalidate aria-labelledby="form-title">
+          <h3 id="form-title" class="headline-small" style="margin-bottom:var(--space-6)">Create account</h3>
+
+          <p class="form-section-header">Personal information</p>
+
+          <div class="form-grid" style="margin-bottom:var(--space-6)">
+            <div class="textfield-m3 textfield-filled">
+              <div class="field-container">
+                <label class="field-label" for="cf-first">First name</label>
+                <input id="cf-first" type="text" autocomplete="given-name">
+              </div>
+            </div>
+            <div class="textfield-m3 textfield-filled">
+              <div class="field-container">
+                <label class="field-label" for="cf-last">Last name</label>
+                <input id="cf-last" type="text" autocomplete="family-name">
+              </div>
+            </div>
+            <div class="textfield-m3 textfield-filled" style="grid-column:1/-1">
+              <div class="field-container">
+                <label class="field-label" for="cf-email">Email address</label>
+                <input id="cf-email" type="email" autocomplete="email">
+              </div>
+              <span class="field-supporting-text">We'll send a verification link</span>
+            </div>
+          </div>
+
+          <p class="form-section-header">Account settings</p>
+
+          <div class="form-grid" style="margin-bottom:var(--space-6)">
+            <div class="textfield-m3 textfield-outlined">
+              <div class="field-container">
+                <label class="field-label" for="cf-user">Username</label>
+                <input id="cf-user" type="text" autocomplete="username">
+              </div>
+              <span class="field-supporting-text">3–20 alphanumeric characters</span>
+            </div>
+            <div>
+              <label class="demo-label" for="cf-country" style="margin-bottom:var(--space-2)">Country</label>
+              <div class="select-wrapper">
+                <select class="select-m3" id="cf-country">
+                  <option value="">Select a country</option>
+                  <option value="us">United States</option>
+                  <option value="uk">United Kingdom</option>
+                  <option value="ca">Canada</option>
+                  <option value="au">Australia</option>
+                </select>
+              </div>
+            </div>
+            <div class="textfield-m3 textfield-outlined">
+              <div class="field-container">
+                <label class="field-label" for="cf-pass">Password</label>
+                <input id="cf-pass" type="password">
+              </div>
+              <span class="field-supporting-text">Min 8 characters, one number</span>
+            </div>
+            <div class="textfield-m3 textfield-outlined">
+              <div class="field-container">
+                <label class="field-label" for="cf-pass2">Confirm password</label>
+                <input id="cf-pass2" type="password">
+              </div>
+            </div>
+          </div>
+
+          <p class="form-section-header">Preferences</p>
+
+          <div style="display:flex;flex-direction:column;gap:var(--space-4);margin-bottom:var(--space-8)">
+            <p style="font-size:var(--typescale-body-medium-size);color:var(--color-on-surface);font-weight:500">Notification frequency</p>
+            <div style="display:flex;flex-direction:column;gap:var(--space-3)" role="radiogroup">
+              <label class="radio-m3">
+                <input type="radio" name="cf-notif" checked>
+                <span class="radio-circle"><span class="radio-dot"></span></span>
+                <span class="radio-label">Real-time alerts</span>
+              </label>
+              <label class="radio-m3">
+                <input type="radio" name="cf-notif">
+                <span class="radio-circle"><span class="radio-dot"></span></span>
+                <span class="radio-label">Daily digest</span>
+              </label>
+              <label class="radio-m3">
+                <input type="radio" name="cf-notif">
+                <span class="radio-circle"><span class="radio-dot"></span></span>
+                <span class="radio-label">No notifications</span>
+              </label>
+            </div>
+
+            <div style="margin-top:var(--space-4);display:flex;flex-direction:column;gap:var(--space-3)">
+              <label class="checkbox-m3" style="align-items:flex-start">
+                <input type="checkbox" checked>
+                <span class="checkbox-box"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                <span class="checkbox-label" style="font-size:var(--typescale-body-medium-size)">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
+              </label>
+              <label class="checkbox-m3">
+                <input type="checkbox">
+                <span class="checkbox-box"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                <span class="checkbox-label" style="font-size:var(--typescale-body-medium-size)">Subscribe to product news</span>
+              </label>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
+            <button type="button" class="btn-m3 btn-outlined">Cancel</button>
+            <button type="submit" class="btn-m3 btn-filled">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+              Create account
+            </button>
+          </div>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    // Float labels based on value
+    document.querySelectorAll('.textfield-m3 input, .textfield-m3 textarea').forEach(input => {
+      const update = () => {
+        input.closest('.textfield-m3').classList.toggle('has-value', input.value.length > 0);
+      };
+      input.addEventListener('input', update);
+      update();
+    });
+
+    // Font size slider label update
+    const fontSlider = document.getElementById('font-size-slider');
+    const fontLabel = document.getElementById('font-size-label');
+    if (fontSlider) {
+      fontSlider.addEventListener('input', () => {
+        fontLabel.textContent = `Font size — ${fontSlider.value}px`;
+        const pct = ((fontSlider.value - fontSlider.min) / (fontSlider.max - fontSlider.min)) * 100;
+        fontSlider.parentElement.style.setProperty('--slider-value', pct + '%');
+      });
+    }
+  </script>
+</body>
+</html>

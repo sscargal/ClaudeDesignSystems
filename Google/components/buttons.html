@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buttons — Material You Components</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .page-header {
+      position: sticky;
+      top: 0;
+      z-index: var(--z-app-bar);
+      background: var(--elevation-2);
+      border-bottom: 1px solid var(--color-outline-variant);
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: 0 var(--space-6);
+      height: var(--app-bar-height);
+    }
+    .page-header a {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--color-primary);
+      font-size: var(--typescale-label-large-size);
+      font-weight: var(--typescale-label-large-weight);
+      text-decoration: none;
+    }
+    .page-header a:hover { text-decoration: underline; }
+    .page-title {
+      font-family: var(--font-brand);
+      font-size: var(--typescale-title-large-size);
+      font-weight: 400;
+      color: var(--color-on-surface);
+    }
+    .content { padding: var(--space-8) 0 var(--space-16); }
+    .section { padding: var(--space-8) 0; border-bottom: 1px solid var(--color-outline-variant); }
+    .section:last-child { border-bottom: none; }
+    .section-title {
+      font-family: var(--font-brand);
+      font-size: var(--typescale-headline-small-size);
+      font-weight: 400;
+      color: var(--color-on-surface);
+      margin-bottom: var(--space-2);
+    }
+    .section-desc {
+      font-size: var(--typescale-body-medium-size);
+      color: var(--color-on-surface-variant);
+      margin-bottom: var(--space-6);
+      max-width: 600px;
+    }
+    .demo-label {
+      font-size: var(--typescale-label-small-size);
+      letter-spacing: var(--typescale-label-small-tracking);
+      color: var(--color-on-surface-variant);
+      display: block;
+      margin-bottom: var(--space-2);
+    }
+    .demo-group { display: flex; flex-direction: column; gap: var(--space-2); }
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+    .variant-grid {
+      display: grid;
+      grid-template-columns: repeat(5, auto);
+      gap: var(--space-4) var(--space-6);
+      align-items: center;
+      overflow-x: auto;
+    }
+    .variant-header {
+      font-size: var(--typescale-label-medium-size);
+      font-weight: var(--typescale-label-medium-weight);
+      color: var(--color-on-surface-variant);
+      letter-spacing: var(--typescale-label-medium-tracking);
+    }
+    .surface-showcase {
+      padding: var(--space-6);
+      border-radius: var(--shape-medium);
+      margin-bottom: var(--space-4);
+    }
+    .token-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--space-1) var(--space-2);
+      background: var(--color-surface-container-high);
+      border-radius: var(--shape-extra-small);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-on-surface-variant);
+    }
+    @media (max-width: 600px) {
+      .variant-grid { grid-template-columns: repeat(3, auto); }
+    }
+  </style>
+</head>
+<body>
+  <header class="page-header" role="banner">
+    <a href="../index.html" aria-label="Back to index">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+      Back
+    </a>
+    <h1 class="page-title">Buttons</h1>
+  </header>
+
+  <main class="content">
+    <div class="container">
+
+      <!-- OVERVIEW -->
+      <section class="section">
+        <h2 class="section-title">Overview</h2>
+        <p class="section-desc">Material Design 3 defines 5 button variants ordered by visual emphasis. All buttons use the full pill shape (<code>border-radius: 9999px</code>), label-large typography (14px, weight 500), 40px height, and state layers via <code>::before</code> pseudo-element.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-4)">
+          <span class="token-chip">--btn-height: 40px</span>
+          <span class="token-chip">--shape-button: 9999px</span>
+          <span class="token-chip">--typescale-label-large-size: 14px</span>
+          <span class="token-chip">--state-hover-opacity: 0.08</span>
+          <span class="token-chip">--state-pressed-opacity: 0.12</span>
+        </div>
+      </section>
+
+      <!-- ALL 5 VARIANTS — SIDE BY SIDE -->
+      <section class="section">
+        <h2 class="section-title">All Variants</h2>
+        <p class="section-desc">Each variant shown in default, hover-visible, and disabled states. Hover over buttons to see the 8% state layer.</p>
+
+        <div class="variant-grid" role="table" aria-label="Button variants">
+          <span class="variant-header" role="columnheader">Filled</span>
+          <span class="variant-header" role="columnheader">Filled Tonal</span>
+          <span class="variant-header" role="columnheader">Elevated</span>
+          <span class="variant-header" role="columnheader">Outlined</span>
+          <span class="variant-header" role="columnheader">Text</span>
+
+          <button class="btn-m3 btn-filled">Label</button>
+          <button class="btn-m3 btn-filled-tonal">Label</button>
+          <button class="btn-m3 btn-elevated">Label</button>
+          <button class="btn-m3 btn-outlined">Label</button>
+          <button class="btn-m3 btn-text">Label</button>
+
+          <button class="btn-m3 btn-filled" disabled>Disabled</button>
+          <button class="btn-m3 btn-filled-tonal" disabled>Disabled</button>
+          <button class="btn-m3 btn-elevated" disabled>Disabled</button>
+          <button class="btn-m3 btn-outlined" disabled>Disabled</button>
+          <button class="btn-m3 btn-text" disabled>Disabled</button>
+        </div>
+      </section>
+
+      <!-- FILLED BUTTON -->
+      <section class="section">
+        <h2 class="section-title">Filled Button</h2>
+        <p class="section-desc">Highest emphasis. Used for the primary, most important action. Background: <span class="token-chip">--color-primary</span>. On hover: shadow-elevation-1 + 8% on-primary state layer.</p>
+        <div class="demo-row">
+          <div class="demo-group">
+            <span class="demo-label">Default</span>
+            <button class="btn-m3 btn-filled">Get Started</button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">With leading icon</span>
+            <button class="btn-m3 btn-filled">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+              Add to cart
+            </button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Disabled</span>
+            <button class="btn-m3 btn-filled" disabled>Get Started</button>
+          </div>
+        </div>
+        <div class="surface-showcase" style="background:var(--color-primary)">
+          <p style="color:var(--color-on-primary);margin-bottom:var(--space-4);font-size:var(--typescale-label-medium-size);">On colored surface</p>
+          <div class="demo-row" style="margin:0">
+            <button class="btn-m3 btn-outlined" style="color:var(--color-on-primary);border-color:var(--color-on-primary)">Cancel</button>
+            <button class="btn-m3" style="background:var(--color-on-primary);color:var(--color-primary)">Confirm</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- FILLED TONAL BUTTON -->
+      <section class="section">
+        <h2 class="section-title">Filled Tonal Button</h2>
+        <p class="section-desc">Second highest emphasis. Less prominent than filled. Background: <span class="token-chip">--color-secondary-container</span>. Ideal for secondary actions paired with a filled button.</p>
+        <div class="demo-row">
+          <div class="demo-group">
+            <span class="demo-label">Default</span>
+            <button class="btn-m3 btn-filled-tonal">Save Draft</button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">With icon</span>
+            <button class="btn-m3 btn-filled-tonal">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg>
+              Save
+            </button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Disabled</span>
+            <button class="btn-m3 btn-filled-tonal" disabled>Save Draft</button>
+          </div>
+        </div>
+        <div class="demo-row">
+          <button class="btn-m3 btn-filled">Confirm</button>
+          <button class="btn-m3 btn-filled-tonal">Save &amp; Continue</button>
+        </div>
+      </section>
+
+      <!-- ELEVATED BUTTON -->
+      <section class="section">
+        <h2 class="section-title">Elevated Button</h2>
+        <p class="section-desc">Tinted surface background with shadow-elevation-1. Used when visual separation from background is needed without high emphasis. Background: <span class="token-chip">--elevation-1</span>.</p>
+        <div class="demo-row">
+          <div class="demo-group">
+            <span class="demo-label">Default</span>
+            <button class="btn-m3 btn-elevated">Explore</button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">With icon</span>
+            <button class="btn-m3 btn-elevated">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+              Search
+            </button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Disabled</span>
+            <button class="btn-m3 btn-elevated" disabled>Explore</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- OUTLINED BUTTON -->
+      <section class="section">
+        <h2 class="section-title">Outlined Button</h2>
+        <p class="section-desc">Medium emphasis. Transparent background with 1px outline border. Use for secondary actions that need clear affordance but minimal visual weight. Border: <span class="token-chip">--color-outline</span>.</p>
+        <div class="demo-row">
+          <div class="demo-group">
+            <span class="demo-label">Default</span>
+            <button class="btn-m3 btn-outlined">Cancel</button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">With icon</span>
+            <button class="btn-m3 btn-outlined">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+              Download
+            </button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Disabled</span>
+            <button class="btn-m3 btn-outlined" disabled>Cancel</button>
+          </div>
+        </div>
+        <div class="demo-row">
+          <button class="btn-m3 btn-filled">Submit</button>
+          <button class="btn-m3 btn-outlined">Cancel</button>
+        </div>
+      </section>
+
+      <!-- TEXT BUTTON -->
+      <section class="section">
+        <h2 class="section-title">Text Button</h2>
+        <p class="section-desc">Lowest emphasis. No background or border. Reduced horizontal padding (12px vs 24px). Best for low-stakes actions like "Skip" or inline text links. <span class="token-chip">padding: 0 12px</span>.</p>
+        <div class="demo-row">
+          <div class="demo-group">
+            <span class="demo-label">Default</span>
+            <button class="btn-m3 btn-text">Learn more</button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">With icon</span>
+            <button class="btn-m3 btn-text">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+              Delete
+            </button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Disabled</span>
+            <button class="btn-m3 btn-text" disabled>Learn more</button>
+          </div>
+        </div>
+        <div class="demo-row">
+          <button class="btn-m3 btn-text">Dismiss</button>
+          <button class="btn-m3 btn-text">View all</button>
+          <button class="btn-m3 btn-text">Skip for now</button>
+        </div>
+      </section>
+
+      <!-- FAB -->
+      <section class="section">
+        <h2 class="section-title">Floating Action Button (FAB)</h2>
+        <p class="section-desc">The most prominent button. Used for the primary action of a screen. Three sizes and an extended variant. Background defaults to <span class="token-chip">--color-tertiary-container</span> with shadow-elevation-3.</p>
+
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Size variants</h3>
+        <div class="demo-row" style="align-items:flex-end">
+          <div class="demo-group">
+            <span class="demo-label">Small (40px)</span>
+            <button class="fab fab--small" aria-label="Add">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            </button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Default (56px)</span>
+            <button class="fab" aria-label="Compose">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+            </button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Large (96px)</span>
+            <button class="fab fab--large" aria-label="Create">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <h3 class="title-small" style="margin-top:var(--space-6);margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Color variants</h3>
+        <div class="demo-row" style="align-items:flex-end">
+          <div class="demo-group">
+            <span class="demo-label">Default (Tertiary container)</span>
+            <button class="fab" aria-label="Default FAB">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            </button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Primary container</span>
+            <button class="fab fab--primary" aria-label="Primary FAB">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            </button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Secondary container</span>
+            <button class="fab fab--secondary" aria-label="Secondary FAB">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <h3 class="title-small" style="margin-top:var(--space-6);margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Extended FAB</h3>
+        <div class="demo-row">
+          <button class="fab fab--extended" aria-label="Compose new message">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+            Compose
+          </button>
+          <button class="fab fab--extended fab--primary" aria-label="Add new item">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            New Item
+          </button>
+          <button class="fab fab--extended fab--secondary" aria-label="Share">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+            Share
+          </button>
+        </div>
+      </section>
+
+      <!-- ICON BUTTONS -->
+      <section class="section">
+        <h2 class="section-title">Icon Buttons</h2>
+        <p class="section-desc">40px circular buttons for icon-only actions. Four variants: Standard, Filled, Tonal, Outlined. All have 24px icons and state layers.</p>
+
+        <div class="demo-row">
+          <div class="demo-group">
+            <span class="demo-label">Standard</span>
+            <button class="btn-icon-m3 btn-icon-standard" aria-label="Favorite">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Filled</span>
+            <button class="btn-icon-m3 btn-icon-filled" aria-label="Bookmark">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/></svg>
+            </button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Tonal</span>
+            <button class="btn-icon-m3 btn-icon-tonal" aria-label="Settings">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+            </button>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Outlined</span>
+            <button class="btn-icon-m3 btn-icon-outlined" aria-label="Share">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">With tooltip</h3>
+        <div class="demo-row">
+          <div class="tooltip-m3" data-tooltip="Add to favorites">
+            <button class="btn-icon-m3 btn-icon-standard" aria-label="Add to favorites">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </button>
+          </div>
+          <div class="tooltip-m3" data-tooltip="Download">
+            <button class="btn-icon-m3 btn-icon-tonal" aria-label="Download">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            </button>
+          </div>
+          <div class="tooltip-m3" data-tooltip="More options">
+            <button class="btn-icon-m3 btn-icon-outlined" aria-label="More options">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">With badges</h3>
+        <div class="demo-row">
+          <div class="demo-group">
+            <span class="demo-label">Dot badge</span>
+            <div class="badge-wrapper">
+              <button class="btn-icon-m3 btn-icon-standard" aria-label="Notifications with new activity">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+              </button>
+              <span class="badge-m3 badge-m3--dot"></span>
+            </div>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Numbered badge</span>
+            <div class="badge-wrapper">
+              <button class="btn-icon-m3 btn-icon-filled" aria-label="Messages, 7 unread">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              </button>
+              <span class="badge-m3">7</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BUTTON GROUPS / COMMON PATTERNS -->
+      <section class="section">
+        <h2 class="section-title">Common Patterns</h2>
+        <p class="section-desc">Real-world button pairings following M3 emphasis hierarchy.</p>
+
+        <div style="display:flex;flex-direction:column;gap:var(--space-6)">
+          <div>
+            <span class="demo-label">Dialog actions (text + filled)</span>
+            <div class="demo-row" style="margin:0">
+              <button class="btn-m3 btn-text">Cancel</button>
+              <button class="btn-m3 btn-filled">Confirm</button>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">Form submit (outlined + filled)</span>
+            <div class="demo-row" style="margin:0">
+              <button class="btn-m3 btn-outlined">Save as draft</button>
+              <button class="btn-m3 btn-filled">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                Publish
+              </button>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">Destructive action (text + error-filled)</span>
+            <div class="demo-row" style="margin:0">
+              <button class="btn-m3 btn-text">Keep file</button>
+              <button class="btn-m3 btn-filled" style="background:var(--color-error);color:var(--color-on-error)">Delete permanently</button>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">Toolbar (icon buttons)</span>
+            <div class="demo-row" style="margin:0;background:var(--color-surface-container);padding:var(--space-2);border-radius:var(--shape-large);width:fit-content">
+              <button class="btn-icon-m3 btn-icon-standard" aria-label="Bold"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.6 10.79c.97-.67 1.65-1.77 1.65-2.79 0-2.26-1.75-4-4-4H7v14h7.04c2.09 0 3.71-1.7 3.71-3.79 0-1.52-.86-2.82-2.15-3.42zM10 6.5h3c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-3v-3zm3.5 9H10v-3h3.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5z"/></svg></button>
+              <button class="btn-icon-m3 btn-icon-standard" aria-label="Italic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4v3h2.21l-3.42 8H6v3h8v-3h-2.21l3.42-8H18V4z"/></svg></button>
+              <button class="btn-icon-m3 btn-icon-standard" aria-label="Underline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17c3.31 0 6-2.69 6-6V3h-2.5v8c0 1.93-1.57 3.5-3.5 3.5S8.5 12.93 8.5 11V3H6v8c0 3.31 2.69 6 6 6zm-7 2v2h14v-2H5z"/></svg></button>
+              <div style="width:1px;height:24px;background:var(--color-outline-variant);margin:0 var(--space-1)"></div>
+              <button class="btn-icon-m3 btn-icon-standard" aria-label="Align left"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 15H3v2h12v-2zm0-8H3v2h12V7zM3 13h18v-2H3v2zm0 8h18v-2H3v2zM3 3v2h18V3H3z"/></svg></button>
+              <button class="btn-icon-m3 btn-icon-standard" aria-label="Align center"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 15v2h10v-2H7zm-4 6h18v-2H3v2zm0-8h18v-2H3v2zm4-6v2h10V7H7zM3 3v2h18V3H3z"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,411 @@
+/* =============================================================================
+   Google Material You Design System — Design Tokens
+   Version 1.0.0 | Material Design 3 / Dynamic Color
+   Seed Color: Google Blue #4285F4
+   Reference: m3.material.io
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     COLOR SYSTEM — Light Mode
+     Material You color roles derived from seed color #4285F4
+     --------------------------------------------------------------------------- */
+
+  /* Primary */
+  --color-primary:                  #4285F4;
+  --color-on-primary:               #FFFFFF;
+  --color-primary-container:        #D3E4FF;
+  --color-on-primary-container:     #001C3B;
+
+  /* Secondary */
+  --color-secondary:                #5A6472;
+  --color-on-secondary:             #FFFFFF;
+  --color-secondary-container:      #DCE4F0;
+  --color-on-secondary-container:   #171E27;
+
+  /* Tertiary */
+  --color-tertiary:                 #6D5778;
+  --color-on-tertiary:              #FFFFFF;
+  --color-tertiary-container:       #F4DAFF;
+  --color-on-tertiary-container:    #271632;
+
+  /* Error */
+  --color-error:                    #BA1A1A;
+  --color-on-error:                 #FFFFFF;
+  --color-error-container:          #FFDAD6;
+  --color-on-error-container:       #410002;
+
+  /* Surface */
+  --color-surface:                  #F8F9FF;
+  --color-on-surface:               #1A1C22;
+  --color-surface-variant:          #E1E2EC;
+  --color-on-surface-variant:       #44464F;
+  --color-surface-container-lowest: #FFFFFF;
+  --color-surface-container-low:    #F2F3FA;
+  --color-surface-container:        #ECEDF4;
+  --color-surface-container-high:   #E7E8EF;
+  --color-surface-container-highest:#E1E2E9;
+
+  /* Inverse */
+  --color-inverse-surface:          #2F3038;
+  --color-inverse-on-surface:       #E3E2EC;
+  --color-inverse-primary:          #A4C8FF;
+
+  /* Background */
+  --color-background:               #F8F9FF;
+  --color-on-background:            #1A1C22;
+
+  /* Outline */
+  --color-outline:                  #74777F;
+  --color-outline-variant:          #C4C6D0;
+
+  /* Scrim */
+  --color-scrim:                    #000000;
+  --color-shadow:                   #000000;
+
+  /* ---------------------------------------------------------------------------
+     ELEVATION — Surface Tones (M3 elevation via primary tint)
+     Level 0: no tint  |  Level 1: 5%  |  Level 2: 8%  |  Level 3: 11%
+     Level 4: 12%  |  Level 5: 14%
+     --------------------------------------------------------------------------- */
+
+  --elevation-0:  var(--color-surface);
+  --elevation-1:  color-mix(in srgb, var(--color-primary) 5%, var(--color-surface));
+  --elevation-2:  color-mix(in srgb, var(--color-primary) 8%, var(--color-surface));
+  --elevation-3:  color-mix(in srgb, var(--color-primary) 11%, var(--color-surface));
+  --elevation-4:  color-mix(in srgb, var(--color-primary) 12%, var(--color-surface));
+  --elevation-5:  color-mix(in srgb, var(--color-primary) 14%, var(--color-surface));
+
+  /* Fallback hex values for browsers without color-mix support */
+  --elevation-1-hex: #EDF2FF;
+  --elevation-2-hex: #E5EDFF;
+  --elevation-3-hex: #DCEAFF;
+  --elevation-4-hex: #D9E8FF;
+  --elevation-5-hex: #D4E5FF;
+
+  /* Elevation shadows (M3 uses minimal shadows, relies on tint) */
+  --shadow-elevation-1: 0px 1px 2px rgba(0, 0, 0, 0.30), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --shadow-elevation-2: 0px 1px 2px rgba(0, 0, 0, 0.30), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+  --shadow-elevation-3: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.30);
+  --shadow-elevation-4: 0px 6px 10px 4px rgba(0, 0, 0, 0.15), 0px 2px 3px rgba(0, 0, 0, 0.30);
+  --shadow-elevation-5: 0px 8px 12px 6px rgba(0, 0, 0, 0.15), 0px 4px 4px rgba(0, 0, 0, 0.30);
+
+  /* ---------------------------------------------------------------------------
+     TONAL PALETTE — Full 11-stop primary tonal palette (tone 0–100)
+     Derived from seed color #4285F4
+     --------------------------------------------------------------------------- */
+
+  --palette-primary-0:   #000000;
+  --palette-primary-10:  #001C3B;
+  --palette-primary-20:  #003062;
+  --palette-primary-30:  #00468C;
+  --palette-primary-40:  #4285F4;
+  --palette-primary-50:  #4A90F5;
+  --palette-primary-60:  #6BA3F7;
+  --palette-primary-70:  #8DB7F8;
+  --palette-primary-80:  #A4C8FF;
+  --palette-primary-90:  #D3E4FF;
+  --palette-primary-95:  #EAF1FF;
+  --palette-primary-99:  #FDFCFF;
+  --palette-primary-100: #FFFFFF;
+
+  /* ---------------------------------------------------------------------------
+     TYPOGRAPHY
+     --------------------------------------------------------------------------- */
+
+  --font-brand:    "Google Sans", "Product Sans", Roboto, system-ui, sans-serif;
+  --font-body:     "Roboto", system-ui, -apple-system, sans-serif;
+  --font-mono:     "Roboto Mono", "Google Sans Mono", ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+
+  /* M3 Type Scale — sizes */
+  --typescale-display-large-size:       57px;
+  --typescale-display-large-weight:     400;
+  --typescale-display-large-tracking:   -0.25px;
+  --typescale-display-large-leading:    64px;
+
+  --typescale-display-medium-size:      45px;
+  --typescale-display-medium-weight:    400;
+  --typescale-display-medium-tracking:  0px;
+  --typescale-display-medium-leading:   52px;
+
+  --typescale-display-small-size:       36px;
+  --typescale-display-small-weight:     400;
+  --typescale-display-small-tracking:   0px;
+  --typescale-display-small-leading:    44px;
+
+  --typescale-headline-large-size:      32px;
+  --typescale-headline-large-weight:    400;
+  --typescale-headline-large-tracking:  0px;
+  --typescale-headline-large-leading:   40px;
+
+  --typescale-headline-medium-size:     28px;
+  --typescale-headline-medium-weight:   400;
+  --typescale-headline-medium-tracking: 0px;
+  --typescale-headline-medium-leading:  36px;
+
+  --typescale-headline-small-size:      24px;
+  --typescale-headline-small-weight:    400;
+  --typescale-headline-small-tracking:  0px;
+  --typescale-headline-small-leading:   32px;
+
+  --typescale-title-large-size:         22px;
+  --typescale-title-large-weight:       400;
+  --typescale-title-large-tracking:     0px;
+  --typescale-title-large-leading:      28px;
+
+  --typescale-title-medium-size:        16px;
+  --typescale-title-medium-weight:      500;
+  --typescale-title-medium-tracking:    0.15px;
+  --typescale-title-medium-leading:     24px;
+
+  --typescale-title-small-size:         14px;
+  --typescale-title-small-weight:       500;
+  --typescale-title-small-tracking:     0.1px;
+  --typescale-title-small-leading:      20px;
+
+  --typescale-label-large-size:         14px;
+  --typescale-label-large-weight:       500;
+  --typescale-label-large-tracking:     0.1px;
+  --typescale-label-large-leading:      20px;
+
+  --typescale-label-medium-size:        12px;
+  --typescale-label-medium-weight:      500;
+  --typescale-label-medium-tracking:    0.5px;
+  --typescale-label-medium-leading:     16px;
+
+  --typescale-label-small-size:         11px;
+  --typescale-label-small-weight:       500;
+  --typescale-label-small-tracking:     0.5px;
+  --typescale-label-small-leading:      16px;
+
+  --typescale-body-large-size:          16px;
+  --typescale-body-large-weight:        400;
+  --typescale-body-large-tracking:      0.5px;
+  --typescale-body-large-leading:       24px;
+
+  --typescale-body-medium-size:         14px;
+  --typescale-body-medium-weight:       400;
+  --typescale-body-medium-tracking:     0.25px;
+  --typescale-body-medium-leading:      20px;
+
+  --typescale-body-small-size:          12px;
+  --typescale-body-small-weight:        400;
+  --typescale-body-small-tracking:      0.4px;
+  --typescale-body-small-leading:       16px;
+
+  /* ---------------------------------------------------------------------------
+     SPACING — 4px Base Grid
+     --------------------------------------------------------------------------- */
+
+  --space-1:    4px;
+  --space-2:    8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-7:   28px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-14:  56px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-32: 128px;
+
+  /* ---------------------------------------------------------------------------
+     SHAPE — M3 Shape Scale
+     --------------------------------------------------------------------------- */
+
+  --shape-none:        0px;
+  --shape-extra-small: 4px;
+  --shape-small:       8px;
+  --shape-medium:      12px;
+  --shape-large:       16px;
+  --shape-extra-large: 28px;
+  --shape-full:        9999px;
+
+  /* Component shape mappings */
+  --shape-button:       var(--shape-full);
+  --shape-chip:         var(--shape-small);
+  --shape-card:         var(--shape-medium);
+  --shape-dialog:       var(--shape-extra-large);
+  --shape-bottom-sheet: var(--shape-extra-large);
+  --shape-menu:         var(--shape-extra-small);
+  --shape-snackbar:     var(--shape-extra-small);
+  --shape-textfield:    var(--shape-extra-small) var(--shape-extra-small) 0 0;
+  --shape-fab:          var(--shape-large);
+  --shape-fab-small:    var(--shape-medium);
+  --shape-fab-large:    var(--shape-extra-large);
+  --shape-nav-indicator: var(--shape-full);
+
+  /* ---------------------------------------------------------------------------
+     MOTION — M3 Easing Curves & Durations
+     --------------------------------------------------------------------------- */
+
+  /* Easing curves */
+  --motion-easing-standard:            cubic-bezier(0.2, 0, 0, 1);
+  --motion-easing-standard-decelerate: cubic-bezier(0, 0, 0, 1);
+  --motion-easing-standard-accelerate: cubic-bezier(0.3, 0, 1, 1);
+  --motion-easing-emphasized:          cubic-bezier(0.2, 0, 0, 1);
+  --motion-easing-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --motion-easing-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+  --motion-easing-legacy:              cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-easing-legacy-decelerate:   cubic-bezier(0, 0, 0.2, 1);
+  --motion-easing-legacy-accelerate:   cubic-bezier(0.4, 0, 1, 1);
+
+  /* Durations */
+  --motion-duration-short-1:  50ms;
+  --motion-duration-short-2:  100ms;
+  --motion-duration-short-3:  150ms;
+  --motion-duration-short-4:  200ms;
+  --motion-duration-medium-1: 250ms;
+  --motion-duration-medium-2: 300ms;
+  --motion-duration-medium-3: 350ms;
+  --motion-duration-medium-4: 400ms;
+  --motion-duration-long-1:   450ms;
+  --motion-duration-long-2:   500ms;
+  --motion-duration-long-3:   550ms;
+  --motion-duration-long-4:   600ms;
+  --motion-duration-extra-long-1: 700ms;
+  --motion-duration-extra-long-2: 800ms;
+  --motion-duration-extra-long-3: 900ms;
+  --motion-duration-extra-long-4: 1000ms;
+
+  /* Common transition shorthands */
+  --transition-standard:    all var(--motion-duration-short-4) var(--motion-easing-standard);
+  --transition-emphasized:  all var(--motion-duration-long-2) var(--motion-easing-emphasized);
+  --transition-decelerate:  all var(--motion-duration-medium-4) var(--motion-easing-standard-decelerate);
+  --transition-accelerate:  all var(--motion-duration-short-4) var(--motion-easing-standard-accelerate);
+
+  /* ---------------------------------------------------------------------------
+     STATE LAYERS — M3 interaction model
+     --------------------------------------------------------------------------- */
+
+  --state-hover-opacity:   0.08;
+  --state-focus-opacity:   0.12;
+  --state-pressed-opacity: 0.12;
+  --state-dragged-opacity: 0.16;
+  --state-disabled-opacity: 0.38;
+
+  /* ---------------------------------------------------------------------------
+     COMPONENT DIMENSIONS
+     --------------------------------------------------------------------------- */
+
+  --btn-height:         40px;
+  --btn-height-sm:      32px;
+  --fab-size:           56px;
+  --fab-size-small:     40px;
+  --fab-size-large:     96px;
+  --chip-height:        32px;
+  --textfield-height:   56px;
+  --nav-bar-height:     80px;
+  --nav-rail-width:     80px;
+  --nav-drawer-width:   360px;
+  --app-bar-height:     64px;
+  --list-item-height-1: 56px;
+  --list-item-height-2: 72px;
+  --list-item-height-3: 88px;
+  --dialog-max-width:   560px;
+
+  /* ---------------------------------------------------------------------------
+     Z-INDEX SCALE
+     --------------------------------------------------------------------------- */
+
+  --z-base:         0;
+  --z-raised:       10;
+  --z-nav:          100;
+  --z-app-bar:      200;
+  --z-drawer:       300;
+  --z-modal-scrim:  400;
+  --z-modal:        500;
+  --z-snackbar:     600;
+  --z-tooltip:      700;
+
+  /* ---------------------------------------------------------------------------
+     LAYOUT
+     --------------------------------------------------------------------------- */
+
+  --max-width-content: 1200px;
+  --max-width-compact: 600px;
+  --max-width-medium:  840px;
+}
+
+/* =============================================================================
+   DARK MODE — Material You Dark Color Scheme
+   ============================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+
+    /* Primary */
+    --color-primary:                  #A4C8FF;
+    --color-on-primary:               #00315E;
+    --color-primary-container:        #004785;
+    --color-on-primary-container:     #D3E4FF;
+
+    /* Secondary */
+    --color-secondary:                #BCC8D9;
+    --color-on-secondary:             #263141;
+    --color-secondary-container:      #3C4858;
+    --color-on-secondary-container:   #DCE4F0;
+
+    /* Tertiary */
+    --color-tertiary:                 #D9BDEA;
+    --color-on-tertiary:              #3E2B49;
+    --color-tertiary-container:       #564161;
+    --color-on-tertiary-container:    #F4DAFF;
+
+    /* Error */
+    --color-error:                    #FFB4AB;
+    --color-on-error:                 #690005;
+    --color-error-container:          #93000A;
+    --color-on-error-container:       #FFDAD6;
+
+    /* Surface */
+    --color-surface:                  #111318;
+    --color-on-surface:               #E3E2EC;
+    --color-surface-variant:          #44464F;
+    --color-on-surface-variant:       #C4C6D0;
+    --color-surface-container-lowest: #0C0E13;
+    --color-surface-container-low:    #1A1C22;
+    --color-surface-container:        #1E2027;
+    --color-surface-container-high:   #282A31;
+    --color-surface-container-highest:#333540;
+
+    /* Inverse */
+    --color-inverse-surface:          #E3E2EC;
+    --color-inverse-on-surface:       #2F3038;
+    --color-inverse-primary:          #4285F4;
+
+    /* Background */
+    --color-background:               #111318;
+    --color-on-background:            #E3E2EC;
+
+    /* Outline */
+    --color-outline:                  #8E9099;
+    --color-outline-variant:          #44464F;
+
+    /* Dark elevation — uses surface tints */
+    --elevation-0:  var(--color-surface);
+    --elevation-1:  color-mix(in srgb, var(--color-primary) 5%, var(--color-surface));
+    --elevation-2:  color-mix(in srgb, var(--color-primary) 8%, var(--color-surface));
+    --elevation-3:  color-mix(in srgb, var(--color-primary) 11%, var(--color-surface));
+    --elevation-4:  color-mix(in srgb, var(--color-primary) 12%, var(--color-surface));
+    --elevation-5:  color-mix(in srgb, var(--color-primary) 14%, var(--color-surface));
+
+    --elevation-1-hex: #172030;
+    --elevation-2-hex: #1A2438;
+    --elevation-3-hex: #1C2840;
+    --elevation-4-hex: #1D2942;
+    --elevation-5-hex: #1F2B46;
+
+    /* Shadows are more prominent in dark mode */
+    --shadow-elevation-1: 0px 1px 2px rgba(0, 0, 0, 0.60), 0px 1px 3px 1px rgba(0, 0, 0, 0.30);
+    --shadow-elevation-2: 0px 1px 2px rgba(0, 0, 0, 0.60), 0px 2px 6px 2px rgba(0, 0, 0, 0.30);
+    --shadow-elevation-3: 0px 4px 8px 3px rgba(0, 0, 0, 0.30), 0px 1px 3px rgba(0, 0, 0, 0.60);
+    --shadow-elevation-4: 0px 6px 10px 4px rgba(0, 0, 0, 0.30), 0px 2px 3px rgba(0, 0, 0, 0.60);
+    --shadow-elevation-5: 0px 8px 12px 6px rgba(0, 0, 0, 0.30), 0px 4px 4px rgba(0, 0, 0, 0.60);
+  }
+}

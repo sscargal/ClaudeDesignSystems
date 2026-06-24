@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modals &amp; Overlays — Material You Components</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .page-header {
+      position: sticky; top: 0; z-index: var(--z-app-bar);
+      background: var(--elevation-2);
+      border-bottom: 1px solid var(--color-outline-variant);
+      display: flex; align-items: center; gap: var(--space-4);
+      padding: 0 var(--space-6); height: var(--app-bar-height);
+    }
+    .page-header a {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      color: var(--color-primary); font-size: var(--typescale-label-large-size);
+      font-weight: var(--typescale-label-large-weight); text-decoration: none;
+    }
+    .page-header a:hover { text-decoration: underline; }
+    .page-title { font-family: var(--font-brand); font-size: var(--typescale-title-large-size); font-weight: 400; color: var(--color-on-surface); }
+    .content { padding: var(--space-8) 0 var(--space-16); }
+    .section { padding: var(--space-8) 0; border-bottom: 1px solid var(--color-outline-variant); }
+    .section:last-child { border-bottom: none; }
+    .section-title { font-family: var(--font-brand); font-size: var(--typescale-headline-small-size); font-weight: 400; color: var(--color-on-surface); margin-bottom: var(--space-2); }
+    .section-desc { font-size: var(--typescale-body-medium-size); color: var(--color-on-surface-variant); margin-bottom: var(--space-6); max-width: 600px; }
+    .demo-label { font-size: var(--typescale-label-small-size); letter-spacing: var(--typescale-label-small-tracking); color: var(--color-on-surface-variant); display: block; margin-bottom: var(--space-2); }
+    .demo-group { display: flex; flex-direction: column; gap: var(--space-2); }
+    .demo-row { display: flex; flex-wrap: wrap; align-items: flex-start; gap: var(--space-6); margin-bottom: var(--space-6); }
+
+    /* Static rendering overrides */
+    .dialog-static {
+      position: static;
+      display: flex; flex-direction: column;
+      background: var(--elevation-3);
+      border-radius: var(--shape-dialog);
+      box-shadow: var(--shadow-elevation-3);
+      overflow: hidden;
+      width: 100%;
+      max-width: 400px;
+      animation: none;
+    }
+    .bottom-sheet-static {
+      position: static;
+      border-radius: var(--shape-bottom-sheet) var(--shape-bottom-sheet) 0 0;
+      background: var(--color-surface-container-low);
+      box-shadow: var(--shadow-elevation-3);
+      animation: none;
+      max-width: 440px;
+    }
+    .snackbar-static {
+      position: static;
+      transform: none;
+      animation: none;
+      width: auto;
+      max-width: 560px;
+      min-width: 288px;
+    }
+    .menu-static {
+      position: static;
+      animation: none;
+    }
+
+    /* Simulated scrim preview */
+    .scrim-preview {
+      background: rgba(0,0,0,0.32);
+      border-radius: var(--shape-medium);
+      padding: var(--space-8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+    }
+
+    /* Tooltip demo */
+    .tooltip-demo-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-8);
+      align-items: flex-end;
+      padding: var(--space-8) 0 var(--space-4);
+    }
+  </style>
+</head>
+<body>
+  <header class="page-header" role="banner">
+    <a href="../index.html" aria-label="Back to index">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+      Back
+    </a>
+    <h1 class="page-title">Modals &amp; Overlays</h1>
+  </header>
+
+  <main class="content">
+    <div class="container">
+
+      <!-- DIALOGS -->
+      <section class="section">
+        <h2 class="section-title">Dialogs</h2>
+        <p class="section-desc">M3 Dialogs appear over a scrim. They use <code>--shape-dialog: 28px</code> radius, elevation 3 background, and animate in with <code>m3ScaleIn</code>. They have three parts: optional icon, headline, body, and actions.</p>
+
+        <div class="demo-row">
+          <!-- Centered with icon -->
+          <div>
+            <span class="demo-label">With icon (centered)</span>
+            <div class="scrim-preview">
+              <div class="dialog-static" role="dialog" aria-modal="true" aria-labelledby="d1-title">
+                <div class="dialog-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                </div>
+                <h2 class="dialog-headline" id="d1-title">Permanently delete?</h2>
+                <div class="dialog-body">This action cannot be undone. All data associated with this account will be permanently removed from our servers.</div>
+                <div class="dialog-actions">
+                  <button class="btn-m3 btn-text">Cancel</button>
+                  <button class="btn-m3 btn-filled" style="background:var(--color-error);color:var(--color-on-error)">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Left-aligned headline, no icon -->
+          <div>
+            <span class="demo-label">No icon (left-aligned)</span>
+            <div class="scrim-preview">
+              <div class="dialog-static" role="dialog" aria-modal="true" aria-labelledby="d2-title">
+                <h2 class="dialog-headline dialog-headline--left" id="d2-title">Use location services?</h2>
+                <div class="dialog-body">Allow Maps to access your location to show nearby results and provide turn-by-turn navigation. You can change this in Settings at any time.</div>
+                <div class="dialog-actions">
+                  <button class="btn-m3 btn-text">Deny</button>
+                  <button class="btn-m3 btn-text">Allow once</button>
+                  <button class="btn-m3 btn-filled">Allow always</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-row">
+          <!-- Confirmation dialog -->
+          <div>
+            <span class="demo-label">Selection / confirmation</span>
+            <div class="scrim-preview">
+              <div class="dialog-static" role="dialog" aria-modal="true" aria-labelledby="d3-title">
+                <h2 class="dialog-headline dialog-headline--left" id="d3-title">Change ringtone</h2>
+                <div class="dialog-divider"></div>
+                <div class="dialog-body" style="padding-top:var(--space-2);padding-bottom:var(--space-2)">
+                  <div style="display:flex;flex-direction:column;gap:0">
+                    <label class="radio-m3" style="padding:var(--space-3) 0">
+                      <input type="radio" name="ring" checked>
+                      <span class="radio-circle"><span class="radio-dot"></span></span>
+                      <span class="radio-label">Default ringtone</span>
+                    </label>
+                    <label class="radio-m3" style="padding:var(--space-3) 0">
+                      <input type="radio" name="ring">
+                      <span class="radio-circle"><span class="radio-dot"></span></span>
+                      <span class="radio-label">Moonlight Sonata</span>
+                    </label>
+                    <label class="radio-m3" style="padding:var(--space-3) 0">
+                      <input type="radio" name="ring">
+                      <span class="radio-circle"><span class="radio-dot"></span></span>
+                      <span class="radio-label">Digital bells</span>
+                    </label>
+                    <label class="radio-m3" style="padding:var(--space-3) 0">
+                      <input type="radio" name="ring">
+                      <span class="radio-circle"><span class="radio-dot"></span></span>
+                      <span class="radio-label">Pixel default</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="dialog-divider"></div>
+                <div class="dialog-actions">
+                  <button class="btn-m3 btn-text">Cancel</button>
+                  <button class="btn-m3 btn-filled">OK</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Alert dialog with icon -->
+          <div>
+            <span class="demo-label">Alert / warning icon</span>
+            <div class="scrim-preview">
+              <div class="dialog-static" role="dialog" aria-modal="true" aria-labelledby="d4-title">
+                <div class="dialog-icon">
+                  <svg viewBox="0 0 24 24" style="fill:var(--color-error)" aria-hidden="true"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                </div>
+                <h2 class="dialog-headline" id="d4-title">Unsaved changes</h2>
+                <div class="dialog-body">You have unsaved changes that will be lost if you navigate away. Do you want to save before leaving?</div>
+                <div class="dialog-actions">
+                  <button class="btn-m3 btn-text">Discard</button>
+                  <button class="btn-m3 btn-filled">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOTTOM SHEETS -->
+      <section class="section">
+        <h2 class="section-title">Bottom Sheets</h2>
+        <p class="section-desc">Bottom sheets slide up from the bottom of the screen. They use <code>--shape-bottom-sheet: 28px</code> top radius and a drag handle. Modal variant has a scrim; non-modal doesn't.</p>
+
+        <div class="demo-row">
+          <div>
+            <span class="demo-label">Standard bottom sheet</span>
+            <div class="bottom-sheet-static">
+              <div class="bottom-sheet-handle" role="presentation"></div>
+              <div class="bottom-sheet-header">
+                <p class="bottom-sheet-headline">Share</p>
+              </div>
+              <div class="bottom-sheet-content">
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4);text-align:center;margin-bottom:var(--space-6)">
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-2)">
+                    <div style="width:48px;height:48px;background:var(--color-primary-container);border-radius:var(--shape-full);display:flex;align-items:center;justify-content:center">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--color-on-primary-container)" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                    <span class="label-small">Email</span>
+                  </div>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-2)">
+                    <div style="width:48px;height:48px;background:var(--color-secondary-container);border-radius:var(--shape-full);display:flex;align-items:center;justify-content:center">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--color-on-secondary-container)" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+                    </div>
+                    <span class="label-small">Message</span>
+                  </div>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-2)">
+                    <div style="width:48px;height:48px;background:var(--color-tertiary-container);border-radius:var(--shape-full);display:flex;align-items:center;justify-content:center">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--color-on-tertiary-container)" aria-hidden="true"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+                    </div>
+                    <span class="label-small">Link</span>
+                  </div>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-2)">
+                    <div style="width:48px;height:48px;background:var(--color-surface-container-high);border-radius:var(--shape-full);display:flex;align-items:center;justify-content:center">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--color-on-surface)" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    </div>
+                    <span class="label-small">Download</span>
+                  </div>
+                </div>
+                <hr class="divider-m3" style="margin-bottom:var(--space-3)">
+                <ul class="list-m3" style="background:transparent">
+                  <li class="list-item-m3" tabindex="0" role="button">
+                    <span class="list-item-leading"><svg class="list-item-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></span>
+                    <div class="list-item-content"><span class="list-item-headline">Copy link</span></div>
+                  </li>
+                  <li class="list-item-m3" tabindex="0" role="button">
+                    <span class="list-item-leading"><svg class="list-item-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></span>
+                    <div class="list-item-content"><span class="list-item-headline">Save to photos</span></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SNACKBARS -->
+      <section class="section">
+        <h2 class="section-title">Snackbars</h2>
+        <p class="section-desc">Brief, temporary messages. Appear from the bottom-center. Use <code>--color-inverse-surface</code> background (dark on light, light on dark). Max width 600px, min 288px.</p>
+
+        <div style="display:flex;flex-direction:column;gap:var(--space-4);max-width:600px">
+          <div>
+            <span class="demo-label">Text only</span>
+            <div class="snackbar-m3 snackbar-static">
+              <span class="snackbar-text">Photo saved to your library</span>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">With action button</span>
+            <div class="snackbar-m3 snackbar-static">
+              <span class="snackbar-text">Message deleted</span>
+              <button class="snackbar-action">Undo</button>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">With close button</span>
+            <div class="snackbar-m3 snackbar-static">
+              <span class="snackbar-text">File uploaded successfully</span>
+              <button class="snackbar-close" aria-label="Dismiss notification">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">Action + close</span>
+            <div class="snackbar-m3 snackbar-static">
+              <span class="snackbar-text">Connection lost — changes may not save</span>
+              <button class="snackbar-action">Retry</button>
+              <button class="snackbar-close" aria-label="Dismiss">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">Long text (two-line)</span>
+            <div class="snackbar-m3 snackbar-static" style="flex-wrap:wrap">
+              <span class="snackbar-text" style="white-space:normal">Your account has been successfully updated. Some changes may take up to 24 hours to appear across all your devices.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MENUS -->
+      <section class="section">
+        <h2 class="section-title">Menus</h2>
+        <p class="section-desc">Dropdown menus use <code>--elevation-2</code> background, <code>--shape-extra-small: 4px</code> radius, and animate in with <code>m3ScaleIn</code> from the top-left origin. Menu items are 48px tall.</p>
+
+        <div class="demo-row">
+          <div>
+            <span class="demo-label">Simple menu</span>
+            <div class="menu-m3 menu-static" role="menu" aria-label="Simple menu">
+              <button class="menu-item-m3" role="menuitem">New file</button>
+              <button class="menu-item-m3" role="menuitem">New folder</button>
+              <div class="menu-divider" role="separator"></div>
+              <button class="menu-item-m3" role="menuitem">Copy</button>
+              <button class="menu-item-m3" role="menuitem">Paste</button>
+              <div class="menu-divider" role="separator"></div>
+              <button class="menu-item-m3" role="menuitem">Delete</button>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">With icons and labels</span>
+            <div class="menu-m3 menu-static" role="menu" aria-label="Edit menu with icons">
+              <div class="menu-label">File</div>
+              <button class="menu-item-m3" role="menuitem">
+                <svg class="menu-item-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+                <span class="menu-item-label">Save</span>
+                <span class="menu-item-trailing">⌘S</span>
+              </button>
+              <button class="menu-item-m3" role="menuitem">
+                <svg class="menu-item-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg>
+                <span class="menu-item-label">Save as...</span>
+                <span class="menu-item-trailing">⇧⌘S</span>
+              </button>
+              <button class="menu-item-m3" role="menuitem">
+                <svg class="menu-item-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span class="menu-item-label">Duplicate</span>
+                <span class="menu-item-trailing">⌘D</span>
+              </button>
+              <div class="menu-divider" role="separator"></div>
+              <button class="menu-item-m3" role="menuitem" disabled>
+                <svg class="menu-item-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+                <span class="menu-item-label">Share (unavailable)</span>
+              </button>
+              <button class="menu-item-m3" role="menuitem">
+                <svg class="menu-item-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                <span class="menu-item-label">Delete</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BADGES -->
+      <section class="section">
+        <h2 class="section-title">Badges</h2>
+        <p class="section-desc">Badges use <code>--color-error</code> background by default. Three variants: dot (6px), standard (16px height), large (24px height). They attach to icons via the <code>.badge-wrapper</code> class.</p>
+
+        <div class="demo-row" style="align-items:center">
+          <div class="demo-group">
+            <span class="demo-label">Dot badge</span>
+            <span class="badge-m3 badge-m3--dot" aria-label="New activity"></span>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">1 digit</span>
+            <span class="badge-m3" aria-label="3 items">3</span>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">2 digits</span>
+            <span class="badge-m3" aria-label="24 items">24</span>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Overflow</span>
+            <span class="badge-m3" aria-label="99 or more items">99+</span>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Large</span>
+            <span class="badge-m3 badge-m3--lg" aria-label="124 items">124</span>
+          </div>
+        </div>
+
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">On navigation icons</h3>
+        <div class="demo-row">
+          <div class="demo-group">
+            <span class="demo-label">Dot on icon button</span>
+            <div class="badge-wrapper">
+              <button class="btn-icon-m3 btn-icon-standard" aria-label="Notifications, new activity">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+              </button>
+              <span class="badge-m3 badge-m3--dot" aria-hidden="true"></span>
+            </div>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Count on icon button</span>
+            <div class="badge-wrapper">
+              <button class="btn-icon-m3 btn-icon-tonal" aria-label="Messages, 5 unread">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              </button>
+              <span class="badge-m3" aria-hidden="true">5</span>
+            </div>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Overflow on cart</span>
+            <div class="badge-wrapper">
+              <button class="btn-icon-m3 btn-icon-filled" aria-label="Cart, 99 or more items">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.1 17 7 17h11v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63H19c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+              </button>
+              <span class="badge-m3 badge-m3--lg" aria-hidden="true">99+</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROGRESS INDICATORS -->
+      <section class="section">
+        <h2 class="section-title">Progress Indicators</h2>
+        <p class="section-desc">Linear and circular variants. Determinate shows specific progress (0–100%). Indeterminate shows indefinite loading. Track uses <code>--color-secondary-container</code>, fill uses <code>--color-primary</code>.</p>
+
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Linear — determinate</h3>
+        <div style="max-width:560px;display:flex;flex-direction:column;gap:var(--space-6);margin-bottom:var(--space-8)">
+          <div>
+            <span class="demo-label">25%</span>
+            <div class="progress-linear" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Upload progress 25%">
+              <div class="progress-linear-fill" style="width:25%"></div>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">60%</span>
+            <div class="progress-linear" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="Download progress 60%">
+              <div class="progress-linear-fill" style="width:60%"></div>
+            </div>
+          </div>
+          <div>
+            <span class="demo-label">100%</span>
+            <div class="progress-linear" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Complete">
+              <div class="progress-linear-fill" style="width:100%"></div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Linear — indeterminate</h3>
+        <div style="max-width:560px;margin-bottom:var(--space-8)">
+          <div class="progress-linear progress-linear--indeterminate" role="progressbar" aria-label="Loading">
+            <div class="progress-linear-fill"></div>
+          </div>
+        </div>
+
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Circular — determinate</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-8);align-items:center;margin-bottom:var(--space-8)">
+          <div class="demo-group">
+            <span class="demo-label">Small (24px) — 50%</span>
+            <div class="progress-circular progress-circular--sm" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="--progress-value:0.5">
+              <svg viewBox="0 0 44 44" aria-hidden="true">
+                <circle class="progress-circular-track" cx="22" cy="22" r="20"/>
+                <circle class="progress-circular-fill" cx="22" cy="22" r="20"/>
+              </svg>
+            </div>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Default (48px) — 75%</span>
+            <div class="progress-circular" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="--progress-value:0.75">
+              <svg viewBox="0 0 44 44" aria-hidden="true">
+                <circle class="progress-circular-track" cx="22" cy="22" r="20"/>
+                <circle class="progress-circular-fill" cx="22" cy="22" r="20"/>
+              </svg>
+            </div>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Large (72px) — 33%</span>
+            <div class="progress-circular progress-circular--lg" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="--progress-value:0.33">
+              <svg viewBox="0 0 44 44" aria-hidden="true">
+                <circle class="progress-circular-track" cx="22" cy="22" r="20"/>
+                <circle class="progress-circular-fill" cx="22" cy="22" r="20"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Circular — indeterminate</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-8);align-items:center">
+          <div class="demo-group">
+            <span class="demo-label">Small</span>
+            <div class="progress-circular progress-circular--sm progress-circular--indeterminate" role="progressbar" aria-label="Loading">
+              <svg viewBox="0 0 44 44" aria-hidden="true">
+                <circle class="progress-circular-fill" cx="22" cy="22" r="20"/>
+              </svg>
+            </div>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Default</span>
+            <div class="progress-circular progress-circular--indeterminate" role="progressbar" aria-label="Loading">
+              <svg viewBox="0 0 44 44" aria-hidden="true">
+                <circle class="progress-circular-fill" cx="22" cy="22" r="20"/>
+              </svg>
+            </div>
+          </div>
+          <div class="demo-group">
+            <span class="demo-label">Large</span>
+            <div class="progress-circular progress-circular--lg progress-circular--indeterminate" role="progressbar" aria-label="Loading">
+              <svg viewBox="0 0 44 44" aria-hidden="true">
+                <circle class="progress-circular-fill" cx="22" cy="22" r="20"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOOLTIPS -->
+      <section class="section">
+        <h2 class="section-title">Tooltips</h2>
+        <p class="section-desc">Plain tooltips appear on hover via CSS <code>::after</code> pseudo-element with <code>data-tooltip</code> attribute. Rich tooltips are a standalone component with a title and body.</p>
+
+        <h3 class="title-small" style="margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Plain tooltips</h3>
+        <div class="tooltip-demo-wrap">
+          <div class="tooltip-m3" data-tooltip="Add to favorites">
+            <button class="btn-icon-m3 btn-icon-standard" aria-label="Add to favorites">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </button>
+          </div>
+          <div class="tooltip-m3" data-tooltip="Download file">
+            <button class="btn-icon-m3 btn-icon-tonal" aria-label="Download file">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            </button>
+          </div>
+          <div class="tooltip-m3" data-tooltip="Share with others">
+            <button class="btn-m3 btn-filled-tonal" aria-label="Share with others">Share</button>
+          </div>
+          <div class="tooltip-m3" data-tooltip="Cut (⌘X)">
+            <button class="btn-icon-m3 btn-icon-outlined" aria-label="Cut">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.64 7.64c.23-.5.36-1.05.36-1.64 0-2.21-1.79-4-4-4S2 3.79 2 6s1.79 4 4 4c.59 0 1.14-.13 1.64-.36L10 12l-2.36 2.36C7.14 14.13 6.59 14 6 14c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4c0-.59-.13-1.14-.36-1.64L12 14l7 7h3v-1L9.64 7.64zM6 8c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.9 2-2 2zm0 12c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.9 2-2 2zm6-7.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5.5.22.5.5-.22.5-.5.5zM19 3l-6 6 2 2 7-7V3z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <h3 class="title-small" style="margin-top:var(--space-6);margin-bottom:var(--space-4);color:var(--color-on-surface-variant)">Rich tooltip</h3>
+        <div class="tooltip-rich-m3" style="max-width:280px">
+          <p style="font-family:var(--font-brand);font-size:var(--typescale-title-small-size);font-weight:var(--typescale-title-small-weight);color:var(--color-on-surface);margin-bottom:var(--space-2)">Add to playlist</p>
+          <p class="body-small">Save this track to one of your playlists, or create a new one. Changes are synced across all your devices.</p>
+          <div style="margin-top:var(--space-3)">
+            <button class="btn-m3 btn-text" style="padding:0;height:auto;font-size:var(--typescale-label-medium-size)">Learn more</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</body>
+</html>

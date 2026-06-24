@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cards — Material You Components</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .page-header {
+      position: sticky; top: 0; z-index: var(--z-app-bar);
+      background: var(--elevation-2);
+      border-bottom: 1px solid var(--color-outline-variant);
+      display: flex; align-items: center; gap: var(--space-4);
+      padding: 0 var(--space-6); height: var(--app-bar-height);
+    }
+    .page-header a {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      color: var(--color-primary);
+      font-size: var(--typescale-label-large-size);
+      font-weight: var(--typescale-label-large-weight);
+      text-decoration: none;
+    }
+    .page-header a:hover { text-decoration: underline; }
+    .page-title { font-family: var(--font-brand); font-size: var(--typescale-title-large-size); font-weight: 400; color: var(--color-on-surface); }
+    .content { padding: var(--space-8) 0 var(--space-16); }
+    .section { padding: var(--space-8) 0; border-bottom: 1px solid var(--color-outline-variant); }
+    .section:last-child { border-bottom: none; }
+    .section-title { font-family: var(--font-brand); font-size: var(--typescale-headline-small-size); font-weight: 400; color: var(--color-on-surface); margin-bottom: var(--space-2); }
+    .section-desc { font-size: var(--typescale-body-medium-size); color: var(--color-on-surface-variant); margin-bottom: var(--space-6); max-width: 600px; }
+    .demo-label { font-size: var(--typescale-label-small-size); letter-spacing: var(--typescale-label-small-tracking); color: var(--color-on-surface-variant); display: block; margin-bottom: var(--space-2); }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-4); margin-bottom: var(--space-6); }
+    .media-placeholder {
+      width: 100%; aspect-ratio: 16/9;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .token-chip { display: inline-flex; align-items: center; padding: var(--space-1) var(--space-2); background: var(--color-surface-container-high); border-radius: var(--shape-extra-small); font-family: var(--font-mono); font-size: 11px; color: var(--color-on-surface-variant); }
+    @media (max-width: 600px) { .card-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="page-header" role="banner">
+    <a href="../index.html" aria-label="Back to index">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+      Back
+    </a>
+    <h1 class="page-title">Cards</h1>
+  </header>
+
+  <main class="content">
+    <div class="container">
+
+      <section class="section">
+        <h2 class="section-title">Overview</h2>
+        <p class="section-desc">M3 defines 3 card types differentiated by their surface treatment. All share <span class="token-chip">--shape-card: 12px</span> border radius, the same anatomy (header, media, content, actions), and hover state layers for interactive variants.</p>
+      </section>
+
+      <!-- ELEVATED CARDS -->
+      <section class="section">
+        <h2 class="section-title">Elevated Card</h2>
+        <p class="section-desc">Uses <span class="token-chip">--elevation-1</span> background (5% primary tint) and <span class="token-chip">--shadow-elevation-1</span>. On hover, shadow increases to elevation 2. Best for content that needs to stand above the background.</p>
+
+        <div class="card-grid">
+          <!-- Basic elevated -->
+          <article class="card-m3 card-elevated" tabindex="0">
+            <div class="media-placeholder" style="background:linear-gradient(135deg,var(--color-primary-container),var(--color-secondary-container))">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="var(--color-primary)" aria-hidden="true"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            </div>
+            <div class="card-header">
+              <div class="card-avatar" style="background:var(--color-primary-container);display:flex;align-items:center;justify-content:center;color:var(--color-on-primary-container);font-weight:700;font-size:var(--typescale-title-medium-size)">G</div>
+              <div class="card-title-group">
+                <p class="card-title">Ambient Sounds</p>
+                <p class="card-subtitle">Google Assistant · 3 min ago</p>
+              </div>
+              <button class="btn-icon-m3 btn-icon-standard" aria-label="More options" style="flex-shrink:0">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+              </button>
+            </div>
+            <div class="card-content">
+              <p class="card-body">A curated playlist of calming ambient sounds for focus and relaxation. Featuring rain, forest, and ocean recordings.</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn-m3 btn-text">Dismiss</button>
+              <button class="btn-m3 btn-filled">Play now</button>
+            </div>
+          </article>
+
+          <!-- Elevated with long content -->
+          <article class="card-m3 card-elevated" tabindex="0">
+            <div class="card-header">
+              <div class="card-avatar" style="background:var(--color-tertiary-container);display:flex;align-items:center;justify-content:center;color:var(--color-on-tertiary-container);font-weight:700;font-size:var(--typescale-title-medium-size)">M</div>
+              <div class="card-title-group">
+                <p class="card-title">Material Design Update</p>
+                <p class="card-subtitle">Design System · 2 hours ago</p>
+              </div>
+            </div>
+            <div class="card-content">
+              <p class="card-body">Material You brings adaptive color, personalized experiences, and expressive components to Android 12 and beyond. New guidelines for dynamic color theming are now available in the component kit.</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn-icon-m3 btn-icon-standard" aria-label="Bookmark">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 14l-5-2.18L7 17V5h10v12z"/></svg>
+              </button>
+              <button class="btn-icon-m3 btn-icon-standard" aria-label="Share">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+              </button>
+              <div style="flex:1"></div>
+              <button class="btn-m3 btn-filled-tonal">Read more</button>
+            </div>
+          </article>
+
+          <!-- Elevated plain -->
+          <article class="card-m3 card-elevated">
+            <div class="card-content-lg">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:var(--space-4)">
+                <div>
+                  <p class="card-title" style="font-size:var(--typescale-headline-small-size);margin-bottom:var(--space-1)">$4,280</p>
+                  <p class="card-subtitle">Monthly savings</p>
+                </div>
+                <span style="background:var(--color-primary-container);color:var(--color-on-primary-container);padding:var(--space-1) var(--space-3);border-radius:var(--shape-full);font-size:var(--typescale-label-medium-size);font-weight:500">+12%</span>
+              </div>
+              <div style="background:var(--color-surface-container);border-radius:var(--shape-small);padding:var(--space-3);display:flex;flex-direction:column;gap:var(--space-2)">
+                <div style="display:flex;justify-content:space-between">
+                  <span class="body-small">Groceries</span><span class="body-small">$380</span>
+                </div>
+                <div style="display:flex;justify-content:space-between">
+                  <span class="body-small">Transport</span><span class="body-small">$120</span>
+                </div>
+                <div style="display:flex;justify-content:space-between">
+                  <span class="body-small">Entertainment</span><span class="body-small">$95</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button class="btn-m3 btn-text">Details</button>
+              <button class="btn-m3 btn-filled">View report</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- FILLED CARDS -->
+      <section class="section">
+        <h2 class="section-title">Filled Card</h2>
+        <p class="section-desc">Uses <span class="token-chip">--color-surface-container-highest</span> background, no shadow. Blends cleanly with the page for content that doesn't need to appear elevated.</p>
+
+        <div class="card-grid">
+          <article class="card-m3 card-filled" tabindex="0">
+            <div class="media-placeholder" style="background:linear-gradient(135deg,var(--color-secondary-container),var(--color-tertiary-container))">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="var(--color-secondary)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <div class="card-header">
+              <div class="card-title-group">
+                <p class="card-title">Pixel 8 Pro</p>
+                <p class="card-subtitle">Google · Smartphones</p>
+              </div>
+            </div>
+            <div class="card-content">
+              <p class="card-body">The most advanced Pixel camera ever. With Tensor G3 and 12 years of guaranteed security updates built in.</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn-m3 btn-text">Compare</button>
+              <button class="btn-m3 btn-filled-tonal">Buy now</button>
+            </div>
+          </article>
+
+          <article class="card-m3 card-filled" tabindex="0">
+            <div class="card-content-lg">
+              <div style="margin-bottom:var(--space-4)">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="var(--color-primary)" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              </div>
+              <p class="card-title" style="margin-bottom:var(--space-2)">Google One Benefits</p>
+              <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:var(--space-2)">
+                <li class="body-small" style="display:flex;align-items:center;gap:var(--space-2)">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-primary)" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                  2 TB cloud storage
+                </li>
+                <li class="body-small" style="display:flex;align-items:center;gap:var(--space-2)">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-primary)" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                  Google VPN included
+                </li>
+                <li class="body-small" style="display:flex;align-items:center;gap:var(--space-2)">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-primary)" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                  Share with up to 5 people
+                </li>
+              </ul>
+            </div>
+            <div class="card-actions">
+              <button class="btn-m3 btn-filled-tonal">Get started</button>
+            </div>
+          </article>
+
+          <article class="card-m3 card-filled" tabindex="0">
+            <div class="card-content-lg">
+              <p class="card-title" style="margin-bottom:var(--space-4)">Quick actions</p>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3);text-align:center">
+                <button style="border:none;background:none;cursor:pointer;padding:var(--space-3);border-radius:var(--shape-medium);display:flex;flex-direction:column;align-items:center;gap:var(--space-2)">
+                  <div style="width:48px;height:48px;background:var(--color-primary-container);border-radius:var(--shape-medium);display:flex;align-items:center;justify-content:center">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--color-on-primary-container)" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                  </div>
+                  <span class="label-small">Email</span>
+                </button>
+                <button style="border:none;background:none;cursor:pointer;padding:var(--space-3);border-radius:var(--shape-medium);display:flex;flex-direction:column;align-items:center;gap:var(--space-2)">
+                  <div style="width:48px;height:48px;background:var(--color-secondary-container);border-radius:var(--shape-medium);display:flex;align-items:center;justify-content:center">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--color-on-secondary-container)" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                  </div>
+                  <span class="label-small">Call</span>
+                </button>
+                <button style="border:none;background:none;cursor:pointer;padding:var(--space-3);border-radius:var(--shape-medium);display:flex;flex-direction:column;align-items:center;gap:var(--space-2)">
+                  <div style="width:48px;height:48px;background:var(--color-tertiary-container);border-radius:var(--shape-medium);display:flex;align-items:center;justify-content:center">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--color-on-tertiary-container)" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+                  </div>
+                  <span class="label-small">Message</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- OUTLINED CARDS -->
+      <section class="section">
+        <h2 class="section-title">Outlined Card</h2>
+        <p class="section-desc">Surface background with 1px <span class="token-chip">--color-outline-variant</span> border, no shadow. Provides clear container boundaries without visual weight. On hover: shadow-elevation-1 appears.</p>
+
+        <div class="card-grid">
+          <article class="card-m3 card-outlined" tabindex="0">
+            <div class="media-placeholder" style="background:linear-gradient(135deg,var(--color-tertiary-container),var(--color-primary-container))">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="var(--color-tertiary)" aria-hidden="true"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+            </div>
+            <div class="card-header">
+              <div class="card-title-group">
+                <p class="card-title">Q4 Planning Sprint</p>
+                <p class="card-subtitle">Project · Due Dec 15</p>
+              </div>
+              <span style="background:var(--color-error-container);color:var(--color-on-error-container);padding:2px 8px;border-radius:var(--shape-full);font-size:var(--typescale-label-small-size);font-weight:500;white-space:nowrap">Overdue</span>
+            </div>
+            <div class="card-content">
+              <p class="card-body">Define objectives, assign milestones, and schedule review checkpoints for Q4 product releases.</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn-m3 btn-outlined">Open</button>
+              <button class="btn-m3 btn-filled">Mark done</button>
+            </div>
+          </article>
+
+          <article class="card-m3 card-outlined" tabindex="0">
+            <div class="card-content-lg">
+              <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-4)">
+                <div style="width:48px;height:48px;background:var(--color-primary-container);border-radius:var(--shape-medium);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--color-on-primary-container)" aria-hidden="true"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                </div>
+                <div>
+                  <p class="card-title">Night Drive</p>
+                  <p class="card-subtitle">Kavinsky · 4:02</p>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:var(--space-3)">
+                <button class="btn-icon-m3 btn-icon-standard" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
+                <button class="btn-icon-m3 btn-icon-filled" aria-label="Play" style="width:48px;height:48px">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+                <button class="btn-icon-m3 btn-icon-standard" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></button>
+                <div style="flex:1"></div>
+                <button class="btn-icon-m3 btn-icon-standard" aria-label="Add to queue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 14l-5-2.18L7 17V5h10v12z"/></svg></button>
+              </div>
+              <div class="slider-m3" style="--slider-value:35%;margin-top:var(--space-3)">
+                <input type="range" min="0" max="100" value="35" aria-label="Track progress">
+              </div>
+            </div>
+          </article>
+
+          <article class="card-m3 card-outlined" tabindex="0">
+            <div class="card-content-lg">
+              <p class="card-title" style="margin-bottom:var(--space-4)">Notification settings</p>
+              <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+                <div style="display:flex;align-items:center;justify-content:space-between">
+                  <div>
+                    <p style="font-size:var(--typescale-body-medium-size);color:var(--color-on-surface);font-weight:500;margin-bottom:2px">Push notifications</p>
+                    <p class="body-small">Allow app to send alerts</p>
+                  </div>
+                  <label class="switch-m3">
+                    <input type="checkbox" checked>
+                    <span class="switch-track"><span class="switch-thumb"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span></span>
+                  </label>
+                </div>
+                <hr class="divider-m3">
+                <div style="display:flex;align-items:center;justify-content:space-between">
+                  <div>
+                    <p style="font-size:var(--typescale-body-medium-size);color:var(--color-on-surface);font-weight:500;margin-bottom:2px">Email digest</p>
+                    <p class="body-small">Weekly summary</p>
+                  </div>
+                  <label class="switch-m3">
+                    <input type="checkbox">
+                    <span class="switch-track"><span class="switch-thumb"></span></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- CARD ANATOMY -->
+      <section class="section">
+        <h2 class="section-title">Card Anatomy</h2>
+        <p class="section-desc">M3 cards share a consistent anatomy. Each region has its own padding and z-index to ensure state layers render correctly.</p>
+
+        <div class="card-grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr))">
+          <div>
+            <span class="demo-label">Full anatomy — media + header + content + actions</span>
+            <article class="card-m3 card-elevated" tabindex="0">
+              <div class="media-placeholder" style="background:linear-gradient(135deg,var(--color-primary),var(--color-tertiary));position:relative">
+                <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+                  <span style="color:rgba(255,255,255,0.7);font-size:var(--typescale-label-medium-size);font-weight:500">card-media</span>
+                </div>
+              </div>
+              <div class="card-header" style="outline:1px dashed var(--color-outline-variant)">
+                <div class="card-avatar" style="background:var(--color-secondary-container);display:flex;align-items:center;justify-content:center;color:var(--color-on-secondary-container);font-weight:700;font-size:var(--typescale-title-medium-size)">A</div>
+                <div class="card-title-group">
+                  <p class="card-title">card-header</p>
+                  <p class="card-subtitle">avatar + title-group</p>
+                </div>
+              </div>
+              <div class="card-content" style="outline:1px dashed var(--color-outline-variant)">
+                <p class="card-body">card-content — body text using body-medium typography with on-surface-variant color.</p>
+              </div>
+              <div class="card-actions" style="outline:1px dashed var(--color-outline-variant)">
+                <button class="btn-m3 btn-text">Text</button>
+                <button class="btn-m3 btn-filled">Filled</button>
+              </div>
+            </article>
+          </div>
+          <div>
+            <span class="demo-label">Horizontal layout card</span>
+            <article class="card-m3 card-outlined" style="display:flex;flex-direction:row;overflow:hidden" tabindex="0">
+              <div style="width:120px;flex-shrink:0;background:linear-gradient(180deg,var(--color-secondary-container),var(--color-tertiary-container));display:flex;align-items:center;justify-content:center">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="var(--color-secondary)" aria-hidden="true"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column">
+                <div class="card-content">
+                  <p class="card-title">Chill Vibes</p>
+                  <p class="card-body">Lo-fi beats for working</p>
+                </div>
+                <div class="card-actions" style="padding-top:0">
+                  <button class="btn-icon-m3 btn-icon-standard" aria-label="Play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                  <button class="btn-icon-m3 btn-icon-standard" aria-label="Add to queue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARD STATES -->
+      <section class="section">
+        <h2 class="section-title">Interaction States</h2>
+        <p class="section-desc">Cards with <code>role="button"</code> or <code>tabindex</code> get cursor:pointer and state layers. The <code>::before</code> pseudo-element with <code>background: --color-on-surface</code> handles hover (8%), focus (12%), and press (12%) states.</p>
+
+        <div class="card-grid">
+          <div>
+            <span class="demo-label">Interactive (hover to see state layer)</span>
+            <article class="card-m3 card-elevated" tabindex="0" role="button">
+              <div class="card-content-lg">
+                <p class="card-title">Hover me</p>
+                <p class="card-body" style="margin-top:var(--space-2)">Interactive card with state layer. On hover, the ::before pseudo-element opacity rises to 8%. On press, 12%.</p>
+              </div>
+            </article>
+          </div>
+          <div>
+            <span class="demo-label">Non-interactive (no state layer)</span>
+            <article class="card-m3 card-outlined">
+              <div class="card-content-lg">
+                <p class="card-title">Static card</p>
+                <p class="card-body" style="margin-top:var(--space-2)">No tabindex or role="button". This card is presentational only, no hover effects.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</body>
+</html>
