@@ -715,15 +715,17 @@
   font-weight: var(--weight-bold);
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
-  color: var(--color-label-secondary);
+  color: var(--color-white);
   text-decoration: none;
   transition: color var(--duration-fast) var(--ease-nike);
   white-space: nowrap;
+  opacity: 0.75;
 }
 
 .nav-link-item a:hover,
 .nav-link-item.active a {
   color: var(--color-white);
+  opacity: 1;
 }
 
 /* Nav Actions — right */

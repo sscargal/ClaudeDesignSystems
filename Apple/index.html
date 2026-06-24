@@ -737,17 +737,22 @@
             </div>
           </article>
 
-          <!-- Glass card -->
-          <article class="card-glass" style="padding:var(--space-6);">
-            <div style="width:44px; height:44px; border-radius:var(--radius-md); background:rgba(191,90,242,0.15); display:flex; align-items:center; justify-content:center; margin-bottom:var(--space-4);">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="var(--color-purple)" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="var(--color-purple)" stroke-width="2"/><circle cx="12" cy="12" r="2" fill="var(--color-purple)"/></svg>
-            </div>
-            <h3 class="card-title">Frosted Glass</h3>
-            <p class="card-subtitle">backdrop-filter blur with 72% opacity white background — the iOS frosted glass effect.</p>
-            <div style="margin-top:var(--space-5);">
-              <button class="btn btn-ghost" style="padding:0; font-size:var(--text-15); color:var(--color-purple);">Learn more →</button>
-            </div>
-          </article>
+          <!-- Glass card — needs a colorful background behind it for backdrop-filter to be visible -->
+          <div style="border-radius:var(--radius-xl); overflow:hidden; background: linear-gradient(135deg, #007AFF 0%, #BF5AF2 40%, #FF375F 70%, #FF9F0A 100%); padding: var(--space-6); position:relative;">
+            <!-- Blobs to make the blur effect obvious -->
+            <div aria-hidden="true" style="position:absolute; top:-20px; left:-20px; width:120px; height:120px; border-radius:50%; background:rgba(255,255,255,0.35);"></div>
+            <div aria-hidden="true" style="position:absolute; bottom:-30px; right:-10px; width:160px; height:160px; border-radius:50%; background:rgba(255,255,255,0.2);"></div>
+            <article class="card-glass" style="padding:var(--space-6); position:relative; z-index:1;">
+              <div style="width:44px; height:44px; border-radius:var(--radius-md); background:rgba(191,90,242,0.25); display:flex; align-items:center; justify-content:center; margin-bottom:var(--space-4);">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="var(--color-purple)" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="var(--color-purple)" stroke-width="2"/><circle cx="12" cy="12" r="2" fill="var(--color-purple)"/></svg>
+              </div>
+              <h3 class="card-title">Frosted Glass</h3>
+              <p class="card-subtitle">backdrop-filter blur(20px) + rgba white background — blurs the gradient behind it. Requires colorful content behind the element.</p>
+              <div style="margin-top:var(--space-5);">
+                <button class="btn btn-ghost" style="padding:0; font-size:var(--text-15); color:var(--color-purple);">Learn more →</button>
+              </div>
+            </article>
+          </div>
 
           <!-- Stats card -->
           <article class="card-stats">
