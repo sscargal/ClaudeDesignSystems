@@ -1,0 +1,352 @@
+/* =============================================================================
+   Claude Design System — Design Tokens
+   Version 1.0.0 | Built on Apple's Design Philosophy
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     COLOR SYSTEM — Light Mode
+     --------------------------------------------------------------------------- */
+
+  /* System Backgrounds */
+  --color-bg-primary:              #F5F5F7;
+  --color-bg-secondary:            #FFFFFF;
+  --color-bg-tertiary:             #F2F2F2;
+  --color-bg-grouped:              #F2F2F7;
+  --color-bg-grouped-secondary:    #FFFFFF;
+  --color-bg-grouped-tertiary:     #F2F2F7;
+
+  /* Surface Colors */
+  --color-surface-primary:         rgba(255, 255, 255, 1.0);
+  --color-surface-secondary:       rgba(255, 255, 255, 0.72);
+  --color-surface-tertiary:        rgba(255, 255, 255, 0.54);
+  --color-surface-glass:           rgba(255, 255, 255, 0.72);
+  --color-surface-glass-heavy:     rgba(255, 255, 255, 0.88);
+  --color-surface-overlay:         rgba(0, 0, 0, 0.45);
+
+  /* Label Colors */
+  --color-label-primary:           rgba(0, 0, 0, 1.0);
+  --color-label-secondary:         rgba(0, 0, 0, 0.60);
+  --color-label-tertiary:          rgba(0, 0, 0, 0.30);
+  --color-label-quaternary:        rgba(0, 0, 0, 0.18);
+
+  /* Separator & Fill Colors */
+  --color-separator:               rgba(0, 0, 0, 0.12);
+  --color-separator-opaque:        #C6C6C8;
+  --color-fill-primary:            rgba(120, 120, 128, 0.20);
+  --color-fill-secondary:          rgba(120, 120, 128, 0.16);
+  --color-fill-tertiary:           rgba(118, 118, 128, 0.12);
+  --color-fill-quaternary:         rgba(116, 116, 128, 0.08);
+
+  /* Apple System Colors — Light */
+  --color-blue:                    #007AFF;
+  --color-blue-hover:              #0056CC;
+  --color-blue-light:              rgba(0, 122, 255, 0.12);
+  --color-purple:                  #BF5AF2;
+  --color-purple-light:            rgba(191, 90, 242, 0.12);
+  --color-pink:                    #FF375F;
+  --color-pink-light:              rgba(255, 55, 95, 0.12);
+  --color-teal:                    #5AC8F5;
+  --color-teal-light:              rgba(90, 200, 245, 0.12);
+  --color-green:                   #34C759;
+  --color-green-hover:             #28A745;
+  --color-green-light:             rgba(52, 199, 89, 0.12);
+  --color-yellow:                  #FFD60A;
+  --color-yellow-light:            rgba(255, 214, 10, 0.12);
+  --color-orange:                  #FF9F0A;
+  --color-orange-light:            rgba(255, 159, 10, 0.12);
+  --color-red:                     #FF3B30;
+  --color-red-hover:               #D70015;
+  --color-red-light:               rgba(255, 59, 48, 0.12);
+  --color-indigo:                  #5E5CE6;
+  --color-indigo-light:            rgba(94, 92, 230, 0.12);
+  --color-mint:                    #00C7BE;
+  --color-mint-light:              rgba(0, 199, 190, 0.12);
+  --color-cyan:                    #32ADE6;
+  --color-cyan-light:              rgba(50, 173, 230, 0.12);
+  --color-brown:                   #A2845E;
+  --color-gray:                    #8E8E93;
+  --color-gray-2:                  #AEAEB2;
+  --color-gray-3:                  #C7C7CC;
+  --color-gray-4:                  #D1D1D6;
+  --color-gray-5:                  #E5E5EA;
+  --color-gray-6:                  #F2F2F7;
+
+  /* Claude Brand Colors */
+  --color-claude-primary:          #FF6B35;
+  --color-claude-primary-hover:    #E55A25;
+  --color-claude-primary-light:    rgba(255, 107, 53, 0.12);
+  --color-claude-secondary:        #007AFF;
+  --color-claude-gradient-start:   #FF6B35;
+  --color-claude-gradient-mid:     #FF375F;
+  --color-claude-gradient-end:     #BF5AF2;
+
+  /* Semantic Aliases */
+  --color-accent:                  var(--color-blue);
+  --color-accent-hover:            var(--color-blue-hover);
+  --color-accent-light:            var(--color-blue-light);
+  --color-destructive:             var(--color-red);
+  --color-destructive-hover:       var(--color-red-hover);
+  --color-destructive-light:       var(--color-red-light);
+  --color-success:                 var(--color-green);
+  --color-success-light:           var(--color-green-light);
+  --color-warning:                 var(--color-orange);
+  --color-warning-light:           var(--color-orange-light);
+
+  /* ---------------------------------------------------------------------------
+     TYPOGRAPHY
+     --------------------------------------------------------------------------- */
+
+  --font-display:   system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+  --font-text:      system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:      ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* Type Scale */
+  --text-96:   96px;
+  --text-72:   72px;
+  --text-56:   56px;
+  --text-44:   44px;
+  --text-36:   36px;
+  --text-28:   28px;
+  --text-22:   22px;
+  --text-20:   20px;
+  --text-17:   17px;
+  --text-16:   16px;
+  --text-15:   15px;
+  --text-13:   13px;
+  --text-11:   11px;
+
+  /* Font Weights */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-heavy:    800;
+  --weight-black:    900;
+
+  /* Line Heights */
+  --leading-display:  1.05;
+  --leading-title:    1.10;
+  --leading-headline: 1.20;
+  --leading-body:     1.47;
+  --leading-callout:  1.50;
+  --leading-caption:  1.40;
+
+  /* Letter Spacing */
+  --tracking-display:  -0.015em;
+  --tracking-title-1:  -0.010em;
+  --tracking-title-2:  -0.005em;
+  --tracking-title-3:  -0.002em;
+  --tracking-body:      0em;
+  --tracking-caption:   0.04em;
+  --tracking-caps:      0.08em;
+
+  /* ---------------------------------------------------------------------------
+     SPACING — 4px Base Grid
+     --------------------------------------------------------------------------- */
+
+  --space-1:    4px;
+  --space-2:    8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-32: 128px;
+
+  /* ---------------------------------------------------------------------------
+     BORDER RADIUS
+     --------------------------------------------------------------------------- */
+
+  --radius-none:  0px;
+  --radius-xs:    4px;
+  --radius-sm:    8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   20px;
+  --radius-2xl:  24px;
+  --radius-3xl:  28px;
+  --radius-4xl:  32px;
+  --radius-pill: 9999px;
+
+  --radius-button: var(--radius-pill);
+  --radius-card:   18px;
+  --radius-input:  var(--radius-md);
+  --radius-modal:  var(--radius-2xl);
+  --radius-sheet:  var(--radius-3xl);
+  --radius-badge:  var(--radius-pill);
+
+  /* ---------------------------------------------------------------------------
+     SHADOWS
+     --------------------------------------------------------------------------- */
+
+  --shadow-xs:      0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm:      0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md:      0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-lg:      0 8px 24px rgba(0, 0, 0, 0.10), 0 4px 8px rgba(0, 0, 0, 0.06);
+  --shadow-xl:      0 16px 40px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.08);
+  --shadow-2xl:     0 24px 64px rgba(0, 0, 0, 0.16), 0 12px 24px rgba(0, 0, 0, 0.10);
+  --shadow-overlay: 0 32px 80px rgba(0, 0, 0, 0.24), 0 16px 32px rgba(0, 0, 0, 0.16);
+
+  --shadow-blue:    0 8px 24px rgba(0, 122, 255, 0.28);
+  --shadow-green:   0 8px 24px rgba(52, 199, 89, 0.28);
+  --shadow-red:     0 8px 24px rgba(255, 59, 48, 0.28);
+  --shadow-purple:  0 8px 24px rgba(191, 90, 242, 0.28);
+  --shadow-claude:  0 8px 24px rgba(255, 107, 53, 0.28);
+
+  --shadow-inset:   inset 0 1px 3px rgba(0, 0, 0, 0.08);
+
+  /* ---------------------------------------------------------------------------
+     BLUR / BACKDROP FILTER
+     --------------------------------------------------------------------------- */
+
+  --blur-xs:   blur(4px);
+  --blur-sm:   blur(8px);
+  --blur-md:   blur(16px);
+  --blur-lg:   blur(24px);
+  --blur-xl:   blur(40px);
+  --blur-2xl:  blur(60px);
+
+  --vibrancy: blur(20px) saturate(180%) brightness(1.05);
+
+  /* ---------------------------------------------------------------------------
+     MOTION
+     --------------------------------------------------------------------------- */
+
+  --duration-fast:       100ms;
+  --duration-normal:     200ms;
+  --duration-moderate:   300ms;
+  --duration-slow:       400ms;
+  --duration-deliberate: 600ms;
+
+  --ease-standard:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-decelerate: cubic-bezier(0.00, 0.00, 0.20, 1.00);
+  --ease-accelerate: cubic-bezier(0.40, 0.00, 1.00, 1.00);
+  --ease-spring:     cubic-bezier(0.34, 1.56, 0.64, 1.00);
+
+  --transition-fast:     all var(--duration-fast) var(--ease-standard);
+  --transition-normal:   all var(--duration-normal) var(--ease-standard);
+  --transition-moderate: all var(--duration-moderate) var(--ease-standard);
+  --transition-spring:   all var(--duration-moderate) var(--ease-spring);
+
+  /* ---------------------------------------------------------------------------
+     BORDERS
+     --------------------------------------------------------------------------- */
+
+  --border-color:         var(--color-separator);
+  --border-color-opaque:  var(--color-separator-opaque);
+  --border-color-focused: var(--color-blue);
+  --border-default:       1px solid var(--color-separator);
+  --border-opaque:        1px solid var(--color-separator-opaque);
+  --border-focused:       2px solid var(--color-blue);
+
+  /* ---------------------------------------------------------------------------
+     Z-INDEX
+     --------------------------------------------------------------------------- */
+
+  --z-base:     0;
+  --z-raised:   10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-toast:    500;
+  --z-tooltip:  600;
+
+  /* ---------------------------------------------------------------------------
+     COMPONENT DIMENSIONS
+     --------------------------------------------------------------------------- */
+
+  --btn-height-sm:   32px;
+  --btn-height-md:   44px;
+  --btn-height-lg:   54px;
+  --input-height-sm: 36px;
+  --input-height-md: 44px;
+  --input-height-lg: 54px;
+  --nav-height:      52px;
+  --tab-bar-height:  83px;
+  --sidebar-width:   260px;
+  --max-width-site:  980px;
+  --max-width-wide: 1200px;
+}
+
+/* =============================================================================
+   DARK MODE
+   ============================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg-primary:              #000000;
+    --color-bg-secondary:            #1C1C1E;
+    --color-bg-tertiary:             #2C2C2E;
+    --color-bg-grouped:              #000000;
+    --color-bg-grouped-secondary:    #1C1C1E;
+    --color-bg-grouped-tertiary:     #2C2C2E;
+
+    --color-surface-primary:         rgba(28, 28, 30, 1.0);
+    --color-surface-secondary:       rgba(44, 44, 46, 0.80);
+    --color-surface-tertiary:        rgba(58, 58, 60, 0.60);
+    --color-surface-glass:           rgba(28, 28, 30, 0.72);
+    --color-surface-glass-heavy:     rgba(28, 28, 30, 0.88);
+    --color-surface-overlay:         rgba(0, 0, 0, 0.70);
+
+    --color-label-primary:           rgba(255, 255, 255, 1.0);
+    --color-label-secondary:         rgba(255, 255, 255, 0.60);
+    --color-label-tertiary:          rgba(255, 255, 255, 0.30);
+    --color-label-quaternary:        rgba(255, 255, 255, 0.18);
+
+    --color-separator:               rgba(255, 255, 255, 0.12);
+    --color-separator-opaque:        #38383A;
+    --color-fill-primary:            rgba(120, 120, 128, 0.36);
+    --color-fill-secondary:          rgba(120, 120, 128, 0.32);
+    --color-fill-tertiary:           rgba(118, 118, 128, 0.24);
+    --color-fill-quaternary:         rgba(116, 116, 128, 0.18);
+
+    --color-blue:                    #0A84FF;
+    --color-blue-hover:              #409CFF;
+    --color-blue-light:              rgba(10, 132, 255, 0.20);
+    --color-green:                   #32D74B;
+    --color-green-hover:             #4DE764;
+    --color-green-light:             rgba(50, 215, 75, 0.20);
+    --color-red:                     #FF453A;
+    --color-red-hover:               #FF6961;
+    --color-red-light:               rgba(255, 69, 58, 0.20);
+    --color-orange:                  #FF9F0A;
+    --color-orange-light:            rgba(255, 159, 10, 0.20);
+    --color-yellow:                  #FFD60A;
+    --color-yellow-light:            rgba(255, 214, 10, 0.20);
+    --color-purple:                  #BF5AF2;
+    --color-purple-light:            rgba(191, 90, 242, 0.20);
+    --color-pink:                    #FF375F;
+    --color-pink-light:              rgba(255, 55, 95, 0.20);
+    --color-teal:                    #5AC8F5;
+    --color-teal-light:              rgba(90, 200, 245, 0.20);
+    --color-indigo:                  #5E5CE6;
+    --color-indigo-light:            rgba(94, 92, 230, 0.20);
+    --color-mint:                    #63E6E2;
+    --color-mint-light:              rgba(99, 230, 226, 0.20);
+    --color-gray:                    #8E8E93;
+    --color-gray-2:                  #636366;
+    --color-gray-3:                  #48484A;
+    --color-gray-4:                  #3A3A3C;
+    --color-gray-5:                  #2C2C2E;
+    --color-gray-6:                  #1C1C1E;
+
+    --shadow-xs:      0 1px 2px rgba(0, 0, 0, 0.24);
+    --shadow-sm:      0 1px 3px rgba(0, 0, 0, 0.36), 0 1px 2px rgba(0, 0, 0, 0.20);
+    --shadow-md:      0 4px 12px rgba(0, 0, 0, 0.48), 0 2px 4px rgba(0, 0, 0, 0.28);
+    --shadow-lg:      0 8px 24px rgba(0, 0, 0, 0.56), 0 4px 8px rgba(0, 0, 0, 0.36);
+    --shadow-xl:      0 16px 40px rgba(0, 0, 0, 0.64), 0 8px 16px rgba(0, 0, 0, 0.44);
+    --shadow-2xl:     0 24px 64px rgba(0, 0, 0, 0.72), 0 12px 24px rgba(0, 0, 0, 0.52);
+    --shadow-overlay: 0 32px 80px rgba(0, 0, 0, 0.84), 0 16px 32px rgba(0, 0, 0, 0.64);
+
+    --vibrancy: blur(20px) saturate(200%) brightness(0.85);
+  }
+}

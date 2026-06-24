@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modals & Overlays — Claude Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-15);
+      color: var(--color-blue);
+      text-decoration: none;
+      margin-bottom: var(--space-6);
+      transition: opacity var(--duration-fast) var(--ease-standard);
+    }
+
+    .back-link:hover { opacity: 0.75; }
+
+    .showcase-block { margin-bottom: var(--space-16); }
+
+    .showcase-block-title {
+      font-size: var(--text-22);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-display);
+      margin-bottom: var(--space-2);
+    }
+
+    .showcase-block-desc {
+      font-size: var(--text-15);
+      color: var(--color-label-secondary);
+      margin-bottom: var(--space-8);
+    }
+
+    .demo-bg {
+      padding: var(--space-8);
+      border-radius: var(--radius-2xl);
+      background: var(--color-bg-grouped);
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: var(--space-6);
+    }
+
+    /* Live overlay trigger demo */
+    .overlay-live {
+      position: fixed;
+      inset: 0;
+      z-index: var(--z-modal);
+      display: none;
+    }
+
+    .overlay-live.visible {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ---- Live Modal Overlay ---- -->
+  <div class="overlay-live modal-backdrop" id="live-modal" role="dialog" aria-modal="true" aria-labelledby="live-modal-title">
+    <div class="modal-dialog">
+      <div class="modal-dialog-header">
+        <div class="modal-dialog-title" id="live-modal-title">Delete Component?</div>
+      </div>
+      <div class="modal-dialog-body">
+        Removing this component will permanently delete all associated data and usage history. This cannot be undone.
+      </div>
+      <div class="modal-dialog-actions">
+        <button class="modal-dialog-action" onclick="closeModal('live-modal')">Cancel</button>
+        <button class="modal-dialog-action destructive primary" onclick="closeModal('live-modal')">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---- Live Sheet ---- -->
+  <div class="sheet-backdrop overlay-live" id="live-sheet" role="dialog" aria-modal="true" aria-labelledby="live-sheet-title" onclick="handleSheetBackdropClick(event)">
+    <div class="sheet" style="max-width:600px; margin:0 auto;">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <div class="sheet-title" id="live-sheet-title">Share Component</div>
+        <button class="sheet-close" onclick="closeModal('live-sheet')" aria-label="Close sheet">✕</button>
+      </div>
+      <div class="sheet-body">
+        <div style="display:flex; flex-direction:column; gap:var(--space-4);">
+          <div style="background:var(--color-fill-quaternary); border-radius:var(--radius-md); padding:var(--space-4);">
+            <div style="font-size:var(--text-13); color:var(--color-label-secondary); margin-bottom:var(--space-2);">Share link</div>
+            <div style="display:flex; gap:var(--space-2);">
+              <input class="input" type="text" value="https://claude.design/components/buttons" readonly style="font-size:var(--text-15);">
+              <button class="btn btn-primary btn-sm" style="flex-shrink:0;">Copy</button>
+            </div>
+          </div>
+          <div style="display:flex; gap:var(--space-3); flex-wrap:wrap;">
+            <button class="btn btn-neutral" style="flex:1;">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M15 6a3 3 0 100-6 3 3 0 000 6zM3 12a3 3 0 100-6 3 3 0 000 6zM15 18a3 3 0 100-6 3 3 0 000 6zM5.5 10.5l7 4M12.5 3.5l-7 4" stroke="currentColor" stroke-width="1.5"/></svg>
+              Share Link
+            </button>
+            <button class="btn btn-neutral" style="flex:1;">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2v9M4 8l5 5 5-5M2 14v2a1 1 0 001 1h12a1 1 0 001-1v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Export PNG
+            </button>
+            <button class="btn btn-neutral" style="flex:1;">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M6 9h6M9 6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Embed Code
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---- Live Action Sheet ---- -->
+  <div class="action-sheet-backdrop overlay-live" id="live-actionsheet" role="dialog" aria-modal="true" onclick="handleActionBackdropClick(event)">
+    <div class="action-sheet">
+      <div class="action-sheet-title">Export "Primary Button"</div>
+      <button class="action-sheet-item" onclick="closeModal('live-actionsheet')">Copy CSS</button>
+      <button class="action-sheet-item" onclick="closeModal('live-actionsheet')">Export as SVG</button>
+      <button class="action-sheet-item" onclick="closeModal('live-actionsheet')">Export as PNG</button>
+      <button class="action-sheet-item" onclick="closeModal('live-actionsheet')">Duplicate Component</button>
+      <button class="action-sheet-item destructive" onclick="closeModal('live-actionsheet')">Delete Component</button>
+    </div>
+    <div class="action-sheet-cancel">
+      <button onclick="closeModal('live-actionsheet')">Cancel</button>
+    </div>
+  </div>
+
+  <!-- ---- Toast Container ---- -->
+  <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ---- Main Content ---- -->
+  <div class="container" style="padding-top:var(--space-6);">
+
+    <a href="../index.html" class="back-link">‹ Claude Design System</a>
+
+    <div style="padding:var(--space-12) 0 var(--space-10); border-bottom:1px solid var(--color-separator); margin-bottom:var(--space-12);">
+      <span style="font-size:var(--text-11); font-weight:var(--weight-semibold); letter-spacing:var(--tracking-caps); text-transform:uppercase; color:var(--color-blue);">Components</span>
+      <h1 style="font-size:var(--text-56); font-weight:var(--weight-bold); letter-spacing:var(--tracking-title-1); font-family:var(--font-display); margin:var(--space-2) 0 var(--space-4);">Modals &amp; Overlays</h1>
+      <p style="font-size:var(--text-20); color:var(--color-label-secondary); max-width:560px; line-height:var(--leading-callout); margin:0;">
+        Alert dialogs, bottom sheets, action sheets, and toast notifications — all interactive with live demos.
+      </p>
+    </div>
+
+    <!-- Alert Dialog -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Alert Dialog</h2>
+      <p class="showcase-block-desc">Centered modal with frosted glass surface, spring-in animation, and structured action buttons. Used for confirmations and critical decisions.</p>
+
+      <div class="demo-bg">
+        <!-- Static preview -->
+        <div class="modal-dialog" style="position:relative; max-width:320px; width:100%;">
+          <div class="modal-dialog-header">
+            <div class="modal-dialog-title">Remove from Library?</div>
+          </div>
+          <div class="modal-dialog-body">
+            This will remove the component from your library. It will still appear in any projects where it's already used.
+          </div>
+          <div class="modal-dialog-actions">
+            <button class="modal-dialog-action">Cancel</button>
+            <button class="modal-dialog-action primary">Remove</button>
+          </div>
+        </div>
+
+        <div class="modal-dialog" style="position:relative; max-width:320px; width:100%;">
+          <div class="modal-dialog-header">
+            <div class="modal-dialog-title">Delete Account?</div>
+          </div>
+          <div class="modal-dialog-body">
+            All your data, components, and settings will be permanently deleted. This action cannot be undone.
+          </div>
+          <div class="modal-dialog-actions">
+            <button class="modal-dialog-action">Cancel</button>
+            <button class="modal-dialog-action destructive primary">Delete</button>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:var(--space-6);">
+        <button class="btn btn-primary" onclick="openModal('live-modal')">Open Live Alert Dialog</button>
+      </div>
+    </div>
+
+    <!-- Sheet Modal -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Sheet Modal</h2>
+      <p class="showcase-block-desc">Slides up from the bottom of the screen. The drag handle indicates it's dismissible. Background content receives a dark overlay with blur.</p>
+
+      <div class="demo-bg" style="flex-direction:column;">
+        <!-- Static sheet preview (clipped) -->
+        <div style="background:var(--color-bg-grouped-secondary); border-radius:var(--radius-sheet) var(--radius-sheet) var(--radius-md) var(--radius-md); width:100%; max-width:480px; box-shadow:var(--shadow-xl); overflow:hidden;">
+          <div class="sheet-handle"></div>
+          <div class="sheet-header">
+            <div class="sheet-title">Appearance Settings</div>
+            <button class="sheet-close" aria-label="Close">✕</button>
+          </div>
+          <div class="sheet-body" style="padding-bottom:var(--space-6);">
+            <div class="list-inset-grouped">
+              <div class="list-item">
+                <div class="list-item-content"><div class="list-item-title">Color Scheme</div></div>
+                <div class="list-item-value">Automatic</div>
+                <span class="list-item-chevron">›</span>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content"><div class="list-item-title">Accent Color</div></div>
+                <div style="width:20px; height:20px; border-radius:50%; background:var(--color-blue); flex-shrink:0;"></div>
+                <span class="list-item-chevron">›</span>
+              </div>
+              <div class="list-item" style="border-bottom:none;">
+                <div class="list-item-content"><div class="list-item-title">Reduce Motion</div></div>
+                <label class="toggle" aria-label="Reduce motion">
+                  <input type="checkbox">
+                  <span class="toggle-track"></span>
+                  <span class="toggle-thumb"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:var(--space-6);">
+        <button class="btn btn-primary" onclick="openModal('live-sheet')">Open Live Sheet</button>
+      </div>
+    </div>
+
+    <!-- Action Sheet -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Action Sheet</h2>
+      <p class="showcase-block-desc">Context menu that slides up from the bottom. Separate cancel button in its own container for discoverability.</p>
+
+      <div class="demo-bg" style="flex-direction:column; align-items:flex-start;">
+        <div style="width:100%; max-width:360px;">
+          <div class="action-sheet">
+            <div class="action-sheet-title">Export "Primary Button"</div>
+            <button class="action-sheet-item">Copy CSS</button>
+            <button class="action-sheet-item">Export as SVG</button>
+            <button class="action-sheet-item">Export as PNG</button>
+            <button class="action-sheet-item">Duplicate Component</button>
+            <button class="action-sheet-item destructive">Delete Component</button>
+          </div>
+          <div style="height:var(--space-3);"></div>
+          <div class="action-sheet-cancel">
+            <button>Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:var(--space-6);">
+        <button class="btn btn-primary" onclick="openModal('live-actionsheet')">Open Live Action Sheet</button>
+      </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Toast Notifications</h2>
+      <p class="showcase-block-desc">Slide-in banners from the top with frosted glass. Four semantic types: success, error, warning, and info.</p>
+
+      <div class="demo-bg" style="flex-direction:column;">
+        <!-- Static previews -->
+        <div class="toast success" style="position:relative; animation:none; max-width:380px; width:100%;">
+          <div class="toast-icon">✓</div>
+          <div class="toast-content">
+            <div class="toast-title">Saved Successfully</div>
+            <div class="toast-message">Your component changes have been saved.</div>
+          </div>
+          <button class="toast-close">✕</button>
+        </div>
+
+        <div class="toast error" style="position:relative; animation:none; max-width:380px; width:100%;">
+          <div class="toast-icon">!</div>
+          <div class="toast-content">
+            <div class="toast-title">Export Failed</div>
+            <div class="toast-message">Could not reach the export server. Try again.</div>
+          </div>
+          <button class="toast-close">✕</button>
+        </div>
+
+        <div class="toast warning" style="position:relative; animation:none; max-width:380px; width:100%;">
+          <div class="toast-icon">⚠</div>
+          <div class="toast-content">
+            <div class="toast-title">Storage Nearly Full</div>
+            <div class="toast-message">You've used 89% of your storage quota.</div>
+          </div>
+          <button class="toast-close">✕</button>
+        </div>
+
+        <div class="toast info" style="position:relative; animation:none; max-width:380px; width:100%;">
+          <div class="toast-icon" style="font-weight:var(--weight-bold);">i</div>
+          <div class="toast-content">
+            <div class="toast-title">Claude DS v1.1 Available</div>
+            <div class="toast-message">New motion tokens and updated card variants.</div>
+          </div>
+          <button class="toast-close">✕</button>
+        </div>
+      </div>
+
+      <!-- Live demo buttons -->
+      <div style="margin-top:var(--space-6); display:flex; flex-wrap:wrap; gap:var(--space-3);">
+        <button class="btn btn-success" onclick="showToast('success', 'Saved Successfully', 'Your changes have been saved.')">
+          Show Success Toast
+        </button>
+        <button class="btn btn-destructive" onclick="showToast('error', 'Upload Failed', 'File exceeds the 25MB size limit.')">
+          Show Error Toast
+        </button>
+        <button class="btn btn-neutral" onclick="showToast('warning', 'Storage Nearly Full', 'You have used 89% of your quota.')">
+          Show Warning Toast
+        </button>
+        <button class="btn btn-ghost" onclick="showToast('info', 'New Version Available', 'Claude DS v1.1 is ready to install.')">
+          Show Info Toast
+        </button>
+      </div>
+    </div>
+
+    <!-- Progress Indicators -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Progress &amp; Loading</h2>
+      <p class="showcase-block-desc">Progress bars with semantic color variants, and iOS-style activity spinner.</p>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:var(--space-6);">
+
+        <!-- Progress bars -->
+        <div style="background:var(--color-surface-primary); border-radius:var(--radius-card); padding:var(--space-6); box-shadow:var(--shadow-sm);">
+          <h3 style="font-size:var(--text-17); font-weight:var(--weight-semibold); margin:0 0 var(--space-5);">Progress Bars</h3>
+          <div style="display:flex; flex-direction:column; gap:var(--space-5);">
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:var(--text-13); margin-bottom:var(--space-2);">
+                <span style="font-weight:var(--weight-medium);">Upload Progress</span>
+                <span style="color:var(--color-blue);">68%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill" style="width:68%;"></div></div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:var(--text-13); margin-bottom:var(--space-2);">
+                <span style="font-weight:var(--weight-medium);">Analysis Complete</span>
+                <span style="color:var(--color-green);">100%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill success" style="width:100%;"></div></div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:var(--text-13); margin-bottom:var(--space-2);">
+                <span style="font-weight:var(--weight-medium);">Storage Used</span>
+                <span style="color:var(--color-orange);">89%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill warning" style="width:89%;"></div></div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:var(--text-13); margin-bottom:var(--space-2);">
+                <span style="font-weight:var(--weight-medium);">Memory</span>
+                <span style="color:var(--color-red);">96%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill error" style="width:96%;"></div></div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:var(--text-13); margin-bottom:var(--space-2);">
+                <span style="font-weight:var(--weight-medium);">Claude Processing</span>
+                <span style="color:var(--color-claude-primary);">45%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill claude" style="width:45%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spinners -->
+        <div style="background:var(--color-surface-primary); border-radius:var(--radius-card); padding:var(--space-6); box-shadow:var(--shadow-sm);">
+          <h3 style="font-size:var(--text-17); font-weight:var(--weight-semibold); margin:0 0 var(--space-5);">Activity Indicators</h3>
+          <div style="display:flex; flex-direction:column; gap:var(--space-6);">
+            <div style="display:flex; align-items:center; gap:var(--space-4);">
+              <div class="spinner spinner-sm"></div>
+              <div>
+                <div style="font-size:var(--text-15); font-weight:var(--weight-medium);">Small</div>
+                <div style="font-size:var(--text-13); color:var(--color-label-secondary);">16px</div>
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:var(--space-4);">
+              <div class="spinner"></div>
+              <div>
+                <div style="font-size:var(--text-15); font-weight:var(--weight-medium);">Default</div>
+                <div style="font-size:var(--text-13); color:var(--color-label-secondary);">24px</div>
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:var(--space-4);">
+              <div class="spinner spinner-lg"></div>
+              <div>
+                <div style="font-size:var(--text-15); font-weight:var(--weight-medium);">Large</div>
+                <div style="font-size:var(--text-13); color:var(--color-label-secondary);">36px</div>
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:var(--space-4);">
+              <div class="spinner" style="border-top-color:var(--color-claude-primary);"></div>
+              <div>
+                <div style="font-size:var(--text-15); font-weight:var(--weight-medium);">Claude Brand</div>
+                <div style="font-size:var(--text-13); color:var(--color-label-secondary);">Custom accent color</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Skeleton Screens -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Skeleton / Loading State</h2>
+      <p class="showcase-block-desc">Animated shimmer placeholders that match the shape of content being loaded. Reduces perceived wait time.</p>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:var(--space-6);">
+
+        <!-- Card skeleton -->
+        <div style="background:var(--color-surface-primary); border-radius:var(--radius-card); padding:var(--space-6); box-shadow:var(--shadow-sm);">
+          <div class="skeleton skeleton-rect" style="width:44px; height:44px; border-radius:var(--radius-md); margin-bottom:var(--space-4);"></div>
+          <div class="skeleton skeleton-text short" style="width:55%; height:20px; margin-bottom:var(--space-3);"></div>
+          <div class="skeleton skeleton-text long" style="width:100%; height:14px; margin-bottom:var(--space-2);"></div>
+          <div class="skeleton skeleton-text medium" style="width:75%; height:14px; margin-bottom:var(--space-2);"></div>
+          <div class="skeleton skeleton-text" style="width:45%; height:14px;"></div>
+        </div>
+
+        <!-- Profile skeleton -->
+        <div style="background:var(--color-surface-primary); border-radius:var(--radius-card); padding:var(--space-6); box-shadow:var(--shadow-sm);">
+          <div style="display:flex; align-items:center; gap:var(--space-4); margin-bottom:var(--space-5);">
+            <div class="skeleton skeleton-circle" style="width:48px; height:48px; flex-shrink:0;"></div>
+            <div style="flex:1;">
+              <div class="skeleton skeleton-text medium" style="height:16px; margin-bottom:var(--space-2);"></div>
+              <div class="skeleton skeleton-text short" style="height:13px; width:40%;"></div>
+            </div>
+          </div>
+          <div class="skeleton skeleton-rect" style="width:100%; height:120px; border-radius:var(--radius-md); margin-bottom:var(--space-4);"></div>
+          <div class="skeleton skeleton-text long" style="height:13px; margin-bottom:var(--space-2);"></div>
+          <div class="skeleton skeleton-text medium" style="height:13px;"></div>
+        </div>
+
+        <!-- List skeleton -->
+        <div style="background:var(--color-surface-primary); border-radius:var(--radius-card); overflow:hidden; box-shadow:var(--shadow-sm);">
+          <div style="padding:var(--space-4) var(--space-5); border-bottom:1px solid var(--color-separator); display:flex; align-items:center; gap:var(--space-3);">
+            <div class="skeleton skeleton-circle" style="width:36px; height:36px; flex-shrink:0;"></div>
+            <div style="flex:1;">
+              <div class="skeleton skeleton-text medium" style="height:14px; margin-bottom:var(--space-2);"></div>
+              <div class="skeleton skeleton-text short" style="height:11px; width:40%;"></div>
+            </div>
+          </div>
+          <div style="padding:var(--space-4) var(--space-5); border-bottom:1px solid var(--color-separator); display:flex; align-items:center; gap:var(--space-3);">
+            <div class="skeleton skeleton-circle" style="width:36px; height:36px; flex-shrink:0;"></div>
+            <div style="flex:1;">
+              <div class="skeleton skeleton-text long" style="height:14px; margin-bottom:var(--space-2);"></div>
+              <div class="skeleton skeleton-text short" style="height:11px; width:30%;"></div>
+            </div>
+          </div>
+          <div style="padding:var(--space-4) var(--space-5); display:flex; align-items:center; gap:var(--space-3);">
+            <div class="skeleton skeleton-circle" style="width:36px; height:36px; flex-shrink:0;"></div>
+            <div style="flex:1;">
+              <div class="skeleton skeleton-text medium" style="height:14px; margin-bottom:var(--space-2);"></div>
+              <div class="skeleton skeleton-text short" style="height:11px; width:50%;"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <footer style="border-top:1px solid var(--color-separator); padding:var(--space-8) 0; margin-top:var(--space-16); text-align:center;">
+    <p style="font-size:var(--text-13); color:var(--color-label-tertiary); margin:0;">
+      Claude Design System · Modals &amp; Overlays · <a href="../index.html" style="color:var(--color-blue);">Back to Index</a>
+    </p>
+  </footer>
+
+  <script>
+    // ---- Modal controls ----
+    function openModal(id) {
+      const el = document.getElementById(id);
+      el.style.display = '';
+      requestAnimationFrame(function() {
+        el.classList.add('visible');
+      });
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      el.classList.remove('visible');
+      document.body.style.overflow = '';
+      setTimeout(function() {
+        el.style.display = 'none';
+      }, 300);
+    }
+
+    // Close modal on backdrop click
+    document.getElementById('live-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal('live-modal');
+    });
+
+    function handleSheetBackdropClick(e) {
+      if (e.target.classList.contains('sheet-backdrop')) {
+        closeModal('live-sheet');
+      }
+    }
+
+    function handleActionBackdropClick(e) {
+      if (e.target.classList.contains('action-sheet-backdrop')) {
+        closeModal('live-actionsheet');
+      }
+    }
+
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        ['live-modal', 'live-sheet', 'live-actionsheet'].forEach(function(id) {
+          const el = document.getElementById(id);
+          if (el && el.classList.contains('visible')) closeModal(id);
+        });
+      }
+    });
+
+    // ---- Toast ----
+    function showToast(type, title, message) {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = 'toast ' + type;
+
+      const icons = {
+        success: '✓',
+        error: '!',
+        warning: '⚠',
+        info: 'i'
+      };
+
+      toast.innerHTML = `
+        <div class="toast-icon">${icons[type] || 'i'}</div>
+        <div class="toast-content">
+          <div class="toast-title">${title}</div>
+          <div class="toast-message">${message}</div>
+        </div>
+        <button class="toast-close" aria-label="Dismiss notification">✕</button>
+      `;
+
+      toast.querySelector('.toast-close').addEventListener('click', function() {
+        dismissToast(toast);
+      });
+
+      container.prepend(toast);
+
+      // Auto-dismiss after 4 seconds
+      setTimeout(function() {
+        dismissToast(toast);
+      }, 4000);
+    }
+
+    function dismissToast(toast) {
+      toast.style.animation = 'toastOut 200ms var(--ease-accelerate) both';
+      setTimeout(function() {
+        toast.remove();
+      }, 220);
+    }
+  </script>
+
+</body>
+</html>

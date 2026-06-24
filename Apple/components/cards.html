@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cards — Claude Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .page-header {
+      padding: var(--space-12) 0 var(--space-10);
+      border-bottom: 1px solid var(--color-separator);
+      margin-bottom: var(--space-12);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-15);
+      color: var(--color-blue);
+      text-decoration: none;
+      margin-bottom: var(--space-6);
+      transition: opacity var(--duration-fast) var(--ease-standard);
+    }
+
+    .back-link:hover { opacity: 0.75; }
+
+    .showcase-block {
+      margin-bottom: var(--space-16);
+    }
+
+    .showcase-block-title {
+      font-size: var(--text-22);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-display);
+      margin-bottom: var(--space-2);
+    }
+
+    .showcase-block-desc {
+      font-size: var(--text-15);
+      color: var(--color-label-secondary);
+      margin-bottom: var(--space-8);
+    }
+
+    .demo-area {
+      padding: var(--space-8);
+      background: var(--color-bg-primary);
+      border-radius: var(--radius-2xl);
+      border: 1px solid var(--color-separator);
+    }
+
+    .demo-area.colored {
+      background: linear-gradient(160deg, #e0f0ff 0%, #f0e8ff 100%);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .demo-area.colored {
+        background: linear-gradient(160deg, #001a33 0%, #1a0033 100%);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container-wide" style="padding-top:var(--space-6);">
+
+    <a href="../index.html" class="back-link">‹ Claude Design System</a>
+
+    <div class="page-header container" style="padding-left:0; padding-right:0; max-width:none;">
+      <span style="font-size:var(--text-11); font-weight:var(--weight-semibold); letter-spacing:var(--tracking-caps); text-transform:uppercase; color:var(--color-blue);">Components</span>
+      <h1 style="font-size:var(--text-56); font-weight:var(--weight-bold); letter-spacing:var(--tracking-title-1); font-family:var(--font-display); margin:var(--space-2) 0 var(--space-4);">Cards</h1>
+      <p style="font-size:var(--text-20); color:var(--color-label-secondary); max-width:560px; line-height:var(--leading-callout); margin:0;">
+        Five card types covering every content hierarchy — from subtle surfaces to full-bleed feature moments.
+      </p>
+    </div>
+
+    <div style="padding:0 var(--space-6);">
+
+    <!-- Standard Card -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Standard Card</h2>
+      <p class="showcase-block-desc">White background, 18px border-radius, medium shadow, 24px padding. The default content container.</p>
+      <div class="demo-area">
+        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:var(--space-6);">
+
+          <article class="card">
+            <div class="card-body">
+              <div style="width:44px; height:44px; border-radius:var(--radius-md); background:var(--color-blue-light); display:flex; align-items:center; justify-content:center; margin-bottom:var(--space-4);">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="2" width="8" height="8" rx="2" fill="var(--color-blue)"/><rect x="12" y="2" width="8" height="8" rx="2" fill="var(--color-blue)" opacity="0.6"/><rect x="2" y="12" width="8" height="8" rx="2" fill="var(--color-blue)" opacity="0.6"/><rect x="12" y="12" width="8" height="8" rx="2" fill="var(--color-blue)" opacity="0.3"/></svg>
+              </div>
+              <h3 class="card-title">Design Tokens</h3>
+              <p class="card-subtitle">200+ CSS custom properties for color, spacing, radius, shadow, and motion.</p>
+              <div style="margin-top:var(--space-5);"><button class="btn btn-ghost" style="padding:0; font-size:var(--text-15);">Explore tokens →</button></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-body">
+              <div style="width:44px; height:44px; border-radius:var(--radius-md); background:var(--color-green-light); display:flex; align-items:center; justify-content:center; margin-bottom:var(--space-4);">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 14l5-5 4 4 7-9" stroke="var(--color-green)" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <h3 class="card-title">Accessibility First</h3>
+              <p class="card-subtitle">WCAG 2.1 AA compliant colors and keyboard-navigable components throughout.</p>
+              <div style="margin-top:var(--space-5);"><button class="btn btn-ghost" style="padding:0; font-size:var(--text-15); color:var(--color-green);">View guidelines →</button></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-body">
+              <div style="width:44px; height:44px; border-radius:var(--radius-md); background:var(--color-claude-primary-light); display:flex; align-items:center; justify-content:center; margin-bottom:var(--space-4);">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="var(--color-claude-primary)" stroke-width="2"/><circle cx="11" cy="11" r="5" stroke="var(--color-claude-primary)" stroke-width="2"/><circle cx="11" cy="11" r="2" fill="var(--color-claude-primary)"/></svg>
+              </div>
+              <h3 class="card-title">Claude Integration</h3>
+              <p class="card-subtitle">Brand-ready patterns for embedding Claude AI features into any product surface.</p>
+              <div style="margin-top:var(--space-5);"><button class="btn btn-ghost" style="padding:0; font-size:var(--text-15); color:var(--color-claude-primary);">Learn more →</button></div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Glass Card -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Frosted Glass Card</h2>
+      <p class="showcase-block-desc">backdrop-filter blur(20px) with 72% opacity white background — the iOS frosted glass vibrancy effect.</p>
+      <div class="demo-area colored">
+        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:var(--space-6);">
+
+          <article class="card-glass" style="padding:var(--space-6);">
+            <div style="width:44px; height:44px; border-radius:var(--radius-md); background:rgba(191,90,242,0.15); display:flex; align-items:center; justify-content:center; margin-bottom:var(--space-4);">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="var(--color-purple)" stroke-width="2"/><circle cx="11" cy="11" r="5" stroke="var(--color-purple)" stroke-width="2"/><circle cx="11" cy="11" r="2" fill="var(--color-purple)"/></svg>
+            </div>
+            <h3 class="card-title">Frosted Glass</h3>
+            <p class="card-subtitle">Background content bleeds through the card creating depth and visual hierarchy.</p>
+            <div style="margin-top:var(--space-5);"><button class="btn btn-ghost" style="padding:0; font-size:var(--text-15); color:var(--color-purple);">Explore →</button></div>
+          </article>
+
+          <article class="card-glass" style="padding:var(--space-6);">
+            <div style="width:44px; height:44px; border-radius:var(--radius-md); background:rgba(0,122,255,0.12); display:flex; align-items:center; justify-content:center; margin-bottom:var(--space-4);">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 11h16M11 3l8 8-8 8" stroke="var(--color-blue)" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="card-title">Motion Ready</h3>
+            <p class="card-subtitle">All glass surfaces include smooth transitions for state changes and hover effects.</p>
+            <div style="margin-top:var(--space-5);"><button class="btn btn-ghost" style="padding:0; font-size:var(--text-15);">View motion →</button></div>
+          </article>
+
+          <article class="card-glass" style="padding:var(--space-6);">
+            <div style="width:44px; height:44px; border-radius:var(--radius-md); background:rgba(52,199,89,0.12); display:flex; align-items:center; justify-content:center; margin-bottom:var(--space-4);">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11l6 6 9-10" stroke="var(--color-green)" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="card-title">Dark Mode Ready</h3>
+            <p class="card-subtitle">Glass surfaces adapt using CSS custom properties — no JavaScript required.</p>
+            <div style="margin-top:var(--space-5);"><button class="btn btn-ghost" style="padding:0; font-size:var(--text-15); color:var(--color-green);">See tokens →</button></div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature Cards -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Feature Card</h2>
+      <p class="showcase-block-desc">Full-bleed gradient backgrounds for hero moments, promotional sections, and key product callouts.</p>
+      <div style="display:grid; gap:var(--space-6);">
+
+        <article class="card-feature">
+          <div style="margin-bottom:auto; padding-bottom:var(--space-8);">
+            <span class="badge" style="background:rgba(255,255,255,0.2); color:#fff;">
+              <span class="badge-dot"></span>Claude Design System
+            </span>
+          </div>
+          <h3 class="card-title" style="font-size:clamp(var(--text-28),4vw,var(--text-44));">Design. Build. Ship.</h3>
+          <p class="card-subtitle" style="margin-top:var(--space-2); max-width:480px;">Production-quality components built on Apple's design philosophy. Every detail considered, every interaction polished.</p>
+          <div style="margin-top:var(--space-6);">
+            <button class="btn" style="background:rgba(255,255,255,0.18); color:#fff; backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.25);">Explore Components</button>
+          </div>
+        </article>
+
+        <article class="card-feature claude">
+          <div style="margin-bottom:auto; padding-bottom:var(--space-8);">
+            <span class="badge" style="background:rgba(255,255,255,0.15); color:#fff;">
+              <span class="badge-dot"></span>Anthropic
+            </span>
+          </div>
+          <h3 class="card-title" style="font-size:clamp(var(--text-28),4vw,var(--text-44));">Claude — AI for the Long Run</h3>
+          <p class="card-subtitle" style="margin-top:var(--space-2); max-width:480px;">Helpful, harmless, and honest. Claude design patterns make AI-powered experiences feel natural and trustworthy.</p>
+          <div style="margin-top:var(--space-6);">
+            <button class="btn" style="background:rgba(255,255,255,0.18); color:#fff; backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.25);">Build with Claude</button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- Media Cards -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Media Card</h2>
+      <p class="showcase-block-desc">Image-first layout for articles, products, and content feeds. 16:9 image ratio by default.</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:var(--space-6);">
+
+        <article class="card-media">
+          <div class="card-media-image-placeholder">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="12" width="32" height="24" rx="3" stroke="var(--color-label-quaternary)" stroke-width="2"/><circle cx="17" cy="20" r="4" stroke="var(--color-label-quaternary)" stroke-width="2"/><path d="M8 30l10-8 8 6 5-4 9 8" stroke="var(--color-label-quaternary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="card-media-body">
+            <div style="display:flex; gap:var(--space-2); margin-bottom:var(--space-2);">
+              <span class="badge badge-blue">Design</span>
+              <span class="badge badge-gray">5 min read</span>
+            </div>
+            <h3 class="card-title" style="font-size:var(--text-17);">Building with iOS 18 Design Language</h3>
+            <p class="card-subtitle" style="margin-top:var(--space-1);">Explore the latest updates and how to apply them in your work.</p>
+          </div>
+        </article>
+
+        <article class="card-media">
+          <div class="card-media-image-placeholder" style="background:linear-gradient(135deg,#007AFF22,#5E5CE622);">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="var(--color-blue)" stroke-width="2" opacity="0.4"/><circle cx="24" cy="24" r="12" stroke="var(--color-blue)" stroke-width="2" opacity="0.6"/><circle cx="24" cy="24" r="6" fill="var(--color-blue)" opacity="0.8"/></svg>
+          </div>
+          <div class="card-media-body">
+            <div style="display:flex; gap:var(--space-2); margin-bottom:var(--space-2);">
+              <span class="badge badge-purple">Motion</span>
+              <span class="badge badge-gray">8 min read</span>
+            </div>
+            <h3 class="card-title" style="font-size:var(--text-17);">Spring Animations in the Claude DS</h3>
+            <p class="card-subtitle" style="margin-top:var(--space-1);">How we use cubic-bezier curves to create fluid, physics-based motion.</p>
+          </div>
+        </article>
+
+        <article class="card-media">
+          <div class="card-media-image-placeholder" style="background:linear-gradient(135deg,#FF6B3522,#FF375F22);">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="10" y="10" width="28" height="28" rx="6" stroke="var(--color-claude-primary)" stroke-width="2" opacity="0.5"/><path d="M18 24h12M24 18v12" stroke="var(--color-claude-primary)" stroke-width="2.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="card-media-body">
+            <div style="display:flex; gap:var(--space-2); margin-bottom:var(--space-2);">
+              <span class="badge badge-claude">Claude</span>
+              <span class="badge badge-gray">3 min read</span>
+            </div>
+            <h3 class="card-title" style="font-size:var(--text-17);">Integrating Claude AI Patterns</h3>
+            <p class="card-subtitle" style="margin-top:var(--space-1);">Design patterns for building trust in AI-powered interfaces.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Stats Card</h2>
+      <p class="showcase-block-desc">Numeric data at a glance — large number, label, and optional trend indicator.</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(180px, 1fr)); gap:var(--space-6);">
+
+        <article class="card-stats">
+          <div style="width:44px; height:44px; border-radius:var(--radius-md); background:var(--color-blue-light); display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-4);">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 16l5-7 4 4 6-8" stroke="var(--color-blue)" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="card-stats-value" style="color:var(--color-blue);">2.4M</div>
+          <div class="card-stats-label">Active Users</div>
+          <div class="card-stats-change positive">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 9V3M3 6l3-3 3 3" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            +18.4%
+          </div>
+        </article>
+
+        <article class="card-stats">
+          <div style="width:44px; height:44px; border-radius:var(--radius-md); background:var(--color-green-light); display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-4);">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11l6 6 9-10" stroke="var(--color-green)" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="card-stats-value" style="color:var(--color-green);">99.8%</div>
+          <div class="card-stats-label">Uptime</div>
+          <div class="card-stats-change positive">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 9V3M3 6l3-3 3 3" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            +0.1%
+          </div>
+        </article>
+
+        <article class="card-stats">
+          <div style="width:44px; height:44px; border-radius:var(--radius-md); background:var(--color-claude-primary-light); display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-4);">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="var(--color-claude-primary)" stroke-width="2"/><circle cx="11" cy="11" r="4" fill="var(--color-claude-primary)" opacity="0.5"/></svg>
+          </div>
+          <div class="card-stats-value" style="color:var(--color-claude-primary);">50+</div>
+          <div class="card-stats-label">Components</div>
+          <div class="card-stats-change positive">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 9V3M3 6l3-3 3 3" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            v1.0 release
+          </div>
+        </article>
+
+        <article class="card-stats">
+          <div style="width:44px; height:44px; border-radius:var(--radius-md); background:var(--color-red-light); display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-4);">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 14l5-5 4 4 7-9" stroke="var(--color-red)" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="card-stats-value" style="color:var(--color-red);">142ms</div>
+          <div class="card-stats-label">Avg. Response</div>
+          <div class="card-stats-change negative">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 3v6M3 6l3 3 3-3" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            +12ms
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    </div><!-- end padding wrapper -->
+
+  </div>
+
+  <footer style="border-top:1px solid var(--color-separator); padding:var(--space-8) 0; margin-top:var(--space-16); text-align:center;">
+    <p style="font-size:var(--text-13); color:var(--color-label-tertiary); margin:0;">
+      Claude Design System · Cards · <a href="../index.html" style="color:var(--color-blue);">Back to Index</a>
+    </p>
+  </footer>
+
+</body>
+</html>

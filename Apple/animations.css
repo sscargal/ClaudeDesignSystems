@@ -1,0 +1,438 @@
+/* =============================================================================
+   Claude Design System — Animations & Motion
+   Version 1.0.0 | iOS 18 Motion Language
+   ============================================================================= */
+
+/* =============================================================================
+   KEYFRAMES
+   ============================================================================= */
+
+/* --- Fade --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* --- Slide --- */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOutUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+/* --- Scale / Spring --- */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+}
+
+@keyframes springIn {
+  0%   { opacity: 0; transform: scale(0.80); }
+  60%  { opacity: 1; transform: scale(1.04); }
+  80%  { transform: scale(0.98); }
+  100% { transform: scale(1); }
+}
+
+@keyframes springPop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.08); }
+  70%  { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
+
+/* --- Shimmer / Skeleton Loading --- */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* --- Pulse --- */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+@keyframes pulseSoft {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.03); opacity: 0.85; }
+}
+
+/* --- Spin --- */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes spinReverse {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+/* --- Bounce --- */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
+  50%       { transform: translateY(-12px); animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
+}
+
+/* --- Shake --- */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+
+/* --- Ripple --- */
+@keyframes ripple {
+  0%   { transform: scale(0); opacity: 0.4; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* --- Toast notification --- */
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(-100%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes toastOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100%) scale(0.95);
+  }
+}
+
+/* --- Progress bar --- */
+@keyframes progressSlide {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes progressIndeterminate {
+  0%   { transform: translateX(-100%) scaleX(0.5); }
+  50%  { transform: translateX(25%) scaleX(0.75); }
+  100% { transform: translateX(100%) scaleX(0.5); }
+}
+
+/* --- Toggle switch --- */
+@keyframes toggleOn {
+  from { transform: translateX(0); }
+  to   { transform: translateX(20px); }
+}
+
+@keyframes toggleOff {
+  from { transform: translateX(20px); }
+  to   { transform: translateX(0); }
+}
+
+/* --- Checkmark draw --- */
+@keyframes checkDraw {
+  from { stroke-dashoffset: 20; opacity: 0; }
+  to   { stroke-dashoffset: 0;  opacity: 1; }
+}
+
+/* --- Gradient flow (for hero backgrounds) --- */
+@keyframes gradientFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- Float (gentle levitation) --- */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* --- Glow pulse --- */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 122, 255, 0.4); }
+  50%       { box-shadow: 0 0 0 12px rgba(0, 122, 255, 0); }
+}
+
+@keyframes glowPulseOrange {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4); }
+  50%       { box-shadow: 0 0 0 12px rgba(255, 107, 53, 0); }
+}
+
+/* =============================================================================
+   ANIMATION UTILITY CLASSES
+   ============================================================================= */
+
+/* Fade */
+.animate-fade-in       { animation: fadeIn var(--duration-moderate) var(--ease-decelerate) both; }
+.animate-fade-out      { animation: fadeOut var(--duration-normal) var(--ease-accelerate) both; }
+.animate-fade-in-up    { animation: fadeInUp var(--duration-moderate) var(--ease-decelerate) both; }
+.animate-fade-in-down  { animation: fadeInDown var(--duration-moderate) var(--ease-decelerate) both; }
+.animate-fade-in-left  { animation: fadeInLeft var(--duration-moderate) var(--ease-decelerate) both; }
+.animate-fade-in-right { animation: fadeInRight var(--duration-moderate) var(--ease-decelerate) both; }
+
+/* Slide */
+.animate-slide-in-up   { animation: slideInUp var(--duration-moderate) var(--ease-decelerate) both; }
+.animate-slide-out-down{ animation: slideOutDown var(--duration-normal) var(--ease-accelerate) both; }
+.animate-slide-in-down { animation: slideInDown var(--duration-moderate) var(--ease-decelerate) both; }
+
+/* Scale */
+.animate-scale-in      { animation: scaleIn var(--duration-moderate) var(--ease-decelerate) both; }
+.animate-scale-out     { animation: scaleOut var(--duration-normal) var(--ease-accelerate) both; }
+.animate-spring-in     { animation: springIn var(--duration-slow) var(--ease-spring) both; }
+
+/* Ongoing */
+.animate-pulse         { animation: pulse 2s var(--ease-standard) infinite; }
+.animate-pulse-soft    { animation: pulseSoft 3s var(--ease-standard) infinite; }
+.animate-spin          { animation: spin 1s linear infinite; }
+.animate-bounce        { animation: bounce 1s infinite; }
+.animate-float         { animation: float 4s var(--ease-standard) infinite; }
+.animate-glow-pulse    { animation: glowPulse 2s ease-in-out infinite; }
+.animate-glow-orange   { animation: glowPulseOrange 2s ease-in-out infinite; }
+
+/* Toast */
+.animate-toast-in      { animation: toastIn var(--duration-moderate) var(--ease-spring) both; }
+.animate-toast-out     { animation: toastOut var(--duration-normal) var(--ease-accelerate) both; }
+
+/* Gradient flow */
+.animate-gradient      {
+  background-size: 300% 300%;
+  animation: gradientFlow 8s ease infinite;
+}
+
+/* =============================================================================
+   SHIMMER / SKELETON LOADING
+   ============================================================================= */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-fill-tertiary) 25%,
+    var(--color-fill-secondary) 50%,
+    var(--color-fill-tertiary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s var(--ease-standard) infinite;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-text {
+  height: 1em;
+  margin-bottom: 0.5em;
+  border-radius: var(--radius-xs);
+}
+
+.skeleton-text.short  { width: 40%; }
+.skeleton-text.medium { width: 65%; }
+.skeleton-text.long   { width: 90%; }
+
+.skeleton-circle {
+  border-radius: var(--radius-pill);
+}
+
+.skeleton-rect {
+  border-radius: var(--radius-sm);
+}
+
+/* =============================================================================
+   DELAY UTILITIES
+   ============================================================================= */
+
+.delay-50   { animation-delay: 50ms; }
+.delay-100  { animation-delay: 100ms; }
+.delay-150  { animation-delay: 150ms; }
+.delay-200  { animation-delay: 200ms; }
+.delay-300  { animation-delay: 300ms; }
+.delay-400  { animation-delay: 400ms; }
+.delay-500  { animation-delay: 500ms; }
+.delay-600  { animation-delay: 600ms; }
+.delay-800  { animation-delay: 800ms; }
+.delay-1000 { animation-delay: 1000ms; }
+
+/* =============================================================================
+   TRANSITION UTILITIES
+   ============================================================================= */
+
+.transition-none     { transition: none; }
+.transition-fast     { transition: var(--transition-fast); }
+.transition-normal   { transition: var(--transition-normal); }
+.transition-moderate { transition: var(--transition-moderate); }
+.transition-spring   { transition: var(--transition-spring); }
+
+/* =============================================================================
+   HOVER EFFECTS
+   ============================================================================= */
+
+.hover-lift {
+  transition: transform var(--duration-normal) var(--ease-spring),
+              box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hover-scale {
+  transition: transform var(--duration-normal) var(--ease-spring);
+}
+
+.hover-scale:hover {
+  transform: scale(1.03);
+}
+
+.hover-scale:active {
+  transform: scale(0.97);
+}
+
+/* =============================================================================
+   RIPPLE EFFECT
+   ============================================================================= */
+
+.ripple-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
+}
+
+/* =============================================================================
+   REDUCED MOTION — Respect user preference
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .skeleton {
+    animation: none;
+    background: var(--color-fill-tertiary);
+  }
+
+  .animate-gradient {
+    animation: none;
+  }
+}

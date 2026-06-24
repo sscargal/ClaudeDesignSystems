@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation — Claude Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-15);
+      color: var(--color-blue);
+      text-decoration: none;
+      margin-bottom: var(--space-6);
+      transition: opacity var(--duration-fast) var(--ease-standard);
+    }
+
+    .back-link:hover { opacity: 0.75; }
+
+    .showcase-block {
+      margin-bottom: var(--space-16);
+    }
+
+    .showcase-block-title {
+      font-size: var(--text-22);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-display);
+      margin-bottom: var(--space-2);
+    }
+
+    .showcase-block-desc {
+      font-size: var(--text-15);
+      color: var(--color-label-secondary);
+      margin-bottom: var(--space-8);
+    }
+
+    .device-frame {
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      background: var(--color-bg-primary);
+      box-shadow: var(--shadow-xl);
+      border: 1px solid var(--color-separator);
+    }
+
+    .device-content {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-label-tertiary);
+      font-size: var(--text-15);
+    }
+
+    .sidebar-layout {
+      display: flex;
+      height: 400px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" style="padding-top:var(--space-6);">
+
+    <a href="../index.html" class="back-link">‹ Claude Design System</a>
+
+    <div style="padding:var(--space-12) 0 var(--space-10); border-bottom:1px solid var(--color-separator); margin-bottom:var(--space-12);">
+      <span style="font-size:var(--text-11); font-weight:var(--weight-semibold); letter-spacing:var(--tracking-caps); text-transform:uppercase; color:var(--color-blue);">Components</span>
+      <h1 style="font-size:var(--text-56); font-weight:var(--weight-bold); letter-spacing:var(--tracking-title-1); font-family:var(--font-display); margin:var(--space-2) 0 var(--space-4);">Navigation</h1>
+      <p style="font-size:var(--text-20); color:var(--color-label-secondary); max-width:560px; line-height:var(--leading-callout); margin:0;">
+        Frosted glass navigation bars, iOS tab bars, sidebar navigation, and breadcrumbs — all respecting iOS 18 patterns.
+      </p>
+    </div>
+
+    <!-- Top Navigation Bar -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Top Navigation Bar</h2>
+      <p class="showcase-block-desc">Sticky frosted glass header with blur(20px) backdrop. Adapts for dark mode automatically.</p>
+
+      <div class="device-frame">
+        <!-- Navbar -->
+        <nav style="height:var(--nav-height); display:flex; align-items:center; background:rgba(255,255,255,0.72); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid var(--color-separator); padding:0 var(--space-6);">
+          <div style="display:flex; align-items:center; gap:var(--space-2); font-weight:var(--weight-semibold); flex-shrink:0;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9.5" stroke="url(#nav1)" stroke-width="2"/><circle cx="11" cy="11" r="5.5" stroke="url(#nav2)" stroke-width="2"/><circle cx="11" cy="11" r="2" fill="url(#nav3)"/><defs><linearGradient id="nav1" x1="2" y1="2" x2="20" y2="20"><stop stop-color="#FF6B35"/><stop offset="1" stop-color="#FF375F"/></linearGradient><linearGradient id="nav2" x1="5" y1="5" x2="17" y2="17"><stop stop-color="#FF375F"/><stop offset="1" stop-color="#BF5AF2"/></linearGradient><linearGradient id="nav3" x1="9" y1="9" x2="13" y2="13"><stop stop-color="#007AFF"/><stop offset="1" stop-color="#5E5CE6"/></linearGradient></defs></svg>
+            Claude DS
+          </div>
+          <ul style="display:flex; gap:0; margin:0 auto; padding:0; list-style:none;">
+            <li><a href="#" style="padding:var(--space-1) var(--space-3); color:var(--color-label-primary); background:var(--color-fill-tertiary); font-size:var(--text-15); text-decoration:none; border-radius:var(--radius-pill); font-weight:var(--weight-medium);">Components</a></li>
+            <li><a href="#" style="padding:var(--space-1) var(--space-3); color:var(--color-label-secondary); font-size:var(--text-15); text-decoration:none; border-radius:var(--radius-pill);">Tokens</a></li>
+            <li><a href="#" style="padding:var(--space-1) var(--space-3); color:var(--color-label-secondary); font-size:var(--text-15); text-decoration:none; border-radius:var(--radius-pill);">Docs</a></li>
+            <li><a href="#" style="padding:var(--space-1) var(--space-3); color:var(--color-label-secondary); font-size:var(--text-15); text-decoration:none; border-radius:var(--radius-pill);">Blog</a></li>
+          </ul>
+          <div style="display:flex; gap:var(--space-2);">
+            <button class="btn btn-ghost btn-sm">Sign in</button>
+            <button class="btn btn-primary btn-sm">Get Started</button>
+          </div>
+        </nav>
+        <div class="device-content">Page content below the sticky nav</div>
+      </div>
+
+      <!-- Dark variant -->
+      <div style="margin-top:var(--space-4);">
+        <div class="device-frame" style="background:#000;">
+          <nav style="height:var(--nav-height); display:flex; align-items:center; background:rgba(28,28,30,0.72); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid rgba(255,255,255,0.12); padding:0 var(--space-6);">
+            <div style="display:flex; align-items:center; gap:var(--space-2); font-weight:var(--weight-semibold); flex-shrink:0; color:#fff;">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9.5" stroke="url(#dn1)" stroke-width="2"/><circle cx="11" cy="11" r="5.5" stroke="url(#dn2)" stroke-width="2"/><circle cx="11" cy="11" r="2" fill="url(#dn3)"/><defs><linearGradient id="dn1" x1="2" y1="2" x2="20" y2="20"><stop stop-color="#FF6B35"/><stop offset="1" stop-color="#FF375F"/></linearGradient><linearGradient id="dn2" x1="5" y1="5" x2="17" y2="17"><stop stop-color="#FF375F"/><stop offset="1" stop-color="#BF5AF2"/></linearGradient><linearGradient id="dn3" x1="9" y1="9" x2="13" y2="13"><stop stop-color="#0A84FF"/><stop offset="1" stop-color="#5E5CE6"/></linearGradient></defs></svg>
+              Claude DS
+            </div>
+            <ul style="display:flex; gap:0; margin:0 auto; padding:0; list-style:none;">
+              <li><a href="#" style="padding:var(--space-1) var(--space-3); color:rgba(255,255,255,0.9); background:rgba(255,255,255,0.12); font-size:var(--text-15); text-decoration:none; border-radius:var(--radius-pill); font-weight:var(--weight-medium);">Components</a></li>
+              <li><a href="#" style="padding:var(--space-1) var(--space-3); color:rgba(255,255,255,0.5); font-size:var(--text-15); text-decoration:none; border-radius:var(--radius-pill);">Tokens</a></li>
+              <li><a href="#" style="padding:var(--space-1) var(--space-3); color:rgba(255,255,255,0.5); font-size:var(--text-15); text-decoration:none; border-radius:var(--radius-pill);">Docs</a></li>
+            </ul>
+            <button class="btn btn-primary btn-sm">Get Started</button>
+          </nav>
+          <div class="device-content" style="background:#000; color:rgba(255,255,255,0.25);">Dark mode variant</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Bar -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">iOS Tab Bar</h2>
+      <p class="showcase-block-desc">Bottom tab bar with icons and labels. Active item uses Apple Blue. Tap target is the full column width.</p>
+
+      <div class="device-frame" style="max-width:390px; margin:0 auto;">
+        <div class="device-content" style="height:280px;">Current tab content</div>
+        <div class="tab-bar" style="border-radius:0;">
+          <a class="tab-bar-item active" href="#" aria-current="page">
+            <span class="tab-bar-item-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 12L12 3l9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="tab-bar-item-label">Home</span>
+          </a>
+          <a class="tab-bar-item" href="#">
+            <span class="tab-bar-item-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </span>
+            <span class="tab-bar-item-label">Search</span>
+          </a>
+          <a class="tab-bar-item" href="#">
+            <span class="tab-bar-item-icon" style="position:relative;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="badge-notification" style="position:absolute; top:-6px; right:-8px; min-width:18px; height:18px; font-size:10px;">3</span>
+            </span>
+            <span class="tab-bar-item-label">Alerts</span>
+          </a>
+          <a class="tab-bar-item" href="#">
+            <span class="tab-bar-item-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4 3.582-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </span>
+            <span class="tab-bar-item-label">Profile</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Sidebar Navigation</h2>
+      <p class="showcase-block-desc">iOS-style grouped sidebar with section labels, item icons, and active state highlighting.</p>
+
+      <div class="device-frame">
+        <div class="sidebar-layout">
+          <aside class="sidebar">
+            <div class="sidebar-section">
+              <div class="sidebar-section-label">Main</div>
+              <a class="sidebar-item active" href="#">
+                <span class="sidebar-item-icon">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="10" y="2" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="2" y="10" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="10" y="10" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                </span>
+                Components
+              </a>
+              <a class="sidebar-item" href="#">
+                <span class="sidebar-item-icon">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M9 5v4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+                Tokens
+              </a>
+              <a class="sidebar-item" href="#">
+                <span class="sidebar-item-icon">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 5h12M3 9h12M3 13h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+                Typography
+              </a>
+              <a class="sidebar-item" href="#">
+                <span class="sidebar-item-icon">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9l6-6 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Motion
+              </a>
+            </div>
+
+            <div class="sidebar-section">
+              <div class="sidebar-section-label">Resources</div>
+              <a class="sidebar-item" href="#">
+                <span class="sidebar-item-icon">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="2" width="12" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 6h6M6 9h6M6 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+                Documentation
+              </a>
+              <a class="sidebar-item" href="#">
+                <span class="sidebar-item-icon">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 7-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Changelog
+              </a>
+              <a class="sidebar-item" href="#">
+                <span class="sidebar-item-icon">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M9 7.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM9 12v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+                Help Center
+              </a>
+            </div>
+          </aside>
+
+          <main style="flex:1; padding:var(--space-6); overflow:auto;">
+            <h3 style="font-size:var(--text-22); font-weight:var(--weight-semibold); font-family:var(--font-display); margin:0 0 var(--space-2);">Components</h3>
+            <p style="font-size:var(--text-15); color:var(--color-label-secondary); margin:0;">Select a section from the sidebar to begin exploring.</p>
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <!-- Breadcrumbs -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Breadcrumbs</h2>
+      <p class="showcase-block-desc">Hierarchical path indicator. Current page has no link and uses primary label color.</p>
+
+      <div style="display:flex; flex-direction:column; gap:var(--space-4);">
+
+        <div style="background:var(--color-surface-primary); padding:var(--space-4) var(--space-6); border-radius:var(--radius-md); box-shadow:var(--shadow-sm);">
+          <nav aria-label="Breadcrumb">
+            <ol class="breadcrumbs" role="list">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-separator" aria-hidden="true">›</li>
+              <li class="breadcrumb-item"><a href="#">Design System</a></li>
+              <li class="breadcrumb-separator" aria-hidden="true">›</li>
+              <li class="breadcrumb-item" aria-current="page">Components</li>
+            </ol>
+          </nav>
+        </div>
+
+        <div style="background:var(--color-surface-primary); padding:var(--space-4) var(--space-6); border-radius:var(--radius-md); box-shadow:var(--shadow-sm);">
+          <nav aria-label="Breadcrumb">
+            <ol class="breadcrumbs" role="list">
+              <li class="breadcrumb-item"><a href="#">Anthropic</a></li>
+              <li class="breadcrumb-separator" aria-hidden="true">/</li>
+              <li class="breadcrumb-item"><a href="#">Claude DS</a></li>
+              <li class="breadcrumb-separator" aria-hidden="true">/</li>
+              <li class="breadcrumb-item"><a href="#">Components</a></li>
+              <li class="breadcrumb-separator" aria-hidden="true">/</li>
+              <li class="breadcrumb-item" aria-current="page">Navigation</li>
+            </ol>
+          </nav>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Badges & Tags section (referenced from index) -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Badges &amp; Tags</h2>
+      <p class="showcase-block-desc">Compact pill labels for status, category, and count indicators. Fourteen color variants plus notification badges.</p>
+
+      <div style="display:flex; flex-direction:column; gap:var(--space-8);">
+
+        <!-- Soft (tinted) -->
+        <div>
+          <div style="font-size:var(--text-13); font-weight:var(--weight-semibold); letter-spacing:var(--tracking-caps); text-transform:uppercase; color:var(--color-label-tertiary); margin-bottom:var(--space-4);">Soft (tinted)</div>
+          <div style="display:flex; flex-wrap:wrap; gap:var(--space-3);">
+            <span class="badge badge-blue"><span class="badge-dot"></span>Active</span>
+            <span class="badge badge-green"><span class="badge-dot"></span>Success</span>
+            <span class="badge badge-red"><span class="badge-dot"></span>Error</span>
+            <span class="badge badge-orange"><span class="badge-dot"></span>Warning</span>
+            <span class="badge badge-purple">Beta</span>
+            <span class="badge badge-pink">New</span>
+            <span class="badge badge-teal">In Progress</span>
+            <span class="badge badge-gray">Archived</span>
+            <span class="badge badge-claude">Claude AI</span>
+          </div>
+        </div>
+
+        <!-- Solid -->
+        <div>
+          <div style="font-size:var(--text-13); font-weight:var(--weight-semibold); letter-spacing:var(--tracking-caps); text-transform:uppercase; color:var(--color-label-tertiary); margin-bottom:var(--space-4);">Solid</div>
+          <div style="display:flex; flex-wrap:wrap; gap:var(--space-3);">
+            <span class="badge badge-solid-blue">v1.0.0</span>
+            <span class="badge badge-solid-green">Live</span>
+            <span class="badge badge-solid-red">Deprecated</span>
+            <span class="badge badge-solid-orange">Breaking</span>
+            <span class="badge badge-solid-purple">Experimental</span>
+            <span class="badge badge-solid-claude">Anthropic</span>
+          </div>
+        </div>
+
+        <!-- Notification dots -->
+        <div>
+          <div style="font-size:var(--text-13); font-weight:var(--weight-semibold); letter-spacing:var(--tracking-caps); text-transform:uppercase; color:var(--color-label-tertiary); margin-bottom:var(--space-4);">Notification</div>
+          <div style="display:flex; gap:var(--space-8); align-items:center;">
+            <div style="position:relative; display:inline-flex;">
+              <button class="btn btn-neutral btn-icon" aria-label="Notifications">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M16 7A6 6 0 004 7c0 7-3 9-3 9h18s-3-2-3-9M11.73 17a2 2 0 01-3.46 0" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <span class="badge-notification" style="position:absolute; top:-4px; right:-4px;">3</span>
+            </div>
+            <div style="position:relative; display:inline-flex;">
+              <button class="btn btn-neutral btn-icon" aria-label="Messages">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M18 2H2v13h4l4 4 4-4h4V2z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></svg>
+              </button>
+              <span class="badge-notification" style="position:absolute; top:-4px; right:-4px;">12</span>
+            </div>
+            <div style="position:relative; display:inline-flex;">
+              <button class="btn btn-neutral btn-icon" aria-label="Cart">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 3h2l2.5 10h9l2-7H6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="16.5" r="1.5" fill="currentColor"/><circle cx="15.5" cy="16.5" r="1.5" fill="currentColor"/></svg>
+              </button>
+              <span class="badge-notification" style="position:absolute; top:-4px; right:-4px;">99+</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <footer style="border-top:1px solid var(--color-separator); padding:var(--space-8) 0; margin-top:var(--space-16); text-align:center;">
+    <p style="font-size:var(--text-13); color:var(--color-label-tertiary); margin:0;">
+      Claude Design System · Navigation · <a href="../index.html" style="color:var(--color-blue);">Back to Index</a>
+    </p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms — Claude Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-15);
+      color: var(--color-blue);
+      text-decoration: none;
+      margin-bottom: var(--space-6);
+      transition: opacity var(--duration-fast) var(--ease-standard);
+    }
+
+    .back-link:hover { opacity: 0.75; }
+
+    .showcase-block {
+      margin-bottom: var(--space-16);
+    }
+
+    .showcase-block-title {
+      font-size: var(--text-22);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-display);
+      margin-bottom: var(--space-2);
+    }
+
+    .showcase-block-desc {
+      font-size: var(--text-15);
+      color: var(--color-label-secondary);
+      margin-bottom: var(--space-8);
+    }
+
+    .demo-panel {
+      background: var(--color-surface-primary);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-lg);
+    }
+  </style>
+</head>
+<body>
+  <div class="container" style="padding-top:var(--space-6);">
+
+    <a href="../index.html" class="back-link">‹ Claude Design System</a>
+
+    <div style="padding: var(--space-12) 0 var(--space-10); border-bottom: 1px solid var(--color-separator); margin-bottom: var(--space-12);">
+      <span style="font-size:var(--text-11); font-weight:var(--weight-semibold); letter-spacing:var(--tracking-caps); text-transform:uppercase; color:var(--color-blue);">Components</span>
+      <h1 style="font-size:var(--text-56); font-weight:var(--weight-bold); letter-spacing:var(--tracking-title-1); font-family:var(--font-display); margin:var(--space-2) 0 var(--space-4);">Forms</h1>
+      <p style="font-size:var(--text-20); color:var(--color-label-secondary); max-width:560px; line-height:var(--leading-callout); margin:0;">
+        Every form control — text inputs, toggles, checkboxes, radios, selects, and segmented controls — with full state coverage.
+      </p>
+    </div>
+
+    <!-- Text Inputs -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Text Inputs</h2>
+      <p class="showcase-block-desc">Rounded corners, fill background, blue focus ring with 3px spread. iOS keyboard-aware sizing at 44px height.</p>
+      <div class="demo-panel" style="max-width:520px;">
+        <div style="display:flex; flex-direction:column; gap:var(--space-5);">
+
+          <div class="form-group">
+            <label class="form-label required" for="f-name">Full Name</label>
+            <input class="input" type="text" id="f-name" placeholder="Alex Johnson" autocomplete="name">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="f-email">Email</label>
+            <div class="input-wrapper">
+              <span class="input-icon-left" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 6l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <input class="input has-icon-left" type="email" id="f-email" placeholder="alex@example.com" autocomplete="email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="f-password">Password</label>
+            <div class="input-wrapper">
+              <span class="input-icon-left" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="8" width="12" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 8V6a3 3 0 016 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <input class="input has-icon-left" type="password" id="f-password" placeholder="••••••••" autocomplete="new-password">
+            </div>
+            <span class="form-helper">Minimum 8 characters</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="f-success">Username (success state)</label>
+            <input class="input success" type="text" id="f-success" value="alexjohnson" autocomplete="username">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="f-error">Email (error state)</label>
+            <input class="input error" type="email" id="f-error" value="not-an-email" aria-describedby="f-error-msg">
+            <span class="form-error" id="f-error-msg">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M7 4v3M7 9.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Please enter a valid email address.
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="f-disabled">Disabled input</label>
+            <input class="input" type="text" id="f-disabled" value="Cannot edit this field" disabled>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="f-bio">Bio</label>
+            <textarea class="textarea" id="f-bio" rows="4" placeholder="Tell us about yourself…"></textarea>
+            <span class="form-helper">Max 280 characters</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Field -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Search Field</h2>
+      <p class="showcase-block-desc">Pill-shaped search input with leading magnifier icon and trailing clear button — matching iOS Spotlight.</p>
+      <div class="demo-panel" style="max-width:520px;">
+        <div class="input-search-wrapper">
+          <span class="input-search-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </span>
+          <input class="input input-search" type="search" placeholder="Search components, tokens…" aria-label="Search design system">
+          <button class="input-search-clear" aria-label="Clear search">✕</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Select -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Select / Dropdown</h2>
+      <p class="showcase-block-desc">Custom-styled select with chevron indicator. Matches the input appearance system.</p>
+      <div class="demo-panel" style="max-width:520px;">
+        <div style="display:flex; flex-direction:column; gap:var(--space-5);">
+          <div class="form-group">
+            <label class="form-label" for="sel-role">Role</label>
+            <div class="select-wrapper">
+              <select class="select" id="sel-role">
+                <option>Designer</option>
+                <option>Engineer</option>
+                <option>Product Manager</option>
+                <option>Design Technologist</option>
+                <option>Researcher</option>
+              </select>
+              <span class="select-chevron" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="sel-country">Country</label>
+            <div class="select-wrapper">
+              <select class="select" id="sel-country">
+                <option>United States</option>
+                <option>United Kingdom</option>
+                <option>Canada</option>
+                <option>Australia</option>
+                <option>Germany</option>
+              </select>
+              <span class="select-chevron" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toggles -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Toggle / Switch</h2>
+      <p class="showcase-block-desc">iOS-style pill toggle with green when on, gray when off. Thumb animates with spring easing.</p>
+      <div class="demo-panel" style="max-width:520px;">
+        <div class="list-inset-grouped">
+          <div class="list-item">
+            <div class="list-item-content">
+              <div class="list-item-title">Push Notifications</div>
+              <div class="list-item-subtitle">Receive alerts for new activity</div>
+            </div>
+            <label class="toggle" aria-label="Toggle push notifications">
+              <input type="checkbox" checked>
+              <span class="toggle-track"></span>
+              <span class="toggle-thumb"></span>
+            </label>
+          </div>
+          <div class="list-item">
+            <div class="list-item-content">
+              <div class="list-item-title">Email Updates</div>
+              <div class="list-item-subtitle">Weekly digest and announcements</div>
+            </div>
+            <label class="toggle" aria-label="Toggle email updates">
+              <input type="checkbox">
+              <span class="toggle-track"></span>
+              <span class="toggle-thumb"></span>
+            </label>
+          </div>
+          <div class="list-item">
+            <div class="list-item-content">
+              <div class="list-item-title">Dark Mode</div>
+              <div class="list-item-subtitle">Follow system appearance</div>
+            </div>
+            <label class="toggle" aria-label="Toggle dark mode">
+              <input type="checkbox" checked>
+              <span class="toggle-track"></span>
+              <span class="toggle-thumb"></span>
+            </label>
+          </div>
+          <div class="list-item" style="border-bottom:none;">
+            <div class="list-item-content">
+              <div class="list-item-title">Usage Analytics</div>
+              <div class="list-item-subtitle">Help improve the design system</div>
+            </div>
+            <label class="toggle" aria-label="Toggle analytics">
+              <input type="checkbox" checked>
+              <span class="toggle-track"></span>
+              <span class="toggle-thumb"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checkboxes -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Checkboxes</h2>
+      <p class="showcase-block-desc">Rounded square with animated checkmark. Blue fill when checked, with spring scale on click.</p>
+      <div class="demo-panel" style="max-width:400px;">
+        <div style="display:flex; flex-direction:column; gap:var(--space-5);">
+          <label class="checkbox-wrapper">
+            <span class="checkbox"><input type="checkbox" checked><span class="checkbox-box"></span></span>
+            <span style="font-size:var(--text-17);">Interface Design</span>
+          </label>
+          <label class="checkbox-wrapper">
+            <span class="checkbox"><input type="checkbox" checked><span class="checkbox-box"></span></span>
+            <span style="font-size:var(--text-17);">Motion &amp; Animation</span>
+          </label>
+          <label class="checkbox-wrapper">
+            <span class="checkbox"><input type="checkbox"><span class="checkbox-box"></span></span>
+            <span style="font-size:var(--text-17);">Typography Systems</span>
+          </label>
+          <label class="checkbox-wrapper">
+            <span class="checkbox"><input type="checkbox"><span class="checkbox-box"></span></span>
+            <span style="font-size:var(--text-17);">Design Tokens &amp; Variables</span>
+          </label>
+          <label class="checkbox-wrapper" style="opacity:0.4; pointer-events:none;">
+            <span class="checkbox"><input type="checkbox" disabled><span class="checkbox-box"></span></span>
+            <span style="font-size:var(--text-17);">Disabled option</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Radio Buttons -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Radio Buttons</h2>
+      <p class="showcase-block-desc">Circular radio inputs with animated blue fill. One selection per group.</p>
+      <div class="demo-panel" style="max-width:400px;">
+        <div style="display:flex; flex-direction:column; gap:var(--space-5);">
+          <label class="radio-wrapper">
+            <span class="radio"><input type="radio" name="pricing" value="free" checked><span class="radio-circle"></span></span>
+            <div>
+              <div style="font-size:var(--text-17);">Free</div>
+              <div style="font-size:var(--text-13); color:var(--color-label-secondary);">Core components, community support</div>
+            </div>
+          </label>
+          <label class="radio-wrapper">
+            <span class="radio"><input type="radio" name="pricing" value="pro"><span class="radio-circle"></span></span>
+            <div>
+              <div style="font-size:var(--text-17);">Pro — $12/month</div>
+              <div style="font-size:var(--text-13); color:var(--color-label-secondary);">Full system, priority support</div>
+            </div>
+          </label>
+          <label class="radio-wrapper">
+            <span class="radio"><input type="radio" name="pricing" value="enterprise"><span class="radio-circle"></span></span>
+            <div>
+              <div style="font-size:var(--text-17);">Enterprise</div>
+              <div style="font-size:var(--text-13); color:var(--color-label-secondary);">Custom branding, SLA, dedicated support</div>
+            </div>
+          </label>
+          <label class="radio-wrapper" style="opacity:0.4; pointer-events:none;">
+            <span class="radio"><input type="radio" name="pricing" value="disabled" disabled><span class="radio-circle"></span></span>
+            <div>
+              <div style="font-size:var(--text-17);">Legacy (Unavailable)</div>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Segmented Control -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Segmented Control</h2>
+      <p class="showcase-block-desc">iOS-style pill segment switcher. Used for view modes, filter sets, and mutually exclusive options.</p>
+      <div class="demo-panel" style="max-width:520px;">
+        <div style="display:flex; flex-direction:column; gap:var(--space-6);">
+          <div>
+            <div style="font-size:var(--text-13); font-weight:var(--weight-medium); color:var(--color-label-secondary); margin-bottom:var(--space-3);">View Mode</div>
+            <div class="segmented" role="group" aria-label="View mode">
+              <button class="segmented-item active" onclick="setSegmented(this)">Grid</button>
+              <button class="segmented-item" onclick="setSegmented(this)">List</button>
+              <button class="segmented-item" onclick="setSegmented(this)">Gallery</button>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:var(--text-13); font-weight:var(--weight-medium); color:var(--color-label-secondary); margin-bottom:var(--space-3);">Time Range</div>
+            <div class="segmented" role="group" aria-label="Time range">
+              <button class="segmented-item" onclick="setSegmented(this)">1D</button>
+              <button class="segmented-item" onclick="setSegmented(this)">1W</button>
+              <button class="segmented-item active" onclick="setSegmented(this)">1M</button>
+              <button class="segmented-item" onclick="setSegmented(this)">3M</button>
+              <button class="segmented-item" onclick="setSegmented(this)">1Y</button>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:var(--text-13); font-weight:var(--weight-medium); color:var(--color-label-secondary); margin-bottom:var(--space-3);">Appearance</div>
+            <div class="segmented" role="group" aria-label="Appearance">
+              <button class="segmented-item active" onclick="setSegmented(this)">Light</button>
+              <button class="segmented-item" onclick="setSegmented(this)">Dark</button>
+              <button class="segmented-item" onclick="setSegmented(this)">Auto</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Complete Form Example -->
+    <div class="showcase-block">
+      <h2 class="showcase-block-title">Complete Form</h2>
+      <p class="showcase-block-desc">A realistic sign-up flow combining multiple input types with proper labeling and hierarchy.</p>
+      <div class="demo-panel" style="max-width:520px;">
+        <div style="margin-bottom:var(--space-6);">
+          <h3 style="font-size:var(--text-28); font-weight:var(--weight-bold); font-family:var(--font-display); letter-spacing:var(--tracking-title-2); margin:0 0 var(--space-2);">Create Account</h3>
+          <p style="font-size:var(--text-15); color:var(--color-label-secondary); margin:0;">Start building with the Claude Design System.</p>
+        </div>
+
+        <form style="display:flex; flex-direction:column; gap:var(--space-5);" onsubmit="return false;">
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-4);">
+            <div class="form-group">
+              <label class="form-label required" for="cf-first">First name</label>
+              <input class="input" type="text" id="cf-first" placeholder="Alex" autocomplete="given-name">
+            </div>
+            <div class="form-group">
+              <label class="form-label required" for="cf-last">Last name</label>
+              <input class="input" type="text" id="cf-last" placeholder="Johnson" autocomplete="family-name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label required" for="cf-email">Work email</label>
+            <div class="input-wrapper">
+              <span class="input-icon-left" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 6l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <input class="input has-icon-left" type="email" id="cf-email" placeholder="alex@company.com">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label required" for="cf-password">Password</label>
+            <div class="input-wrapper">
+              <span class="input-icon-left" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="8" width="12" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 8V6a3 3 0 016 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <input class="input has-icon-left" type="password" id="cf-password" placeholder="Min. 8 characters">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="cf-role">Role</label>
+            <div class="select-wrapper">
+              <select class="select" id="cf-role">
+                <option value="">Select your role…</option>
+                <option>Designer</option>
+                <option>Engineer</option>
+                <option>Product Manager</option>
+                <option>Founder</option>
+              </select>
+              <span class="select-chevron" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </div>
+
+          <div style="padding-top:var(--space-2); display:flex; flex-direction:column; gap:var(--space-3);">
+            <label class="checkbox-wrapper">
+              <span class="checkbox"><input type="checkbox" checked><span class="checkbox-box"></span></span>
+              <span style="font-size:var(--text-15);">I agree to the <a href="#" style="color:var(--color-blue);">Terms of Service</a></span>
+            </label>
+            <label class="checkbox-wrapper">
+              <span class="checkbox"><input type="checkbox"><span class="checkbox-box"></span></span>
+              <span style="font-size:var(--text-15);">Send me product updates and announcements</span>
+            </label>
+          </div>
+
+          <div style="display:flex; gap:var(--space-3); padding-top:var(--space-2);">
+            <button class="btn btn-claude" type="submit" style="flex:1;">Create Account</button>
+          </div>
+
+          <p style="text-align:center; font-size:var(--text-13); color:var(--color-label-secondary); margin:0;">
+            Already have an account? <a href="#" style="color:var(--color-blue);">Sign in</a>
+          </p>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <footer style="border-top:1px solid var(--color-separator); padding:var(--space-8) 0; margin-top:var(--space-16); text-align:center;">
+    <p style="font-size:var(--text-13); color:var(--color-label-tertiary); margin:0;">
+      Claude Design System · Forms · <a href="../index.html" style="color:var(--color-blue);">Back to Index</a>
+    </p>
+  </footer>
+
+  <script>
+    function setSegmented(el) {
+      el.closest('.segmented').querySelectorAll('.segmented-item').forEach(function(item) {
+        item.classList.remove('active');
+      });
+      el.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
