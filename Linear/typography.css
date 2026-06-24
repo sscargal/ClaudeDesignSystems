@@ -1,0 +1,383 @@
+/* =============================================================================
+   Linear Design System — Typography
+   Version 1.0.0 | Inter + JetBrains Mono Type Scale
+   Precise, tight, minimal. Dark-first.
+   ============================================================================= */
+
+/* =============================================================================
+   BASE RESET & DEFAULTS
+   ============================================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font-size: 14px;
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-14);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-label-primary);
+  background-color: var(--color-bg);
+  margin: 0;
+  padding: 0;
+}
+
+/* =============================================================================
+   HEADING CLASSES
+   ============================================================================= */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  color: var(--color-label-primary);
+}
+
+/* Extra Large Heading — hero / landing */
+.heading-xl {
+  font-size: var(--text-32);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-label-primary);
+}
+
+/* Large Heading — page titles */
+.heading-lg {
+  font-size: var(--text-24);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-snug);
+  color: var(--color-label-primary);
+}
+
+/* Medium Heading — section headers */
+.heading-md {
+  font-size: var(--text-20);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-label-primary);
+}
+
+/* Small Heading — card titles, sidebar group labels */
+.heading-sm {
+  font-size: var(--text-16);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-label-primary);
+}
+
+/* =============================================================================
+   BODY TEXT CLASSES
+   ============================================================================= */
+
+/* Large body — feature copy, descriptions */
+.body-lg {
+  font-size: var(--text-16);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-label-primary);
+}
+
+/* Default body — most UI text */
+.body-md {
+  font-size: var(--text-14);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-label-primary);
+}
+
+/* Small body — secondary text, descriptions */
+.body-sm {
+  font-size: var(--text-13);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-label-primary);
+}
+
+/* Caption — metadata, timestamps, helper text */
+.caption {
+  font-size: var(--text-12);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-label-secondary);
+}
+
+/* Label — section headers, ALL-CAPS category labels */
+.label {
+  font-size: var(--text-11);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--color-label-tertiary);
+}
+
+/* =============================================================================
+   MONOSPACE — Issue IDs, shortcuts, code, metadata
+   ============================================================================= */
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-13);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Inline code chip */
+.code-inline {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: var(--weight-regular);
+  background: var(--color-surface-2);
+  border: var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1px 5px;
+  color: var(--color-label-secondary);
+  letter-spacing: -0.01em;
+}
+
+/* Code block */
+pre {
+  font-family: var(--font-mono);
+  font-size: var(--text-13);
+  line-height: 1.6;
+  background: var(--color-surface-1);
+  border: var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  overflow-x: auto;
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--color-surface-2);
+  border: var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 2px 5px;
+  color: var(--color-label-secondary);
+}
+
+/* =============================================================================
+   INLINE ELEMENTS
+   ============================================================================= */
+
+a {
+  color: var(--color-purple-light);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-standard),
+              opacity var(--duration-fast) var(--ease-standard);
+}
+
+a:hover {
+  color: var(--color-label-primary);
+}
+
+strong, b {
+  font-weight: var(--weight-semibold);
+}
+
+em, i {
+  font-style: italic;
+}
+
+mark {
+  background: var(--color-yellow-muted);
+  color: var(--color-yellow);
+  padding: 1px 3px;
+  border-radius: var(--radius-sm);
+}
+
+small {
+  font-size: var(--text-12);
+  color: var(--color-label-secondary);
+}
+
+abbr[title] {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
+/* =============================================================================
+   DEFAULT PARAGRAPH & LIST SPACING
+   ============================================================================= */
+
+p {
+  margin: 0 0 0.875em;
+  font-size: var(--text-14);
+  line-height: var(--leading-relaxed);
+  color: var(--color-label-primary);
+}
+
+p:last-child { margin-bottom: 0; }
+
+ul, ol {
+  padding-left: var(--space-6);
+  margin: 0 0 0.875em;
+}
+
+li {
+  margin-bottom: 0.3em;
+  line-height: var(--leading-relaxed);
+}
+
+li:last-child { margin-bottom: 0; }
+
+/* =============================================================================
+   BLOCKQUOTE
+   ============================================================================= */
+
+blockquote {
+  margin: var(--space-6) 0;
+  padding: var(--space-5) var(--space-6);
+  border-left: 2px solid var(--color-purple);
+  background: var(--color-purple-subtle);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: var(--text-14);
+  color: var(--color-label-secondary);
+  font-style: italic;
+}
+
+blockquote cite {
+  display: block;
+  margin-top: var(--space-3);
+  font-size: var(--text-12);
+  font-style: normal;
+  color: var(--color-label-tertiary);
+}
+
+/* =============================================================================
+   GRADIENT TEXT UTILITY
+   ============================================================================= */
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, var(--color-purple) 0%, var(--color-purple-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-hero {
+  background: linear-gradient(
+    135deg,
+    #FFFFFF 0%,
+    var(--color-purple-light) 60%,
+    var(--color-purple) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* =============================================================================
+   COLOR UTILITIES
+   ============================================================================= */
+
+.text-primary    { color: var(--color-label-primary); }
+.text-secondary  { color: var(--color-label-secondary); }
+.text-tertiary   { color: var(--color-label-tertiary); }
+.text-purple     { color: var(--color-purple); }
+.text-purple-lt  { color: var(--color-purple-light); }
+.text-green      { color: var(--color-green); }
+.text-orange     { color: var(--color-orange); }
+.text-red        { color: var(--color-red); }
+.text-yellow     { color: var(--color-yellow); }
+
+/* =============================================================================
+   WEIGHT UTILITIES
+   ============================================================================= */
+
+.font-regular  { font-weight: var(--weight-regular); }
+.font-medium   { font-weight: var(--weight-medium); }
+.font-semibold { font-weight: var(--weight-semibold); }
+
+/* =============================================================================
+   ALIGNMENT UTILITIES
+   ============================================================================= */
+
+.text-left   { text-align: left; }
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+
+/* =============================================================================
+   TRUNCATION
+   ============================================================================= */
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* =============================================================================
+   RESPONSIVE TYPOGRAPHY
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  .heading-xl {
+    font-size: var(--text-24);
+  }
+
+  .heading-lg {
+    font-size: var(--text-20);
+  }
+
+  .heading-md {
+    font-size: var(--text-16);
+  }
+}
+
+/* =============================================================================
+   REDUCED MOTION
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

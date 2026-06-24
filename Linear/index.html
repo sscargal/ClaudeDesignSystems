@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Linear Design System — A production-quality design system built on Linear's dark-first engineering aesthetic.">
+  <title>Linear Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="typography.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    /* ==========================================================================
+       Showcase-specific layout styles
+       ========================================================================== */
+
+    :root { scroll-behavior: smooth; }
+
+    .showcase-section {
+      padding: var(--space-13) 0;
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+
+    .showcase-section:last-of-type {
+      border-bottom: none;
+    }
+
+    /* ---- Color palette ---- */
+    .palette-group {
+      margin-bottom: var(--space-9);
+    }
+
+    .palette-group-label {
+      font-size: var(--text-11);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-5);
+    }
+
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .swatch-block {
+      height: 52px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: var(--space-2);
+    }
+
+    .swatch-name {
+      font-size: var(--text-12);
+      font-weight: var(--weight-medium);
+      color: var(--color-label-primary);
+      line-height: 1.3;
+    }
+
+    .swatch-hex {
+      font-family: var(--font-mono);
+      font-size: var(--text-11);
+      color: var(--color-label-tertiary);
+    }
+
+    /* ---- Type specimens ---- */
+    .type-specimen {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-8);
+      padding: var(--space-6) 0;
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+
+    .type-specimen:last-child { border-bottom: none; }
+
+    .type-meta {
+      width: 130px;
+      flex-shrink: 0;
+    }
+
+    .type-meta-class {
+      font-family: var(--font-mono);
+      font-size: var(--text-12);
+      color: var(--color-purple);
+    }
+
+    .type-meta-spec {
+      font-size: var(--text-11);
+      font-family: var(--font-mono);
+      color: var(--color-label-tertiary);
+      margin-top: 2px;
+    }
+
+    /* ---- Demo app shell ---- */
+    .demo-app {
+      background: var(--color-bg);
+      border: var(--border-default);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      height: 540px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .demo-app-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--space-6);
+      height: 40px;
+      background: var(--color-surface-1);
+      border-bottom: var(--border-subtle);
+      flex-shrink: 0;
+    }
+
+    .demo-app-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .demo-app-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .demo-app-body {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* ---- Hero background mesh ---- */
+    .hero-mesh {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .hero-mesh-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.12;
+    }
+
+    .hero-mesh-blob-1 {
+      width: 600px;
+      height: 400px;
+      background: var(--color-purple);
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .hero-mesh-blob-2 {
+      width: 300px;
+      height: 300px;
+      background: var(--color-purple-light);
+      bottom: 10%;
+      right: 10%;
+      opacity: 0.08;
+    }
+
+    .hero-mesh-blob-3 {
+      width: 250px;
+      height: 250px;
+      background: var(--color-green);
+      bottom: 20%;
+      left: 5%;
+      opacity: 0.06;
+    }
+
+    /* Motion demo items */
+    .motion-demo-item {
+      background: var(--color-surface-1);
+      border: var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8) var(--space-6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-4);
+      text-align: center;
+    }
+
+    .motion-demo-box {
+      width: 48px;
+      height: 48px;
+      background: var(--color-purple-muted);
+      border: 1px solid var(--color-purple);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .motion-demo-box:hover {
+      background: var(--color-purple);
+      transform: scale(1.08);
+      transition: all var(--duration-slow) var(--ease-spring);
+    }
+
+    @media (max-width: 768px) {
+      .demo-app {
+        height: 400px;
+      }
+
+      .type-specimen {
+        flex-direction: column;
+        gap: var(--space-2);
+      }
+
+      .type-meta {
+        width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================================
+       TOP BAR
+       ========================================================================= -->
+  <header class="topbar" role="banner">
+    <div class="topbar-inner">
+      <a href="#" class="topbar-brand">
+        <div class="topbar-logo">
+          <!-- Linear logomark — CSS triangle/arrow mark -->
+          <svg class="topbar-logo-mark" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3.5 3.5L20.5 20.5" stroke="#5E6AD2" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M3.5 3.5L20.5 3.5" stroke="#5E6AD2" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M3.5 3.5L3.5 20.5" stroke="#5E6AD2" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M12 20.5L20.5 20.5" stroke="#7B86E8" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+            <path d="M20.5 12L20.5 20.5" stroke="#7B86E8" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+          </svg>
+          <span class="topbar-logo-wordmark">Linear</span>
+        </div>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <ul class="topbar-nav" role="list">
+          <li class="topbar-nav-item"><a href="#colors">Colors</a></li>
+          <li class="topbar-nav-item"><a href="#typography">Typography</a></li>
+          <li class="topbar-nav-item"><a href="#issues">Issues</a></li>
+          <li class="topbar-nav-item"><a href="#components">Components</a></li>
+          <li class="topbar-nav-item"><a href="#motion">Motion</a></li>
+        </ul>
+      </nav>
+
+      <div class="topbar-actions">
+        <button class="btn-icon" aria-label="Search" title="Search">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.3"/>
+            <path d="M9.5 9.5L12.5 12.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <span class="btn-kbd">⌘K</span>
+        <div class="topbar-avatar" role="img" aria-label="User avatar">SS</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- =======================================================================
+         HERO
+         ======================================================================= -->
+    <section class="showcase-section" style="position:relative; min-height: 580px; display: flex; align-items: center; padding: var(--space-14) 0;">
+      <div class="hero-mesh" aria-hidden="true">
+        <div class="hero-mesh-blob hero-mesh-blob-1"></div>
+        <div class="hero-mesh-blob hero-mesh-blob-2"></div>
+        <div class="hero-mesh-blob hero-mesh-blob-3"></div>
+      </div>
+      <div class="container" style="text-align: center; position: relative; z-index: 1;">
+        <div style="display: inline-flex; align-items: center; gap: var(--space-3); background: var(--color-surface-1); border: var(--border-subtle); border-radius: var(--radius-pill); padding: 5px var(--space-5); margin-bottom: var(--space-8);">
+          <span style="width:6px; height:6px; border-radius:50%; background: var(--color-green); display:inline-block;" class="animate-pulse"></span>
+          <span class="body-sm text-secondary">Linear Design System &mdash; v1.0.0</span>
+        </div>
+
+        <h1 class="heading-xl text-gradient-hero" style="font-size: clamp(32px, 5.5vw, 56px); margin-bottom: var(--space-6);">
+          Move at the speed of thought.
+        </h1>
+
+        <p class="body-lg text-secondary" style="max-width: 520px; margin: 0 auto var(--space-9);">
+          A production-quality design system built on Linear's dark-first, keyboard-centric engineering aesthetic. Precise, calm, and deeply considered.
+        </p>
+
+        <div class="flex-center gap-4" style="flex-wrap: wrap;">
+          <button class="btn btn-primary">Get Started</button>
+          <button class="btn btn-secondary">View on GitHub <span class="btn-kbd" style="pointer-events:auto;">↗</span></button>
+        </div>
+
+        <div class="flex-center gap-6" style="margin-top: var(--space-9); color: var(--color-label-tertiary);">
+          <span class="caption">Zero dependencies</span>
+          <span style="opacity:0.3">·</span>
+          <span class="caption">Dark-first</span>
+          <span style="opacity:0.3">·</span>
+          <span class="caption">CSS custom properties</span>
+          <span style="opacity:0.3">·</span>
+          <span class="caption">Keyboard-centric</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         COLOR PALETTE
+         ======================================================================= -->
+    <section id="colors" class="showcase-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Design Tokens</span>
+          <h2 class="section-title">Color Palette</h2>
+          <p class="section-subtitle">A near-black, dark-first palette with carefully calibrated contrast. Linear purple is the single signature accent color.</p>
+        </div>
+
+        <!-- Backgrounds -->
+        <div class="palette-group">
+          <div class="palette-group-label">Backgrounds &amp; Surfaces</div>
+          <div class="palette-grid">
+            <div>
+              <div class="swatch-block" style="background:#0F0F11;"></div>
+              <div class="swatch-name">Background</div>
+              <div class="swatch-hex">#0F0F11</div>
+            </div>
+            <div>
+              <div class="swatch-block" style="background:#1A1A1F;"></div>
+              <div class="swatch-name">Surface 1</div>
+              <div class="swatch-hex">#1A1A1F</div>
+            </div>
+            <div>
+              <div class="swatch-block" style="background:#232329;"></div>
+              <div class="swatch-name">Surface 2</div>
+              <div class="swatch-hex">#232329</div>
+            </div>
+            <div>
+              <div class="swatch-block" style="background:#2E2E36;"></div>
+              <div class="swatch-name">Surface 3</div>
+              <div class="swatch-hex">#2E2E36</div>
+            </div>
+            <div>
+              <div class="swatch-block" style="background:#363640;"></div>
+              <div class="swatch-name">Surface 4</div>
+              <div class="swatch-hex">#363640</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Brand / Accent -->
+        <div class="palette-group">
+          <div class="palette-group-label">Linear Purple — Brand Accent</div>
+          <div class="palette-grid">
+            <div>
+              <div class="swatch-block" style="background:#5E6AD2;"></div>
+              <div class="swatch-name">Purple</div>
+              <div class="swatch-hex">#5E6AD2</div>
+            </div>
+            <div>
+              <div class="swatch-block" style="background:#7B86E8;"></div>
+              <div class="swatch-name">Purple Light</div>
+              <div class="swatch-hex">#7B86E8</div>
+            </div>
+            <div>
+              <div class="swatch-block" style="background:rgba(94,106,210,0.18);"></div>
+              <div class="swatch-name">Purple Muted</div>
+              <div class="swatch-hex">18% opacity</div>
+            </div>
+            <div>
+              <div class="swatch-block" style="background:rgba(94,106,210,0.08);"></div>
+              <div class="swatch-name">Purple Subtle</div>
+              <div class="swatch-hex">8% opacity</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Status Colors -->
+        <div class="palette-group">
+          <div class="palette-group-label">Status Colors</div>
+          <div class="palette-grid">
+            <div>
+              <div class="swatch-block" style="background:#26C486;"></div>
+              <div class="swatch-name">Green (Done)</div>
+              <div class="swatch-hex">#26C486</div>
+            </div>
+            <div>
+              <div class="swatch-block" style="background:#F0A030;"></div>
+              <div class="swatch-name">Orange (Progress)</div>
+              <div class="swatch-hex">#F0A030</div>
+            </div>
+            <div>
+              <div class="swatch-block" style="background:#E85555;"></div>
+              <div class="swatch-name">Red (Cancelled)</div>
+              <div class="swatch-hex">#E85555</div>
+            </div>
+            <div>
+              <div class="swatch-block" style="background:#E8B430;"></div>
+              <div class="swatch-name">Yellow (Backlog)</div>
+              <div class="swatch-hex">#E8B430</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Labels -->
+        <div class="palette-group">
+          <div class="palette-group-label">Label Colors</div>
+          <div class="palette-grid">
+            <div>
+              <div class="swatch-block" style="background:#FFFFFF;"></div>
+              <div class="swatch-name">Primary</div>
+              <div class="swatch-hex">#FFFFFF</div>
+            </div>
+            <div>
+              <div class="swatch-block" style="background:#8A8A9A;"></div>
+              <div class="swatch-name">Secondary</div>
+              <div class="swatch-hex">#8A8A9A</div>
+            </div>
+            <div>
+              <div class="swatch-block" style="background:#55555F;"></div>
+              <div class="swatch-name">Tertiary</div>
+              <div class="swatch-hex">#55555F</div>
+            </div>
+            <div>
+              <div class="swatch-block" style="background:#3E3E4A;"></div>
+              <div class="swatch-name">Border</div>
+              <div class="swatch-hex">#3E3E4A</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         TYPOGRAPHY
+         ======================================================================= -->
+    <section id="typography" class="showcase-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Typography</span>
+          <h2 class="section-title">Type Scale</h2>
+          <p class="section-subtitle">Inter for all UI text. JetBrains Mono for IDs, shortcuts, code. Tight tracking on headings. 14px is the primary reading size.</p>
+        </div>
+
+        <!-- Headings -->
+        <div class="type-specimen">
+          <div class="type-meta">
+            <div class="type-meta-class">.heading-xl</div>
+            <div class="type-meta-spec">32px / 600 / -0.02em</div>
+          </div>
+          <div class="heading-xl">Linear moves fast.</div>
+        </div>
+        <div class="type-specimen">
+          <div class="type-meta">
+            <div class="type-meta-class">.heading-lg</div>
+            <div class="type-meta-spec">24px / 600 / -0.01em</div>
+          </div>
+          <div class="heading-lg">Ship every week.</div>
+        </div>
+        <div class="type-specimen">
+          <div class="type-meta">
+            <div class="type-meta-class">.heading-md</div>
+            <div class="type-meta-spec">20px / 600 / 0em</div>
+          </div>
+          <div class="heading-md">Build with intention.</div>
+        </div>
+        <div class="type-specimen">
+          <div class="type-meta">
+            <div class="type-meta-class">.heading-sm</div>
+            <div class="type-meta-spec">16px / 600 / 0em</div>
+          </div>
+          <div class="heading-sm">Engineering clarity.</div>
+        </div>
+
+        <!-- Body -->
+        <div class="type-specimen">
+          <div class="type-meta">
+            <div class="type-meta-class">.body-lg</div>
+            <div class="type-meta-spec">16px / 400 / 1.6lh</div>
+          </div>
+          <div class="body-lg">The best software is built by teams who care deeply about craft and move with deliberate speed.</div>
+        </div>
+        <div class="type-specimen">
+          <div class="type-meta">
+            <div class="type-meta-class">.body-md</div>
+            <div class="type-meta-spec">14px / 400 / 1.5lh</div>
+          </div>
+          <div class="body-md">Primary reading size for all UI text. Comfortable, dense, and legible on dark backgrounds. Used for issue titles, descriptions, and most interface copy.</div>
+        </div>
+        <div class="type-specimen">
+          <div class="type-meta">
+            <div class="type-meta-class">.body-sm</div>
+            <div class="type-meta-spec">13px / 400 / 1.5lh</div>
+          </div>
+          <div class="body-sm text-secondary">Secondary text, helper descriptions, metadata labels. Slightly smaller than the primary reading size.</div>
+        </div>
+        <div class="type-specimen">
+          <div class="type-meta">
+            <div class="type-meta-class">.caption</div>
+            <div class="type-meta-spec">12px / 400 / secondary</div>
+          </div>
+          <div class="caption">Timestamps, metadata, auxiliary information. Always paired with a higher-hierarchy element.</div>
+        </div>
+        <div class="type-specimen">
+          <div class="type-meta">
+            <div class="type-meta-class">.label</div>
+            <div class="type-meta-spec">11px / 500 / CAPS / 0.06em</div>
+          </div>
+          <div class="label">Section Header / Category</div>
+        </div>
+
+        <!-- Mono -->
+        <div class="type-specimen">
+          <div class="type-meta">
+            <div class="type-meta-class">.mono</div>
+            <div class="type-meta-spec">JetBrains Mono 13px</div>
+          </div>
+          <div class="mono text-tertiary">ENG-2847 &nbsp;·&nbsp; ⌘K &nbsp;·&nbsp; ctrl+shift+p</div>
+        </div>
+        <div class="type-specimen">
+          <div class="type-meta">
+            <div class="type-meta-class">.code-inline</div>
+            <div class="type-meta-spec">Mono chip variant</div>
+          </div>
+          <div>
+            <span class="code-inline">const linearClient</span>
+            &nbsp;=&nbsp;
+            <span class="code-inline">new LinearClient()</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         ISSUE LIST DEMO — The centerpiece
+         ======================================================================= -->
+    <section id="issues" class="showcase-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Core Component</span>
+          <h2 class="section-title">Issue List</h2>
+          <p class="section-subtitle">Linear's most iconic component. Dense, scannable, keyboard-navigable rows with status, priority, assignee, and metadata.</p>
+        </div>
+
+        <div class="issue-list" role="list" aria-label="Issues">
+
+          <!-- List header -->
+          <div class="issue-list-header">
+            <div class="issue-list-title">
+              <div class="status-icon status-in-progress" style="width:12px;height:12px;" aria-hidden="true"></div>
+              In Progress
+              <span class="issue-list-count">3</span>
+            </div>
+            <div class="flex" style="gap:var(--space-2);">
+              <button class="btn-icon" aria-label="Filter">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1.5 3.5H12.5M3.5 7H10.5M5.5 10.5H8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+              </button>
+              <button class="btn-icon" aria-label="Group">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect x="1.5" y="2.5" width="11" height="2" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="1.5" y="6.5" width="11" height="2" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="1.5" y="10.5" width="7" height="1.5" rx="0.75" stroke="currentColor" stroke-width="1.2"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Issue rows — In Progress -->
+          <a href="#" class="issue-row" role="listitem" aria-label="Issue ENG-2847">
+            <div class="issue-priority" aria-label="Priority: Urgent">
+              <div class="priority-icon priority-urgent">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="issue-status" aria-label="Status: In Progress">
+              <div class="status-icon status-in-progress"></div>
+            </div>
+            <span class="issue-id">ENG-2847</span>
+            <span class="issue-title">Fix race condition in webhook delivery queue</span>
+            <div class="issue-meta">
+              <div class="label-chips">
+                <span class="label-chip label-chip-bug"><span class="label-chip-dot"></span>Bug</span>
+              </div>
+              <span class="issue-due overdue mono">Jun 20</span>
+              <div class="issue-avatar" aria-label="Assignee: Alex K" title="Alex K">AK</div>
+            </div>
+          </a>
+
+          <a href="#" class="issue-row" role="listitem" aria-label="Issue ENG-2851">
+            <div class="issue-priority" aria-label="Priority: High">
+              <div class="priority-icon priority-high">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="issue-status" aria-label="Status: In Progress">
+              <div class="status-icon status-in-progress"></div>
+            </div>
+            <span class="issue-id">ENG-2851</span>
+            <span class="issue-title">Redesign cycle progress ring component for better readability</span>
+            <div class="issue-meta">
+              <div class="label-chips">
+                <span class="label-chip label-chip-design"><span class="label-chip-dot"></span>Design</span>
+                <span class="label-chip label-chip-feature"><span class="label-chip-dot"></span>Feature</span>
+              </div>
+              <div class="issue-cycle" aria-label="In cycle"></div>
+              <div class="issue-avatar" style="background: linear-gradient(135deg, #26C486 0%, #2ABFBF 100%);" aria-label="Assignee: Sam R" title="Sam R">SR</div>
+            </div>
+          </a>
+
+          <a href="#" class="issue-row" role="listitem" aria-label="Issue ENG-2856">
+            <div class="issue-priority" aria-label="Priority: Medium">
+              <div class="priority-icon priority-medium">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="issue-status" aria-label="Status: In Progress">
+              <div class="status-icon status-in-progress"></div>
+            </div>
+            <span class="issue-id">ENG-2856</span>
+            <span class="issue-title">Add bulk action support to issue list — select, move, label</span>
+            <div class="issue-meta">
+              <div class="label-chips">
+                <span class="label-chip label-chip-feature"><span class="label-chip-dot"></span>Feature</span>
+              </div>
+              <span class="issue-due due-soon mono">Jun 28</span>
+              <div class="issue-avatar" style="background: linear-gradient(135deg, #E85555 0%, #D966A0 100%);" aria-label="Assignee: Jo P" title="Jo P">JP</div>
+            </div>
+          </a>
+
+          <!-- Todo header -->
+          <div class="issue-list-header" style="margin-top:0;">
+            <div class="issue-list-title">
+              <div class="status-icon status-todo" style="width:12px;height:12px;" aria-hidden="true"></div>
+              Todo
+              <span class="issue-list-count">5</span>
+            </div>
+          </div>
+
+          <a href="#" class="issue-row" role="listitem" aria-label="Issue ENG-2858">
+            <div class="issue-priority" aria-label="Priority: High">
+              <div class="priority-icon priority-high">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="issue-status" aria-label="Status: Todo">
+              <div class="status-icon status-todo"></div>
+            </div>
+            <span class="issue-id">ENG-2858</span>
+            <span class="issue-title">Implement keyboard shortcut overlay (⌘ / to open)</span>
+            <div class="issue-meta">
+              <div class="label-chips">
+                <span class="label-chip label-chip-feature"><span class="label-chip-dot"></span>Feature</span>
+                <span class="label-chip label-chip-docs"><span class="label-chip-dot"></span>Docs</span>
+              </div>
+              <div class="issue-avatar" style="background: linear-gradient(135deg, #4A90D9 0%, #5E6AD2 100%);" aria-label="Unassigned">?</div>
+            </div>
+          </a>
+
+          <a href="#" class="issue-row" role="listitem" aria-label="Issue ENG-2860">
+            <div class="issue-priority" aria-label="Priority: Medium">
+              <div class="priority-icon priority-medium">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="issue-status" aria-label="Status: Todo">
+              <div class="status-icon status-todo"></div>
+            </div>
+            <span class="issue-id">ENG-2860</span>
+            <span class="issue-title">Add comment reactions with emoji picker (animated)</span>
+            <div class="issue-meta">
+              <div class="label-chips">
+                <span class="label-chip label-chip-improvement"><span class="label-chip-dot"></span>Improvement</span>
+              </div>
+              <div class="issue-avatar" aria-label="Assignee: Alex K" title="Alex K">AK</div>
+            </div>
+          </a>
+
+          <a href="#" class="issue-row" role="listitem" aria-label="Issue ENG-2863">
+            <div class="issue-priority" aria-label="Priority: Low">
+              <div class="priority-icon priority-low">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="issue-status" aria-label="Status: Todo">
+              <div class="status-icon status-todo"></div>
+            </div>
+            <span class="issue-id">ENG-2863</span>
+            <span class="issue-title">Audit and improve ARIA labels across all nav components</span>
+            <div class="issue-meta">
+              <div class="label-chips">
+                <span class="label-chip label-chip-docs"><span class="label-chip-dot"></span>Docs</span>
+              </div>
+              <div class="issue-avatar" style="background: linear-gradient(135deg, #E8B430 0%, #F0A030 100%);" aria-label="Assignee: Mo S" title="Mo S">MS</div>
+            </div>
+          </a>
+
+          <!-- Done / Cancelled -->
+          <a href="#" class="issue-row" role="listitem" aria-label="Issue ENG-2840, Done">
+            <div class="issue-priority" aria-label="Priority: High">
+              <div class="priority-icon priority-high">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="issue-status" aria-label="Status: Done">
+              <div class="status-icon status-done"></div>
+            </div>
+            <span class="issue-id" style="opacity:0.5;">ENG-2840</span>
+            <span class="issue-title" style="color:var(--color-label-secondary);">Migrate all icon assets to inline SVG for crisp rendering at all DPR</span>
+            <div class="issue-meta">
+              <div class="label-chips">
+                <span class="label-chip label-chip-improvement"><span class="label-chip-dot"></span>Improvement</span>
+              </div>
+              <div class="issue-avatar" aria-label="Assignee: Sam R" title="Sam R" style="background: linear-gradient(135deg, #26C486 0%, #2ABFBF 100%);">SR</div>
+            </div>
+          </a>
+
+          <a href="#" class="issue-row" role="listitem" aria-label="Issue ENG-2831, Cancelled">
+            <div class="issue-priority" aria-label="Priority: Low">
+              <div class="priority-icon priority-low">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="issue-status" aria-label="Status: Cancelled">
+              <div class="status-icon status-cancelled"></div>
+            </div>
+            <span class="issue-id" style="opacity:0.4;">ENG-2831</span>
+            <span class="issue-title cancelled-title">Explore Tauri-based desktop app wrapper (deprioritized)</span>
+            <div class="issue-meta">
+              <div class="label-chips">
+                <span class="label-chip label-chip-backend"><span class="label-chip-dot"></span>Backend</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         COMMAND PALETTE DEMO
+         ======================================================================= -->
+    <section id="command-palette" class="showcase-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Core UX Pattern</span>
+          <h2 class="section-title">Command Palette</h2>
+          <p class="section-subtitle">The heart of Linear's keyboard-first experience. Press <span class="btn-kbd">⌘</span><span class="btn-kbd">K</span> anywhere to invoke. Shown here open with sample results.</p>
+        </div>
+
+        <!-- Static demo of command palette (shown open) -->
+        <div style="position:relative; max-width: var(--command-width); margin: 0 auto;">
+          <div class="command-palette" role="dialog" aria-label="Command palette" aria-modal="true">
+            <!-- Search input -->
+            <div class="command-input-wrap">
+              <svg class="command-input-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.3"/>
+                <path d="M11 11L14 14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+              </svg>
+              <input class="command-input" type="text" placeholder="Search issues, projects, teams…" value="fix web" aria-label="Search" aria-autocomplete="list" spellcheck="false">
+              <div class="command-input-meta">
+                <span class="btn-kbd">ESC</span>
+              </div>
+            </div>
+
+            <!-- Results -->
+            <div class="command-results" role="listbox" aria-label="Search results">
+
+              <!-- Issues section -->
+              <div class="command-section-label" role="presentation">Issues</div>
+
+              <a href="#" class="command-item active animate-slide-right" role="option" aria-selected="true">
+                <div class="command-item-icon">
+                  <div class="status-icon status-in-progress" style="width:12px;height:12px;"></div>
+                </div>
+                <span class="command-item-label">Fix race condition in webhook delivery queue</span>
+                <span class="command-item-meta mono">ENG-2847</span>
+              </a>
+
+              <a href="#" class="command-item animate-slide-right delay-50" role="option">
+                <div class="command-item-icon">
+                  <div class="status-icon status-todo" style="width:12px;height:12px;"></div>
+                </div>
+                <span class="command-item-label">Fix loading state flash on initial route hydration</span>
+                <span class="command-item-meta mono">ENG-2844</span>
+              </a>
+
+              <a href="#" class="command-item animate-slide-right delay-75" role="option">
+                <div class="command-item-icon">
+                  <div class="status-icon status-done" style="width:12px;height:12px;"></div>
+                </div>
+                <span class="command-item-label">Fix cursor jump bug in inline comment editor</span>
+                <span class="command-item-meta mono">ENG-2839</span>
+              </a>
+
+              <!-- Actions section -->
+              <div class="command-section-label" role="presentation">Actions</div>
+
+              <a href="#" class="command-item animate-slide-right delay-100" role="option">
+                <div class="command-item-icon">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="1" y="1" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M6 4V8M4 6H8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                </div>
+                <span class="command-item-label">Create new issue</span>
+                <div class="command-item-kbd">
+                  <span class="btn-kbd">C</span>
+                </div>
+              </a>
+
+              <a href="#" class="command-item animate-slide-right delay-150" role="option">
+                <div class="command-item-icon">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.3"/><path d="M4 6L5.5 7.5L8 4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="command-item-label">Mark as done</span>
+                <div class="command-item-kbd">
+                  <span class="btn-kbd">⌘</span>
+                  <span class="btn-kbd">D</span>
+                </div>
+              </a>
+
+              <a href="#" class="command-item animate-slide-right delay-200" role="option">
+                <div class="command-item-icon">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6L10 6M6 2L10 6L6 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="command-item-label">Move to cycle</span>
+                <div class="command-item-kbd">
+                  <span class="btn-kbd">⌘</span>
+                  <span class="btn-kbd">M</span>
+                </div>
+              </a>
+
+              <!-- Navigation section -->
+              <div class="command-section-label" role="presentation">Navigation</div>
+
+              <a href="#" class="command-item animate-slide-right delay-200" role="option">
+                <div class="command-item-icon">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="1" y="1" width="4" height="10" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="7" y="1" width="4" height="10" rx="1" stroke="currentColor" stroke-width="1.2"/></svg>
+                </div>
+                <span class="command-item-label">Go to Projects</span>
+                <div class="command-item-kbd">
+                  <span class="btn-kbd">G</span>
+                  <span class="btn-kbd">P</span>
+                </div>
+              </a>
+            </div>
+
+            <!-- Footer -->
+            <div class="command-footer">
+              <div class="command-footer-hints">
+                <span class="command-footer-hint">
+                  <span class="btn-kbd">↑</span><span class="btn-kbd">↓</span> Navigate
+                </span>
+                <span class="command-footer-hint">
+                  <span class="btn-kbd">↵</span> Open
+                </span>
+              </div>
+              <span class="caption">Linear</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SIDEBAR DEMO
+         ======================================================================= -->
+    <section id="sidebar" class="showcase-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Navigation</span>
+          <h2 class="section-title">Sidebar</h2>
+          <p class="section-subtitle">240px wide, surface-1 background, always-visible on desktop. Sections with collapsible groups, project dots, and inline counts.</p>
+        </div>
+
+        <!-- Sidebar preview (static) -->
+        <div style="display:flex; background: var(--color-bg); border: var(--border-default); border-radius: var(--radius-xl); overflow: hidden; height: 460px;">
+          <!-- Sidebar -->
+          <nav class="sidebar" aria-label="Main navigation">
+            <!-- Workspace -->
+            <div class="sidebar-workspace">
+              <div class="sidebar-workspace-icon">L</div>
+              <span class="sidebar-workspace-name">Linear Corp</span>
+              <span class="sidebar-workspace-chevron">▾</span>
+            </div>
+
+            <!-- My Issues -->
+            <div class="sidebar-section">
+              <a href="#" class="sidebar-item sidebar-item--active">
+                <span class="sidebar-item-icon">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M4.5 7L6 8.5L9.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span class="sidebar-item-label">My Issues</span>
+                <span class="sidebar-item-count">12</span>
+              </a>
+              <a href="#" class="sidebar-item">
+                <span class="sidebar-item-icon">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1.5" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M4.5 7H9.5M7 4.5V9.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                </span>
+                <span class="sidebar-item-label">Inbox</span>
+                <span class="sidebar-item-count">3</span>
+              </a>
+            </div>
+
+            <!-- Teams -->
+            <div class="sidebar-section">
+              <div class="sidebar-section-label">Teams</div>
+              <a href="#" class="sidebar-item">
+                <span class="sidebar-item-dot" style="background:#5E6AD2;"></span>
+                <span class="sidebar-item-label">Engineering</span>
+                <span class="sidebar-item-count">84</span>
+              </a>
+              <a href="#" class="sidebar-item">
+                <span class="sidebar-item-dot" style="background:#26C486;"></span>
+                <span class="sidebar-item-label">Design</span>
+                <span class="sidebar-item-count">21</span>
+              </a>
+              <a href="#" class="sidebar-item">
+                <span class="sidebar-item-dot" style="background:#F0A030;"></span>
+                <span class="sidebar-item-label">Product</span>
+                <span class="sidebar-item-count">37</span>
+              </a>
+            </div>
+
+            <!-- Projects -->
+            <div class="sidebar-section">
+              <div class="sidebar-section-label">Projects</div>
+              <a href="#" class="sidebar-item">
+                <span style="font-size:12px;" class="sidebar-item-icon">🚀</span>
+                <span class="sidebar-item-label">v2.0 Redesign</span>
+              </a>
+              <a href="#" class="sidebar-item">
+                <span style="font-size:12px;" class="sidebar-item-icon">⚡</span>
+                <span class="sidebar-item-label">Performance Sprint</span>
+              </a>
+              <a href="#" class="sidebar-item">
+                <span style="font-size:12px;" class="sidebar-item-icon">🔐</span>
+                <span class="sidebar-item-label">Auth 2.0</span>
+              </a>
+              <a href="#" class="sidebar-add">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2V10M2 6H10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                Add project
+              </a>
+            </div>
+
+            <!-- Views -->
+            <div class="sidebar-section">
+              <div class="sidebar-section-label">Views</div>
+              <a href="#" class="sidebar-item">
+                <span class="sidebar-item-icon">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1.5" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="7.5" y="1.5" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="1.5" y="7.5" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="7.5" y="7.5" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/></svg>
+                </span>
+                <span class="sidebar-item-label">All Issues</span>
+              </a>
+              <a href="#" class="sidebar-item">
+                <span class="sidebar-item-icon">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M7 2V7L10 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span class="sidebar-item-label">Active Cycles</span>
+              </a>
+            </div>
+          </nav>
+
+          <!-- Main content area (preview) -->
+          <div style="flex:1; padding: var(--space-6); overflow-y:auto; background: var(--color-bg);">
+            <div class="page-header" style="padding:0 0 var(--space-5);">
+              <span class="heading-sm">My Issues</span>
+              <div class="page-actions">
+                <button class="btn btn-primary btn-sm">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2V10M2 6H10" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  New Issue
+                </button>
+              </div>
+            </div>
+            <div class="tabs" style="margin-bottom:var(--space-5);">
+              <a href="#" class="tab active">All <span class="tab-count">12</span></a>
+              <a href="#" class="tab">Active <span class="tab-count">3</span></a>
+              <a href="#" class="tab">Completed</a>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:2px;">
+              <div class="skeleton skeleton-row"></div>
+              <div class="skeleton skeleton-row delay-50"></div>
+              <div class="skeleton skeleton-row delay-100"></div>
+              <div class="skeleton skeleton-row delay-150"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         COMPONENTS
+         ======================================================================= -->
+    <section id="components" class="showcase-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Components</span>
+          <h2 class="section-title">UI Components</h2>
+          <p class="section-subtitle">All interactive building blocks with their states, variants, and accessibility attributes.</p>
+        </div>
+
+        <!-- Buttons -->
+        <div class="mb-9">
+          <div class="label" style="margin-bottom:var(--space-5);">Buttons</div>
+          <div class="flex flex-wrap gap-3" style="margin-bottom:var(--space-4);">
+            <button class="btn btn-primary">Primary Action</button>
+            <button class="btn btn-secondary">Secondary</button>
+            <button class="btn btn-ghost">Ghost</button>
+            <button class="btn btn-danger">Delete Issue</button>
+          </div>
+          <div class="flex flex-wrap gap-3" style="margin-bottom:var(--space-4);">
+            <button class="btn btn-primary btn-sm">Small</button>
+            <button class="btn btn-secondary btn-sm">Secondary Sm</button>
+            <button class="btn btn-ghost btn-sm">Ghost Sm</button>
+            <button class="btn-icon btn-secondary" aria-label="Add">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2V12M2 7H12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </button>
+            <button class="btn-icon" aria-label="Settings">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="2" stroke="currentColor" stroke-width="1.3"/><path d="M7 1.5V3M7 11V12.5M12.5 7H11M3 7H1.5M10.9 3.1L9.95 4.05M4.05 9.95L3.1 10.9M10.9 10.9L9.95 9.95M4.05 4.05L3.1 3.1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <button class="btn btn-primary" disabled>Disabled</button>
+            <button class="btn btn-secondary loading">Loading</button>
+            <span class="btn-kbd">⌘</span>
+            <span class="btn-kbd">K</span>
+            <span class="btn-kbd">G</span>
+            <span class="btn-kbd">P</span>
+          </div>
+        </div>
+
+        <!-- Status & Priority Chips -->
+        <div class="mb-9">
+          <div class="label" style="margin-bottom:var(--space-5);">Status Chips</div>
+          <div class="flex flex-wrap gap-3" style="margin-bottom:var(--space-4);">
+            <span class="status-chip status-chip-todo">
+              <div class="status-icon status-todo" style="width:10px;height:10px;" aria-hidden="true"></div>
+              Todo
+            </span>
+            <span class="status-chip status-chip-in-progress">
+              <div class="status-icon status-in-progress" style="width:10px;height:10px;" aria-hidden="true"></div>
+              In Progress
+            </span>
+            <span class="status-chip status-chip-done">
+              <div class="status-icon status-done" style="width:10px;height:10px;" aria-hidden="true"></div>
+              Done
+            </span>
+            <span class="status-chip status-chip-cancelled">
+              <div class="status-icon status-cancelled" style="width:10px;height:10px;" aria-hidden="true"></div>
+              Cancelled
+            </span>
+            <span class="status-chip status-chip-backlog">
+              <div class="status-icon status-backlog" style="width:10px;height:10px;" aria-hidden="true"></div>
+              Backlog
+            </span>
+          </div>
+
+          <div class="label" style="margin-bottom:var(--space-5); margin-top:var(--space-6);">Priority Chips</div>
+          <div class="flex flex-wrap gap-3">
+            <span class="priority-chip priority-chip-urgent">
+              <span class="priority-chip-dot"></span>Urgent
+            </span>
+            <span class="priority-chip priority-chip-high">
+              <span class="priority-chip-dot"></span>High
+            </span>
+            <span class="priority-chip priority-chip-medium">
+              <span class="priority-chip-dot"></span>Medium
+            </span>
+            <span class="priority-chip priority-chip-low">
+              <span class="priority-chip-dot"></span>Low
+            </span>
+            <span class="priority-chip priority-chip-none">
+              <span class="priority-chip-dot"></span>No Priority
+            </span>
+          </div>
+        </div>
+
+        <!-- Cards -->
+        <div class="mb-9">
+          <div class="label" style="margin-bottom:var(--space-5);">Cards</div>
+          <div class="grid-3">
+            <!-- Project card -->
+            <div class="card card-project">
+              <div class="card-project-header">
+                <div class="card-project-icon" style="background:linear-gradient(135deg,#5E6AD2,#7B86E8);">🚀</div>
+                <div class="card-project-info">
+                  <div class="card-project-name">v2.0 Redesign</div>
+                  <div class="card-project-team">Engineering · Design</div>
+                </div>
+                <span class="badge badge--purple">Active</span>
+              </div>
+              <div class="card-project-progress">
+                <div class="card-project-progress-label">
+                  <span class="card-project-progress-text">24 of 38 issues</span>
+                  <span class="card-project-progress-pct">63%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-bar-fill" style="width:63%;"></div>
+                </div>
+              </div>
+              <div class="card-project-members">
+                <div class="avatar-stack">
+                  <div class="issue-avatar" style="border: 1.5px solid var(--color-surface-1);" title="Alex K">AK</div>
+                  <div class="issue-avatar" style="background:linear-gradient(135deg,#26C486,#2ABFBF); border: 1.5px solid var(--color-surface-1);" title="Sam R">SR</div>
+                  <div class="issue-avatar" style="background:linear-gradient(135deg,#E85555,#D966A0); border: 1.5px solid var(--color-surface-1);" title="Jo P">JP</div>
+                </div>
+                <span class="caption">Due Jul 15</span>
+              </div>
+            </div>
+
+            <!-- Cycle card -->
+            <div class="card card-cycle">
+              <div class="card-cycle-header">
+                <div>
+                  <div class="card-cycle-num">CYCLE #12</div>
+                  <div class="card-cycle-dates">Jun 17 → Jun 30, 2026</div>
+                </div>
+                <div class="progress-ring" role="img" aria-label="72% complete">
+                  <svg viewBox="0 0 36 36">
+                    <circle class="progress-ring-track" cx="18" cy="18" r="15.5"/>
+                    <circle class="progress-ring-fill" cx="18" cy="18" r="15.5"
+                      stroke-dasharray="97.4"
+                      stroke-dashoffset="27.3"/>
+                  </svg>
+                  <div class="progress-ring-label">72%</div>
+                </div>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-bar-fill" style="width:72%;"></div>
+              </div>
+              <div class="flex-between">
+                <span class="caption">18 of 25 issues done</span>
+                <span class="badge badge--orange">7 remaining</span>
+              </div>
+            </div>
+
+            <!-- Roadmap card -->
+            <div class="card card-roadmap">
+              <div class="card-roadmap-initiative">
+                <div class="flex-between" style="margin-bottom:var(--space-3);">
+                  <span class="heading-sm">Auth 2.0 Initiative</span>
+                  <span class="badge badge--green">On Track</span>
+                </div>
+                <p class="body-sm text-secondary" style="margin-bottom:var(--space-5);">SSO, OAuth 2.1, passkey support, and session management overhaul.</p>
+              </div>
+              <div class="card-roadmap-meta">
+                <div style="flex:1;">
+                  <div class="flex-between" style="margin-bottom:var(--space-2);">
+                    <span class="caption">Progress</span>
+                    <span class="mono" style="font-size:var(--text-11);color:var(--color-label-tertiary);">41%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-bar-fill" style="width:41%;background:var(--color-green);"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-between" style="margin-top:var(--space-4);">
+                <span class="caption">Q3 2026</span>
+                <div class="avatar-stack">
+                  <div class="issue-avatar" style="border: 1.5px solid var(--color-surface-1);">AK</div>
+                  <div class="issue-avatar" style="background:linear-gradient(135deg,#E8B430,#F0A030); border: 1.5px solid var(--color-surface-1);">MS</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Forms -->
+        <div class="mb-9">
+          <div class="label" style="margin-bottom:var(--space-5);">Forms</div>
+          <div class="grid-2" style="gap:var(--space-6);">
+            <div style="display:flex;flex-direction:column;gap:var(--space-5);">
+              <div class="form-group">
+                <label class="form-label required" for="issue-title">Issue Title</label>
+                <input class="input" id="issue-title" type="text" placeholder="What needs to be done?" value="Fix race condition in webhook queue">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="issue-desc">Description</label>
+                <textarea class="textarea" id="issue-desc" rows="3" placeholder="Add more context…">When multiple webhooks arrive simultaneously, the delivery queue can deadlock under high load conditions on the worker nodes.</textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="assignee">Assignee</label>
+                <div class="select-wrap">
+                  <select class="select" id="assignee">
+                    <option>Alex K</option>
+                    <option>Sam R</option>
+                    <option>Jo P</option>
+                    <option>Mo S</option>
+                  </select>
+                  <span class="select-chevron" aria-hidden="true">▾</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="input-error">Error State</label>
+                <input class="input error" id="input-error" type="text" placeholder="Something went wrong" value="Invalid value">
+                <span class="form-error">This field is required</span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:var(--space-5);">
+              <div class="form-group">
+                <div class="label" style="margin-bottom:var(--space-3);">Priority</div>
+                <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+                  <label class="radio-wrap">
+                    <span class="radio">
+                      <input type="radio" name="priority" value="urgent">
+                      <span class="radio-circle"></span>
+                    </span>
+                    <span style="color:var(--color-red);font-size:var(--text-14);">Urgent</span>
+                  </label>
+                  <label class="radio-wrap">
+                    <span class="radio">
+                      <input type="radio" name="priority" value="high" checked>
+                      <span class="radio-circle"></span>
+                    </span>
+                    <span style="color:var(--color-orange);font-size:var(--text-14);">High</span>
+                  </label>
+                  <label class="radio-wrap">
+                    <span class="radio">
+                      <input type="radio" name="priority" value="medium">
+                      <span class="radio-circle"></span>
+                    </span>
+                    <span style="color:var(--color-yellow);font-size:var(--text-14);">Medium</span>
+                  </label>
+                  <label class="radio-wrap">
+                    <span class="radio">
+                      <input type="radio" name="priority" value="low">
+                      <span class="radio-circle"></span>
+                    </span>
+                    <span class="body-sm text-secondary">Low</span>
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="label" style="margin-bottom:var(--space-3);">Options</div>
+                <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+                  <label class="checkbox-wrap">
+                    <span class="checkbox">
+                      <input type="checkbox" checked>
+                      <span class="checkbox-box"></span>
+                    </span>
+                    <span class="checkbox-label">Add to current cycle</span>
+                  </label>
+                  <label class="checkbox-wrap">
+                    <span class="checkbox">
+                      <input type="checkbox">
+                      <span class="checkbox-box"></span>
+                    </span>
+                    <span class="checkbox-label">Notify team on Slack</span>
+                  </label>
+                  <label class="checkbox-wrap">
+                    <span class="checkbox">
+                      <input type="checkbox" checked>
+                      <span class="checkbox-box"></span>
+                    </span>
+                    <span class="checkbox-label">Subscribe to updates</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Badges -->
+        <div class="mb-9">
+          <div class="label" style="margin-bottom:var(--space-5);">Badges &amp; Labels</div>
+          <div class="flex flex-wrap gap-3" style="margin-bottom:var(--space-4);">
+            <span class="badge">Default</span>
+            <span class="badge badge--purple"><span class="badge-dot"></span>Purple</span>
+            <span class="badge badge--green"><span class="badge-dot"></span>Green</span>
+            <span class="badge badge--orange"><span class="badge-dot"></span>Orange</span>
+            <span class="badge badge--red"><span class="badge-dot"></span>Red</span>
+            <span class="badge badge--yellow"><span class="badge-dot"></span>Yellow</span>
+            <span class="badge badge--blue"><span class="badge-dot"></span>Blue</span>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <span class="label-chip label-chip-bug"><span class="label-chip-dot"></span>Bug</span>
+            <span class="label-chip label-chip-feature"><span class="label-chip-dot"></span>Feature</span>
+            <span class="label-chip label-chip-improvement"><span class="label-chip-dot"></span>Improvement</span>
+            <span class="label-chip label-chip-design"><span class="label-chip-dot"></span>Design</span>
+            <span class="label-chip label-chip-docs"><span class="label-chip-dot"></span>Documentation</span>
+            <span class="label-chip label-chip-backend"><span class="label-chip-dot"></span>Backend</span>
+          </div>
+        </div>
+
+        <!-- Progress -->
+        <div class="mb-9">
+          <div class="label" style="margin-bottom:var(--space-5);">Progress Indicators</div>
+          <div style="display:flex;flex-direction:column;gap:var(--space-5);max-width:400px;">
+            <div>
+              <div class="flex-between" style="margin-bottom:var(--space-2);">
+                <span class="caption">Cycle progress</span>
+                <span class="mono" style="font-size:var(--text-11);color:var(--color-label-tertiary);">72%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-bar-fill" style="width:72%;"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex-between" style="margin-bottom:var(--space-2);">
+                <span class="caption">Project (in progress)</span>
+                <span class="mono" style="font-size:var(--text-11);color:var(--color-orange);">41%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-bar-fill in-progress" style="width:41%;"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex-between" style="margin-bottom:var(--space-2);">
+                <span class="caption">Roadmap (done)</span>
+                <span class="mono" style="font-size:var(--text-11);color:var(--color-green);">100%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-bar-fill done" style="width:100%;"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex-between" style="margin-bottom:var(--space-2);">
+                <span class="caption">Loading (indeterminate)</span>
+              </div>
+              <div class="loading-bar"></div>
+            </div>
+          </div>
+
+          <!-- Spinners -->
+          <div class="flex gap-6" style="margin-top:var(--space-7); align-items:center;">
+            <div>
+              <div class="spinner spinner-sm" role="status" aria-label="Loading"></div>
+              <div class="caption" style="margin-top:var(--space-2);">Small</div>
+            </div>
+            <div>
+              <div class="spinner" role="status" aria-label="Loading"></div>
+              <div class="caption" style="margin-top:var(--space-2);">Default</div>
+            </div>
+            <div>
+              <div class="spinner spinner-lg" role="status" aria-label="Loading"></div>
+              <div class="caption" style="margin-top:var(--space-2);">Large</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation tabs -->
+        <div class="mb-9">
+          <div class="label" style="margin-bottom:var(--space-5);">Navigation Tabs</div>
+          <div class="tabs">
+            <a href="#" class="tab active">All Issues <span class="tab-count">84</span></a>
+            <a href="#" class="tab">In Progress <span class="tab-count">12</span></a>
+            <a href="#" class="tab">Backlog</a>
+            <a href="#" class="tab">Completed</a>
+            <a href="#" class="tab">Cancelled</a>
+          </div>
+        </div>
+
+        <!-- Skeleton loading -->
+        <div>
+          <div class="label" style="margin-bottom:var(--space-5);">Skeleton Loading</div>
+          <div style="max-width:520px;">
+            <div class="skeleton skeleton-row" style="margin-bottom:1px;"></div>
+            <div class="skeleton skeleton-row delay-50" style="margin-bottom:1px;opacity:.85;"></div>
+            <div class="skeleton skeleton-row delay-100" style="margin-bottom:1px;opacity:.7;"></div>
+            <div class="skeleton skeleton-row delay-150" style="opacity:.55;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         MOTION
+         ======================================================================= -->
+    <section id="motion" class="showcase-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Motion</span>
+          <h2 class="section-title">Animation System</h2>
+          <p class="section-subtitle">Purposeful motion. Three durations: 150ms, 200ms, 300ms. One easing: <span class="code-inline">cubic-bezier(0.16, 1, 0.3, 1)</span> — spring-like, never decorative.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="motion-demo-item">
+            <div class="motion-demo-box transition-spring cursor-pointer">
+              <span class="text-purple" style="font-size:18px;">→</span>
+            </div>
+            <div class="heading-sm">Spring Easing</div>
+            <p class="body-sm text-secondary">cubic-bezier(0.16, 1, 0.3, 1)<br>Hover the box</p>
+          </div>
+
+          <div class="motion-demo-item">
+            <div style="display:flex;flex-direction:column;gap:var(--space-3);width:100%;">
+              <div class="skeleton skeleton-row animate-pulse"></div>
+              <div class="skeleton skeleton-row animate-pulse delay-200"></div>
+              <div class="skeleton skeleton-row animate-pulse delay-400"></div>
+            </div>
+            <div class="heading-sm">Loading Pulse</div>
+            <p class="body-sm text-secondary">2s ease-in-out infinite<br>Skeleton state</p>
+          </div>
+
+          <div class="motion-demo-item">
+            <div style="width:100%;">
+              <div class="loading-bar"></div>
+            </div>
+            <div class="heading-sm">Indeterminate Bar</div>
+            <p class="body-sm text-secondary">1.8s cubic-bezier<br>Linear purple fill</p>
+          </div>
+
+          <div class="motion-demo-item">
+            <div style="display:flex;gap:var(--space-3);">
+              <span class="btn-kbd" style="animation: fadeInUp 0.3s cubic-bezier(0.16,1,0.3,1) both;">⌘</span>
+              <span class="btn-kbd" style="animation: fadeInUp 0.3s cubic-bezier(0.16,1,0.3,1) 0.05s both;">K</span>
+            </div>
+            <div class="heading-sm">Fade In Up</div>
+            <p class="body-sm text-secondary">200ms spring<br>8px Y offset</p>
+          </div>
+
+          <div class="motion-demo-item">
+            <div style="animation: scaleInCenter 0.3s cubic-bezier(0.16,1,0.3,1) both;">
+              <div style="background:var(--color-purple-muted);border:1px solid var(--color-purple);border-radius:var(--radius-md);padding:var(--space-4) var(--space-5);font-size:var(--text-13);color:var(--color-purple-light);">Popover</div>
+            </div>
+            <div class="heading-sm">Scale In</div>
+            <p class="body-sm text-secondary">300ms spring<br>0.96 → 1.0 scale</p>
+          </div>
+
+          <div class="motion-demo-item">
+            <div style="animation: slideInRight 0.2s cubic-bezier(0.16,1,0.3,1) both; background:var(--color-surface-2);border:var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-3) var(--space-5);font-size:var(--text-13);color:var(--color-label-primary);">
+              <span class="mono text-tertiary">ENG-2847</span> Fix race condition
+            </div>
+            <div class="heading-sm">Slide In Right</div>
+            <p class="body-sm text-secondary">150ms spring<br>8px X offset — cmd palette items</p>
+          </div>
+        </div>
+
+        <!-- Easing reference -->
+        <div style="margin-top:var(--space-9); background:var(--color-surface-1); border:var(--border-subtle); border-radius:var(--radius-lg); padding:var(--space-6);">
+          <div class="label" style="margin-bottom:var(--space-5);">Motion Reference</div>
+          <div class="grid-4" style="gap:var(--space-6);">
+            <div>
+              <div class="caption" style="margin-bottom:var(--space-2);">Instant</div>
+              <div class="mono" style="font-size:var(--text-12);color:var(--color-label-tertiary);">0ms</div>
+              <div class="body-sm text-secondary" style="margin-top:var(--space-2);">hover backgrounds</div>
+            </div>
+            <div>
+              <div class="caption" style="margin-bottom:var(--space-2);">Fast</div>
+              <div class="mono" style="font-size:var(--text-12);color:var(--color-purple);">150ms</div>
+              <div class="body-sm text-secondary" style="margin-top:var(--space-2);">buttons, borders, colors</div>
+            </div>
+            <div>
+              <div class="caption" style="margin-bottom:var(--space-2);">Normal</div>
+              <div class="mono" style="font-size:var(--text-12);color:var(--color-purple);">200ms</div>
+              <div class="body-sm text-secondary" style="margin-top:var(--space-2);">popovers, fade-in</div>
+            </div>
+            <div>
+              <div class="caption" style="margin-bottom:var(--space-2);">Slow</div>
+              <div class="mono" style="font-size:var(--text-12);color:var(--color-purple);">300ms</div>
+              <div class="body-sm text-secondary" style="margin-top:var(--space-2);">modals, slide-in</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer style="border-top: 1px solid var(--color-border-subtle); padding: var(--space-9) 0; margin-top: 0;">
+    <div class="container">
+      <div class="flex-between flex-wrap gap-6">
+        <div class="flex items-center gap-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3.5 3.5L20.5 20.5" stroke="#5E6AD2" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M3.5 3.5L20.5 3.5" stroke="#5E6AD2" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M3.5 3.5L3.5 20.5" stroke="#5E6AD2" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span class="body-sm text-secondary">Linear Design System &mdash; v1.0.0</span>
+        </div>
+        <div class="flex gap-6">
+          <a href="components/buttons.html" class="body-sm text-secondary" style="color:var(--color-label-secondary);">Buttons</a>
+          <a href="components/cards.html" class="body-sm text-secondary" style="color:var(--color-label-secondary);">Cards</a>
+          <a href="components/forms.html" class="body-sm text-secondary" style="color:var(--color-label-secondary);">Forms</a>
+          <a href="components/navigation.html" class="body-sm text-secondary" style="color:var(--color-label-secondary);">Navigation</a>
+          <a href="components/modals.html" class="body-sm text-secondary" style="color:var(--color-label-secondary);">Modals</a>
+        </div>
+        <span class="caption" style="color:var(--color-label-tertiary);">© 2026 Linear, Inc.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

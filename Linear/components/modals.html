@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modals — Linear Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .showcase-wrap {
+      min-height: 100vh;
+      background: var(--color-bg);
+      padding: var(--space-12) var(--space-8);
+    }
+
+    .page-head {
+      max-width: 900px;
+      margin: 0 auto var(--space-12);
+      padding-bottom: var(--space-9);
+      border-bottom: var(--border-subtle);
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+    }
+
+    .breadcrumb a {
+      font-size: var(--text-13);
+      color: var(--color-label-tertiary);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover { color: var(--color-label-secondary); }
+    .breadcrumb-sep { color: var(--color-label-quaternary); font-size: var(--text-13); }
+    .breadcrumb-current { font-size: var(--text-13); color: var(--color-label-secondary); }
+
+    .component-section {
+      max-width: 900px;
+      margin: 0 auto var(--space-12);
+    }
+
+    .component-section-title {
+      font-size: var(--text-11);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-4);
+      border-bottom: var(--border-subtle);
+    }
+
+    /* Inline modal display (not truly modal for showcase purposes) */
+    .modal-preview {
+      background: rgba(0, 0, 0, 0.40);
+      border-radius: var(--radius-xl);
+      padding: var(--space-9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Trigger buttons row */
+    .trigger-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      margin-bottom: var(--space-8);
+    }
+
+    /* Live modal */
+    #live-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.60);
+      z-index: var(--z-modal);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-6);
+      animation: fadeIn var(--duration-normal) var(--ease-spring) both;
+    }
+
+    #live-modal-overlay.open {
+      display: flex;
+    }
+
+    #confirm-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.60);
+      z-index: var(--z-modal);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-6);
+    }
+
+    #confirm-modal-overlay.open {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+<div class="showcase-wrap">
+
+  <div class="page-head">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Linear DS</a>
+      <span class="breadcrumb-sep" aria-hidden="true">/</span>
+      <span class="breadcrumb-current">Modals</span>
+    </nav>
+    <h1 class="heading-lg" style="margin-bottom:var(--space-4);">Modals</h1>
+    <p class="body-md text-secondary" style="max-width:540px;">Centered overlays for focused tasks — issue creation, settings, confirmations. rgba(0,0,0,0.6) backdrop, surface-2 background, 12px radius, spring-scale animation.</p>
+  </div>
+
+  <!-- Interactive triggers -->
+  <div class="component-section">
+    <div class="component-section-title">Interactive Demo</div>
+    <div class="trigger-row">
+      <button class="btn btn-secondary" onclick="document.getElementById('live-modal-overlay').classList.add('open')">
+        Open Create Issue Modal
+      </button>
+      <button class="btn btn-danger" onclick="document.getElementById('confirm-modal-overlay').classList.add('open')">
+        Open Confirm Delete
+      </button>
+    </div>
+
+    <!-- Instructions -->
+    <div style="background:var(--color-surface-1);border:var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-5) var(--space-6);">
+      <div class="flex gap-4 items-center">
+        <span class="btn-kbd">ESC</span>
+        <span class="body-sm text-secondary">closes the modal</span>
+        <span style="opacity:0.3;">·</span>
+        <span class="btn-kbd">Tab</span>
+        <span class="body-sm text-secondary">navigates within the modal</span>
+        <span style="opacity:0.3;">·</span>
+        <span class="btn-kbd">↵</span>
+        <span class="body-sm text-secondary">submits the form</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Standard modal preview -->
+  <div class="component-section">
+    <div class="component-section-title">Standard Modal (480px max-width)</div>
+    <div class="modal-preview">
+      <div class="modal animate-scale-in">
+        <div class="modal-header">
+          <span class="modal-title">Create Issue</span>
+          <button class="modal-close" aria-label="Close modal">×</button>
+        </div>
+        <div class="modal-body">
+          <div style="display:flex;flex-direction:column;gap:var(--space-5);">
+            <div class="form-group">
+              <label class="form-label required" for="m-title">Title</label>
+              <input class="input" id="m-title" type="text" placeholder="What needs to be done?" value="Fix race condition in webhook queue">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="m-desc">Description</label>
+              <textarea class="textarea" id="m-desc" rows="2" placeholder="Add more context…"></textarea>
+            </div>
+            <div class="grid-2" style="gap:var(--space-5);">
+              <div class="form-group">
+                <label class="form-label" for="m-status">Status</label>
+                <div class="select-wrap">
+                  <select class="select" id="m-status">
+                    <option>Todo</option>
+                    <option>In Progress</option>
+                    <option>Done</option>
+                  </select>
+                  <span class="select-chevron" aria-hidden="true">▾</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="m-priority">Priority</label>
+                <div class="select-wrap">
+                  <select class="select" id="m-priority">
+                    <option>Urgent</option>
+                    <option selected>High</option>
+                    <option>Medium</option>
+                    <option>Low</option>
+                  </select>
+                  <span class="select-chevron" aria-hidden="true">▾</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-ghost">Cancel</button>
+          <button class="btn btn-primary">Create Issue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirm modal preview -->
+  <div class="component-section">
+    <div class="component-section-title">Confirm / Destructive Modal (360px)</div>
+    <div class="modal-preview">
+      <div class="modal modal-sm animate-scale-in">
+        <div class="modal-header">
+          <span class="modal-title">Delete issue permanently?</span>
+          <button class="modal-close" aria-label="Close modal">×</button>
+        </div>
+        <div class="modal-body">
+          <p class="body-sm text-secondary">This will permanently delete <span class="code-inline">ENG-2847</span> and all of its attachments, comments, and activity. This action cannot be undone.</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-ghost">Cancel</button>
+          <button class="btn btn-danger">Delete Issue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wide modal preview -->
+  <div class="component-section">
+    <div class="component-section-title">Wide Modal (640px) — Settings</div>
+    <div class="modal-preview">
+      <div class="modal modal-lg animate-scale-in">
+        <div class="modal-header">
+          <span class="modal-title">Team Settings</span>
+          <button class="modal-close" aria-label="Close modal">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="tabs" style="margin-bottom:var(--space-6);">
+            <a href="#" class="tab active">General</a>
+            <a href="#" class="tab">Members</a>
+            <a href="#" class="tab">Integrations</a>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:var(--space-5);">
+            <div class="form-group">
+              <label class="form-label" for="ts-name">Team Name</label>
+              <input class="input" id="ts-name" type="text" value="Engineering">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="ts-identifier">Identifier</label>
+              <input class="input" id="ts-identifier" type="text" value="ENG">
+              <span class="form-helper">Used as a prefix for issue IDs: ENG-1, ENG-2, …</span>
+            </div>
+            <div class="form-group">
+              <div class="label" style="margin-bottom:var(--space-3);">Notifications</div>
+              <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+                <label class="checkbox-wrap">
+                  <span class="checkbox"><input type="checkbox" checked><span class="checkbox-box"></span></span>
+                  <span class="checkbox-label">Notify on new issues</span>
+                </label>
+                <label class="checkbox-wrap">
+                  <span class="checkbox"><input type="checkbox" checked><span class="checkbox-box"></span></span>
+                  <span class="checkbox-label">Notify on completed cycles</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-ghost">Cancel</button>
+          <button class="btn btn-primary">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast notifications -->
+  <div class="component-section">
+    <div class="component-section-title">Toast Notifications</div>
+    <div style="display:flex;flex-direction:column;gap:var(--space-3);max-width:360px;">
+      <div class="toast success animate-toast-in" role="status">
+        <div class="toast-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6" fill="var(--color-green-muted)"/><path d="M4.5 7L6 8.5L9.5 5" stroke="var(--color-green)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="toast-content">
+          <div class="toast-title">Issue created</div>
+          <div class="toast-message">ENG-2864 was created successfully</div>
+        </div>
+        <button class="toast-close" aria-label="Dismiss">×</button>
+      </div>
+
+      <div class="toast error animate-toast-in delay-100" role="alert">
+        <div class="toast-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6" fill="var(--color-red-muted)"/><path d="M5 5L9 9M9 5L5 9" stroke="var(--color-red)" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </div>
+        <div class="toast-content">
+          <div class="toast-title">Failed to save</div>
+          <div class="toast-message">Your changes could not be saved. Please try again.</div>
+        </div>
+        <button class="toast-close" aria-label="Dismiss">×</button>
+      </div>
+
+      <div class="toast warning animate-toast-in delay-200" role="status">
+        <div class="toast-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6" fill="var(--color-orange-muted)"/><path d="M7 4.5V7.5M7 9.5V9.6" stroke="var(--color-orange)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="toast-content">
+          <div class="toast-title">Cycle ends soon</div>
+          <div class="toast-message">Cycle #12 ends in 2 days with 7 issues remaining</div>
+        </div>
+        <button class="toast-close" aria-label="Dismiss">×</button>
+      </div>
+
+      <div class="toast info animate-toast-in delay-300" role="status">
+        <div class="toast-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6" fill="var(--color-purple-muted)"/><path d="M7 4.5V5M7 7V10" stroke="var(--color-purple-light)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="toast-content">
+          <div class="toast-title">New team member</div>
+          <div class="toast-message">Alex K joined the Engineering team</div>
+        </div>
+        <button class="toast-close" aria-label="Dismiss">×</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- =========================================================================
+     LIVE MODALS (functional with JS)
+     ========================================================================= -->
+
+<!-- Create Issue Modal (live) -->
+<div id="live-modal-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Create Issue" onclick="if(event.target===this) this.classList.remove('open')">
+  <div class="modal animate-scale-in">
+    <div class="modal-header">
+      <span class="modal-title">Create Issue</span>
+      <button class="modal-close" aria-label="Close modal" onclick="document.getElementById('live-modal-overlay').classList.remove('open')">×</button>
+    </div>
+    <div class="modal-body">
+      <div style="display:flex;flex-direction:column;gap:var(--space-5);">
+        <div class="form-group">
+          <label class="form-label required" for="live-title">Title</label>
+          <input class="input" id="live-title" type="text" placeholder="What needs to be done?" autofocus>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="live-desc">Description</label>
+          <textarea class="textarea" id="live-desc" rows="3" placeholder="Add more context…"></textarea>
+        </div>
+        <div class="grid-2" style="gap:var(--space-5);">
+          <div class="form-group">
+            <label class="form-label" for="live-status">Status</label>
+            <div class="select-wrap">
+              <select class="select" id="live-status">
+                <option>Backlog</option>
+                <option>Todo</option>
+                <option>In Progress</option>
+              </select>
+              <span class="select-chevron" aria-hidden="true">▾</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="live-priority">Priority</label>
+            <div class="select-wrap">
+              <select class="select" id="live-priority">
+                <option>Urgent</option>
+                <option selected>High</option>
+                <option>Medium</option>
+                <option>Low</option>
+              </select>
+              <span class="select-chevron" aria-hidden="true">▾</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="label" style="margin-bottom:var(--space-3);">Options</div>
+          <label class="checkbox-wrap">
+            <span class="checkbox"><input type="checkbox" id="lm-cycle" checked><span class="checkbox-box"></span></span>
+            <span class="checkbox-label">Add to current cycle</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="document.getElementById('live-modal-overlay').classList.remove('open')">Cancel</button>
+      <button class="btn btn-primary">Create Issue</button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Delete Modal (live) -->
+<div id="confirm-modal-overlay" class="modal-overlay" role="alertdialog" aria-modal="true" aria-label="Confirm deletion" onclick="if(event.target===this) this.classList.remove('open')">
+  <div class="modal modal-sm animate-scale-in">
+    <div class="modal-header">
+      <span class="modal-title">Delete issue permanently?</span>
+      <button class="modal-close" aria-label="Close" onclick="document.getElementById('confirm-modal-overlay').classList.remove('open')">×</button>
+    </div>
+    <div class="modal-body">
+      <p class="body-sm text-secondary">This will permanently delete <span class="code-inline">ENG-2847</span> and all of its attachments, comments, and activity. This action cannot be undone.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="document.getElementById('confirm-modal-overlay').classList.remove('open')">Cancel</button>
+      <button class="btn btn-danger" onclick="document.getElementById('confirm-modal-overlay').classList.remove('open')">Delete Issue</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Close modals on ESC key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay').forEach(function(m) {
+        m.classList.remove('open');
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

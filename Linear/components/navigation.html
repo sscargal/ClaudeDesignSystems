@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation — Linear Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .showcase-wrap {
+      min-height: 100vh;
+      background: var(--color-bg);
+      padding: var(--space-12) var(--space-8);
+    }
+
+    .page-head {
+      max-width: 960px;
+      margin: 0 auto var(--space-12);
+      padding-bottom: var(--space-9);
+      border-bottom: var(--border-subtle);
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+    }
+
+    .breadcrumb a {
+      font-size: var(--text-13);
+      color: var(--color-label-tertiary);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover { color: var(--color-label-secondary); }
+    .breadcrumb-sep { color: var(--color-label-quaternary); font-size: var(--text-13); }
+    .breadcrumb-current { font-size: var(--text-13); color: var(--color-label-secondary); }
+
+    .component-section {
+      max-width: 960px;
+      margin: 0 auto var(--space-12);
+    }
+
+    .component-section-title {
+      font-size: var(--text-11);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-4);
+      border-bottom: var(--border-subtle);
+    }
+
+    .demo-canvas {
+      background: var(--color-surface-1);
+      border: var(--border-subtle);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+<div class="showcase-wrap">
+
+  <div class="page-head">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Linear DS</a>
+      <span class="breadcrumb-sep" aria-hidden="true">/</span>
+      <span class="breadcrumb-current">Navigation</span>
+    </nav>
+    <h1 class="heading-lg" style="margin-bottom:var(--space-4);">Navigation</h1>
+    <p class="body-md text-secondary" style="max-width:540px;">Top bar, sidebar, tabs, command palette, and popover. Navigation components establish spatial hierarchy and support the keyboard-centric experience Linear is known for.</p>
+  </div>
+
+  <!-- Top bar -->
+  <div class="component-section">
+    <div class="component-section-title">Top Bar</div>
+    <div class="demo-canvas">
+      <header class="topbar" style="position:relative;">
+        <div class="topbar-inner">
+          <a href="#" class="topbar-brand">
+            <div class="topbar-logo">
+              <svg class="topbar-logo-mark" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3.5 3.5L20.5 20.5" stroke="#5E6AD2" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M3.5 3.5L20.5 3.5" stroke="#5E6AD2" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M3.5 3.5L3.5 20.5" stroke="#5E6AD2" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span class="topbar-logo-wordmark">Linear</span>
+            </div>
+          </a>
+          <ul class="topbar-nav" role="list">
+            <li class="topbar-nav-item active"><a href="#">Features</a></li>
+            <li class="topbar-nav-item"><a href="#">Pricing</a></li>
+            <li class="topbar-nav-item"><a href="#">Changelog</a></li>
+            <li class="topbar-nav-item"><a href="#">Blog</a></li>
+          </ul>
+          <div class="topbar-actions">
+            <button class="btn-icon" aria-label="Search">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.3"/><path d="M9.5 9.5L12.5 12.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </button>
+            <span class="btn-kbd">⌘K</span>
+            <button class="btn btn-secondary btn-sm">Log in</button>
+            <button class="btn btn-primary btn-sm">Get started</button>
+          </div>
+        </div>
+      </header>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="component-section">
+    <div class="component-section-title">Sidebar (240px)</div>
+    <div class="demo-canvas" style="height:500px;display:flex;">
+      <nav class="sidebar" aria-label="Application navigation">
+        <div class="sidebar-workspace">
+          <div class="sidebar-workspace-icon">L</div>
+          <span class="sidebar-workspace-name">Linear Corp</span>
+          <span class="sidebar-workspace-chevron">▾</span>
+        </div>
+
+        <div class="sidebar-section">
+          <a href="#" class="sidebar-item sidebar-item--active">
+            <span class="sidebar-item-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M4.5 7L6 8.5L9.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="sidebar-item-label">My Issues</span>
+            <span class="sidebar-item-count">12</span>
+          </a>
+          <a href="#" class="sidebar-item">
+            <span class="sidebar-item-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1.5" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M4.5 7H9.5M7 4.5V9.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+            <span class="sidebar-item-label">Inbox</span>
+            <span class="sidebar-item-count">3</span>
+          </a>
+          <a href="#" class="sidebar-item">
+            <span class="sidebar-item-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="5.5" height="5.5" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="7.5" y="1" width="5.5" height="5.5" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="1" y="7.5" width="5.5" height="5.5" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="7.5" y="7.5" width="5.5" height="5.5" rx="1" stroke="currentColor" stroke-width="1.2"/></svg></span>
+            <span class="sidebar-item-label">All Issues</span>
+          </a>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="sidebar-section-label">Teams</div>
+          <a href="#" class="sidebar-item">
+            <span class="sidebar-item-dot" style="background:#5E6AD2;"></span>
+            <span class="sidebar-item-label">Engineering</span>
+            <span class="sidebar-item-count">84</span>
+          </a>
+          <a href="#" class="sidebar-item">
+            <span class="sidebar-item-dot" style="background:#26C486;"></span>
+            <span class="sidebar-item-label">Design</span>
+            <span class="sidebar-item-count">21</span>
+          </a>
+          <a href="#" class="sidebar-item">
+            <span class="sidebar-item-dot" style="background:#F0A030;"></span>
+            <span class="sidebar-item-label">Product</span>
+            <span class="sidebar-item-count">37</span>
+          </a>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="sidebar-section-label">Projects</div>
+          <a href="#" class="sidebar-item">
+            <span style="font-size:11px;" class="sidebar-item-icon">🚀</span>
+            <span class="sidebar-item-label">v2.0 Redesign</span>
+          </a>
+          <a href="#" class="sidebar-item">
+            <span style="font-size:11px;" class="sidebar-item-icon">⚡</span>
+            <span class="sidebar-item-label">Performance</span>
+          </a>
+          <a href="#" class="sidebar-item">
+            <span style="font-size:11px;" class="sidebar-item-icon">🔐</span>
+            <span class="sidebar-item-label">Auth 2.0</span>
+          </a>
+          <a href="#" class="sidebar-add">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2V10M2 6H10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            Add project
+          </a>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="sidebar-section-label">Views</div>
+          <a href="#" class="sidebar-item">
+            <span class="sidebar-item-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M7 2V7L10 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="sidebar-item-label">Active Cycles</span>
+          </a>
+          <a href="#" class="sidebar-item">
+            <span class="sidebar-item-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4H12M2 8H10M2 12H7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+            <span class="sidebar-item-label">Roadmap</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Main content placeholder -->
+      <div style="flex:1;padding:var(--space-6);background:var(--color-bg);">
+        <div class="flex-between" style="margin-bottom:var(--space-6);">
+          <span class="heading-sm">My Issues</span>
+          <button class="btn btn-primary btn-sm">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2V10M2 6H10" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+            New Issue
+          </button>
+        </div>
+        <div class="tabs" style="margin-bottom:var(--space-5);">
+          <a href="#" class="tab active">All <span class="tab-count">12</span></a>
+          <a href="#" class="tab">Active <span class="tab-count">3</span></a>
+          <a href="#" class="tab">Done</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:2px;">
+          <div class="skeleton skeleton-row"></div>
+          <div class="skeleton skeleton-row delay-50"></div>
+          <div class="skeleton skeleton-row delay-100"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="component-section">
+    <div class="component-section-title">Navigation Tabs</div>
+    <div class="demo-canvas" style="padding:var(--space-6);">
+      <div class="tabs">
+        <a href="#" class="tab active">All Issues <span class="tab-count">84</span></a>
+        <a href="#" class="tab">In Progress <span class="tab-count">12</span></a>
+        <a href="#" class="tab">Backlog <span class="tab-count">31</span></a>
+        <a href="#" class="tab">Done</a>
+        <a href="#" class="tab">Cancelled</a>
+      </div>
+    </div>
+    <div style="margin-top:var(--space-5);">
+      <div class="tabs" style="border-color:transparent;">
+        <a href="#" class="tab" style="border-radius:var(--radius-md) var(--radius-md) 0 0;">Overview</a>
+        <a href="#" class="tab active" style="border-radius:var(--radius-md) var(--radius-md) 0 0;">Issues</a>
+        <a href="#" class="tab" style="border-radius:var(--radius-md) var(--radius-md) 0 0;">Cycles</a>
+        <a href="#" class="tab" style="border-radius:var(--radius-md) var(--radius-md) 0 0;">Members</a>
+        <a href="#" class="tab" style="border-radius:var(--radius-md) var(--radius-md) 0 0;">Settings</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Command Palette -->
+  <div class="component-section">
+    <div class="component-section-title">Command Palette (⌘K)</div>
+    <div style="max-width:560px;margin:0 auto;">
+      <div class="command-palette" role="dialog" aria-label="Command palette">
+        <div class="command-input-wrap">
+          <svg class="command-input-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.3"/><path d="M11 11L14 14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          <input class="command-input" type="text" placeholder="Search issues, projects, commands…" aria-label="Command palette search">
+          <span class="btn-kbd">ESC</span>
+        </div>
+        <div class="command-results" role="listbox">
+          <div class="command-section-label">Recent</div>
+          <a href="#" class="command-item active" role="option" aria-selected="true">
+            <div class="command-item-icon">
+              <div class="status-icon status-in-progress" style="width:12px;height:12px;"></div>
+            </div>
+            <span class="command-item-label">Fix race condition in webhook delivery queue</span>
+            <span class="command-item-meta mono">ENG-2847</span>
+          </a>
+          <a href="#" class="command-item" role="option">
+            <div class="command-item-icon">
+              <div class="status-icon status-todo" style="width:12px;height:12px;"></div>
+            </div>
+            <span class="command-item-label">Implement keyboard shortcut overlay</span>
+            <span class="command-item-meta mono">ENG-2858</span>
+          </a>
+          <div class="command-section-label">Actions</div>
+          <a href="#" class="command-item" role="option">
+            <div class="command-item-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="1" y="1" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M6 4V8M4 6H8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+            <span class="command-item-label">Create new issue</span>
+            <div class="command-item-kbd"><span class="btn-kbd">C</span></div>
+          </a>
+          <a href="#" class="command-item" role="option">
+            <div class="command-item-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6L10 6M6 2L10 6L6 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="command-item-label">Go to projects</span>
+            <div class="command-item-kbd"><span class="btn-kbd">G</span><span class="btn-kbd">P</span></div>
+          </a>
+          <a href="#" class="command-item" role="option">
+            <div class="command-item-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="4" r="2.5" stroke="currentColor" stroke-width="1.2"/><path d="M1.5 11C1.5 8.5 3.5 7 6 7C8.5 7 10.5 8.5 10.5 11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+            <span class="command-item-label">Assign to me</span>
+            <div class="command-item-kbd"><span class="btn-kbd">⌘</span><span class="btn-kbd">A</span></div>
+          </a>
+        </div>
+        <div class="command-footer">
+          <div class="command-footer-hints">
+            <span class="command-footer-hint"><span class="btn-kbd">↑</span><span class="btn-kbd">↓</span> Navigate</span>
+            <span class="command-footer-hint"><span class="btn-kbd">↵</span> Select</span>
+            <span class="command-footer-hint"><span class="btn-kbd">ESC</span> Close</span>
+          </div>
+          <span class="caption">Linear</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popover / Dropdown -->
+  <div class="component-section">
+    <div class="component-section-title">Popover / Dropdown</div>
+    <div style="display:flex;gap:var(--space-8);align-items:flex-start;flex-wrap:wrap;">
+      <!-- Status dropdown -->
+      <div>
+        <div class="label" style="margin-bottom:var(--space-4);">Status Picker</div>
+        <div class="popover" style="position:relative;">
+          <div class="popover-section-label">Status</div>
+          <a href="#" class="popover-item">
+            <div class="popover-item-icon"><div class="status-icon status-backlog" style="width:12px;height:12px;"></div></div>
+            <span class="popover-item-label">Backlog</span>
+          </a>
+          <a href="#" class="popover-item">
+            <div class="popover-item-icon"><div class="status-icon status-todo" style="width:12px;height:12px;"></div></div>
+            <span class="popover-item-label">Todo</span>
+          </a>
+          <a href="#" class="popover-item">
+            <div class="popover-item-icon"><div class="status-icon status-in-progress" style="width:12px;height:12px;"></div></div>
+            <span class="popover-item-label">In Progress</span>
+          </a>
+          <a href="#" class="popover-item">
+            <div class="popover-item-icon"><div class="status-icon status-done" style="width:12px;height:12px;"></div></div>
+            <span class="popover-item-label">Done</span>
+          </a>
+          <a href="#" class="popover-item">
+            <div class="popover-item-icon"><div class="status-icon status-cancelled" style="width:12px;height:12px;"></div></div>
+            <span class="popover-item-label">Cancelled</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Issue actions dropdown -->
+      <div>
+        <div class="label" style="margin-bottom:var(--space-4);">Issue Actions</div>
+        <div class="popover" style="position:relative;">
+          <a href="#" class="popover-item">
+            <div class="popover-item-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1.5 7L4.5 10L10.5 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="popover-item-label">Mark as done</span>
+            <div class="popover-item-kbd"><span class="btn-kbd">⌘D</span></div>
+          </a>
+          <a href="#" class="popover-item">
+            <div class="popover-item-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="4" r="2" stroke="currentColor" stroke-width="1.2"/><path d="M1.5 11C1.5 8.5 3.5 7 6 7C8.5 7 10.5 8.5 10.5 11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+            <span class="popover-item-label">Assign to…</span>
+          </a>
+          <a href="#" class="popover-item">
+            <div class="popover-item-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6L10 6M6 2L10 6L6 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="popover-item-label">Move to cycle</span>
+          </a>
+          <div class="popover-divider"></div>
+          <a href="#" class="popover-item">
+            <div class="popover-item-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="1" y="1" width="10" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 6H8M4 8H7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+            <span class="popover-item-label">Copy issue URL</span>
+          </a>
+          <div class="popover-divider"></div>
+          <a href="#" class="popover-item destructive">
+            <div class="popover-item-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 3H10M4.5 3V2H7.5V3M4 3V10H8V3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="popover-item-label">Delete issue</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

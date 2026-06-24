@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buttons — Linear Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .showcase-wrap {
+      min-height: 100vh;
+      background: var(--color-bg);
+      padding: var(--space-12) var(--space-8);
+    }
+
+    .page-head {
+      max-width: 900px;
+      margin: 0 auto var(--space-12);
+      padding-bottom: var(--space-9);
+      border-bottom: var(--border-subtle);
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+    }
+
+    .breadcrumb a {
+      font-size: var(--text-13);
+      color: var(--color-label-tertiary);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--color-label-secondary);
+    }
+
+    .breadcrumb-sep {
+      color: var(--color-label-quaternary);
+      font-size: var(--text-13);
+    }
+
+    .breadcrumb-current {
+      font-size: var(--text-13);
+      color: var(--color-label-secondary);
+    }
+
+    .component-section {
+      max-width: 900px;
+      margin: 0 auto var(--space-12);
+    }
+
+    .component-section-title {
+      font-size: var(--text-11);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-4);
+      border-bottom: var(--border-subtle);
+    }
+
+    .demo-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      padding: var(--space-6) 0;
+      border-bottom: var(--border-subtle);
+    }
+
+    .demo-row:last-child {
+      border-bottom: none;
+    }
+
+    .demo-label {
+      font-size: var(--text-12);
+      color: var(--color-label-tertiary);
+      font-family: var(--font-mono);
+      width: 120px;
+      flex-shrink: 0;
+    }
+
+    .demo-items {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      flex: 1;
+    }
+
+    .variant-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .variant-card {
+      background: var(--color-surface-1);
+      border: var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-4);
+    }
+
+    .variant-name {
+      font-family: var(--font-mono);
+      font-size: var(--text-12);
+      color: var(--color-purple);
+    }
+
+    .variant-desc {
+      font-size: var(--text-12);
+      color: var(--color-label-tertiary);
+    }
+  </style>
+</head>
+<body>
+<div class="showcase-wrap">
+
+  <div class="page-head">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Linear DS</a>
+      <span class="breadcrumb-sep" aria-hidden="true">/</span>
+      <span class="breadcrumb-current">Buttons</span>
+    </nav>
+    <h1 class="heading-lg" style="margin-bottom:var(--space-4);">Buttons</h1>
+    <p class="body-md text-secondary" style="max-width:540px;">Interactive controls for triggering actions. 32px default height. 6px radius. Inter Medium 14px. Three semantic variants: primary, secondary, ghost, and danger. Icon buttons at 28px.</p>
+  </div>
+
+  <!-- Primary -->
+  <div class="component-section">
+    <div class="component-section-title">Variants</div>
+    <div class="demo-row">
+      <span class="demo-label">btn-primary</span>
+      <div class="demo-items">
+        <button class="btn btn-primary">Create Issue</button>
+        <button class="btn btn-primary btn-sm">Create Issue</button>
+        <button class="btn btn-primary btn-lg">Create Issue</button>
+      </div>
+    </div>
+    <div class="demo-row">
+      <span class="demo-label">btn-secondary</span>
+      <div class="demo-items">
+        <button class="btn btn-secondary">Filter</button>
+        <button class="btn btn-secondary btn-sm">Filter</button>
+        <button class="btn btn-secondary btn-lg">Filter</button>
+      </div>
+    </div>
+    <div class="demo-row">
+      <span class="demo-label">btn-ghost</span>
+      <div class="demo-items">
+        <button class="btn btn-ghost">Cancel</button>
+        <button class="btn btn-ghost btn-sm">Cancel</button>
+        <button class="btn btn-ghost btn-lg">Cancel</button>
+      </div>
+    </div>
+    <div class="demo-row">
+      <span class="demo-label">btn-danger</span>
+      <div class="demo-items">
+        <button class="btn btn-danger">Delete Issue</button>
+        <button class="btn btn-danger btn-sm">Delete</button>
+        <button class="btn btn-danger btn-lg">Delete Issue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- States -->
+  <div class="component-section">
+    <div class="component-section-title">States</div>
+    <div class="demo-row">
+      <span class="demo-label">default</span>
+      <div class="demo-items">
+        <button class="btn btn-primary">Assign</button>
+        <button class="btn btn-secondary">Label</button>
+        <button class="btn btn-ghost">Cancel</button>
+        <button class="btn btn-danger">Remove</button>
+      </div>
+    </div>
+    <div class="demo-row">
+      <span class="demo-label">:hover</span>
+      <div class="demo-items">
+        <span class="body-sm text-secondary">Hover any button above to see the hover state — background darkens or lightens slightly.</span>
+      </div>
+    </div>
+    <div class="demo-row">
+      <span class="demo-label">:focus</span>
+      <div class="demo-items">
+        <span class="body-sm text-secondary">Tab to any button to see a 2px purple outline focus ring — keyboard accessible, meets WCAG AA.</span>
+      </div>
+    </div>
+    <div class="demo-row">
+      <span class="demo-label">:disabled</span>
+      <div class="demo-items">
+        <button class="btn btn-primary" disabled>Create Issue</button>
+        <button class="btn btn-secondary" disabled>Filter</button>
+        <button class="btn btn-ghost" disabled>Cancel</button>
+        <button class="btn btn-danger" disabled>Delete</button>
+      </div>
+    </div>
+    <div class="demo-row">
+      <span class="demo-label">loading</span>
+      <div class="demo-items">
+        <button class="btn btn-primary loading" aria-busy="true" aria-label="Saving…">Saving…</button>
+        <button class="btn btn-secondary loading" aria-busy="true" aria-label="Loading…">Loading…</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Icon buttons -->
+  <div class="component-section">
+    <div class="component-section-title">Icon Buttons (28px square)</div>
+    <div class="demo-row">
+      <span class="demo-label">btn-icon</span>
+      <div class="demo-items">
+        <button class="btn-icon" aria-label="Add issue" title="Add issue">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2V12M2 7H12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+        <button class="btn-icon" aria-label="Filter" title="Filter">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1.5 3.5H12.5M3.5 7H10.5M5.5 10.5H8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </button>
+        <button class="btn-icon" aria-label="Group by" title="Group by">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="2" width="11" height="2" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="1.5" y="6" width="11" height="2" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="1.5" y="10" width="7" height="2" rx="1" stroke="currentColor" stroke-width="1.2"/></svg>
+        </button>
+        <button class="btn-icon" aria-label="Sort" title="Sort">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4H12M4 7H10M6 10H8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </button>
+        <button class="btn-icon" aria-label="More options" title="More options">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="3.5" r="1" fill="currentColor"/><circle cx="7" cy="7" r="1" fill="currentColor"/><circle cx="7" cy="10.5" r="1" fill="currentColor"/></svg>
+        </button>
+        <button class="btn-icon" aria-label="Close" title="Close">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 3L11 11M11 3L3 11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </button>
+        <button class="btn-icon btn-secondary" aria-label="Settings" title="Settings">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" stroke="currentColor" stroke-width="1.2"/><path d="M7 1.5V3M7 11V12.5M12.5 7H11M3 7H1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Keyboard shortcut display -->
+  <div class="component-section">
+    <div class="component-section-title">Keyboard Shortcut Display (btn-kbd)</div>
+    <div class="demo-row">
+      <span class="demo-label">single keys</span>
+      <div class="demo-items">
+        <span class="btn-kbd">C</span>
+        <span class="btn-kbd">D</span>
+        <span class="btn-kbd">G</span>
+        <span class="btn-kbd">P</span>
+        <span class="btn-kbd">ESC</span>
+        <span class="btn-kbd">↵</span>
+        <span class="btn-kbd">↑</span>
+        <span class="btn-kbd">↓</span>
+      </div>
+    </div>
+    <div class="demo-row">
+      <span class="demo-label">combos</span>
+      <div class="demo-items">
+        <span style="display:inline-flex;gap:3px;align-items:center;">
+          <span class="btn-kbd">⌘</span><span class="btn-kbd">K</span>
+        </span>
+        <span style="display:inline-flex;gap:3px;align-items:center;">
+          <span class="btn-kbd">⌘</span><span class="btn-kbd">D</span>
+        </span>
+        <span style="display:inline-flex;gap:3px;align-items:center;">
+          <span class="btn-kbd">⌘</span><span class="btn-kbd">⇧</span><span class="btn-kbd">P</span>
+        </span>
+        <span style="display:inline-flex;gap:3px;align-items:center;">
+          <span class="btn-kbd">ctrl</span><span class="btn-kbd">shift</span><span class="btn-kbd">P</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Inline context usage -->
+    <div class="demo-row">
+      <span class="demo-label">in context</span>
+      <div class="demo-items">
+        <div style="background:var(--color-surface-1);border:var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-5) var(--space-6);display:flex;align-items:center;justify-content:space-between;width:100%;max-width:400px;">
+          <span class="body-md">Command Palette</span>
+          <div style="display:flex;gap:3px;align-items:center;">
+            <span class="btn-kbd">⌘</span><span class="btn-kbd">K</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Button groups -->
+  <div class="component-section">
+    <div class="component-section-title">Button Groups &amp; Composition</div>
+    <div class="demo-row">
+      <span class="demo-label">modal footer</span>
+      <div class="demo-items">
+        <div style="display:flex;gap:var(--space-3);">
+          <button class="btn btn-ghost">Cancel</button>
+          <button class="btn btn-primary">Create Issue</button>
+        </div>
+      </div>
+    </div>
+    <div class="demo-row">
+      <span class="demo-label">destructive</span>
+      <div class="demo-items">
+        <div style="display:flex;gap:var(--space-3);">
+          <button class="btn btn-ghost">Cancel</button>
+          <button class="btn btn-danger">Delete permanently</button>
+        </div>
+      </div>
+    </div>
+    <div class="demo-row">
+      <span class="demo-label">toolbar</span>
+      <div class="demo-items">
+        <div style="display:flex;align-items:center;gap:var(--space-2);background:var(--color-surface-1);border:var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-2) var(--space-3);">
+          <button class="btn-icon" aria-label="Filter" title="Filter">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1.5 3.5H12.5M3.5 7H10.5M5.5 10.5H8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          </button>
+          <button class="btn-icon" aria-label="Group" title="Group">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="2" width="11" height="2" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="1.5" y="6" width="11" height="2" rx="1" stroke="currentColor" stroke-width="1.2"/></svg>
+          </button>
+          <div style="width:1px;height:16px;background:var(--color-border-subtle);"></div>
+          <button class="btn btn-primary btn-sm" style="gap:var(--space-2);">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2V10M2 6H10" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>
+            New Issue
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="demo-row">
+      <span class="demo-label">with icon</span>
+      <div class="demo-items">
+        <button class="btn btn-primary" style="gap:var(--space-3);">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2V12M2 7H12" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>
+          Create
+        </button>
+        <button class="btn btn-secondary" style="gap:var(--space-3);">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1.5 3.5H12.5M3.5 7H10.5M5.5 10.5H8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Filter
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms — Linear Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .showcase-wrap {
+      min-height: 100vh;
+      background: var(--color-bg);
+      padding: var(--space-12) var(--space-8);
+    }
+
+    .page-head {
+      max-width: 900px;
+      margin: 0 auto var(--space-12);
+      padding-bottom: var(--space-9);
+      border-bottom: var(--border-subtle);
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+    }
+
+    .breadcrumb a {
+      font-size: var(--text-13);
+      color: var(--color-label-tertiary);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover { color: var(--color-label-secondary); }
+    .breadcrumb-sep { color: var(--color-label-quaternary); font-size: var(--text-13); }
+    .breadcrumb-current { font-size: var(--text-13); color: var(--color-label-secondary); }
+
+    .component-section {
+      max-width: 900px;
+      margin: 0 auto var(--space-12);
+    }
+
+    .component-section-title {
+      font-size: var(--text-11);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-4);
+      border-bottom: var(--border-subtle);
+    }
+
+    .demo-row {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-6);
+      padding: var(--space-6) 0;
+      border-bottom: var(--border-subtle);
+    }
+
+    .demo-row:last-child { border-bottom: none; }
+
+    .demo-label {
+      font-size: var(--text-12);
+      color: var(--color-label-tertiary);
+      font-family: var(--font-mono);
+      width: 120px;
+      flex-shrink: 0;
+      padding-top: 6px;
+    }
+
+    .demo-items {
+      flex: 1;
+      max-width: 480px;
+    }
+  </style>
+</head>
+<body>
+<div class="showcase-wrap">
+
+  <div class="page-head">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Linear DS</a>
+      <span class="breadcrumb-sep" aria-hidden="true">/</span>
+      <span class="breadcrumb-current">Forms</span>
+    </nav>
+    <h1 class="heading-lg" style="margin-bottom:var(--space-4);">Forms</h1>
+    <p class="body-md text-secondary" style="max-width:540px;">Text inputs, textareas, selects, checkboxes, and radio buttons. Surface-2 background. 32px height. 8px radius. Purple focus ring (3px offset). Dense but comfortable.</p>
+  </div>
+
+  <!-- Text inputs -->
+  <div class="component-section">
+    <div class="component-section-title">Text Inputs</div>
+
+    <div class="demo-row">
+      <span class="demo-label">default</span>
+      <div class="demo-items">
+        <div class="form-group">
+          <label class="form-label" for="in-default">Issue Title</label>
+          <input class="input" id="in-default" type="text" placeholder="What needs to be done?">
+          <span class="form-helper">Keep it short and descriptive</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <span class="demo-label">with value</span>
+      <div class="demo-items">
+        <div class="form-group">
+          <label class="form-label" for="in-value">Issue Title</label>
+          <input class="input" id="in-value" type="text" value="Fix race condition in webhook delivery queue">
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <span class="demo-label">error</span>
+      <div class="demo-items">
+        <div class="form-group">
+          <label class="form-label required" for="in-error">Title</label>
+          <input class="input error" id="in-error" type="text" value="x" aria-invalid="true" aria-describedby="in-error-msg">
+          <span class="form-error" id="in-error-msg">Title must be at least 10 characters</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <span class="demo-label">success</span>
+      <div class="demo-items">
+        <div class="form-group">
+          <label class="form-label" for="in-success">Workspace URL</label>
+          <input class="input success" id="in-success" type="text" value="linear.app/acme-corp">
+          <span class="form-helper" style="color:var(--color-green);">URL is available</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <span class="demo-label">disabled</span>
+      <div class="demo-items">
+        <div class="form-group">
+          <label class="form-label" for="in-disabled">Team ID</label>
+          <input class="input" id="in-disabled" type="text" value="ENG-TEAM-001" disabled>
+          <span class="form-helper">This field cannot be changed</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <span class="demo-label">with icon</span>
+      <div class="demo-items">
+        <div class="form-group">
+          <label class="form-label" for="in-search">Search Issues</label>
+          <div class="input-wrap">
+            <span class="input-icon-left" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.3"/><path d="M9.5 9.5L12.5 12.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </span>
+            <input class="input has-icon-left" id="in-search" type="search" placeholder="Search…">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Textarea -->
+  <div class="component-section">
+    <div class="component-section-title">Textarea</div>
+
+    <div class="demo-row">
+      <span class="demo-label">default</span>
+      <div class="demo-items">
+        <div class="form-group">
+          <label class="form-label" for="ta-default">Description</label>
+          <textarea class="textarea" id="ta-default" rows="3" placeholder="Add more context about this issue…"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <span class="demo-label">with value</span>
+      <div class="demo-items">
+        <div class="form-group">
+          <label class="form-label" for="ta-value">Description</label>
+          <textarea class="textarea" id="ta-value" rows="4">When multiple webhooks arrive simultaneously, the delivery queue can deadlock under high load conditions. This is reproducible with &gt;500 concurrent connections on the worker nodes running webhook-processor v3.2.</textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Select -->
+  <div class="component-section">
+    <div class="component-section-title">Select / Dropdown</div>
+
+    <div class="demo-row">
+      <span class="demo-label">default</span>
+      <div class="demo-items">
+        <div class="form-group">
+          <label class="form-label" for="sel-status">Status</label>
+          <div class="select-wrap">
+            <select class="select" id="sel-status">
+              <option value="">Select status…</option>
+              <option value="backlog">Backlog</option>
+              <option value="todo" selected>Todo</option>
+              <option value="in-progress">In Progress</option>
+              <option value="done">Done</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+            <span class="select-chevron" aria-hidden="true">▾</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <span class="demo-label">assignee</span>
+      <div class="demo-items">
+        <div class="form-group">
+          <label class="form-label" for="sel-assignee">Assignee</label>
+          <div class="select-wrap">
+            <select class="select" id="sel-assignee">
+              <option value="">No assignee</option>
+              <option value="ak" selected>Alex K</option>
+              <option value="sr">Sam R</option>
+              <option value="jp">Jo P</option>
+              <option value="ms">Mo S</option>
+            </select>
+            <span class="select-chevron" aria-hidden="true">▾</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkboxes -->
+  <div class="component-section">
+    <div class="component-section-title">Checkboxes</div>
+
+    <div class="demo-row">
+      <span class="demo-label">unchecked</span>
+      <div class="demo-items">
+        <label class="checkbox-wrap">
+          <span class="checkbox">
+            <input type="checkbox" id="cb-1">
+            <span class="checkbox-box"></span>
+          </span>
+          <span class="checkbox-label">Add to current cycle</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <span class="demo-label">checked</span>
+      <div class="demo-items">
+        <label class="checkbox-wrap">
+          <span class="checkbox">
+            <input type="checkbox" id="cb-2" checked>
+            <span class="checkbox-box"></span>
+          </span>
+          <span class="checkbox-label">Notify team on Slack</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <span class="demo-label">disabled</span>
+      <div class="demo-items">
+        <label class="checkbox-wrap" style="opacity:0.4;cursor:not-allowed;">
+          <span class="checkbox">
+            <input type="checkbox" id="cb-3" disabled>
+            <span class="checkbox-box"></span>
+          </span>
+          <span class="checkbox-label">Locked option</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <span class="demo-label">group</span>
+      <div class="demo-items">
+        <fieldset style="border:none;padding:0;margin:0;">
+          <legend class="form-label" style="margin-bottom:var(--space-4);">Notification preferences</legend>
+          <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+            <label class="checkbox-wrap">
+              <span class="checkbox"><input type="checkbox" id="cb-g1" checked><span class="checkbox-box"></span></span>
+              <span class="checkbox-label">Email notifications</span>
+            </label>
+            <label class="checkbox-wrap">
+              <span class="checkbox"><input type="checkbox" id="cb-g2" checked><span class="checkbox-box"></span></span>
+              <span class="checkbox-label">Slack notifications</span>
+            </label>
+            <label class="checkbox-wrap">
+              <span class="checkbox"><input type="checkbox" id="cb-g3"><span class="checkbox-box"></span></span>
+              <span class="checkbox-label">Push notifications</span>
+            </label>
+            <label class="checkbox-wrap">
+              <span class="checkbox"><input type="checkbox" id="cb-g4"><span class="checkbox-box"></span></span>
+              <span class="checkbox-label">Weekly digest</span>
+            </label>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+
+  <!-- Radio buttons -->
+  <div class="component-section">
+    <div class="component-section-title">Radio Buttons</div>
+
+    <div class="demo-row">
+      <span class="demo-label">group</span>
+      <div class="demo-items">
+        <fieldset style="border:none;padding:0;margin:0;">
+          <legend class="form-label" style="margin-bottom:var(--space-4);">Priority</legend>
+          <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+            <label class="radio-wrap">
+              <span class="radio"><input type="radio" name="priority-showcase" value="urgent"><span class="radio-circle"></span></span>
+              <span style="color:var(--color-red);font-size:var(--text-14);">Urgent</span>
+            </label>
+            <label class="radio-wrap">
+              <span class="radio"><input type="radio" name="priority-showcase" value="high" checked><span class="radio-circle"></span></span>
+              <span style="color:var(--color-orange);font-size:var(--text-14);">High</span>
+            </label>
+            <label class="radio-wrap">
+              <span class="radio"><input type="radio" name="priority-showcase" value="medium"><span class="radio-circle"></span></span>
+              <span style="color:var(--color-yellow);font-size:var(--text-14);">Medium</span>
+            </label>
+            <label class="radio-wrap">
+              <span class="radio"><input type="radio" name="priority-showcase" value="low"><span class="radio-circle"></span></span>
+              <span class="body-sm text-secondary">Low</span>
+            </label>
+            <label class="radio-wrap">
+              <span class="radio"><input type="radio" name="priority-showcase" value="none"><span class="radio-circle"></span></span>
+              <span class="body-sm text-tertiary">No Priority</span>
+            </label>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full form example -->
+  <div class="component-section">
+    <div class="component-section-title">Full Form — Create Issue</div>
+    <div style="max-width:520px;">
+      <form style="display:flex;flex-direction:column;gap:var(--space-5);" onsubmit="return false;">
+        <div class="form-group">
+          <label class="form-label required" for="ff-title">Title</label>
+          <input class="input" id="ff-title" type="text" placeholder="What needs to be done?" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="ff-desc">Description</label>
+          <textarea class="textarea" id="ff-desc" rows="3" placeholder="Add more context…"></textarea>
+        </div>
+
+        <div class="grid-2" style="gap:var(--space-5);">
+          <div class="form-group">
+            <label class="form-label" for="ff-status">Status</label>
+            <div class="select-wrap">
+              <select class="select" id="ff-status">
+                <option value="todo">Todo</option>
+                <option value="in-progress">In Progress</option>
+                <option value="done">Done</option>
+              </select>
+              <span class="select-chevron" aria-hidden="true">▾</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="ff-assignee">Assignee</label>
+            <div class="select-wrap">
+              <select class="select" id="ff-assignee">
+                <option value="">No assignee</option>
+                <option value="ak">Alex K</option>
+                <option value="sr">Sam R</option>
+              </select>
+              <span class="select-chevron" aria-hidden="true">▾</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="label" style="margin-bottom:var(--space-3);">Options</div>
+          <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+            <label class="checkbox-wrap">
+              <span class="checkbox"><input type="checkbox" id="ff-cycle" checked><span class="checkbox-box"></span></span>
+              <span class="checkbox-label">Add to current cycle</span>
+            </label>
+            <label class="checkbox-wrap">
+              <span class="checkbox"><input type="checkbox" id="ff-notify"><span class="checkbox-box"></span></span>
+              <span class="checkbox-label">Notify teammates</span>
+            </label>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:var(--space-3);justify-content:flex-end;padding-top:var(--space-4);border-top:var(--border-subtle);">
+          <button type="button" class="btn btn-ghost">Cancel</button>
+          <button type="submit" class="btn btn-primary">Create Issue</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

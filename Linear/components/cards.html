@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cards — Linear Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .showcase-wrap {
+      min-height: 100vh;
+      background: var(--color-bg);
+      padding: var(--space-12) var(--space-8);
+    }
+
+    .page-head {
+      max-width: 900px;
+      margin: 0 auto var(--space-12);
+      padding-bottom: var(--space-9);
+      border-bottom: var(--border-subtle);
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+    }
+
+    .breadcrumb a {
+      font-size: var(--text-13);
+      color: var(--color-label-tertiary);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover { color: var(--color-label-secondary); }
+    .breadcrumb-sep { color: var(--color-label-quaternary); font-size: var(--text-13); }
+    .breadcrumb-current { font-size: var(--text-13); color: var(--color-label-secondary); }
+
+    .component-section {
+      max-width: 900px;
+      margin: 0 auto var(--space-12);
+    }
+
+    .component-section-title {
+      font-size: var(--text-11);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-4);
+      border-bottom: var(--border-subtle);
+    }
+  </style>
+</head>
+<body>
+<div class="showcase-wrap">
+
+  <div class="page-head">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Linear DS</a>
+      <span class="breadcrumb-sep" aria-hidden="true">/</span>
+      <span class="breadcrumb-current">Cards</span>
+    </nav>
+    <h1 class="heading-lg" style="margin-bottom:var(--space-4);">Cards</h1>
+    <p class="body-md text-secondary" style="max-width:540px;">Surface containers for grouping related content. Surface-1 background, subtle border, 8px radius. Three specialized variants: project, cycle, and roadmap.</p>
+  </div>
+
+  <!-- Base card -->
+  <div class="component-section">
+    <div class="component-section-title">Base Card</div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Default Card</div>
+            <div class="card-subtitle">Surface-1, border, 8px radius</div>
+          </div>
+          <button class="btn-icon" aria-label="More options">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="3.5" r="1" fill="currentColor"/><circle cx="7" cy="7" r="1" fill="currentColor"/><circle cx="7" cy="10.5" r="1" fill="currentColor"/></svg>
+          </button>
+        </div>
+        <p class="body-sm text-secondary">Use this card for general-purpose content grouping. Add a header, body content, and optional footer actions.</p>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">With Badge</div>
+          <span class="badge badge--green">Active</span>
+        </div>
+        <p class="body-sm text-secondary">Cards can carry a badge in the header area to communicate status at a glance without cluttering the body.</p>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">With Progress</div>
+          <span class="caption" style="color:var(--color-purple);">63%</span>
+        </div>
+        <p class="body-sm text-secondary" style="margin-bottom:var(--space-4);">Progress bars slot naturally into the card footer area, anchored to the bottom of the card.</p>
+        <div class="progress-bar">
+          <div class="progress-bar-fill" style="width:63%;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project cards -->
+  <div class="component-section">
+    <div class="component-section-title">Project Cards</div>
+    <div class="grid-3">
+      <div class="card card-project">
+        <div class="card-project-header">
+          <div class="card-project-icon" style="background:linear-gradient(135deg,#5E6AD2,#7B86E8);">🚀</div>
+          <div class="card-project-info">
+            <div class="card-project-name">v2.0 Redesign</div>
+            <div class="card-project-team">Engineering · Design</div>
+          </div>
+          <span class="badge badge--purple">Active</span>
+        </div>
+        <div class="card-project-progress">
+          <div class="card-project-progress-label">
+            <span class="card-project-progress-text">24 of 38 issues</span>
+            <span class="card-project-progress-pct">63%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-bar-fill" style="width:63%;"></div>
+          </div>
+        </div>
+        <div class="card-project-members">
+          <div class="avatar-stack">
+            <div class="issue-avatar" style="border: 1.5px solid var(--color-surface-1);" title="Alex K">AK</div>
+            <div class="issue-avatar" style="background:linear-gradient(135deg,#26C486,#2ABFBF); border: 1.5px solid var(--color-surface-1);" title="Sam R">SR</div>
+            <div class="issue-avatar" style="background:linear-gradient(135deg,#E85555,#D966A0); border: 1.5px solid var(--color-surface-1);" title="Jo P">JP</div>
+          </div>
+          <span class="caption">Due Jul 15</span>
+        </div>
+      </div>
+
+      <div class="card card-project">
+        <div class="card-project-header">
+          <div class="card-project-icon" style="background:linear-gradient(135deg,#26C486,#2ABFBF);">⚡</div>
+          <div class="card-project-info">
+            <div class="card-project-name">Performance Sprint</div>
+            <div class="card-project-team">Engineering</div>
+          </div>
+          <span class="badge badge--orange">Behind</span>
+        </div>
+        <div class="card-project-progress">
+          <div class="card-project-progress-label">
+            <span class="card-project-progress-text">8 of 22 issues</span>
+            <span class="card-project-progress-pct">36%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-bar-fill in-progress" style="width:36%;"></div>
+          </div>
+        </div>
+        <div class="card-project-members">
+          <div class="avatar-stack">
+            <div class="issue-avatar" style="border: 1.5px solid var(--color-surface-1);" title="Alex K">AK</div>
+            <div class="issue-avatar" style="background:linear-gradient(135deg,#E8B430,#F0A030); border: 1.5px solid var(--color-surface-1);" title="Mo S">MS</div>
+          </div>
+          <span class="caption" style="color:var(--color-red);">Overdue Jun 20</span>
+        </div>
+      </div>
+
+      <div class="card card-project">
+        <div class="card-project-header">
+          <div class="card-project-icon" style="background:linear-gradient(135deg,#E85555,#D966A0);">🔐</div>
+          <div class="card-project-info">
+            <div class="card-project-name">Auth 2.0</div>
+            <div class="card-project-team">Engineering · Product</div>
+          </div>
+          <span class="badge badge--green">On Track</span>
+        </div>
+        <div class="card-project-progress">
+          <div class="card-project-progress-label">
+            <span class="card-project-progress-text">41 of 100 issues</span>
+            <span class="card-project-progress-pct">41%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-bar-fill" style="width:41%;"></div>
+          </div>
+        </div>
+        <div class="card-project-members">
+          <div class="avatar-stack">
+            <div class="issue-avatar" style="border: 1.5px solid var(--color-surface-1);" title="Alex K">AK</div>
+            <div class="issue-avatar" style="background:linear-gradient(135deg,#26C486,#2ABFBF); border: 1.5px solid var(--color-surface-1);" title="Sam R">SR</div>
+            <div class="issue-avatar" style="background:linear-gradient(135deg,#E85555,#D966A0); border: 1.5px solid var(--color-surface-1);" title="Jo P">JP</div>
+            <div class="issue-avatar" style="background:linear-gradient(135deg,#E8B430,#F0A030); border: 1.5px solid var(--color-surface-1);" title="Mo S">MS</div>
+          </div>
+          <span class="caption">Due Q3 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cycle cards -->
+  <div class="component-section">
+    <div class="component-section-title">Cycle Cards</div>
+    <div class="grid-3">
+      <div class="card card-cycle">
+        <div class="card-cycle-header">
+          <div>
+            <div class="card-cycle-num">CYCLE #12</div>
+            <div class="card-cycle-dates">Jun 17 → Jun 30, 2026</div>
+          </div>
+          <div class="progress-ring" role="img" aria-label="72% complete">
+            <svg viewBox="0 0 36 36">
+              <circle class="progress-ring-track" cx="18" cy="18" r="15.5"/>
+              <circle class="progress-ring-fill" cx="18" cy="18" r="15.5"
+                stroke-dasharray="97.4"
+                stroke-dashoffset="27.3"/>
+            </svg>
+            <div class="progress-ring-label">72%</div>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-bar-fill" style="width:72%;"></div>
+        </div>
+        <div class="flex-between">
+          <span class="caption">18 of 25 issues done</span>
+          <span class="badge badge--orange">7 remaining</span>
+        </div>
+      </div>
+
+      <div class="card card-cycle">
+        <div class="card-cycle-header">
+          <div>
+            <div class="card-cycle-num">CYCLE #11 — COMPLETED</div>
+            <div class="card-cycle-dates">Jun 3 → Jun 16, 2026</div>
+          </div>
+          <div class="progress-ring" role="img" aria-label="100% complete">
+            <svg viewBox="0 0 36 36">
+              <circle class="progress-ring-track" cx="18" cy="18" r="15.5"/>
+              <circle class="progress-ring-fill done" cx="18" cy="18" r="15.5"
+                stroke-dasharray="97.4"
+                stroke-dashoffset="0"/>
+            </svg>
+            <div class="progress-ring-label" style="color:var(--color-green);">✓</div>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-bar-fill done" style="width:100%;"></div>
+        </div>
+        <div class="flex-between">
+          <span class="caption">22 of 22 issues done</span>
+          <span class="badge badge--green">Complete</span>
+        </div>
+      </div>
+
+      <div class="card card-cycle">
+        <div class="card-cycle-header">
+          <div>
+            <div class="card-cycle-num">CYCLE #13 — UPCOMING</div>
+            <div class="card-cycle-dates">Jul 1 → Jul 14, 2026</div>
+          </div>
+          <div class="progress-ring" role="img" aria-label="Not started">
+            <svg viewBox="0 0 36 36">
+              <circle class="progress-ring-track" cx="18" cy="18" r="15.5"/>
+            </svg>
+            <div class="progress-ring-label">—</div>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-bar-fill" style="width:0%;"></div>
+        </div>
+        <div class="flex-between">
+          <span class="caption">0 issues scheduled</span>
+          <span class="badge">Planned</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Roadmap cards -->
+  <div class="component-section">
+    <div class="component-section-title">Roadmap Cards</div>
+    <div class="grid-3">
+      <div class="card card-roadmap">
+        <div class="card-roadmap-initiative">
+          <div class="flex-between" style="margin-bottom:var(--space-3);">
+            <span class="heading-sm">Auth 2.0</span>
+            <span class="badge badge--green">On Track</span>
+          </div>
+          <p class="body-sm text-secondary" style="margin-bottom:var(--space-5);">SSO, OAuth 2.1, passkey support, and session management overhaul for enterprise customers.</p>
+        </div>
+        <div>
+          <div class="flex-between" style="margin-bottom:var(--space-2);">
+            <span class="caption">Progress</span>
+            <span class="mono" style="font-size:var(--text-11);color:var(--color-label-tertiary);">41%</span>
+          </div>
+          <div class="progress-bar" style="margin-bottom:var(--space-4);">
+            <div class="progress-bar-fill" style="width:41%;background:var(--color-green);"></div>
+          </div>
+          <div class="flex-between">
+            <span class="caption">Q3 2026</span>
+            <div class="avatar-stack">
+              <div class="issue-avatar" style="border: 1.5px solid var(--color-surface-1);">AK</div>
+              <div class="issue-avatar" style="background:linear-gradient(135deg,#E8B430,#F0A030); border: 1.5px solid var(--color-surface-1);">MS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-roadmap">
+        <div class="card-roadmap-initiative">
+          <div class="flex-between" style="margin-bottom:var(--space-3);">
+            <span class="heading-sm">Mobile App</span>
+            <span class="badge badge--orange">At Risk</span>
+          </div>
+          <p class="body-sm text-secondary" style="margin-bottom:var(--space-5);">Native iOS and Android apps with offline support, push notifications, and gesture navigation.</p>
+        </div>
+        <div>
+          <div class="flex-between" style="margin-bottom:var(--space-2);">
+            <span class="caption">Progress</span>
+            <span class="mono" style="font-size:var(--text-11);color:var(--color-label-tertiary);">18%</span>
+          </div>
+          <div class="progress-bar" style="margin-bottom:var(--space-4);">
+            <div class="progress-bar-fill in-progress" style="width:18%;"></div>
+          </div>
+          <div class="flex-between">
+            <span class="caption" style="color:var(--color-orange);">Q4 2026</span>
+            <div class="avatar-stack">
+              <div class="issue-avatar" style="background:linear-gradient(135deg,#26C486,#2ABFBF); border: 1.5px solid var(--color-surface-1);">SR</div>
+              <div class="issue-avatar" style="background:linear-gradient(135deg,#E85555,#D966A0); border: 1.5px solid var(--color-surface-1);">JP</div>
+              <div class="issue-avatar" style="border: 1.5px solid var(--color-surface-1);">AK</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-roadmap">
+        <div class="card-roadmap-initiative">
+          <div class="flex-between" style="margin-bottom:var(--space-3);">
+            <span class="heading-sm">API v3</span>
+            <span class="badge">Planned</span>
+          </div>
+          <p class="body-sm text-secondary" style="margin-bottom:var(--space-5);">GraphQL subscription support, REST v3 compatibility layer, improved rate limiting, and webhooks 2.0.</p>
+        </div>
+        <div>
+          <div class="flex-between" style="margin-bottom:var(--space-2);">
+            <span class="caption">Progress</span>
+            <span class="mono" style="font-size:var(--text-11);color:var(--color-label-tertiary);">0%</span>
+          </div>
+          <div class="progress-bar" style="margin-bottom:var(--space-4);">
+            <div class="progress-bar-fill" style="width:0%;"></div>
+          </div>
+          <div class="flex-between">
+            <span class="caption">Q1 2027</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

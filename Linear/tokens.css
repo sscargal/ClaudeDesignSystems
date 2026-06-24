@@ -1,0 +1,307 @@
+/* =============================================================================
+   Linear Design System — Design Tokens
+   Version 1.0.0 | Built on Linear's Design Philosophy
+   Dark-first. Precision engineering aesthetic.
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     BACKGROUND COLORS — Dark (default)
+     --------------------------------------------------------------------------- */
+
+  --color-bg:                    #0F0F11;
+  --color-surface-1:             #1A1A1F;
+  --color-surface-2:             #232329;
+  --color-surface-3:             #2E2E36;
+  --color-surface-4:             #363640;
+
+  /* ---------------------------------------------------------------------------
+     BORDER COLORS
+     --------------------------------------------------------------------------- */
+
+  --color-border-subtle:         #2E2E36;
+  --color-border-default:        #3E3E4A;
+  --color-border-strong:         #52525E;
+  --color-border-focus:          #5E6AD2;
+
+  /* ---------------------------------------------------------------------------
+     LABEL / TEXT COLORS
+     --------------------------------------------------------------------------- */
+
+  --color-label-primary:         #FFFFFF;
+  --color-label-secondary:       #8A8A9A;
+  --color-label-tertiary:        #55555F;
+  --color-label-quaternary:      #3A3A44;
+  --color-label-disabled:        #3A3A44;
+
+  /* ---------------------------------------------------------------------------
+     LINEAR BRAND COLORS
+     --------------------------------------------------------------------------- */
+
+  /* Purple — Primary accent */
+  --color-purple:                #5E6AD2;
+  --color-purple-hover:          #6B77D8;
+  --color-purple-active:         #4F59B8;
+  --color-purple-light:          #7B86E8;
+  --color-purple-muted:          rgba(94, 106, 210, 0.18);
+  --color-purple-muted-hover:    rgba(94, 106, 210, 0.28);
+  --color-purple-subtle:         rgba(94, 106, 210, 0.08);
+
+  /* Status Colors */
+  --color-green:                 #26C486;
+  --color-green-hover:           #2DD494;
+  --color-green-muted:           rgba(38, 196, 134, 0.16);
+  --color-green-subtle:          rgba(38, 196, 134, 0.08);
+
+  --color-orange:                #F0A030;
+  --color-orange-hover:          #F5AE42;
+  --color-orange-muted:          rgba(240, 160, 48, 0.16);
+  --color-orange-subtle:         rgba(240, 160, 48, 0.08);
+
+  --color-red:                   #E85555;
+  --color-red-hover:             #ED6666;
+  --color-red-muted:             rgba(232, 85, 85, 0.16);
+  --color-red-subtle:            rgba(232, 85, 85, 0.08);
+
+  --color-yellow:                #E8B430;
+  --color-yellow-hover:          #EDBC42;
+  --color-yellow-muted:          rgba(232, 180, 48, 0.16);
+  --color-yellow-subtle:         rgba(232, 180, 48, 0.08);
+
+  --color-blue:                  #4A90D9;
+  --color-blue-muted:            rgba(74, 144, 217, 0.16);
+
+  --color-teal:                  #2ABFBF;
+  --color-teal-muted:            rgba(42, 191, 191, 0.16);
+
+  --color-pink:                  #D966A0;
+  --color-pink-muted:            rgba(217, 102, 160, 0.16);
+
+  /* ---------------------------------------------------------------------------
+     SEMANTIC COLOR ALIASES
+     --------------------------------------------------------------------------- */
+
+  --color-accent:                var(--color-purple);
+  --color-accent-hover:          var(--color-purple-hover);
+  --color-accent-muted:          var(--color-purple-muted);
+
+  --color-status-todo:           var(--color-label-tertiary);
+  --color-status-in-progress:    var(--color-orange);
+  --color-status-done:           var(--color-green);
+  --color-status-cancelled:      var(--color-red);
+  --color-status-backlog:        var(--color-yellow);
+  --color-status-duplicate:      var(--color-label-tertiary);
+
+  --color-priority-urgent:       var(--color-red);
+  --color-priority-high:         var(--color-orange);
+  --color-priority-medium:       var(--color-yellow);
+  --color-priority-low:          var(--color-label-tertiary);
+
+  --color-destructive:           var(--color-red);
+  --color-destructive-hover:     var(--color-red-hover);
+  --color-success:               var(--color-green);
+  --color-warning:               var(--color-orange);
+
+  /* ---------------------------------------------------------------------------
+     TYPOGRAPHY
+     --------------------------------------------------------------------------- */
+
+  --font-sans:    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono:    "JetBrains Mono", "Fira Code", "SF Mono", "Consolas", "Liberation Mono", monospace;
+
+  /* Type Scale */
+  --text-32:    32px;
+  --text-24:    24px;
+  --text-20:    20px;
+  --text-16:    16px;
+  --text-14:    14px;
+  --text-13:    13px;
+  --text-12:    12px;
+  --text-11:    11px;
+
+  /* Font Weights */
+  --weight-regular:   400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+
+  /* Line Heights */
+  --leading-tight:    1.25;
+  --leading-snug:     1.375;
+  --leading-normal:   1.5;
+  --leading-relaxed:  1.6;
+
+  /* Letter Spacing */
+  --tracking-tight:   -0.02em;
+  --tracking-snug:    -0.01em;
+  --tracking-normal:   0em;
+  --tracking-wide:     0.04em;
+  --tracking-caps:     0.06em;
+
+  /* ---------------------------------------------------------------------------
+     SPACING — 4px Base Grid
+     --------------------------------------------------------------------------- */
+
+  --space-0:     0px;
+  --space-1:     2px;
+  --space-2:     4px;
+  --space-3:     6px;
+  --space-4:     8px;
+  --space-5:    12px;
+  --space-6:    16px;
+  --space-7:    20px;
+  --space-8:    24px;
+  --space-9:    32px;
+  --space-10:   40px;
+  --space-11:   48px;
+  --space-12:   64px;
+  --space-13:   80px;
+  --space-14:   96px;
+
+  /* ---------------------------------------------------------------------------
+     BORDER RADIUS
+     --------------------------------------------------------------------------- */
+
+  --radius-none:   0px;
+  --radius-sm:     4px;
+  --radius-md:     6px;
+  --radius-lg:     8px;
+  --radius-xl:    12px;
+  --radius-pill:  9999px;
+
+  --radius-btn:    var(--radius-md);
+  --radius-input:  var(--radius-lg);
+  --radius-card:   var(--radius-lg);
+  --radius-modal:  var(--radius-xl);
+  --radius-badge:  var(--radius-pill);
+
+  /* ---------------------------------------------------------------------------
+     BORDERS
+     --------------------------------------------------------------------------- */
+
+  --border-subtle:   1px solid var(--color-border-subtle);
+  --border-default:  1px solid var(--color-border-default);
+  --border-strong:   1px solid var(--color-border-strong);
+  --border-focus:    1px solid var(--color-border-focus);
+
+  /* ---------------------------------------------------------------------------
+     SHADOWS — Subtle, dark-calibrated
+     --------------------------------------------------------------------------- */
+
+  --shadow-xs:    0 1px 2px rgba(0, 0, 0, 0.30);
+  --shadow-sm:    0 1px 3px rgba(0, 0, 0, 0.40), 0 1px 2px rgba(0, 0, 0, 0.25);
+  --shadow-md:    0 4px 12px rgba(0, 0, 0, 0.50), 0 2px 4px rgba(0, 0, 0, 0.30);
+  --shadow-lg:    0 8px 24px rgba(0, 0, 0, 0.55), 0 4px 8px rgba(0, 0, 0, 0.35);
+  --shadow-xl:    0 16px 40px rgba(0, 0, 0, 0.60), 0 8px 16px rgba(0, 0, 0, 0.40);
+  --shadow-2xl:   0 24px 64px rgba(0, 0, 0, 0.65), 0 12px 24px rgba(0, 0, 0, 0.45);
+
+  --shadow-purple: 0 4px 16px rgba(94, 106, 210, 0.35);
+  --shadow-green:  0 4px 16px rgba(38, 196, 134, 0.30);
+  --shadow-red:    0 4px 16px rgba(232, 85, 85, 0.30);
+
+  /* ---------------------------------------------------------------------------
+     MOTION — Purposeful, spring-like
+     --------------------------------------------------------------------------- */
+
+  --duration-instant:  0ms;
+  --duration-fast:     100ms;
+  --duration-normal:   150ms;
+  --duration-moderate: 200ms;
+  --duration-slow:     300ms;
+
+  /* Linear's signature spring easing */
+  --ease-spring:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-standard:   cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in:         cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:        cubic-bezier(0, 0, 0.2, 1);
+
+  /* Transition shorthands */
+  --transition-fast:     all var(--duration-fast) var(--ease-standard);
+  --transition-normal:   all var(--duration-normal) var(--ease-standard);
+  --transition-moderate: all var(--duration-moderate) var(--ease-standard);
+  --transition-spring:   all var(--duration-slow) var(--ease-spring);
+
+  /* ---------------------------------------------------------------------------
+     Z-INDEX
+     --------------------------------------------------------------------------- */
+
+  --z-base:      0;
+  --z-raised:    10;
+  --z-dropdown:  100;
+  --z-sticky:    200;
+  --z-overlay:   300;
+  --z-modal:     400;
+  --z-toast:     500;
+  --z-tooltip:   600;
+
+  /* ---------------------------------------------------------------------------
+     COMPONENT DIMENSIONS
+     --------------------------------------------------------------------------- */
+
+  --btn-height-sm:     28px;
+  --btn-height-md:     32px;
+  --btn-height-lg:     36px;
+  --input-height:      32px;
+  --input-height-lg:   36px;
+  --row-height:        36px;
+  --row-height-sm:     30px;
+  --sidebar-width:     240px;
+  --topbar-height:     48px;
+  --command-width:     560px;
+  --max-width-site:    1100px;
+  --max-width-narrow:  640px;
+}
+
+/* =============================================================================
+   LIGHT MODE OVERRIDE
+   Light mode is secondary — Linear is dark-first by design.
+   Light tokens approximate a neutral, near-white surface system.
+   ============================================================================= */
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Backgrounds */
+    --color-bg:                  #FFFFFF;
+    --color-surface-1:           #F7F7F8;
+    --color-surface-2:           #F0F0F2;
+    --color-surface-3:           #E8E8EC;
+    --color-surface-4:           #DEDEE4;
+
+    /* Borders */
+    --color-border-subtle:       #E4E4E8;
+    --color-border-default:      #D0D0D8;
+    --color-border-strong:       #ADADB8;
+
+    /* Labels */
+    --color-label-primary:       #0F0F11;
+    --color-label-secondary:     #5A5A6A;
+    --color-label-tertiary:      #9090A0;
+    --color-label-quaternary:    #C0C0CC;
+    --color-label-disabled:      #C0C0CC;
+
+    /* Brand colors shift slightly for light context */
+    --color-purple:              #4F5BB8;
+    --color-purple-hover:        #3D49A0;
+    --color-purple-active:       #3340A0;
+    --color-purple-muted:        rgba(94, 106, 210, 0.12);
+    --color-purple-muted-hover:  rgba(94, 106, 210, 0.20);
+    --color-purple-subtle:       rgba(94, 106, 210, 0.06);
+
+    --color-green:               #1EA870;
+    --color-green-muted:         rgba(30, 168, 112, 0.12);
+    --color-orange:              #C8821A;
+    --color-orange-muted:        rgba(200, 130, 26, 0.12);
+    --color-red:                 #C83838;
+    --color-red-muted:           rgba(200, 56, 56, 0.12);
+    --color-yellow:              #C09020;
+    --color-yellow-muted:        rgba(192, 144, 32, 0.12);
+
+    /* Shadows are lighter */
+    --shadow-xs:    0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-sm:    0 1px 3px rgba(0, 0, 0, 0.10), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-md:    0 4px 12px rgba(0, 0, 0, 0.10), 0 2px 4px rgba(0, 0, 0, 0.06);
+    --shadow-lg:    0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+    --shadow-xl:    0 16px 40px rgba(0, 0, 0, 0.14), 0 8px 16px rgba(0, 0, 0, 0.10);
+    --shadow-2xl:   0 24px 64px rgba(0, 0, 0, 0.16), 0 12px 24px rgba(0, 0, 0, 0.12);
+  }
+}
