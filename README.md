@@ -19,6 +19,9 @@ Every system is self-contained HTML + CSS: no frameworks, no build tools, no dep
 | [Google](./Google/) | Material You M3 — dynamic color, tonal palettes | ✅ Complete |
 | [Vercel](./Vercel/) | vercel.com — pure black, minimal, developer-focused | ✅ Complete |
 | [Notion](./Notion/) | notion.so — content-first, warm off-white, block editor | ✅ Complete |
+| [NVIDIA](./NVIDIA/) | nvidia.com — dark-first, NVIDIA green, GPU cards, AI/gaming | ✅ Complete |
+| [Intel](./Intel/) | intel.com — light-first, Intel Blue, enterprise CPU precision | ✅ Complete |
+| [AMD](./AMD/) | amd.com — dark-first, AMD Red, 4 sub-brands (Ryzen/EPYC/Radeon/Instinct) | ✅ Complete |
 | Steve Scargall | stevescargall.com — personal brand | 🔜 Coming soon |
 | Liqid | liqid.com — enterprise tech, precision | 🔜 Coming soon |
 
