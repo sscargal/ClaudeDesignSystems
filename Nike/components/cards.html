@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cards — Nike Design System</title>
+  <link rel="stylesheet" href="../tokens.css" />
+  <link rel="stylesheet" href="../typography.css" />
+  <link rel="stylesheet" href="../animations.css" />
+  <link rel="stylesheet" href="../components.css" />
+  <style>
+    .showcase-section {
+      padding: var(--space-12) 0;
+      border-bottom: 1px solid var(--color-separator);
+    }
+    .showcase-section:last-child { border-bottom: none; }
+    .showcase-label {
+      display: block;
+      font-size: 11px;
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-label);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      font-family: var(--font-mono);
+      margin-bottom: var(--space-5);
+    }
+    .product-img {
+      width: 100%;
+      aspect-ratio: 1;
+      background: var(--color-bg-tertiary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 72px;
+    }
+    .feature-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #1a1a1a, #2e2e2e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 100px;
+    }
+    .coll-bg {
+      width: 100%;
+      height: 100%;
+      min-height: 260px;
+      background: linear-gradient(135deg, #222, #333);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+    }
+  </style>
+</head>
+<body>
+  <header class="nav-global">
+    <div class="nav-global-inner">
+      <a href="../index.html" class="nav-brand">
+        <span class="nav-wordmark">Nike</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-link-item"><a href="buttons.html">Buttons</a></li>
+          <li class="nav-link-item active"><a href="cards.html">Cards</a></li>
+          <li class="nav-link-item"><a href="forms.html">Forms</a></li>
+          <li class="nav-link-item"><a href="navigation.html">Navigation</a></li>
+          <li class="nav-link-item"><a href="modals.html">Modals</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a href="../index.html" class="btn btn-secondary btn-sm">← System</a>
+      </div>
+    </div>
+  </header>
+
+  <main style="background: var(--color-bg-primary); min-height: 100vh; padding-bottom: var(--space-24);">
+    <div class="container-wide" style="padding-top: var(--space-10);">
+
+      <div style="margin-bottom: var(--space-10);">
+        <h1 class="headline-1">Cards</h1>
+        <p class="body-large mt-4" style="color: var(--color-label-secondary); max-width: 560px;">
+          Sharp corners. Dark surfaces. Image-forward. Hover states use kinetic image zoom at scale(1.05). All at 350ms Nike easing.
+        </p>
+      </div>
+
+      <!-- Product Cards -->
+      <div class="showcase-section">
+        <span class="showcase-label">.card-product — Core product listing card</span>
+        <div class="card-grid-3">
+
+          <!-- Standard -->
+          <article class="card-product hover-zoom">
+            <div class="card-product-image-wrap">
+              <div class="product-img card-product-image" role="img" aria-label="Nike Air Max 270">👟</div>
+              <div class="card-product-badge">
+                <span class="product-badge product-badge--new">New</span>
+              </div>
+              <button class="card-product-wishlist" aria-label="Favorite">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+            </div>
+            <div class="card-product-body">
+              <div class="card-product-category">Men's Shoes</div>
+              <div class="card-product-name">Nike Air Max 270</div>
+              <div class="card-product-colors">4 Colors</div>
+              <div class="card-product-footer">
+                <span class="price-small">$150</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Best Seller -->
+          <article class="card-product hover-zoom">
+            <div class="card-product-image-wrap">
+              <div class="product-img card-product-image" role="img" aria-label="React Infinity">🏃</div>
+              <div class="card-product-badge">
+                <span class="product-badge product-badge--best-seller">Best Seller</span>
+              </div>
+              <button class="card-product-wishlist" aria-label="Favorite">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+            </div>
+            <div class="card-product-body">
+              <div class="card-product-category">Running Shoes</div>
+              <div class="card-product-name">Nike React Infinity Run Flyknit 3</div>
+              <div class="card-product-colors">6 Colors</div>
+              <div class="card-product-footer">
+                <span class="price-small">$160</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Sale -->
+          <article class="card-product hover-zoom">
+            <div class="card-product-image-wrap">
+              <div class="product-img card-product-image" role="img" aria-label="Air Jordan 1">⛹️</div>
+              <div class="card-product-badge">
+                <span class="product-badge product-badge--sale">Sale</span>
+              </div>
+              <button class="card-product-wishlist" aria-label="Favorite">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+            </div>
+            <div class="card-product-body">
+              <div class="card-product-category">Basketball</div>
+              <div class="card-product-name">Air Jordan 1 Retro High OG</div>
+              <div class="card-product-colors">2 Colors</div>
+              <div class="card-product-footer">
+                <div class="flex items-center gap-3">
+                  <span class="price-small price-sale">$140</span>
+                  <span class="price-original">$180</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Member only -->
+          <article class="card-product hover-zoom">
+            <div class="card-product-image-wrap">
+              <div class="product-img card-product-image" role="img" aria-label="Nike Pegasus">🏅</div>
+              <div class="card-product-badge">
+                <span class="product-badge product-badge--member">Member</span>
+              </div>
+            </div>
+            <div class="card-product-body">
+              <div class="card-product-category">Running · Members Only</div>
+              <div class="card-product-name">Nike Pegasus 41</div>
+              <div class="card-product-colors">8 Colors</div>
+              <div class="card-product-footer">
+                <span class="price-small">$130</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- No badge, multiple prices -->
+          <article class="card-product hover-zoom">
+            <div class="card-product-image-wrap">
+              <div class="product-img card-product-image" role="img" aria-label="Nike Dunk Low">🎨</div>
+            </div>
+            <div class="card-product-body">
+              <div class="card-product-category">Lifestyle Shoes</div>
+              <div class="card-product-name">Nike Dunk Low Retro</div>
+              <div class="card-product-colors">12 Colors</div>
+              <div class="card-product-footer">
+                <span class="price-small">$110</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Training -->
+          <article class="card-product hover-zoom">
+            <div class="card-product-image-wrap">
+              <div class="product-img card-product-image" role="img" aria-label="Nike Metcon">🏋️</div>
+              <div class="card-product-badge">
+                <span class="product-badge product-badge--new">New</span>
+              </div>
+            </div>
+            <div class="card-product-body">
+              <div class="card-product-category">Training · Cross-Training</div>
+              <div class="card-product-name">Nike Metcon 9</div>
+              <div class="card-product-colors">5 Colors</div>
+              <div class="card-product-footer">
+                <span class="price-small">$150</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- Feature Card -->
+      <div class="showcase-section">
+        <span class="showcase-label">.card-feature — Full-bleed editorial. Gradient overlay. Image zoom on hover.</span>
+        <article class="card-feature" style="min-height: 520px;">
+          <div class="card-feature-bg feature-bg">🏋️</div>
+          <div class="card-feature-content">
+            <span class="card-feature-overline">Nike Training</span>
+            <h2 class="card-feature-title">Train Like<br/>There's No<br/>Tomorrow.</h2>
+            <a href="#" class="btn btn-primary--volt card-feature-cta">Shop Training</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Collection Card -->
+      <div class="showcase-section">
+        <span class="showcase-label">.card-collection — Horizontal: image left + content right</span>
+        <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+
+          <article class="card-collection">
+            <div class="card-collection-image-wrap">
+              <div class="coll-bg">🌍</div>
+            </div>
+            <div class="card-collection-body">
+              <span class="card-collection-overline">Limited Release</span>
+              <h3 class="card-collection-title">Nike Air<br/>Collection</h3>
+              <p class="card-collection-desc">Four decades of Air, reimagined for today.</p>
+              <a href="#" class="btn btn-secondary" style="width: fit-content;">Shop Collection</a>
+            </div>
+          </article>
+
+          <article class="card-collection">
+            <div class="card-collection-image-wrap">
+              <div class="coll-bg">🏃‍♀️</div>
+            </div>
+            <div class="card-collection-body">
+              <span class="card-collection-overline">Nike Running</span>
+              <h3 class="card-collection-title">Run to Win.</h3>
+              <p class="card-collection-desc">From 5K to marathon. Gear built for every distance and every surface.</p>
+              <a href="#" class="btn btn-primary--volt" style="width: fit-content;">Shop Running</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- Editorial Cards -->
+      <div class="showcase-section">
+        <span class="showcase-label">.card-editorial — Text-only. Volt left border. Large headline.</span>
+        <div class="grid-3">
+          <article class="card-editorial">
+            <div class="card-editorial-date">June 24, 2026</div>
+            <h3 class="card-editorial-title">The Future of Running Tech</h3>
+            <p class="card-editorial-excerpt">How Nike's Vaporfly changed the marathon forever — and what comes next.</p>
+            <a href="#" class="card-editorial-link">Read More →</a>
+          </article>
+          <article class="card-editorial">
+            <div class="card-editorial-date">June 20, 2026</div>
+            <h3 class="card-editorial-title">Behind the Swoosh</h3>
+            <p class="card-editorial-excerpt">The design story behind Nike's most iconic symbol. 50+ years and still evolving.</p>
+            <a href="#" class="card-editorial-link">Read Story →</a>
+          </article>
+          <article class="card-editorial">
+            <div class="card-editorial-date">June 18, 2026</div>
+            <h3 class="card-editorial-title">Air Max Day 2026</h3>
+            <p class="card-editorial-excerpt">Celebrating 40 years of Air cushioning with limited drops and global events.</p>
+            <a href="#" class="card-editorial-link">Explore →</a>
+          </article>
+        </div>
+      </div>
+
+      <!-- Stat Cards -->
+      <div class="showcase-section">
+        <span class="showcase-label">.card-stat — Volt number + label. Volt top border.</span>
+        <div class="grid-4">
+          <div class="card-stat">
+            <div class="card-stat-value">1M+</div>
+            <div class="card-stat-label">Athletes</div>
+            <div class="card-stat-desc">Worldwide Nike members.</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-value">84</div>
+            <div class="card-stat-label">Countries</div>
+            <div class="card-stat-desc">Global retail footprint.</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-value">42K</div>
+            <div class="card-stat-label">Products</div>
+            <div class="card-stat-desc">From track to street.</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-value">#1</div>
+            <div class="card-stat-label">Sport Brand</div>
+            <div class="card-stat-desc">Globally ranked.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</body>
+</html>

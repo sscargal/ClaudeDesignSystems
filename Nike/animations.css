@@ -1,0 +1,521 @@
+/* =============================================================================
+   Nike Design System — Animations & Motion
+   Version 1.0.0 | Nike Athletic Motion Language
+   Fast. Snappy. Kinetic. No soft ease-ins — maximum impact on entry.
+   ============================================================================= */
+
+/* =============================================================================
+   KEYFRAMES
+   ============================================================================= */
+
+/* --- Fade --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* --- Slide In Left — Hero text entrance (Nike's signature move) --- */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translate(-40px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-40px, 0);
+  }
+}
+
+/* --- Slide In Up — Content reveals, card entrances --- */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translate(0, 40px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes slideOutDown {
+  from {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(0, 40px);
+  }
+}
+
+/* --- Slide In Down — Nav drawers, dropdowns --- */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translate(0, -40px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+/* --- Slide In Right --- */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translate(40px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+/* --- Drawer — Full slide from left edge --- */
+@keyframes drawerSlideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes drawerSlideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* --- Modal — Sheet from bottom --- */
+@keyframes sheetSlideIn {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* --- Scale In — Product card entrance --- */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* --- Scale Up — Impact entrance, counter reveals --- */
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.80);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- Marquee Scroll — Infinite horizontal ticker --- */
+@keyframes marqueeScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* --- Volt Pulse — Glow effect on accent elements --- */
+@keyframes voltPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(207, 252, 3, 0.50);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 20px 8px rgba(207, 252, 3, 0.15);
+    opacity: 0.90;
+  }
+}
+
+@keyframes voltGlowText {
+  0%, 100% {
+    text-shadow: 0 0 0 rgba(207, 252, 3, 0);
+  }
+  50% {
+    text-shadow: 0 0 24px rgba(207, 252, 3, 0.60);
+  }
+}
+
+/* --- Pulse — Standard opacity pulse --- */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.50; }
+}
+
+/* --- Spin --- */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* --- Shake — Error states --- */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-8px); }
+  40%       { transform: translateX(8px); }
+  60%       { transform: translateX(-5px); }
+  80%       { transform: translateX(5px); }
+}
+
+/* --- Ripple — Button press effect --- */
+@keyframes ripple {
+  0%   { transform: scale(0); opacity: 0.50; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+/* --- Image Scale — Product hover zoom --- */
+@keyframes imageSoftZoom {
+  from { transform: scale(1); }
+  to   { transform: scale(1.05); }
+}
+
+/* --- Skeleton Shimmer --- */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* --- Number Counter — Stats reveal --- */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Underline Draw — Tab/link hover effect --- */
+@keyframes underlineDraw {
+  from { transform: scaleX(0); transform-origin: left; }
+  to   { transform: scaleX(1); transform-origin: left; }
+}
+
+/* =============================================================================
+   ANIMATION UTILITY CLASSES
+   ============================================================================= */
+
+/* Fade */
+.animate-fade-in        { animation: fadeIn var(--duration-normal) var(--ease-nike) both; }
+.animate-fade-out       { animation: fadeOut var(--duration-fast) var(--ease-nike) both; }
+
+/* Slide */
+.animate-slide-left     { animation: slideInLeft var(--duration-normal) var(--ease-out-sharp) both; }
+.animate-slide-up       { animation: slideInUp var(--duration-normal) var(--ease-out-sharp) both; }
+.animate-slide-down     { animation: slideInDown var(--duration-normal) var(--ease-out-sharp) both; }
+.animate-slide-right    { animation: slideInRight var(--duration-normal) var(--ease-out-sharp) both; }
+
+/* Scale */
+.animate-scale-in       { animation: scaleIn var(--duration-normal) var(--ease-out-sharp) both; }
+.animate-scale-out      { animation: scaleOut var(--duration-fast) var(--ease-in-sharp) both; }
+.animate-scale-up       { animation: scaleUp var(--duration-moderate) var(--ease-out-sharp) both; }
+
+/* Drawer / Sheet */
+.animate-drawer-in      { animation: drawerSlideIn var(--duration-moderate) var(--ease-out-sharp) both; }
+.animate-sheet-in       { animation: sheetSlideIn var(--duration-moderate) var(--ease-out-sharp) both; }
+
+/* Ongoing */
+.animate-pulse          { animation: pulse 2s var(--ease-nike) infinite; }
+.animate-spin           { animation: spin 0.75s linear infinite; }
+.animate-volt-pulse     { animation: voltPulse 2.5s ease-in-out infinite; }
+.animate-volt-glow      { animation: voltGlowText 3s ease-in-out infinite; }
+.animate-marquee        { animation: marqueeScroll 20s linear infinite; }
+.animate-shake          { animation: shake var(--duration-moderate) var(--ease-nike) both; }
+
+/* =============================================================================
+   STAGGER DELAY UTILITIES
+   Used with sequential elements — .delay-100 on first, .delay-200 on second, etc.
+   ============================================================================= */
+
+.delay-100  { animation-delay: 100ms; }
+.delay-200  { animation-delay: 200ms; }
+.delay-300  { animation-delay: 300ms; }
+.delay-400  { animation-delay: 400ms; }
+.delay-500  { animation-delay: 500ms; }
+
+/* Fine-grained delays for marquee and complex sequences */
+.delay-50   { animation-delay: 50ms; }
+.delay-150  { animation-delay: 150ms; }
+.delay-600  { animation-delay: 600ms; }
+.delay-700  { animation-delay: 700ms; }
+.delay-800  { animation-delay: 800ms; }
+.delay-1000 { animation-delay: 1000ms; }
+
+/* =============================================================================
+   TRANSITION UTILITIES
+   ============================================================================= */
+
+.transition-none     { transition: none; }
+.transition-fast     { transition: var(--transition-fast); }
+.transition-normal   { transition: var(--transition-normal); }
+.transition-moderate { transition: var(--transition-moderate); }
+
+/* =============================================================================
+   HOVER EFFECTS — Kinetic. Every hover should feel like a response.
+   ============================================================================= */
+
+/* Image zoom on card hover */
+.hover-zoom {
+  overflow: hidden;
+}
+
+.hover-zoom img,
+.hover-zoom .card-image {
+  transition: transform var(--duration-moderate) var(--ease-nike);
+}
+
+.hover-zoom:hover img,
+.hover-zoom:hover .card-image {
+  transform: scale(1.05);
+}
+
+/* Volt underline draw */
+.hover-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-volt);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-fast) var(--ease-nike);
+}
+
+.hover-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* Kinetic lift — slight Y translate */
+.hover-lift {
+  transition: transform var(--duration-fast) var(--ease-nike),
+              box-shadow var(--duration-fast) var(--ease-nike);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Scale pop */
+.hover-scale {
+  transition: transform var(--duration-fast) var(--ease-nike);
+}
+
+.hover-scale:hover {
+  transform: scale(1.03);
+}
+
+.hover-scale:active {
+  transform: scale(0.97);
+}
+
+/* Volt border reveal */
+.hover-volt-border {
+  border: 1px solid transparent;
+  transition: border-color var(--duration-fast) var(--ease-nike);
+}
+
+.hover-volt-border:hover {
+  border-color: var(--color-volt);
+}
+
+/* =============================================================================
+   MARQUEE COMPONENT CLASSES
+   ============================================================================= */
+
+.marquee-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.marquee-track {
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  animation: marqueeScroll 22s linear infinite;
+  width: max-content;
+}
+
+/* Pause on hover */
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Marquee text item */
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: 0 var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-12);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-black);
+  flex-shrink: 0;
+}
+
+/* =============================================================================
+   RIPPLE EFFECT
+   ============================================================================= */
+
+.ripple-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(0);
+  animation: ripple 0.5s linear;
+  pointer-events: none;
+}
+
+/* =============================================================================
+   SKELETON / LOADING STATES
+   ============================================================================= */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-fill-secondary) 25%,
+    var(--color-fill-primary) 50%,
+    var(--color-fill-secondary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s var(--ease-nike) infinite;
+}
+
+.skeleton-text {
+  height: 1em;
+  margin-bottom: 0.5em;
+}
+
+.skeleton-text.short  { width: 35%; }
+.skeleton-text.medium { width: 60%; }
+.skeleton-text.long   { width: 85%; }
+
+.skeleton-block {
+  width: 100%;
+  height: 200px;
+}
+
+/* =============================================================================
+   SCROLL REVEAL — Elements animate in on scroll (JS applies class)
+   ============================================================================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--duration-moderate) var(--ease-out-sharp),
+              transform var(--duration-moderate) var(--ease-out-sharp);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity var(--duration-moderate) var(--ease-out-sharp),
+              transform var(--duration-moderate) var(--ease-out-sharp);
+}
+
+.reveal-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* =============================================================================
+   REDUCED MOTION — Full respect for user preference
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+
+  .skeleton {
+    animation: none;
+    background: var(--color-fill-secondary);
+  }
+
+  .reveal,
+  .reveal-left {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

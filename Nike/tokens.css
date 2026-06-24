@@ -1,0 +1,281 @@
+/* =============================================================================
+   Nike Design System — Design Tokens
+   Version 1.0.0 | Built on Nike's Athletic Design Language
+   Dark-first: :root defines dark mode (black canvas). Light mode is an override.
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     COLOR PALETTE — Brand Swatches
+     --------------------------------------------------------------------------- */
+
+  /* Core Brand */
+  --color-black:          #111111;
+  --color-white:          #FFFFFF;
+  --color-volt:           #CFFC03;   /* Electric yellow-green — primary accent */
+  --color-sport-red:      #FA3433;   /* Nike Red */
+
+  /* Grays */
+  --color-gray-mid:       #757575;
+  --color-gray-light:     #E5E5E5;
+  --color-gray-surface:   #F5F5F5;
+  --color-gray-dark:      #1A1A1A;
+  --color-gray-darker:    #222222;
+  --color-gray-darkest:   #2E2E2E;
+
+  /* Volt variants */
+  --color-volt-dim:       rgba(207, 252, 3, 0.15);
+  --color-volt-glow:      rgba(207, 252, 3, 0.35);
+  --color-volt-subtle:    rgba(207, 252, 3, 0.08);
+
+  /* Red variants */
+  --color-red-dim:        rgba(250, 52, 51, 0.15);
+  --color-red-glow:       rgba(250, 52, 51, 0.35);
+
+  /* ---------------------------------------------------------------------------
+     SEMANTIC COLOR TOKENS — Dark Mode (default, Nike is dark-first)
+     --------------------------------------------------------------------------- */
+
+  /* Backgrounds */
+  --color-bg-primary:         #111111;   /* Main canvas — deep black */
+  --color-bg-secondary:       #1A1A1A;   /* Slightly elevated */
+  --color-bg-tertiary:        #222222;   /* Cards, surfaces */
+  --color-bg-elevated:        #2E2E2E;   /* Modals, overlays */
+
+  /* Surfaces */
+  --color-surface-primary:    #1A1A1A;
+  --color-surface-secondary:  #222222;
+  --color-surface-tertiary:   #2E2E2E;
+  --color-surface-overlay:    rgba(0, 0, 0, 0.90);
+
+  /* Labels / Text */
+  --color-label-primary:      #FFFFFF;
+  --color-label-secondary:    rgba(255, 255, 255, 0.60);
+  --color-label-tertiary:     rgba(255, 255, 255, 0.35);
+  --color-label-quaternary:   rgba(255, 255, 255, 0.18);
+
+  /* Separators */
+  --color-separator:          rgba(255, 255, 255, 0.10);
+  --color-separator-opaque:   #333333;
+
+  /* Fills */
+  --color-fill-primary:       rgba(255, 255, 255, 0.12);
+  --color-fill-secondary:     rgba(255, 255, 255, 0.08);
+  --color-fill-tertiary:      rgba(255, 255, 255, 0.05);
+
+  /* Semantic Aliases */
+  --color-accent:             var(--color-volt);
+  --color-accent-dim:         var(--color-volt-dim);
+  --color-accent-glow:        var(--color-volt-glow);
+  --color-destructive:        var(--color-sport-red);
+  --color-destructive-dim:    var(--color-red-dim);
+
+  /* ---------------------------------------------------------------------------
+     TYPOGRAPHY
+     --------------------------------------------------------------------------- */
+
+  /* Font Stacks */
+  --font-display:    "Futura", "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+  --font-condensed:  "Trade Gothic", "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  --font-body:       "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono:       ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+
+  /* Type Scale */
+  --text-88:   88px;
+  --text-72:   72px;
+  --text-56:   56px;
+  --text-44:   44px;
+  --text-36:   36px;
+  --text-28:   28px;
+  --text-22:   22px;
+  --text-18:   18px;
+  --text-16:   16px;
+  --text-14:   14px;
+  --text-12:   12px;
+  --text-10:   10px;
+
+  /* Font Weights */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-bold:     700;
+  --weight-black:    900;
+
+  /* Line Heights */
+  --leading-display:  0.95;   /* Tight — iconic Nike headline density */
+  --leading-headline: 1.05;
+  --leading-subhead:  1.15;
+  --leading-body:     1.60;
+  --leading-label:    1.20;
+
+  /* Letter Spacing */
+  --tracking-display:  -0.02em;   /* Tight for massive headlines */
+  --tracking-headline: -0.01em;
+  --tracking-body:      0em;
+  --tracking-label:     0.10em;   /* Wide for uppercase labels */
+  --tracking-subhead:   0.05em;
+  --tracking-caps:      0.12em;
+
+  /* ---------------------------------------------------------------------------
+     SPACING — 4px Base Grid
+     --------------------------------------------------------------------------- */
+
+  --space-1:     4px;
+  --space-2:     8px;
+  --space-3:    12px;
+  --space-4:    16px;
+  --space-5:    20px;
+  --space-6:    24px;
+  --space-8:    32px;
+  --space-10:   40px;
+  --space-12:   48px;
+  --space-16:   64px;
+  --space-20:   80px;
+  --space-24:   96px;
+  --space-32:  128px;
+
+  /* ---------------------------------------------------------------------------
+     BORDER RADIUS — Nike uses sharp corners almost exclusively
+     --------------------------------------------------------------------------- */
+
+  --radius-none:   0px;      /* Default — sharp corners everywhere */
+  --radius-xs:     2px;      /* Micro rounding — badges only */
+  --radius-sm:     4px;      /* Subtle rounding */
+  --radius-pill:   9999px;   /* Pill — search input ONLY */
+
+  /* Component-specific radii */
+  --radius-button:  var(--radius-none);  /* Buttons are always sharp */
+  --radius-card:    var(--radius-none);  /* Cards are always sharp */
+  --radius-input:   var(--radius-none);  /* Inputs are always sharp */
+  --radius-modal:   var(--radius-none);  /* Modals are always sharp */
+  --radius-badge:   var(--radius-none);  /* Badges are always sharp */
+  --radius-search:  var(--radius-pill);  /* Exception for search */
+
+  /* ---------------------------------------------------------------------------
+     SHADOWS — Minimal. Nike relies on contrast, not shadow.
+     --------------------------------------------------------------------------- */
+
+  --shadow-none:  none;
+  --shadow-sm:    0 2px 8px rgba(0, 0, 0, 0.40);
+  --shadow-md:    0 4px 16px rgba(0, 0, 0, 0.50);
+  --shadow-lg:    0 8px 32px rgba(0, 0, 0, 0.60);
+  --shadow-xl:    0 16px 48px rgba(0, 0, 0, 0.70);
+
+  /* Volt glow shadow — for accent highlights */
+  --shadow-volt:  0 0 24px rgba(207, 252, 3, 0.40);
+  --shadow-volt-sm: 0 0 12px rgba(207, 252, 3, 0.30);
+  --shadow-red:   0 0 24px rgba(250, 52, 51, 0.40);
+
+  /* ---------------------------------------------------------------------------
+     MOTION — Fast, snappy. Nike energy.
+     --------------------------------------------------------------------------- */
+
+  --duration-instant:   100ms;
+  --duration-fast:      150ms;
+  --duration-normal:    250ms;
+  --duration-moderate:  350ms;
+  --duration-slow:      500ms;
+
+  /* Nike easing — sharp deceleration, assertive feel */
+  --ease-nike:        cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out-sharp:   cubic-bezier(0.0, 0, 0.2, 1);
+  --ease-in-sharp:    cubic-bezier(0.4, 0, 1, 1);
+  --ease-linear:      linear;
+
+  /* Transition shorthands */
+  --transition-fast:     all var(--duration-fast) var(--ease-nike);
+  --transition-normal:   all var(--duration-normal) var(--ease-nike);
+  --transition-moderate: all var(--duration-moderate) var(--ease-nike);
+
+  /* ---------------------------------------------------------------------------
+     BORDERS
+     --------------------------------------------------------------------------- */
+
+  --border-color:         var(--color-separator);
+  --border-color-opaque:  var(--color-separator-opaque);
+  --border-color-accent:  var(--color-volt);
+  --border-default:       1px solid var(--color-separator);
+  --border-opaque:        1px solid var(--color-separator-opaque);
+  --border-accent:        1px solid var(--color-volt);
+  --border-white:         1px solid var(--color-white);
+  --border-focus:         2px solid var(--color-volt);
+
+  /* ---------------------------------------------------------------------------
+     Z-INDEX SCALE
+     --------------------------------------------------------------------------- */
+
+  --z-base:      0;
+  --z-raised:    10;
+  --z-dropdown:  100;
+  --z-sticky:    200;
+  --z-overlay:   300;
+  --z-modal:     400;
+  --z-toast:     500;
+  --z-tooltip:   600;
+
+  /* ---------------------------------------------------------------------------
+     COMPONENT DIMENSIONS
+     --------------------------------------------------------------------------- */
+
+  --btn-height-sm:    40px;
+  --btn-height-md:    48px;
+  --btn-height-lg:    56px;
+  --input-height-sm:  40px;
+  --input-height-md:  48px;
+  --input-height-lg:  56px;
+  --nav-height:       60px;
+  --max-width-site:  1200px;
+  --max-width-wide:  1440px;
+  --max-width-text:   760px;
+
+}
+
+/* =============================================================================
+   LIGHT MODE OVERRIDE
+   Nike's dark canvas is the default. Light mode is secondary.
+   ============================================================================= */
+
+@media (prefers-color-scheme: light) {
+  :root {
+
+    /* Backgrounds */
+    --color-bg-primary:         #FFFFFF;
+    --color-bg-secondary:       #F5F5F5;
+    --color-bg-tertiary:        #E5E5E5;
+    --color-bg-elevated:        #FFFFFF;
+
+    /* Surfaces */
+    --color-surface-primary:    #FFFFFF;
+    --color-surface-secondary:  #F5F5F5;
+    --color-surface-tertiary:   #E5E5E5;
+    --color-surface-overlay:    rgba(0, 0, 0, 0.50);
+
+    /* Labels */
+    --color-label-primary:      #111111;
+    --color-label-secondary:    rgba(17, 17, 17, 0.60);
+    --color-label-tertiary:     rgba(17, 17, 17, 0.35);
+    --color-label-quaternary:   rgba(17, 17, 17, 0.18);
+
+    /* Separators */
+    --color-separator:          rgba(0, 0, 0, 0.10);
+    --color-separator-opaque:   #D5D5D5;
+
+    /* Fills */
+    --color-fill-primary:       rgba(0, 0, 0, 0.08);
+    --color-fill-secondary:     rgba(0, 0, 0, 0.05);
+    --color-fill-tertiary:      rgba(0, 0, 0, 0.03);
+
+    /* Volt still works on light — keep as is */
+    --color-volt:               #B8E000;   /* Slightly deeper volt for light bg contrast */
+    --color-volt-dim:           rgba(184, 224, 0, 0.15);
+    --color-volt-glow:          rgba(184, 224, 0, 0.30);
+    --color-volt-subtle:        rgba(184, 224, 0, 0.08);
+
+    /* Shadows — lighter for light bg */
+    --shadow-sm:    0 2px 8px rgba(0, 0, 0, 0.10);
+    --shadow-md:    0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-lg:    0 8px 32px rgba(0, 0, 0, 0.15);
+    --shadow-xl:    0 16px 48px rgba(0, 0, 0, 0.20);
+
+  }
+}

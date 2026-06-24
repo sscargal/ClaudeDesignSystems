@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forms — Nike Design System</title>
+  <link rel="stylesheet" href="../tokens.css" />
+  <link rel="stylesheet" href="../typography.css" />
+  <link rel="stylesheet" href="../animations.css" />
+  <link rel="stylesheet" href="../components.css" />
+  <style>
+    .showcase-section {
+      padding: var(--space-10) 0;
+      border-bottom: 1px solid var(--color-separator);
+    }
+    .showcase-section:last-child { border-bottom: none; }
+    .showcase-label {
+      display: block;
+      font-size: 11px;
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-label);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      font-family: var(--font-mono);
+      margin-bottom: var(--space-5);
+    }
+    .field-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-5);
+    }
+  </style>
+</head>
+<body>
+  <header class="nav-global">
+    <div class="nav-global-inner">
+      <a href="../index.html" class="nav-brand">
+        <span class="nav-wordmark">Nike</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-link-item"><a href="buttons.html">Buttons</a></li>
+          <li class="nav-link-item"><a href="cards.html">Cards</a></li>
+          <li class="nav-link-item active"><a href="forms.html">Forms</a></li>
+          <li class="nav-link-item"><a href="navigation.html">Navigation</a></li>
+          <li class="nav-link-item"><a href="modals.html">Modals</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a href="../index.html" class="btn btn-secondary btn-sm">← System</a>
+      </div>
+    </div>
+  </header>
+
+  <main style="background: var(--color-bg-primary); min-height: 100vh; padding-bottom: var(--space-24);">
+    <div class="container" style="padding-top: var(--space-10);">
+
+      <div style="margin-bottom: var(--space-10);">
+        <h1 class="headline-1">Forms</h1>
+        <p class="body-large mt-4" style="color: var(--color-label-secondary); max-width: 560px;">
+          Sharp corners everywhere. Dark background with volt focus ring. The only exception is the search pill. All controls use volt as the active/checked color.
+        </p>
+      </div>
+
+      <!-- Text Inputs -->
+      <div class="showcase-section">
+        <span class="showcase-label">.input — Sharp. Dark bg. Volt focus border. No border-radius.</span>
+        <div class="field-row">
+          <div class="form-group">
+            <label class="form-label" for="i-default">Default</label>
+            <input class="input" id="i-default" type="text" placeholder="Placeholder text" />
+          </div>
+          <div class="form-group">
+            <label class="form-label required" for="i-required">Required</label>
+            <input class="input" id="i-required" type="text" placeholder="Required field" />
+            <span class="form-helper">Helper text below field.</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="i-filled">Filled</label>
+            <input class="input" id="i-filled" type="text" value="Nike Air Max 270" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="i-error">Error State</label>
+            <input class="input error" id="i-error" type="text" value="invalid@" aria-invalid="true" aria-describedby="i-error-msg" />
+            <span class="form-error" id="i-error-msg">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Please enter a valid email address.
+            </span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="i-success">Success State</label>
+            <input class="input success" id="i-success" type="text" value="john@example.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="i-disabled">Disabled</label>
+            <input class="input" id="i-disabled" type="text" value="Not editable" disabled />
+          </div>
+        </div>
+      </div>
+
+      <!-- Search -->
+      <div class="showcase-section">
+        <span class="showcase-label">.input-search — Pill shape. Only component with border-radius: 9999px.</span>
+        <div style="max-width: 480px; display: flex; flex-direction: column; gap: var(--space-4);">
+          <div class="form-group">
+            <label class="form-label" for="s1">Default</label>
+            <div class="input-search-wrapper">
+              <span class="input-search-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </span>
+              <input class="input-search" type="search" id="s1" placeholder="Search Nike.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="s2">With value</label>
+            <div class="input-search-wrapper">
+              <span class="input-search-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </span>
+              <input class="input-search" type="search" id="s2" value="Air Max 270" />
+              <button class="input-search-clear" aria-label="Clear search">✕</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Textarea -->
+      <div class="showcase-section">
+        <span class="showcase-label">.textarea — Resizable. Sharp. Volt focus.</span>
+        <div style="max-width: 560px; display: flex; flex-direction: column; gap: var(--space-4);">
+          <div class="form-group">
+            <label class="form-label" for="ta1">Message</label>
+            <textarea class="textarea" id="ta1" rows="4" placeholder="Tell us about your order..."></textarea>
+            <span class="form-helper">Max 500 characters.</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="ta2">With content</label>
+            <textarea class="textarea" id="ta2" rows="3">I'd like to return my Nike Air Max 270 in size 9. The fit is slightly too narrow for my foot shape.</textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Select -->
+      <div class="showcase-section">
+        <span class="showcase-label">.select — Custom arrow. Dark styled. Sharp corners.</span>
+        <div class="field-row">
+          <div class="form-group">
+            <label class="form-label" for="sel1">Country</label>
+            <div class="select-wrapper">
+              <select class="select" id="sel1">
+                <option>Choose a country</option>
+                <option selected>United States</option>
+                <option>United Kingdom</option>
+                <option>Germany</option>
+                <option>Japan</option>
+                <option>Australia</option>
+              </select>
+              <span class="select-arrow" aria-hidden="true">▼</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="sel2">Size</label>
+            <div class="select-wrapper">
+              <select class="select" id="sel2">
+                <option>Choose a size</option>
+                <option>US 7 / EU 40</option>
+                <option>US 8 / EU 41</option>
+                <option selected>US 9 / EU 42</option>
+                <option>US 10 / EU 43</option>
+                <option>US 11 / EU 44</option>
+                <option>US 12 / EU 45</option>
+              </select>
+              <span class="select-arrow" aria-hidden="true">▼</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="sel3">Sort By</label>
+            <div class="select-wrapper">
+              <select class="select" id="sel3">
+                <option>Featured</option>
+                <option>Newest</option>
+                <option selected>Price: Low to High</option>
+                <option>Price: High to Low</option>
+                <option>Best Sellers</option>
+              </select>
+              <span class="select-arrow" aria-hidden="true">▼</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checkboxes -->
+      <div class="showcase-section">
+        <span class="showcase-label">.checkbox — Sharp square. Volt fill on checked. Black checkmark.</span>
+        <div style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 400px;">
+          <label class="checkbox-wrapper">
+            <span class="checkbox"><input type="checkbox" checked /><span class="checkbox-box"></span></span>
+            <span class="checkbox-label">Nike email updates (checked)</span>
+          </label>
+          <label class="checkbox-wrapper">
+            <span class="checkbox"><input type="checkbox" /><span class="checkbox-box"></span></span>
+            <span class="checkbox-label">App push notifications (unchecked)</span>
+          </label>
+          <label class="checkbox-wrapper">
+            <span class="checkbox"><input type="checkbox" checked /><span class="checkbox-box"></span></span>
+            <span class="checkbox-label">Early access to new releases</span>
+          </label>
+          <label class="checkbox-wrapper">
+            <span class="checkbox"><input type="checkbox" disabled /><span class="checkbox-box"></span></span>
+            <span class="checkbox-label" style="opacity: 0.4;">Disabled option</span>
+          </label>
+          <label class="checkbox-wrapper">
+            <span class="checkbox"><input type="checkbox" checked disabled /><span class="checkbox-box"></span></span>
+            <span class="checkbox-label" style="opacity: 0.4;">Disabled + checked</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Radio Buttons -->
+      <div class="showcase-section">
+        <span class="showcase-label">.radio — Circle. Volt fill on selected.</span>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8);">
+          <div>
+            <div class="form-label mb-4">Shipping Speed</div>
+            <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+              <label class="radio-wrapper">
+                <span class="radio"><input type="radio" name="ship" checked /><span class="radio-circle"></span></span>
+                <span class="radio-label">Standard Shipping (3–5 days) — Free</span>
+              </label>
+              <label class="radio-wrapper">
+                <span class="radio"><input type="radio" name="ship" /><span class="radio-circle"></span></span>
+                <span class="radio-label">Express Shipping (1–2 days) — $9.99</span>
+              </label>
+              <label class="radio-wrapper">
+                <span class="radio"><input type="radio" name="ship" /><span class="radio-circle"></span></span>
+                <span class="radio-label">Overnight (Next day) — $24.99</span>
+              </label>
+            </div>
+          </div>
+          <div>
+            <div class="form-label mb-4">Product Gender</div>
+            <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+              <label class="radio-wrapper">
+                <span class="radio"><input type="radio" name="gender" /><span class="radio-circle"></span></span>
+                <span class="radio-label">Men's</span>
+              </label>
+              <label class="radio-wrapper">
+                <span class="radio"><input type="radio" name="gender" checked /><span class="radio-circle"></span></span>
+                <span class="radio-label">Women's</span>
+              </label>
+              <label class="radio-wrapper">
+                <span class="radio"><input type="radio" name="gender" /><span class="radio-circle"></span></span>
+                <span class="radio-label">Unisex</span>
+              </label>
+              <label class="radio-wrapper">
+                <span class="radio"><input type="radio" name="gender" disabled /><span class="radio-circle"></span></span>
+                <span class="radio-label" style="opacity: 0.4;">Kids' (disabled)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toggles -->
+      <div class="showcase-section">
+        <span class="showcase-label">.toggle — Pill track. Volt background when on.</span>
+        <div style="display: flex; flex-direction: column; gap: var(--space-5); max-width: 400px;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <span class="body-small" style="color: var(--color-label-primary);">Push Notifications — On</span>
+            <label class="toggle" aria-label="Push notifications">
+              <input type="checkbox" checked />
+              <span class="toggle-track"></span>
+              <span class="toggle-thumb"></span>
+            </label>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <span class="body-small" style="color: var(--color-label-primary);">Drop Alerts — On</span>
+            <label class="toggle" aria-label="Drop alerts">
+              <input type="checkbox" checked />
+              <span class="toggle-track"></span>
+              <span class="toggle-thumb"></span>
+            </label>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <span class="body-small" style="color: var(--color-label-primary);">Marketing Emails — Off</span>
+            <label class="toggle" aria-label="Marketing emails">
+              <input type="checkbox" />
+              <span class="toggle-track"></span>
+              <span class="toggle-thumb"></span>
+            </label>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; opacity: 0.4;">
+            <span class="body-small" style="color: var(--color-label-primary);">Disabled — Off</span>
+            <label class="toggle" aria-label="Disabled toggle">
+              <input type="checkbox" disabled />
+              <span class="toggle-track"></span>
+              <span class="toggle-thumb"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Size Selector -->
+      <div class="showcase-section">
+        <span class="showcase-label">.size-selector — Product size picker. Volt on selected. Strikethrough for unavailable.</span>
+        <div style="max-width: 480px;">
+          <div class="size-selector" role="group" aria-labelledby="sz-label">
+            <div class="size-selector-label">
+              <span id="sz-label">Select Size (US)</span>
+              <a href="#" class="size-selector-guide">Size Guide</a>
+            </div>
+            <div class="size-grid" role="radiogroup">
+              <button class="size-btn" role="radio" aria-checked="false">7</button>
+              <button class="size-btn" role="radio" aria-checked="false">7.5</button>
+              <button class="size-btn" role="radio" aria-checked="false">8</button>
+              <button class="size-btn" role="radio" aria-checked="false">8.5</button>
+              <button class="size-btn selected" role="radio" aria-checked="true">9</button>
+              <button class="size-btn" role="radio" aria-checked="false">9.5</button>
+              <button class="size-btn" role="radio" aria-checked="false">10</button>
+              <button class="size-btn unavailable" role="radio" aria-checked="false" aria-disabled="true">10.5</button>
+              <button class="size-btn" role="radio" aria-checked="false">11</button>
+              <button class="size-btn unavailable" role="radio" aria-checked="false" aria-disabled="true">11.5</button>
+              <button class="size-btn" role="radio" aria-checked="false">12</button>
+              <button class="size-btn" role="radio" aria-checked="false">13</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Color Swatches -->
+      <div class="showcase-section">
+        <span class="showcase-label">.color-swatch — Circular. Volt ring on selected.</span>
+        <div style="max-width: 400px;">
+          <div class="color-selector">
+            <div class="color-selector-label">Color: <strong>Black/Volt</strong></div>
+            <div class="color-swatches">
+              <div class="color-swatch selected" style="background: #111111;" role="radio" aria-checked="true" aria-label="Black/Volt" tabindex="0"></div>
+              <div class="color-swatch" style="background: #FFFFFF; border: 1px solid #E5E5E5;" role="radio" aria-checked="false" aria-label="White/Grey" tabindex="0"></div>
+              <div class="color-swatch" style="background: #FA3433;" role="radio" aria-checked="false" aria-label="Sport Red" tabindex="0"></div>
+              <div class="color-swatch" style="background: #CFFC03; border: 1px solid #999;" role="radio" aria-checked="false" aria-label="Volt" tabindex="0"></div>
+              <div class="color-swatch" style="background: #1D4ED8;" role="radio" aria-checked="false" aria-label="Royal Blue" tabindex="0"></div>
+              <div class="color-swatch" style="background: #15803D;" role="radio" aria-checked="false" aria-label="Green" tabindex="0"></div>
+              <div class="color-swatch" style="background: #F97316;" role="radio" aria-checked="false" aria-label="Orange" tabindex="0"></div>
+              <div class="color-swatch" style="background: #7C3AED;" role="radio" aria-checked="false" aria-label="Purple" tabindex="0"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Bars -->
+      <div class="showcase-section">
+        <span class="showcase-label">.progress-bar — Flat. 4px height. Volt / Red / White variants.</span>
+        <div style="max-width: 480px; display: flex; flex-direction: column; gap: var(--space-5);">
+          <div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+              <span class="label-secondary">US 9 — In Stock</span>
+              <span class="label-secondary">35 left</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width: 70%;"></div></div>
+          </div>
+          <div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+              <span class="label-secondary">US 10 — Low Stock</span>
+              <span class="label-secondary">3 left</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill red" style="width: 6%;"></div></div>
+          </div>
+          <div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+              <span class="label-secondary">US 11 — Sold Out</span>
+              <span class="label-secondary">0 left</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+          </div>
+          <div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+              <span class="label-secondary">Download Progress</span>
+              <span class="label-secondary">62%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width: 62%;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Complete form example -->
+      <div class="showcase-section">
+        <span class="showcase-label">Complete Form — Join Nike Membership</span>
+        <form style="max-width: 480px;" onsubmit="return false;">
+          <div style="display: flex; flex-direction: column; gap: var(--space-5);">
+            <div class="grid-2" style="gap: var(--space-4);">
+              <div class="form-group">
+                <label class="form-label required" for="fn">First Name</label>
+                <input class="input" type="text" id="fn" placeholder="First" autocomplete="given-name" />
+              </div>
+              <div class="form-group">
+                <label class="form-label required" for="ln">Last Name</label>
+                <input class="input" type="text" id="ln" placeholder="Last" autocomplete="family-name" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label required" for="em2">Email</label>
+              <input class="input" type="email" id="em2" placeholder="your@email.com" autocomplete="email" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="dob">Date of Birth</label>
+              <input class="input" type="date" id="dob" />
+              <span class="form-helper">Get a birthday gift on us.</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="country2">Country</label>
+              <div class="select-wrapper">
+                <select class="select" id="country2" autocomplete="country">
+                  <option>Select a country</option>
+                  <option selected>United States</option>
+                  <option>United Kingdom</option>
+                  <option>Canada</option>
+                </select>
+                <span class="select-arrow" aria-hidden="true">▼</span>
+              </div>
+            </div>
+            <label class="checkbox-wrapper">
+              <span class="checkbox"><input type="checkbox" checked /><span class="checkbox-box"></span></span>
+              <span class="checkbox-label">I agree to Nike's <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>.</span>
+            </label>
+            <button type="submit" class="btn btn-primary--volt" style="width: 100%; height: 52px;">Join Nike</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    document.querySelectorAll('.size-btn:not(.unavailable)').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const grid = btn.closest('.size-grid');
+        grid && grid.querySelectorAll('.size-btn').forEach(b => {
+          b.classList.remove('selected');
+          b.setAttribute('aria-checked', 'false');
+        });
+        btn.classList.add('selected');
+        btn.setAttribute('aria-checked', 'true');
+      });
+    });
+
+    document.querySelectorAll('.color-swatch').forEach(swatch => {
+      swatch.addEventListener('click', () => {
+        const group = swatch.closest('.color-swatches');
+        group && group.querySelectorAll('.color-swatch').forEach(s => {
+          s.classList.remove('selected');
+          s.setAttribute('aria-checked', 'false');
+        });
+        swatch.classList.add('selected');
+        swatch.setAttribute('aria-checked', 'true');
+      });
+    });
+  </script>
+</body>
+</html>

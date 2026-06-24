@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navigation — Nike Design System</title>
+  <link rel="stylesheet" href="../tokens.css" />
+  <link rel="stylesheet" href="../typography.css" />
+  <link rel="stylesheet" href="../animations.css" />
+  <link rel="stylesheet" href="../components.css" />
+  <style>
+    .showcase-section {
+      padding: var(--space-10) 0;
+      border-bottom: 1px solid var(--color-separator);
+    }
+    .showcase-section:last-child { border-bottom: none; }
+    .showcase-label {
+      display: block;
+      font-size: 11px;
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-label);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      font-family: var(--font-mono);
+      margin-bottom: var(--space-5);
+    }
+    /* Preview containers */
+    .nav-preview {
+      border: 1px solid var(--color-separator);
+      overflow: hidden;
+    }
+    .content-preview {
+      padding: var(--space-8);
+      background: var(--color-bg-primary);
+    }
+  </style>
+</head>
+<body>
+  <!-- The actual sticky nav -->
+  <header class="nav-global">
+    <div class="nav-global-inner">
+      <a href="../index.html" class="nav-brand">
+        <span class="nav-wordmark">Nike</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-link-item"><a href="buttons.html">Buttons</a></li>
+          <li class="nav-link-item"><a href="cards.html">Cards</a></li>
+          <li class="nav-link-item"><a href="forms.html">Forms</a></li>
+          <li class="nav-link-item active"><a href="navigation.html">Navigation</a></li>
+          <li class="nav-link-item"><a href="modals.html">Modals</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a href="../index.html" class="btn btn-secondary btn-sm">← System</a>
+      </div>
+    </div>
+  </header>
+
+  <main style="background: var(--color-bg-primary); min-height: 100vh; padding-bottom: var(--space-24);">
+    <div class="container-wide" style="padding-top: var(--space-10);">
+
+      <div style="margin-bottom: var(--space-10);">
+        <h1 class="headline-1">Navigation</h1>
+        <p class="body-large mt-4" style="color: var(--color-label-secondary); max-width: 560px;">
+          Black background. Uppercase label-style links. Volt hover and active states. The nav bar above is the real .nav-global component.
+        </p>
+      </div>
+
+      <!-- Global Nav -->
+      <div class="showcase-section">
+        <span class="showcase-label">.nav-global — Sticky. Black background. Three-column grid layout.</span>
+        <div class="nav-preview">
+          <header class="nav-global" style="position: relative; top: auto;">
+            <div class="nav-global-inner">
+              <a href="#" class="nav-brand"><span class="nav-wordmark">Nike</span></a>
+              <nav>
+                <ul class="nav-links">
+                  <li class="nav-link-item"><a href="#">New &amp; Featured</a></li>
+                  <li class="nav-link-item active"><a href="#">Men</a></li>
+                  <li class="nav-link-item"><a href="#">Women</a></li>
+                  <li class="nav-link-item"><a href="#">Kids</a></li>
+                  <li class="nav-link-item"><a href="#">Sale</a></li>
+                </ul>
+              </nav>
+              <div class="nav-actions">
+                <a href="#" class="nav-action-btn" aria-label="Search">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </a>
+                <a href="#" class="nav-action-btn" aria-label="Favorite">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </a>
+                <a href="#" class="nav-action-btn" aria-label="Cart (2 items)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                  <span class="nav-action-badge" aria-hidden="true">2</span>
+                </a>
+              </div>
+            </div>
+          </header>
+        </div>
+      </div>
+
+      <!-- Mobile Nav Overlay -->
+      <div class="showcase-section">
+        <span class="showcase-label">.nav-mobile — Full-screen overlay. Slides from left. Large display-type links.</span>
+        <div class="nav-preview" style="background: var(--color-black); max-width: 360px;">
+          <!-- Static preview of the mobile nav panel -->
+          <div style="background: var(--color-black); padding: 0;">
+            <div class="nav-mobile-header" style="border-bottom: 1px solid var(--color-separator);">
+              <span class="nav-wordmark">Nike</span>
+              <button class="nav-mobile-close" aria-label="Close" style="font-size: 20px; color: var(--color-white); background: none; border: none; cursor: pointer;">✕</button>
+            </div>
+            <ul class="nav-mobile-links" role="list">
+              <li class="nav-mobile-link-item"><a href="#">New &amp; Featured</a></li>
+              <li class="nav-mobile-link-item"><a href="#">Men</a></li>
+              <li class="nav-mobile-link-item"><a href="#">Women</a></li>
+              <li class="nav-mobile-link-item"><a href="#">Kids</a></li>
+              <li class="nav-mobile-link-item"><a href="#">Sale</a></li>
+              <li class="nav-mobile-link-item"><a href="#">SNKRS</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Breadcrumb -->
+      <div class="showcase-section">
+        <span class="showcase-label">.nav-breadcrumb — Minimal. Slash separator. Uppercase label style.</span>
+        <div style="display: flex; flex-direction: column; gap: var(--space-5);">
+          <!-- Standard -->
+          <nav aria-label="Breadcrumb">
+            <ol class="nav-breadcrumb" role="list">
+              <li class="breadcrumb-item"><a href="#">Home</a><span class="breadcrumb-separator">/</span></li>
+              <li class="breadcrumb-item"><a href="#">Men's</a><span class="breadcrumb-separator">/</span></li>
+              <li class="breadcrumb-item"><a href="#">Shoes</a><span class="breadcrumb-separator">/</span></li>
+              <li class="breadcrumb-item"><span aria-current="page">Nike Air Max 270</span></li>
+            </ol>
+          </nav>
+          <!-- Shorter -->
+          <nav aria-label="Breadcrumb short">
+            <ol class="nav-breadcrumb" role="list">
+              <li class="breadcrumb-item"><a href="#">Nike</a><span class="breadcrumb-separator">/</span></li>
+              <li class="breadcrumb-item"><a href="#">Sale</a><span class="breadcrumb-separator">/</span></li>
+              <li class="breadcrumb-item"><span aria-current="page">Running</span></li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="showcase-section">
+        <span class="showcase-label">.tabs — Underline style. Volt underline on active. No background fill.</span>
+        <div style="display: flex; flex-direction: column; gap: var(--space-8);">
+
+          <!-- Product tabs -->
+          <div>
+            <div class="label-secondary mb-3">Product Detail Tabs</div>
+            <nav aria-label="Product tabs">
+              <div class="tabs" role="tablist">
+                <button class="tab-item active" role="tab" aria-selected="true">Details</button>
+                <button class="tab-item" role="tab" aria-selected="false">Sizing &amp; Fit</button>
+                <button class="tab-item" role="tab" aria-selected="false">Shipping</button>
+                <button class="tab-item" role="tab" aria-selected="false">Reviews (47)</button>
+              </div>
+            </nav>
+            <div style="padding: var(--space-6) 0; color: var(--color-label-secondary); font-size: var(--text-16);">
+              Tab panel content appears here. The volt underline anchors the active state with no background fill — clean and editorial.
+            </div>
+          </div>
+
+          <!-- Category filter tabs -->
+          <div>
+            <div class="label-secondary mb-3">Category Filter Tabs</div>
+            <nav aria-label="Category filter">
+              <div class="tabs" role="tablist">
+                <button class="tab-item active" role="tab" aria-selected="true">All</button>
+                <button class="tab-item" role="tab" aria-selected="false">Shoes</button>
+                <button class="tab-item" role="tab" aria-selected="false">Clothing</button>
+                <button class="tab-item" role="tab" aria-selected="false">Accessories</button>
+                <button class="tab-item" role="tab" aria-selected="false">Equipment</button>
+              </div>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Drawer Nav Preview -->
+      <div class="showcase-section">
+        <span class="showcase-label">.drawer-nav — Slides from left. Full-height panel. Uppercase items.</span>
+        <div class="nav-preview" style="max-width: 360px; display: flex; flex-direction: column;">
+          <div class="drawer-nav-header">
+            <span class="nav-wordmark">Nike</span>
+            <button class="nav-mobile-close" aria-label="Close drawer" style="font-size: 20px; color: var(--color-white); background: none; border: none; cursor: pointer;">✕</button>
+          </div>
+          <div class="drawer-nav-body">
+            <a class="drawer-nav-item" href="#">New &amp; Featured →</a>
+            <a class="drawer-nav-item" href="#">Men →</a>
+            <a class="drawer-nav-item" href="#">Women →</a>
+            <a class="drawer-nav-item" href="#">Kids →</a>
+            <a class="drawer-nav-item" href="#">Sale →</a>
+            <a class="drawer-nav-item" href="#">SNKRS →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div class="showcase-section">
+        <span class="showcase-label">Badges — Sharp. Black/Volt/White/Red/Outline. Uppercase.</span>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-3);">
+          <span class="badge badge-volt">New</span>
+          <span class="badge badge-white">Best Seller</span>
+          <span class="badge badge-black">Jordan Brand</span>
+          <span class="badge badge-red">Sale</span>
+          <span class="badge badge-outline">Members Only</span>
+          <span class="product-badge product-badge--new">New</span>
+          <span class="product-badge product-badge--best-seller">Best Seller</span>
+          <span class="product-badge product-badge--sale">Sale</span>
+          <span class="product-badge product-badge--member">Member</span>
+        </div>
+      </div>
+
+      <!-- Dividers -->
+      <div class="showcase-section">
+        <span class="showcase-label">Dividers — Minimal. Volt accent variant.</span>
+        <div style="display: flex; flex-direction: column; gap: var(--space-5);">
+          <div>
+            <div class="label-secondary mb-2">Default (separator color)</div>
+            <hr class="divider" />
+          </div>
+          <div>
+            <div class="label-secondary mb-2">Opaque</div>
+            <hr class="divider divider-opaque" />
+          </div>
+          <div>
+            <div class="label-secondary mb-2">Volt accent (2px)</div>
+            <div class="divider-volt"></div>
+          </div>
+          <div>
+            <div class="label-secondary mb-2">Labeled</div>
+            <div class="divider-labeled">Or</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tooltip -->
+      <div class="showcase-section">
+        <span class="showcase-label">.tooltip — White bg, black text. Uppercase. Appears on hover.</span>
+        <div style="display: flex; gap: var(--space-8); align-items: center; padding-top: var(--space-8);">
+          <div class="tooltip-wrapper">
+            <button class="btn btn-primary">Hover me</button>
+            <div class="tooltip">Add to wishlist</div>
+          </div>
+          <div class="tooltip-wrapper">
+            <button class="btn-icon" aria-label="Info">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </button>
+            <div class="tooltip">Size guide info</div>
+          </div>
+          <div class="tooltip-wrapper">
+            <button class="btn-icon btn-icon--volt" aria-label="Add">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="tooltip">Add to cart</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // Tab interaction
+    document.querySelectorAll('.tabs .tab-item').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabset = tab.closest('.tabs');
+        tabset && tabset.querySelectorAll('.tab-item').forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+      });
+    });
+  </script>
+</body>
+</html>

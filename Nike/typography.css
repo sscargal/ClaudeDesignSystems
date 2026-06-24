@@ -1,0 +1,606 @@
+/* =============================================================================
+   Nike Design System — Typography
+   Version 1.0.0 | Nike Athletic Type Scale
+   Futura Bold display + system condensed. Extreme weight contrast.
+   ============================================================================= */
+
+/* =============================================================================
+   BASE RESET & DEFAULTS
+   ============================================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-18);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+  color: var(--color-label-primary);
+  background-color: var(--color-bg-primary);
+  margin: 0;
+  padding: 0;
+}
+
+/* =============================================================================
+   DISPLAY — The iconic Nike headline styles
+   Uppercase, crushing weight, tight tracking
+   ============================================================================= */
+
+/* Hero Display — 88px, the largest. "JUST DO IT." energy. */
+.display-hero {
+  font-family: var(--font-display);
+  font-size: var(--text-88);
+  font-weight: var(--weight-black);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+/* Display Large — 72px, campaign headlines */
+.display-large {
+  font-family: var(--font-display);
+  font-size: var(--text-72);
+  font-weight: var(--weight-black);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+/* Display — 56px, section heroes */
+.display {
+  font-family: var(--font-display);
+  font-size: var(--text-56);
+  font-weight: var(--weight-black);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+/* =============================================================================
+   HEADLINES
+   ============================================================================= */
+
+/* Headline 1 — 44px */
+.headline-1,
+h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-44);
+  font-weight: var(--weight-black);
+  line-height: var(--leading-headline);
+  letter-spacing: var(--tracking-headline);
+  text-transform: uppercase;
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+/* Headline 2 — 36px */
+.headline-2,
+h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-36);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-headline);
+  letter-spacing: var(--tracking-headline);
+  text-transform: uppercase;
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+/* Headline 3 — 28px */
+.headline-3,
+h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-28);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-headline);
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+/* H4–H6 base styles */
+h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-22);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-subhead);
+  letter-spacing: 0;
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+h5 {
+  font-family: var(--font-body);
+  font-size: var(--text-18);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-subhead);
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+h6 {
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-subhead);
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+/* =============================================================================
+   SUBHEAD — Product category labels
+   ============================================================================= */
+
+.subhead {
+  font-family: var(--font-display);
+  font-size: var(--text-22);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-subhead);
+  letter-spacing: var(--tracking-subhead);
+  text-transform: uppercase;
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+/* =============================================================================
+   BODY — Contrast to heavy display. Light and readable.
+   ============================================================================= */
+
+.body,
+p {
+  font-family: var(--font-body);
+  font-size: var(--text-18);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+  color: var(--color-label-primary);
+  margin: 0 0 1em;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.body-small {
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  color: var(--color-label-secondary);
+  margin: 0;
+}
+
+.body-large {
+  font-family: var(--font-body);
+  font-size: var(--text-22);
+  font-weight: var(--weight-light);
+  line-height: var(--leading-body);
+  color: var(--color-label-secondary);
+  margin: 0;
+}
+
+/* =============================================================================
+   LABEL — Navigation items, product labels, tags
+   Tiny, uppercase, maximum tracking
+   ============================================================================= */
+
+.label {
+  font-family: var(--font-body);
+  font-size: var(--text-12);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+.label-secondary {
+  font-family: var(--font-body);
+  font-size: var(--text-12);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-label-secondary);
+  margin: 0;
+}
+
+.label-large {
+  font-family: var(--font-body);
+  font-size: var(--text-14);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+/* =============================================================================
+   PRICE — Special numeric treatment. Weight 300, large, elegant.
+   ============================================================================= */
+
+.price {
+  font-family: var(--font-body);
+  font-size: var(--text-28);
+  font-weight: var(--weight-light);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-label-primary);
+  font-variant-numeric: tabular-nums;
+  margin: 0;
+}
+
+.price-small {
+  font-family: var(--font-body);
+  font-size: var(--text-18);
+  font-weight: var(--weight-light);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-label-primary);
+  font-variant-numeric: tabular-nums;
+  margin: 0;
+}
+
+.price-large {
+  font-family: var(--font-body);
+  font-size: var(--text-44);
+  font-weight: var(--weight-light);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--color-label-primary);
+  font-variant-numeric: tabular-nums;
+  margin: 0;
+}
+
+.price-original {
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  font-weight: var(--weight-regular);
+  color: var(--color-label-tertiary);
+  text-decoration: line-through;
+  font-variant-numeric: tabular-nums;
+}
+
+.price-sale {
+  color: var(--color-sport-red);
+}
+
+/* =============================================================================
+   CONDENSED TYPE — Nike jersey numbers, stats, impact statements
+   ============================================================================= */
+
+.condensed-hero {
+  font-family: var(--font-condensed);
+  font-size: var(--text-88);
+  font-weight: var(--weight-black);
+  line-height: 0.90;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+.condensed-large {
+  font-family: var(--font-condensed);
+  font-size: var(--text-56);
+  font-weight: var(--weight-black);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+.condensed {
+  font-family: var(--font-condensed);
+  font-size: var(--text-36);
+  font-weight: var(--weight-bold);
+  line-height: 1.0;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+/* =============================================================================
+   GRADIENT TEXT UTILITIES
+   ============================================================================= */
+
+/* Volt solid */
+.text-volt {
+  color: var(--color-volt);
+}
+
+/* Volt to white gradient — hero headlines */
+.text-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-volt) 0%,
+    #FFFFFF 70%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Volt to transparent — fading effect */
+.text-gradient-volt {
+  background: linear-gradient(
+    90deg,
+    var(--color-volt) 0%,
+    rgba(207, 252, 3, 0.40) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* White to transparent */
+.text-gradient-white {
+  background: linear-gradient(
+    180deg,
+    #FFFFFF 0%,
+    rgba(255, 255, 255, 0.50) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* =============================================================================
+   COLOR UTILITIES
+   ============================================================================= */
+
+.text-white       { color: #FFFFFF; }
+.text-black       { color: #111111; }
+.text-primary     { color: var(--color-label-primary); }
+.text-secondary   { color: var(--color-label-secondary); }
+.text-tertiary    { color: var(--color-label-tertiary); }
+.text-accent      { color: var(--color-volt); }
+.text-red         { color: var(--color-sport-red); }
+.text-gray        { color: var(--color-gray-mid); }
+
+/* =============================================================================
+   WEIGHT UTILITIES
+   ============================================================================= */
+
+.font-light    { font-weight: var(--weight-light); }
+.font-regular  { font-weight: var(--weight-regular); }
+.font-bold     { font-weight: var(--weight-bold); }
+.font-black    { font-weight: var(--weight-black); }
+
+/* =============================================================================
+   CASE UTILITIES
+   ============================================================================= */
+
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.normal-case { text-transform: none; }
+
+/* =============================================================================
+   ALIGNMENT UTILITIES
+   ============================================================================= */
+
+.text-left   { text-align: left; }
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+
+/* =============================================================================
+   TRUNCATION
+   ============================================================================= */
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* =============================================================================
+   INLINE ELEMENTS
+   ============================================================================= */
+
+a {
+  color: var(--color-volt);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-nike),
+              opacity var(--duration-fast) var(--ease-nike);
+}
+
+a:hover {
+  opacity: 0.80;
+}
+
+strong, b {
+  font-weight: var(--weight-bold);
+}
+
+em, i {
+  font-style: italic;
+}
+
+mark {
+  background: var(--color-volt-dim);
+  color: var(--color-volt);
+  padding: 0.05em 0.25em;
+}
+
+/* =============================================================================
+   MONOSPACE
+   ============================================================================= */
+
+code, kbd, samp {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--color-fill-secondary);
+  padding: 0.1em 0.35em;
+}
+
+pre {
+  font-family: var(--font-mono);
+  font-size: var(--text-14);
+  background: var(--color-bg-secondary);
+  padding: var(--space-4);
+  overflow-x: auto;
+  line-height: 1.55;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* =============================================================================
+   LIST STYLES
+   ============================================================================= */
+
+ul, ol {
+  padding-left: var(--space-5);
+  margin: 0 0 1em;
+}
+
+li {
+  margin-bottom: 0.35em;
+  line-height: var(--leading-body);
+}
+
+/* =============================================================================
+   BLOCKQUOTE — Editorial style
+   ============================================================================= */
+
+blockquote {
+  margin: var(--space-6) 0;
+  padding: var(--space-4) var(--space-6);
+  border-left: 3px solid var(--color-volt);
+  font-size: var(--text-22);
+  font-weight: var(--weight-bold);
+  font-style: normal;
+  text-transform: uppercase;
+  color: var(--color-label-primary);
+  letter-spacing: var(--tracking-headline);
+}
+
+blockquote cite {
+  display: block;
+  margin-top: var(--space-3);
+  font-size: var(--text-12);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-label-tertiary);
+  font-style: normal;
+}
+
+/* =============================================================================
+   RESPONSIVE TYPOGRAPHY
+   ============================================================================= */
+
+@media (max-width: 1024px) {
+  .display-hero {
+    font-size: clamp(var(--text-44), 8vw, var(--text-88));
+  }
+
+  .display-large {
+    font-size: clamp(var(--text-36), 7vw, var(--text-72));
+  }
+
+  .display {
+    font-size: clamp(var(--text-28), 5.5vw, var(--text-56));
+  }
+}
+
+@media (max-width: 768px) {
+  .display-hero {
+    font-size: clamp(var(--text-36), 10vw, var(--text-56));
+    line-height: 1.0;
+  }
+
+  .display-large {
+    font-size: var(--text-44);
+  }
+
+  .display {
+    font-size: var(--text-36);
+  }
+
+  .headline-1, h1 {
+    font-size: var(--text-36);
+  }
+
+  .headline-2, h2 {
+    font-size: var(--text-28);
+  }
+
+  .headline-3, h3 {
+    font-size: var(--text-22);
+  }
+
+  .price {
+    font-size: var(--text-22);
+  }
+
+  .condensed-hero {
+    font-size: var(--text-56);
+  }
+}
+
+@media (max-width: 480px) {
+  .display-hero {
+    font-size: var(--text-44);
+    line-height: 1.0;
+  }
+
+  .display-large {
+    font-size: var(--text-36);
+  }
+
+  .display {
+    font-size: var(--text-28);
+  }
+}
+
+/* =============================================================================
+   REDUCED MOTION
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modals — Nike Design System</title>
+  <link rel="stylesheet" href="../tokens.css" />
+  <link rel="stylesheet" href="../typography.css" />
+  <link rel="stylesheet" href="../animations.css" />
+  <link rel="stylesheet" href="../components.css" />
+  <style>
+    .showcase-section {
+      padding: var(--space-12) 0;
+      border-bottom: 1px solid var(--color-separator);
+    }
+    .showcase-section:last-child { border-bottom: none; }
+    .showcase-label {
+      display: block;
+      font-size: 11px;
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-label);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      font-family: var(--font-mono);
+      margin-bottom: var(--space-5);
+    }
+    /* Inline preview (static) */
+    .modal-preview {
+      background: var(--color-bg-tertiary);
+      padding: var(--space-8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* Live modal overlay */
+    .live-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.90);
+      z-index: var(--z-modal);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .live-overlay.is-open {
+      display: flex;
+      animation: fadeIn var(--duration-fast) var(--ease-nike) both;
+    }
+    .live-overlay--center {
+      align-items: center;
+      padding: var(--space-6);
+    }
+    .live-modal {
+      animation: sheetSlideIn var(--duration-moderate) var(--ease-out-sharp) both;
+      width: 100%;
+      max-width: 560px;
+    }
+    .live-modal--center {
+      animation: scaleIn var(--duration-normal) var(--ease-out-sharp) both;
+    }
+  </style>
+</head>
+<body>
+  <header class="nav-global">
+    <div class="nav-global-inner">
+      <a href="../index.html" class="nav-brand">
+        <span class="nav-wordmark">Nike</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-link-item"><a href="buttons.html">Buttons</a></li>
+          <li class="nav-link-item"><a href="cards.html">Cards</a></li>
+          <li class="nav-link-item"><a href="forms.html">Forms</a></li>
+          <li class="nav-link-item"><a href="navigation.html">Navigation</a></li>
+          <li class="nav-link-item active"><a href="modals.html">Modals</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a href="../index.html" class="btn btn-secondary btn-sm">← System</a>
+      </div>
+    </div>
+  </header>
+
+  <main style="background: var(--color-bg-primary); min-height: 100vh; padding-bottom: var(--space-24);">
+    <div class="container" style="padding-top: var(--space-10);">
+
+      <div style="margin-bottom: var(--space-10);">
+        <h1 class="headline-1">Modals &amp; Overlays</h1>
+        <p class="body-large mt-4" style="color: var(--color-label-secondary); max-width: 560px;">
+          Black at 90% overlay. Sharp corners. Dark dialog surfaces. Volt top border accent. Sheet slides from bottom. Drawer slides from left.
+        </p>
+      </div>
+
+      <!-- Launch buttons -->
+      <div class="showcase-section">
+        <span class="showcase-label">Interactive — Click to open live modals</span>
+        <div class="btn-group flex-wrap">
+          <button class="btn btn-primary--volt" onclick="openModal('modal-sheet')">Sheet Modal</button>
+          <button class="btn btn-primary" onclick="openModal('modal-center')">Center Dialog</button>
+          <button class="btn btn-primary" onclick="openModal('modal-size')">Size Guide</button>
+          <button class="btn btn-secondary" onclick="openModal('drawer-main')">Open Drawer</button>
+          <button class="btn btn-secondary" onclick="openModal('modal-confirm')">Confirm Dialog</button>
+        </div>
+      </div>
+
+      <!-- Static Previews -->
+      <div class="showcase-section">
+        <span class="showcase-label">.modal-dialog — Static preview. Volt top border. Slide from bottom animation.</span>
+        <div class="modal-preview">
+          <div class="modal-dialog" style="position: relative; max-height: none; animation: none; max-width: 480px; width: 100%;">
+            <div class="modal-dialog-header">
+              <div class="modal-dialog-title">Select Your Size</div>
+              <button class="modal-dialog-close" aria-label="Close">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+            <div class="modal-dialog-body">
+              <p style="margin: 0 0 var(--space-4);">Nike Air Max 270 — Men's Lifestyle Shoes</p>
+              <div class="size-grid" style="grid-template-columns: repeat(5, 1fr);">
+                <button class="size-btn">7</button>
+                <button class="size-btn">8</button>
+                <button class="size-btn selected">9</button>
+                <button class="size-btn">10</button>
+                <button class="size-btn unavailable">11</button>
+              </div>
+            </div>
+            <div class="modal-dialog-footer">
+              <button class="btn btn-secondary btn-sm">Cancel</button>
+              <button class="btn btn-primary--volt btn-sm">Add to Bag</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="showcase-section">
+        <span class="showcase-label">.drawer-nav — Static preview. Black panel. Uppercase item list.</span>
+        <div class="modal-preview" style="justify-content: flex-start; padding: 0;">
+          <div style="background: var(--color-bg-primary); width: 300px; border-right: 1px solid var(--color-separator);">
+            <div class="drawer-nav-header">
+              <span class="nav-wordmark">Nike</span>
+              <button class="nav-mobile-close" aria-label="Close" style="color: var(--color-white); background: none; border: none; font-size: 20px; cursor: pointer; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;">✕</button>
+            </div>
+            <div class="drawer-nav-body">
+              <a class="drawer-nav-item" href="#">New &amp; Featured →</a>
+              <a class="drawer-nav-item" href="#">Men →</a>
+              <a class="drawer-nav-item" href="#">Women →</a>
+              <a class="drawer-nav-item" href="#">Kids →</a>
+              <a class="drawer-nav-item" href="#">Sale →</a>
+              <a class="drawer-nav-item" href="#">SNKRS →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="showcase-section">
+        <span class="showcase-label">Overlay Colors — Black at 90% opacity</span>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4);">
+          <div style="background: rgba(0,0,0,0.90); height: 80px; display: flex; align-items: center; justify-content: center;">
+            <span class="label" style="color: rgba(255,255,255,0.60);">90% Black</span>
+          </div>
+          <div style="background: rgba(0,0,0,0.70); height: 80px; display: flex; align-items: center; justify-content: center;">
+            <span class="label" style="color: rgba(255,255,255,0.60);">70% Black</span>
+          </div>
+          <div style="background: rgba(0,0,0,0.50); height: 80px; display: flex; align-items: center; justify-content: center;">
+            <span class="label" style="color: rgba(255,255,255,0.60);">50% Black</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="showcase-section">
+        <span class="showcase-label">Animation Specs</span>
+        <div class="grid-2">
+          <div style="background: var(--color-bg-secondary); padding: var(--space-6);">
+            <div class="label-secondary mb-3">Sheet Modal (from bottom)</div>
+            <div class="body-small" style="color: var(--color-label-tertiary);">
+              animation: sheetSlideIn 350ms cubic-bezier(0.4, 0, 0.2, 1)<br/>
+              translateY(100%) → translateY(0)<br/>
+              Overlay: fadeIn 150ms
+            </div>
+          </div>
+          <div style="background: var(--color-bg-secondary); padding: var(--space-6);">
+            <div class="label-secondary mb-3">Drawer (from left)</div>
+            <div class="body-small" style="color: var(--color-label-tertiary);">
+              animation: drawerSlideIn 350ms cubic-bezier(0.4, 0, 0.2, 1)<br/>
+              translateX(-100%) → translateX(0)<br/>
+              Overlay: fadeIn 150ms
+            </div>
+          </div>
+          <div style="background: var(--color-bg-secondary); padding: var(--space-6);">
+            <div class="label-secondary mb-3">Center Dialog</div>
+            <div class="body-small" style="color: var(--color-label-tertiary);">
+              animation: scaleIn 250ms cubic-bezier(0.4, 0, 0.2, 1)<br/>
+              scale(0.95) opacity(0) → scale(1) opacity(1)<br/>
+              Overlay: fadeIn 150ms
+            </div>
+          </div>
+          <div style="background: var(--color-bg-secondary); padding: var(--space-6);">
+            <div class="label-secondary mb-3">Dismiss behavior</div>
+            <div class="body-small" style="color: var(--color-label-tertiary);">
+              Escape key closes all modals<br/>
+              Click on backdrop closes modals<br/>
+              Body scroll locked while open
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- LIVE MODALS                                                         -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+
+  <!-- Sheet Modal -->
+  <div id="modal-sheet" class="live-overlay" role="dialog" aria-modal="true" aria-label="Size selector" aria-hidden="true">
+    <div class="live-modal modal-dialog" style="max-width: 560px;">
+      <div class="modal-dialog-header">
+        <div class="modal-dialog-title">Select Your Size</div>
+        <button class="modal-dialog-close" aria-label="Close" onclick="closeModal('modal-sheet')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-dialog-body">
+        <p style="margin: 0 0 var(--space-5);">Nike Air Max 270 — Men's Lifestyle Shoes</p>
+        <div class="size-grid" style="grid-template-columns: repeat(4, 1fr);">
+          <button class="size-btn">7</button>
+          <button class="size-btn">7.5</button>
+          <button class="size-btn">8</button>
+          <button class="size-btn">8.5</button>
+          <button class="size-btn selected">9</button>
+          <button class="size-btn">9.5</button>
+          <button class="size-btn">10</button>
+          <button class="size-btn unavailable">10.5</button>
+          <button class="size-btn">11</button>
+          <button class="size-btn">12</button>
+          <button class="size-btn unavailable">13</button>
+          <button class="size-btn">14</button>
+        </div>
+      </div>
+      <div class="modal-dialog-footer">
+        <button class="btn btn-secondary" onclick="closeModal('modal-sheet')">Cancel</button>
+        <button class="btn btn-primary--volt" onclick="closeModal('modal-sheet')">Add to Bag — $150</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Center Dialog -->
+  <div id="modal-center" class="live-overlay live-overlay--center" role="dialog" aria-modal="true" aria-label="Quick add" aria-hidden="true">
+    <div class="live-modal live-modal--center modal-dialog" style="max-width: 440px;">
+      <div class="modal-dialog-header">
+        <div class="modal-dialog-title">Quick Add</div>
+        <button class="modal-dialog-close" aria-label="Close" onclick="closeModal('modal-center')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-dialog-body">
+        <div style="display: flex; gap: var(--space-4); align-items: center; margin-bottom: var(--space-5);">
+          <div style="width: 80px; height: 80px; background: var(--color-bg-tertiary); display: flex; align-items: center; justify-content: center; font-size: 40px;">👟</div>
+          <div>
+            <div class="label-secondary">Men's Shoes</div>
+            <div style="font-weight: var(--weight-bold); color: var(--color-label-primary);">Nike Air Max 270</div>
+            <div class="price-small mt-1">$150</div>
+          </div>
+        </div>
+        <div class="color-selector mb-4">
+          <div class="color-selector-label">Color: <strong>Black/Volt</strong></div>
+          <div class="color-swatches mt-2">
+            <div class="color-swatch selected" style="background: #111;" tabindex="0" aria-label="Black"></div>
+            <div class="color-swatch" style="background: #fff; border: 1px solid #eee;" tabindex="0" aria-label="White"></div>
+            <div class="color-swatch" style="background: #FA3433;" tabindex="0" aria-label="Red"></div>
+          </div>
+        </div>
+        <div class="size-grid" style="grid-template-columns: repeat(5, 1fr);">
+          <button class="size-btn">7</button>
+          <button class="size-btn">8</button>
+          <button class="size-btn selected">9</button>
+          <button class="size-btn">10</button>
+          <button class="size-btn">11</button>
+        </div>
+      </div>
+      <div class="modal-dialog-footer">
+        <button class="btn btn-secondary" onclick="closeModal('modal-center')">Cancel</button>
+        <button class="btn btn-primary--volt" onclick="closeModal('modal-center')">Add to Bag</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Size Guide Modal -->
+  <div id="modal-size" class="live-overlay live-overlay--center" role="dialog" aria-modal="true" aria-label="Size guide" aria-hidden="true">
+    <div class="live-modal live-modal--center modal-dialog" style="max-width: 560px;">
+      <div class="modal-dialog-header">
+        <div class="modal-dialog-title">Size Guide</div>
+        <button class="modal-dialog-close" aria-label="Close" onclick="closeModal('modal-size')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-dialog-body">
+        <table style="width: 100%; border-collapse: collapse; font-size: var(--text-14);">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--color-separator);">
+              <th style="padding: var(--space-3); text-align: left; font-size: var(--text-12); font-weight: var(--weight-black); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--color-label-tertiary);">US</th>
+              <th style="padding: var(--space-3); text-align: left; font-size: var(--text-12); font-weight: var(--weight-black); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--color-label-tertiary);">EU</th>
+              <th style="padding: var(--space-3); text-align: left; font-size: var(--text-12); font-weight: var(--weight-black); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--color-label-tertiary);">UK</th>
+              <th style="padding: var(--space-3); text-align: left; font-size: var(--text-12); font-weight: var(--weight-black); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--color-label-tertiary);">CM</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--color-separator);"><td style="padding: var(--space-3);">7</td><td style="padding: var(--space-3);">40</td><td style="padding: var(--space-3);">6</td><td style="padding: var(--space-3);">25.0</td></tr>
+            <tr style="border-bottom: 1px solid var(--color-separator);"><td style="padding: var(--space-3);">8</td><td style="padding: var(--space-3);">41</td><td style="padding: var(--space-3);">7</td><td style="padding: var(--space-3);">26.0</td></tr>
+            <tr style="border-bottom: 1px solid var(--color-separator); background: rgba(207,252,3,0.05);"><td style="padding: var(--space-3); color: var(--color-volt); font-weight: var(--weight-bold);">9 ✓</td><td style="padding: var(--space-3); color: var(--color-volt); font-weight: var(--weight-bold);">42</td><td style="padding: var(--space-3); color: var(--color-volt); font-weight: var(--weight-bold);">8</td><td style="padding: var(--space-3); color: var(--color-volt); font-weight: var(--weight-bold);">27.0</td></tr>
+            <tr style="border-bottom: 1px solid var(--color-separator);"><td style="padding: var(--space-3);">10</td><td style="padding: var(--space-3);">43</td><td style="padding: var(--space-3);">9</td><td style="padding: var(--space-3);">28.0</td></tr>
+            <tr><td style="padding: var(--space-3);">11</td><td style="padding: var(--space-3);">44</td><td style="padding: var(--space-3);">10</td><td style="padding: var(--space-3);">29.0</td></tr>
+          </tbody>
+        </table>
+        <p style="margin: var(--space-4) 0 0; font-size: var(--text-12); color: var(--color-label-tertiary);">Volt row = your selected size.</p>
+      </div>
+      <div class="modal-dialog-footer">
+        <button class="btn btn-primary--volt" onclick="closeModal('modal-size')">Got It</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirm Dialog -->
+  <div id="modal-confirm" class="live-overlay live-overlay--center" role="alertdialog" aria-modal="true" aria-label="Remove item" aria-hidden="true">
+    <div class="live-modal live-modal--center modal-dialog" style="max-width: 400px;">
+      <div class="modal-dialog-header">
+        <div class="modal-dialog-title">Remove Item?</div>
+        <button class="modal-dialog-close" aria-label="Close" onclick="closeModal('modal-confirm')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-dialog-body">
+        <p style="margin: 0;">Are you sure you want to remove <strong>Nike Air Max 270</strong> from your bag? This action cannot be undone.</p>
+      </div>
+      <div class="modal-dialog-footer">
+        <button class="btn btn-ghost" onclick="closeModal('modal-confirm')">Keep Item</button>
+        <button class="btn btn-destructive" onclick="closeModal('modal-confirm')">Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Drawer -->
+  <div id="drawer-main" class="live-overlay" style="align-items: flex-start; justify-content: flex-start;" role="dialog" aria-modal="true" aria-label="Navigation drawer" aria-hidden="true">
+    <div class="drawer-nav-panel live-modal" style="animation: drawerSlideIn var(--duration-moderate) var(--ease-out-sharp) both;">
+      <div class="drawer-nav-header">
+        <span class="nav-wordmark">Nike</span>
+        <button class="modal-dialog-close" aria-label="Close drawer" onclick="closeModal('drawer-main')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="drawer-nav-body">
+        <a class="drawer-nav-item" href="#">New &amp; Featured →</a>
+        <a class="drawer-nav-item" href="#">Men →</a>
+        <a class="drawer-nav-item" href="#">Women →</a>
+        <a class="drawer-nav-item" href="#">Kids →</a>
+        <a class="drawer-nav-item" href="#">Sale →</a>
+        <a class="drawer-nav-item" href="#">SNKRS →</a>
+      </div>
+      <div style="padding: var(--space-6); border-top: 1px solid var(--color-separator);">
+        <a href="#" class="btn btn-primary--volt" style="width: 100%; margin-bottom: var(--space-3);">Join Nike</a>
+        <a href="#" class="btn btn-secondary" style="width: 100%;">Sign In</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.add('is-open');
+      el.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      // Re-trigger animation
+      el.querySelectorAll('.live-modal').forEach(m => {
+        m.style.animation = 'none';
+        m.offsetHeight; // reflow
+        m.style.animation = '';
+      });
+    }
+
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.remove('is-open');
+      el.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    // Close on backdrop click
+    document.querySelectorAll('.live-overlay').forEach(overlay => {
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+          closeModal(overlay.id);
+        }
+      });
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.live-overlay.is-open').forEach(el => {
+          closeModal(el.id);
+        });
+      }
+    });
+
+    // Size button interaction in modals
+    document.querySelectorAll('.size-btn:not(.unavailable)').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const grid = btn.closest('.size-grid');
+        grid && grid.querySelectorAll('.size-btn').forEach(b => {
+          b.classList.remove('selected');
+          b.setAttribute('aria-checked', 'false');
+        });
+        btn.classList.add('selected');
+        btn.setAttribute('aria-checked', 'true');
+      });
+    });
+
+    // Color swatches in modals
+    document.querySelectorAll('.color-swatch').forEach(swatch => {
+      swatch.addEventListener('click', () => {
+        const group = swatch.closest('.color-swatches');
+        group && group.querySelectorAll('.color-swatch').forEach(s => {
+          s.classList.remove('selected');
+          s.setAttribute('aria-checked', 'false');
+        });
+        swatch.classList.add('selected');
+        swatch.setAttribute('aria-checked', 'true');
+      });
+    });
+  </script>
+</body>
+</html>

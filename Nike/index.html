@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nike Design System</title>
+  <meta name="description" content="Nike Design System — Athletic design language. Bold. Kinetic. Volt." />
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="typography.css" />
+  <link rel="stylesheet" href="animations.css" />
+  <link rel="stylesheet" href="components.css" />
+  <style>
+    /* ── Page-specific showcase styles ───────────────────────────────────── */
+
+    /* Swatch grid */
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .swatch-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .swatch-block {
+      height: 80px;
+      width: 100%;
+    }
+
+    .swatch-name {
+      font-size: var(--text-12);
+      font-weight: var(--weight-bold);
+      color: var(--color-label-primary);
+      letter-spacing: 0.02em;
+    }
+
+    .swatch-hex {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-label-tertiary);
+    }
+
+    /* Type scale showcase */
+    .type-row {
+      padding: var(--space-6) 0;
+      border-bottom: 1px solid var(--color-separator);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .type-row:last-child {
+      border-bottom: none;
+    }
+
+    .type-meta {
+      font-size: 11px;
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-label);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      font-family: var(--font-mono);
+    }
+
+    /* Demo product image placeholders */
+    .product-img-placeholder {
+      width: 100%;
+      aspect-ratio: 1;
+      background: var(--color-bg-tertiary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+    }
+
+    /* Feature image placeholder */
+    .feature-img-placeholder {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #1A1A1A 0%, #2E2E2E 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 96px;
+    }
+
+    /* Motion demos */
+    .motion-demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--space-6);
+    }
+
+    .motion-demo-box {
+      background: var(--color-bg-secondary);
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-4);
+      border: 1px solid var(--color-separator);
+    }
+
+    .motion-demo-element {
+      width: 64px;
+      height: 64px;
+      background: var(--color-volt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    /* Collection image placeholder */
+    .coll-img-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
+      background: linear-gradient(135deg, #222 0%, #333 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+    }
+
+    /* Product detail group */
+    .pdp-demo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+      align-items: start;
+    }
+
+    .pdp-image-placeholder {
+      aspect-ratio: 1;
+      background: var(--color-bg-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 120px;
+    }
+
+    .pdp-info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+    }
+
+    @media (max-width: 768px) {
+      .pdp-demo {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--color-black);
+      border-top: 1px solid var(--color-separator);
+      padding: var(--space-12) 0 var(--space-8);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-8);
+      margin-bottom: var(--space-10);
+    }
+
+    .footer-col-label {
+      font-size: var(--text-12);
+      font-weight: var(--weight-black);
+      letter-spacing: var(--tracking-label);
+      text-transform: uppercase;
+      color: var(--color-label-primary);
+      margin-bottom: var(--space-4);
+      display: block;
+    }
+
+    .footer-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .footer-links a {
+      font-size: var(--text-14);
+      color: var(--color-label-secondary);
+      text-decoration: none;
+      transition: color var(--duration-fast) var(--ease-nike);
+    }
+
+    .footer-links a:hover {
+      color: var(--color-white);
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--color-separator);
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .footer-copyright {
+      font-size: var(--text-12);
+      color: var(--color-label-tertiary);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: var(--space-4);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .footer-legal a {
+      font-size: var(--text-12);
+      color: var(--color-label-tertiary);
+      text-decoration: none;
+    }
+
+    .footer-legal a:hover {
+      color: var(--color-white);
+    }
+
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <!-- STICKY HEADER                                                         -->
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <header class="nav-global" role="banner">
+    <div class="nav-global-inner">
+
+      <!-- Brand -->
+      <a href="#" class="nav-brand" aria-label="Nike Home">
+        <span class="nav-wordmark">Nike</span>
+      </a>
+
+      <!-- Center Nav Links -->
+      <nav aria-label="Main navigation">
+        <ul class="nav-links" role="list">
+          <li class="nav-link-item"><a href="#components">New &amp; Featured</a></li>
+          <li class="nav-link-item"><a href="#components">Men</a></li>
+          <li class="nav-link-item"><a href="#components">Women</a></li>
+          <li class="nav-link-item"><a href="#components">Kids</a></li>
+          <li class="nav-link-item"><a href="#components">Sale</a></li>
+          <li class="nav-link-item active"><a href="#components">Design System</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right Actions -->
+      <div class="nav-actions">
+        <!-- Search -->
+        <a href="#forms" class="nav-action-btn" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </a>
+        <!-- Favorites -->
+        <a href="#" class="nav-action-btn" aria-label="Favorites">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </a>
+        <!-- Bag -->
+        <a href="#" class="nav-action-btn" aria-label="Bag (2 items)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="nav-action-badge" aria-hidden="true">2</span>
+        </a>
+        <!-- Mobile toggle -->
+        <button class="nav-mobile-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Overlay -->
+  <nav id="mobile-nav" class="nav-mobile" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="nav-mobile-header">
+      <span class="nav-wordmark">Nike</span>
+      <button class="nav-mobile-close" aria-label="Close menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <ul class="nav-mobile-links" role="list">
+      <li class="nav-mobile-link-item"><a href="#">New &amp; Featured</a></li>
+      <li class="nav-mobile-link-item"><a href="#">Men</a></li>
+      <li class="nav-mobile-link-item"><a href="#">Women</a></li>
+      <li class="nav-mobile-link-item"><a href="#">Kids</a></li>
+      <li class="nav-mobile-link-item"><a href="#">Sale</a></li>
+      <li class="nav-mobile-link-item"><a href="#">SNKRS</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- HERO — "JUST DO IT." Full viewport                                  -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <section class="hero" aria-label="Hero" style="background: var(--color-black);">
+      <div class="hero-content">
+        <span class="hero-volt-rule" aria-hidden="true"></span>
+        <h1 class="display-hero animate-slide-left">
+          Just<br/>Do It.
+        </h1>
+        <p class="body-large animate-slide-left delay-200" style="max-width: 520px; margin: var(--space-6) 0 var(--space-8); color: var(--color-label-secondary);">
+          Move the world forward. The Nike Design System — athletic, bold, and built for maximum impact.
+        </p>
+        <div class="btn-group animate-slide-left delay-300">
+          <a href="#products" class="btn btn-primary--volt">Shop Now</a>
+          <a href="#components" class="btn btn-secondary">Explore System</a>
+        </div>
+      </div>
+
+      <!-- Decorative volt line — right edge -->
+      <div aria-hidden="true" style="
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: var(--color-volt);
+      "></div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- MARQUEE TICKER                                                       -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <div class="marquee-container" aria-label="Nike announcements" aria-live="off">
+      <div class="marquee-track" aria-hidden="true">
+        <!-- Duplicated for seamless loop -->
+        <span class="marquee-item">New Arrivals</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">Air Max</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">Just Do It</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">Free Shipping Over $50</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">Nike App</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">Air Jordan 1</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">React Infinity</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">Dri-FIT</span>
+        <span class="marquee-dot"></span>
+        <!-- Duplicate -->
+        <span class="marquee-item">New Arrivals</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">Air Max</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">Just Do It</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">Free Shipping Over $50</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">Nike App</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">Air Jordan 1</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">React Infinity</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">Dri-FIT</span>
+        <span class="marquee-dot"></span>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- COLOR PALETTE                                                        -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <section class="section" style="background: var(--color-bg-primary);" aria-labelledby="palette-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-overline">Design Tokens</span>
+          <h2 class="headline-2" id="palette-heading">Color Palette</h2>
+        </div>
+
+        <div class="swatch-grid">
+          <!-- Brand -->
+          <div class="swatch-item">
+            <div class="swatch-block" style="background: #111111; border: 1px solid var(--color-separator);"></div>
+            <div class="swatch-name">Black</div>
+            <div class="swatch-hex">#111111</div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-block" style="background: #FFFFFF;"></div>
+            <div class="swatch-name">White</div>
+            <div class="swatch-hex">#FFFFFF</div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-block" style="background: #CFFC03;"></div>
+            <div class="swatch-name">Volt</div>
+            <div class="swatch-hex">#CFFC03</div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-block" style="background: #FA3433;"></div>
+            <div class="swatch-name">Sport Red</div>
+            <div class="swatch-hex">#FA3433</div>
+          </div>
+          <!-- Grays -->
+          <div class="swatch-item">
+            <div class="swatch-block" style="background: #757575;"></div>
+            <div class="swatch-name">Mid Gray</div>
+            <div class="swatch-hex">#757575</div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-block" style="background: #E5E5E5;"></div>
+            <div class="swatch-name">Light Gray</div>
+            <div class="swatch-hex">#E5E5E5</div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-block" style="background: #F5F5F5;"></div>
+            <div class="swatch-name">Surface Gray</div>
+            <div class="swatch-hex">#F5F5F5</div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-block" style="background: #1A1A1A; border: 1px solid var(--color-separator);"></div>
+            <div class="swatch-name">Dark Surface</div>
+            <div class="swatch-hex">#1A1A1A</div>
+          </div>
+          <!-- Semantic -->
+          <div class="swatch-item">
+            <div class="swatch-block" style="background: rgba(207,252,3,0.15);"></div>
+            <div class="swatch-name">Volt Dim</div>
+            <div class="swatch-hex">15% volt</div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-block" style="background: rgba(250,52,51,0.15);"></div>
+            <div class="swatch-name">Red Dim</div>
+            <div class="swatch-hex">15% red</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- TYPOGRAPHY SCALE                                                     -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <section class="section" style="background: var(--color-bg-secondary);" aria-labelledby="type-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-overline">Design Tokens</span>
+          <h2 class="headline-2" id="type-heading">Typography Scale</h2>
+        </div>
+
+        <div>
+          <div class="type-row">
+            <div class="type-meta">Display Hero · 88px · Weight 900 · Uppercase</div>
+            <div class="display-hero" style="font-size: clamp(36px, 6vw, 88px);">Just Do It.</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">Display Large · 72px · Weight 900 · Uppercase</div>
+            <div class="display-large" style="font-size: clamp(32px, 5.5vw, 72px);">Air Max Day.</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">Display · 56px · Weight 900 · Uppercase</div>
+            <div class="display" style="font-size: clamp(28px, 4.5vw, 56px);">Built for Sport.</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">Headline 1 · 44px · Weight 900 · Uppercase</div>
+            <div class="headline-1">New Season. New Goals.</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">Headline 2 · 36px · Weight 700 · Uppercase</div>
+            <div class="headline-2">Nike Running</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">Headline 3 · 28px · Weight 700 · Uppercase</div>
+            <div class="headline-3">Air Jordan Collection</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">Subhead · 22px · Weight 700 · Uppercase · 0.05em tracking</div>
+            <div class="subhead">Lifestyle</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">Body · 18px · Weight 400 · Line-height 1.6</div>
+            <div class="body" style="max-width: 600px;">Engineered for every athlete. Designed with purpose. Nike's mission is to bring inspiration and innovation to every athlete in the world — if you have a body, you are an athlete.</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">Label · 12px · Weight 700 · Uppercase · 0.1em tracking</div>
+            <div class="label">Nike React · Best Seller · New Arrival</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">Price · Weight 300 · Numeric · Tabular</div>
+            <div class="flex items-end gap-4">
+              <span class="price-large">$190</span>
+              <span class="price">$120</span>
+              <span class="price-small">$85</span>
+              <span class="price-original">$120</span>
+              <span class="price price-sale">$79</span>
+            </div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">Gradient Text — Volt / White</div>
+            <div class="headline-2 text-gradient" style="font-size: clamp(24px, 3vw, 56px);">Volt to White.</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">Text Volt</div>
+            <div class="headline-3 text-volt">Unleash the Energy.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- BUTTONS                                                              -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <section id="components" class="section" style="background: var(--color-bg-primary);" aria-labelledby="btn-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-overline">Components</span>
+          <h2 class="headline-2" id="btn-heading">Buttons</h2>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: var(--space-6);">
+
+          <!-- Row 1: Primary variants -->
+          <div>
+            <div class="label-secondary mb-3">Primary Variants</div>
+            <div class="btn-group flex-wrap">
+              <button class="btn btn-primary">Shop Now</button>
+              <button class="btn btn-primary--volt">Add to Cart</button>
+              <button class="btn btn-secondary">Explore</button>
+              <button class="btn btn-ghost">Learn More</button>
+              <button class="btn btn-ghost--volt">View Details</button>
+              <button class="btn btn-destructive">Remove</button>
+            </div>
+          </div>
+
+          <!-- Row 2: Sizes -->
+          <div>
+            <div class="label-secondary mb-3">Sizes</div>
+            <div class="btn-group flex-wrap" style="align-items: center;">
+              <button class="btn btn-primary btn-sm">Small</button>
+              <button class="btn btn-primary">Medium</button>
+              <button class="btn btn-primary btn-lg">Large</button>
+            </div>
+          </div>
+
+          <!-- Row 3: Icon Buttons -->
+          <div>
+            <div class="label-secondary mb-3">Icon Buttons</div>
+            <div class="btn-group">
+              <button class="btn-icon" aria-label="Search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </button>
+              <button class="btn-icon" aria-label="Favorite">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+              <button class="btn-icon btn-icon--volt" aria-label="Add to cart">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Row 4: States -->
+          <div>
+            <div class="label-secondary mb-3">States</div>
+            <div class="btn-group flex-wrap">
+              <button class="btn btn-primary" disabled>Disabled</button>
+              <button class="btn btn-primary--volt loading" aria-busy="true">
+                <span class="sr-only">Loading</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Row 5: Light surface buttons -->
+          <div style="background: var(--color-white); padding: var(--space-6);">
+            <div class="label mb-3" style="color: var(--color-black);">On Light Background</div>
+            <div class="btn-group flex-wrap">
+              <button class="btn btn-secondary--dark">Shop Men's</button>
+              <button class="btn" style="background: var(--color-black); color: var(--color-white);">Shop Women's</button>
+              <button class="btn btn-primary--volt">Sale</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- PRODUCT CARDS                                                        -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <section id="products" class="section" style="background: var(--color-bg-primary);" aria-labelledby="cards-heading">
+      <div class="container-wide">
+        <div class="section-header">
+          <span class="section-overline">Components</span>
+          <h2 class="headline-2" id="cards-heading">Product Cards</h2>
+        </div>
+
+        <div class="card-grid-3">
+          <!-- Card 1 -->
+          <article class="card-product hover-zoom" aria-label="Nike Air Max 270">
+            <div class="card-product-image-wrap">
+              <div class="product-img-placeholder card-product-image" aria-hidden="true" role="img">👟</div>
+              <div class="card-product-badge">
+                <span class="product-badge product-badge--new">New</span>
+              </div>
+              <button class="card-product-wishlist" aria-label="Add Nike Air Max 270 to favorites">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+            </div>
+            <div class="card-product-body">
+              <div class="card-product-category">Men's Shoes</div>
+              <div class="card-product-name">Nike Air Max 270</div>
+              <div class="card-product-colors">4 Colors</div>
+              <div class="card-product-footer">
+                <span class="price-small">$150</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card-product hover-zoom" aria-label="Nike React Infinity Run">
+            <div class="card-product-image-wrap">
+              <div class="product-img-placeholder card-product-image" aria-hidden="true" role="img">🏃</div>
+              <div class="card-product-badge">
+                <span class="product-badge product-badge--best-seller">Best Seller</span>
+              </div>
+              <button class="card-product-wishlist" aria-label="Add Nike React Infinity Run to favorites">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+            </div>
+            <div class="card-product-body">
+              <div class="card-product-category">Running Shoes</div>
+              <div class="card-product-name">Nike React Infinity Run Flyknit 3</div>
+              <div class="card-product-colors">6 Colors</div>
+              <div class="card-product-footer">
+                <span class="price-small">$160</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card-product hover-zoom" aria-label="Air Jordan 1 Retro High OG">
+            <div class="card-product-image-wrap">
+              <div class="product-img-placeholder card-product-image" aria-hidden="true" role="img">⛹️</div>
+              <div class="card-product-badge">
+                <span class="product-badge product-badge--sale">Sale</span>
+              </div>
+              <button class="card-product-wishlist" aria-label="Add Air Jordan 1 to favorites">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+            </div>
+            <div class="card-product-body">
+              <div class="card-product-category">Basketball · Jordan Brand</div>
+              <div class="card-product-name">Air Jordan 1 Retro High OG</div>
+              <div class="card-product-colors">2 Colors</div>
+              <div class="card-product-footer">
+                <div class="flex items-center gap-3">
+                  <span class="price-small price-sale">$140</span>
+                  <span class="price-original">$180</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Stat Cards -->
+        <div class="mt-8">
+          <div class="label-secondary mb-4">Stat Cards</div>
+          <div class="grid-4">
+            <div class="card-stat">
+              <div class="card-stat-value">1M+</div>
+              <div class="card-stat-label">Athletes Worldwide</div>
+              <div class="card-stat-desc">Nike members setting records every day.</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">84</div>
+              <div class="card-stat-label">Countries</div>
+              <div class="card-stat-desc">Global reach. Local impact.</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">42K</div>
+              <div class="card-stat-label">Products</div>
+              <div class="card-stat-desc">From track to street.</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">#1</div>
+              <div class="card-stat-label">Sport Brand</div>
+              <div class="card-stat-desc">Ranked globally for performance.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- FEATURE CARD — Full-bleed editorial                                  -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <section class="section-sm" style="background: var(--color-bg-primary);" aria-labelledby="feature-heading">
+      <div class="container-wide">
+        <div class="label-secondary mb-4" id="feature-heading">Feature Card</div>
+
+        <article class="card-feature">
+          <div class="card-feature-bg feature-img-placeholder" aria-hidden="true">🏋️</div>
+          <div class="card-feature-content">
+            <span class="card-feature-overline">Nike Training</span>
+            <h3 class="card-feature-title">Train Like<br/>There's No<br/>Tomorrow.</h3>
+            <a href="#" class="btn btn-primary--volt card-feature-cta">Shop Training</a>
+          </div>
+        </article>
+
+        <!-- Collection Card -->
+        <div class="mt-4">
+          <div class="label-secondary mb-4">Collection Card</div>
+          <article class="card-collection">
+            <div class="card-collection-image-wrap">
+              <div class="coll-img-placeholder" aria-hidden="true">🌍</div>
+            </div>
+            <div class="card-collection-body">
+              <span class="card-collection-overline">Limited Release</span>
+              <h3 class="card-collection-title">Nike Air<br/>Collection</h3>
+              <p class="card-collection-desc">Four decades of Air. Reimagined for today. Explore the full history of Nike's most iconic cushioning technology.</p>
+              <a href="#" class="btn btn-secondary--dark" style="color: var(--color-white); border-color: var(--color-white);">Shop the Collection</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Editorial Cards -->
+        <div class="mt-4">
+          <div class="label-secondary mb-4">Editorial Cards</div>
+          <div class="grid-3">
+            <article class="card-editorial">
+              <div class="card-editorial-date">June 24, 2026</div>
+              <h3 class="card-editorial-title">The Future of Running Tech</h3>
+              <p class="card-editorial-excerpt">How Nike's Vaporfly changed the marathon forever — and what comes next.</p>
+              <a href="#" class="card-editorial-link">Read More →</a>
+            </article>
+            <article class="card-editorial">
+              <div class="card-editorial-date">June 20, 2026</div>
+              <h3 class="card-editorial-title">Behind the Swoosh</h3>
+              <p class="card-editorial-excerpt">The design story behind Nike's most iconic symbol. 50+ years and still evolving.</p>
+              <a href="#" class="card-editorial-link">Read More →</a>
+            </article>
+            <article class="card-editorial">
+              <div class="card-editorial-date">June 18, 2026</div>
+              <h3 class="card-editorial-title">Air Max Day 2026</h3>
+              <p class="card-editorial-excerpt">Celebrating 40 years of Air cushioning with limited drops and global events.</p>
+              <a href="#" class="card-editorial-link">Read More →</a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- FORMS                                                                -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <section id="forms" class="section" style="background: var(--color-bg-secondary);" aria-labelledby="forms-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-overline">Components</span>
+          <h2 class="headline-2" id="forms-heading">Forms</h2>
+        </div>
+
+        <div class="grid-2" style="gap: var(--space-10);">
+          <!-- Column 1 -->
+          <div style="display: flex; flex-direction: column; gap: var(--space-5);">
+
+            <div class="form-group">
+              <label class="form-label required" for="email">Email Address</label>
+              <input class="input" type="email" id="email" placeholder="your@email.com" autocomplete="email" />
+              <span class="form-helper">We'll never share your email.</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="search-demo">Search</label>
+              <div class="input-search-wrapper">
+                <span class="input-search-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </span>
+                <input class="input-search" type="search" id="search-demo" placeholder="Search Nike.com" aria-label="Search" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="phone">Phone Number</label>
+              <input class="input error" type="tel" id="phone" value="123-abc-xyz" autocomplete="tel" aria-describedby="phone-error" aria-invalid="true" />
+              <span class="form-error" id="phone-error">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Invalid phone format.
+              </span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="size-select">Select Size</label>
+              <div class="select-wrapper">
+                <select class="select" id="size-select">
+                  <option>Choose a size</option>
+                  <option>US 7 / EU 40</option>
+                  <option>US 8 / EU 41</option>
+                  <option selected>US 9 / EU 42</option>
+                  <option>US 10 / EU 43</option>
+                  <option>US 11 / EU 44</option>
+                </select>
+                <span class="select-arrow" aria-hidden="true">▼</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="notes">Notes</label>
+              <textarea class="textarea" id="notes" placeholder="Any special requests..." rows="4"></textarea>
+            </div>
+
+          </div>
+
+          <!-- Column 2: Toggle/Checkbox/Radio -->
+          <div style="display: flex; flex-direction: column; gap: var(--space-6);">
+
+            <!-- Checkboxes -->
+            <div>
+              <div class="form-label mb-3">Preferences</div>
+              <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+                <label class="checkbox-wrapper">
+                  <span class="checkbox">
+                    <input type="checkbox" checked />
+                    <span class="checkbox-box"></span>
+                  </span>
+                  <span class="checkbox-label">Nike email updates</span>
+                </label>
+                <label class="checkbox-wrapper">
+                  <span class="checkbox">
+                    <input type="checkbox" />
+                    <span class="checkbox-box"></span>
+                  </span>
+                  <span class="checkbox-label">Nike App notifications</span>
+                </label>
+                <label class="checkbox-wrapper">
+                  <span class="checkbox">
+                    <input type="checkbox" checked />
+                    <span class="checkbox-box"></span>
+                  </span>
+                  <span class="checkbox-label">Early access to new releases</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Radio -->
+            <div>
+              <div class="form-label mb-3">Ship to</div>
+              <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+                <label class="radio-wrapper">
+                  <span class="radio">
+                    <input type="radio" name="shipping" checked />
+                    <span class="radio-circle"></span>
+                  </span>
+                  <span class="radio-label">Standard (3–5 days)</span>
+                </label>
+                <label class="radio-wrapper">
+                  <span class="radio">
+                    <input type="radio" name="shipping" />
+                    <span class="radio-circle"></span>
+                  </span>
+                  <span class="radio-label">Express (1–2 days)</span>
+                </label>
+                <label class="radio-wrapper">
+                  <span class="radio">
+                    <input type="radio" name="shipping" />
+                    <span class="radio-circle"></span>
+                  </span>
+                  <span class="radio-label">Overnight</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Toggles -->
+            <div>
+              <div class="form-label mb-3">Notification Settings</div>
+              <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                  <span class="body-small" style="color: var(--color-label-primary);">Push notifications</span>
+                  <label class="toggle" aria-label="Push notifications">
+                    <input type="checkbox" checked />
+                    <span class="toggle-track"></span>
+                    <span class="toggle-thumb"></span>
+                  </label>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                  <span class="body-small" style="color: var(--color-label-primary);">Drop alerts</span>
+                  <label class="toggle" aria-label="Drop alerts">
+                    <input type="checkbox" checked />
+                    <span class="toggle-track"></span>
+                    <span class="toggle-thumb"></span>
+                  </label>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                  <span class="body-small" style="color: var(--color-label-primary);">Marketing emails</span>
+                  <label class="toggle" aria-label="Marketing emails">
+                    <input type="checkbox" />
+                    <span class="toggle-track"></span>
+                    <span class="toggle-thumb"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Progress bar demo -->
+            <div>
+              <div class="form-label mb-3">Stock Availability</div>
+              <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+                <div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                    <span class="label-secondary">US 9</span>
+                    <span class="label-secondary">8 left</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 30%;"></div>
+                  </div>
+                </div>
+                <div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                    <span class="label-secondary">US 10</span>
+                    <span class="label-secondary">2 left</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill red" style="width: 8%;"></div>
+                  </div>
+                </div>
+                <div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                    <span class="label-secondary">US 11</span>
+                    <span class="label-secondary">Sold Out</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- NAVIGATION DEMO                                                      -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <section class="section" style="background: var(--color-bg-primary);" aria-labelledby="nav-demo-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-overline">Components</span>
+          <h2 class="headline-2" id="nav-demo-heading">Navigation</h2>
+        </div>
+
+        <!-- Breadcrumb -->
+        <div class="mb-8">
+          <div class="label-secondary mb-3">Breadcrumb</div>
+          <nav aria-label="Breadcrumb example">
+            <ol class="nav-breadcrumb" role="list">
+              <li class="breadcrumb-item"><a href="#">Home</a><span class="breadcrumb-separator" aria-hidden="true">/</span></li>
+              <li class="breadcrumb-item"><a href="#">Men's</a><span class="breadcrumb-separator" aria-hidden="true">/</span></li>
+              <li class="breadcrumb-item"><a href="#">Shoes</a><span class="breadcrumb-separator" aria-hidden="true">/</span></li>
+              <li class="breadcrumb-item"><span aria-current="page">Nike Air Max 270</span></li>
+            </ol>
+          </nav>
+        </div>
+
+        <!-- Tabs -->
+        <div class="mb-8">
+          <div class="label-secondary mb-3">Tabs</div>
+          <nav aria-label="Product tabs">
+            <div class="tabs" role="tablist">
+              <button class="tab-item active" role="tab" aria-selected="true" aria-controls="panel-details">Details</button>
+              <button class="tab-item" role="tab" aria-selected="false" aria-controls="panel-sizing">Sizing &amp; Fit</button>
+              <button class="tab-item" role="tab" aria-selected="false" aria-controls="panel-shipping">Shipping</button>
+              <button class="tab-item" role="tab" aria-selected="false" aria-controls="panel-reviews">Reviews</button>
+              <button class="tab-item" role="tab" aria-selected="false" aria-controls="panel-related">Related</button>
+            </div>
+          </nav>
+        </div>
+
+        <!-- Badges -->
+        <div class="mb-8">
+          <div class="label-secondary mb-3">Badges &amp; Tags</div>
+          <div class="flex gap-3 flex-wrap">
+            <span class="badge badge-volt">New</span>
+            <span class="badge badge-white">Best Seller</span>
+            <span class="badge badge-red">Sale</span>
+            <span class="badge badge-black">Jordan Brand</span>
+            <span class="badge badge-outline">Member Only</span>
+            <span class="product-badge product-badge--new">New</span>
+            <span class="product-badge product-badge--best-seller">Best Seller</span>
+            <span class="product-badge product-badge--sale">Sale</span>
+          </div>
+        </div>
+
+        <!-- Dividers -->
+        <div class="mb-8">
+          <div class="label-secondary mb-3">Dividers</div>
+          <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+            <hr class="divider" />
+            <hr class="divider-opaque" style="border-top: 1px solid var(--color-separator-opaque);" />
+            <div class="divider-volt" style="border-top: 2px solid var(--color-volt);"></div>
+            <div class="divider-labeled">Or</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- SIZE / COLOR SELECTOR — Product Detail                               -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <section class="section" style="background: var(--color-bg-secondary);" aria-labelledby="pdp-demo-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-overline">Components</span>
+          <h2 class="headline-2" id="pdp-demo-heading">Product Detail</h2>
+        </div>
+
+        <div class="pdp-demo">
+          <!-- Image -->
+          <div class="pdp-image-placeholder" role="img" aria-label="Nike Air Max 270 product image">👟</div>
+
+          <!-- Info -->
+          <div class="pdp-info">
+            <div>
+              <div class="label-secondary">Men's Lifestyle Shoes</div>
+              <h1 class="headline-2 mt-2">Nike Air Max 270</h1>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <span class="price">$150</span>
+              <span class="product-badge product-badge--new">New</span>
+            </div>
+
+            <!-- Color Selector -->
+            <div class="color-selector">
+              <div class="color-selector-label">Color: <strong>Black/Volt/White</strong></div>
+              <div class="color-swatches">
+                <div class="color-swatch selected" style="background: #111111;" role="radio" aria-checked="true" aria-label="Black/Volt/White" tabindex="0"></div>
+                <div class="color-swatch" style="background: #FFFFFF; border-color: #E5E5E5;" role="radio" aria-checked="false" aria-label="White/Grey" tabindex="0"></div>
+                <div class="color-swatch" style="background: #FA3433;" role="radio" aria-checked="false" aria-label="University Red" tabindex="0"></div>
+                <div class="color-swatch" style="background: #CFFC03; border-color: #999;" role="radio" aria-checked="false" aria-label="Volt/Black" tabindex="0"></div>
+                <div class="color-swatch" style="background: #1D4ED8;" role="radio" aria-checked="false" aria-label="Royal Blue" tabindex="0"></div>
+              </div>
+            </div>
+
+            <!-- Size Selector -->
+            <div class="size-selector" role="group" aria-labelledby="size-label">
+              <div class="size-selector-label">
+                <span id="size-label">Select Size</span>
+                <a href="#" class="size-selector-guide">Size Guide</a>
+              </div>
+              <div class="size-grid" role="radiogroup" aria-label="Size selection">
+                <button class="size-btn" role="radio" aria-checked="false">US 7</button>
+                <button class="size-btn" role="radio" aria-checked="false">US 7.5</button>
+                <button class="size-btn" role="radio" aria-checked="false">US 8</button>
+                <button class="size-btn" role="radio" aria-checked="false">US 8.5</button>
+                <button class="size-btn selected" role="radio" aria-checked="true">US 9</button>
+                <button class="size-btn" role="radio" aria-checked="false">US 9.5</button>
+                <button class="size-btn" role="radio" aria-checked="false">US 10</button>
+                <button class="size-btn unavailable" role="radio" aria-checked="false" aria-disabled="true">US 10.5</button>
+                <button class="size-btn" role="radio" aria-checked="false">US 11</button>
+                <button class="size-btn" role="radio" aria-checked="false">US 12</button>
+                <button class="size-btn unavailable" role="radio" aria-checked="false" aria-disabled="true">US 13</button>
+                <button class="size-btn" role="radio" aria-checked="false">US 14</button>
+              </div>
+            </div>
+
+            <!-- Add to Cart -->
+            <button class="add-to-cart" aria-label="Add Nike Air Max 270 in US 9 to cart">
+              Add to Bag
+            </button>
+
+            <!-- Ghost CTA -->
+            <button class="btn btn-ghost" style="justify-content: flex-start; padding: 0; color: var(--color-label-secondary);">
+              Favorite ♡
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- MOTION DEMO                                                           -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <section class="section" style="background: var(--color-bg-primary);" aria-labelledby="motion-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-overline">Animations</span>
+          <h2 class="headline-2" id="motion-heading">Motion System</h2>
+        </div>
+
+        <!-- Marquee demo -->
+        <div class="mb-8">
+          <div class="label-secondary mb-4">Marquee Ticker</div>
+          <div class="marquee-container" aria-hidden="true">
+            <div class="marquee-track">
+              <span class="marquee-item">New Arrivals</span><span class="marquee-dot"></span>
+              <span class="marquee-item">Air Max</span><span class="marquee-dot"></span>
+              <span class="marquee-item">Just Do It</span><span class="marquee-dot"></span>
+              <span class="marquee-item">Free Shipping</span><span class="marquee-dot"></span>
+              <span class="marquee-item">Nike App</span><span class="marquee-dot"></span>
+              <span class="marquee-item">Air Jordan 1</span><span class="marquee-dot"></span>
+              <span class="marquee-item">Dri-FIT</span><span class="marquee-dot"></span>
+              <span class="marquee-item">New Arrivals</span><span class="marquee-dot"></span>
+              <span class="marquee-item">Air Max</span><span class="marquee-dot"></span>
+              <span class="marquee-item">Just Do It</span><span class="marquee-dot"></span>
+              <span class="marquee-item">Free Shipping</span><span class="marquee-dot"></span>
+              <span class="marquee-item">Nike App</span><span class="marquee-dot"></span>
+              <span class="marquee-item">Air Jordan 1</span><span class="marquee-dot"></span>
+              <span class="marquee-item">Dri-FIT</span><span class="marquee-dot"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Motion demos grid -->
+        <div class="motion-demo-grid">
+          <div class="motion-demo-box">
+            <div class="motion-demo-element animate-volt-pulse">⚡</div>
+            <div class="label-secondary">Volt Pulse</div>
+            <div class="body-small" style="text-align: center; color: var(--color-label-tertiary);">2.5s infinite glow</div>
+          </div>
+          <div class="motion-demo-box">
+            <div class="motion-demo-element animate-scale-in">🏃</div>
+            <div class="label-secondary">Scale In</div>
+            <div class="body-small" style="text-align: center; color: var(--color-label-tertiary);">250ms sharp ease</div>
+          </div>
+          <div class="motion-demo-box">
+            <div class="motion-demo-element animate-slide-left">⚡</div>
+            <div class="label-secondary">Slide Left</div>
+            <div class="body-small" style="text-align: center; color: var(--color-label-tertiary);">-40px → 0 entrance</div>
+          </div>
+          <div class="motion-demo-box">
+            <div class="motion-demo-element animate-slide-up delay-100">🎯</div>
+            <div class="label-secondary">Slide Up</div>
+            <div class="body-small" style="text-align: center; color: var(--color-label-tertiary);">+40px → 0 entrance</div>
+          </div>
+          <div class="motion-demo-box hover-zoom">
+            <div class="motion-demo-element" style="width: 100%; height: 100px; font-size: 48px;">👟</div>
+            <div class="label-secondary">Card Hover Zoom</div>
+            <div class="body-small" style="text-align: center; color: var(--color-label-tertiary);">scale(1.05) on hover</div>
+          </div>
+          <div class="motion-demo-box">
+            <div class="spinner"></div>
+            <div class="label-secondary">Spinner</div>
+            <div class="body-small" style="text-align: center; color: var(--color-label-tertiary);">0.70s linear</div>
+          </div>
+        </div>
+
+        <!-- Timing reference -->
+        <div class="mt-8">
+          <div class="label-secondary mb-4">Duration Scale</div>
+          <div class="grid-4">
+            <div style="background: var(--color-bg-secondary); padding: var(--space-5); border-left: 3px solid var(--color-volt);">
+              <div class="headline-3 text-volt">100ms</div>
+              <div class="label-secondary mt-2">Instant</div>
+              <div class="body-small" style="color: var(--color-label-tertiary);">Button press</div>
+            </div>
+            <div style="background: var(--color-bg-secondary); padding: var(--space-5); border-left: 3px solid var(--color-volt);">
+              <div class="headline-3 text-volt">150ms</div>
+              <div class="label-secondary mt-2">Fast</div>
+              <div class="body-small" style="color: var(--color-label-tertiary);">Hover states</div>
+            </div>
+            <div style="background: var(--color-bg-secondary); padding: var(--space-5); border-left: 3px solid var(--color-volt);">
+              <div class="headline-3 text-volt">250ms</div>
+              <div class="label-secondary mt-2">Normal</div>
+              <div class="body-small" style="color: var(--color-label-tertiary);">Card reveals</div>
+            </div>
+            <div style="background: var(--color-bg-secondary); padding: var(--space-5); border-left: 3px solid var(--color-volt);">
+              <div class="headline-3 text-volt">350ms</div>
+              <div class="label-secondary mt-2">Moderate</div>
+              <div class="body-small" style="color: var(--color-label-tertiary);">Drawers, sheets</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Easing reference -->
+        <div class="mt-6" style="background: var(--color-bg-secondary); padding: var(--space-6);">
+          <div class="label-secondary mb-3">Nike Easing</div>
+          <div class="headline-3 text-volt" style="font-size: var(--text-16); font-family: var(--font-mono);">cubic-bezier(0.4, 0, 0.2, 1)</div>
+          <div class="body-small mt-2" style="color: var(--color-label-tertiary);">Fast deceleration → assertive, snappy feel. Material Design's standard easing, adopted by Nike for maximum kinetic energy.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- MODALS PREVIEW                                                        -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <section class="section" style="background: var(--color-bg-secondary);" aria-labelledby="modals-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-overline">Components</span>
+          <h2 class="headline-2" id="modals-heading">Modals &amp; Overlays</h2>
+        </div>
+
+        <!-- Inline modal preview (not functional overlay — for showcase) -->
+        <div class="grid-2">
+          <!-- Modal Dialog Preview -->
+          <div>
+            <div class="label-secondary mb-4">Modal Dialog</div>
+            <div style="background: var(--color-bg-primary); padding: var(--space-6); position: relative;">
+              <div class="modal-dialog" style="position: relative; max-height: none; animation: none; border-top-color: var(--color-volt);">
+                <div class="modal-dialog-header">
+                  <div class="modal-dialog-title">Select Your Size</div>
+                  <button class="modal-dialog-close" aria-label="Close">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  </button>
+                </div>
+                <div class="modal-dialog-body">
+                  <p>Choose the right size for Nike Air Max 270. Our size guide helps you find the perfect fit.</p>
+                  <div class="size-grid mt-4" style="grid-template-columns: repeat(5, 1fr);">
+                    <button class="size-btn">7</button>
+                    <button class="size-btn">8</button>
+                    <button class="size-btn selected">9</button>
+                    <button class="size-btn">10</button>
+                    <button class="size-btn unavailable">11</button>
+                  </div>
+                </div>
+                <div class="modal-dialog-footer">
+                  <button class="btn btn-secondary">Cancel</button>
+                  <button class="btn btn-primary--volt">Add to Bag</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Drawer Preview -->
+          <div>
+            <div class="label-secondary mb-4">Drawer Nav Panel</div>
+            <div style="background: var(--color-bg-primary); padding: var(--space-6);">
+              <div style="background: var(--color-bg-primary); border: 1px solid var(--color-separator); max-width: 300px; overflow: hidden;">
+                <div class="drawer-nav-header">
+                  <span class="nav-wordmark">Nike</span>
+                  <button class="nav-mobile-close" aria-label="Close menu">✕</button>
+                </div>
+                <div class="drawer-nav-body">
+                  <a class="drawer-nav-item" href="#">New &amp; Featured →</a>
+                  <a class="drawer-nav-item" href="#">Men →</a>
+                  <a class="drawer-nav-item" href="#">Women →</a>
+                  <a class="drawer-nav-item" href="#">Kids →</a>
+                  <a class="drawer-nav-item" href="#">Sale →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Links to component pages -->
+        <div class="mt-10">
+          <div class="label-secondary mb-4">Component Showcase Pages</div>
+          <div class="flex gap-4 flex-wrap">
+            <a href="components/buttons.html" class="btn btn-secondary">Buttons →</a>
+            <a href="components/cards.html" class="btn btn-secondary">Cards →</a>
+            <a href="components/forms.html" class="btn btn-secondary">Forms →</a>
+            <a href="components/navigation.html" class="btn btn-secondary">Navigation →</a>
+            <a href="components/modals.html" class="btn btn-secondary">Modals →</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <!-- FOOTER                                                               -->
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container-wide">
+      <div class="footer-grid">
+        <div>
+          <span class="footer-col-label">Resources</span>
+          <ul class="footer-links">
+            <li><a href="#">Find a Store</a></li>
+            <li><a href="#">Become a Member</a></li>
+            <li><a href="#">Send Us Feedback</a></li>
+            <li><a href="#">Student Discount</a></li>
+          </ul>
+        </div>
+        <div>
+          <span class="footer-col-label">Help</span>
+          <ul class="footer-links">
+            <li><a href="#">Order Status</a></li>
+            <li><a href="#">Shipping &amp; Delivery</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Payment Options</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <span class="footer-col-label">Company</span>
+          <ul class="footer-links">
+            <li><a href="#">About Nike</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Investors</a></li>
+            <li><a href="#">Sustainability</a></li>
+          </ul>
+        </div>
+        <div>
+          <span class="footer-col-label">Design System</span>
+          <ul class="footer-links">
+            <li><a href="tokens.css">tokens.css</a></li>
+            <li><a href="typography.css">typography.css</a></li>
+            <li><a href="components.css">components.css</a></li>
+            <li><a href="animations.css">animations.css</a></li>
+            <li><a href="prompt.md">prompt.md</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 Nike Design System. Built with the Nike Design Language.</p>
+        <ul class="footer-legal">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Sale</a></li>
+          <li><a href="#">Cookie Settings</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const mobileToggle = document.querySelector('.nav-mobile-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileClose = document.querySelector('.nav-mobile-close');
+
+    if (mobileToggle && mobileNav) {
+      mobileToggle.addEventListener('click', () => {
+        mobileNav.classList.add('is-open');
+        mobileNav.setAttribute('aria-hidden', 'false');
+        mobileToggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      });
+
+      [mobileClose, mobileNav].forEach(el => {
+        el && el.addEventListener('click', (e) => {
+          if (e.target === mobileNav || e.target === mobileClose || mobileClose.contains(e.target)) {
+            mobileNav.classList.remove('is-open');
+            mobileNav.setAttribute('aria-hidden', 'true');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+          }
+        });
+      });
+    }
+
+    // Size button selection
+    document.querySelectorAll('.size-btn:not(.unavailable)').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const grid = btn.closest('.size-grid');
+        if (grid) {
+          grid.querySelectorAll('.size-btn').forEach(b => {
+            b.classList.remove('selected');
+            b.setAttribute('aria-checked', 'false');
+          });
+        }
+        btn.classList.add('selected');
+        btn.setAttribute('aria-checked', 'true');
+      });
+    });
+
+    // Tab switching
+    document.querySelectorAll('.tab-item').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabset = tab.closest('.tabs');
+        if (tabset) {
+          tabset.querySelectorAll('.tab-item').forEach(t => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+        }
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+      });
+    });
+
+    // Color swatch selection
+    document.querySelectorAll('.color-swatch').forEach(swatch => {
+      swatch.addEventListener('click', () => {
+        const group = swatch.closest('.color-swatches');
+        if (group) {
+          group.querySelectorAll('.color-swatch').forEach(s => {
+            s.classList.remove('selected');
+            s.setAttribute('aria-checked', 'false');
+          });
+        }
+        swatch.classList.add('selected');
+        swatch.setAttribute('aria-checked', 'true');
+      });
+    });
+
+    // Scroll reveal
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.reveal, .reveal-left').forEach(el => {
+        revealObserver.observe(el);
+      });
+    }
+  </script>
+</body>
+</html>
