@@ -438,7 +438,14 @@
        ========================================================= -->
   <nav class="nav-global" id="main-nav" aria-label="Main navigation">
     <div class="nav-inner">
-      <a href="#" class="nav-logo" aria-label="Stripe Design System home">Stripe</a>
+      <!-- Stripe "S" mark — CSS approximation. Replace with licensed Stripe logo asset. -->
+      <a href="#" class="nav-logo" aria-label="Stripe Design System home" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+        <svg width="22" height="24" viewBox="0 0 22 24" fill="none" aria-hidden="true">
+          <rect width="22" height="24" rx="5" fill="#635BFF"/>
+          <path d="M11 7c-2.2 0-3.8 1-3.8 2.8 0 3.8 6.2 2.8 6.2 5.4 0 1.1-0.9 1.8-2.4 1.8-1.8 0-3.3-0.8-4.2-1.8l-1.5 2.2C7 18.8 9 19.6 11 19.6c2.5 0 4.2-1.2 4.2-3.2 0-4-6.2-3-6.2-5.4 0-1 0.8-1.6 2.1-1.6 1.4 0 2.7 0.6 3.6 1.4L16 8.6C14.8 7.6 13 7 11 7z" fill="white"/>
+        </svg>
+        <span style="font-weight:700;font-size:17px;color:var(--color-label-primary);letter-spacing:-0.01em;">Stripe</span>
+      </a>
       <ul class="nav-links" role="list">
         <li><a href="#typography" class="nav-link">Typography</a></li>
         <li><a href="#components" class="nav-link">Components</a></li>

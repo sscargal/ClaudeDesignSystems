@@ -2408,3 +2408,70 @@
   align-items: center;
   gap: var(--space-2);
 }
+
+
+/* =============================================================================
+   BRAND LOGO COMPONENT
+   For use in document templates. Replace the SVG path with your licensed logo.
+   ============================================================================= */
+
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3, 12px);
+  text-decoration: none;
+  color: inherit;
+  flex-shrink: 0;
+}
+
+.brand-logo-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  /* Default size — override with .brand-logo--sm / --lg */
+  width: 32px;
+  height: 32px;
+}
+
+.brand-logo-wordmark {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Size variants */
+.brand-logo--sm .brand-logo-mark  { width: 20px; height: 20px; }
+.brand-logo--sm .brand-logo-wordmark { font-size: 14px; }
+
+.brand-logo--md .brand-logo-mark  { width: 32px; height: 32px; }
+.brand-logo--md .brand-logo-wordmark { font-size: 17px; }
+
+.brand-logo--lg .brand-logo-mark  { width: 48px; height: 48px; }
+.brand-logo--lg .brand-logo-wordmark { font-size: 24px; }
+
+.brand-logo--xl .brand-logo-mark  { width: 64px; height: 64px; }
+.brand-logo--xl .brand-logo-wordmark { font-size: 32px; }
+
+/* Icon-only variant — no wordmark */
+.brand-logo--icon-only .brand-logo-wordmark { display: none; }
+
+/* Wordmark-only variant — no mark */
+.brand-logo--wordmark-only .brand-logo-mark { display: none; }
+
+/* Placeholder for document templates — shows dimensions, marks where logo goes */
+.brand-logo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed currentColor;
+  border-radius: 4px;
+  opacity: 0.3;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  width: 120px;
+  height: 36px;
+}

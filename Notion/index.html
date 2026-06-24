@@ -359,7 +359,14 @@
        TOP NAVIGATION BAR
        ========================================================================= -->
   <nav class="showcase-nav" role="navigation" aria-label="Design system navigation">
-    <div class="showcase-nav-logo">☁ Notion DS</div>
+    <!-- Notion "N" mark — CSS approximation. Replace with licensed Notion logo asset. -->
+    <a href="#" aria-label="Notion Design System home" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:inherit;" class="showcase-nav-logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <rect width="22" height="22" rx="4" fill="var(--color-label-primary)"/>
+        <path d="M6 5.5h1.6l6.1 8.2V5.5H15v11h-1.6L7.3 8.3V16.5H6V5.5z" fill="var(--color-bg)"/>
+      </svg>
+      <span>Notion Design System</span>
+    </a>
     <div class="showcase-nav-links">
       <a href="#page-anatomy"   class="showcase-nav-link">Page Anatomy</a>
       <a href="#colors"         class="showcase-nav-link">Colors</a>
