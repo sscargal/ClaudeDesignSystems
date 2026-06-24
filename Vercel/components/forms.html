@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms — Vercel Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .page { max-width: 860px; margin: 0 auto; padding: var(--space-10) var(--space-6); }
+    .page-back { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text-13); color: var(--color-label-secondary); text-decoration: none; margin-bottom: var(--space-8); transition: color var(--duration-instant) var(--ease-vercel); }
+    .page-back:hover { color: var(--color-label-primary); text-decoration: none; }
+    .page-title { font-size: var(--text-36); font-weight: var(--weight-bold); letter-spacing: var(--tracking-tight-2); margin: 0 0 var(--space-3); }
+    .page-desc { font-size: var(--text-16); color: var(--color-label-secondary); line-height: var(--leading-relaxed); margin: 0 0 var(--space-12); }
+    .group-label { font-size: var(--text-11); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: 0.10em; color: var(--color-label-tertiary); margin: var(--space-12) 0 var(--space-5); border-top: var(--border-subtle); padding-top: var(--space-8); }
+    .group-label:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+    code { font-family: var(--font-mono); font-size: var(--text-12); color: var(--color-accent-teal); background: var(--color-surface-2); border: var(--border-subtle); border-radius: var(--radius-xs); padding: 2px 6px; }
+    .form-demo { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-10); }
+    @media (max-width: 700px) { .form-demo { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<main class="page">
+
+  <a href="../index.html" class="page-back">← Back to Design System</a>
+
+  <span style="display: block; font-size: var(--text-11); font-weight: var(--weight-semibold); letter-spacing: 0.10em; text-transform: uppercase; color: var(--color-label-tertiary); margin-bottom: var(--space-3);">Components</span>
+  <h1 class="page-title">Forms</h1>
+  <p class="page-desc">
+    Dark-styled inputs. Surface-2 background, 1px border, 6px radius.
+    Focus: white border + shadow ring. Instant 100ms transitions.
+    Mono variant for env vars, paths, tokens, hashes.
+  </p>
+
+  <!-- Text Inputs -->
+  <div class="group-label">Text Inputs <code>.input</code></div>
+  <div class="form-demo">
+    <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+
+      <div class="form-group">
+        <label class="form-label" for="f1">Project Name</label>
+        <input type="text" id="f1" class="input" placeholder="my-app" value="my-app">
+        <span class="form-helper">Default state</span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="f2">Domain</label>
+        <div class="input-wrapper">
+          <span class="input-icon-left" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M8 1.5C6 4 5 6 5 8s1 4 3 6.5M8 1.5C10 4 11 6 11 8s-1 4-3 6.5M1.5 8h13" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </span>
+          <input type="text" id="f2" class="input has-icon-left" placeholder="myapp.com" value="myapp.vercel.app">
+        </div>
+        <span class="form-helper">With icon left</span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label required" for="f3">Email</label>
+        <input type="email" id="f3" class="input" placeholder="you@example.com">
+        <span class="form-helper">Required field</span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="f4">Search</label>
+        <div class="input-wrapper">
+          <span class="input-icon-left" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <input type="search" id="f4" class="input has-icon-left" placeholder="Search deployments…">
+        </div>
+      </div>
+
+    </div>
+    <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+
+      <div class="form-group">
+        <label class="form-label" for="f5">Error State</label>
+        <input type="text" id="f5" class="input error" value="bad-project-name!!">
+        <span class="form-error">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
+            <path d="M6 1a5 5 0 1 0 0 10A5 5 0 0 0 6 1ZM5.5 3.5h1v3h-1v-3Zm0 4h1v1h-1v-1Z"/>
+          </svg>
+          Only lowercase letters, numbers, and hyphens are allowed.
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="f6">Success State</label>
+        <input type="text" id="f6" class="input success" value="my-new-project">
+        <span class="form-helper" style="color: var(--color-success);">✓ Name is available</span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="f7">Disabled</label>
+        <input type="text" id="f7" class="input" value="read-only-value" disabled>
+        <span class="form-helper">Cannot be edited</span>
+      </div>
+
+      <!-- Sizes -->
+      <div class="form-group">
+        <span class="form-label">Sizes</span>
+        <input type="text" class="input input-sm" placeholder="Small (28px)" style="margin-bottom: var(--space-2);">
+        <input type="text" class="input" placeholder="Medium (36px)" style="margin-bottom: var(--space-2);">
+        <input type="text" class="input input-lg" placeholder="Large (44px)">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mono Inputs -->
+  <div class="group-label">Monospace Inputs <code>.input-mono</code></div>
+  <div class="form-demo">
+    <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+
+      <div class="form-group">
+        <label class="form-label" for="m1">Build Command</label>
+        <input type="text" id="m1" class="input input-mono" value="next build">
+        <span class="form-helper">Executed during build step</span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="m2">Output Directory</label>
+        <input type="text" id="m2" class="input input-mono" value=".next">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="m3">Root Directory</label>
+        <input type="text" id="m3" class="input input-mono" value="./">
+      </div>
+
+    </div>
+    <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+
+      <div class="form-group">
+        <label class="form-label" for="m4">API Secret Key</label>
+        <input type="password" id="m4" class="input input-mono" placeholder="sk_live_••••••••••••••••">
+        <span class="form-helper">Secret — never shown after save</span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="m5">Webhook URL</label>
+        <input type="url" id="m5" class="input input-mono" placeholder="https://hooks.example.com/vercel">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="m6">Commit SHA</label>
+        <input type="text" id="m6" class="input input-mono" value="a4f3c127e9b2d71c8f0d3b993ef88022" readonly>
+        <span class="form-helper">Read-only hash</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Textarea -->
+  <div class="group-label">Textarea <code>.textarea</code></div>
+  <div class="form-demo">
+    <div class="form-group">
+      <label class="form-label" for="ta1">Deployment Notes</label>
+      <textarea id="ta1" class="textarea" rows="4" placeholder="Describe what changed in this deployment…"></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="ta2">Environment Variables (Bulk Edit)</label>
+      <textarea id="ta2" class="textarea input-mono" rows="4" placeholder="KEY=value&#10;ANOTHER_KEY=another_value">DATABASE_URL=postgres://localhost:5432/mydb
+NEXT_PUBLIC_API_URL=https://api.example.com
+NODE_ENV=production</textarea>
+      <span class="form-helper">One variable per line in KEY=value format</span>
+    </div>
+  </div>
+
+  <!-- Select -->
+  <div class="group-label">Select <code>.select</code></div>
+  <div class="form-demo">
+    <div class="form-group">
+      <label class="form-label" for="s1">Framework Preset</label>
+      <div class="select-wrapper">
+        <select id="s1" class="select">
+          <option>Next.js</option>
+          <option>Nuxt</option>
+          <option>SvelteKit</option>
+          <option>Astro</option>
+          <option>Remix</option>
+          <option>Gatsby</option>
+          <option>Create React App</option>
+          <option>Other</option>
+        </select>
+        <span class="select-chevron" aria-hidden="true">▾</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="s2">Node.js Version</label>
+      <div class="select-wrapper">
+        <select id="s2" class="select">
+          <option>22.x (Latest)</option>
+          <option selected>20.x (LTS)</option>
+          <option>18.x</option>
+          <option>16.x</option>
+        </select>
+        <span class="select-chevron" aria-hidden="true">▾</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkboxes -->
+  <div class="group-label">Checkboxes <code>.checkbox-wrapper</code></div>
+  <div style="display: flex; flex-direction: column; gap: var(--space-3); max-width: 400px;">
+    <label class="checkbox-wrapper">
+      <span class="checkbox">
+        <input type="checkbox" checked>
+        <span class="checkbox-box"></span>
+      </span>
+      <span class="checkbox-label">Auto-deploy on git push</span>
+    </label>
+    <label class="checkbox-wrapper">
+      <span class="checkbox">
+        <input type="checkbox" checked>
+        <span class="checkbox-box"></span>
+      </span>
+      <span class="checkbox-label">Enable deployment protection</span>
+    </label>
+    <label class="checkbox-wrapper">
+      <span class="checkbox">
+        <input type="checkbox">
+        <span class="checkbox-box"></span>
+      </span>
+      <span class="checkbox-label">Preview URLs for pull requests</span>
+    </label>
+    <label class="checkbox-wrapper">
+      <span class="checkbox">
+        <input type="checkbox" disabled>
+        <span class="checkbox-box"></span>
+      </span>
+      <span class="checkbox-label" style="opacity: 0.4;">Disabled option</span>
+    </label>
+  </div>
+
+  <!-- Toggles -->
+  <div class="group-label">Toggle Switches <code>.toggle</code></div>
+  <div style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 320px;">
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <div>
+        <div style="font-size: var(--text-14); color: var(--color-label-primary); margin-bottom: 2px;">Edge Runtime</div>
+        <div style="font-size: var(--text-12); color: var(--color-label-tertiary);">Use Vercel Edge Functions</div>
+      </div>
+      <label class="toggle-label">
+        <span class="toggle">
+          <input type="checkbox" checked>
+          <span class="toggle-track"></span>
+          <span class="toggle-thumb"></span>
+        </span>
+      </label>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <div>
+        <div style="font-size: var(--text-14); color: var(--color-label-primary); margin-bottom: 2px;">Streaming</div>
+        <div style="font-size: var(--text-12); color: var(--color-label-tertiary);">Enable React Server Component streaming</div>
+      </div>
+      <label class="toggle-label">
+        <span class="toggle">
+          <input type="checkbox" checked>
+          <span class="toggle-track"></span>
+          <span class="toggle-thumb"></span>
+        </span>
+      </label>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <div>
+        <div style="font-size: var(--text-14); color: var(--color-label-primary); margin-bottom: 2px;">Vercel Analytics</div>
+        <div style="font-size: var(--text-12); color: var(--color-label-tertiary);">Collect Real User Monitoring data</div>
+      </div>
+      <label class="toggle-label">
+        <span class="toggle">
+          <input type="checkbox">
+          <span class="toggle-track"></span>
+          <span class="toggle-thumb"></span>
+        </span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Complete form example -->
+  <div class="group-label">Complete Form Example — New Project</div>
+  <form style="max-width: 480px; display: flex; flex-direction: column; gap: var(--space-5);" onsubmit="return false;">
+
+    <div class="form-group">
+      <label class="form-label required" for="np-name">Project Name</label>
+      <input type="text" id="np-name" class="input" placeholder="my-next-app">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label required" for="np-repo">Git Repository</label>
+      <div class="input-wrapper">
+        <span class="input-icon-left" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+          </svg>
+        </span>
+        <input type="url" id="np-repo" class="input has-icon-left" placeholder="github.com/you/my-next-app">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="np-framework">Framework</label>
+      <div class="select-wrapper">
+        <select id="np-framework" class="select">
+          <option>Next.js</option>
+          <option>Nuxt</option>
+          <option>SvelteKit</option>
+          <option>Astro</option>
+          <option>Remix</option>
+        </select>
+        <span class="select-chevron" aria-hidden="true">▾</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="np-env">Environment Variables</label>
+      <textarea id="np-env" class="textarea input-mono" rows="3" placeholder="KEY=value"></textarea>
+      <span class="form-helper">Add environment variables for this project.</span>
+    </div>
+
+    <div style="display: flex; gap: var(--space-2);">
+      <button type="button" class="btn btn-ghost" style="flex: 1;">Cancel</button>
+      <button type="submit" class="btn btn-primary" style="flex: 2;">
+        <span aria-hidden="true">▲</span>
+        Deploy
+      </button>
+    </div>
+
+  </form>
+
+</main>
+</body>
+</html>

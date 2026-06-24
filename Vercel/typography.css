@@ -1,0 +1,389 @@
+/* =============================================================================
+   Vercel Design System — Typography
+   Version 1.0.0 | Geist Type Scale
+   ============================================================================= */
+
+/* =============================================================================
+   BASE RESET & DEFAULTS
+   ============================================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-16);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-label-primary);
+  background-color: var(--color-bg);
+  margin: 0;
+  padding: 0;
+}
+
+/* =============================================================================
+   HEADING CLASSES
+   Vercel uses precise tracking for engineered precision
+   ============================================================================= */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  color: var(--color-label-primary);
+  line-height: var(--leading-heading);
+}
+
+/* Heading 1 — 48px / 700 / -0.03em — Landing page hero */
+.heading-1,
+h1 {
+  font-size: var(--text-48);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight-3);
+}
+
+/* Heading 2 — 36px / 700 / -0.02em — Section headings */
+.heading-2,
+h2 {
+  font-size: var(--text-36);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight-2);
+}
+
+/* Heading 3 — 28px / 700 / -0.01em — Subsection headings */
+.heading-3,
+h3 {
+  font-size: var(--text-28);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-tight-1);
+}
+
+/* Heading 4 — 24px / 600 — Card titles, modal headings */
+.heading-4,
+h4 {
+  font-size: var(--text-24);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-tight-1);
+}
+
+/* Heading 5 — 20px / 600 — Component headers */
+.heading-5,
+h5 {
+  font-size: var(--text-20);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-normal);
+}
+
+/* =============================================================================
+   BODY TEXT
+   ============================================================================= */
+
+/* Body Large — 18px / 400 / 1.7 — For longer reading text */
+.body-lg {
+  font-size: var(--text-18);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-label-primary);
+}
+
+/* Body — 16px / 400 / 1.6 — Primary reading */
+.body,
+p {
+  font-size: var(--text-16);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-label-primary);
+  margin: 0 0 1em;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* Body Small — 14px — Secondary text */
+.body-sm {
+  font-size: var(--text-14);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-label-secondary);
+}
+
+/* Caption — 13px — Supplementary labels, time-ago, file sizes */
+.caption {
+  font-size: var(--text-13);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-label-secondary);
+}
+
+/* Label — 11px / 600 / uppercase / 0.1em tracking — Section markers */
+.label {
+  font-size: var(--text-11);
+  font-weight: var(--weight-semibold);
+  line-height: 1.2;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--color-label-secondary);
+}
+
+/* =============================================================================
+   MONOSPACE
+   For paths, IDs, commands, env vars, hashes
+   ============================================================================= */
+
+.mono,
+code,
+kbd,
+samp {
+  font-family: var(--font-mono);
+  font-size: var(--text-13);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-mono);
+  color: var(--color-label-primary);
+}
+
+pre {
+  font-family: var(--font-mono);
+  font-size: var(--text-13);
+  line-height: var(--leading-mono);
+  display: block;
+  overflow-x: auto;
+  margin: 0;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+/* Inline code */
+:not(pre) > code {
+  background: var(--color-surface-2);
+  border: var(--border-subtle);
+  border-radius: var(--radius-xs);
+  padding: 0.1em 0.35em;
+  font-size: 0.875em;
+  color: var(--color-accent-teal);
+}
+
+/* =============================================================================
+   LINKS
+   ============================================================================= */
+
+a {
+  color: var(--color-accent-blue);
+  text-decoration: none;
+  transition:
+    color var(--duration-instant) var(--ease-vercel),
+    opacity var(--duration-instant) var(--ease-vercel);
+}
+
+a:hover {
+  color: var(--color-accent-blue-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+a:active {
+  opacity: 0.7;
+}
+
+/* =============================================================================
+   INLINE ELEMENTS
+   ============================================================================= */
+
+strong, b {
+  font-weight: var(--weight-semibold);
+}
+
+em, i {
+  font-style: italic;
+}
+
+mark {
+  background: rgba(80, 227, 194, 0.15);
+  color: var(--color-accent-teal);
+  padding: 0.05em 0.2em;
+  border-radius: var(--radius-xs);
+}
+
+abbr[title] {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
+/* =============================================================================
+   LISTS
+   ============================================================================= */
+
+ul, ol {
+  padding-left: var(--space-5);
+  margin: 0 0 1em;
+}
+
+li {
+  margin-bottom: 0.35em;
+  line-height: var(--leading-body);
+  color: var(--color-label-secondary);
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
+/* =============================================================================
+   GRADIENT TEXT UTILITIES
+   ============================================================================= */
+
+/* White to Teal — Vercel hero signature */
+.text-gradient {
+  background: linear-gradient(
+    90deg,
+    var(--color-gradient-start) 0%,
+    var(--color-gradient-end) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Blue to Teal */
+.text-gradient-accent {
+  background: linear-gradient(
+    90deg,
+    var(--color-gradient-blue-start) 0%,
+    var(--color-gradient-blue-end) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* =============================================================================
+   COLOR UTILITIES
+   ============================================================================= */
+
+.text-primary    { color: var(--color-label-primary) !important; }
+.text-secondary  { color: var(--color-label-secondary) !important; }
+.text-tertiary   { color: var(--color-label-tertiary) !important; }
+.text-teal       { color: var(--color-accent-teal) !important; }
+.text-blue       { color: var(--color-accent-blue) !important; }
+.text-error      { color: var(--color-error) !important; }
+.text-warning    { color: var(--color-warning) !important; }
+.text-success    { color: var(--color-success) !important; }
+.text-white      { color: #FFFFFF !important; }
+
+/* =============================================================================
+   WEIGHT UTILITIES
+   ============================================================================= */
+
+.font-regular  { font-weight: var(--weight-regular); }
+.font-medium   { font-weight: var(--weight-medium); }
+.font-semibold { font-weight: var(--weight-semibold); }
+.font-bold     { font-weight: var(--weight-bold); }
+
+/* =============================================================================
+   ALIGNMENT UTILITIES
+   ============================================================================= */
+
+.text-left   { text-align: left; }
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+
+/* =============================================================================
+   TRUNCATION
+   ============================================================================= */
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* =============================================================================
+   RESPONSIVE TYPOGRAPHY
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  .heading-1, h1 {
+    font-size: var(--text-36);
+  }
+
+  .heading-2, h2 {
+    font-size: var(--text-28);
+  }
+
+  .heading-3, h3 {
+    font-size: var(--text-24);
+  }
+
+  .heading-4, h4 {
+    font-size: var(--text-20);
+  }
+
+  .heading-5, h5 {
+    font-size: var(--text-18);
+  }
+}
+
+@media (max-width: 480px) {
+  .heading-1, h1 {
+    font-size: var(--text-28);
+  }
+
+  .heading-2, h2 {
+    font-size: var(--text-24);
+  }
+
+  .heading-3, h3 {
+    font-size: var(--text-20);
+  }
+}
+
+/* =============================================================================
+   REDUCED MOTION
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

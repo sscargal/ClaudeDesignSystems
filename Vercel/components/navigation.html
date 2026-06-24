@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation — Vercel Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .page { max-width: 960px; margin: 0 auto; padding: var(--space-10) var(--space-6); }
+    .page-back { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text-13); color: var(--color-label-secondary); text-decoration: none; margin-bottom: var(--space-8); transition: color var(--duration-instant) var(--ease-vercel); }
+    .page-back:hover { color: var(--color-label-primary); text-decoration: none; }
+    .page-title { font-size: var(--text-36); font-weight: var(--weight-bold); letter-spacing: var(--tracking-tight-2); margin: 0 0 var(--space-3); }
+    .page-desc { font-size: var(--text-16); color: var(--color-label-secondary); line-height: var(--leading-relaxed); margin: 0 0 var(--space-12); }
+    .group-label { font-size: var(--text-11); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: 0.10em; color: var(--color-label-tertiary); margin: var(--space-12) 0 var(--space-5); border-top: var(--border-subtle); padding-top: var(--space-8); }
+    .group-label:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+    code { font-family: var(--font-mono); font-size: var(--text-12); color: var(--color-accent-teal); background: var(--color-surface-2); border: var(--border-subtle); border-radius: var(--radius-xs); padding: 2px 6px; }
+    .demo-frame { background: var(--color-surface-1); border: var(--border-default); border-radius: var(--radius-md); overflow: hidden; }
+    .demo-bar { height: 52px; background: rgba(0,0,0,0.8); border-bottom: var(--border-subtle); display: flex; align-items: center; padding: 0 var(--space-5); gap: var(--space-5); backdrop-filter: blur(12px); }
+    .demo-logo { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-14); font-weight: var(--weight-semibold); color: var(--color-label-primary); flex-shrink: 0; }
+    .demo-links { display: flex; flex: 1; justify-content: center; gap: 0; }
+    .demo-link { font-size: var(--text-14); color: var(--color-label-secondary); padding: var(--space-1) var(--space-3); cursor: default; border-radius: var(--radius-sm); transition: color var(--duration-instant) var(--ease-vercel); }
+    .demo-link:hover { color: var(--color-label-primary); }
+    .demo-actions { display: flex; gap: var(--space-2); flex-shrink: 0; }
+    .sidebar-demo-wrap { display: flex; height: 360px; }
+    .sidebar-panel { width: 200px; flex-shrink: 0; background: var(--color-surface-1); border-right: var(--border-subtle); padding: var(--space-4) var(--space-3); overflow-y: auto; }
+    .content-panel { flex: 1; padding: var(--space-5); }
+    .content-placeholder { background: var(--color-surface-2); border-radius: var(--radius-sm); margin-bottom: var(--space-3); }
+  </style>
+</head>
+<body>
+<main class="page">
+
+  <a href="../index.html" class="page-back">← Back to Design System</a>
+
+  <span style="display: block; font-size: var(--text-11); font-weight: var(--weight-semibold); letter-spacing: 0.10em; text-transform: uppercase; color: var(--color-label-tertiary); margin-bottom: var(--space-3);">Components</span>
+  <h1 class="page-title">Navigation</h1>
+  <p class="page-desc">
+    Global nav, docs sidebar, breadcrumbs, and underline tabs.
+    All dark-first. Frosted glass for the global nav. 14px nav links, label-secondary → white on hover.
+  </p>
+
+  <!-- Global Nav -->
+  <div class="group-label">Global Nav <code>.nav-global</code></div>
+  <div class="demo-frame">
+    <div class="demo-bar">
+      <div class="demo-logo">
+        <span aria-hidden="true">▲</span>
+        <span>Vercel</span>
+      </div>
+      <div class="demo-links">
+        <span class="demo-link">Products</span>
+        <span class="demo-link">Solutions</span>
+        <span class="demo-link">Resources</span>
+        <span class="demo-link">Enterprise</span>
+        <span class="demo-link">Pricing</span>
+      </div>
+      <div class="demo-actions">
+        <button class="btn btn-ghost btn-sm">Log In</button>
+        <button class="btn btn-primary btn-sm">Sign Up</button>
+      </div>
+    </div>
+    <div style="padding: var(--space-5);">
+      <div style="font-size: var(--text-13); color: var(--color-label-tertiary);">
+        Height: 64px · Pure black + blur(12px) backdrop · Border-bottom subtle · Sticky z-200
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard Nav -->
+  <div class="group-label">Dashboard Nav Bar</div>
+  <div class="demo-frame">
+    <div class="demo-bar" style="height: 52px;">
+      <div class="demo-logo">
+        <span aria-hidden="true">▲</span>
+        <span>acme</span>
+      </div>
+      <div class="demo-links">
+        <span class="demo-link" style="color: var(--color-label-primary);">Overview</span>
+        <span class="demo-link">Deployments</span>
+        <span class="demo-link">Domains</span>
+        <span class="demo-link">Analytics</span>
+        <span class="demo-link">Settings</span>
+      </div>
+      <div class="demo-actions">
+        <button class="btn btn-icon btn-sm" aria-label="Notifications">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M7 1a4.5 4.5 0 0 1 4.5 4.5c0 2 1 3.5 1.5 4H1c.5-.5 1.5-2 1.5-4A4.5 4.5 0 0 1 7 1Z" stroke="currentColor" stroke-width="1.3"/>
+            <path d="M5.5 12a1.5 1.5 0 0 0 3 0" stroke="currentColor" stroke-width="1.3"/>
+          </svg>
+        </button>
+        <div class="avatar avatar-sm">A</div>
+      </div>
+    </div>
+
+    <!-- Project tabs below nav -->
+    <div style="border-bottom: var(--border-default); padding: 0 var(--space-5);">
+      <div class="tabs" style="border-bottom: none;">
+        <button class="tab-item active" role="tab">Deployments</button>
+        <button class="tab-item" role="tab">Logs</button>
+        <button class="tab-item" role="tab">Analytics</button>
+        <button class="tab-item" role="tab">Speed Insights</button>
+        <button class="tab-item" role="tab">Storage</button>
+        <button class="tab-item" role="tab">Settings</button>
+      </div>
+    </div>
+
+    <div style="padding: var(--space-5);">
+      <div style="font-size: var(--text-13); color: var(--color-label-tertiary);">
+        Project nav: 52px · Tabs: underline active, 2px white indicator
+      </div>
+    </div>
+  </div>
+
+  <!-- Docs Sidebar -->
+  <div class="group-label">Docs Sidebar + Layout <code>.nav-docs</code></div>
+  <div class="demo-frame">
+    <div class="sidebar-demo-wrap">
+
+      <nav class="sidebar-panel" aria-label="Docs sidebar">
+
+        <div style="margin-bottom: var(--space-4);">
+          <span class="nav-docs-section-label">Getting Started</span>
+          <a class="nav-docs-item active" href="#">Introduction</a>
+          <a class="nav-docs-item" href="#">Quick Start</a>
+          <a class="nav-docs-item" href="#">Framework Support</a>
+          <div class="nav-docs-nested">
+            <a class="nav-docs-item" href="#">Next.js</a>
+            <a class="nav-docs-item" href="#">Nuxt</a>
+            <a class="nav-docs-item" href="#">SvelteKit</a>
+            <a class="nav-docs-item" href="#">Astro</a>
+          </div>
+        </div>
+
+        <div style="margin-bottom: var(--space-4);">
+          <span class="nav-docs-section-label">Platform</span>
+          <a class="nav-docs-item" href="#">Deployments</a>
+          <a class="nav-docs-item" href="#">Domains</a>
+          <a class="nav-docs-item" href="#">Environment Vars</a>
+          <a class="nav-docs-item" href="#">Functions</a>
+          <a class="nav-docs-item" href="#">Edge Middleware</a>
+          <a class="nav-docs-item" href="#">Analytics</a>
+        </div>
+
+        <div>
+          <span class="nav-docs-section-label">Reference</span>
+          <a class="nav-docs-item" href="#">CLI Reference</a>
+          <a class="nav-docs-item" href="#">REST API</a>
+          <a class="nav-docs-item" href="#">Edge Runtime API</a>
+          <a class="nav-docs-item" href="#">OG Image Generation</a>
+        </div>
+
+      </nav>
+
+      <div class="content-panel">
+        <nav aria-label="Breadcrumb" style="margin-bottom: var(--space-5);">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Docs</a></li>
+            <li class="breadcrumb-item"><span class="breadcrumb-separator" aria-hidden="true">/</span> Getting Started</li>
+            <li class="breadcrumb-item"><span class="breadcrumb-separator" aria-hidden="true">/</span> Introduction</li>
+          </ol>
+        </nav>
+
+        <h2 style="font-size: var(--text-24); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-tight-1); margin: 0 0 var(--space-3);">Introduction to Vercel</h2>
+        <p style="font-size: var(--text-14); color: var(--color-label-secondary); line-height: var(--leading-relaxed); margin: 0 0 var(--space-4);">
+          Vercel provides the developer tools and cloud infrastructure to build, scale, and secure a faster, more personalized web.
+        </p>
+
+        <!-- Skeleton content -->
+        <div class="content-placeholder skeleton" style="height: 12px; width: 90%; margin-bottom: var(--space-2);"></div>
+        <div class="content-placeholder skeleton" style="height: 12px; width: 75%; margin-bottom: var(--space-2);"></div>
+        <div class="content-placeholder skeleton" style="height: 12px; width: 82%;"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Breadcrumbs -->
+  <div class="group-label">Breadcrumbs <code>.breadcrumb</code></div>
+  <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+
+    <div style="padding: var(--space-4); background: var(--color-surface-1); border: var(--border-default); border-radius: var(--radius-sm);">
+      <nav aria-label="Breadcrumb example 1">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">acme</a></li>
+          <li class="breadcrumb-item"><span class="breadcrumb-separator" aria-hidden="true">/</span><a href="#">my-app</a></li>
+          <li class="breadcrumb-item"><span class="breadcrumb-separator" aria-hidden="true">/</span> Settings</li>
+        </ol>
+      </nav>
+    </div>
+
+    <div style="padding: var(--space-4); background: var(--color-surface-1); border: var(--border-default); border-radius: var(--radius-sm);">
+      <nav aria-label="Breadcrumb example 2">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Docs</a></li>
+          <li class="breadcrumb-item"><span class="breadcrumb-separator" aria-hidden="true">/</span><a href="#">Getting Started</a></li>
+          <li class="breadcrumb-item"><span class="breadcrumb-separator" aria-hidden="true">/</span><a href="#">Framework Support</a></li>
+          <li class="breadcrumb-item"><span class="breadcrumb-separator" aria-hidden="true">/</span> Next.js</li>
+        </ol>
+      </nav>
+    </div>
+
+  </div>
+
+  <!-- Tabs -->
+  <div class="group-label">Tabs <code>.tabs</code> / <code>.tab-item</code></div>
+
+  <div style="padding: 0 var(--space-4); background: var(--color-surface-1); border: var(--border-default); border-radius: var(--radius-sm); margin-bottom: var(--space-4);">
+    <div class="tabs" role="tablist">
+      <button class="tab-item active" role="tab" aria-selected="true">Deployments</button>
+      <button class="tab-item" role="tab" aria-selected="false">Logs</button>
+      <button class="tab-item" role="tab" aria-selected="false">Analytics</button>
+      <button class="tab-item" role="tab" aria-selected="false">Speed Insights</button>
+      <button class="tab-item" role="tab" aria-selected="false">Storage</button>
+      <button class="tab-item" role="tab" aria-selected="false">Settings</button>
+    </div>
+  </div>
+
+  <!-- Tabs with badge counts -->
+  <div style="padding: 0 var(--space-4); background: var(--color-surface-1); border: var(--border-default); border-radius: var(--radius-sm);">
+    <div class="tabs" role="tablist">
+      <button class="tab-item active" role="tab" aria-selected="true">
+        All
+        <span class="badge" style="font-size: var(--text-11); height: 16px; padding: 0 5px;">24</span>
+      </button>
+      <button class="tab-item" role="tab" aria-selected="false">
+        Ready
+        <span class="badge badge--success" style="font-size: var(--text-11); height: 16px; padding: 0 5px;">18</span>
+      </button>
+      <button class="tab-item" role="tab" aria-selected="false">
+        Building
+        <span class="badge badge--warning" style="font-size: var(--text-11); height: 16px; padding: 0 5px;">3</span>
+      </button>
+      <button class="tab-item" role="tab" aria-selected="false">
+        Error
+        <span class="badge badge--error" style="font-size: var(--text-11); height: 16px; padding: 0 5px;">3</span>
+      </button>
+    </div>
+  </div>
+
+</main>
+</body>
+</html>

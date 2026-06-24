@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modals — Vercel Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .page { max-width: 960px; margin: 0 auto; padding: var(--space-10) var(--space-6); }
+    .page-back { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text-13); color: var(--color-label-secondary); text-decoration: none; margin-bottom: var(--space-8); transition: color var(--duration-instant) var(--ease-vercel); }
+    .page-back:hover { color: var(--color-label-primary); text-decoration: none; }
+    .page-title { font-size: var(--text-36); font-weight: var(--weight-bold); letter-spacing: var(--tracking-tight-2); margin: 0 0 var(--space-3); }
+    .page-desc { font-size: var(--text-16); color: var(--color-label-secondary); line-height: var(--leading-relaxed); margin: 0 0 var(--space-12); }
+    .group-label { font-size: var(--text-11); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: 0.10em; color: var(--color-label-tertiary); margin: var(--space-12) 0 var(--space-5); border-top: var(--border-subtle); padding-top: var(--space-8); }
+    .group-label:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+    code { font-family: var(--font-mono); font-size: var(--text-12); color: var(--color-accent-teal); background: var(--color-surface-2); border: var(--border-subtle); border-radius: var(--radius-xs); padding: 2px 6px; }
+    .modals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+    @media (max-width: 700px) { .modals-grid { grid-template-columns: 1fr; } }
+    .modal-preview-label { font-size: var(--text-12); color: var(--color-label-tertiary); margin-bottom: var(--space-3); }
+
+    /* Overlay simulation for inline display */
+    .modal-inline-wrap {
+      background: rgba(0,0,0,0.50);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+<main class="page">
+
+  <a href="../index.html" class="page-back">← Back to Design System</a>
+
+  <span style="display: block; font-size: var(--text-11); font-weight: var(--weight-semibold); letter-spacing: 0.10em; text-transform: uppercase; color: var(--color-label-tertiary); margin-bottom: var(--space-3);">Components</span>
+  <h1 class="page-title">Modals &amp; Overlays</h1>
+  <p class="page-desc">
+    Surface-2 background, 12px radius, shadow-xl.
+    Backdrop: rgba(0,0,0,0.8) + blur(4px).
+    Animation: <code>fadeSlideUp</code> 200ms ease-out.
+    Max-width 480px.
+  </p>
+
+  <!-- Standard modals -->
+  <div class="group-label">Standard Modal <code>.modal</code></div>
+  <div class="modals-grid">
+
+    <div>
+      <div class="modal-preview-label">Transfer Project</div>
+      <div class="modal-inline-wrap">
+        <div class="modal" style="position: static; animation: none; max-width: 100%; width: 100%;">
+          <div class="modal-header">
+            <span class="modal-title">Transfer Project</span>
+            <button class="modal-close" aria-label="Close">✕</button>
+          </div>
+          <div class="modal-body">
+            <p style="font-size: var(--text-14); color: var(--color-label-secondary); margin: 0 0 var(--space-4); line-height: var(--leading-relaxed);">
+              Transfer <code>my-app</code> to another team or personal account.
+              The new owner will have full control over this project and all its resources.
+            </p>
+            <div class="form-group">
+              <label class="form-label" for="transfer-scope">Transfer to</label>
+              <div class="select-wrapper">
+                <select id="transfer-scope" class="select">
+                  <option>Select a team or account…</option>
+                  <option>acme-team</option>
+                  <option>personal (you)</option>
+                </select>
+                <span class="select-chevron" aria-hidden="true">▾</span>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-ghost">Cancel</button>
+            <button class="btn btn-primary">Transfer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="modal-preview-label">Add Custom Domain</div>
+      <div class="modal-inline-wrap">
+        <div class="modal" style="position: static; animation: none; max-width: 100%; width: 100%;">
+          <div class="modal-header">
+            <span class="modal-title">Add Domain</span>
+            <button class="modal-close" aria-label="Close">✕</button>
+          </div>
+          <div class="modal-body">
+            <p style="font-size: var(--text-14); color: var(--color-label-secondary); margin: 0 0 var(--space-4); line-height: var(--leading-relaxed);">
+              Add a custom domain to your project. You'll need to configure DNS records after adding it.
+            </p>
+            <div class="form-group">
+              <label class="form-label required" for="domain-input">Domain</label>
+              <input type="text" id="domain-input" class="input input-mono" placeholder="example.com">
+              <span class="form-helper">You can add an apex domain or a subdomain.</span>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-ghost">Cancel</button>
+            <button class="btn btn-primary">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Danger modals -->
+  <div class="group-label">Danger Dialog <code>.dialog-danger</code></div>
+  <div class="modals-grid">
+
+    <div>
+      <div class="modal-preview-label">Delete Deployment</div>
+      <div class="modal-inline-wrap">
+        <div class="modal dialog-danger" style="position: static; animation: none; max-width: 100%; width: 100%;">
+          <div class="modal-header">
+            <span class="modal-title">Delete Deployment</span>
+            <button class="modal-close" aria-label="Close">✕</button>
+          </div>
+          <div class="modal-body">
+            <p style="font-size: var(--text-14); line-height: var(--leading-relaxed); margin: 0;">
+              This will permanently delete deployment <code>abc1234</code>.
+              This action cannot be undone.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-ghost">Cancel</button>
+            <button class="btn btn-danger">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="modal-preview-label">Delete Project (Type to confirm)</div>
+      <div class="modal-inline-wrap">
+        <div class="modal dialog-danger" style="position: static; animation: none; max-width: 100%; width: 100%;">
+          <div class="modal-header">
+            <span class="modal-title">Delete Project</span>
+            <button class="modal-close" aria-label="Close">✕</button>
+          </div>
+          <div class="modal-body">
+            <p style="font-size: var(--text-14); line-height: var(--leading-relaxed); margin: 0 0 var(--space-4);">
+              This will permanently delete <strong>my-app</strong>, all its deployments,
+              domains, and environment variables. This action <strong>cannot be undone</strong>.
+            </p>
+            <div class="form-group">
+              <label class="form-label" style="font-size: var(--text-13); color: var(--color-label-secondary);">
+                Type <code>my-app</code> to confirm:
+              </label>
+              <input type="text" class="input input-mono" placeholder="my-app">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-ghost">Cancel</button>
+            <button class="btn btn-danger">Delete Project</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Tooltips -->
+  <div class="group-label">Tooltips <code>.tooltip</code></div>
+  <div style="display: flex; gap: var(--space-8); align-items: flex-end; flex-wrap: wrap; padding: var(--space-12) var(--space-8); background: var(--color-surface-1); border: var(--border-default); border-radius: var(--radius-md);">
+
+    <div class="tooltip-wrapper">
+      <button class="btn btn-secondary">Deploy</button>
+      <div class="tooltip" role="tooltip">Push to production</div>
+    </div>
+
+    <div class="tooltip-wrapper">
+      <span class="region-badge" style="cursor: default;">iad1</span>
+      <div class="tooltip" role="tooltip">US East (N. Virginia)</div>
+    </div>
+
+    <div class="tooltip-wrapper">
+      <span class="status-badge status-badge--ready" style="cursor: default;"><span class="badge-dot"></span>Ready</span>
+      <div class="tooltip" role="tooltip">Deployed 4 minutes ago</div>
+    </div>
+
+    <div class="tooltip-wrapper">
+      <button class="btn btn-icon" aria-label="View details">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M7 6v4M7 4.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="tooltip" role="tooltip">View deployment details</div>
+    </div>
+
+  </div>
+
+  <!-- Toast notifications (static display) -->
+  <div class="group-label">Toast Notifications <code>.toast</code></div>
+  <div style="display: flex; flex-direction: column; gap: var(--space-3); max-width: 360px;">
+
+    <div class="toast success" style="animation: none; pointer-events: auto;">
+      <span class="toast-indicator" style="background: var(--color-success);"></span>
+      <div class="toast-content">
+        <div class="toast-title">Deployed successfully</div>
+        <div class="toast-message">my-app is live at my-app.vercel.app</div>
+      </div>
+      <button class="toast-close" aria-label="Dismiss">✕</button>
+    </div>
+
+    <div class="toast error" style="animation: none; pointer-events: auto;">
+      <span class="toast-indicator" style="background: var(--color-error);"></span>
+      <div class="toast-content">
+        <div class="toast-title">Build failed</div>
+        <div class="toast-message">Error: Cannot find module './components/Header'</div>
+      </div>
+      <button class="toast-close" aria-label="Dismiss">✕</button>
+    </div>
+
+    <div class="toast warning" style="animation: none; pointer-events: auto;">
+      <span class="toast-indicator" style="background: var(--color-warning);"></span>
+      <div class="toast-content">
+        <div class="toast-title">Domain not configured</div>
+        <div class="toast-message">Add CNAME records to complete domain setup.</div>
+      </div>
+      <button class="toast-close" aria-label="Dismiss">✕</button>
+    </div>
+
+    <div class="toast info" style="animation: none; pointer-events: auto;">
+      <span class="toast-indicator" style="background: var(--color-info);"></span>
+      <div class="toast-content">
+        <div class="toast-title">Build queued</div>
+        <div class="toast-message">Your deployment is in the build queue.</div>
+      </div>
+      <button class="toast-close" aria-label="Dismiss">✕</button>
+    </div>
+
+  </div>
+
+  <!-- Progress bar -->
+  <div class="group-label">Progress Bars <code>.progress</code></div>
+  <div style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 480px;">
+
+    <div>
+      <div style="display: flex; justify-content: space-between; font-size: var(--text-12); color: var(--color-label-secondary); margin-bottom: var(--space-2);">
+        <span>Build progress</span>
+        <span>72%</span>
+      </div>
+      <div class="progress" style="height: 3px;">
+        <div class="progress-fill" style="width: 72%;"></div>
+      </div>
+    </div>
+
+    <div>
+      <div style="display: flex; justify-content: space-between; font-size: var(--text-12); color: var(--color-label-secondary); margin-bottom: var(--space-2);">
+        <span>Function execution</span>
+        <span>Success</span>
+      </div>
+      <div class="progress" style="height: 3px;">
+        <div class="progress-fill progress-fill--success" style="width: 100%;"></div>
+      </div>
+    </div>
+
+    <div>
+      <div style="display: flex; justify-content: space-between; font-size: var(--text-12); color: var(--color-label-secondary); margin-bottom: var(--space-2);">
+        <span>Error rate</span>
+        <span style="color: var(--color-error);">12%</span>
+      </div>
+      <div class="progress" style="height: 3px;">
+        <div class="progress-fill progress-fill--error" style="width: 12%;"></div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size: var(--text-12); color: var(--color-label-secondary); margin-bottom: var(--space-2);">Uploading assets…</div>
+      <div class="progress progress--indeterminate" style="height: 2px;">
+        <div class="progress-fill progress-fill--blue"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Dividers -->
+  <div class="group-label">Dividers</div>
+  <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+
+    <div>
+      <div style="font-size: var(--text-12); color: var(--color-label-tertiary); margin-bottom: var(--space-2);">Subtle</div>
+      <hr class="divider">
+    </div>
+
+    <div>
+      <div style="font-size: var(--text-12); color: var(--color-label-tertiary); margin-bottom: var(--space-2);">Default</div>
+      <hr class="divider divider-default">
+    </div>
+
+    <div>
+      <div style="font-size: var(--text-12); color: var(--color-label-tertiary); margin-bottom: var(--space-2);">Labeled</div>
+      <div class="divider-labeled">or continue with</div>
+    </div>
+
+  </div>
+
+</main>
+</body>
+</html>

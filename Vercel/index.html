@@ -1,0 +1,2106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vercel Design System — A production-quality, dark-first design system built on Vercel's design language. Minimal, developer-focused, precision engineered.">
+  <title>Vercel Design System</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="typography.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    /* =====================================================================
+       Page-specific styles — design system showcase
+       ===================================================================== */
+
+    .showcase-wrapper {
+      min-height: 100vh;
+      background: var(--color-bg);
+    }
+
+    /* ---- Section spacing ---- */
+    .ds-section {
+      padding: var(--space-20) 0;
+      border-bottom: var(--border-subtle);
+    }
+
+    .ds-section:last-of-type {
+      border-bottom: none;
+    }
+
+    .ds-section-label {
+      display: block;
+      font-size: var(--text-11);
+      font-weight: var(--weight-semibold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-3);
+    }
+
+    .ds-section-title {
+      font-size: var(--text-28);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-tight-2);
+      color: var(--color-label-primary);
+      margin: 0 0 var(--space-2);
+      line-height: var(--leading-tight);
+    }
+
+    .ds-section-desc {
+      font-size: var(--text-16);
+      color: var(--color-label-secondary);
+      line-height: var(--leading-relaxed);
+      margin: 0 0 var(--space-10);
+      max-width: 540px;
+    }
+
+    /* ---- Color Palette ---- */
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: var(--space-3);
+    }
+
+    .swatch {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .swatch-color {
+      height: 56px;
+      border-radius: var(--radius-sm);
+      border: var(--border-subtle);
+      margin-bottom: var(--space-2);
+    }
+
+    .swatch-name {
+      font-size: var(--text-12);
+      font-weight: var(--weight-medium);
+      color: var(--color-label-primary);
+      line-height: 1.3;
+    }
+
+    .swatch-hex {
+      font-family: var(--font-mono);
+      font-size: var(--text-11);
+      color: var(--color-label-tertiary);
+      margin-top: 1px;
+    }
+
+    .palette-section {
+      margin-bottom: var(--space-8);
+    }
+
+    .palette-section-label {
+      font-size: var(--text-11);
+      font-weight: var(--weight-semibold);
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-3);
+    }
+
+    /* ---- Typography Scale ---- */
+    .type-specimen {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-8);
+      padding: var(--space-5) 0;
+      border-bottom: var(--border-subtle);
+    }
+
+    .type-specimen:last-child { border-bottom: none; }
+
+    .type-meta {
+      width: 130px;
+      flex-shrink: 0;
+    }
+
+    .type-meta-name {
+      font-size: var(--text-12);
+      font-weight: var(--weight-semibold);
+      color: var(--color-label-secondary);
+    }
+
+    .type-meta-spec {
+      font-family: var(--font-mono);
+      font-size: var(--text-11);
+      color: var(--color-label-tertiary);
+      margin-top: 2px;
+    }
+
+    .type-sample {
+      flex: 1;
+    }
+
+    /* ---- Component rows in showcase ---- */
+    .component-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      padding: var(--space-6) 0;
+      border-bottom: var(--border-subtle);
+    }
+
+    .component-row:last-child { border-bottom: none; }
+
+    .component-row-label {
+      font-size: var(--text-11);
+      font-weight: var(--weight-medium);
+      color: var(--color-label-tertiary);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      min-width: 80px;
+    }
+
+    /* ---- Live build area ---- */
+    .build-log-area {
+      background: #000;
+      border: var(--border-default);
+      border-radius: var(--radius-md);
+      padding: var(--space-5);
+      max-height: 280px;
+      overflow: hidden;
+    }
+
+    .build-line {
+      font-family: var(--font-mono);
+      font-size: var(--text-13);
+      line-height: 1.6;
+      margin-bottom: 1px;
+    }
+
+    /* ---- Project cards grid ---- */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+    }
+
+    @media (max-width: 1024px) {
+      .project-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .project-grid { grid-template-columns: 1fr; }
+      .type-specimen { flex-direction: column; gap: var(--space-2); }
+      .type-meta { width: auto; }
+    }
+
+    /* ---- Analytics/score section ---- */
+    .analytics-panel {
+      display: flex;
+      gap: var(--space-8);
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .analytics-scores {
+      display: flex;
+      gap: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    .analytics-score-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .analytics-score-title {
+      font-size: var(--text-12);
+      color: var(--color-label-secondary);
+      text-align: center;
+    }
+
+    .analytics-metrics {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    /* ---- Navigation demo ---- */
+    .nav-demo {
+      background: var(--color-surface-1);
+      border: var(--border-default);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .nav-demo-bar {
+      height: 52px;
+      background: rgba(0,0,0,0.80);
+      backdrop-filter: blur(12px);
+      border-bottom: var(--border-subtle);
+      display: flex;
+      align-items: center;
+      padding: 0 var(--space-5);
+      gap: var(--space-6);
+    }
+
+    .nav-demo-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-14);
+      font-weight: var(--weight-semibold);
+      color: var(--color-label-primary);
+      flex-shrink: 0;
+    }
+
+    .nav-demo-links {
+      display: flex;
+      gap: 0;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .nav-demo-link {
+      font-size: var(--text-14);
+      color: var(--color-label-secondary);
+      padding: var(--space-1) var(--space-3);
+      cursor: default;
+      border-radius: var(--radius-sm);
+      transition: color var(--duration-instant) var(--ease-vercel);
+    }
+
+    .nav-demo-link:hover {
+      color: var(--color-label-primary);
+    }
+
+    .nav-demo-actions {
+      display: flex;
+      gap: var(--space-2);
+      flex-shrink: 0;
+    }
+
+    /* ---- Sidebar layout demo ---- */
+    .sidebar-layout-demo {
+      display: flex;
+      height: 340px;
+      background: var(--color-bg);
+      border: var(--border-default);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-top: var(--space-5);
+    }
+
+    .sidebar-demo {
+      width: 200px;
+      flex-shrink: 0;
+      background: var(--color-surface-1);
+      border-right: var(--border-subtle);
+      padding: var(--space-4) var(--space-3);
+      overflow-y: auto;
+    }
+
+    .sidebar-demo-content {
+      flex: 1;
+      padding: var(--space-5);
+      overflow: hidden;
+    }
+
+    /* ---- Motion demos ---- */
+    .motion-demo {
+      display: flex;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      padding: var(--space-6) 0;
+    }
+
+    .motion-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .motion-box {
+      width: 64px;
+      height: 64px;
+      background: var(--color-surface-2);
+      border: var(--border-default);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      transition:
+        transform var(--duration-instant) var(--ease-vercel),
+        border-color var(--duration-instant) var(--ease-vercel),
+        background var(--duration-instant) var(--ease-vercel);
+      cursor: default;
+    }
+
+    .motion-box:hover {
+      border-color: var(--color-border-strong);
+      background: var(--color-surface-3);
+      transform: scale(0.97);
+    }
+
+    .motion-box:active {
+      transform: scale(0.94);
+    }
+
+    .motion-caption {
+      font-size: var(--text-11);
+      color: var(--color-label-tertiary);
+      text-align: center;
+    }
+
+    /* ---- Footer ---- */
+    .footer {
+      background: var(--color-bg);
+      border-top: var(--border-subtle);
+      padding: var(--space-12) 0;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: var(--space-8);
+    }
+
+    @media (max-width: 1024px) {
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+
+    .footer-brand {
+      grid-column: 1;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-16);
+      font-weight: var(--weight-semibold);
+      color: var(--color-label-primary);
+      margin-bottom: var(--space-3);
+    }
+
+    .footer-tagline {
+      font-size: var(--text-13);
+      color: var(--color-label-tertiary);
+      line-height: var(--leading-relaxed);
+      max-width: 200px;
+    }
+
+    .footer-col-title {
+      font-size: var(--text-12);
+      font-weight: var(--weight-semibold);
+      color: var(--color-label-primary);
+      margin-bottom: var(--space-3);
+    }
+
+    .footer-link {
+      display: block;
+      font-size: var(--text-13);
+      color: var(--color-label-tertiary);
+      text-decoration: none;
+      margin-bottom: var(--space-2);
+      transition: color var(--duration-instant) var(--ease-vercel);
+    }
+
+    .footer-link:hover {
+      color: var(--color-label-primary);
+      text-decoration: none;
+    }
+
+    .footer-bottom {
+      margin-top: var(--space-10);
+      padding-top: var(--space-6);
+      border-top: var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+
+    .footer-copyright {
+      font-size: var(--text-12);
+      color: var(--color-label-tertiary);
+    }
+
+    /* ---- Misc ---- */
+    .gap-2 { gap: var(--space-2); }
+    .gap-3 { gap: var(--space-3); }
+    .gap-4 { gap: var(--space-4); }
+    .gap-6 { gap: var(--space-6); }
+    .mt-2  { margin-top: var(--space-2); }
+    .mt-3  { margin-top: var(--space-3); }
+    .mt-4  { margin-top: var(--space-4); }
+    .mt-6  { margin-top: var(--space-6); }
+    .mt-8  { margin-top: var(--space-8); }
+    .mb-2  { margin-bottom: var(--space-2); }
+    .mb-4  { margin-bottom: var(--space-4); }
+    .mb-6  { margin-bottom: var(--space-6); }
+    .mb-8  { margin-bottom: var(--space-8); }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     GLOBAL NAVIGATION
+     ============================================================ -->
+<nav class="nav-global" aria-label="Main navigation">
+  <div class="nav-global-inner">
+    <!-- Logo -->
+    <a href="/" class="nav-logo" aria-label="Vercel Design System home">
+      <span class="nav-logo-mark" aria-hidden="true">▲</span>
+      <span>Vercel</span>
+    </a>
+
+    <!-- Center links -->
+    <ul class="nav-links" role="list">
+      <li class="nav-links-item"><a href="#tokens">Tokens</a></li>
+      <li class="nav-links-item"><a href="#typography">Typography</a></li>
+      <li class="nav-links-item"><a href="#components">Components</a></li>
+      <li class="nav-links-item"><a href="#deployments">Deployments</a></li>
+      <li class="nav-links-item"><a href="#forms">Forms</a></li>
+      <li class="nav-links-item"><a href="#motion">Motion</a></li>
+    </ul>
+
+    <!-- Right actions -->
+    <div class="nav-actions">
+      <a href="components/buttons.html" class="btn btn-ghost btn-sm">Components</a>
+      <a href="#" class="btn btn-primary btn-sm">Deploy</a>
+    </div>
+
+    <!-- Mobile menu toggle -->
+    <button class="nav-mobile-toggle" aria-label="Open menu">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <rect x="1" y="3" width="14" height="1.5" rx="0.75" fill="currentColor"/>
+        <rect x="1" y="7.25" width="14" height="1.5" rx="0.75" fill="currentColor"/>
+        <rect x="1" y="11.5" width="14" height="1.5" rx="0.75" fill="currentColor"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO SECTION
+     ============================================================ -->
+<section class="hero" aria-label="Hero">
+  <!-- Background grid -->
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <!-- Teal glow -->
+  <div class="hero-glow" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <!-- Live badge -->
+    <div class="hero-badge">
+      <span class="hero-badge-dot" aria-hidden="true"></span>
+      <span>Design System v1.0</span>
+    </div>
+
+    <!-- Hero title — gradient text -->
+    <h1 class="hero-title">
+      <span class="text-gradient">Deploy.</span><br>
+      <span class="text-gradient">Scale. Ship.</span>
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="hero-subtitle">
+      A production-quality design system built on Vercel's visual language.
+      Minimal, dark-first, developer-focused — precision engineered for speed.
+    </p>
+
+    <!-- CTAs -->
+    <div class="hero-ctas">
+      <a href="#components" class="btn btn-primary btn-lg">Start Building</a>
+      <a href="components/buttons.html" class="btn btn-ghost btn-lg">View Components →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LIVE BUILD LOG ANIMATION
+     ============================================================ -->
+<section class="ds-section" aria-label="Live build animation">
+  <div class="container">
+    <span class="ds-section-label">Live Preview</span>
+    <h2 class="ds-section-title">Build. Deploy. Done.</h2>
+    <p class="ds-section-desc">Watch a real deployment unfold — from git push to production in seconds.</p>
+
+    <div class="build-log-area" aria-label="Build log output">
+      <div class="build-line animate-build-1">
+        <span style="color: var(--color-label-tertiary)">▲ Vercel CLI 35.1.7</span>
+      </div>
+      <div class="build-line animate-build-2">
+        <span style="color: var(--color-label-secondary)">🔍 Inspecting project…</span>
+      </div>
+      <div class="build-line animate-build-3">
+        <span style="color: var(--color-label-secondary)">✓ &nbsp;Auto-detected project settings (Next.js)</span>
+      </div>
+      <div class="build-line animate-build-4">
+        <span style="color: var(--color-label-tertiary)">- Root Directory: ./</span>
+      </div>
+      <div class="build-line animate-build-5">
+        <span style="color: var(--color-label-tertiary)">- Build Command: next build</span>
+      </div>
+      <div class="build-line animate-build-6">
+        <span style="color: var(--color-label-secondary)">📦 Installing dependencies…</span>
+      </div>
+      <div class="build-line animate-build-7">
+        <span style="color: var(--color-label-secondary)">🔨 Building…</span>
+      </div>
+      <div class="build-line animate-build-8 animate-fade-in delay-800" style="animation-duration: 300ms;">
+        <span style="color: var(--color-label-secondary)">&nbsp;&nbsp;▲ Next.js 15.0.4</span>
+      </div>
+      <div class="build-line animate-fade-in delay-1000" style="animation-duration: 300ms;">
+        <span style="color: var(--color-label-secondary)">&nbsp;&nbsp;Creating an optimized production build…</span>
+      </div>
+      <div class="build-line animate-fade-in" style="animation-delay: 1200ms; animation-duration: 300ms; animation-fill-mode: both;">
+        <span style="color: var(--color-label-secondary)">&nbsp;&nbsp;✓ Compiled successfully in 3.2s</span>
+      </div>
+      <div class="build-line animate-fade-in" style="animation-delay: 1400ms; animation-duration: 300ms; animation-fill-mode: both;">
+        <span style="color: var(--color-label-tertiary)">&nbsp;&nbsp;Route (app)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Size&nbsp;&nbsp;&nbsp;First Load JS</span>
+      </div>
+      <div class="build-line animate-fade-in" style="animation-delay: 1550ms; animation-duration: 300ms; animation-fill-mode: both;">
+        <span style="color: var(--color-label-tertiary)">&nbsp;&nbsp;○ /&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;142 B&nbsp;&nbsp;&nbsp;87.8 kB</span>
+      </div>
+      <div class="build-line animate-fade-in" style="animation-delay: 1700ms; animation-duration: 300ms; animation-fill-mode: both;">
+        <span style="color: var(--color-label-tertiary)">&nbsp;&nbsp;○ /about&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;98 B&nbsp;&nbsp;&nbsp;87.7 kB</span>
+      </div>
+      <div class="build-line animate-fade-in" style="animation-delay: 1850ms; animation-duration: 300ms; animation-fill-mode: both;">
+        <span style="color: var(--color-success)">✓ &nbsp;Build completed successfully in 8.1s</span>
+      </div>
+      <div class="build-line animate-fade-in" style="animation-delay: 2000ms; animation-duration: 300ms; animation-fill-mode: both;">
+        <span style="color: var(--color-label-secondary)">🔄 Uploading build output…</span>
+      </div>
+      <div class="build-line animate-fade-in" style="animation-delay: 2200ms; animation-duration: 300ms; animation-fill-mode: both;">
+        <span style="color: var(--color-success)">✓ &nbsp;Deployed to </span>
+        <span style="color: var(--color-accent-teal); font-family: var(--font-mono);">my-app-git-main.vercel.app</span>
+      </div>
+      <div class="build-line animate-fade-in" style="animation-delay: 2350ms; animation-duration: 300ms; animation-fill-mode: both;">
+        <span style="color: var(--color-label-tertiary)">»  Production: </span>
+        <span style="color: var(--color-accent-blue); font-family: var(--font-mono);">https://my-app.vercel.app</span>
+        <span class="terminal-cursor" style="margin-left: 4px;"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COLOR PALETTE — Section 1
+     ============================================================ -->
+<section id="tokens" class="ds-section" aria-label="Design tokens — Colors">
+  <div class="container">
+    <span class="ds-section-label">Design Tokens</span>
+    <h2 class="ds-section-title">Color System</h2>
+    <p class="ds-section-desc">
+      Dark-first. Pure black canvas. Maximum contrast, minimal decoration.
+      Every color earns its place in the system.
+    </p>
+
+    <!-- Backgrounds & Surfaces -->
+    <div class="palette-section">
+      <div class="palette-section-label">Backgrounds & Surfaces</div>
+      <div class="palette-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #000000; border-color: #333;"></div>
+          <div class="swatch-name">Background</div>
+          <div class="swatch-hex">#000000</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #111111;"></div>
+          <div class="swatch-name">Surface 1</div>
+          <div class="swatch-hex">#111111</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #1A1A1A;"></div>
+          <div class="swatch-name">Surface 2</div>
+          <div class="swatch-hex">#1A1A1A</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #222222;"></div>
+          <div class="swatch-name">Surface 3</div>
+          <div class="swatch-hex">#222222</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Borders -->
+    <div class="palette-section">
+      <div class="palette-section-label">Borders</div>
+      <div class="palette-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #222222;"></div>
+          <div class="swatch-name">Border Subtle</div>
+          <div class="swatch-hex">#222222</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #333333;"></div>
+          <div class="swatch-name">Border Default</div>
+          <div class="swatch-hex">#333333</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #444444;"></div>
+          <div class="swatch-name">Border Strong</div>
+          <div class="swatch-hex">#444444</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Labels -->
+    <div class="palette-section">
+      <div class="palette-section-label">Labels / Text</div>
+      <div class="palette-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #FFFFFF;"></div>
+          <div class="swatch-name">Primary</div>
+          <div class="swatch-hex">#FFFFFF</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #888888;"></div>
+          <div class="swatch-name">Secondary</div>
+          <div class="swatch-hex">#888888</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #555555;"></div>
+          <div class="swatch-name">Tertiary</div>
+          <div class="swatch-hex">#555555</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Accent / Brand -->
+    <div class="palette-section">
+      <div class="palette-section-label">Brand Accents</div>
+      <div class="palette-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #50E3C2;"></div>
+          <div class="swatch-name">Teal</div>
+          <div class="swatch-hex">#50E3C2</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #0070F3;"></div>
+          <div class="swatch-name">Blue</div>
+          <div class="swatch-hex">#0070F3</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Semantic States -->
+    <div class="palette-section">
+      <div class="palette-section-label">Semantic States</div>
+      <div class="palette-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #0DBA58;"></div>
+          <div class="swatch-name">Success</div>
+          <div class="swatch-hex">#0DBA58</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #FF4444;"></div>
+          <div class="swatch-name">Error</div>
+          <div class="swatch-hex">#FF4444</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #F5A623;"></div>
+          <div class="swatch-name">Warning</div>
+          <div class="swatch-hex">#F5A623</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #0070F3;"></div>
+          <div class="swatch-name">Info</div>
+          <div class="swatch-hex">#0070F3</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Light mode reference -->
+    <div class="palette-section">
+      <div class="palette-section-label">Light Mode Surfaces</div>
+      <div class="palette-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #FFFFFF; border-color: #ddd;"></div>
+          <div class="swatch-name">Light BG</div>
+          <div class="swatch-hex">#FFFFFF</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #FAFAFA; border-color: #ddd;"></div>
+          <div class="swatch-name">Light Surface</div>
+          <div class="swatch-hex">#FAFAFA</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #F5F5F5; border-color: #ddd;"></div>
+          <div class="swatch-name">Light Surface 2</div>
+          <div class="swatch-hex">#F5F5F5</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #EAEAEA; border-color: #ddd;"></div>
+          <div class="swatch-name">Light Border</div>
+          <div class="swatch-hex">#EAEAEA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TYPOGRAPHY SCALE
+     ============================================================ -->
+<section id="typography" class="ds-section" aria-label="Typography scale">
+  <div class="container">
+    <span class="ds-section-label">Typography</span>
+    <h2 class="ds-section-title">Geist Type Scale</h2>
+    <p class="ds-section-desc">
+      Built on Geist — clean, neutral, highly legible.
+      Engineered tracking and weight for maximum hierarchy with minimum decoration.
+    </p>
+
+    <div>
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-meta-name">.heading-1</div>
+          <div class="type-meta-spec">48px · 700 · -0.03em</div>
+        </div>
+        <div class="type-sample heading-1">Deploy instantly.</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-meta-name">.heading-2</div>
+          <div class="type-meta-spec">36px · 700 · -0.02em</div>
+        </div>
+        <div class="type-sample heading-2">Ship with confidence.</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-meta-name">.heading-3</div>
+          <div class="type-meta-spec">28px · 700 · -0.01em</div>
+        </div>
+        <div class="type-sample heading-3">Zero configuration deploys.</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-meta-name">.heading-4</div>
+          <div class="type-meta-spec">24px · 600</div>
+        </div>
+        <div class="type-sample heading-4">Production-ready infrastructure.</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-meta-name">.heading-5</div>
+          <div class="type-meta-spec">20px · 600</div>
+        </div>
+        <div class="type-sample heading-5">Edge Network. 99.99% uptime.</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-meta-name">.body-lg</div>
+          <div class="type-meta-spec">18px · 400 · 1.7</div>
+        </div>
+        <div class="type-sample body-lg" style="color: var(--color-label-secondary);">
+          The fastest way to build and deploy serverless applications with zero configuration.
+        </div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-meta-name">.body</div>
+          <div class="type-meta-spec">16px · 400 · 1.6</div>
+        </div>
+        <div class="type-sample body" style="color: var(--color-label-secondary); margin: 0;">
+          Vercel is a platform for frontend developers. Build and deploy your Next.js, Nuxt, SvelteKit, and Astro projects with a single command.
+        </div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-meta-name">.body-sm</div>
+          <div class="type-meta-spec">14px · 400</div>
+        </div>
+        <div class="type-sample body-sm">Deployed 4 minutes ago on main branch.</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-meta-name">.caption</div>
+          <div class="type-meta-spec">13px · 400</div>
+        </div>
+        <div class="type-sample caption">2 minutes ago · iad1 · 87ms</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-meta-name">.label</div>
+          <div class="type-meta-spec">11px · 600 · CAPS</div>
+        </div>
+        <div class="type-sample label">Deployments · Functions · Analytics</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-meta-name">.mono</div>
+          <div class="type-meta-spec">Geist Mono · 13px</div>
+        </div>
+        <div class="type-sample mono" style="color: var(--color-label-secondary);">
+          abc1234 · vercel build &amp;&amp; vercel deploy
+        </div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-meta-name">.text-gradient</div>
+          <div class="type-meta-spec">White → Teal</div>
+        </div>
+        <div class="type-sample heading-3 text-gradient">Made by Developers, for Developers.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BUTTONS
+     ============================================================ -->
+<section id="components" class="ds-section" aria-label="Button components">
+  <div class="container">
+    <span class="ds-section-label">Components</span>
+    <h2 class="ds-section-title">Buttons</h2>
+    <p class="ds-section-desc">
+      Fast 100ms transitions. Active scale 0.98. No decoration — function drives form.
+    </p>
+
+    <!-- Variants -->
+    <div class="component-row">
+      <span class="component-row-label">Variants</span>
+      <button class="btn btn-primary">Deploy</button>
+      <button class="btn btn-secondary">View Logs</button>
+      <button class="btn btn-ghost">Redeploy</button>
+      <button class="btn btn-danger">Delete Project</button>
+    </div>
+
+    <!-- Sizes -->
+    <div class="component-row">
+      <span class="component-row-label">Sizes</span>
+      <button class="btn btn-primary btn-sm">Deploy (sm)</button>
+      <button class="btn btn-primary">Deploy (md)</button>
+      <button class="btn btn-primary btn-lg">Deploy (lg)</button>
+    </div>
+
+    <!-- Icon buttons -->
+    <div class="component-row">
+      <span class="component-row-label">Icon</span>
+      <button class="btn btn-icon" aria-label="Visit deployment">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M2 8a6 6 0 1 1 12 0A6 6 0 0 1 2 8Z" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M8 5.5v3l2 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <button class="btn btn-icon" aria-label="Redeploy">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M12 8a4 4 0 1 1-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M8 4l2-2 2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="btn btn-icon" aria-label="More options">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <circle cx="4" cy="8" r="1.2" fill="currentColor"/>
+          <circle cx="8" cy="8" r="1.2" fill="currentColor"/>
+          <circle cx="12" cy="8" r="1.2" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- States -->
+    <div class="component-row">
+      <span class="component-row-label">States</span>
+      <button class="btn btn-primary loading" aria-label="Deploying…">Deploying</button>
+      <button class="btn btn-secondary" disabled>Disabled</button>
+      <button class="btn btn-ghost">Focus me</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DEPLOYMENT STATUS ROWS — Signature Component
+     ============================================================ -->
+<section id="deployments" class="ds-section" aria-label="Deployment status">
+  <div class="container">
+    <span class="ds-section-label">Signature Component</span>
+    <h2 class="ds-section-title">Deployment Status</h2>
+    <p class="ds-section-desc">
+      Vercel's signature list component. Real-time status, commit context, domain, timing — all in a 52px row.
+    </p>
+
+    <div class="deployment-list" role="list" aria-label="Deployments">
+
+      <!-- Ready -->
+      <div class="deployment-row" role="listitem">
+        <div class="deployment-status" aria-label="Ready">
+          <span class="deployment-dot deployment-dot--ready"></span>
+        </div>
+        <span class="deployment-branch">main</span>
+        <span class="deployment-commit">a4f3c12</span>
+        <span class="deployment-domain">
+          <a href="#" tabindex="-1">my-app-git-main-acme.vercel.app</a>
+        </span>
+        <span class="deployment-time">2m ago</span>
+        <div class="deployment-actions" aria-label="Deployment actions">
+          <button class="btn btn-icon btn-sm" aria-label="Visit">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2 10L10 2M10 2H6M10 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="btn btn-icon btn-sm" aria-label="More">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <circle cx="3" cy="6" r="1" fill="currentColor"/>
+              <circle cx="6" cy="6" r="1" fill="currentColor"/>
+              <circle cx="9" cy="6" r="1" fill="currentColor"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Building -->
+      <div class="deployment-row" role="listitem">
+        <div class="deployment-status" aria-label="Building">
+          <span class="deployment-dot deployment-dot--building"></span>
+        </div>
+        <span class="deployment-branch">feature/redesign</span>
+        <span class="deployment-commit">e9b2d71</span>
+        <span class="deployment-domain">
+          my-app-feature-redesign-acme.vercel.app
+        </span>
+        <span class="deployment-time">Just now</span>
+        <div class="deployment-actions">
+          <button class="btn btn-icon btn-sm" aria-label="More">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <circle cx="3" cy="6" r="1" fill="currentColor"/>
+              <circle cx="6" cy="6" r="1" fill="currentColor"/>
+              <circle cx="9" cy="6" r="1" fill="currentColor"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Error -->
+      <div class="deployment-row" role="listitem">
+        <div class="deployment-status" aria-label="Error">
+          <span class="deployment-dot deployment-dot--error"></span>
+        </div>
+        <span class="deployment-branch">fix/auth-bug</span>
+        <span class="deployment-commit">c7a1f88</span>
+        <span class="deployment-domain">
+          my-app-fix-auth-bug-acme.vercel.app
+        </span>
+        <span class="deployment-time">18m ago</span>
+        <div class="deployment-actions">
+          <button class="btn btn-icon btn-sm" aria-label="Redeploy">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M10 6a4 4 0 1 1-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M6 2l1.5-1.5L9 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="btn btn-icon btn-sm" aria-label="More">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <circle cx="3" cy="6" r="1" fill="currentColor"/>
+              <circle cx="6" cy="6" r="1" fill="currentColor"/>
+              <circle cx="9" cy="6" r="1" fill="currentColor"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Queued -->
+      <div class="deployment-row" role="listitem">
+        <div class="deployment-status" aria-label="Queued">
+          <span class="deployment-dot deployment-dot--queued"></span>
+        </div>
+        <span class="deployment-branch">chore/deps</span>
+        <span class="deployment-commit">f0d3b99</span>
+        <span class="deployment-domain">
+          my-app-chore-deps-acme.vercel.app
+        </span>
+        <span class="deployment-time">Queued</span>
+        <div class="deployment-actions">
+          <button class="btn btn-icon btn-sm" aria-label="More">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <circle cx="3" cy="6" r="1" fill="currentColor"/>
+              <circle cx="6" cy="6" r="1" fill="currentColor"/>
+              <circle cx="9" cy="6" r="1" fill="currentColor"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Cancelled -->
+      <div class="deployment-row" role="listitem">
+        <div class="deployment-status" aria-label="Cancelled">
+          <span class="deployment-dot deployment-dot--cancelled"></span>
+        </div>
+        <span class="deployment-branch">test/perf</span>
+        <span class="deployment-commit">3b8a022</span>
+        <span class="deployment-domain">
+          my-app-test-perf-acme.vercel.app
+        </span>
+        <span class="deployment-time">1h ago</span>
+        <div class="deployment-actions">
+          <button class="btn btn-icon btn-sm" aria-label="Redeploy">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M10 6a4 4 0 1 1-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M6 2l1.5-1.5L9 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="btn btn-icon btn-sm" aria-label="More">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <circle cx="3" cy="6" r="1" fill="currentColor"/>
+              <circle cx="6" cy="6" r="1" fill="currentColor"/>
+              <circle cx="9" cy="6" r="1" fill="currentColor"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROJECT CARDS
+     ============================================================ -->
+<section class="ds-section" aria-label="Project cards">
+  <div class="container">
+    <span class="ds-section-label">Components</span>
+    <h2 class="ds-section-title">Project Cards</h2>
+    <p class="ds-section-desc">Preview, domain, branch, status — the essential project snapshot.</p>
+
+    <div class="project-grid">
+
+      <!-- Card 1: Ready -->
+      <article class="project-card">
+        <div class="project-preview" aria-label="Project preview">
+          <span class="project-preview-url">my-app.vercel.app</span>
+        </div>
+        <div class="project-name">my-app</div>
+        <a href="#" class="project-domain">my-app.vercel.app</a>
+        <div class="project-meta">
+          <span class="project-meta-branch">main</span>
+          <span>·</span>
+          <span>2m ago</span>
+          <span style="margin-left: auto;">
+            <span class="status-badge status-badge--ready">
+              <span class="badge-dot"></span>Ready
+            </span>
+          </span>
+        </div>
+      </article>
+
+      <!-- Card 2: Building -->
+      <article class="project-card">
+        <div class="project-preview" aria-label="Project preview">
+          <span class="project-preview-url">storefront.vercel.app</span>
+        </div>
+        <div class="project-name">storefront</div>
+        <a href="#" class="project-domain">storefront.vercel.app</a>
+        <div class="project-meta">
+          <span class="project-meta-branch">feature/cart</span>
+          <span>·</span>
+          <span>Just now</span>
+          <span style="margin-left: auto;">
+            <span class="status-badge status-badge--building">
+              <span class="badge-dot"></span>Building
+            </span>
+          </span>
+        </div>
+      </article>
+
+      <!-- Card 3: Ready -->
+      <article class="project-card">
+        <div class="project-preview" aria-label="Project preview">
+          <span class="project-preview-url">docs.example.com</span>
+        </div>
+        <div class="project-name">docs-site</div>
+        <a href="#" class="project-domain">docs.example.com</a>
+        <div class="project-meta">
+          <span class="project-meta-branch">main</span>
+          <span>·</span>
+          <span>1d ago</span>
+          <span style="margin-left: auto;">
+            <span class="status-badge status-badge--ready">
+              <span class="badge-dot"></span>Ready
+            </span>
+          </span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CLI TERMINAL
+     ============================================================ -->
+<section class="ds-section" aria-label="Terminal component">
+  <div class="container">
+    <span class="ds-section-label">Components</span>
+    <h2 class="ds-section-title">CLI Terminal</h2>
+    <p class="ds-section-desc">Realistic command-line output. Monospaced precision, dark-background clarity.</p>
+
+    <div class="terminal" role="region" aria-label="CLI output">
+      <!-- Terminal header -->
+      <div class="terminal-header">
+        <div class="terminal-dots" aria-hidden="true">
+          <span class="terminal-dot terminal-dot--close"></span>
+          <span class="terminal-dot terminal-dot--min"></span>
+          <span class="terminal-dot terminal-dot--max"></span>
+        </div>
+        <span class="terminal-title">zsh — 80×24</span>
+      </div>
+
+      <!-- Terminal body -->
+      <div class="terminal-body">
+        <!-- Command 1: install vercel -->
+        <div class="terminal-line">
+          <span class="terminal-prompt">▲ ~</span>
+          <span class="terminal-command">&nbsp;npm i -g vercel</span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-output">added 1 package, and audited 1 package in 2s</span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-output">&nbsp;</span>
+        </div>
+
+        <!-- Command 2: vercel -->
+        <div class="terminal-line">
+          <span class="terminal-prompt">▲ ~/my-app</span>
+          <span class="terminal-command">&nbsp;vercel</span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-output terminal-dim">Vercel CLI 35.1.7</span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-output">? Set up and deploy "~/my-app"? [Y/n]</span>
+          <span class="terminal-info">&nbsp;y</span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-output">? Which scope should contain your project? </span>
+          <span class="terminal-info">acme</span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-output">? Found project "acme/my-app". Link to it? [Y/n]</span>
+          <span class="terminal-info">&nbsp;y</span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-output terminal-dim">🔗 Linked to acme/my-app (created .vercel)</span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-output">🔍 Inspect: </span>
+          <span class="terminal-info">https://vercel.com/acme/my-app/abc123</span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-success">✓ &nbsp;Production: </span>
+          <span style="font-family: var(--font-mono); color: var(--color-accent-teal);">https://my-app.vercel.app</span>
+          <span class="terminal-dim">&nbsp;[3s]</span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-output">&nbsp;</span>
+        </div>
+
+        <!-- Command 3: env add -->
+        <div class="terminal-line">
+          <span class="terminal-prompt">▲ ~/my-app</span>
+          <span class="terminal-command">&nbsp;vercel env add DATABASE_URL</span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-output">? What's the value of DATABASE_URL?</span>
+          <span class="terminal-dim">&nbsp;[hidden]</span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-output">? Add DATABASE_URL to which Environments?</span>
+          <span class="terminal-info">&nbsp;Production, Preview, Development</span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-success">✓ &nbsp;Added Environment Variable DATABASE_URL to Project my-app</span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-prompt">▲ ~/my-app</span>
+          <span>&nbsp;</span>
+          <span class="terminal-cursor" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FRAMEWORK GRID
+     ============================================================ -->
+<section class="ds-section" aria-label="Supported frameworks">
+  <div class="container">
+    <span class="ds-section-label">Ecosystem</span>
+    <h2 class="ds-section-title">Framework Support</h2>
+    <p class="ds-section-desc">Zero-config deploys for every major frontend framework.</p>
+
+    <div class="framework-grid" role="list">
+
+      <div class="framework-tile" role="listitem">
+        <div class="framework-tile-icon" aria-hidden="true">▲</div>
+        <div class="framework-tile-name">Next.js</div>
+      </div>
+
+      <div class="framework-tile" role="listitem">
+        <div class="framework-tile-icon" aria-hidden="true" style="color: var(--color-success);">N</div>
+        <div class="framework-tile-name">Nuxt</div>
+      </div>
+
+      <div class="framework-tile" role="listitem">
+        <div class="framework-tile-icon" aria-hidden="true" style="color: #FF3E00;">S</div>
+        <div class="framework-tile-name">SvelteKit</div>
+      </div>
+
+      <div class="framework-tile" role="listitem">
+        <div class="framework-tile-icon" aria-hidden="true" style="color: var(--color-warning);">A</div>
+        <div class="framework-tile-name">Astro</div>
+      </div>
+
+      <div class="framework-tile" role="listitem">
+        <div class="framework-tile-icon" aria-hidden="true" style="color: var(--color-accent-blue);">R</div>
+        <div class="framework-tile-name">Remix</div>
+      </div>
+
+      <div class="framework-tile" role="listitem">
+        <div class="framework-tile-icon" aria-hidden="true" style="color: var(--color-accent-teal);">G</div>
+        <div class="framework-tile-name">Gatsby</div>
+      </div>
+
+      <div class="framework-tile" role="listitem">
+        <div class="framework-tile-icon" aria-hidden="true" style="color: #E04E39;">S</div>
+        <div class="framework-tile-name">Solid Start</div>
+      </div>
+
+      <div class="framework-tile" role="listitem">
+        <div class="framework-tile-icon" aria-hidden="true" style="color: var(--color-label-secondary);">V</div>
+        <div class="framework-tile-name">Vite</div>
+      </div>
+
+      <div class="framework-tile" role="listitem">
+        <div class="framework-tile-icon" aria-hidden="true" style="color: #61DAFB;">R</div>
+        <div class="framework-tile-name">React</div>
+      </div>
+
+      <div class="framework-tile" role="listitem">
+        <div class="framework-tile-icon" aria-hidden="true" style="color: #4FC08D;">V</div>
+        <div class="framework-tile-name">Vue</div>
+      </div>
+
+      <div class="framework-tile" role="listitem">
+        <div class="framework-tile-icon" aria-hidden="true" style="color: var(--color-label-secondary);">Q</div>
+        <div class="framework-tile-name">Qwik</div>
+      </div>
+
+      <div class="framework-tile" role="listitem">
+        <div class="framework-tile-icon" aria-hidden="true" style="color: var(--color-label-secondary);">H</div>
+        <div class="framework-tile-name">Hugo</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FORMS — Section
+     ============================================================ -->
+<section id="forms" class="ds-section" aria-label="Form components">
+  <div class="container">
+    <span class="ds-section-label">Components</span>
+    <h2 class="ds-section-title">Forms</h2>
+    <p class="ds-section-desc">Dark-styled inputs with instant focus states. White border = active field. Mono variant for technical values.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-10);">
+
+      <!-- Left column: standard inputs -->
+      <div style="display: flex; flex-direction: column; gap: var(--space-5);">
+
+        <div class="form-group">
+          <label class="form-label" for="project-name">Project Name</label>
+          <input type="text" id="project-name" class="input" placeholder="my-app" value="my-app">
+          <span class="form-helper">Must be unique across all projects in your scope.</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label required" for="git-url">Git Repository</label>
+          <div class="input-wrapper">
+            <span class="input-icon-left" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+              </svg>
+            </span>
+            <input type="url" id="git-url" class="input has-icon-left" placeholder="https://github.com/acme/my-app">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="framework">Framework Preset</label>
+          <div class="select-wrapper">
+            <select id="framework" class="select">
+              <option>Next.js</option>
+              <option>Nuxt</option>
+              <option>SvelteKit</option>
+              <option>Astro</option>
+              <option>Remix</option>
+              <option>Other</option>
+            </select>
+            <span class="select-chevron" aria-hidden="true">▾</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="build-cmd">Build Command</label>
+          <input type="text" id="build-cmd" class="input input-mono" value="next build" placeholder="npm run build">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="output-dir">Output Directory</label>
+          <input type="text" id="output-dir" class="input input-mono" value=".next" placeholder=".next">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="notes">Deployment Notes</label>
+          <textarea id="notes" class="textarea" rows="3" placeholder="Optional notes about this deployment…"></textarea>
+        </div>
+
+      </div>
+
+      <!-- Right column: advanced -->
+      <div style="display: flex; flex-direction: column; gap: var(--space-5);">
+
+        <div class="form-group">
+          <label class="form-label" for="root-dir">Root Directory</label>
+          <input type="text" id="root-dir" class="input input-mono" placeholder="./" value="./">
+          <span class="form-helper">Relative path to the root of your project.</span>
+        </div>
+
+        <!-- Input states -->
+        <div class="form-group">
+          <label class="form-label" for="input-error">Error State</label>
+          <input type="text" id="input-error" class="input error" value="invalid-project-name!">
+          <span class="form-error">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
+              <path d="M6 1a5 5 0 1 0 0 10A5 5 0 0 0 6 1ZM5.5 3.5h1v3h-1v-3Zm0 4h1v1h-1v-1Z"/>
+            </svg>
+            Only lowercase letters, numbers, and hyphens are allowed.
+          </span>
+        </div>
+
+        <!-- Checkboxes -->
+        <div class="form-group">
+          <span class="form-label">Options</span>
+          <div style="display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-1);">
+            <label class="checkbox-wrapper">
+              <span class="checkbox">
+                <input type="checkbox" checked>
+                <span class="checkbox-box"></span>
+              </span>
+              <span class="checkbox-label">Auto-deploy on git push</span>
+            </label>
+            <label class="checkbox-wrapper">
+              <span class="checkbox">
+                <input type="checkbox" checked>
+                <span class="checkbox-box"></span>
+              </span>
+              <span class="checkbox-label">Enable deployment protection</span>
+            </label>
+            <label class="checkbox-wrapper">
+              <span class="checkbox">
+                <input type="checkbox">
+                <span class="checkbox-box"></span>
+              </span>
+              <span class="checkbox-label">Use preview URLs for pull requests</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Toggles -->
+        <div class="form-group">
+          <span class="form-label">Feature Flags</span>
+          <div style="display: flex; flex-direction: column; gap: var(--space-4); margin-top: var(--space-2);">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: var(--text-14); color: var(--color-label-primary);">Edge Runtime</span>
+              <label class="toggle-label">
+                <span class="toggle">
+                  <input type="checkbox" checked>
+                  <span class="toggle-track"></span>
+                  <span class="toggle-thumb"></span>
+                </span>
+              </label>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: var(--text-14); color: var(--color-label-primary);">Streaming</span>
+              <label class="toggle-label">
+                <span class="toggle">
+                  <input type="checkbox" checked>
+                  <span class="toggle-track"></span>
+                  <span class="toggle-thumb"></span>
+                </span>
+              </label>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: var(--text-14); color: var(--color-label-primary);">Vercel Analytics</span>
+              <label class="toggle-label">
+                <span class="toggle">
+                  <input type="checkbox">
+                  <span class="toggle-track"></span>
+                  <span class="toggle-thumb"></span>
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: var(--space-2); margin-top: auto;">
+          <button class="btn btn-ghost flex-1">Cancel</button>
+          <button class="btn btn-primary flex-1">Deploy Project</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ENVIRONMENT VARIABLES
+     ============================================================ -->
+<section class="ds-section" aria-label="Environment variables">
+  <div class="container">
+    <span class="ds-section-label">Components</span>
+    <h2 class="ds-section-title">Environment Variables</h2>
+    <p class="ds-section-desc">Mono keys, redacted values, environment-scoped badges.</p>
+
+    <div class="env-list" role="list" aria-label="Environment variables">
+
+      <div class="env-row" role="listitem">
+        <span class="env-key">DATABASE_URL</span>
+        <span class="env-value env-value--redacted">••••••••••••••••••••</span>
+        <div class="env-badge-group">
+          <span class="env-badge env-badge--production">Production</span>
+          <span class="env-badge env-badge--preview">Preview</span>
+        </div>
+        <div class="env-actions">
+          <button class="btn btn-icon btn-sm" aria-label="Edit">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M8.5 1.5l2 2-6 6H2.5v-2l6-6Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="btn btn-icon btn-sm" aria-label="Delete">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2 3h8M5 3V2h2v1M4.5 5v4M7.5 5v4M3 3l.5 6.5h5L9 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="env-row" role="listitem">
+        <span class="env-key">NEXT_PUBLIC_API_URL</span>
+        <span class="env-value" style="font-family: var(--font-mono); font-size: var(--text-13);">https://api.example.com</span>
+        <div class="env-badge-group">
+          <span class="env-badge env-badge--production">Production</span>
+          <span class="env-badge env-badge--preview">Preview</span>
+          <span class="env-badge env-badge--development">Development</span>
+        </div>
+        <div class="env-actions">
+          <button class="btn btn-icon btn-sm" aria-label="Edit">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M8.5 1.5l2 2-6 6H2.5v-2l6-6Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="btn btn-icon btn-sm" aria-label="Delete">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2 3h8M5 3V2h2v1M4.5 5v4M7.5 5v4M3 3l.5 6.5h5L9 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="env-row" role="listitem">
+        <span class="env-key">STRIPE_SECRET_KEY</span>
+        <span class="env-value env-value--redacted">••••••••••••••••••••</span>
+        <div class="env-badge-group">
+          <span class="env-badge env-badge--production">Production</span>
+        </div>
+        <div class="env-actions">
+          <button class="btn btn-icon btn-sm" aria-label="Edit">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M8.5 1.5l2 2-6 6H2.5v-2l6-6Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="btn btn-icon btn-sm" aria-label="Delete">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2 3h8M5 3V2h2v1M4.5 5v4M7.5 5v4M3 3l.5 6.5h5L9 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="env-row" role="listitem">
+        <span class="env-key">NODE_ENV</span>
+        <span class="env-value" style="font-family: var(--font-mono); font-size: var(--text-13);">production</span>
+        <div class="env-badge-group">
+          <span class="env-badge env-badge--production">Production</span>
+          <span class="env-badge env-badge--preview">Preview</span>
+          <span class="env-badge env-badge--development">Development</span>
+        </div>
+        <div class="env-actions">
+          <button class="btn btn-icon btn-sm" aria-label="Edit">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M8.5 1.5l2 2-6 6H2.5v-2l6-6Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top: var(--space-4);">
+      <button class="btn btn-secondary">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Add Variable
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ANALYTICS / SPEED METER
+     ============================================================ -->
+<section class="ds-section" aria-label="Analytics and performance">
+  <div class="container">
+    <span class="ds-section-label">Analytics</span>
+    <h2 class="ds-section-title">Performance Scores</h2>
+    <p class="ds-section-desc">Real User Monitoring. Score rings and metric bars for Lighthouse-style metrics.</p>
+
+    <div class="analytics-panel">
+      <!-- Score rings -->
+      <div class="analytics-scores">
+
+        <!-- Performance -->
+        <div class="analytics-score-item">
+          <div class="score-ring" aria-label="Performance score: 98">
+            <svg class="score-ring-svg" viewBox="0 0 100 100" aria-hidden="true">
+              <circle class="score-ring-track" cx="50" cy="50" r="40"/>
+              <circle class="score-ring-fill score-ring-fill--good" cx="50" cy="50" r="40"
+                stroke-dasharray="240 251"
+                stroke-dashoffset="0"/>
+            </svg>
+            <div class="score-ring-value">
+              <span class="score-number text-success">98</span>
+              <span class="score-label">Perf</span>
+            </div>
+          </div>
+          <div class="analytics-score-title">Performance</div>
+        </div>
+
+        <!-- Accessibility -->
+        <div class="analytics-score-item">
+          <div class="score-ring" aria-label="Accessibility score: 94">
+            <svg class="score-ring-svg" viewBox="0 0 100 100" aria-hidden="true">
+              <circle class="score-ring-track" cx="50" cy="50" r="40"/>
+              <circle class="score-ring-fill score-ring-fill--good" cx="50" cy="50" r="40"
+                stroke-dasharray="236 251"
+                stroke-dashoffset="0"/>
+            </svg>
+            <div class="score-ring-value">
+              <span class="score-number text-success">94</span>
+              <span class="score-label">A11y</span>
+            </div>
+          </div>
+          <div class="analytics-score-title">Accessibility</div>
+        </div>
+
+        <!-- Best Practices -->
+        <div class="analytics-score-item">
+          <div class="score-ring" aria-label="Best Practices score: 100">
+            <svg class="score-ring-svg" viewBox="0 0 100 100" aria-hidden="true">
+              <circle class="score-ring-track" cx="50" cy="50" r="40"/>
+              <circle class="score-ring-fill score-ring-fill--good" cx="50" cy="50" r="40"
+                stroke-dasharray="251 251"
+                stroke-dashoffset="0"/>
+            </svg>
+            <div class="score-ring-value">
+              <span class="score-number text-success">100</span>
+              <span class="score-label">BP</span>
+            </div>
+          </div>
+          <div class="analytics-score-title">Best Practices</div>
+        </div>
+
+        <!-- SEO -->
+        <div class="analytics-score-item">
+          <div class="score-ring" aria-label="SEO score: 78">
+            <svg class="score-ring-svg" viewBox="0 0 100 100" aria-hidden="true">
+              <circle class="score-ring-track" cx="50" cy="50" r="40"/>
+              <circle class="score-ring-fill score-ring-fill--ok" cx="50" cy="50" r="40"
+                stroke-dasharray="196 251"
+                stroke-dashoffset="0"/>
+            </svg>
+            <div class="score-ring-value">
+              <span class="score-number text-warning">78</span>
+              <span class="score-label">SEO</span>
+            </div>
+          </div>
+          <div class="analytics-score-title">SEO</div>
+        </div>
+
+      </div>
+
+      <!-- Metric rows -->
+      <div class="analytics-metrics">
+        <div class="metric-row">
+          <span class="metric-label">First Contentful Paint</span>
+          <div class="metric-bar-track"><div class="metric-bar-fill metric-bar-fill--good" style="width: 95%;"></div></div>
+          <span class="metric-value">0.4 s</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">Largest Contentful Paint</span>
+          <div class="metric-bar-track"><div class="metric-bar-fill metric-bar-fill--good" style="width: 88%;"></div></div>
+          <span class="metric-value">0.8 s</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">Total Blocking Time</span>
+          <div class="metric-bar-track"><div class="metric-bar-fill metric-bar-fill--good" style="width: 100%;"></div></div>
+          <span class="metric-value">0 ms</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">Cumulative Layout Shift</span>
+          <div class="metric-bar-track"><div class="metric-bar-fill metric-bar-fill--good" style="width: 100%;"></div></div>
+          <span class="metric-value">0.001</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">Speed Index</span>
+          <div class="metric-bar-track"><div class="metric-bar-fill metric-bar-fill--ok" style="width: 70%;"></div></div>
+          <span class="metric-value">2.1 s</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">Time to Interactive</span>
+          <div class="metric-bar-track"><div class="metric-bar-fill metric-bar-fill--poor" style="width: 45%;"></div></div>
+          <span class="metric-value">5.2 s</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     NAVIGATION DEMOS
+     ============================================================ -->
+<section class="ds-section" aria-label="Navigation components">
+  <div class="container">
+    <span class="ds-section-label">Components</span>
+    <h2 class="ds-section-title">Navigation</h2>
+    <p class="ds-section-desc">Global nav, docs sidebar, breadcrumbs, and tab navigation.</p>
+
+    <!-- Global nav demo -->
+    <div class="ds-section-label" style="font-size: var(--text-11); color: var(--color-label-tertiary); margin-bottom: var(--space-3); margin-top: 0;">Global Nav</div>
+    <div class="nav-demo" aria-label="Navigation bar demo">
+      <div class="nav-demo-bar">
+        <div class="nav-demo-logo">
+          <span aria-hidden="true">▲</span>
+          <span>Vercel</span>
+        </div>
+        <div class="nav-demo-links">
+          <span class="nav-demo-link">Products</span>
+          <span class="nav-demo-link">Solutions</span>
+          <span class="nav-demo-link">Resources</span>
+          <span class="nav-demo-link">Enterprise</span>
+          <span class="nav-demo-link">Pricing</span>
+        </div>
+        <div class="nav-demo-actions">
+          <button class="btn btn-ghost btn-sm">Log In</button>
+          <button class="btn btn-primary btn-sm">Sign Up</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Breadcrumbs -->
+    <div style="margin-top: var(--space-6);">
+      <div class="ds-section-label" style="font-size: var(--text-11); color: var(--color-label-tertiary); margin-bottom: var(--space-3);">Breadcrumbs</div>
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">acme</a></li>
+          <li class="breadcrumb-item">
+            <span class="breadcrumb-separator" aria-hidden="true">/</span>
+            <a href="#">my-app</a>
+          </li>
+          <li class="breadcrumb-item">
+            <span class="breadcrumb-separator" aria-hidden="true">/</span>
+            <a href="#">settings</a>
+          </li>
+          <li class="breadcrumb-item">
+            <span class="breadcrumb-separator" aria-hidden="true">/</span>
+            <a href="#">environment-variables</a>
+          </li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- Tabs -->
+    <div style="margin-top: var(--space-6);">
+      <div class="ds-section-label" style="font-size: var(--text-11); color: var(--color-label-tertiary); margin-bottom: var(--space-3);">Tabs</div>
+      <div class="tabs" role="tablist" aria-label="Project sections">
+        <button class="tab-item active" role="tab" aria-selected="true">Deployments</button>
+        <button class="tab-item" role="tab" aria-selected="false">Logs</button>
+        <button class="tab-item" role="tab" aria-selected="false">Analytics</button>
+        <button class="tab-item" role="tab" aria-selected="false">Speed Insights</button>
+        <button class="tab-item" role="tab" aria-selected="false">Storage</button>
+        <button class="tab-item" role="tab" aria-selected="false">Settings</button>
+      </div>
+    </div>
+
+    <!-- Sidebar + content layout demo -->
+    <div style="margin-top: var(--space-6);">
+      <div class="ds-section-label" style="font-size: var(--text-11); color: var(--color-label-tertiary); margin-bottom: var(--space-3);">Docs Sidebar</div>
+      <div class="sidebar-layout-demo" aria-label="Docs sidebar layout demo">
+
+        <nav class="sidebar-demo" aria-label="Docs navigation">
+
+          <div style="margin-bottom: var(--space-4);">
+            <span class="nav-docs-section-label">Getting Started</span>
+            <a class="nav-docs-item active" href="#">Introduction</a>
+            <a class="nav-docs-item" href="#">Quick Start</a>
+            <a class="nav-docs-item" href="#">Concepts</a>
+          </div>
+
+          <div style="margin-bottom: var(--space-4);">
+            <span class="nav-docs-section-label">Projects</span>
+            <a class="nav-docs-item" href="#">Deployments</a>
+            <a class="nav-docs-item" href="#">Domains</a>
+            <a class="nav-docs-item" href="#">Environment Vars</a>
+            <a class="nav-docs-item" href="#">Logs</a>
+          </div>
+
+          <div>
+            <span class="nav-docs-section-label">Reference</span>
+            <a class="nav-docs-item" href="#">CLI</a>
+            <a class="nav-docs-item" href="#">REST API</a>
+            <a class="nav-docs-item" href="#">Edge Runtime</a>
+          </div>
+
+        </nav>
+
+        <div class="sidebar-demo-content">
+          <nav aria-label="Page breadcrumb">
+            <ol class="breadcrumb" style="margin-bottom: var(--space-4);">
+              <li class="breadcrumb-item"><a href="#">Docs</a></li>
+              <li class="breadcrumb-item">
+                <span class="breadcrumb-separator" aria-hidden="true">/</span>
+                Getting Started
+              </li>
+              <li class="breadcrumb-item">
+                <span class="breadcrumb-separator" aria-hidden="true">/</span>
+                Introduction
+              </li>
+            </ol>
+          </nav>
+          <h3 style="font-size: var(--text-20); font-weight: var(--weight-semibold); margin: 0 0 var(--space-3); letter-spacing: var(--tracking-tight-1);">Introduction to Vercel</h3>
+          <p style="font-size: var(--text-14); color: var(--color-label-secondary); line-height: var(--leading-relaxed); margin: 0;">
+            Vercel is a platform for deploying and hosting web applications.
+            It provides a global edge network, serverless functions, and automatic deployments from Git.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     BADGES & STATUS
+     ============================================================ -->
+<section class="ds-section" aria-label="Badges and status">
+  <div class="container">
+    <span class="ds-section-label">Components</span>
+    <h2 class="ds-section-title">Badges &amp; Status</h2>
+    <p class="ds-section-desc">Deployment states, region codes, and semantic status indicators.</p>
+
+    <!-- Status badges -->
+    <div class="component-row">
+      <span class="component-row-label">Deployment</span>
+      <span class="status-badge status-badge--ready"><span class="badge-dot"></span>Ready</span>
+      <span class="status-badge status-badge--building"><span class="badge-dot"></span>Building</span>
+      <span class="status-badge status-badge--error"><span class="badge-dot"></span>Error</span>
+      <span class="status-badge status-badge--queued"><span class="badge-dot"></span>Queued</span>
+      <span class="status-badge status-badge--cancelled"><span class="badge-dot"></span>Cancelled</span>
+    </div>
+
+    <!-- Region badges -->
+    <div class="component-row">
+      <span class="component-row-label">Regions</span>
+      <span class="region-badge">iad1</span>
+      <span class="region-badge">cdg1</span>
+      <span class="region-badge">hnd1</span>
+      <span class="region-badge">syd1</span>
+      <span class="region-badge">gru1</span>
+      <span class="region-badge">fra1</span>
+    </div>
+
+    <!-- Semantic badges -->
+    <div class="component-row">
+      <span class="component-row-label">Semantic</span>
+      <span class="badge badge--success">Success</span>
+      <span class="badge badge--error">Error</span>
+      <span class="badge badge--warning">Warning</span>
+      <span class="badge badge--info">Info</span>
+      <span class="badge">Default</span>
+    </div>
+
+    <!-- Env badges -->
+    <div class="component-row">
+      <span class="component-row-label">Environment</span>
+      <span class="env-badge env-badge--production">Production</span>
+      <span class="env-badge env-badge--preview">Preview</span>
+      <span class="env-badge env-badge--development">Development</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     MODAL & OVERLAY DEMOS (static)
+     ============================================================ -->
+<section class="ds-section" aria-label="Modal components">
+  <div class="container">
+    <span class="ds-section-label">Components</span>
+    <h2 class="ds-section-title">Modals &amp; Overlays</h2>
+    <p class="ds-section-desc">Dialogs, danger confirmations, tooltips — crisp and dark.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6);">
+
+      <!-- Standard modal -->
+      <div>
+        <div class="caption" style="margin-bottom: var(--space-3); color: var(--color-label-tertiary);">Standard Modal</div>
+        <div class="modal" style="position: static; animation: none; max-width: 100%;">
+          <div class="modal-header">
+            <span class="modal-title">Transfer Project</span>
+            <button class="modal-close" aria-label="Close">✕</button>
+          </div>
+          <div class="modal-body">
+            <p style="font-size: var(--text-14); color: var(--color-label-secondary); margin: 0; line-height: var(--leading-relaxed);">
+              Transfer <code>my-app</code> to another team or personal account.
+              The new owner will have full control over this project.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-ghost">Cancel</button>
+            <button class="btn btn-primary">Transfer</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Danger dialog -->
+      <div>
+        <div class="caption" style="margin-bottom: var(--space-3); color: var(--color-label-tertiary);">Danger Dialog</div>
+        <div class="modal dialog-danger" style="position: static; animation: none; max-width: 100%;">
+          <div class="modal-header">
+            <span class="modal-title">Delete Project</span>
+            <button class="modal-close" aria-label="Close">✕</button>
+          </div>
+          <div class="modal-body">
+            <p style="font-size: var(--text-14); line-height: var(--leading-relaxed); margin: 0;">
+              This action cannot be undone. This will permanently delete <strong>my-app</strong>,
+              all its deployments, domains, and environment variables.
+            </p>
+            <div style="margin-top: var(--space-4);">
+              <label class="form-label" style="margin-bottom: var(--space-2); display: block; font-size: var(--text-13); color: var(--color-label-secondary);">
+                Type <strong style="color: var(--color-label-primary); font-family: var(--font-mono);">my-app</strong> to confirm:
+              </label>
+              <input type="text" class="input" placeholder="my-app" style="font-family: var(--font-mono);">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-ghost">Cancel</button>
+            <button class="btn btn-danger">Delete Project</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tooltips demo -->
+    <div style="margin-top: var(--space-8);">
+      <div class="caption" style="margin-bottom: var(--space-4); color: var(--color-label-tertiary);">Tooltips — hover to reveal</div>
+      <div style="display: flex; gap: var(--space-6); align-items: center; flex-wrap: wrap; padding: var(--space-8) 0;">
+        <div class="tooltip-wrapper">
+          <button class="btn btn-secondary">Hover for tooltip</button>
+          <div class="tooltip" role="tooltip">Deploys from the main branch</div>
+        </div>
+        <div class="tooltip-wrapper">
+          <span class="region-badge" style="cursor: default;">iad1</span>
+          <div class="tooltip" role="tooltip">US East (N. Virginia)</div>
+        </div>
+        <div class="tooltip-wrapper">
+          <span class="status-badge status-badge--ready" style="cursor: default;"><span class="badge-dot"></span>Ready</span>
+          <div class="tooltip" role="tooltip">Deployed 2 minutes ago</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MOTION — Micro-interactions
+     ============================================================ -->
+<section id="motion" class="ds-section" aria-label="Motion system">
+  <div class="container">
+    <span class="ds-section-label">Motion</span>
+    <h2 class="ds-section-title">Micro-interactions</h2>
+    <p class="ds-section-desc">
+      Fast and purposeful. 100ms instant, 150ms fast, 200ms normal.
+      <code>cubic-bezier(0.4, 0, 0.2, 1)</code> — Vercel easing.
+    </p>
+
+    <div class="motion-demo">
+
+      <div class="motion-item">
+        <div class="motion-box" style="cursor: pointer;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M10 2L2 18h16L10 2Z" fill="currentColor" opacity="0.9"/>
+          </svg>
+        </div>
+        <span class="motion-caption">Hover: scale 0.97<br>Active: scale 0.94<br>100ms easing</span>
+      </div>
+
+      <div class="motion-item">
+        <div class="motion-box animate-pulse" style="background: var(--color-success-bg); border-color: var(--color-success-border);">
+          <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--color-success); display: block;"></span>
+        </div>
+        <span class="motion-caption">Pulse<br>Live status indicator<br>2s infinite</span>
+      </div>
+
+      <div class="motion-item">
+        <div class="motion-box">
+          <div class="spinner"></div>
+        </div>
+        <span class="motion-caption">Spin<br>Loading state<br>0.75s linear</span>
+      </div>
+
+      <div class="motion-item">
+        <div class="motion-box">
+          <span class="terminal-cursor" style="width: 8px; height: 16px;"></span>
+        </div>
+        <span class="motion-caption">Blink<br>Terminal cursor<br>1s step-end</span>
+      </div>
+
+      <div class="motion-item">
+        <div class="motion-box animate-glow-teal" style="border-color: var(--color-accent-teal);">
+          <span style="font-size: 18px; color: var(--color-accent-teal); font-weight: 700;">▲</span>
+        </div>
+        <span class="motion-caption">Glow Pulse<br>Teal accent ring<br>2s infinite</span>
+      </div>
+
+      <div class="motion-item">
+        <div class="progress" style="width: 120px; background: var(--color-surface-3);">
+          <div class="progress-fill" style="width: 70%;"></div>
+        </div>
+        <div style="margin-top: var(--space-3);" class="motion-box" style="padding: var(--space-3);">
+          <div class="skeleton" style="width: 80px; height: 12px; border-radius: 3px;"></div>
+        </div>
+        <span class="motion-caption">Shimmer<br>Skeleton loading<br>1.6s infinite</span>
+      </div>
+
+    </div>
+
+    <!-- Duration tokens -->
+    <div style="margin-top: var(--space-8);">
+      <div class="caption" style="color: var(--color-label-tertiary); margin-bottom: var(--space-4);">Duration Tokens</div>
+      <div style="display: flex; gap: var(--space-6); flex-wrap: wrap;">
+        <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+          <span class="mono" style="color: var(--color-accent-teal);">--duration-instant</span>
+          <span class="caption">100ms — buttons, hovers</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+          <span class="mono" style="color: var(--color-accent-teal);">--duration-fast</span>
+          <span class="caption">150ms — dropdowns, tooltips</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+          <span class="mono" style="color: var(--color-accent-teal);">--duration-normal</span>
+          <span class="caption">200ms — modals, menus</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+          <span class="mono" style="color: var(--color-accent-teal);">--duration-moderate</span>
+          <span class="caption">300ms — page transitions</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer" aria-label="Site footer">
+  <div class="container">
+    <div class="footer-inner">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span aria-hidden="true">▲</span>
+          <span>Vercel</span>
+        </div>
+        <p class="footer-tagline">Design system built on Vercel's visual language. Dark-first, developer-focused.</p>
+      </div>
+
+      <!-- Products -->
+      <div>
+        <div class="footer-col-title">Products</div>
+        <a href="#" class="footer-link">Next.js</a>
+        <a href="#" class="footer-link">Turborepo</a>
+        <a href="#" class="footer-link">AI SDK</a>
+        <a href="#" class="footer-link">Edge Network</a>
+        <a href="#" class="footer-link">Analytics</a>
+      </div>
+
+      <!-- Resources -->
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <a href="#" class="footer-link">Documentation</a>
+        <a href="#" class="footer-link">Changelog</a>
+        <a href="#" class="footer-link">Templates</a>
+        <a href="#" class="footer-link">Guides</a>
+        <a href="#" class="footer-link">Blog</a>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <div class="footer-col-title">Company</div>
+        <a href="#" class="footer-link">About</a>
+        <a href="#" class="footer-link">Careers</a>
+        <a href="#" class="footer-link">Contact</a>
+        <a href="#" class="footer-link">Privacy Policy</a>
+        <a href="#" class="footer-link">Terms of Service</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2024 Vercel, Inc. All rights reserved.</p>
+      <div style="display: flex; gap: var(--space-4);">
+        <a href="#" class="footer-link" style="margin: 0;">Status</a>
+        <a href="#" class="footer-link" style="margin: 0;">Twitter</a>
+        <a href="#" class="footer-link" style="margin: 0;">GitHub</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

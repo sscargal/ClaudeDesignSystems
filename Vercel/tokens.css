@@ -1,0 +1,273 @@
+/* =============================================================================
+   Vercel Design System — Design Tokens
+   Version 1.0.0 | Dark-first, developer-focused design language
+   Reference: vercel.com
+   ============================================================================= */
+
+/* =============================================================================
+   ROOT — DARK MODE (DEFAULT)
+   Vercel is dark-first. Pure black canvas.
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     COLOR SYSTEM — Dark (Default)
+     --------------------------------------------------------------------------- */
+
+  /* Backgrounds */
+  --color-bg:                  #000000;
+  --color-surface-1:           #111111;
+  --color-surface-2:           #1A1A1A;
+  --color-surface-3:           #222222;
+
+  /* Borders */
+  --color-border-subtle:       #222222;
+  --color-border-default:      #333333;
+  --color-border-strong:       #444444;
+
+  /* Labels / Text */
+  --color-label-primary:       #FFFFFF;
+  --color-label-secondary:     #888888;
+  --color-label-tertiary:      #555555;
+  --color-label-disabled:      #333333;
+
+  /* Accent — Vercel signature colors */
+  --color-accent-teal:         #50E3C2;
+  --color-accent-blue:         #0070F3;
+  --color-accent-blue-hover:   #0060D0;
+  --color-accent-teal-hover:   #3ECFAE;
+
+  /* Semantic States */
+  --color-error:               #FF4444;
+  --color-error-bg:            rgba(255, 68, 68, 0.10);
+  --color-error-border:        rgba(255, 68, 68, 0.25);
+  --color-warning:             #F5A623;
+  --color-warning-bg:          rgba(245, 166, 35, 0.10);
+  --color-warning-border:      rgba(245, 166, 35, 0.25);
+  --color-success:             #0DBA58;
+  --color-success-bg:          rgba(13, 186, 88, 0.10);
+  --color-success-border:      rgba(13, 186, 88, 0.25);
+  --color-info:                #0070F3;
+  --color-info-bg:             rgba(0, 112, 243, 0.10);
+  --color-info-border:         rgba(0, 112, 243, 0.25);
+
+  /* Building / In-Progress */
+  --color-building:            #F5A623;
+  --color-building-bg:         rgba(245, 166, 35, 0.10);
+  --color-queued:              #888888;
+  --color-queued-bg:           rgba(136, 136, 136, 0.10);
+  --color-cancelled:           #555555;
+
+  /* Gradient */
+  --color-gradient-start:      #FFFFFF;
+  --color-gradient-end:        #50E3C2;
+  --color-gradient-blue-start: #0070F3;
+  --color-gradient-blue-end:   #50E3C2;
+
+  /* Overlays & Fills */
+  --color-overlay:             rgba(0, 0, 0, 0.80);
+  --color-fill-subtle:         rgba(255, 255, 255, 0.03);
+  --color-fill-default:        rgba(255, 255, 255, 0.06);
+  --color-fill-strong:         rgba(255, 255, 255, 0.10);
+  --color-white-alpha-06:      rgba(255, 255, 255, 0.06);
+  --color-white-alpha-10:      rgba(255, 255, 255, 0.10);
+  --color-white-alpha-15:      rgba(255, 255, 255, 0.15);
+
+  /* ---------------------------------------------------------------------------
+     TYPOGRAPHY
+     --------------------------------------------------------------------------- */
+
+  --font-sans:   "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono:   "Geist Mono", "JetBrains Mono", "Fira Code", "Cascadia Code", "SF Mono", Consolas, monospace;
+
+  /* Type Scale */
+  --text-48:    48px;
+  --text-36:    36px;
+  --text-28:    28px;
+  --text-24:    24px;
+  --text-20:    20px;
+  --text-18:    18px;
+  --text-16:    16px;
+  --text-14:    14px;
+  --text-13:    13px;
+  --text-12:    12px;
+  --text-11:    11px;
+
+  /* Font Weights */
+  --weight-regular:   400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+  --weight-bold:      700;
+
+  /* Line Heights */
+  --leading-tight:    1.2;
+  --leading-heading:  1.3;
+  --leading-body:     1.6;
+  --leading-relaxed:  1.7;
+  --leading-mono:     1.5;
+
+  /* Letter Spacing */
+  --tracking-tight-3:  -0.03em;
+  --tracking-tight-2:  -0.02em;
+  --tracking-tight-1:  -0.01em;
+  --tracking-normal:    0em;
+  --tracking-caps:      0.10em;
+
+  /* ---------------------------------------------------------------------------
+     SPACING — 4px Base Grid
+     --------------------------------------------------------------------------- */
+
+  --space-1:    4px;
+  --space-2:    8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+
+  /* ---------------------------------------------------------------------------
+     BORDER RADIUS
+     --------------------------------------------------------------------------- */
+
+  --radius-none:   0px;
+  --radius-xs:     4px;
+  --radius-sm:     6px;     /* inputs, buttons */
+  --radius-md:     8px;     /* cards */
+  --radius-lg:    12px;     /* modals */
+  --radius-pill:  9999px;   /* pills, badges */
+
+  --radius-button: var(--radius-sm);
+  --radius-card:   var(--radius-md);
+  --radius-input:  var(--radius-sm);
+  --radius-modal:  var(--radius-lg);
+  --radius-badge:  var(--radius-pill);
+
+  /* ---------------------------------------------------------------------------
+     BORDERS
+     --------------------------------------------------------------------------- */
+
+  --border-subtle:   1px solid var(--color-border-subtle);
+  --border-default:  1px solid var(--color-border-default);
+  --border-strong:   1px solid var(--color-border-strong);
+  --border-focus:    1px solid var(--color-label-primary);
+
+  /* ---------------------------------------------------------------------------
+     SHADOWS — Dark-tinted
+     --------------------------------------------------------------------------- */
+
+  --shadow-border:  0 0 0 1px rgba(255, 255, 255, 0.06);
+  --shadow-sm:      0 4px 12px rgba(0, 0, 0, 0.50);
+  --shadow-md:      0 8px 24px rgba(0, 0, 0, 0.60);
+  --shadow-lg:      0 8px 40px rgba(0, 0, 0, 0.70);
+  --shadow-xl:      0 16px 64px rgba(0, 0, 0, 0.80);
+  --shadow-focus:   0 0 0 2px rgba(255, 255, 255, 0.20);
+
+  --shadow-teal:    0 0 24px rgba(80, 227, 194, 0.20);
+  --shadow-blue:    0 0 24px rgba(0, 112, 243, 0.25);
+  --shadow-error:   0 0 24px rgba(255, 68, 68, 0.20);
+
+  /* ---------------------------------------------------------------------------
+     MOTION — Fast, purposeful
+     --------------------------------------------------------------------------- */
+
+  --duration-instant:  100ms;
+  --duration-fast:     150ms;
+  --duration-normal:   200ms;
+  --duration-moderate: 300ms;
+
+  --ease-vercel:    cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out:       cubic-bezier(0.0, 0, 0.2, 1);
+  --ease-in:        cubic-bezier(0.4, 0, 1.0, 1);
+
+  --transition-instant:  all var(--duration-instant) var(--ease-vercel);
+  --transition-fast:     all var(--duration-fast) var(--ease-vercel);
+  --transition-normal:   all var(--duration-normal) var(--ease-vercel);
+  --transition-moderate: all var(--duration-moderate) var(--ease-vercel);
+
+  /* ---------------------------------------------------------------------------
+     Z-INDEX
+     --------------------------------------------------------------------------- */
+
+  --z-base:      0;
+  --z-raised:   10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-toast:    500;
+  --z-tooltip:  600;
+
+  /* ---------------------------------------------------------------------------
+     COMPONENT DIMENSIONS
+     --------------------------------------------------------------------------- */
+
+  --btn-height-sm:    28px;
+  --btn-height-md:    36px;
+  --btn-height-lg:    44px;
+  --input-height-sm:  28px;
+  --input-height-md:  36px;
+  --input-height-lg:  44px;
+  --nav-height:       64px;
+  --sidebar-width:   240px;
+  --deployment-row-height: 52px;
+  --max-width-site:  1200px;
+  --max-width-narrow: 800px;
+}
+
+/* =============================================================================
+   LIGHT MODE OVERRIDE
+   ============================================================================= */
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Backgrounds */
+    --color-bg:               #FFFFFF;
+    --color-surface-1:        #FAFAFA;
+    --color-surface-2:        #F5F5F5;
+    --color-surface-3:        #EBEBEB;
+
+    /* Borders */
+    --color-border-subtle:    #EAEAEA;
+    --color-border-default:   #EAEAEA;
+    --color-border-strong:    #D4D4D4;
+
+    /* Labels */
+    --color-label-primary:    #000000;
+    --color-label-secondary:  #666666;
+    --color-label-tertiary:   #999999;
+    --color-label-disabled:   #CCCCCC;
+
+    /* Accent stays the same — brand colors */
+    --color-accent-teal:      #00A37A;
+    --color-accent-blue:      #0070F3;
+    --color-accent-blue-hover: #005CC5;
+    --color-accent-teal-hover: #008060;
+
+    /* Overlays */
+    --color-overlay:          rgba(0, 0, 0, 0.50);
+    --color-fill-subtle:      rgba(0, 0, 0, 0.02);
+    --color-fill-default:     rgba(0, 0, 0, 0.04);
+    --color-fill-strong:      rgba(0, 0, 0, 0.08);
+    --color-white-alpha-06:   rgba(0, 0, 0, 0.04);
+    --color-white-alpha-10:   rgba(0, 0, 0, 0.06);
+    --color-white-alpha-15:   rgba(0, 0, 0, 0.10);
+
+    /* Gradient on light: dark text to blue */
+    --color-gradient-start:   #000000;
+    --color-gradient-end:     #0070F3;
+
+    /* Shadows — lighter on white background */
+    --shadow-border:  0 0 0 1px rgba(0, 0, 0, 0.08);
+    --shadow-sm:      0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md:      0 4px 16px rgba(0, 0, 0, 0.10);
+    --shadow-lg:      0 8px 32px rgba(0, 0, 0, 0.12);
+    --shadow-xl:      0 16px 48px rgba(0, 0, 0, 0.15);
+    --shadow-focus:   0 0 0 2px rgba(0, 0, 0, 0.15);
+  }
+}

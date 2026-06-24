@@ -1,0 +1,330 @@
+/* =============================================================================
+   Vercel Design System — Animations & Motion
+   Version 1.0.0 | Fast, purposeful micro-interactions
+   No flourishes. Everything earns its place.
+   ============================================================================= */
+
+/* =============================================================================
+   KEYFRAMES
+   ============================================================================= */
+
+/* --- Fade --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* --- Slide In Down — for dropdowns (fast, 150ms) --- */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOutUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+/* --- Fade Slide Up — for tooltips, modals entering from below --- */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Shimmer — skeleton loading state --- */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* --- Pulse — for live / active status indicators --- */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+/* Pulse Scale — larger pulse for hero elements */
+@keyframes pulseScale {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.05); opacity: 0.7; }
+}
+
+/* --- Spin — for loading spinners --- */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* --- Grid Fade — for background dot grid appearance --- */
+@keyframes gridFade {
+  from {
+    opacity: 0;
+    background-size: 28px 28px;
+  }
+  to {
+    opacity: 1;
+    background-size: 24px 24px;
+  }
+}
+
+/* --- Blink — cursor blink in terminal --- */
+@keyframes blink {
+  0%, 50%  { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* --- Build progress — animating the build log lines --- */
+@keyframes buildLine {
+  from {
+    opacity: 0;
+    transform: translateX(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* --- Scale in — for modals/dialogs --- */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* --- Toast notification --- */
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-100%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes toastSlideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100%) scale(0.96);
+  }
+}
+
+/* --- Progress bar indeterminate --- */
+@keyframes progressIndeterminate {
+  0%   { transform: translateX(-100%) scaleX(0.5); }
+  50%  { transform: translateX(25%) scaleX(0.75); }
+  100% { transform: translateX(100%) scaleX(0.5); }
+}
+
+/* --- Glow pulse — teal accent glow --- */
+@keyframes glowTeal {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(80, 227, 194, 0.30); }
+  50%       { box-shadow: 0 0 0 8px rgba(80, 227, 194, 0); }
+}
+
+@keyframes glowBlue {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 112, 243, 0.35); }
+  50%       { box-shadow: 0 0 0 8px rgba(0, 112, 243, 0); }
+}
+
+/* --- Deploy success checkmark draw --- */
+@keyframes checkDraw {
+  from { stroke-dashoffset: 24; opacity: 0; }
+  to   { stroke-dashoffset: 0;  opacity: 1; }
+}
+
+/* =============================================================================
+   ANIMATION UTILITY CLASSES
+   ============================================================================= */
+
+/* Fade */
+.animate-fade-in      { animation: fadeIn var(--duration-normal) var(--ease-out) both; }
+.animate-fade-out     { animation: fadeOut var(--duration-fast) var(--ease-in) both; }
+
+/* Slide */
+.animate-slide-down   { animation: slideInDown var(--duration-fast) var(--ease-out) both; }
+.animate-slide-up     { animation: fadeSlideUp var(--duration-fast) var(--ease-out) both; }
+
+/* Scale */
+.animate-scale-in     { animation: scaleIn var(--duration-normal) var(--ease-out) both; }
+
+/* Ongoing */
+.animate-pulse        { animation: pulse 2s ease-in-out infinite; }
+.animate-spin         { animation: spin 0.8s linear infinite; }
+.animate-blink        { animation: blink 1s step-end infinite; }
+.animate-glow-teal    { animation: glowTeal 2s ease-in-out infinite; }
+.animate-glow-blue    { animation: glowBlue 2s ease-in-out infinite; }
+
+/* Toast */
+.animate-toast-in     { animation: toastSlideIn var(--duration-normal) var(--ease-out) both; }
+.animate-toast-out    { animation: toastSlideOut var(--duration-fast) var(--ease-in) both; }
+
+/* Build sequence — staggered delays */
+.animate-build-1 { animation: buildLine var(--duration-normal) var(--ease-out) 0ms both; }
+.animate-build-2 { animation: buildLine var(--duration-normal) var(--ease-out) 150ms both; }
+.animate-build-3 { animation: buildLine var(--duration-normal) var(--ease-out) 300ms both; }
+.animate-build-4 { animation: buildLine var(--duration-normal) var(--ease-out) 450ms both; }
+.animate-build-5 { animation: buildLine var(--duration-normal) var(--ease-out) 600ms both; }
+.animate-build-6 { animation: buildLine var(--duration-normal) var(--ease-out) 750ms both; }
+.animate-build-7 { animation: buildLine var(--duration-normal) var(--ease-out) 900ms both; }
+.animate-build-8 { animation: buildLine var(--duration-normal) var(--ease-out) 1050ms both; }
+
+/* =============================================================================
+   SKELETON / SHIMMER LOADING
+   ============================================================================= */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-2) 25%,
+    var(--color-surface-3) 50%,
+    var(--color-surface-2) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s var(--ease-vercel) infinite;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-text {
+  height: 14px;
+  margin-bottom: 6px;
+  border-radius: var(--radius-xs);
+}
+
+.skeleton-text.short  { width: 35%; }
+.skeleton-text.medium { width: 60%; }
+.skeleton-text.long   { width: 85%; }
+
+.skeleton-title {
+  height: 20px;
+  margin-bottom: 8px;
+  border-radius: var(--radius-xs);
+}
+
+.skeleton-rect {
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-circle {
+  border-radius: var(--radius-pill);
+}
+
+/* =============================================================================
+   DELAY UTILITIES
+   ============================================================================= */
+
+.delay-50   { animation-delay:  50ms; }
+.delay-100  { animation-delay: 100ms; }
+.delay-150  { animation-delay: 150ms; }
+.delay-200  { animation-delay: 200ms; }
+.delay-300  { animation-delay: 300ms; }
+.delay-400  { animation-delay: 400ms; }
+.delay-500  { animation-delay: 500ms; }
+.delay-600  { animation-delay: 600ms; }
+.delay-800  { animation-delay: 800ms; }
+.delay-1000 { animation-delay: 1000ms; }
+
+/* =============================================================================
+   TRANSITION UTILITIES
+   ============================================================================= */
+
+.transition-none     { transition: none; }
+.transition-instant  { transition: var(--transition-instant); }
+.transition-fast     { transition: var(--transition-fast); }
+.transition-normal   { transition: var(--transition-normal); }
+.transition-moderate { transition: var(--transition-moderate); }
+
+/* =============================================================================
+   HOVER STATES
+   ============================================================================= */
+
+.hover-opacity {
+  transition: opacity var(--duration-instant) var(--ease-vercel);
+}
+
+.hover-opacity:hover {
+  opacity: 0.75;
+}
+
+.hover-border {
+  transition: border-color var(--duration-instant) var(--ease-vercel);
+}
+
+.hover-border:hover {
+  border-color: var(--color-border-strong);
+}
+
+/* =============================================================================
+   REDUCED MOTION — Respect user preference
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .skeleton {
+    animation: none;
+    background: var(--color-surface-2);
+  }
+
+  .animate-pulse {
+    animation: none;
+    opacity: 1;
+  }
+
+  .animate-blink {
+    animation: none;
+    opacity: 1;
+  }
+}

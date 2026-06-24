@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cards — Vercel Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .page { max-width: 1000px; margin: 0 auto; padding: var(--space-10) var(--space-6); }
+    .page-back { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text-13); color: var(--color-label-secondary); text-decoration: none; margin-bottom: var(--space-8); transition: color var(--duration-instant) var(--ease-vercel); }
+    .page-back:hover { color: var(--color-label-primary); text-decoration: none; }
+    .page-title { font-size: var(--text-36); font-weight: var(--weight-bold); letter-spacing: var(--tracking-tight-2); margin: 0 0 var(--space-3); }
+    .page-desc { font-size: var(--text-16); color: var(--color-label-secondary); line-height: var(--leading-relaxed); margin: 0 0 var(--space-12); }
+    .group-label { font-size: var(--text-11); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: 0.10em; color: var(--color-label-tertiary); margin: var(--space-12) 0 var(--space-5); }
+    .group-label:first-child { margin-top: 0; }
+    code { font-family: var(--font-mono); font-size: var(--text-12); color: var(--color-accent-teal); background: var(--color-surface-2); border: var(--border-subtle); border-radius: var(--radius-xs); padding: 2px 6px; }
+
+    /* Stats card specific */
+    .stats-card {
+      background: var(--color-surface-1);
+      border: var(--border-default);
+      border-radius: var(--radius-card);
+      padding: var(--space-5);
+    }
+
+    .stats-value {
+      font-size: var(--text-36);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-tight-2);
+      line-height: 1;
+      margin-bottom: var(--space-1);
+    }
+
+    .stats-label {
+      font-size: var(--text-13);
+      color: var(--color-label-secondary);
+      margin-bottom: var(--space-3);
+    }
+
+    .stats-change {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: var(--text-12);
+      font-weight: var(--weight-medium);
+    }
+
+    .stats-change--up { color: var(--color-success); }
+    .stats-change--down { color: var(--color-error); }
+
+    /* Feature card */
+    .feature-card {
+      background: var(--color-surface-1);
+      border: var(--border-default);
+      border-radius: var(--radius-card);
+      padding: var(--space-6);
+      position: relative;
+      overflow: hidden;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      transition: border-color var(--duration-fast) var(--ease-vercel);
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(80, 227, 194, 0.05) 0%,
+        transparent 60%
+      );
+      pointer-events: none;
+    }
+
+    .feature-card:hover {
+      border-color: var(--color-border-strong);
+    }
+
+    .feature-card-icon {
+      position: absolute;
+      top: var(--space-5);
+      right: var(--space-5);
+      font-size: 32px;
+      opacity: 0.15;
+    }
+
+    .feature-card-title {
+      font-size: var(--text-20);
+      font-weight: var(--weight-semibold);
+      color: var(--color-label-primary);
+      margin-bottom: var(--space-2);
+      letter-spacing: var(--tracking-tight-1);
+    }
+
+    .feature-card-desc {
+      font-size: var(--text-14);
+      color: var(--color-label-secondary);
+      line-height: var(--leading-relaxed);
+    }
+  </style>
+</head>
+<body>
+<main class="page">
+
+  <a href="../index.html" class="page-back">
+    <span aria-hidden="true">←</span>
+    Back to Design System
+  </a>
+
+  <span style="display: block; font-size: var(--text-11); font-weight: var(--weight-semibold); letter-spacing: 0.10em; text-transform: uppercase; color: var(--color-label-tertiary); margin-bottom: var(--space-3);">Components</span>
+  <h1 class="page-title">Cards</h1>
+  <p class="page-desc">
+    Surface-1 background, 1px bordered, 8px radius. Hover brightens border.
+    Cards serve as the primary content container — project cards, stats, feature highlights.
+  </p>
+
+  <!-- Project Cards -->
+  <div class="group-label">Project Cards <code>.project-card</code></div>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4);">
+
+    <article class="project-card">
+      <div class="project-preview">
+        <span class="project-preview-url">acme.vercel.app</span>
+      </div>
+      <div class="project-name">acme-corp</div>
+      <a href="#" class="project-domain">acme.vercel.app</a>
+      <div class="project-meta">
+        <span class="project-meta-branch">main</span>
+        <span>·</span>
+        <span>4m ago</span>
+        <span style="margin-left: auto;">
+          <span class="status-badge status-badge--ready">
+            <span class="badge-dot"></span>Ready
+          </span>
+        </span>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-preview">
+        <span class="project-preview-url">storefront.vercel.app</span>
+      </div>
+      <div class="project-name">storefront</div>
+      <a href="#" class="project-domain">storefront.vercel.app</a>
+      <div class="project-meta">
+        <span class="project-meta-branch">feature/cart</span>
+        <span>·</span>
+        <span>Just now</span>
+        <span style="margin-left: auto;">
+          <span class="status-badge status-badge--building">
+            <span class="badge-dot"></span>Building
+          </span>
+        </span>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-preview">
+        <span class="project-preview-url">blog.acme.com</span>
+      </div>
+      <div class="project-name">acme-blog</div>
+      <a href="#" class="project-domain">blog.acme.com</a>
+      <div class="project-meta">
+        <span class="project-meta-branch">main</span>
+        <span>·</span>
+        <span>2h ago</span>
+        <span style="margin-left: auto;">
+          <span class="status-badge status-badge--error">
+            <span class="badge-dot"></span>Error
+          </span>
+        </span>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="group-label">Stats Cards</div>
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4);">
+
+    <div class="stats-card">
+      <div class="stats-value text-success">99.9%</div>
+      <div class="stats-label">Uptime (30d)</div>
+      <span class="stats-change stats-change--up">↑ +0.1%</span>
+    </div>
+
+    <div class="stats-card">
+      <div class="stats-value">47ms</div>
+      <div class="stats-label">Avg Response</div>
+      <span class="stats-change stats-change--up">↓ -12ms</span>
+    </div>
+
+    <div class="stats-card">
+      <div class="stats-value">2.4M</div>
+      <div class="stats-label">Requests (24h)</div>
+      <span class="stats-change stats-change--up">↑ +18%</span>
+    </div>
+
+    <div class="stats-card">
+      <div class="stats-value text-error">3</div>
+      <div class="stats-label">Errors (1h)</div>
+      <span class="stats-change stats-change--down">↑ +3</span>
+    </div>
+
+  </div>
+
+  <!-- Feature Cards -->
+  <div class="group-label">Feature Highlight Cards</div>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4);">
+
+    <div class="feature-card">
+      <span class="feature-card-icon" aria-hidden="true">⚡</span>
+      <div class="feature-card-title">Edge Network</div>
+      <div class="feature-card-desc">Deployed to 100+ regions. Sub-50ms latency worldwide.</div>
+    </div>
+
+    <div class="feature-card" style="border-color: rgba(80,227,194,0.2);">
+      <span style="position: absolute; inset: 0; background: linear-gradient(160deg, rgba(80,227,194,0.08) 0%, transparent 60%); pointer-events: none;"></span>
+      <span class="feature-card-icon" aria-hidden="true" style="opacity: 0.25; color: var(--color-accent-teal);">▲</span>
+      <div class="feature-card-title">Zero Config</div>
+      <div class="feature-card-desc">Auto-detect framework. No build configuration needed.</div>
+    </div>
+
+    <div class="feature-card">
+      <span class="feature-card-icon" aria-hidden="true">🔒</span>
+      <div class="feature-card-title">Secure by Default</div>
+      <div class="feature-card-desc">HTTPS, DDoS protection, and access controls out of the box.</div>
+    </div>
+
+  </div>
+
+  <!-- Deployment list card -->
+  <div class="group-label">Deployment List <code>.deployment-list</code></div>
+  <div class="deployment-list" role="list">
+
+    <div class="deployment-row" role="listitem">
+      <div class="deployment-status">
+        <span class="deployment-dot deployment-dot--ready"></span>
+      </div>
+      <span class="deployment-branch">main</span>
+      <span class="deployment-commit">a4f3c12</span>
+      <span class="deployment-domain"><a href="#">acme-git-main.vercel.app</a></span>
+      <span class="deployment-time">3m ago</span>
+      <div class="deployment-actions">
+        <button class="btn btn-icon btn-sm" aria-label="Visit">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M2 10L10 2M10 2H6M10 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="btn btn-icon btn-sm" aria-label="More">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <circle cx="3" cy="6" r="1" fill="currentColor"/>
+            <circle cx="6" cy="6" r="1" fill="currentColor"/>
+            <circle cx="9" cy="6" r="1" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="deployment-row" role="listitem">
+      <div class="deployment-status">
+        <span class="deployment-dot deployment-dot--building"></span>
+      </div>
+      <span class="deployment-branch">fix/navigation</span>
+      <span class="deployment-commit">c9d1e44</span>
+      <span class="deployment-domain">acme-fix-navigation.vercel.app</span>
+      <span class="deployment-time">Just now</span>
+      <div class="deployment-actions">
+        <button class="btn btn-icon btn-sm" aria-label="More">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <circle cx="3" cy="6" r="1" fill="currentColor"/>
+            <circle cx="6" cy="6" r="1" fill="currentColor"/>
+            <circle cx="9" cy="6" r="1" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="deployment-row" role="listitem">
+      <div class="deployment-status">
+        <span class="deployment-dot deployment-dot--error"></span>
+      </div>
+      <span class="deployment-branch">staging</span>
+      <span class="deployment-commit">b2f9a77</span>
+      <span class="deployment-domain">acme-staging.vercel.app</span>
+      <span class="deployment-time">22m ago</span>
+      <div class="deployment-actions">
+        <button class="btn btn-icon btn-sm" aria-label="Redeploy">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M10 6a4 4 0 1 1-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M6 2l1.5-1.5L9 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="btn btn-icon btn-sm" aria-label="More">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <circle cx="3" cy="6" r="1" fill="currentColor"/>
+            <circle cx="6" cy="6" r="1" fill="currentColor"/>
+            <circle cx="9" cy="6" r="1" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+</body>
+</html>

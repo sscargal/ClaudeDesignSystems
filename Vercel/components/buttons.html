@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buttons — Vercel Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .page { max-width: 860px; margin: 0 auto; padding: var(--space-10) var(--space-6); }
+    .page-back { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text-13); color: var(--color-label-secondary); text-decoration: none; margin-bottom: var(--space-8); transition: color var(--duration-instant) var(--ease-vercel); }
+    .page-back:hover { color: var(--color-label-primary); text-decoration: none; }
+    .page-title { font-size: var(--text-36); font-weight: var(--weight-bold); letter-spacing: var(--tracking-tight-2); margin: 0 0 var(--space-3); }
+    .page-desc { font-size: var(--text-16); color: var(--color-label-secondary); line-height: var(--leading-relaxed); margin: 0 0 var(--space-12); }
+    .spec-table { width: 100%; border-collapse: collapse; font-size: var(--text-13); }
+    .spec-table th { font-size: var(--text-11); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-label-tertiary); text-align: left; padding: var(--space-2) var(--space-4) var(--space-2) 0; border-bottom: var(--border-subtle); }
+    .spec-table td { padding: var(--space-3) var(--space-4) var(--space-3) 0; border-bottom: var(--border-subtle); color: var(--color-label-secondary); vertical-align: middle; }
+    .spec-table td:first-child { color: var(--color-label-primary); }
+    .spec-table tr:last-child td { border-bottom: none; }
+    .group-label { font-size: var(--text-11); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: 0.10em; color: var(--color-label-tertiary); margin: var(--space-10) 0 var(--space-4); }
+    .group-label:first-child { margin-top: 0; }
+    .demo-row { display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap; padding: var(--space-5) 0; border-bottom: var(--border-subtle); }
+    .demo-row:last-child { border-bottom: none; }
+    .demo-row-label { font-size: var(--text-11); font-weight: var(--weight-medium); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-label-tertiary); width: 72px; flex-shrink: 0; }
+    code { font-family: var(--font-mono); font-size: var(--text-12); color: var(--color-accent-teal); background: var(--color-surface-2); border: var(--border-subtle); border-radius: var(--radius-xs); padding: 2px 6px; }
+  </style>
+</head>
+<body>
+<main class="page">
+
+  <a href="../index.html" class="page-back">
+    <span aria-hidden="true">←</span>
+    Back to Design System
+  </a>
+
+  <span style="display: block; font-size: var(--text-11); font-weight: var(--weight-semibold); letter-spacing: 0.10em; text-transform: uppercase; color: var(--color-label-tertiary); margin-bottom: var(--space-3);">Components</span>
+  <h1 class="page-title">Buttons</h1>
+  <p class="page-desc">
+    All button variants, sizes, and states. Fast 100ms transitions.
+    Active state: <code>scale(0.98)</code>. Focus: white outline, 2px offset.
+    No decoration — function drives form.
+  </p>
+
+  <!-- Variants -->
+  <div class="group-label">Variants</div>
+  <div class="demo-row">
+    <span class="demo-row-label">Primary</span>
+    <button class="btn btn-primary">Deploy</button>
+    <code>.btn-primary</code>
+    <span style="font-size: var(--text-12); color: var(--color-label-tertiary);">White fill / black text — dominant CTA on dark bg</span>
+  </div>
+  <div class="demo-row">
+    <span class="demo-row-label">Secondary</span>
+    <button class="btn btn-secondary">View Logs</button>
+    <code>.btn-secondary</code>
+    <span style="font-size: var(--text-12); color: var(--color-label-tertiary);">Surface-2 fill, bordered</span>
+  </div>
+  <div class="demo-row">
+    <span class="demo-row-label">Ghost</span>
+    <button class="btn btn-ghost">Redeploy</button>
+    <code>.btn-ghost</code>
+    <span style="font-size: var(--text-12); color: var(--color-label-tertiary);">Transparent fill, border visible</span>
+  </div>
+  <div class="demo-row">
+    <span class="demo-row-label">Danger</span>
+    <button class="btn btn-danger">Delete Project</button>
+    <code>.btn-danger</code>
+    <span style="font-size: var(--text-12); color: var(--color-label-tertiary);">Error red fill — destructive actions only</span>
+  </div>
+  <div class="demo-row">
+    <span class="demo-row-label">Success</span>
+    <button class="btn btn-success">Restore</button>
+    <code>.btn-success</code>
+    <span style="font-size: var(--text-12); color: var(--color-label-tertiary);">Positive confirmation actions</span>
+  </div>
+
+  <!-- Sizes -->
+  <div class="group-label">Sizes</div>
+  <div class="demo-row">
+    <span class="demo-row-label">sm / 28px</span>
+    <button class="btn btn-primary btn-sm">Deploy</button>
+    <button class="btn btn-secondary btn-sm">Cancel</button>
+    <button class="btn btn-ghost btn-sm">More</button>
+    <code>.btn-sm</code>
+  </div>
+  <div class="demo-row">
+    <span class="demo-row-label">md / 36px</span>
+    <button class="btn btn-primary">Deploy</button>
+    <button class="btn btn-secondary">Cancel</button>
+    <button class="btn btn-ghost">More</button>
+    <code>.btn</code>
+    <span style="font-size: var(--text-12); color: var(--color-label-tertiary);">Default</span>
+  </div>
+  <div class="demo-row">
+    <span class="demo-row-label">lg / 44px</span>
+    <button class="btn btn-primary btn-lg">Get Started</button>
+    <button class="btn btn-ghost btn-lg">Learn More →</button>
+    <code>.btn-lg</code>
+  </div>
+
+  <!-- Icon buttons -->
+  <div class="group-label">Icon Buttons</div>
+  <div class="demo-row">
+    <span class="demo-row-label">md / 36px</span>
+    <button class="btn btn-icon" aria-label="Visit deployment">
+      <svg width="14" height="14" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <path d="M2 10L10 2M10 2H6M10 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button class="btn btn-icon" aria-label="Redeploy">
+      <svg width="14" height="14" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <path d="M10 6a4 4 0 1 1-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M6 2l1.5-1.5L9 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button class="btn btn-icon" aria-label="More options">
+      <svg width="14" height="14" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <circle cx="3" cy="6" r="1" fill="currentColor"/>
+        <circle cx="6" cy="6" r="1" fill="currentColor"/>
+        <circle cx="9" cy="6" r="1" fill="currentColor"/>
+      </svg>
+    </button>
+    <code>.btn-icon</code>
+  </div>
+  <div class="demo-row">
+    <span class="demo-row-label">sm / 28px</span>
+    <button class="btn btn-icon btn-sm" aria-label="Visit">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <path d="M2 10L10 2M10 2H6M10 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button class="btn btn-icon btn-sm" aria-label="More">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <circle cx="3" cy="6" r="1" fill="currentColor"/>
+        <circle cx="6" cy="6" r="1" fill="currentColor"/>
+        <circle cx="9" cy="6" r="1" fill="currentColor"/>
+      </svg>
+    </button>
+    <code>.btn-icon.btn-sm</code>
+  </div>
+
+  <!-- States -->
+  <div class="group-label">States</div>
+  <div class="demo-row">
+    <span class="demo-row-label">Loading</span>
+    <button class="btn btn-primary loading">Deploying</button>
+    <button class="btn btn-secondary loading">Building</button>
+    <code>.btn.loading</code>
+  </div>
+  <div class="demo-row">
+    <span class="demo-row-label">Disabled</span>
+    <button class="btn btn-primary" disabled>Deploy</button>
+    <button class="btn btn-secondary" disabled>Cancel</button>
+    <button class="btn btn-ghost" disabled>More</button>
+    <code>[disabled]</code>
+    <span style="font-size: var(--text-12); color: var(--color-label-tertiary);">Opacity 0.38, pointer-events none</span>
+  </div>
+
+  <!-- Button group -->
+  <div class="group-label">Button Group</div>
+  <div class="demo-row">
+    <span class="demo-row-label">Group</span>
+    <div class="btn-group">
+      <button class="btn btn-ghost">Cancel</button>
+      <button class="btn btn-primary">Save Changes</button>
+    </div>
+  </div>
+  <div class="demo-row">
+    <span class="demo-row-label">With icon</span>
+    <button class="btn btn-primary" style="gap: var(--space-2);">
+      <span aria-hidden="true">▲</span>
+      Deploy
+    </button>
+    <button class="btn btn-secondary">
+      <svg width="14" height="14" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <path d="M10 6a4 4 0 1 1-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M6 2l1.5-1.5L9 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Redeploy
+    </button>
+  </div>
+
+  <!-- Spec table -->
+  <div class="group-label">Specification</div>
+  <table class="spec-table">
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Value</th>
+        <th>Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Height (sm)</td><td>28px</td><td>Compact table rows, secondary actions</td></tr>
+      <tr><td>Height (md)</td><td>36px</td><td>Default</td></tr>
+      <tr><td>Height (lg)</td><td>44px</td><td>Hero CTAs, prominent actions</td></tr>
+      <tr><td>Padding (md)</td><td>0 16px</td><td>Horizontal rhythm</td></tr>
+      <tr><td>Border Radius</td><td>6px</td><td>Precise, not rounded — engineered feel</td></tr>
+      <tr><td>Font size</td><td>14px / 600</td><td>Label weight for clarity</td></tr>
+      <tr><td>Transition</td><td>100ms cubic-bezier(0.4,0,0.2,1)</td><td>Instant feel, no lag</td></tr>
+      <tr><td>Active transform</td><td>scale(0.98)</td><td>Physical press feedback</td></tr>
+      <tr><td>Focus ring</td><td>2px white, 2px offset</td><td>Accessible on dark backgrounds</td></tr>
+      <tr><td>Disabled opacity</td><td>0.38</td><td>Standard accessibility threshold</td></tr>
+    </tbody>
+  </table>
+
+</main>
+</body>
+</html>
