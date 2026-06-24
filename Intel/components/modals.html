@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modals — Intel Design System</title>
+  <link rel="stylesheet" href="../tokens.css" />
+  <link rel="stylesheet" href="../typography.css" />
+  <link rel="stylesheet" href="../animations.css" />
+  <link rel="stylesheet" href="../components.css" />
+  <style>
+    body { margin: 0; padding: 0; background: var(--color-bg); }
+    .page-header {
+      background: var(--color-intel-blue);
+      color: #fff;
+      padding: var(--space-8) 0;
+    }
+    .showcase-row {
+      padding: var(--space-12) 0;
+      border-bottom: 1px solid var(--color-border-dark);
+    }
+    .showcase-row:last-child { border-bottom: none; }
+    .showcase-label {
+      font-size: var(--text-12);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-4);
+      display: block;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-6);
+      font-size: var(--text-13);
+      color: rgba(255,255,255,0.65);
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.65); text-decoration: none; }
+    .breadcrumb a:hover { color: #fff; }
+    /* Simulated overlay bg for inline demos */
+    .modal-preview-wrap {
+      background: rgba(0,0,0,0.25);
+      padding: var(--space-10);
+      border-radius: var(--radius-card);
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-8);
+    }
+    .trigger-zone {
+      background: var(--color-surface-1);
+      border: 1px solid var(--color-border-dark);
+      border-radius: var(--radius-card);
+      padding: var(--space-8);
+      text-align: center;
+    }
+    /* Live modal overlay */
+    .modal-overlay.hidden,
+    .modal-overlay[hidden] { display: none; }
+    .code {
+      font-family: var(--font-mono);
+      font-size: var(--text-12);
+      background: var(--color-surface-1);
+      border: 1px solid var(--color-border-dark);
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+      color: var(--color-intel-blue-dark);
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">Intel Design System</a>
+      <span>›</span>
+      <span>Components</span>
+      <span>›</span>
+      <span style="color:#fff">Modals</span>
+    </div>
+    <div class="eyebrow" style="color:rgba(255,255,255,0.65)">Components</div>
+    <h1 class="display-large" style="color:#fff; margin-bottom:var(--space-4)">Modals &amp; Overlays</h1>
+    <p class="body-lg" style="color:rgba(255,255,255,0.70); max-width:600px">Sharp 0px radius, 3px Intel Blue top-border accent. Enterprise-grade dialogs for confirmations, spec detail, and alerts.</p>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+
+    <!-- STANDARD MODAL — Inline Preview -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-2)">Standard Modal</h2>
+      <p class="body" style="margin-bottom:var(--space-6)">0px radius (sharp Intel style), 3px Intel Blue top-border, white background, shadow-xl. Max-width 560px.</p>
+
+      <div class="modal-preview-wrap">
+        <div class="modal" style="animation:none; position:relative; max-width:560px; width:100%">
+          <div class="modal-header">
+            <div>
+              <h3 class="modal-title">Confirm Processor Selection</h3>
+              <div class="modal-subtitle">Intel® Core™ Ultra 9 285K · LGA1851</div>
+            </div>
+            <button class="modal-close" type="button" aria-label="Close modal">×</button>
+          </div>
+          <div class="modal-body">
+            <p class="body" style="margin-bottom:var(--space-4)">You are about to configure a build with the Intel® Core™ Ultra 9 285K. This processor requires:</p>
+            <ul style="color:var(--color-label-secondary); font-size:var(--text-15); line-height:1.7; padding-left:var(--space-5); margin:0 0 var(--space-4)">
+              <li>Intel® 800-series chipset motherboard (LGA1851 socket)</li>
+              <li>DDR5 memory — DDR4 is not supported</li>
+              <li>750W+ PSU recommended for max turbo headroom</li>
+              <li>250W+ all-in-one liquid cooling or tower cooler</li>
+            </ul>
+            <div class="alert alert-info" role="alert">
+              <div class="alert-icon">ℹ️</div>
+              <div class="alert-content">
+                <p class="alert-message">Intel® Extreme Tuning Utility (XTU) is available for overclocking on Z890 boards. See <a href="#" style="color:var(--color-intel-blue)">intel.com/xtu</a> for compatibility.</p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-outline">Cancel</button>
+            <button class="btn btn-primary">Confirm &amp; Continue</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALERT MODAL -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-2)">Alert Dialog</h2>
+      <p class="body" style="margin-bottom:var(--space-6)">Critical confirmations — destructive actions, irreversible changes, system warnings.</p>
+
+      <div class="modal-preview-wrap">
+        <div class="modal" style="animation:none; position:relative; max-width:480px; width:100%">
+          <div class="modal-header">
+            <div>
+              <h3 class="modal-title">Remove from Comparison</h3>
+            </div>
+            <button class="modal-close" type="button" aria-label="Close">×</button>
+          </div>
+          <div class="modal-body" style="text-align:center; padding:var(--space-8) var(--space-6)">
+            <div style="font-size:48px; margin-bottom:var(--space-4)">⚠️</div>
+            <p class="body" style="color:var(--color-label-secondary)">Removing the Intel® Core™ Ultra 9 285K will clear your current comparison data. This cannot be undone.</p>
+          </div>
+          <div class="modal-footer" style="justify-content:center; gap:var(--space-4)">
+            <button class="btn btn-outline" style="min-width:120px">Keep It</button>
+            <button class="btn btn-primary" style="min-width:120px; background:var(--color-error); border-color:var(--color-error)">Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INFO MODAL — Spec Detail -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-2)">Spec Detail Modal</h2>
+      <p class="body" style="margin-bottom:var(--space-6)">Wider modal (max 680px) for detailed product specs, technical data sheets, configuration options.</p>
+
+      <div class="modal-preview-wrap">
+        <div class="modal" style="animation:none; position:relative; max-width:680px; width:100%">
+          <div class="modal-header" style="background:var(--color-intel-blue); color:#fff">
+            <div>
+              <h3 class="modal-title" style="color:#fff">Intel® Xeon® w9-3595X</h3>
+              <div class="modal-subtitle" style="color:rgba(255,255,255,0.70)">5th Generation · Sapphire Rapids · 60 Cores</div>
+            </div>
+            <button class="modal-close" type="button" aria-label="Close" style="color:rgba(255,255,255,0.70)">×</button>
+          </div>
+          <div class="modal-body" style="padding:0">
+            <div class="spec-grid" style="border:none; border-radius:0; border-bottom:1px solid var(--color-border-dark)">
+              <div class="spec-grid-item"><div class="spec-grid-item-label">Cores</div><div class="spec-grid-item-value">60</div><div class="spec-grid-item-unit">60C / 120T</div></div>
+              <div class="spec-grid-item"><div class="spec-grid-item-label">Boost</div><div class="spec-grid-item-value">4.8</div><div class="spec-grid-item-unit">GHz max turbo</div></div>
+              <div class="spec-grid-item"><div class="spec-grid-item-label">Cache</div><div class="spec-grid-item-value">75</div><div class="spec-grid-item-unit">MB Smart Cache</div></div>
+              <div class="spec-grid-item"><div class="spec-grid-item-label">TDP</div><div class="spec-grid-item-value">350</div><div class="spec-grid-item-unit">W base TDP</div></div>
+            </div>
+            <div style="padding:var(--space-6)">
+              <p class="body" style="margin-bottom:var(--space-4)">The Intel® Xeon® w9-3595X delivers workstation-class performance with 60 cores across a single socket, designed for compute-intensive professional workflows.</p>
+              <div class="alert alert-success" role="alert">
+                <div class="alert-icon">✓</div>
+                <div class="alert-content">
+                  <p class="alert-message">Compatible with your current W790 motherboard configuration. No BIOS update required.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-outline">Download Datasheet</button>
+            <button class="btn btn-secondary">Add to Compare</button>
+            <button class="btn btn-primary">Configure System</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIVE DEMO -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-2)">Live Modal Demo</h2>
+      <p class="body" style="margin-bottom:var(--space-6)">Click the buttons below to open modals with full overlay, backdrop, and animation.</p>
+
+      <div class="trigger-zone">
+        <p class="body" style="margin-bottom:var(--space-6); color:var(--color-label-secondary)">Open a modal to see the full overlay experience including the scrim, animation, and focus trap behavior.</p>
+        <div class="btn-group">
+          <button class="btn btn-primary" onclick="openModal('modal-confirm')">Open Confirmation</button>
+          <button class="btn btn-secondary" onclick="openModal('modal-spec')">Open Spec Dialog</button>
+          <button class="btn btn-outline" onclick="openModal('modal-alert')">Open Alert</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL ANATOMY -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-4)">Modal Anatomy</h2>
+      <ul class="body" style="line-height:2; padding-left:var(--space-5)">
+        <li><strong>.modal-overlay</strong> — Fixed inset, <code class="code">rgba(0,0,0,0.5)</code> scrim, flex center</li>
+        <li><strong>.modal</strong> — White bg, <code class="code">border-radius: 0</code> (sharp Intel), <code class="code">border-top: 3px solid #0071C5</code>, shadow-xl</li>
+        <li><strong>.modal-header</strong> — Title + close button, bottom border</li>
+        <li><strong>.modal-body</strong> — Main content area with padding</li>
+        <li><strong>.modal-footer</strong> — Action buttons, light gray bg, top border</li>
+        <li><strong>Animation</strong> — <code class="code">scaleIn</code> (250ms) + backdrop <code class="code">fadeIn</code></li>
+        <li><strong>Max width</strong> — 560px default, can extend to 680px for spec/data views</li>
+      </ul>
+    </div>
+
+    <!-- ACCESSIBILITY -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-4)">Accessibility</h2>
+      <ul class="body" style="line-height:2; padding-left:var(--space-5)">
+        <li>Modal root element uses <code class="code">role="dialog"</code> and <code class="code">aria-modal="true"</code></li>
+        <li>Title uses <code class="code">aria-labelledby</code> pointing to <code class="code">.modal-title</code></li>
+        <li>Opening modal moves focus to first focusable element (Close button or first input)</li>
+        <li>Tab key focus is trapped within the modal while open</li>
+        <li>Escape key closes the modal</li>
+        <li>Clicking the overlay (scrim) closes the modal</li>
+        <li>On close, focus returns to the triggering element</li>
+      </ul>
+    </div>
+
+  </div>
+</main>
+
+<!-- LIVE MODALS -->
+
+<!-- Confirmation Modal -->
+<div class="modal-overlay hidden" id="modal-confirm" role="dialog" aria-modal="true" aria-labelledby="mc-title" onclick="closeOnOverlay(event, 'modal-confirm')">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <div>
+        <h3 class="modal-title" id="mc-title">Confirm Processor Selection</h3>
+        <div class="modal-subtitle">Intel® Core™ Ultra 9 285K · LGA1851</div>
+      </div>
+      <button class="modal-close" type="button" aria-label="Close modal" onclick="closeModal('modal-confirm')">×</button>
+    </div>
+    <div class="modal-body">
+      <p class="body" style="margin-bottom:var(--space-4)">This selection will add the Intel® Core™ Ultra 9 285K to your system configuration. Ensure your platform meets the following requirements:</p>
+      <ul style="color:var(--color-label-secondary); font-size:var(--text-15); line-height:1.7; padding-left:var(--space-5); margin:0">
+        <li>Intel® 800-series chipset (Z890, W880) with LGA1851 socket</li>
+        <li>DDR5 memory modules (DDR4 not supported)</li>
+        <li>750W or higher power supply unit</li>
+      </ul>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-confirm')">Cancel</button>
+      <button class="btn btn-primary" onclick="closeModal('modal-confirm')">Confirm &amp; Continue</button>
+    </div>
+  </div>
+</div>
+
+<!-- Spec Modal -->
+<div class="modal-overlay hidden" id="modal-spec" role="dialog" aria-modal="true" aria-labelledby="ms-title" onclick="closeOnOverlay(event, 'modal-spec')">
+  <div class="modal" onclick="event.stopPropagation()" style="max-width:640px">
+    <div class="modal-header">
+      <div>
+        <h3 class="modal-title" id="ms-title">Intel® Core™ Ultra 9 285K — Full Specifications</h3>
+        <div class="modal-subtitle">Arrow Lake · 15th Generation · LGA1851</div>
+      </div>
+      <button class="modal-close" type="button" aria-label="Close" onclick="closeModal('modal-spec')">×</button>
+    </div>
+    <div class="modal-body" style="padding:0">
+      <div style="overflow-x:auto">
+        <table class="spec-table-intel" style="border-radius:0; border:none">
+          <thead><tr><th>Specification</th><th style="text-align:right">Value</th></tr></thead>
+          <tbody>
+            <tr class="spec-category"><td colspan="2">Core Architecture</td></tr>
+            <tr class="spec-row"><td>Total Cores</td><td>24 (8P + 16E)</td></tr>
+            <tr class="spec-row"><td>P-core Turbo</td><td>5.70 GHz</td></tr>
+            <tr class="spec-row"><td>E-core Turbo</td><td>4.60 GHz</td></tr>
+            <tr class="spec-category"><td colspan="2">Memory</td></tr>
+            <tr class="spec-row"><td>Type</td><td>DDR5-6400</td></tr>
+            <tr class="spec-row"><td>Max Capacity</td><td>192 GB</td></tr>
+            <tr class="spec-category"><td colspan="2">AI &amp; NPU</td></tr>
+            <tr class="spec-row"><td>NPU TOPS</td><td>11 TOPS</td></tr>
+            <tr class="spec-row"><td>Platform TOPS</td><td>36 TOPS (total)</td></tr>
+            <tr class="spec-category"><td colspan="2">Power</td></tr>
+            <tr class="spec-row"><td>Base TDP</td><td>125 W</td></tr>
+            <tr class="spec-row"><td>Max Turbo Power</td><td>253 W</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-spec')">Close</button>
+      <button class="btn btn-secondary" onclick="closeModal('modal-spec')">Download PDF</button>
+      <button class="btn btn-primary" onclick="closeModal('modal-spec')">View Full Page</button>
+    </div>
+  </div>
+</div>
+
+<!-- Alert Modal -->
+<div class="modal-overlay hidden" id="modal-alert" role="dialog" aria-modal="true" aria-labelledby="ma-title" onclick="closeOnOverlay(event, 'modal-alert')">
+  <div class="modal" onclick="event.stopPropagation()" style="max-width:440px">
+    <div class="modal-header">
+      <h3 class="modal-title" id="ma-title">Configuration Warning</h3>
+      <button class="modal-close" type="button" aria-label="Close" onclick="closeModal('modal-alert')">×</button>
+    </div>
+    <div class="modal-body" style="text-align:center; padding:var(--space-8)">
+      <div style="font-size:52px; margin-bottom:var(--space-5)">⚠️</div>
+      <p class="body" style="color:var(--color-label-secondary)">Your selected power supply (650W) may be insufficient for this processor at maximum turbo power (253W) when combined with a discrete GPU. Intel recommends 750W or higher for stable operation.</p>
+    </div>
+    <div class="modal-footer" style="justify-content:center; gap:var(--space-3)">
+      <button class="btn btn-outline" onclick="closeModal('modal-alert')">Continue Anyway</button>
+      <button class="btn btn-primary" onclick="closeModal('modal-alert')">Update PSU Selection</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openModal(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.classList.remove('hidden');
+      el.removeAttribute('hidden');
+      document.body.style.overflow = 'hidden';
+      // focus first close button
+      const close = el.querySelector('.modal-close');
+      if (close) close.focus();
+    }
+  }
+  function closeModal(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  }
+  function closeOnOverlay(event, id) {
+    if (event.target === event.currentTarget) closeModal(id);
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay:not(.hidden)').forEach(el => {
+        el.classList.add('hidden');
+        document.body.style.overflow = '';
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

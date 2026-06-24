@@ -1,0 +1,294 @@
+/* =============================================================================
+   Intel Design System — Design Tokens
+   Version 1.0.0 | Intel Brand Design Language (Post-2020 Rebrand)
+   intel.com
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     COLOR SYSTEM — Light Mode (Light-First)
+     --------------------------------------------------------------------------- */
+
+  /* Core Intel Brand Colors */
+  --color-intel-blue:          #0071C5;
+  --color-intel-blue-dark:     #00438A;
+  --color-intel-blue-light:    #1E9BE8;
+  --color-intel-blue-pale:     #E8F4FB;
+  --color-intel-teal:          #00C7B1;
+  --color-intel-teal-light:    rgba(0, 199, 177, 0.12);
+  --color-intel-teal-pale:     #E0F8F5;
+  --color-intel-purple:        #7B2FBE;
+  --color-intel-purple-light:  rgba(123, 47, 190, 0.12);
+  --color-intel-purple-pale:   #F0E8F9;
+
+  /* System Backgrounds */
+  --color-bg:                  #FFFFFF;
+  --color-surface-1:           #F5F5F5;
+  --color-surface-2:           #EBEBEB;
+  --color-surface-dark:        #0B0B0F;
+  --color-surface-dark-2:      #1A1A2E;
+
+  /* Label Colors */
+  --color-label-primary:       #1A1A1A;
+  --color-label-secondary:     #555555;
+  --color-label-tertiary:      #888888;
+  --color-label-on-dark:       #FFFFFF;
+  --color-label-on-dark-muted: rgba(255, 255, 255, 0.70);
+
+  /* Border Colors */
+  --color-border:              #D0D0D0;
+  --color-border-dark:         #E0E0E0;
+  --color-border-focus:        #0071C5;
+
+  /* Status Colors */
+  --color-error:               #C0392B;
+  --color-error-light:         rgba(192, 57, 43, 0.10);
+  --color-error-pale:          #FDECEA;
+  --color-warning:             #E67E22;
+  --color-warning-light:       rgba(230, 126, 34, 0.10);
+  --color-warning-pale:        #FEF3E7;
+  --color-success:             #27AE60;
+  --color-success-light:       rgba(39, 174, 96, 0.10);
+  --color-success-pale:        #E8F8EF;
+  --color-info:                #0071C5;
+  --color-info-light:          rgba(0, 113, 197, 0.10);
+  --color-info-pale:           #E8F4FB;
+
+  /* Semantic Aliases */
+  --color-accent:              var(--color-intel-blue);
+  --color-accent-hover:        var(--color-intel-blue-dark);
+  --color-accent-light:        var(--color-intel-blue-pale);
+
+  /* Overlay */
+  --color-overlay:             rgba(0, 0, 0, 0.50);
+
+  /* ---------------------------------------------------------------------------
+     TYPOGRAPHY
+     --------------------------------------------------------------------------- */
+
+  /* Font Stacks */
+  --font-display:  "Intel One", "Clear Sans", "Inter", system-ui, -apple-system, sans-serif;
+  --font-text:     "Intel One", "Clear Sans", "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono:     "Fira Code", "JetBrains Mono", "Consolas", "Liberation Mono", monospace;
+
+  /* Type Scale */
+  --text-72:   72px;
+  --text-56:   56px;
+  --text-44:   44px;
+  --text-36:   36px;
+  --text-28:   28px;
+  --text-22:   22px;
+  --text-18:   18px;
+  --text-16:   16px;
+  --text-15:   15px;
+  --text-14:   14px;
+  --text-13:   13px;
+  --text-12:   12px;
+
+  /* Font Weights */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-extrabold: 800;
+
+  /* Line Heights */
+  --leading-display:  1.05;
+  --leading-heading:  1.15;
+  --leading-body:     1.60;
+  --leading-body-lg:  1.65;
+  --leading-caption:  1.45;
+
+  /* Letter Spacing */
+  --tracking-display:   -0.02em;
+  --tracking-display-lg: -0.015em;
+  --tracking-heading:   -0.01em;
+  --tracking-body:       0em;
+  --tracking-eyebrow:    0.12em;
+  --tracking-label:      0.08em;
+  --tracking-caps:       0.06em;
+
+  /* Max Widths for Reading */
+  --max-prose:     68ch;
+  --max-prose-sm:  52ch;
+
+  /* ---------------------------------------------------------------------------
+     SPACING — 4px Base Grid
+     --------------------------------------------------------------------------- */
+
+  --space-1:    4px;
+  --space-2:    8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-32: 128px;
+
+  /* ---------------------------------------------------------------------------
+     BORDER RADIUS — Intel uses sharp/minimal radius
+     --------------------------------------------------------------------------- */
+
+  --radius-none:   0px;
+  --radius-xs:     2px;
+  --radius-sm:     4px;
+  --radius-md:     8px;
+  --radius-pill:   9999px;
+
+  /* Component radius — Intel is primarily sharp */
+  --radius-button: 0px;
+  --radius-card:   8px;
+  --radius-input:  0px;
+  --radius-modal:  0px;
+  --radius-badge:  2px;
+  --radius-tag:    9999px;
+
+  /* ---------------------------------------------------------------------------
+     SHADOWS
+     --------------------------------------------------------------------------- */
+
+  --shadow-xs:       0 1px 4px rgba(0, 0, 0, 0.08);
+  --shadow-sm:       0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md:       0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg:       0 8px 32px rgba(0, 0, 0, 0.16);
+  --shadow-xl:       0 16px 48px rgba(0, 0, 0, 0.20);
+  --shadow-2xl:      0 24px 64px rgba(0, 0, 0, 0.24);
+
+  /* Brand shadows */
+  --shadow-blue:     0 8px 24px rgba(0, 113, 197, 0.28);
+  --shadow-blue-sm:  0 4px 12px rgba(0, 113, 197, 0.20);
+  --shadow-teal:     0 8px 24px rgba(0, 199, 177, 0.24);
+
+  /* Focus glow */
+  --glow-focus:      0 0 0 3px rgba(0, 113, 197, 0.20);
+  --glow-focus-error: 0 0 0 3px rgba(192, 57, 43, 0.20);
+
+  /* ---------------------------------------------------------------------------
+     MOTION
+     --------------------------------------------------------------------------- */
+
+  --duration-instant:  100ms;
+  --duration-fast:     150ms;
+  --duration-normal:   250ms;
+  --duration-slow:     400ms;
+  --duration-deliberate: 600ms;
+
+  /* Intel easing — precise, controlled */
+  --ease-intel:      cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out:        cubic-bezier(0.0, 0.0, 0.2, 1);
+  --ease-in:         cubic-bezier(0.4, 0.0, 1.0, 1.0);
+  --ease-linear:     linear;
+
+  /* Transition Presets */
+  --transition-fast:    all var(--duration-fast) var(--ease-intel);
+  --transition-normal:  all var(--duration-normal) var(--ease-intel);
+  --transition-slow:    all var(--duration-slow) var(--ease-intel);
+
+  /* ---------------------------------------------------------------------------
+     BORDERS
+     --------------------------------------------------------------------------- */
+
+  --border-default:   1px solid var(--color-border);
+  --border-dark:      1px solid var(--color-border-dark);
+  --border-blue:      1px solid var(--color-intel-blue);
+  --border-focused:   2px solid var(--color-border-focus);
+
+  /* ---------------------------------------------------------------------------
+     Z-INDEX
+     --------------------------------------------------------------------------- */
+
+  --z-base:      0;
+  --z-raised:    10;
+  --z-dropdown:  100;
+  --z-sticky:    200;
+  --z-overlay:   300;
+  --z-modal:     400;
+  --z-toast:     500;
+  --z-tooltip:   600;
+
+  /* ---------------------------------------------------------------------------
+     COMPONENT DIMENSIONS
+     --------------------------------------------------------------------------- */
+
+  --btn-height-sm:    32px;
+  --btn-height-md:    44px;
+  --btn-height-lg:    52px;
+  --input-height-sm:  36px;
+  --input-height-md:  44px;
+  --input-height-lg:  52px;
+  --nav-utility-height: 36px;
+  --nav-height:       64px;
+  --max-width-site:   1200px;
+  --max-width-wide:   1440px;
+  --max-width-content: 960px;
+
+  /* ---------------------------------------------------------------------------
+     GRADIENTS
+     --------------------------------------------------------------------------- */
+
+  --gradient-blue:         linear-gradient(135deg, #0071C5 0%, #00438A 100%);
+  --gradient-blue-teal:    linear-gradient(135deg, #0071C5 0%, #00C7B1 100%);
+  --gradient-dark-hero:    linear-gradient(160deg, #0B0B0F 0%, #0D1B2A 40%, #0B0B0F 100%);
+  --gradient-dark-surface: linear-gradient(135deg, #1A1A2E 0%, #0B0B0F 100%);
+  --gradient-feature:      linear-gradient(135deg, #0071C5 0%, #00C7B1 100%);
+  --gradient-ai:           linear-gradient(135deg, #7B2FBE 0%, #0071C5 100%);
+}
+
+/* =============================================================================
+   DARK MODE
+   ============================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Backgrounds */
+    --color-bg:                  #0B0B0F;
+    --color-surface-1:           #141418;
+    --color-surface-2:           #1E1E26;
+
+    /* Labels */
+    --color-label-primary:       #F0F0F0;
+    --color-label-secondary:     #ABABAB;
+    --color-label-tertiary:      #6E6E6E;
+
+    /* Borders */
+    --color-border:              #2A2A36;
+    --color-border-dark:         #333340;
+
+    /* Intel Blue — slightly brighter on dark */
+    --color-intel-blue:          #1E9BE8;
+    --color-intel-blue-dark:     #0071C5;
+    --color-intel-blue-light:    #4DB8FF;
+    --color-intel-blue-pale:     rgba(30, 155, 232, 0.12);
+
+    /* Teal / Purple stay similar */
+    --color-intel-teal:          #00DBC3;
+    --color-intel-teal-light:    rgba(0, 219, 195, 0.15);
+    --color-intel-purple:        #9B4FDE;
+    --color-intel-purple-light:  rgba(155, 79, 222, 0.15);
+
+    /* Status */
+    --color-error:               #E05252;
+    --color-error-light:         rgba(224, 82, 82, 0.15);
+    --color-warning:             #F0922A;
+    --color-warning-light:       rgba(240, 146, 42, 0.15);
+    --color-success:             #3DC875;
+    --color-success-light:       rgba(61, 200, 117, 0.15);
+
+    /* Shadows (stronger on dark bg) */
+    --shadow-xs:     0 1px 4px rgba(0, 0, 0, 0.30);
+    --shadow-sm:     0 2px 8px rgba(0, 0, 0, 0.40);
+    --shadow-md:     0 4px 16px rgba(0, 0, 0, 0.50);
+    --shadow-lg:     0 8px 32px rgba(0, 0, 0, 0.60);
+    --shadow-xl:     0 16px 48px rgba(0, 0, 0, 0.70);
+    --shadow-2xl:    0 24px 64px rgba(0, 0, 0, 0.80);
+
+    /* Focus glow (brighter on dark) */
+    --glow-focus:    0 0 0 3px rgba(30, 155, 232, 0.30);
+  }
+}

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forms — Intel Design System</title>
+  <link rel="stylesheet" href="../tokens.css" />
+  <link rel="stylesheet" href="../typography.css" />
+  <link rel="stylesheet" href="../animations.css" />
+  <link rel="stylesheet" href="../components.css" />
+  <style>
+    body { margin: 0; padding: 0; background: var(--color-bg); }
+    .page-header {
+      background: var(--color-intel-blue);
+      color: #fff;
+      padding: var(--space-8) 0;
+    }
+    .showcase-row {
+      padding: var(--space-12) 0;
+      border-bottom: 1px solid var(--color-border-dark);
+    }
+    .showcase-row:last-child { border-bottom: none; }
+    .showcase-label {
+      font-size: var(--text-12);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-4);
+      display: block;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-6);
+      font-size: var(--text-13);
+      color: rgba(255,255,255,0.65);
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.65); text-decoration: none; }
+    .breadcrumb a:hover { color: #fff; }
+    .form-section {
+      max-width: 560px;
+    }
+    .code {
+      font-family: var(--font-mono);
+      font-size: var(--text-12);
+      background: var(--color-surface-1);
+      border: 1px solid var(--color-border-dark);
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+      color: var(--color-intel-blue-dark);
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">Intel Design System</a>
+      <span>›</span>
+      <span>Components</span>
+      <span>›</span>
+      <span style="color:#fff">Forms</span>
+    </div>
+    <div class="eyebrow" style="color:rgba(255,255,255,0.65)">Components</div>
+    <h1 class="display-large" style="color:#fff; margin-bottom:var(--space-4)">Forms</h1>
+    <p class="body-lg" style="color:rgba(255,255,255,0.70); max-width:600px">Sharp 0px radius inputs. 44px height. 2px Intel Blue focus border + <code style="background:rgba(0,0,0,0.2); padding:2px 6px; border-radius:2px">0 0 0 3px rgba(0,113,197,0.2)</code> glow ring.</p>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+
+    <!-- TEXT INPUTS -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-2)">Text Inputs</h2>
+      <p class="body" style="margin-bottom:var(--space-8)">Default, hover, focus, error, success, and disabled states.</p>
+
+      <div class="form-section" style="display:flex; flex-direction:column; gap:var(--space-6)">
+        <div class="form-group">
+          <label class="form-label">Default</label>
+          <input class="input" type="text" placeholder="Enter processor model number…" />
+        </div>
+        <div class="form-group">
+          <label class="form-label required">Required Field</label>
+          <input class="input" type="email" placeholder="name@company.com" />
+          <span class="form-helper">We use this to send product updates</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">With Left Icon</label>
+          <div class="input-wrapper">
+            <span class="input-icon-left">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="6" r="3"/><path d="M3 14c0-2.761 2.239-5 5-5s5 2.239 5 5"/></svg>
+            </span>
+            <input class="input has-icon-left" type="text" placeholder="Enterprise contact name" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Error State</label>
+          <input class="input error" type="text" value="invalid@" aria-describedby="err1" />
+          <span class="form-error" id="err1" role="alert">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><circle cx="7" cy="7" r="7" fill="#C0392B"/><rect x="6.25" y="3" width="1.5" height="5" fill="white"/><rect x="6.25" y="9.5" width="1.5" height="1.5" fill="white"/></svg>
+            Please enter a valid email address
+          </span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Success State</label>
+          <input class="input success" type="text" value="valid@intel.com" />
+          <span class="form-helper" style="color:var(--color-success)">✓ Email address verified</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Disabled</label>
+          <input class="input" type="text" value="Cannot be modified" disabled />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Textarea</label>
+          <textarea class="textarea" rows="4" placeholder="Describe your workload requirements and target platform…"></textarea>
+          <span class="form-helper">Max 2,000 characters</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEARCH INPUT -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-6)">Search Input</h2>
+
+      <div class="form-section">
+        <div class="form-group">
+          <label class="form-label">Product Search</label>
+          <div class="input-search-wrapper">
+            <svg class="input-search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M13 13l-3-3"/></svg>
+            <input class="input-search" type="search" placeholder="Search processors, GPUs, solutions…" aria-label="Search Intel products" />
+          </div>
+          <span class="form-helper">Search across Intel's full product catalog</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SELECT -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-6)">Select</h2>
+      <div class="form-section" style="display:flex; flex-direction:column; gap:var(--space-6)">
+        <div class="form-group">
+          <label class="form-label">Processor Family</label>
+          <div class="select-wrapper">
+            <select class="select" aria-label="Select processor family">
+              <option>Select a processor family</option>
+              <option>Intel® Core™ Ultra (Client)</option>
+              <option>Intel® Core™ Desktop (K-series)</option>
+              <option>Intel® Xeon® W (Workstation)</option>
+              <option>Intel® Xeon® Scalable (Server)</option>
+              <option>Intel® Gaudi® (AI Accelerator)</option>
+              <option>Intel® Arc™ (Graphics)</option>
+            </select>
+            <svg class="select-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label required">Socket Type</label>
+          <div class="select-wrapper">
+            <select class="select" aria-label="Select socket type">
+              <option>Select socket</option>
+              <option selected>LGA1851 (Intel® Core™ Ultra)</option>
+              <option>LGA1700 (12th–14th Gen)</option>
+              <option>LGA4677 (Intel® Xeon® Scalable)</option>
+              <option>LGA4710 (Intel® Xeon® W)</option>
+            </select>
+            <svg class="select-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
+          </div>
+          <span class="form-helper">Socket determines motherboard compatibility</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHECKBOXES -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-6)">Checkboxes</h2>
+      <p class="body" style="margin-bottom:var(--space-6)">2px border, 2px Intel Blue radius. Checked: Intel Blue fill with white checkmark.</p>
+
+      <div style="display:flex; flex-direction:column; gap:var(--space-4); max-width:480px">
+        <label class="checkbox-wrapper">
+          <div class="checkbox">
+            <input type="checkbox" checked />
+            <span class="checkbox-box"></span>
+          </div>
+          <span class="checkbox-label">Intel® Turbo Boost Technology 3.0</span>
+        </label>
+        <label class="checkbox-wrapper">
+          <div class="checkbox">
+            <input type="checkbox" checked />
+            <span class="checkbox-box"></span>
+          </div>
+          <span class="checkbox-label">Intel® Hyper-Threading Technology</span>
+        </label>
+        <label class="checkbox-wrapper">
+          <div class="checkbox">
+            <input type="checkbox" />
+            <span class="checkbox-box"></span>
+          </div>
+          <span class="checkbox-label">Intel® Thread Director</span>
+        </label>
+        <label class="checkbox-wrapper">
+          <div class="checkbox">
+            <input type="checkbox" />
+            <span class="checkbox-box"></span>
+          </div>
+          <span class="checkbox-label" style="opacity:0.45; cursor:not-allowed">ECC Memory Support (disabled)</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- RADIO BUTTONS -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-6)">Radio Buttons</h2>
+      <p class="body" style="margin-bottom:var(--space-6)">Circle with Intel Blue fill on selection.</p>
+
+      <div style="display:flex; flex-direction:column; gap:var(--space-4); max-width:480px">
+        <label class="radio-wrapper">
+          <div class="radio">
+            <input type="radio" name="platform-type" checked />
+            <span class="radio-circle"></span>
+          </div>
+          <span class="radio-label">Client — Laptop and Desktop</span>
+        </label>
+        <label class="radio-wrapper">
+          <div class="radio">
+            <input type="radio" name="platform-type" />
+            <span class="radio-circle"></span>
+          </div>
+          <span class="radio-label">Data Center and Cloud</span>
+        </label>
+        <label class="radio-wrapper">
+          <div class="radio">
+            <input type="radio" name="platform-type" />
+            <span class="radio-circle"></span>
+          </div>
+          <span class="radio-label">Edge Computing and IoT</span>
+        </label>
+        <label class="radio-wrapper">
+          <div class="radio">
+            <input type="radio" name="platform-type" />
+            <span class="radio-circle"></span>
+          </div>
+          <span class="radio-label">Workstation and Content Creation</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- TOGGLES -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-6)">Toggle Switches</h2>
+      <p class="body" style="margin-bottom:var(--space-6)">Intel Blue when on. Precise 250ms transition.</p>
+
+      <div style="display:flex; flex-direction:column; gap:var(--space-5); max-width:400px">
+        <label class="toggle-label">
+          <div class="toggle">
+            <input type="checkbox" checked />
+            <span class="toggle-track"></span>
+            <span class="toggle-thumb"></span>
+          </div>
+          <div>
+            <div style="font-size:var(--text-15); font-weight:var(--weight-semibold); color:var(--color-label-primary)">Intel® Turbo Boost</div>
+            <div class="caption">Automatically increases clock frequency</div>
+          </div>
+        </label>
+        <label class="toggle-label">
+          <div class="toggle">
+            <input type="checkbox" checked />
+            <span class="toggle-track"></span>
+            <span class="toggle-thumb"></span>
+          </div>
+          <div>
+            <div style="font-size:var(--text-15); font-weight:var(--weight-semibold); color:var(--color-label-primary)">Intel® vPro® Platform</div>
+            <div class="caption">Enterprise manageability and security</div>
+          </div>
+        </label>
+        <label class="toggle-label">
+          <div class="toggle">
+            <input type="checkbox" />
+            <span class="toggle-track"></span>
+            <span class="toggle-thumb"></span>
+          </div>
+          <div>
+            <div style="font-size:var(--text-15); font-weight:var(--weight-semibold); color:var(--color-label-primary)">Intel® Deep Learning Boost</div>
+            <div class="caption">AVX-512 VNNI instructions for AI inference</div>
+          </div>
+        </label>
+        <label class="toggle-label">
+          <div class="toggle">
+            <input type="checkbox" />
+            <span class="toggle-track"></span>
+            <span class="toggle-thumb"></span>
+          </div>
+          <div>
+            <div style="font-size:var(--text-15); font-weight:var(--weight-semibold); color:var(--color-label-primary); opacity:0.45">Overclocking (disabled)</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- COMPLETE FORM -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-2)">Complete Form — Processor Configurator</h2>
+      <p class="body" style="margin-bottom:var(--space-8)">Example of a full enterprise form with all element types.</p>
+
+      <form style="max-width:680px" novalidate>
+        <div class="grid-2" style="gap:var(--space-5)">
+          <div class="form-group">
+            <label class="form-label required">First Name</label>
+            <input class="input" type="text" autocomplete="given-name" placeholder="First name" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label required">Last Name</label>
+            <input class="input" type="text" autocomplete="family-name" placeholder="Last name" required />
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:var(--space-5)">
+          <label class="form-label required">Business Email</label>
+          <input class="input" type="email" autocomplete="email" placeholder="name@company.com" required />
+          <span class="form-helper">Business email required for enterprise support access</span>
+        </div>
+
+        <div class="form-group" style="margin-top:var(--space-5)">
+          <label class="form-label required">Processor Family</label>
+          <div class="select-wrapper">
+            <select class="select" required aria-label="Select processor family">
+              <option value="">Select a processor family</option>
+              <option>Intel® Core™ Ultra (Client)</option>
+              <option>Intel® Xeon® W (Workstation)</option>
+              <option>Intel® Xeon® Scalable (Server)</option>
+              <option>Intel® Gaudi® (AI)</option>
+            </select>
+            <svg class="select-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:var(--space-5)">
+          <label class="form-label">Deployment Environment</label>
+          <div style="display:flex; flex-direction:column; gap:var(--space-3); margin-top:var(--space-2)">
+            <label class="radio-wrapper">
+              <div class="radio"><input type="radio" name="env" checked /><span class="radio-circle"></span></div>
+              <span class="radio-label">On-premises data center</span>
+            </label>
+            <label class="radio-wrapper">
+              <div class="radio"><input type="radio" name="env" /><span class="radio-circle"></span></div>
+              <span class="radio-label">Hybrid cloud (on-prem + cloud)</span>
+            </label>
+            <label class="radio-wrapper">
+              <div class="radio"><input type="radio" name="env" /><span class="radio-circle"></span></div>
+              <span class="radio-label">Public cloud (AWS/Azure/GCP)</span>
+            </label>
+            <label class="radio-wrapper">
+              <div class="radio"><input type="radio" name="env" /><span class="radio-circle"></span></div>
+              <span class="radio-label">Edge / Manufacturing floor</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:var(--space-5)">
+          <label class="form-label">Required Capabilities</label>
+          <div style="display:flex; flex-direction:column; gap:var(--space-3); margin-top:var(--space-2)">
+            <label class="checkbox-wrapper">
+              <div class="checkbox"><input type="checkbox" checked /><span class="checkbox-box"></span></div>
+              <span class="checkbox-label">AI/ML inference acceleration</span>
+            </label>
+            <label class="checkbox-wrapper">
+              <div class="checkbox"><input type="checkbox" /><span class="checkbox-box"></span></div>
+              <span class="checkbox-label">ECC memory support</span>
+            </label>
+            <label class="checkbox-wrapper">
+              <div class="checkbox"><input type="checkbox" checked /><span class="checkbox-box"></span></div>
+              <span class="checkbox-label">Intel® vPro® enterprise management</span>
+            </label>
+            <label class="checkbox-wrapper">
+              <div class="checkbox"><input type="checkbox" /><span class="checkbox-box"></span></div>
+              <span class="checkbox-label">High-core-count parallel processing</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:var(--space-5)">
+          <label class="form-label">Workload Description</label>
+          <textarea class="textarea" rows="4" placeholder="Describe your primary workload — inference, training, HPC, rendering, etc. Include performance targets if known."></textarea>
+        </div>
+
+        <div style="display:flex; gap:var(--space-3); margin-top:var(--space-8); align-items:center">
+          <button class="btn btn-primary btn-lg" type="submit">Request Configuration</button>
+          <button class="btn btn-outline" type="reset">Reset Form</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</main>
+
+</body>
+</html>

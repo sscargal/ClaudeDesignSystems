@@ -1,0 +1,429 @@
+/* =============================================================================
+   Intel Design System — Typography
+   Version 1.0.0 | Intel One / Clear Sans / Inter stack
+   ============================================================================= */
+
+/* ---------------------------------------------------------------------------
+   FONT IMPORT — Inter as system fallback (Intel One requires licensed font)
+   --------------------------------------------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
+
+/* ---------------------------------------------------------------------------
+   BASE TYPOGRAPHY RESET
+   --------------------------------------------------------------------------- */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-text);
+  font-size: var(--text-16);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  color: var(--color-label-primary);
+  background-color: var(--color-bg);
+}
+
+/* ---------------------------------------------------------------------------
+   DISPLAY — Hero level headings
+   --------------------------------------------------------------------------- */
+
+.display-hero {
+  font-family: var(--font-display);
+  font-size: clamp(44px, 6.5vw, var(--text-72));
+  font-weight: var(--weight-extrabold);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+.display-large {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, var(--text-56));
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display-lg);
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, var(--text-44));
+  font-weight: var(--weight-bold);
+  line-height: 1.10;
+  letter-spacing: -0.01em;
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   HEADINGS
+   --------------------------------------------------------------------------- */
+
+.heading-1,
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-28), 3.5vw, var(--text-36));
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+.heading-2,
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-22), 2.5vw, var(--text-28));
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-heading);
+  letter-spacing: -0.005em;
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+.heading-3,
+h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-22);
+  font-weight: var(--weight-semibold);
+  line-height: 1.25;
+  letter-spacing: 0em;
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-18);
+  font-weight: var(--weight-semibold);
+  line-height: 1.30;
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+h5 {
+  font-family: var(--font-display);
+  font-size: var(--text-16);
+  font-weight: var(--weight-semibold);
+  line-height: 1.35;
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+h6 {
+  font-family: var(--font-display);
+  font-size: var(--text-14);
+  font-weight: var(--weight-semibold);
+  line-height: 1.40;
+  color: var(--color-label-secondary);
+  margin: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   SUBHEAD & BODY
+   --------------------------------------------------------------------------- */
+
+.subhead {
+  font-family: var(--font-text);
+  font-size: var(--text-18);
+  font-weight: var(--weight-medium);
+  line-height: 1.45;
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+.body-lg {
+  font-family: var(--font-text);
+  font-size: var(--text-18);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body-lg);
+  color: var(--color-label-secondary);
+  max-width: var(--max-prose);
+  margin: 0;
+}
+
+.body,
+p {
+  font-family: var(--font-text);
+  font-size: var(--text-16);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  color: var(--color-label-secondary);
+  margin: 0;
+}
+
+.body-sm {
+  font-family: var(--font-text);
+  font-size: var(--text-15);
+  font-weight: var(--weight-regular);
+  line-height: 1.55;
+  color: var(--color-label-secondary);
+  margin: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   UTILITY TEXT
+   --------------------------------------------------------------------------- */
+
+.caption {
+  font-family: var(--font-text);
+  font-size: var(--text-13);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-caption);
+  color: var(--color-label-tertiary);
+  margin: 0;
+}
+
+.label {
+  font-family: var(--font-text);
+  font-size: var(--text-12);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   INTEL-SPECIFIC TYPE UTILITIES
+   --------------------------------------------------------------------------- */
+
+/* Eyebrow — section label above headlines */
+.eyebrow {
+  display: block;
+  font-family: var(--font-text);
+  font-size: var(--text-13);
+  font-weight: var(--weight-semibold);
+  line-height: 1;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-intel-blue);
+  margin: 0 0 var(--space-3);
+}
+
+/* Spec value — for performance numbers, benchmark scores */
+.spec-value {
+  font-family: var(--font-display);
+  font-size: var(--text-44);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-intel-blue);
+  margin: 0;
+}
+
+.spec-value-lg {
+  font-size: var(--text-56);
+}
+
+.spec-value-sm {
+  font-size: var(--text-28);
+}
+
+/* Spec unit — appended to spec values */
+.spec-unit {
+  font-size: 0.45em;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0;
+  vertical-align: baseline;
+  color: var(--color-label-secondary);
+}
+
+/* Mono — code, specs, technical data */
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-14);
+  font-weight: var(--weight-regular);
+  line-height: 1.60;
+  color: var(--color-label-primary);
+}
+
+/* ---------------------------------------------------------------------------
+   GRADIENT TEXT
+   --------------------------------------------------------------------------- */
+
+.text-blue-gradient {
+  background: linear-gradient(135deg, var(--color-intel-blue-dark) 0%, var(--color-intel-teal) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-ai-gradient {
+  background: linear-gradient(135deg, var(--color-intel-purple) 0%, var(--color-intel-blue) 50%, var(--color-intel-teal) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------------------------------------------------------------------------
+   PROSE CONTENT (long-form articles, documentation)
+   --------------------------------------------------------------------------- */
+
+.prose {
+  max-width: var(--max-prose);
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  color: var(--color-label-primary);
+  margin-bottom: var(--space-4);
+  margin-top: var(--space-8);
+}
+
+.prose h1:first-child,
+.prose h2:first-child {
+  margin-top: 0;
+}
+
+.prose p {
+  color: var(--color-label-secondary);
+  margin-bottom: var(--space-4);
+  line-height: var(--leading-body);
+}
+
+.prose ul,
+.prose ol {
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-4);
+  color: var(--color-label-secondary);
+}
+
+.prose li {
+  margin-bottom: var(--space-2);
+  line-height: var(--leading-body);
+}
+
+.prose a {
+  color: var(--color-intel-blue);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--duration-fast) var(--ease-intel);
+}
+
+.prose a:hover {
+  color: var(--color-intel-blue-dark);
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--color-surface-1);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  color: var(--color-intel-blue-dark);
+  border: 1px solid var(--color-border-dark);
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--color-intel-blue);
+  margin: var(--space-6) 0;
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-intel-blue-pale);
+}
+
+.prose blockquote p {
+  color: var(--color-label-primary);
+  font-weight: var(--weight-medium);
+}
+
+/* ---------------------------------------------------------------------------
+   LINKS
+   --------------------------------------------------------------------------- */
+
+a {
+  color: var(--color-intel-blue);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-intel);
+}
+
+a:hover {
+  color: var(--color-intel-blue-dark);
+}
+
+.link-underline {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.link-arrow::after {
+  content: ' →';
+  display: inline-block;
+  transition: transform var(--duration-fast) var(--ease-intel);
+}
+
+.link-arrow:hover::after {
+  transform: translateX(3px);
+}
+
+/* ---------------------------------------------------------------------------
+   TEXT UTILITIES
+   --------------------------------------------------------------------------- */
+
+.text-center    { text-align: center; }
+.text-left      { text-align: left; }
+.text-right     { text-align: right; }
+
+.text-primary   { color: var(--color-label-primary); }
+.text-secondary { color: var(--color-label-secondary); }
+.text-tertiary  { color: var(--color-label-tertiary); }
+.text-blue      { color: var(--color-intel-blue); }
+.text-teal      { color: var(--color-intel-teal); }
+.text-white     { color: #FFFFFF; }
+.text-white-muted { color: rgba(255, 255, 255, 0.70); }
+
+.text-uppercase  { text-transform: uppercase; }
+.text-nowrap     { white-space: nowrap; }
+.truncate        { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Dark background text helpers */
+.on-dark .display-hero,
+.on-dark .display-large,
+.on-dark .display,
+.on-dark .heading-1,
+.on-dark .heading-2,
+.on-dark .heading-3,
+.on-dark h1,
+.on-dark h2,
+.on-dark h3 {
+  color: var(--color-label-on-dark);
+}
+
+.on-dark .body,
+.on-dark .body-lg,
+.on-dark .body-sm,
+.on-dark p {
+  color: var(--color-label-on-dark-muted);
+}
+
+/* ---------------------------------------------------------------------------
+   RESPONSIVE TYPOGRAPHY OVERRIDES
+   --------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .display-hero   { font-size: clamp(32px, 9vw, 52px); }
+  .display-large  { font-size: clamp(28px, 7vw, 44px); }
+  .display        { font-size: clamp(24px, 6vw, 36px); }
+
+  .spec-value     { font-size: var(--text-36); }
+  .spec-value-lg  { font-size: var(--text-44); }
+}

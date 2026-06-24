@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buttons — Intel Design System</title>
+  <link rel="stylesheet" href="../tokens.css" />
+  <link rel="stylesheet" href="../typography.css" />
+  <link rel="stylesheet" href="../animations.css" />
+  <link rel="stylesheet" href="../components.css" />
+  <style>
+    body { margin: 0; padding: 0; background: var(--color-bg); }
+    .page-header {
+      background: var(--color-intel-blue);
+      color: #fff;
+      padding: var(--space-8) 0;
+    }
+    .showcase-row {
+      padding: var(--space-10) 0;
+      border-bottom: 1px solid var(--color-border-dark);
+    }
+    .showcase-row:last-child { border-bottom: none; }
+    .showcase-label {
+      font-size: var(--text-12);
+      font-weight: var(--weight-bold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-5);
+      display: block;
+    }
+    .demo-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+    .dark-zone {
+      background: var(--color-surface-dark);
+      padding: var(--space-8);
+      border-radius: var(--radius-card);
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-6);
+      font-size: var(--text-13);
+      color: rgba(255,255,255,0.65);
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.65); text-decoration: none; }
+    .breadcrumb a:hover { color: #fff; }
+    .state-table { width: 100%; border-collapse: collapse; font-size: var(--text-14); }
+    .state-table th {
+      text-align: left;
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--text-12);
+      font-weight: var(--weight-bold);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      border-bottom: 2px solid var(--color-border-dark);
+    }
+    .state-table td {
+      padding: var(--space-4);
+      border-bottom: 1px solid var(--color-border-dark);
+      vertical-align: middle;
+    }
+    .state-table tr:last-child td { border-bottom: none; }
+    .code {
+      font-family: var(--font-mono);
+      font-size: var(--text-12);
+      background: var(--color-surface-1);
+      border: 1px solid var(--color-border-dark);
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+      color: var(--color-intel-blue-dark);
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">Intel Design System</a>
+      <span>›</span>
+      <span>Components</span>
+      <span>›</span>
+      <span style="color:#fff">Buttons</span>
+    </div>
+    <div class="eyebrow" style="color:rgba(255,255,255,0.65)">Components</div>
+    <h1 class="display-large" style="color:#fff; margin-bottom:var(--space-4)">Buttons</h1>
+    <p class="body-lg" style="color:rgba(255,255,255,0.70); max-width:600px">Sharp 0px radius, Intel Blue primary. 44px minimum touch target. Precise 150ms transitions.</p>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+
+    <!-- VARIANTS -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-2)">Variants</h2>
+      <p class="body" style="margin-bottom:var(--space-6)">All button variants on a light background.</p>
+
+      <table class="state-table">
+        <thead>
+          <tr>
+            <th>Variant</th>
+            <th>Class</th>
+            <th>Use Case</th>
+            <th>Preview</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Primary</strong></td>
+            <td><code class="code">.btn .btn-primary</code></td>
+            <td>Primary action, main CTA</td>
+            <td><button class="btn btn-primary">Primary</button></td>
+          </tr>
+          <tr>
+            <td><strong>Secondary</strong></td>
+            <td><code class="code">.btn .btn-secondary</code></td>
+            <td>Secondary action, alongside primary</td>
+            <td><button class="btn btn-secondary">Secondary</button></td>
+          </tr>
+          <tr>
+            <td><strong>Outline</strong></td>
+            <td><code class="code">.btn .btn-outline</code></td>
+            <td>Tertiary, lower visual emphasis</td>
+            <td><button class="btn btn-outline">Outline</button></td>
+          </tr>
+          <tr>
+            <td><strong>Ghost</strong></td>
+            <td><code class="code">.btn .btn-ghost</code></td>
+            <td>Navigation actions, inline</td>
+            <td><button class="btn btn-ghost">Ghost</button></td>
+          </tr>
+          <tr>
+            <td><strong>Teal</strong></td>
+            <td><code class="code">.btn .btn-teal</code></td>
+            <td>AI features, secondary brand accent</td>
+            <td><button class="btn btn-teal">Teal</button></td>
+          </tr>
+          <tr>
+            <td><strong>CTA</strong></td>
+            <td><code class="code">.btn .btn-cta</code></td>
+            <td>Hero sections, primary call-to-action</td>
+            <td><button class="btn btn-cta">Explore Now</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SIZES -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-6)">Sizes</h2>
+      <div class="demo-group" style="align-items:flex-end; gap:var(--space-4)">
+        <div style="text-align:center">
+          <button class="btn btn-primary btn-sm" style="display:block; margin-bottom:var(--space-2)">Small</button>
+          <span class="caption">32px · .btn-sm</span>
+        </div>
+        <div style="text-align:center">
+          <button class="btn btn-primary" style="display:block; margin-bottom:var(--space-2)">Medium</button>
+          <span class="caption">44px · default</span>
+        </div>
+        <div style="text-align:center">
+          <button class="btn btn-primary btn-lg" style="display:block; margin-bottom:var(--space-2)">Large</button>
+          <span class="caption">52px · .btn-lg</span>
+        </div>
+        <div style="text-align:center">
+          <button class="btn btn-cta" style="display:block; margin-bottom:var(--space-2)">CTA Hero</button>
+          <span class="caption">52px · .btn-cta</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATES -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-6)">States</h2>
+      <div class="demo-group">
+        <button class="btn btn-primary">Default</button>
+        <button class="btn btn-primary loading">Loading</button>
+        <button class="btn btn-primary" disabled>Disabled</button>
+        <button class="btn btn-secondary" disabled>Disabled Secondary</button>
+        <button class="btn btn-outline" disabled>Disabled Outline</button>
+      </div>
+    </div>
+
+    <!-- WITH ICONS -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-6)">With Icons</h2>
+      <div class="demo-group">
+        <button class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1l7 7-7 7M2 8h13" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          Explore Processors
+        </button>
+        <button class="btn btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 1v14M1 8h14"/></svg>
+          Compare
+        </button>
+        <button class="btn btn-outline">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="1"/></svg>
+          Download Datasheet
+        </button>
+        <button class="btn btn-ghost">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5l2 1.5"/></svg>
+          Watch Demo
+        </button>
+      </div>
+    </div>
+
+    <!-- DARK CONTEXT -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-6)">Dark Context</h2>
+      <div class="dark-zone">
+        <p class="body-sm" style="color:rgba(255,255,255,0.55); margin-bottom:var(--space-6)">Buttons optimized for dark hero sections and dark surface backgrounds.</p>
+        <div class="demo-group">
+          <button class="btn btn-cta">Explore Now</button>
+          <button class="btn btn-dark">Buy Direct</button>
+          <button class="btn btn-dark-outline">Learn More</button>
+          <button class="btn btn-ghost" style="color:rgba(255,255,255,0.80)">Compare</button>
+          <button class="btn btn-teal">View Gaudi 3</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BUTTON GROUPS -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-6)">Button Groups</h2>
+      <div style="display:flex; flex-direction:column; gap:var(--space-6)">
+        <div>
+          <span class="showcase-label">Primary + Secondary</span>
+          <div class="btn-group">
+            <button class="btn btn-primary">Buy Now</button>
+            <button class="btn btn-secondary">Add to Compare</button>
+          </div>
+        </div>
+        <div>
+          <span class="showcase-label">Primary + Ghost</span>
+          <div class="btn-group">
+            <button class="btn btn-primary">Configure System</button>
+            <button class="btn btn-ghost">View Specs</button>
+          </div>
+        </div>
+        <div>
+          <span class="showcase-label">Multiple actions</span>
+          <div class="btn-group">
+            <button class="btn btn-primary btn-sm">Download</button>
+            <button class="btn btn-outline btn-sm">Share</button>
+            <button class="btn btn-outline btn-sm">Print</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ICON BUTTONS -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-6)">Icon Buttons</h2>
+      <div class="demo-group">
+        <button class="btn btn-primary btn-icon btn-sm" aria-label="Search">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="6" cy="6" r="4"/><path d="M11 11l-2.5-2.5"/></svg>
+        </button>
+        <button class="btn btn-primary btn-icon" aria-label="Search">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M13 13l-3-3"/></svg>
+        </button>
+        <button class="btn btn-secondary btn-icon" aria-label="Download">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 2v9M4 8l4 4 4-4M2 14h12"/></svg>
+        </button>
+        <button class="btn btn-outline btn-icon" aria-label="Share">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="3" r="1.5"/><circle cx="4" cy="8" r="1.5"/><circle cx="12" cy="13" r="1.5"/><path d="M5.5 9l5 3M5.5 7l5-3"/></svg>
+        </button>
+        <button class="btn btn-ghost btn-icon" aria-label="Bookmark">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 2h8a1 1 0 011 1v11l-5-3-5 3V3a1 1 0 011-1z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ACCESSIBILITY -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-4)">Accessibility</h2>
+      <ul class="body" style="line-height:2; padding-left:var(--space-5)">
+        <li>All buttons have <code class="code">:focus-visible</code> ring — 2px Intel Blue outline, 2px offset</li>
+        <li>Disabled state uses <code class="code">opacity: 0.38</code> + <code class="code">pointer-events: none</code></li>
+        <li>Icon-only buttons require <code class="code">aria-label</code></li>
+        <li>Minimum 44×44px touch target for all size variants</li>
+        <li>Loading state hides text visually, spinner uses <code class="code">aria-live</code> if paired with status region</li>
+        <li><code class="code">prefers-reduced-motion</code>: transitions reduced to 0.01ms</li>
+      </ul>
+    </div>
+
+  </div>
+</main>
+
+</body>
+</html>

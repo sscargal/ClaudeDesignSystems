@@ -1,0 +1,432 @@
+/* =============================================================================
+   Intel Design System — Animations
+   Version 1.0.0 | Precise, purposeful motion — every animation earns its place
+   ============================================================================= */
+
+/* ---------------------------------------------------------------------------
+   KEYFRAMES
+   --------------------------------------------------------------------------- */
+
+/* Fade In — universal reveal */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slide In Up — cards, panels, drawers */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide In Down — dropdowns, mega-menu */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide In Left — panels, sidebars */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide In Right */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scale In — modals, dialogs */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Scale Out */
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* Blue Glow — Intel blue highlight pulse for CTAs and focus */
+@keyframes blueGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 113, 197, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(0, 113, 197, 0.15), 0 4px 24px rgba(0, 113, 197, 0.25);
+  }
+}
+
+/* Teal glow — secondary accent */
+@keyframes tealGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 199, 177, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(0, 199, 177, 0.15), 0 4px 24px rgba(0, 199, 177, 0.20);
+  }
+}
+
+/* Shimmer — skeleton loading state */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Progress Fill — benchmark/perf bars fill left to right */
+@keyframes progressFill {
+  from {
+    width: 0%;
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Benchmark bar fill with a crisp step */
+@keyframes benchmarkFill {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  100% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* Spin — loading spinners */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Count Up — stat number reveal (triggered by JS counter) */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pulse — live indicator dots, active status */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
+}
+
+/* Ping — notification ripple */
+@keyframes ping {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  75%, 100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* Float — subtle hover float for hero elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Grid scan line — hero bg animation */
+@keyframes gridScan {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 48px;
+  }
+}
+
+/* Toast slide in */
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Underline expand — nav link hover effect */
+@keyframes underlineExpand {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* Intel logo swirl */
+@keyframes intelSwirl {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   ANIMATION UTILITY CLASSES
+   --------------------------------------------------------------------------- */
+
+.animate-fade-in       { animation: fadeIn var(--duration-normal) var(--ease-out) both; }
+.animate-slide-up      { animation: slideInUp var(--duration-normal) var(--ease-out) both; }
+.animate-slide-down    { animation: slideInDown var(--duration-normal) var(--ease-out) both; }
+.animate-slide-left    { animation: slideInLeft var(--duration-normal) var(--ease-out) both; }
+.animate-slide-right   { animation: slideInRight var(--duration-normal) var(--ease-out) both; }
+.animate-scale-in      { animation: scaleIn var(--duration-normal) var(--ease-out) both; }
+.animate-blue-glow     { animation: blueGlow 2.5s var(--ease-intel) infinite; }
+.animate-pulse         { animation: pulse 2s var(--ease-intel) infinite; }
+.animate-ping          { animation: ping 1.5s var(--ease-intel) infinite; }
+.animate-float         { animation: float 3.5s var(--ease-intel) infinite; }
+.animate-spin          { animation: spin 0.8s linear infinite; }
+.animate-count-up      { animation: countUp var(--duration-normal) var(--ease-out) both; }
+
+/* Benchmark animation — applies to .perf-fill elements */
+.animate-benchmark {
+  animation: benchmarkFill var(--duration-slow) var(--ease-out) both;
+}
+
+/* ---------------------------------------------------------------------------
+   SKELETON LOADING
+   --------------------------------------------------------------------------- */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-1) 0%,
+    var(--color-surface-2) 40%,
+    var(--color-surface-1) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s var(--ease-linear) infinite;
+  border-radius: var(--radius-xs);
+}
+
+.skeleton-text {
+  height: 14px;
+  margin-bottom: var(--space-2);
+  border-radius: var(--radius-xs);
+}
+
+.skeleton-text:last-child {
+  width: 65%;
+}
+
+.skeleton-heading {
+  height: 24px;
+  margin-bottom: var(--space-4);
+}
+
+.skeleton-card {
+  height: 200px;
+  border-radius: var(--radius-card);
+}
+
+.skeleton-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   ANIMATION DELAYS
+   --------------------------------------------------------------------------- */
+
+.delay-0     { animation-delay:   0ms; }
+.delay-50    { animation-delay:  50ms; }
+.delay-100   { animation-delay: 100ms; }
+.delay-150   { animation-delay: 150ms; }
+.delay-200   { animation-delay: 200ms; }
+.delay-250   { animation-delay: 250ms; }
+.delay-300   { animation-delay: 300ms; }
+.delay-400   { animation-delay: 400ms; }
+.delay-500   { animation-delay: 500ms; }
+.delay-600   { animation-delay: 600ms; }
+.delay-800   { animation-delay: 800ms; }
+
+/* Stagger children — apply to parent */
+.stagger > *:nth-child(1) { animation-delay:  0ms; }
+.stagger > *:nth-child(2) { animation-delay:  80ms; }
+.stagger > *:nth-child(3) { animation-delay: 160ms; }
+.stagger > *:nth-child(4) { animation-delay: 240ms; }
+.stagger > *:nth-child(5) { animation-delay: 320ms; }
+.stagger > *:nth-child(6) { animation-delay: 400ms; }
+
+/* ---------------------------------------------------------------------------
+   DURATION OVERRIDES
+   --------------------------------------------------------------------------- */
+
+.duration-fast       { animation-duration: var(--duration-fast); }
+.duration-normal     { animation-duration: var(--duration-normal); }
+.duration-slow       { animation-duration: var(--duration-slow); }
+.duration-deliberate { animation-duration: var(--duration-deliberate); }
+
+/* ---------------------------------------------------------------------------
+   FILL MODE UTILITIES
+   --------------------------------------------------------------------------- */
+
+.fill-both    { animation-fill-mode: both; }
+.fill-forward { animation-fill-mode: forwards; }
+
+/* ---------------------------------------------------------------------------
+   TRANSITION UTILITIES
+   --------------------------------------------------------------------------- */
+
+.transition-fast   { transition: var(--transition-fast); }
+.transition-normal { transition: var(--transition-normal); }
+.transition-slow   { transition: var(--transition-slow); }
+.transition-none   { transition: none; }
+
+/* ---------------------------------------------------------------------------
+   HOVER MICRO-INTERACTIONS
+   --------------------------------------------------------------------------- */
+
+/* Card lift */
+.hover-lift {
+  transition:
+    transform var(--duration-normal) var(--ease-intel),
+    box-shadow var(--duration-normal) var(--ease-intel);
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Subtle scale */
+.hover-scale {
+  transition: transform var(--duration-fast) var(--ease-intel);
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+/* Button press */
+.hover-press {
+  transition: transform var(--duration-fast) var(--ease-intel);
+}
+
+.hover-press:active {
+  transform: scale(0.97);
+}
+
+/* Glow on hover */
+.hover-glow {
+  transition: box-shadow var(--duration-normal) var(--ease-intel);
+}
+
+.hover-glow:hover {
+  box-shadow: var(--shadow-blue);
+}
+
+/* ---------------------------------------------------------------------------
+   prefers-reduced-motion — Respects user system preference
+   --------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-float,
+  .animate-pulse,
+  .animate-ping,
+  .animate-blue-glow,
+  .animate-spin,
+  .skeleton {
+    animation: none !important;
+  }
+
+  .hover-lift:hover {
+    transform: none;
+  }
+
+  .hover-scale:hover {
+    transform: none;
+  }
+}

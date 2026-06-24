@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navigation — Intel Design System</title>
+  <link rel="stylesheet" href="../tokens.css" />
+  <link rel="stylesheet" href="../typography.css" />
+  <link rel="stylesheet" href="../animations.css" />
+  <link rel="stylesheet" href="../components.css" />
+  <style>
+    body { margin: 0; padding: 0; background: var(--color-bg); }
+    .page-header-inner {
+      background: var(--color-intel-blue);
+      color: #fff;
+      padding: var(--space-8) 0;
+    }
+    .showcase-section {
+      padding: var(--space-12) 0;
+      border-bottom: 1px solid var(--color-border-dark);
+    }
+    .showcase-section:last-child { border-bottom: none; }
+    .showcase-label {
+      font-size: var(--text-12);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-4);
+      display: block;
+    }
+    .breadcrumb-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-6);
+      font-size: var(--text-13);
+      color: rgba(255,255,255,0.65);
+    }
+    .breadcrumb-header a { color: rgba(255,255,255,0.65); text-decoration: none; }
+    .breadcrumb-header a:hover { color: #fff; }
+    .demo-frame {
+      border: 1px solid var(--color-border-dark);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+    }
+    .note {
+      background: var(--color-intel-blue-pale);
+      border-left: 3px solid var(--color-intel-blue);
+      padding: var(--space-4) var(--space-5);
+      font-size: var(--text-14);
+      color: var(--color-intel-blue-dark);
+      margin-bottom: var(--space-6);
+    }
+    /* Sidebar demo */
+    .sidebar-demo {
+      display: flex;
+      height: 480px;
+      border: 1px solid var(--color-border-dark);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+    }
+    .sidebar-content {
+      flex: 1;
+      padding: var(--space-8);
+      background: var(--color-surface-1);
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Page meta header (not part of system) -->
+<div class="page-header-inner">
+  <div class="container">
+    <div class="breadcrumb-header">
+      <a href="../index.html">Intel Design System</a>
+      <span>›</span>
+      <span>Components</span>
+      <span>›</span>
+      <span style="color:#fff">Navigation</span>
+    </div>
+    <div class="eyebrow" style="color:rgba(255,255,255,0.65)">Components</div>
+    <h1 class="display-large" style="color:#fff; margin-bottom:var(--space-4)">Navigation</h1>
+    <p class="body-lg" style="color:rgba(255,255,255,0.70); max-width:600px">Utility bar, main global nav, and mega-menu for Intel.com product hierarchy.</p>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+
+    <!-- UTILITY BAR -->
+    <div class="showcase-section">
+      <h2 class="heading-2" style="margin-bottom:var(--space-2)">Utility Bar</h2>
+      <p class="body" style="margin-bottom:var(--space-6)">Thin dark blue bar above main nav. Intel Blue Dark background, small text links, region selector.</p>
+
+      <div class="demo-frame">
+        <nav class="nav-utility" aria-label="Utility navigation" style="position:relative">
+          <div class="nav-utility-inner">
+            <a href="#" class="nav-utility-brand">Intel.com</a>
+            <ul class="nav-utility-links" role="list">
+              <li><a href="#">Support</a></li>
+              <li><a href="#">Downloads</a></li>
+              <li><a href="#">Community</a></li>
+              <li><a href="#">Developer Zone</a></li>
+              <li>
+                <button class="nav-region" type="button" aria-label="Select region">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6 1c0 0-2 2.5-2 5s2 5 2 5M6 1c0 0 2 2.5 2 5s-2 5-2 5M1 6h10" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                  United States / English
+                </button>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- MAIN NAVIGATION -->
+    <div class="showcase-section">
+      <h2 class="heading-2" style="margin-bottom:var(--space-2)">Main Navigation</h2>
+      <p class="body" style="margin-bottom:var(--space-6)">White bar, Intel logo left, product family links center, search + account + shop right. 64px height. Sticky with shadow-on-scroll.</p>
+
+      <div class="demo-frame" style="overflow:visible">
+        <nav class="nav-global scrolled" aria-label="Main navigation" style="position:relative; z-index:10">
+          <div class="nav-global-inner">
+            <a href="#" class="nav-brand" aria-label="Intel Home">
+              <svg width="80" height="28" viewBox="0 0 80 28" fill="none" aria-hidden="true">
+                <circle cx="14" cy="14" r="11" fill="none" stroke="#0071C5" stroke-width="2.5"/>
+                <circle cx="14" cy="14" r="5.5" fill="#0071C5"/>
+                <text x="31" y="19" font-family="Inter,sans-serif" font-size="17" font-weight="400" fill="#0071C5" letter-spacing="-0.5">intel</text>
+              </svg>
+            </a>
+
+            <ul class="nav-links" role="list">
+              <li class="nav-link-item active"><a href="#">Processors</a></li>
+              <li class="nav-link-item"><a href="#">Graphics</a></li>
+              <li class="nav-link-item"><a href="#">AI</a></li>
+              <li class="nav-link-item"><a href="#">Data Center</a></li>
+              <li class="nav-link-item"><a href="#">Solutions</a></li>
+              <li class="nav-link-item"><a href="#">Developers</a></li>
+            </ul>
+
+            <div class="nav-actions">
+              <button class="nav-action-btn" type="button" aria-label="Search">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="5"/><path d="M15 15l-3.5-3.5"/></svg>
+              </button>
+              <button class="nav-action-btn" type="button" aria-label="Account">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="6" r="3"/><path d="M3 16c0-3.314 2.686-6 6-6s6 2.686 6 6"/></svg>
+              </button>
+              <a href="#" class="btn btn-primary btn-sm">Shop</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- MEGA MENU -->
+    <div class="showcase-section">
+      <h2 class="heading-2" style="margin-bottom:var(--space-2)">Mega Menu</h2>
+      <p class="body" style="margin-bottom:var(--space-6)">Full-width dropdown. Intel Blue 2px top border. 4-column product family grid. Each family has icon + name + description links.</p>
+
+      <div class="note">
+        Mega menu shown in expanded state. On live site, toggled open via JS on hover/click of nav links that have submenus.
+      </div>
+
+      <div class="demo-frame">
+        <!-- Nav -->
+        <div style="background:#fff; border-bottom:1px solid var(--color-border-dark); padding: 0 var(--space-6); height:64px; display:flex; align-items:center; justify-content:space-between;">
+          <a href="#" aria-label="Intel Home">
+            <svg width="80" height="28" viewBox="0 0 80 28" fill="none" aria-hidden="true">
+              <circle cx="14" cy="14" r="11" fill="none" stroke="#0071C5" stroke-width="2.5"/>
+              <circle cx="14" cy="14" r="5.5" fill="#0071C5"/>
+              <text x="31" y="19" font-family="Inter,sans-serif" font-size="17" font-weight="400" fill="#0071C5" letter-spacing="-0.5">intel</text>
+            </svg>
+          </a>
+          <span style="color:var(--color-intel-blue); font-weight:var(--weight-semibold); font-size:var(--text-15); border-bottom:2px solid var(--color-intel-blue); padding-bottom:2px">Processors ▾</span>
+          <a href="#" class="btn btn-primary btn-sm">Shop</a>
+        </div>
+        <!-- Mega menu open -->
+        <div style="background:#fff; border-top:2px solid var(--color-intel-blue); padding:var(--space-8) var(--space-6); display:grid; grid-template-columns:repeat(4,1fr); gap:var(--space-8);">
+          <div class="nav-product-family">
+            <div class="nav-product-family-label">Client</div>
+            <a href="#" class="nav-product-item">
+              <div class="nav-product-icon">⚡</div>
+              <div class="nav-product-info">
+                <div class="nav-product-info-name">Intel® Core™ Ultra</div>
+                <div class="nav-product-info-desc">AI-powered performance for laptops &amp; desktops</div>
+              </div>
+            </a>
+            <a href="#" class="nav-product-item">
+              <div class="nav-product-icon">🖥️</div>
+              <div class="nav-product-info">
+                <div class="nav-product-info-name">Intel® Core™ Desktop</div>
+                <div class="nav-product-info-desc">Unlocked K-series desktop processors</div>
+              </div>
+            </a>
+            <a href="#" class="nav-product-item">
+              <div class="nav-product-icon">🎮</div>
+              <div class="nav-product-info">
+                <div class="nav-product-info-name">Intel® Core™ HX</div>
+                <div class="nav-product-info-desc">Mobile workstation performance</div>
+              </div>
+            </a>
+          </div>
+          <div class="nav-product-family">
+            <div class="nav-product-family-label">Data Center</div>
+            <a href="#" class="nav-product-item">
+              <div class="nav-product-icon">🌐</div>
+              <div class="nav-product-info">
+                <div class="nav-product-info-name">Intel® Xeon® Scalable</div>
+                <div class="nav-product-info-desc">Enterprise server leadership</div>
+              </div>
+            </a>
+            <a href="#" class="nav-product-item">
+              <div class="nav-product-icon">🏢</div>
+              <div class="nav-product-info">
+                <div class="nav-product-info-name">Intel® Xeon® W</div>
+                <div class="nav-product-info-desc">Workstation-class performance</div>
+              </div>
+            </a>
+            <a href="#" class="nav-product-item">
+              <div class="nav-product-icon">📦</div>
+              <div class="nav-product-info">
+                <div class="nav-product-info-name">Intel® Xeon® D</div>
+                <div class="nav-product-info-desc">Network &amp; storage edge</div>
+              </div>
+            </a>
+          </div>
+          <div class="nav-product-family">
+            <div class="nav-product-family-label">AI &amp; Accelerators</div>
+            <a href="#" class="nav-product-item">
+              <div class="nav-product-icon">🤖</div>
+              <div class="nav-product-info">
+                <div class="nav-product-info-name">Intel® Gaudi® 3</div>
+                <div class="nav-product-info-desc">AI training and inference at scale</div>
+              </div>
+            </a>
+            <a href="#" class="nav-product-item">
+              <div class="nav-product-icon">🎨</div>
+              <div class="nav-product-info">
+                <div class="nav-product-info-name">Intel® Arc™ Graphics</div>
+                <div class="nav-product-info-desc">Discrete GPU — creators &amp; gamers</div>
+              </div>
+            </a>
+            <a href="#" class="nav-product-item">
+              <div class="nav-product-icon">⚙️</div>
+              <div class="nav-product-info">
+                <div class="nav-product-info-name">Intel® FPGA</div>
+                <div class="nav-product-info-desc">Agilex™ programmable logic</div>
+              </div>
+            </a>
+          </div>
+          <div class="nav-product-family">
+            <div class="nav-product-family-label">Edge &amp; IoT</div>
+            <a href="#" class="nav-product-item">
+              <div class="nav-product-icon">📡</div>
+              <div class="nav-product-info">
+                <div class="nav-product-info-name">Intel® Atom™</div>
+                <div class="nav-product-info-desc">Power-efficient edge compute</div>
+              </div>
+            </a>
+            <a href="#" class="nav-product-item">
+              <div class="nav-product-icon">🏭</div>
+              <div class="nav-product-info">
+                <div class="nav-product-info-name">Intel® Industrial</div>
+                <div class="nav-product-info-desc">Long-lifecycle IoT platforms</div>
+              </div>
+            </a>
+            <a href="#" class="nav-product-item">
+              <div class="nav-product-icon">🚗</div>
+              <div class="nav-product-info">
+                <div class="nav-product-info-name">Intel® Automotive</div>
+                <div class="nav-product-info-desc">Mobileye &amp; automotive SoCs</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BREADCRUMBS -->
+    <div class="showcase-section">
+      <h2 class="heading-2" style="margin-bottom:var(--space-6)">Breadcrumb Navigation</h2>
+      <div style="display:flex; flex-direction:column; gap:var(--space-4)">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumbs">
+            <li class="breadcrumb-item"><a href="#">Intel.com</a><span class="breadcrumb-separator">›</span></li>
+            <li class="breadcrumb-item"><a href="#">Processors</a><span class="breadcrumb-separator">›</span></li>
+            <li class="breadcrumb-item">Intel® Core™ Ultra 9 285K</li>
+          </ol>
+        </nav>
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumbs">
+            <li class="breadcrumb-item"><a href="#">Intel.com</a><span class="breadcrumb-separator">›</span></li>
+            <li class="breadcrumb-item"><a href="#">Data Center</a><span class="breadcrumb-separator">›</span></li>
+            <li class="breadcrumb-item"><a href="#">Intel® Xeon®</a><span class="breadcrumb-separator">›</span></li>
+            <li class="breadcrumb-item"><a href="#">5th Gen Xeon Scalable</a><span class="breadcrumb-separator">›</span></li>
+            <li class="breadcrumb-item">w9-3595X Specifications</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <!-- COMPLETE NAV STACK -->
+    <div class="showcase-section">
+      <h2 class="heading-2" style="margin-bottom:var(--space-2)">Complete Navigation Stack</h2>
+      <p class="body" style="margin-bottom:var(--space-6)">Utility bar + main nav as deployed on intel.com. Utility bar stacks above main nav.</p>
+
+      <div class="demo-frame">
+        <!-- Utility bar -->
+        <nav class="nav-utility" aria-label="Utility navigation" style="position:relative">
+          <div class="nav-utility-inner">
+            <a href="#" class="nav-utility-brand">Intel.com</a>
+            <ul class="nav-utility-links" role="list">
+              <li><a href="#">Support</a></li>
+              <li><a href="#">Downloads</a></li>
+              <li><a href="#">Community</a></li>
+              <li>
+                <button class="nav-region" type="button" aria-label="Select region">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6 1c0 0-2 2.5-2 5s2 5 2 5M6 1c0 0 2 2.5 2 5s-2 5-2 5M1 6h10" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                  United States / English
+                </button>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <!-- Main nav -->
+        <nav class="nav-global" aria-label="Main navigation" style="position:relative">
+          <div class="nav-global-inner">
+            <a href="#" class="nav-brand" aria-label="Intel Home">
+              <svg width="80" height="28" viewBox="0 0 80 28" fill="none" aria-hidden="true">
+                <circle cx="14" cy="14" r="11" fill="none" stroke="#0071C5" stroke-width="2.5"/>
+                <circle cx="14" cy="14" r="5.5" fill="#0071C5"/>
+                <text x="31" y="19" font-family="Inter,sans-serif" font-size="17" font-weight="400" fill="#0071C5" letter-spacing="-0.5">intel</text>
+              </svg>
+            </a>
+            <ul class="nav-links" role="list">
+              <li class="nav-link-item active"><a href="#">Processors</a></li>
+              <li class="nav-link-item"><a href="#">Graphics</a></li>
+              <li class="nav-link-item"><a href="#">AI</a></li>
+              <li class="nav-link-item"><a href="#">Data Center</a></li>
+              <li class="nav-link-item"><a href="#">Solutions</a></li>
+              <li class="nav-link-item"><a href="#">Developers</a></li>
+            </ul>
+            <div class="nav-actions">
+              <button class="nav-action-btn" type="button" aria-label="Search">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="5"/><path d="M15 15l-3.5-3.5"/></svg>
+              </button>
+              <button class="nav-action-btn" type="button" aria-label="Account">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="6" r="3"/><path d="M3 16c0-3.314 2.686-6 6-6s6 2.686 6 6"/></svg>
+              </button>
+              <a href="#" class="btn btn-primary btn-sm">Shop</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- ACCESSIBILITY NOTES -->
+    <div class="showcase-section">
+      <h2 class="heading-2" style="margin-bottom:var(--space-4)">Accessibility</h2>
+      <ul class="body" style="line-height:2; padding-left:var(--space-5)">
+        <li>Utility nav uses <code style="font-family:var(--font-mono); font-size:0.9em; background:var(--color-surface-1); padding:2px 5px">aria-label="Utility navigation"</code></li>
+        <li>Main nav uses <code style="font-family:var(--font-mono); font-size:0.9em; background:var(--color-surface-1); padding:2px 5px">aria-label="Main navigation"</code></li>
+        <li>Mega menu triggers use <code style="font-family:var(--font-mono); font-size:0.9em; background:var(--color-surface-1); padding:2px 5px">aria-haspopup="true"</code> and <code style="font-family:var(--font-mono); font-size:0.9em; background:var(--color-surface-1); padding:2px 5px">aria-expanded</code></li>
+        <li>Logo link uses <code style="font-family:var(--font-mono); font-size:0.9em; background:var(--color-surface-1); padding:2px 5px">aria-label="Intel Home"</code> — SVG marked <code style="font-family:var(--font-mono); font-size:0.9em; background:var(--color-surface-1); padding:2px 5px">aria-hidden="true"</code></li>
+        <li>All interactive items are keyboard navigable with visible focus indicators</li>
+        <li>Active state indicated with <code style="font-family:var(--font-mono); font-size:0.9em; background:var(--color-surface-1); padding:2px 5px">.active</code> class and blue underline</li>
+      </ul>
+    </div>
+
+  </div>
+</main>
+
+</body>
+</html>

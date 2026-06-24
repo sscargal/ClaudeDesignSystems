@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intel Design System — Component Showcase</title>
+  <meta name="description" content="Intel Design System — Production-quality UI component library faithful to Intel's post-2020 brand identity." />
+
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="typography.css" />
+  <link rel="stylesheet" href="animations.css" />
+  <link rel="stylesheet" href="components.css" />
+
+  <style>
+    /* ===== SHOWCASE-SPECIFIC LAYOUT ===== */
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--color-bg);
+      color: var(--color-label-primary);
+      font-family: var(--font-text);
+    }
+
+    /* Section backgrounds */
+    .showcase-section {
+      padding: var(--space-16) 0;
+      border-bottom: 1px solid var(--color-border-dark);
+    }
+
+    .showcase-section:last-child {
+      border-bottom: none;
+    }
+
+    .showcase-section-dark {
+      background: var(--color-surface-dark);
+      padding: var(--space-16) 0;
+      border-bottom: none;
+    }
+
+    .showcase-label {
+      font-size: var(--text-12);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-label);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-3);
+      display: block;
+    }
+
+    .showcase-chip {
+      display: inline-block;
+      padding: 2px var(--space-2);
+      background: var(--color-intel-blue-pale);
+      color: var(--color-intel-blue);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: var(--radius-xs);
+      margin-bottom: var(--space-3);
+    }
+
+    /* Color palette grid */
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .swatch-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .swatch {
+      height: 60px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .swatch-name {
+      font-size: var(--text-12);
+      font-weight: var(--weight-semibold);
+      color: var(--color-label-primary);
+      line-height: 1.3;
+    }
+
+    .swatch-hex {
+      font-size: 11px;
+      color: var(--color-label-tertiary);
+      font-family: var(--font-mono);
+    }
+
+    /* Type scale display */
+    .type-scale-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-6);
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--color-border-dark);
+    }
+
+    .type-scale-row:last-child { border-bottom: none; }
+
+    .type-scale-meta {
+      width: 140px;
+      flex-shrink: 0;
+    }
+
+    .type-scale-class {
+      font-family: var(--font-mono);
+      font-size: var(--text-12);
+      color: var(--color-intel-blue);
+    }
+
+    .type-scale-info {
+      font-size: var(--text-12);
+      color: var(--color-label-tertiary);
+      margin-top: 2px;
+    }
+
+    /* Button section on dark bg */
+    .dark-section {
+      background: var(--color-surface-dark);
+      padding: var(--space-8);
+      border-radius: var(--radius-card);
+    }
+
+    /* Motion demos */
+    .motion-demo {
+      padding: var(--space-8);
+      background: var(--color-surface-1);
+      border: 1px solid var(--color-border-dark);
+      border-radius: var(--radius-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 120px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .motion-box {
+      width: 48px;
+      height: 48px;
+      background: var(--color-intel-blue);
+      border-radius: var(--radius-sm);
+    }
+
+    .motion-box.pulse-blue { animation: blueGlow 2.5s ease-in-out infinite; }
+    .motion-box.float-box  { animation: float 3.5s ease-in-out infinite; }
+    .motion-box.spin-box   { border-radius: 50%; animation: spin 1.5s linear infinite; }
+
+    /* Shimmer demo */
+    .shimmer-demo {
+      padding: var(--space-6);
+      background: #FFFFFF;
+      border: 1px solid var(--color-border-dark);
+      border-radius: var(--radius-card);
+    }
+
+    .shimmer-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    /* Hero demo sticky nav strip */
+    .demo-sticky-note {
+      background: var(--color-intel-blue-pale);
+      border-left: 3px solid var(--color-intel-blue);
+      padding: var(--space-3) var(--space-6);
+      font-size: var(--text-14);
+      font-weight: var(--weight-medium);
+      color: var(--color-intel-blue-dark);
+    }
+
+    /* Component page links */
+    .component-links {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-top: var(--space-4);
+    }
+
+    .component-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: var(--color-intel-blue-pale);
+      color: var(--color-intel-blue);
+      font-size: var(--text-13);
+      font-weight: var(--weight-semibold);
+      text-decoration: none;
+      border-radius: var(--radius-xs);
+      border: 1px solid var(--color-intel-blue);
+      transition: background var(--duration-fast) var(--ease-intel);
+    }
+
+    .component-link:hover {
+      background: var(--color-intel-blue);
+      color: #FFFFFF;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+  UTILITY NAV
+  ============================================================ -->
+<nav class="nav-utility" aria-label="Utility navigation">
+  <div class="nav-utility-inner">
+    <a href="#" class="nav-utility-brand">Intel.com</a>
+    <ul class="nav-utility-links" role="list">
+      <li><a href="#">Support</a></li>
+      <li><a href="#">Downloads</a></li>
+      <li><a href="#">Community</a></li>
+      <li><a href="#">Developers</a></li>
+      <li>
+        <button class="nav-region" type="button" aria-label="Select region">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6 1C6 1 4 3.5 4 6s2 5 2 5M6 1c0 0 2 2.5 2 5s-2 5-2 5M1 6h10" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+          United States / English
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ============================================================
+  MAIN NAVIGATION
+  ============================================================ -->
+<header>
+  <nav class="nav-global" id="main-nav" aria-label="Main navigation">
+    <div class="nav-global-inner">
+
+      <!-- Intel Logo -->
+      <a href="#" class="nav-brand" aria-label="Intel Home">
+        <svg width="80" height="28" viewBox="0 0 80 28" fill="none" aria-hidden="true">
+          <circle cx="14" cy="14" r="11" fill="none" stroke="#0071C5" stroke-width="2.5"/>
+          <circle cx="14" cy="14" r="5.5" fill="#0071C5"/>
+          <text x="31" y="19" font-family="Inter, sans-serif" font-size="17" font-weight="400" fill="#0071C5" letter-spacing="-0.5">intel</text>
+        </svg>
+      </a>
+
+      <!-- Navigation Links -->
+      <ul class="nav-links" role="list">
+        <li class="nav-link-item open">
+          <button type="button" aria-haspopup="true" aria-expanded="true">
+            Processors
+            <svg class="nav-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
+          </button>
+          <!-- Mega Menu — open state shown for demo -->
+          <div class="nav-mega-menu" role="region" aria-label="Processors submenu">
+            <div class="nav-mega-menu-inner">
+              <div class="nav-product-family">
+                <div class="nav-product-family-label">Client</div>
+                <a href="#" class="nav-product-item">
+                  <div class="nav-product-icon">⚡</div>
+                  <div class="nav-product-info">
+                    <div class="nav-product-info-name">Intel® Core™ Ultra</div>
+                    <div class="nav-product-info-desc">AI-powered performance for laptops</div>
+                  </div>
+                </a>
+                <a href="#" class="nav-product-item">
+                  <div class="nav-product-icon">🖥️</div>
+                  <div class="nav-product-info">
+                    <div class="nav-product-info-name">Intel® Core™ Desktop</div>
+                    <div class="nav-product-info-desc">Unlocked desktop performance</div>
+                  </div>
+                </a>
+              </div>
+              <div class="nav-product-family">
+                <div class="nav-product-family-label">Data Center</div>
+                <a href="#" class="nav-product-item">
+                  <div class="nav-product-icon">🏢</div>
+                  <div class="nav-product-info">
+                    <div class="nav-product-info-name">Intel® Xeon® W</div>
+                    <div class="nav-product-info-desc">Workstation-class performance</div>
+                  </div>
+                </a>
+                <a href="#" class="nav-product-item">
+                  <div class="nav-product-icon">🌐</div>
+                  <div class="nav-product-info">
+                    <div class="nav-product-info-name">Intel® Xeon® Scalable</div>
+                    <div class="nav-product-info-desc">Enterprise server leadership</div>
+                  </div>
+                </a>
+              </div>
+              <div class="nav-product-family">
+                <div class="nav-product-family-label">AI &amp; Accelerators</div>
+                <a href="#" class="nav-product-item">
+                  <div class="nav-product-icon">🤖</div>
+                  <div class="nav-product-info">
+                    <div class="nav-product-info-name">Intel® Gaudi® 3</div>
+                    <div class="nav-product-info-desc">AI training and inference at scale</div>
+                  </div>
+                </a>
+                <a href="#" class="nav-product-item">
+                  <div class="nav-product-icon">🎮</div>
+                  <div class="nav-product-info">
+                    <div class="nav-product-info-name">Intel® Arc™ Graphics</div>
+                    <div class="nav-product-info-desc">Discrete GPU for creators &amp; gamers</div>
+                  </div>
+                </a>
+              </div>
+              <div class="nav-product-family">
+                <div class="nav-product-family-label">Edge &amp; IoT</div>
+                <a href="#" class="nav-product-item">
+                  <div class="nav-product-icon">📡</div>
+                  <div class="nav-product-info">
+                    <div class="nav-product-info-name">Intel® Atom™</div>
+                    <div class="nav-product-info-desc">Power-efficient edge compute</div>
+                  </div>
+                </a>
+                <a href="#" class="nav-product-item">
+                  <div class="nav-product-icon">🏭</div>
+                  <div class="nav-product-info">
+                    <div class="nav-product-info-name">Intel® Industrial</div>
+                    <div class="nav-product-info-desc">Long-lifecycle IoT platforms</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-link-item"><a href="#">Graphics</a></li>
+        <li class="nav-link-item"><a href="#">AI</a></li>
+        <li class="nav-link-item"><a href="#">Data Center</a></li>
+        <li class="nav-link-item"><a href="#">Solutions</a></li>
+        <li class="nav-link-item active"><a href="#">Developers</a></li>
+      </ul>
+
+      <!-- Actions -->
+      <div class="nav-actions">
+        <button class="nav-action-btn" type="button" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="5"/><path d="M15 15l-3.5-3.5"/></svg>
+        </button>
+        <button class="nav-action-btn" type="button" aria-label="Sign in">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="6" r="3"/><path d="M3 16c0-3.314 2.686-6 6-6s6 2.686 6 6"/></svg>
+        </button>
+        <a href="#" class="btn btn-primary btn-sm">Shop</a>
+      </div>
+
+    </div>
+  </nav>
+</header>
+
+<div class="demo-sticky-note">
+  <strong>Navigation Demo:</strong> The mega-menu above shows the open state for Processors. On a live site this would be controlled via JavaScript.
+</div>
+
+<!-- ============================================================
+  HERO SECTION
+  ============================================================ -->
+<section class="hero-intel" aria-label="Hero">
+  <div class="hero-intel-content animate-fade-in">
+    <span class="hero-intel-eyebrow">Now Available — Arrow Lake</span>
+    <h1 class="hero-intel-title display-hero">
+      Intel® AI<br/>
+      <span class="text-blue-gradient">Everywhere.</span>
+    </h1>
+    <p class="hero-intel-subtitle">
+      Built-in AI acceleration across every Intel® Core™ Ultra processor. From edge to data center — intelligence at the speed of silicon.
+    </p>
+    <div class="hero-intel-actions">
+      <a href="#" class="btn btn-cta">Explore Core Ultra</a>
+      <a href="#" class="btn btn-dark-outline btn-lg">View All Processors</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  TRUSTED BY BANNER
+  ============================================================ -->
+<section class="trusted-by" aria-label="Used by leading technology companies">
+  <div class="container">
+    <p class="trusted-by-label">Powering the world's leading technologies</p>
+    <div class="trusted-by-logos" role="list">
+      <span class="trusted-by-logo" role="listitem">Microsoft</span>
+      <span class="trusted-by-logo" role="listitem">Google</span>
+      <span class="trusted-by-logo" role="listitem">Amazon</span>
+      <span class="trusted-by-logo" role="listitem">Meta</span>
+      <span class="trusted-by-logo" role="listitem">Dell</span>
+      <span class="trusted-by-logo" role="listitem">Lenovo</span>
+      <span class="trusted-by-logo" role="listitem">HP</span>
+      <span class="trusted-by-logo" role="listitem">Asus</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  COLOR PALETTE
+  ============================================================ -->
+<section class="showcase-section" aria-labelledby="colors-heading">
+  <div class="container">
+    <span class="showcase-chip">Design Tokens</span>
+    <h2 class="heading-1" id="colors-heading" style="margin-bottom: var(--space-2)">Color Palette</h2>
+    <p class="body" style="margin-bottom: var(--space-8); color: var(--color-label-secondary)">Intel's cobalt blue system with semantic mappings. Light-first with `@media (prefers-color-scheme: dark)` override.</p>
+
+    <!-- Brand Colors -->
+    <h3 class="heading-3" style="margin-bottom: var(--space-5)">Intel Brand</h3>
+    <div class="swatch-grid" style="margin-bottom: var(--space-10)">
+      <div class="swatch-item">
+        <div class="swatch" style="background:#0071C5"></div>
+        <div class="swatch-name">Intel Blue</div>
+        <div class="swatch-hex">#0071C5</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#00438A"></div>
+        <div class="swatch-name">Blue Dark</div>
+        <div class="swatch-hex">#00438A</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#1E9BE8"></div>
+        <div class="swatch-name">Blue Light</div>
+        <div class="swatch-hex">#1E9BE8</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#E8F4FB; border:1px solid #D0D0D0"></div>
+        <div class="swatch-name">Blue Pale</div>
+        <div class="swatch-hex">#E8F4FB</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#00C7B1"></div>
+        <div class="swatch-name">Intel Teal</div>
+        <div class="swatch-hex">#00C7B1</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#7B2FBE"></div>
+        <div class="swatch-name">Intel Purple</div>
+        <div class="swatch-hex">#7B2FBE</div>
+      </div>
+    </div>
+
+    <!-- Backgrounds -->
+    <h3 class="heading-3" style="margin-bottom: var(--space-5)">Surfaces &amp; Backgrounds</h3>
+    <div class="swatch-grid" style="margin-bottom: var(--space-10)">
+      <div class="swatch-item">
+        <div class="swatch" style="background:#FFFFFF; border:1px solid #E0E0E0"></div>
+        <div class="swatch-name">Background</div>
+        <div class="swatch-hex">#FFFFFF</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#F5F5F5; border:1px solid #E0E0E0"></div>
+        <div class="swatch-name">Surface 1</div>
+        <div class="swatch-hex">#F5F5F5</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#EBEBEB"></div>
+        <div class="swatch-name">Surface 2</div>
+        <div class="swatch-hex">#EBEBEB</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#0B0B0F"></div>
+        <div class="swatch-name">Surface Dark</div>
+        <div class="swatch-hex">#0B0B0F</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#1A1A2E"></div>
+        <div class="swatch-name">Surface Dark 2</div>
+        <div class="swatch-hex">#1A1A2E</div>
+      </div>
+    </div>
+
+    <!-- Labels & Status -->
+    <h3 class="heading-3" style="margin-bottom: var(--space-5)">Labels &amp; Status</h3>
+    <div class="swatch-grid">
+      <div class="swatch-item">
+        <div class="swatch" style="background:#1A1A1A"></div>
+        <div class="swatch-name">Label Primary</div>
+        <div class="swatch-hex">#1A1A1A</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#555555"></div>
+        <div class="swatch-name">Label Secondary</div>
+        <div class="swatch-hex">#555555</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#888888"></div>
+        <div class="swatch-name">Label Tertiary</div>
+        <div class="swatch-hex">#888888</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#D0D0D0; border:1px solid #ccc"></div>
+        <div class="swatch-name">Border</div>
+        <div class="swatch-hex">#D0D0D0</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#C0392B"></div>
+        <div class="swatch-name">Error</div>
+        <div class="swatch-hex">#C0392B</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#E67E22"></div>
+        <div class="swatch-name">Warning</div>
+        <div class="swatch-hex">#E67E22</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#27AE60"></div>
+        <div class="swatch-name">Success</div>
+        <div class="swatch-hex">#27AE60</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  TYPOGRAPHY SCALE
+  ============================================================ -->
+<section class="showcase-section" aria-labelledby="type-heading">
+  <div class="container">
+    <span class="showcase-chip">Typography</span>
+    <h2 class="heading-1" id="type-heading" style="margin-bottom: var(--space-2)">Type Scale</h2>
+    <p class="body" style="margin-bottom: var(--space-8)">Intel One / Inter stack — clean enterprise hierarchy.</p>
+
+    <div class="type-scale-row">
+      <div class="type-scale-meta">
+        <div class="type-scale-class">.display-hero</div>
+        <div class="type-scale-info">72px · 800 · −0.02em</div>
+      </div>
+      <div class="display-hero" style="font-size:clamp(24px,4vw,72px)">Core Ultra Inside</div>
+    </div>
+
+    <div class="type-scale-row">
+      <div class="type-scale-meta">
+        <div class="type-scale-class">.display-large</div>
+        <div class="type-scale-info">56px · 700 · −0.015em</div>
+      </div>
+      <div class="display-large" style="font-size:clamp(22px,3.5vw,56px)">Performance Redefined</div>
+    </div>
+
+    <div class="type-scale-row">
+      <div class="type-scale-meta">
+        <div class="type-scale-class">.display</div>
+        <div class="type-scale-info">44px · 700</div>
+      </div>
+      <div class="display" style="font-size:clamp(20px,3vw,44px)">AI at the Edge</div>
+    </div>
+
+    <div class="type-scale-row">
+      <div class="type-scale-meta">
+        <div class="type-scale-class">.heading-1</div>
+        <div class="type-scale-info">36px · 700</div>
+      </div>
+      <div class="heading-1">Intel® Xeon® W9</div>
+    </div>
+
+    <div class="type-scale-row">
+      <div class="type-scale-meta">
+        <div class="type-scale-class">.heading-2</div>
+        <div class="type-scale-info">28px · 600</div>
+      </div>
+      <div class="heading-2">Core™ Ultra 9 285K</div>
+    </div>
+
+    <div class="type-scale-row">
+      <div class="type-scale-meta">
+        <div class="type-scale-class">.heading-3</div>
+        <div class="type-scale-info">22px · 600</div>
+      </div>
+      <div class="heading-3">Technical Specifications</div>
+    </div>
+
+    <div class="type-scale-row">
+      <div class="type-scale-meta">
+        <div class="type-scale-class">.subhead</div>
+        <div class="type-scale-info">18px · 500</div>
+      </div>
+      <div class="subhead">Next-generation neural processing unit</div>
+    </div>
+
+    <div class="type-scale-row">
+      <div class="type-scale-meta">
+        <div class="type-scale-class">.body-lg</div>
+        <div class="type-scale-info">18px · 400 · lh 1.65</div>
+      </div>
+      <div class="body-lg">Engineered for the demands of modern AI workloads, the Intel® Core™ Ultra platform delivers up to 120 TOPS of dedicated AI compute.</div>
+    </div>
+
+    <div class="type-scale-row">
+      <div class="type-scale-meta">
+        <div class="type-scale-class">.body</div>
+        <div class="type-scale-info">16px · 400 · lh 1.60</div>
+      </div>
+      <div class="body">Processors built with Intel 3 process technology, featuring Efficiency cores optimized for responsiveness and background task handling.</div>
+    </div>
+
+    <div class="type-scale-row">
+      <div class="type-scale-meta">
+        <div class="type-scale-class">.body-sm</div>
+        <div class="type-scale-info">15px · 400</div>
+      </div>
+      <div class="body-sm">Available in 24-core configurations with P-core boost up to 5.7 GHz.</div>
+    </div>
+
+    <div class="type-scale-row">
+      <div class="type-scale-meta">
+        <div class="type-scale-class">.caption</div>
+        <div class="type-scale-info">13px · label-secondary</div>
+      </div>
+      <div class="caption">Performance may vary. Results measured on Intel reference platforms. See intel.com/benchmarks.</div>
+    </div>
+
+    <div class="type-scale-row">
+      <div class="type-scale-meta">
+        <div class="type-scale-class">.label</div>
+        <div class="type-scale-info">12px · 700 · uppercase · +0.08em</div>
+      </div>
+      <div class="label">Product Specifications</div>
+    </div>
+
+    <div class="type-scale-row">
+      <div class="type-scale-meta">
+        <div class="type-scale-class">.eyebrow</div>
+        <div class="type-scale-info">13px · 600 · Intel Blue · +0.12em</div>
+      </div>
+      <div class="eyebrow">14th Generation</div>
+    </div>
+
+    <div class="type-scale-row">
+      <div class="type-scale-meta">
+        <div class="type-scale-class">.spec-value</div>
+        <div class="type-scale-info">44px · 700 · Intel Blue</div>
+      </div>
+      <div class="spec-value">120<span class="spec-unit">TOPS</span></div>
+    </div>
+
+    <div class="type-scale-row">
+      <div class="type-scale-meta">
+        <div class="type-scale-class">.mono</div>
+        <div class="type-scale-info">14px · Fira Code</div>
+      </div>
+      <div class="mono">$ icc -O3 -xCORE-AVX512 benchmark.c</div>
+    </div>
+
+    <!-- Gradient text -->
+    <div class="type-scale-row">
+      <div class="type-scale-meta">
+        <div class="type-scale-class">.text-blue-gradient</div>
+        <div class="type-scale-info">Dark blue → Teal</div>
+      </div>
+      <div class="heading-1 text-blue-gradient">AI Everywhere</div>
+    </div>
+
+    <div class="type-scale-row">
+      <div class="type-scale-meta">
+        <div class="type-scale-class">.text-ai-gradient</div>
+        <div class="type-scale-info">Purple → Blue → Teal</div>
+      </div>
+      <div class="heading-1 text-ai-gradient">Gaudi 3 AI Accelerator</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  BUTTONS
+  ============================================================ -->
+<section class="showcase-section" aria-labelledby="buttons-heading">
+  <div class="container">
+    <span class="showcase-chip">Components</span>
+    <h2 class="heading-1" id="buttons-heading" style="margin-bottom: var(--space-2)">Buttons</h2>
+    <p class="body" style="margin-bottom: var(--space-8)">Sharp (0px radius) Intel style. 44px minimum touch target. All variants and sizes.</p>
+
+    <!-- Light context -->
+    <h3 class="heading-3" style="margin-bottom: var(--space-5)">Light Context</h3>
+    <div class="flex flex-wrap gap-3" style="margin-bottom: var(--space-8)">
+      <button class="btn btn-primary">Primary</button>
+      <button class="btn btn-secondary">Secondary</button>
+      <button class="btn btn-outline">Outline</button>
+      <button class="btn btn-ghost">Ghost</button>
+      <button class="btn btn-teal">Teal</button>
+      <button class="btn btn-primary" disabled>Disabled</button>
+      <button class="btn btn-primary loading">Loading</button>
+    </div>
+
+    <!-- Sizes -->
+    <h3 class="heading-3" style="margin-bottom: var(--space-5)">Sizes</h3>
+    <div class="flex flex-wrap items-center gap-3" style="margin-bottom: var(--space-8)">
+      <button class="btn btn-primary btn-sm">Small · 32px</button>
+      <button class="btn btn-primary">Medium · 44px</button>
+      <button class="btn btn-primary btn-lg">Large · 52px</button>
+      <button class="btn btn-cta">CTA · Hero</button>
+    </div>
+
+    <!-- Dark context -->
+    <h3 class="heading-3" style="margin-bottom: var(--space-5)">Dark Context</h3>
+    <div class="dark-section">
+      <div class="flex flex-wrap gap-3">
+        <button class="btn btn-cta">Explore Now</button>
+        <button class="btn btn-dark">Buy Now</button>
+        <button class="btn btn-dark-outline">Learn More</button>
+        <button class="btn btn-ghost" style="color:rgba(255,255,255,0.75)">Compare</button>
+      </div>
+    </div>
+
+    <div class="component-links">
+      <a href="components/buttons.html" class="component-link">Full Button Showcase →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  CPU PRODUCT CARDS
+  ============================================================ -->
+<section class="showcase-section" aria-labelledby="products-heading">
+  <div class="container">
+    <span class="showcase-chip">Product Cards</span>
+    <span class="eyebrow">Featured Processors</span>
+    <h2 class="heading-1" id="products-heading" style="margin-bottom: var(--space-2)">Intel® Processor Lineup</h2>
+    <p class="body" style="margin-bottom: var(--space-8)">Intel's signature product card — engineered for clarity and conversion.</p>
+
+    <div class="grid-4 stagger">
+
+      <!-- Core Ultra 9 285K -->
+      <article class="card-product animate-fade-in">
+        <span class="badge badge-blue">Intel® Core™ Ultra</span>
+        <div class="card-product-generation">Meteor Lake · 14th Gen</div>
+        <div class="card-product-image cpu-blue">⚡</div>
+        <h3 class="card-product-name">Core™ Ultra 9<br/>285K</h3>
+        <div class="card-product-specs">
+          <div class="spec-item">
+            <span class="spec-item-label">P-Cores</span>
+            <span class="spec-item-value">8 × 5.7 GHz</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-item-label">E-Cores</span>
+            <span class="spec-item-value">16 × 4.6 GHz</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-item-label">Cache</span>
+            <span class="spec-item-value">36 MB Intel® Smart Cache</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-item-label">TDP</span>
+            <span class="spec-item-value">125 W</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-item-label">NPU</span>
+            <span class="spec-item-value">11 TOPS</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-item-label">Socket</span>
+            <span class="spec-item-value">LGA1851</span>
+          </div>
+        </div>
+        <div class="card-product-score">
+          <div class="card-product-score-value">34,210</div>
+          <div class="card-product-score-label">Cinebench R23 (Multi)</div>
+        </div>
+        <div class="card-product-cta">
+          <a href="#" class="btn btn-primary" style="width:100%">View Specifications</a>
+        </div>
+      </article>
+
+      <!-- Core Ultra 7 265K -->
+      <article class="card-product animate-fade-in">
+        <span class="badge badge-blue">Intel® Core™ Ultra</span>
+        <div class="card-product-generation">Arrow Lake · Arrow Lake</div>
+        <div class="card-product-image cpu-blue">💎</div>
+        <h3 class="card-product-name">Core™ Ultra 7<br/>265K</h3>
+        <div class="card-product-specs">
+          <div class="spec-item">
+            <span class="spec-item-label">P-Cores</span>
+            <span class="spec-item-value">8 × 5.5 GHz</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-item-label">E-Cores</span>
+            <span class="spec-item-value">12 × 4.6 GHz</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-item-label">Cache</span>
+            <span class="spec-item-value">30 MB Intel® Smart Cache</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-item-label">TDP</span>
+            <span class="spec-item-value">125 W</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-item-label">NPU</span>
+            <span class="spec-item-value">13 TOPS</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-item-label">Socket</span>
+            <span class="spec-item-value">LGA1851</span>
+          </div>
+        </div>
+        <div class="card-product-score">
+          <div class="card-product-score-value">29,540</div>
+          <div class="card-product-score-label">Cinebench R23 (Multi)</div>
+        </div>
+        <div class="card-product-cta">
+          <a href="#" class="btn btn-primary" style="width:100%">View Specifications</a>
+        </div>
+      </article>
+
+      <!-- Xeon W9-3595X -->
+      <article class="card-product animate-fade-in">
+        <span class="badge badge-xeon">Intel® Xeon®</span>
+        <div class="card-product-generation">Sapphire Rapids · 5th Gen</div>
+        <div class="card-product-image cpu-dark">🏢</div>
+        <h3 class="card-product-name">Xeon® w9-3595X</h3>
+        <div class="card-product-specs">
+          <div class="spec-item">
+            <span class="spec-item-label">Cores</span>
+            <span class="spec-item-value">60 Cores / 120T</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-item-label">Boost Freq</span>
+            <span class="spec-item-value">4.8 GHz</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-item-label">Cache</span>
+            <span class="spec-item-value">75 MB Intel® Smart Cache</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-item-label">TDP</span>
+            <span class="spec-item-value">350 W</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-item-label">Memory</span>
+            <span class="spec-item-value">DDR5-4800 · 4 TB</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-item-label">PCIe</span>
+            <span class="spec-item-value">PCIe 5.0 · 112 Lanes</span>
+          </div>
+        </div>
+        <div class="card-product-score">
+          <div class="card-product-score-value">128,400</div>
+          <div class="card-product-score-label">SPECrate®2017_int_base</div>
+        </div>
+        <div class="card-product-cta">
+          <a href="#" class="btn btn-primary" style="width:100%">View Specifications</a>
+        </div>
+      </article>
+
+      <!-- Gaudi 3 -->
+      <article class="card-product animate-fade-in">
+        <span class="badge badge-ai" style="background:var(--color-intel-purple)">Intel® Gaudi®</span>
+        <div class="card-product-generation">AI Accelerator · 3rd Gen</div>
+        <div class="card-product-image cpu-dark">🤖</div>
+        <h3 class="card-product-name">Intel® Gaudi® 3<br/>AI Accelerator</h3>
+        <div class="card-product-specs">
+          <div class="spec-item">
+            <span class="spec-item-label">AI Compute</span>
+            <span class="spec-item-value">1,835 TFLOPS (BF16)</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-item-label">HBM2e</span>
+            <span class="spec-item-value">128 GB · 3.7 TB/s</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-item-label">Interconnect</span>
+            <span class="spec-item-value">21 × 200 GbE RDMA</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-item-label">TDP</span>
+            <span class="spec-item-value">900 W</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-item-label">Form Factor</span>
+            <span class="spec-item-value">OAM / PCIe</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-item-label">Precision</span>
+            <span class="spec-item-value">BF16, FP8, FP32</span>
+          </div>
+        </div>
+        <div class="card-product-score">
+          <div class="card-product-score-value">1,835</div>
+          <div class="card-product-score-label">TFLOPS BF16 Peak</div>
+        </div>
+        <div class="card-product-cta">
+          <a href="#" class="btn btn-primary" style="width:100%">View Specifications</a>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="component-links" style="margin-top: var(--space-8)">
+      <a href="components/cards.html" class="component-link">Full Cards Showcase →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  PERFORMANCE BENCHMARK BARS
+  ============================================================ -->
+<section class="showcase-section" style="background: var(--color-surface-1)" aria-labelledby="bench-heading">
+  <div class="container">
+    <span class="showcase-chip">Performance</span>
+    <span class="eyebrow">Benchmark Comparison</span>
+    <h2 class="heading-1" id="bench-heading" style="margin-bottom: var(--space-2)">Processor Performance</h2>
+    <p class="body" style="margin-bottom: var(--space-8)">Intel® Core™ Ultra 9 285K vs. competitor. Illustrative data only — see intel.com/benchmarks for verified results.</p>
+
+    <div style="max-width: 720px">
+      <div class="benchmark-chart">
+
+        <div class="benchmark-item">
+          <div class="benchmark-header">
+            <span class="benchmark-name">Cinebench R23 — Multi-Core</span>
+            <div class="benchmark-scores">
+              <span class="benchmark-score-intel">Intel: 34,210</span>
+              <span class="benchmark-score-competitor">vs 31,840</span>
+            </div>
+          </div>
+          <div class="benchmark-bars">
+            <div class="benchmark-bar-row">
+              <span class="benchmark-bar-brand">Intel</span>
+              <div class="benchmark-bar-track">
+                <div class="perf-bar-intel" style="width:100%"><span>34,210</span></div>
+              </div>
+            </div>
+            <div class="benchmark-bar-row">
+              <span class="benchmark-bar-brand">Comp.</span>
+              <div class="benchmark-bar-track">
+                <div class="perf-bar-competitor" style="width:93%"><span>31,840</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="benchmark-item">
+          <div class="benchmark-header">
+            <span class="benchmark-name">Cinebench R23 — Single-Core</span>
+            <div class="benchmark-scores">
+              <span class="benchmark-score-intel">Intel: 2,180</span>
+              <span class="benchmark-score-competitor">vs 2,090</span>
+            </div>
+          </div>
+          <div class="benchmark-bars">
+            <div class="benchmark-bar-row">
+              <span class="benchmark-bar-brand">Intel</span>
+              <div class="benchmark-bar-track">
+                <div class="perf-bar-intel" style="width:100%"><span>2,180</span></div>
+              </div>
+            </div>
+            <div class="benchmark-bar-row">
+              <span class="benchmark-bar-brand">Comp.</span>
+              <div class="benchmark-bar-track">
+                <div class="perf-bar-competitor" style="width:96%"><span>2,090</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="benchmark-item">
+          <div class="benchmark-header">
+            <span class="benchmark-name">Blender — Monster Scene (Samples/min)</span>
+            <div class="benchmark-scores">
+              <span class="benchmark-score-intel">Intel: 384</span>
+              <span class="benchmark-score-competitor">vs 362</span>
+            </div>
+          </div>
+          <div class="benchmark-bars">
+            <div class="benchmark-bar-row">
+              <span class="benchmark-bar-brand">Intel</span>
+              <div class="benchmark-bar-track">
+                <div class="perf-bar-intel" style="width:100%"><span>384</span></div>
+              </div>
+            </div>
+            <div class="benchmark-bar-row">
+              <span class="benchmark-bar-brand">Comp.</span>
+              <div class="benchmark-bar-track">
+                <div class="perf-bar-competitor" style="width:94%"><span>362</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="benchmark-item">
+          <div class="benchmark-header">
+            <span class="benchmark-name">PCMark 10 — Overall Score</span>
+            <div class="benchmark-scores">
+              <span class="benchmark-score-intel">Intel: 9,240</span>
+              <span class="benchmark-score-competitor">vs 8,750</span>
+            </div>
+          </div>
+          <div class="benchmark-bars">
+            <div class="benchmark-bar-row">
+              <span class="benchmark-bar-brand">Intel</span>
+              <div class="benchmark-bar-track">
+                <div class="perf-bar-intel" style="width:100%"><span>9,240</span></div>
+              </div>
+            </div>
+            <div class="benchmark-bar-row">
+              <span class="benchmark-bar-brand">Comp.</span>
+              <div class="benchmark-bar-track">
+                <div class="perf-bar-competitor" style="width:95%"><span>8,750</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="benchmark-item">
+          <div class="benchmark-header">
+            <span class="benchmark-name">7-Zip Compression (MIPS)</span>
+            <div class="benchmark-scores">
+              <span class="benchmark-score-intel">Intel: 180,400</span>
+              <span class="benchmark-score-competitor">vs 165,300</span>
+            </div>
+          </div>
+          <div class="benchmark-bars">
+            <div class="benchmark-bar-row">
+              <span class="benchmark-bar-brand">Intel</span>
+              <div class="benchmark-bar-track">
+                <div class="perf-bar-intel" style="width:100%"><span>180,400</span></div>
+              </div>
+            </div>
+            <div class="benchmark-bar-row">
+              <span class="benchmark-bar-brand">Comp.</span>
+              <div class="benchmark-bar-track">
+                <div class="perf-bar-competitor" style="width:92%"><span>165,300</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="benchmark-item">
+          <div class="benchmark-header">
+            <span class="benchmark-name">AI Inference — ResNet-50 (img/sec)</span>
+            <div class="benchmark-scores">
+              <span class="benchmark-score-intel">Intel: 2,840</span>
+              <span class="benchmark-score-competitor">vs 2,310</span>
+            </div>
+          </div>
+          <div class="benchmark-bars">
+            <div class="benchmark-bar-row">
+              <span class="benchmark-bar-brand">Intel</span>
+              <div class="benchmark-bar-track">
+                <div class="perf-bar-intel" style="width:100%"><span>2,840</span></div>
+              </div>
+            </div>
+            <div class="benchmark-bar-row">
+              <span class="benchmark-bar-brand">Comp.</span>
+              <div class="benchmark-bar-track">
+                <div class="perf-bar-competitor" style="width:81%"><span>2,310</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="benchmark-disclaimer">
+        * Results are illustrative only and do not represent official Intel® benchmark claims. Competitor label used generically. Performance varies by configuration, workload, and software version. See <a href="https://intel.com/benchmarks" style="color:var(--color-intel-blue)">intel.com/benchmarks</a> for verified performance claims.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  SPEC TABLE
+  ============================================================ -->
+<section class="showcase-section" aria-labelledby="spec-table-heading">
+  <div class="container">
+    <span class="showcase-chip">Data Display</span>
+    <span class="eyebrow">Full Specification Breakdown</span>
+    <h2 class="heading-1" id="spec-table-heading" style="margin-bottom: var(--space-8)">Intel® Core™ Ultra 9 285K Specifications</h2>
+
+    <div style="overflow-x: auto">
+      <table class="spec-table-intel">
+        <thead>
+          <tr>
+            <th>Specification</th>
+            <th style="text-align:right">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="spec-category"><td colspan="2">Core &amp; Thread Count</td></tr>
+          <tr class="spec-row"><td>Total Cores</td><td>24 (8P + 16E)</td></tr>
+          <tr class="spec-row"><td>Total Threads</td><td>24</td></tr>
+          <tr class="spec-row"><td>P-core Max Turbo Frequency</td><td>5.70 GHz</td></tr>
+          <tr class="spec-row"><td>E-core Max Turbo Frequency</td><td>4.60 GHz</td></tr>
+          <tr class="spec-row"><td>Intel® Thread Director</td><td>Yes</td></tr>
+
+          <tr class="spec-category"><td colspan="2">Cache</td></tr>
+          <tr class="spec-row"><td>Intel® Smart Cache</td><td>36 MB</td></tr>
+          <tr class="spec-row"><td>L2 Cache</td><td>32 MB</td></tr>
+          <tr class="spec-row"><td>L1 Cache</td><td>2.3 MB</td></tr>
+
+          <tr class="spec-category"><td colspan="2">Memory &amp; Storage</td></tr>
+          <tr class="spec-row"><td>Memory Types</td><td>DDR5-6400 / LPDDR5X-6400</td></tr>
+          <tr class="spec-row"><td>Max Memory Size</td><td>192 GB</td></tr>
+          <tr class="spec-row"><td>Memory Channels</td><td>2</td></tr>
+          <tr class="spec-row"><td>ECC Memory Support</td><td>No</td></tr>
+
+          <tr class="spec-category"><td colspan="2">Graphics &amp; Display</td></tr>
+          <tr class="spec-row"><td>Processor Graphics</td><td>Intel® UHD Graphics 770</td></tr>
+          <tr class="spec-row"><td>Graphics Max Dynamic Frequency</td><td>1.65 GHz</td></tr>
+          <tr class="spec-row"><td>Max # of Displays Supported</td><td>4</td></tr>
+
+          <tr class="spec-category"><td colspan="2">I/O &amp; Connectivity</td></tr>
+          <tr class="spec-row"><td>PCIe Revision</td><td>PCIe 5.0 + PCIe 4.0</td></tr>
+          <tr class="spec-row"><td>PCIe Configurations</td><td>x16, x8+x8, x8+x4+x4</td></tr>
+          <tr class="spec-row"><td>Thunderbolt™ 4 Support</td><td>Yes</td></tr>
+          <tr class="spec-row"><td>USB Configuration</td><td>Up to 4 × USB 3.2 Gen 2×2</td></tr>
+
+          <tr class="spec-category"><td colspan="2">Power &amp; Thermal</td></tr>
+          <tr class="spec-row"><td>Base TDP</td><td>125 W</td></tr>
+          <tr class="spec-row"><td>Maximum Turbo Power</td><td>253 W</td></tr>
+          <tr class="spec-row"><td>T<sub>JUNCTION</sub></td><td>100°C</td></tr>
+          <tr class="spec-row"><td>Package</td><td>FCLGA1851</td></tr>
+
+          <tr class="spec-category"><td colspan="2">AI &amp; Neural Processing</td></tr>
+          <tr class="spec-row"><td>Intel® NPU Performance</td><td>11 TOPS</td></tr>
+          <tr class="spec-row"><td>Total Platform AI Performance</td><td>36 TOPS (CPU+GPU+NPU)</td></tr>
+          <tr class="spec-row"><td>Intel® Deep Learning Boost</td><td>Yes (AVX-512 VNNI)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  FEATURE CARDS — AI Row
+  ============================================================ -->
+<section class="showcase-section" style="background: var(--color-surface-1)" aria-labelledby="features-heading">
+  <div class="container">
+    <span class="showcase-chip">Feature Cards</span>
+    <span class="eyebrow">Intel AI Platform</span>
+    <h2 class="heading-1" id="features-heading" style="margin-bottom: var(--space-8)">Built for the AI Era</h2>
+
+    <div class="grid-3">
+      <div class="card-feature animate-fade-in">
+        <div class="card-feature-icon">🧠</div>
+        <div class="card-feature-eyebrow">Neural Processing</div>
+        <h3 class="card-feature-title">Intel® NPU Built-In</h3>
+        <p class="card-feature-body">Dedicated on-chip neural processing unit for always-on AI tasks — background blur, noise cancellation, object detection — without touching the CPU.</p>
+      </div>
+      <div class="card-feature ai animate-fade-in delay-100">
+        <div class="card-feature-icon">⚡</div>
+        <div class="card-feature-eyebrow">AI Acceleration</div>
+        <h3 class="card-feature-title">Gaudi® 3: Training at Scale</h3>
+        <p class="card-feature-body">1,835 TFLOPS of BF16 compute. 3.7 TB/s HBM2e bandwidth. Purpose-built for LLM training and generative AI inference at hyperscale.</p>
+      </div>
+      <div class="card-feature dark animate-fade-in delay-200">
+        <div class="card-feature-icon">🔗</div>
+        <div class="card-feature-eyebrow">AI Framework</div>
+        <h3 class="card-feature-title">OpenVINO™ Toolkit</h3>
+        <p class="card-feature-body">Deploy AI models across Intel® hardware with a single API. Supports PyTorch, TensorFlow, ONNX. Automatic INT8/INT4 quantization for edge performance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  STAT CARDS
+  ============================================================ -->
+<section class="showcase-section" aria-labelledby="stats-heading">
+  <div class="container">
+    <span class="showcase-chip">Stat Cards</span>
+    <span class="eyebrow">By the Numbers</span>
+    <h2 class="heading-1" id="stats-heading" style="margin-bottom: var(--space-8)">Intel at a Glance</h2>
+
+    <div class="grid-4">
+      <div class="card-stat animate-count-up">
+        <div class="card-stat-number">500<span style="font-size:0.5em; font-weight:600; color:var(--color-label-secondary)">B+</span></div>
+        <div class="card-stat-label">Chips Shipped</div>
+        <div class="card-stat-subtext">In Intel's history since 1968</div>
+      </div>
+      <div class="card-stat animate-count-up delay-100">
+        <div class="card-stat-number">120</div>
+        <div class="card-stat-label">TOPS AI Performance</div>
+        <div class="card-stat-subtext">Core Ultra — total platform</div>
+      </div>
+      <div class="card-stat animate-count-up delay-200">
+        <div class="card-stat-number">60</div>
+        <div class="card-stat-label">Cores</div>
+        <div class="card-stat-subtext">Xeon® w9-3595X workstation CPU</div>
+      </div>
+      <div class="card-stat animate-count-up delay-300">
+        <div class="card-stat-number">18A</div>
+        <div class="card-stat-label">Process Node</div>
+        <div class="card-stat-subtext">Intel's 18 Angstrom node (2025)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  COMPARISON CARD
+  ============================================================ -->
+<section class="showcase-section" style="background:var(--color-surface-1)" aria-labelledby="compare-heading">
+  <div class="container">
+    <span class="showcase-chip">Comparison</span>
+    <h2 class="heading-1" id="compare-heading" style="margin-bottom: var(--space-8)">Intel vs. Competitor</h2>
+
+    <div style="max-width: 640px">
+      <div class="card-comparison">
+        <div class="card-comparison-header">
+          <div class="card-comparison-brand intel-side">Intel® Core™ Ultra 9 285K</div>
+          <div class="card-comparison-brand competitor-side">Competitor X (Illustrative)</div>
+        </div>
+        <div class="card-comparison-label">Cores / Threads</div>
+        <div class="card-comparison-row">
+          <div class="card-comparison-cell intel-side winner">24C / 24T</div>
+          <div class="card-comparison-cell">16C / 32T</div>
+        </div>
+        <div class="card-comparison-label">Max Turbo Frequency</div>
+        <div class="card-comparison-row">
+          <div class="card-comparison-cell intel-side winner">5.70 GHz</div>
+          <div class="card-comparison-cell">5.70 GHz</div>
+        </div>
+        <div class="card-comparison-label">Cache</div>
+        <div class="card-comparison-row">
+          <div class="card-comparison-cell intel-side winner">36 MB</div>
+          <div class="card-comparison-cell">32 MB</div>
+        </div>
+        <div class="card-comparison-label">Built-in AI Accelerator</div>
+        <div class="card-comparison-row">
+          <div class="card-comparison-cell intel-side winner">Yes — 11 TOPS NPU</div>
+          <div class="card-comparison-cell">No</div>
+        </div>
+        <div class="card-comparison-label">Memory Support</div>
+        <div class="card-comparison-row">
+          <div class="card-comparison-cell intel-side winner">DDR5-6400</div>
+          <div class="card-comparison-cell">DDR5-5200</div>
+        </div>
+        <div class="card-comparison-label">Cinebench R23 (Multi)</div>
+        <div class="card-comparison-row">
+          <div class="card-comparison-cell intel-side winner">34,210</div>
+          <div class="card-comparison-cell">31,840</div>
+        </div>
+      </div>
+    </div>
+    <p class="caption" style="margin-top: var(--space-4)">* Comparison data is illustrative only. Not an official Intel claim.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+  FORMS
+  ============================================================ -->
+<section class="showcase-section" aria-labelledby="forms-heading">
+  <div class="container">
+    <span class="showcase-chip">Forms</span>
+    <h2 class="heading-1" id="forms-heading" style="margin-bottom: var(--space-2)">Form Elements</h2>
+    <p class="body" style="margin-bottom: var(--space-8)">Sharp (0px radius) Intel style. 44px height. 2px blue border + glow on focus.</p>
+
+    <div class="grid-2" style="gap: var(--space-10); max-width:900px">
+      <!-- Left column -->
+      <div style="display:flex; flex-direction:column; gap:var(--space-6)">
+        <div class="form-group">
+          <label class="form-label required">Product Search</label>
+          <div class="input-search-wrapper">
+            <svg class="input-search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4"/><path d="M13 13l-2.5-2.5"/></svg>
+            <input class="input-search" type="search" placeholder="Search processors, GPUs, AI…" aria-label="Product search" />
+          </div>
+          <span class="form-helper">Search across Intel's full product catalog</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">First Name</label>
+          <input class="input" type="text" placeholder="Enter your first name" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Last Name</label>
+          <input class="input" type="text" placeholder="Enter your last name" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label required">Business Email</label>
+          <input class="input" type="email" placeholder="name@company.com" />
+          <span class="form-helper">We'll use this for product updates and licensing</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Field with Error</label>
+          <input class="input error" type="text" value="invalid-entry" aria-describedby="err-msg" />
+          <span class="form-error" id="err-msg" role="alert">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><circle cx="7" cy="7" r="7" fill="#C0392B"/><rect x="6.25" y="3" width="1.5" height="5" fill="white"/><rect x="6.25" y="9.5" width="1.5" height="1.5" fill="white"/></svg>
+            This field contains an invalid value
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Field with Success</label>
+          <input class="input success" type="text" value="Valid entry" />
+          <span class="form-helper" style="color:var(--color-success)">✓ Value confirmed</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Disabled Input</label>
+          <input class="input" type="text" value="Cannot be edited" disabled />
+        </div>
+      </div>
+
+      <!-- Right column -->
+      <div style="display:flex; flex-direction:column; gap:var(--space-6)">
+        <div class="form-group">
+          <label class="form-label">Processor Family</label>
+          <div class="select-wrapper">
+            <select class="select" aria-label="Processor family">
+              <option>Select a processor family</option>
+              <option>Intel® Core™ Ultra (Client)</option>
+              <option>Intel® Core™ Desktop (K-series)</option>
+              <option>Intel® Xeon® W (Workstation)</option>
+              <option>Intel® Xeon® Scalable (Server)</option>
+              <option>Intel® Gaudi® (AI Accelerator)</option>
+              <option>Intel® Arc™ (Graphics)</option>
+            </select>
+            <svg class="select-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Message / Use Case</label>
+          <textarea class="textarea" rows="5" placeholder="Describe your application and performance requirements…"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Notification Preferences</label>
+          <div style="display:flex; flex-direction:column; gap:var(--space-3)">
+            <label class="checkbox-wrapper">
+              <div class="checkbox">
+                <input type="checkbox" checked />
+                <span class="checkbox-box"></span>
+              </div>
+              <span class="checkbox-label">Product launch announcements</span>
+            </label>
+            <label class="checkbox-wrapper">
+              <div class="checkbox">
+                <input type="checkbox" checked />
+                <span class="checkbox-box"></span>
+              </div>
+              <span class="checkbox-label">Driver and BIOS updates</span>
+            </label>
+            <label class="checkbox-wrapper">
+              <div class="checkbox">
+                <input type="checkbox" />
+                <span class="checkbox-box"></span>
+              </div>
+              <span class="checkbox-label">Intel® Developer Zone newsletter</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Platform Target</label>
+          <div style="display:flex; flex-direction:column; gap:var(--space-3)">
+            <label class="radio-wrapper">
+              <div class="radio">
+                <input type="radio" name="platform" checked />
+                <span class="radio-circle"></span>
+              </div>
+              <span class="radio-label">Client — Laptop / Desktop</span>
+            </label>
+            <label class="radio-wrapper">
+              <div class="radio">
+                <input type="radio" name="platform" />
+                <span class="radio-circle"></span>
+              </div>
+              <span class="radio-label">Data Center / Cloud</span>
+            </label>
+            <label class="radio-wrapper">
+              <div class="radio">
+                <input type="radio" name="platform" />
+                <span class="radio-circle"></span>
+              </div>
+              <span class="radio-label">Edge / Embedded</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Feature Toggles</label>
+          <div style="display:flex; flex-direction:column; gap:var(--space-4)">
+            <label class="toggle-label">
+              <div class="toggle">
+                <input type="checkbox" checked />
+                <span class="toggle-track"></span>
+                <span class="toggle-thumb"></span>
+              </div>
+              <span style="font-size:var(--text-15)">Intel® Turbo Boost Technology</span>
+            </label>
+            <label class="toggle-label">
+              <div class="toggle">
+                <input type="checkbox" />
+                <span class="toggle-track"></span>
+                <span class="toggle-thumb"></span>
+              </div>
+              <span style="font-size:var(--text-15)">Intel® Hyper-Threading Technology</span>
+            </label>
+            <label class="toggle-label">
+              <div class="toggle">
+                <input type="checkbox" checked />
+                <span class="toggle-track"></span>
+                <span class="toggle-thumb"></span>
+              </div>
+              <span style="font-size:var(--text-15)">Intel® vPro® Technology</span>
+            </label>
+          </div>
+        </div>
+
+        <div style="padding-top: var(--space-4)">
+          <button class="btn btn-primary btn-lg" style="width:100%">Submit Interest Form</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="component-links" style="margin-top: var(--space-8)">
+      <a href="components/forms.html" class="component-link">Full Forms Showcase →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  ALERTS
+  ============================================================ -->
+<section class="showcase-section" aria-labelledby="alerts-heading">
+  <div class="container">
+    <span class="showcase-chip">Feedback</span>
+    <h2 class="heading-1" id="alerts-heading" style="margin-bottom: var(--space-8)">Alerts &amp; Notifications</h2>
+
+    <div style="display:flex; flex-direction:column; gap:var(--space-4); max-width:700px">
+
+      <div class="alert alert-info" role="alert">
+        <div class="alert-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="#0071C5" stroke-width="1.5" fill="#E8F4FB"/><path d="M8 7v4" stroke="#0071C5" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="5" r="0.75" fill="#0071C5"/></svg>
+        </div>
+        <div class="alert-content">
+          <div class="alert-title">Intel® Driver Update Available</div>
+          <p class="alert-message">A new Intel® Graphics driver (version 31.0.101.5590) is available for your Arc A770 GPU. Update recommended for improved AI performance.</p>
+        </div>
+        <button class="alert-close" type="button" aria-label="Dismiss">×</button>
+      </div>
+
+      <div class="alert alert-success" role="alert">
+        <div class="alert-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="#27AE60" stroke-width="1.5" fill="#E8F8EF"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#27AE60" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="alert-content">
+          <div class="alert-title">Optimization Complete</div>
+          <p class="alert-message">Intel® VTune™ Profiler has completed analysis. 12 hotspots identified. Estimated 34% performance improvement with recommended changes.</p>
+        </div>
+        <button class="alert-close" type="button" aria-label="Dismiss">×</button>
+      </div>
+
+      <div class="alert alert-warning" role="alert">
+        <div class="alert-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2L14 13H2L8 2z" stroke="#E67E22" stroke-width="1.5" fill="#FEF3E7" stroke-linejoin="round"/><path d="M8 6.5v3" stroke="#E67E22" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="11" r="0.75" fill="#E67E22"/></svg>
+        </div>
+        <div class="alert-content">
+          <div class="alert-title">Thermal Throttling Detected</div>
+          <p class="alert-message">Your Intel® Core™ Ultra 9 processor is running above 95°C. Performance may be limited. Check cooling solution and airflow.</p>
+        </div>
+        <button class="alert-close" type="button" aria-label="Dismiss">×</button>
+      </div>
+
+      <div class="alert alert-error" role="alert">
+        <div class="alert-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="#C0392B" stroke-width="1.5" fill="#FDECEA"/><path d="M5.5 5.5l5 5M10.5 5.5l-5 5" stroke="#C0392B" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="alert-content">
+          <div class="alert-title">Memory Configuration Error</div>
+          <p class="alert-message">Dual-channel memory not detected. Install DIMMs in slots A2 and B2 for optimal performance. Current configuration: single-channel 32 GB.</p>
+        </div>
+        <button class="alert-close" type="button" aria-label="Dismiss">×</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  BADGES
+  ============================================================ -->
+<section class="showcase-section" style="background:var(--color-surface-1)" aria-labelledby="badges-heading">
+  <div class="container">
+    <span class="showcase-chip">Badges</span>
+    <h2 class="heading-1" id="badges-heading" style="margin-bottom: var(--space-8)">Badges &amp; Tags</h2>
+
+    <div style="display:flex; gap:var(--space-3); flex-wrap:wrap; align-items:center; margin-bottom:var(--space-6)">
+      <span class="badge badge-blue">Intel Blue</span>
+      <span class="badge badge-new">NEW</span>
+      <span class="badge badge-ai">AI Boost</span>
+      <span class="badge badge-pro">PRO</span>
+      <span class="badge badge-xeon">XEON</span>
+      <span class="badge badge-gray">Standard</span>
+      <span class="badge badge-outline-blue">Core Ultra</span>
+      <span class="badge badge-outline-teal">Gaudi® 3</span>
+    </div>
+
+    <div style="display:flex; gap:var(--space-3); flex-wrap:wrap; align-items:center">
+      <span class="tag">Arc Graphics</span>
+      <span class="tag">LGA1851</span>
+      <span class="tag">DDR5</span>
+      <span class="tag">PCIe 5.0</span>
+      <span class="tag">Thunderbolt™ 4</span>
+      <span class="tag">Wi-Fi 7</span>
+      <span class="tag">vPro®</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  INTEL INSIDE BADGE
+  ============================================================ -->
+<section class="showcase-section" aria-labelledby="badge-heading">
+  <div class="container">
+    <span class="showcase-chip">Brand Component</span>
+    <h2 class="heading-1" id="badge-heading" style="margin-bottom: var(--space-2)">Intel Inside® Badge</h2>
+    <p class="body" style="margin-bottom: var(--space-8)">The iconic Intel Inside® badge concept in CSS — for document templates, slide decks, partner materials.</p>
+
+    <div style="display:flex; align-items:flex-end; gap:var(--space-8); flex-wrap:wrap">
+      <div style="text-align:center">
+        <div class="intel-inside intel-inside-sm animate-blue-glow" style="margin: 0 auto var(--space-3)">
+          <span class="intel-inside-text">intel®</span>
+          <span class="intel-inside-sub">inside</span>
+        </div>
+        <div class="caption">Small (52px)</div>
+      </div>
+
+      <div style="text-align:center">
+        <div class="intel-inside animate-blue-glow" style="margin: 0 auto var(--space-3)">
+          <span class="intel-inside-text">intel®</span>
+          <span class="intel-inside-sub">inside</span>
+        </div>
+        <div class="caption">Default (80px)</div>
+      </div>
+
+      <div style="text-align:center">
+        <div class="intel-inside intel-inside-lg animate-blue-glow" style="margin: 0 auto var(--space-3)">
+          <span class="intel-inside-text">intel®</span>
+          <span class="intel-inside-sub">inside</span>
+        </div>
+        <div class="caption">Large (112px)</div>
+      </div>
+
+      <div style="text-align:center">
+        <!-- On dark -->
+        <div style="background: var(--color-surface-dark); padding: var(--space-6); border-radius: var(--radius-card); display:inline-flex; align-items:center; gap:var(--space-4)">
+          <div class="intel-inside intel-inside-lg" style="background: transparent; border: 3px solid rgba(0,113,197,0.5)">
+            <span class="intel-inside-text" style="color: var(--color-intel-blue-light)">intel®</span>
+            <span class="intel-inside-sub" style="color: rgba(30,155,232,0.75)">inside</span>
+          </div>
+          <div>
+            <div class="heading-3" style="color:#fff">Dark context</div>
+            <div class="body-sm" style="color:rgba(255,255,255,0.55)">Outline variant</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  MODAL DEMO
+  ============================================================ -->
+<section class="showcase-section" style="background:var(--color-surface-1)" aria-labelledby="modal-heading">
+  <div class="container">
+    <span class="showcase-chip">Overlays</span>
+    <h2 class="heading-1" id="modal-heading" style="margin-bottom: var(--space-2)">Modals</h2>
+    <p class="body" style="margin-bottom: var(--space-8)">Sharp (0px radius), 3px blue top-border accent. Inline demo below.</p>
+
+    <!-- Inline modal preview (not overlaid) -->
+    <div style="max-width: 560px; box-shadow: var(--shadow-xl); border-radius: var(--radius-none)">
+      <div class="modal" style="position:relative; animation:none; max-width:100%">
+        <div class="modal-header">
+          <div>
+            <h3 class="modal-title">Confirm Processor Selection</h3>
+            <div class="modal-subtitle">Intel® Core™ Ultra 9 285K · LGA1851</div>
+          </div>
+          <button class="modal-close" type="button" aria-label="Close modal">×</button>
+        </div>
+        <div class="modal-body">
+          <p class="body" style="margin-bottom: var(--space-4)">You are about to add the Intel® Core™ Ultra 9 285K to your configuration. This processor requires:</p>
+          <ul style="color:var(--color-label-secondary); font-size:var(--text-15); line-height:1.7; padding-left:var(--space-5); margin:0 0 var(--space-4)">
+            <li>LGA1851 compatible motherboard (800-series chipset)</li>
+            <li>DDR5 memory (DDR4 not supported)</li>
+            <li>250W+ cooling solution recommended for full performance</li>
+          </ul>
+          <div class="alert alert-warning" role="alert" style="margin:0">
+            <div class="alert-icon">⚠️</div>
+            <div class="alert-content">
+              <p class="alert-message">Ensure your power supply unit delivers 750W or more for system stability at maximum turbo power.</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline">Cancel</button>
+          <button class="btn btn-primary">Confirm Selection</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="component-links" style="margin-top: var(--space-8)">
+      <a href="components/modals.html" class="component-link">Full Modals Showcase →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  MOTION / ANIMATION DEMOS
+  ============================================================ -->
+<section class="showcase-section" aria-labelledby="motion-heading">
+  <div class="container">
+    <span class="showcase-chip">Motion</span>
+    <h2 class="heading-1" id="motion-heading" style="margin-bottom: var(--space-2)">Animation System</h2>
+    <p class="body" style="margin-bottom: var(--space-8)">Precise, purposeful. 150ms / 250ms / 400ms. <code class="mono" style="font-size:var(--text-13)">cubic-bezier(0.4, 0, 0.2, 1)</code> — every animation earns its place.</p>
+
+    <div class="grid-3" style="gap:var(--space-6); margin-bottom:var(--space-8)">
+      <div>
+        <div class="showcase-label">blueGlow — CTA pulse</div>
+        <div class="motion-demo">
+          <div class="motion-box pulse-blue"></div>
+        </div>
+      </div>
+      <div>
+        <div class="showcase-label">float — hero elements</div>
+        <div class="motion-demo">
+          <div class="motion-box float-box"></div>
+        </div>
+      </div>
+      <div>
+        <div class="showcase-label">spin — loading</div>
+        <div class="motion-demo">
+          <div class="spinner spinner-lg"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-3" style="gap:var(--space-6); margin-bottom:var(--space-8)">
+      <div>
+        <div class="showcase-label">shimmer — skeleton loading</div>
+        <div class="shimmer-demo">
+          <div class="shimmer-row">
+            <div class="skeleton skeleton-avatar"></div>
+            <div style="flex:1">
+              <div class="skeleton skeleton-text" style="width:80%"></div>
+              <div class="skeleton skeleton-text" style="width:55%"></div>
+            </div>
+          </div>
+          <div class="skeleton skeleton-text" style="width:100%; height:12px"></div>
+          <div class="skeleton skeleton-text" style="width:90%; height:12px"></div>
+          <div class="skeleton skeleton-text" style="width:65%; height:12px"></div>
+        </div>
+      </div>
+      <div>
+        <div class="showcase-label">progress — benchmark fill</div>
+        <div class="motion-demo" style="flex-direction:column; gap:var(--space-3); padding:var(--space-6)">
+          <div>
+            <div class="showcase-label" style="margin-bottom:var(--space-2)">Intel</div>
+            <div class="progress"><div class="progress-fill animate-benchmark" style="width:94%"></div></div>
+          </div>
+          <div>
+            <div class="showcase-label" style="margin-bottom:var(--space-2)">Teal</div>
+            <div class="progress"><div class="progress-fill teal animate-benchmark" style="width:78%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="showcase-label">Duration tokens</div>
+        <div class="motion-demo" style="flex-direction:column; gap:var(--space-2); align-items:flex-start; padding:var(--space-6)">
+          <div style="font-size:var(--text-13); display:flex; align-items:center; gap:var(--space-3)">
+            <span class="badge badge-blue" style="font-family:var(--font-mono)">100ms</span>
+            <span class="caption">--duration-instant (hover)</span>
+          </div>
+          <div style="font-size:var(--text-13); display:flex; align-items:center; gap:var(--space-3)">
+            <span class="badge badge-blue" style="font-family:var(--font-mono)">150ms</span>
+            <span class="caption">--duration-fast (inputs)</span>
+          </div>
+          <div style="font-size:var(--text-13); display:flex; align-items:center; gap:var(--space-3)">
+            <span class="badge badge-blue" style="font-family:var(--font-mono)">250ms</span>
+            <span class="caption">--duration-normal (transitions)</span>
+          </div>
+          <div style="font-size:var(--text-13); display:flex; align-items:center; gap:var(--space-3)">
+            <span class="badge badge-blue" style="font-family:var(--font-mono)">400ms</span>
+            <span class="caption">--duration-slow (benchmarks)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stagger demo -->
+    <div class="showcase-label" style="margin-bottom:var(--space-4)">stagger — sequential card reveal</div>
+    <div class="grid-4 stagger">
+      <div class="card-stat animate-slide-up">
+        <div class="card-stat-number" style="font-size:var(--text-36)">①</div>
+        <div class="card-stat-label">First</div>
+      </div>
+      <div class="card-stat animate-slide-up">
+        <div class="card-stat-number" style="font-size:var(--text-36)">②</div>
+        <div class="card-stat-label">Second</div>
+      </div>
+      <div class="card-stat animate-slide-up">
+        <div class="card-stat-number" style="font-size:var(--text-36)">③</div>
+        <div class="card-stat-label">Third</div>
+      </div>
+      <div class="card-stat animate-slide-up">
+        <div class="card-stat-number" style="font-size:var(--text-36)">④</div>
+        <div class="card-stat-label">Fourth</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  BRAND LOGO COMPONENT
+  ============================================================ -->
+<section class="showcase-section" style="background:var(--color-surface-1)" aria-labelledby="logo-heading">
+  <div class="container">
+    <span class="showcase-chip">Brand</span>
+    <h2 class="heading-1" id="logo-heading" style="margin-bottom: var(--space-2)">Brand Logo Component</h2>
+    <p class="body" style="margin-bottom: var(--space-8)">CSS component for document templates. Replace SVG with licensed Intel® logo asset.</p>
+
+    <div style="display:flex; align-items:center; gap:var(--space-10); flex-wrap:wrap; margin-bottom:var(--space-8)">
+      <!-- Small -->
+      <a href="#" class="brand-logo brand-logo--sm" aria-label="Intel Home">
+        <div class="brand-logo-mark">
+          <svg width="56" height="20" viewBox="0 0 80 28" fill="none">
+            <circle cx="14" cy="14" r="11" fill="none" stroke="#0071C5" stroke-width="2.5"/>
+            <circle cx="14" cy="14" r="5.5" fill="#0071C5"/>
+            <text x="31" y="19" font-family="Inter,sans-serif" font-size="17" font-weight="400" fill="#0071C5" letter-spacing="-0.5">intel</text>
+          </svg>
+        </div>
+      </a>
+
+      <!-- Medium (default) -->
+      <a href="#" class="brand-logo brand-logo--md" aria-label="Intel Home">
+        <div class="brand-logo-mark">
+          <svg width="80" height="28" viewBox="0 0 80 28" fill="none">
+            <circle cx="14" cy="14" r="11" fill="none" stroke="#0071C5" stroke-width="2.5"/>
+            <circle cx="14" cy="14" r="5.5" fill="#0071C5"/>
+            <text x="31" y="19" font-family="Inter,sans-serif" font-size="17" font-weight="400" fill="#0071C5" letter-spacing="-0.5">intel</text>
+          </svg>
+        </div>
+      </a>
+
+      <!-- Large -->
+      <a href="#" class="brand-logo brand-logo--lg" aria-label="Intel Home">
+        <div class="brand-logo-mark">
+          <svg width="112" height="40" viewBox="0 0 80 28" fill="none">
+            <circle cx="14" cy="14" r="11" fill="none" stroke="#0071C5" stroke-width="2.5"/>
+            <circle cx="14" cy="14" r="5.5" fill="#0071C5"/>
+            <text x="31" y="19" font-family="Inter,sans-serif" font-size="17" font-weight="400" fill="#0071C5" letter-spacing="-0.5">intel</text>
+          </svg>
+        </div>
+      </a>
+
+      <!-- On dark -->
+      <div style="background:var(--color-surface-dark); padding:var(--space-6); border-radius:var(--radius-sm)">
+        <a href="#" class="brand-logo brand-logo--md" aria-label="Intel Home">
+          <div class="brand-logo-mark">
+            <svg width="80" height="28" viewBox="0 0 80 28" fill="none">
+              <circle cx="14" cy="14" r="11" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
+              <circle cx="14" cy="14" r="5.5" fill="#FFFFFF"/>
+              <text x="31" y="19" font-family="Inter,sans-serif" font-size="17" font-weight="400" fill="#FFFFFF" letter-spacing="-0.5">intel</text>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      <!-- Placeholder -->
+      <div class="brand-logo-placeholder">Logo Area</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  COMPONENT SHOWCASE LINKS
+  ============================================================ -->
+<section class="showcase-section" aria-labelledby="pages-heading">
+  <div class="container">
+    <span class="showcase-chip">Design System</span>
+    <h2 class="heading-1" id="pages-heading" style="margin-bottom: var(--space-2)">Component Pages</h2>
+    <p class="body" style="margin-bottom: var(--space-8)">Each component page is self-contained — links to all 4 CSS files, every variant with labels.</p>
+
+    <div class="grid-3" style="gap:var(--space-4)">
+      <a href="components/buttons.html" class="card-stat" style="text-decoration:none; display:flex; flex-direction:row; align-items:center; gap:var(--space-4); justify-content:flex-start; text-align:left">
+        <div style="font-size:32px">🔘</div>
+        <div>
+          <div class="card-stat-label">Buttons</div>
+          <div class="card-stat-subtext">All variants, sizes, states</div>
+        </div>
+      </a>
+      <a href="components/cards.html" class="card-stat" style="text-decoration:none; display:flex; flex-direction:row; align-items:center; gap:var(--space-4); justify-content:flex-start; text-align:left">
+        <div style="font-size:32px">🃏</div>
+        <div>
+          <div class="card-stat-label">Cards</div>
+          <div class="card-stat-subtext">Product, feature, stat, comparison</div>
+        </div>
+      </a>
+      <a href="components/forms.html" class="card-stat" style="text-decoration:none; display:flex; flex-direction:row; align-items:center; gap:var(--space-4); justify-content:flex-start; text-align:left">
+        <div style="font-size:32px">📋</div>
+        <div>
+          <div class="card-stat-label">Forms</div>
+          <div class="card-stat-subtext">All inputs, selects, toggles</div>
+        </div>
+      </a>
+      <a href="components/navigation.html" class="card-stat" style="text-decoration:none; display:flex; flex-direction:row; align-items:center; gap:var(--space-4); justify-content:flex-start; text-align:left">
+        <div style="font-size:32px">🧭</div>
+        <div>
+          <div class="card-stat-label">Navigation</div>
+          <div class="card-stat-subtext">Nav, mega-menu, utility bar</div>
+        </div>
+      </a>
+      <a href="components/modals.html" class="card-stat" style="text-decoration:none; display:flex; flex-direction:row; align-items:center; gap:var(--space-4); justify-content:flex-start; text-align:left">
+        <div style="font-size:32px">💬</div>
+        <div>
+          <div class="card-stat-label">Modals</div>
+          <div class="card-stat-subtext">Overlays, dialogs, drawers</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  FOOTER
+  ============================================================ -->
+<footer class="footer-intel" aria-label="Site footer">
+  <div class="container">
+    <div class="footer-intel-grid">
+      <!-- Brand column -->
+      <div>
+        <a href="#" aria-label="Intel Home">
+          <svg width="80" height="28" viewBox="0 0 80 28" fill="none" aria-hidden="true">
+            <circle cx="14" cy="14" r="11" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
+            <circle cx="14" cy="14" r="5.5" fill="#FFFFFF"/>
+            <text x="31" y="19" font-family="Inter,sans-serif" font-size="17" font-weight="400" fill="#FFFFFF" letter-spacing="-0.5">intel</text>
+          </svg>
+        </a>
+        <p class="footer-intel-brand-desc">Delivering world-changing technology that enriches the lives of every person on Earth.</p>
+      </div>
+
+      <!-- Products -->
+      <div>
+        <div class="footer-intel-col-title">Products</div>
+        <ul class="footer-intel-links">
+          <li><a href="#">Processors</a></li>
+          <li><a href="#">Graphics Cards</a></li>
+          <li><a href="#">AI Accelerators</a></li>
+          <li><a href="#">Server Platforms</a></li>
+          <li><a href="#">Edge Solutions</a></li>
+          <li><a href="#">Memory &amp; Storage</a></li>
+        </ul>
+      </div>
+
+      <!-- Developers -->
+      <div>
+        <div class="footer-intel-col-title">Developers</div>
+        <ul class="footer-intel-links">
+          <li><a href="#">Intel® Developer Zone</a></li>
+          <li><a href="#">OpenVINO™ Toolkit</a></li>
+          <li><a href="#">oneAPI Toolkits</a></li>
+          <li><a href="#">Intel® VTune™ Profiler</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Documentation</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <div class="footer-intel-col-title">Company</div>
+        <ul class="footer-intel-links">
+          <li><a href="#">About Intel</a></li>
+          <li><a href="#">Investor Relations</a></li>
+          <li><a href="#">Newsroom</a></li>
+          <li><a href="#">Corporate Responsibility</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact Intel</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-intel-bottom">
+      <div class="footer-intel-legal">
+        © Intel Corporation 2026. Intel, the Intel logo, Intel Core, Intel Xeon, Intel Gaudi, Intel Arc, Intel Atom, Intel vPro, Thunderbolt, and other Intel marks are trademarks of Intel Corporation or its subsidiaries. Other names and brands may be claimed as the property of others.
+      </div>
+      <div class="footer-intel-legal-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Cookies</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sticky nav shadow on scroll
+  const nav = document.getElementById('main-nav');
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 8);
+    }, { passive: true });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cards — Intel Design System</title>
+  <link rel="stylesheet" href="../tokens.css" />
+  <link rel="stylesheet" href="../typography.css" />
+  <link rel="stylesheet" href="../animations.css" />
+  <link rel="stylesheet" href="../components.css" />
+  <style>
+    body { margin: 0; padding: 0; background: var(--color-bg); }
+    .page-header {
+      background: var(--color-intel-blue);
+      color: #fff;
+      padding: var(--space-8) 0;
+    }
+    .showcase-row {
+      padding: var(--space-12) 0;
+      border-bottom: 1px solid var(--color-border-dark);
+    }
+    .showcase-row:last-child { border-bottom: none; }
+    .showcase-label {
+      font-size: var(--text-12);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-4);
+      display: block;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-6);
+      font-size: var(--text-13);
+      color: rgba(255,255,255,0.65);
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.65); text-decoration: none; }
+    .breadcrumb a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">Intel Design System</a>
+      <span>›</span>
+      <span>Components</span>
+      <span>›</span>
+      <span style="color:#fff">Cards</span>
+    </div>
+    <div class="eyebrow" style="color:rgba(255,255,255,0.65)">Components</div>
+    <h1 class="display-large" style="color:#fff; margin-bottom:var(--space-4)">Cards</h1>
+    <p class="body-lg" style="color:rgba(255,255,255,0.70); max-width:600px">Product, comparison, feature, and stat cards — the core display components of the Intel brand.</p>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+
+    <!-- CPU PRODUCT CARDS -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-2)">Product Cards — CPU</h2>
+      <p class="body" style="margin-bottom:var(--space-6)">Intel's signature card. Blue left-border on hover, badge system, 2-col spec grid, benchmark score highlight.</p>
+
+      <div class="grid-4">
+        <!-- Core Ultra 9 -->
+        <article class="card-product hover-lift">
+          <span class="badge badge-blue">Intel® Core™ Ultra</span>
+          <div class="card-product-generation">Arrow Lake · 15th Gen</div>
+          <div class="card-product-image cpu-blue">⚡</div>
+          <h3 class="card-product-name">Core™ Ultra 9<br/>285K</h3>
+          <div class="card-product-specs">
+            <div class="spec-item"><span class="spec-item-label">Cores</span><span class="spec-item-value">24 (8P+16E)</span></div>
+            <div class="spec-item"><span class="spec-item-label">Boost</span><span class="spec-item-value">5.70 GHz</span></div>
+            <div class="spec-item"><span class="spec-item-label">Cache</span><span class="spec-item-value">36 MB</span></div>
+            <div class="spec-item"><span class="spec-item-label">TDP</span><span class="spec-item-value">125 W</span></div>
+          </div>
+          <div class="card-product-score">
+            <div class="card-product-score-value">34,210</div>
+            <div class="card-product-score-label">CB R23 Multi</div>
+          </div>
+          <div class="card-product-cta">
+            <a href="#" class="btn btn-primary" style="width:100%">View Specs</a>
+          </div>
+        </article>
+
+        <!-- Core i9-14900K -->
+        <article class="card-product hover-lift">
+          <span class="badge badge-blue">Intel® Core™</span>
+          <div class="card-product-generation">Raptor Lake · 14th Gen</div>
+          <div class="card-product-image cpu-blue">🔥</div>
+          <h3 class="card-product-name">Core™ i9-14900K</h3>
+          <div class="card-product-specs">
+            <div class="spec-item"><span class="spec-item-label">Cores</span><span class="spec-item-value">24 (8P+16E)</span></div>
+            <div class="spec-item"><span class="spec-item-label">Boost</span><span class="spec-item-value">6.00 GHz</span></div>
+            <div class="spec-item"><span class="spec-item-label">Cache</span><span class="spec-item-value">36 MB</span></div>
+            <div class="spec-item"><span class="spec-item-label">TDP</span><span class="spec-item-value">125 W</span></div>
+          </div>
+          <div class="card-product-score">
+            <div class="card-product-score-value">40,100</div>
+            <div class="card-product-score-label">CB R23 Multi</div>
+          </div>
+          <div class="card-product-cta">
+            <a href="#" class="btn btn-primary" style="width:100%">View Specs</a>
+          </div>
+        </article>
+
+        <!-- Xeon W9 -->
+        <article class="card-product hover-lift">
+          <span class="badge badge-xeon">Intel® Xeon®</span>
+          <div class="card-product-generation">Sapphire Rapids · 5th Gen</div>
+          <div class="card-product-image cpu-dark">🏢</div>
+          <h3 class="card-product-name">Xeon® w9-3595X</h3>
+          <div class="card-product-specs">
+            <div class="spec-item"><span class="spec-item-label">Cores</span><span class="spec-item-value">60C / 120T</span></div>
+            <div class="spec-item"><span class="spec-item-label">Boost</span><span class="spec-item-value">4.8 GHz</span></div>
+            <div class="spec-item"><span class="spec-item-label">Cache</span><span class="spec-item-value">75 MB</span></div>
+            <div class="spec-item"><span class="spec-item-label">TDP</span><span class="spec-item-value">350 W</span></div>
+          </div>
+          <div class="card-product-score">
+            <div class="card-product-score-value">128K</div>
+            <div class="card-product-score-label">SPECrate® 2017</div>
+          </div>
+          <div class="card-product-cta">
+            <a href="#" class="btn btn-primary" style="width:100%">View Specs</a>
+          </div>
+        </article>
+
+        <!-- Gaudi 3 -->
+        <article class="card-product hover-lift">
+          <span class="badge badge-ai" style="background:var(--color-intel-purple)">Intel® Gaudi®</span>
+          <div class="card-product-generation">AI Accelerator · Gen 3</div>
+          <div class="card-product-image cpu-dark">🤖</div>
+          <h3 class="card-product-name">Gaudi® 3<br/>AI Accelerator</h3>
+          <div class="card-product-specs">
+            <div class="spec-item"><span class="spec-item-label">BF16</span><span class="spec-item-value">1,835 TFLOPS</span></div>
+            <div class="spec-item"><span class="spec-item-label">HBM2e</span><span class="spec-item-value">128 GB</span></div>
+            <div class="spec-item"><span class="spec-item-label">Bandwidth</span><span class="spec-item-value">3.7 TB/s</span></div>
+            <div class="spec-item"><span class="spec-item-label">TDP</span><span class="spec-item-value">900 W</span></div>
+          </div>
+          <div class="card-product-score">
+            <div class="card-product-score-value">1,835</div>
+            <div class="card-product-score-label">TFLOPS BF16</div>
+          </div>
+          <div class="card-product-cta">
+            <a href="#" class="btn btn-primary" style="width:100%">View Specs</a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- FEATURE CARDS -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-2)">Feature Cards</h2>
+      <p class="body" style="margin-bottom:var(--space-6)">Dark gradient backgrounds with white text. Three gradient variants: blue/teal (default), AI purple/blue, dark.</p>
+
+      <div class="grid-3">
+        <div class="card-feature">
+          <div class="card-feature-icon">🧠</div>
+          <div class="card-feature-eyebrow">Neural Processing</div>
+          <h3 class="card-feature-title">Intel® NPU Built-In</h3>
+          <p class="card-feature-body">Dedicated on-chip neural processing unit for always-on AI — without touching the CPU or GPU.</p>
+        </div>
+        <div class="card-feature ai">
+          <div class="card-feature-icon">⚡</div>
+          <div class="card-feature-eyebrow">AI Accelerator</div>
+          <h3 class="card-feature-title">Gaudi® 3: Scale AI</h3>
+          <p class="card-feature-body">Purpose-built for LLM training and generative AI inference at hyperscale with 1,835 TFLOPS BF16.</p>
+        </div>
+        <div class="card-feature dark">
+          <div class="card-feature-icon">🔗</div>
+          <div class="card-feature-eyebrow">Open Framework</div>
+          <h3 class="card-feature-title">OpenVINO™ Toolkit</h3>
+          <p class="card-feature-body">Deploy AI models across Intel® hardware with a single API. Supports PyTorch, ONNX, TensorFlow.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAT CARDS -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-2)">Stat Cards</h2>
+      <p class="body" style="margin-bottom:var(--space-6)">Centered layout. Intel Blue large number, label, subtext.</p>
+
+      <div class="grid-4">
+        <div class="card-stat">
+          <div class="card-stat-number">120</div>
+          <div class="card-stat-label">TOPS AI</div>
+          <div class="card-stat-subtext">Core Ultra — total platform</div>
+        </div>
+        <div class="card-stat">
+          <div class="card-stat-number">5.7<span style="font-size:0.45em; font-weight:600; color:var(--color-label-secondary)">GHz</span></div>
+          <div class="card-stat-label">Max Turbo</div>
+          <div class="card-stat-subtext">Core Ultra 9 285K boost clock</div>
+        </div>
+        <div class="card-stat">
+          <div class="card-stat-number">60</div>
+          <div class="card-stat-label">Cores</div>
+          <div class="card-stat-subtext">Xeon® w9-3595X</div>
+        </div>
+        <div class="card-stat">
+          <div class="card-stat-number" style="font-size:var(--text-44)">500B+</div>
+          <div class="card-stat-label">Chips Shipped</div>
+          <div class="card-stat-subtext">Intel's cumulative shipments</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPARISON CARD -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-2)">Comparison Card</h2>
+      <p class="body" style="margin-bottom:var(--space-6)">Two-column layout. Intel column highlighted in blue. Winner cells marked bold.</p>
+
+      <div style="max-width:680px">
+        <div class="card-comparison">
+          <div class="card-comparison-header">
+            <div class="card-comparison-brand intel-side">Intel® Core™ Ultra 9 285K</div>
+            <div class="card-comparison-brand competitor-side">Competitor X (Illustrative)</div>
+          </div>
+          <div class="card-comparison-label">Cores / Threads</div>
+          <div class="card-comparison-row">
+            <div class="card-comparison-cell intel-side winner">24C / 24T</div>
+            <div class="card-comparison-cell">16C / 32T</div>
+          </div>
+          <div class="card-comparison-label">Max Boost Frequency</div>
+          <div class="card-comparison-row">
+            <div class="card-comparison-cell intel-side winner">5.70 GHz</div>
+            <div class="card-comparison-cell">5.70 GHz</div>
+          </div>
+          <div class="card-comparison-label">Cache</div>
+          <div class="card-comparison-row">
+            <div class="card-comparison-cell intel-side winner">36 MB</div>
+            <div class="card-comparison-cell">32 MB</div>
+          </div>
+          <div class="card-comparison-label">Built-in AI (NPU)</div>
+          <div class="card-comparison-row">
+            <div class="card-comparison-cell intel-side winner">Yes — 11 TOPS</div>
+            <div class="card-comparison-cell">No</div>
+          </div>
+          <div class="card-comparison-label">Memory Bandwidth</div>
+          <div class="card-comparison-row">
+            <div class="card-comparison-cell intel-side winner">DDR5-6400</div>
+            <div class="card-comparison-cell">DDR5-5200</div>
+          </div>
+          <div class="card-comparison-label">Thunderbolt™ 4</div>
+          <div class="card-comparison-row">
+            <div class="card-comparison-cell intel-side winner">Yes</div>
+            <div class="card-comparison-cell">No</div>
+          </div>
+        </div>
+        <p class="caption" style="margin-top:var(--space-3)">* Illustrative comparison. Not an official Intel performance claim.</p>
+      </div>
+    </div>
+
+    <!-- SPEC GRID -->
+    <div class="showcase-row">
+      <h2 class="heading-2" style="margin-bottom:var(--space-6)">Spec Grid</h2>
+
+      <span class="showcase-label">4-Column Spec Grid</span>
+      <div class="spec-grid" style="margin-bottom:var(--space-8)">
+        <div class="spec-grid-item">
+          <div class="spec-grid-item-label">Cores</div>
+          <div class="spec-grid-item-value">24</div>
+          <div class="spec-grid-item-unit">P+E cores</div>
+        </div>
+        <div class="spec-grid-item">
+          <div class="spec-grid-item-label">Boost Freq</div>
+          <div class="spec-grid-item-value">5.70</div>
+          <div class="spec-grid-item-unit">GHz max turbo</div>
+        </div>
+        <div class="spec-grid-item">
+          <div class="spec-grid-item-label">Cache</div>
+          <div class="spec-grid-item-value">36</div>
+          <div class="spec-grid-item-unit">MB Smart Cache</div>
+        </div>
+        <div class="spec-grid-item">
+          <div class="spec-grid-item-label">TDP</div>
+          <div class="spec-grid-item-value">125</div>
+          <div class="spec-grid-item-unit">W base power</div>
+        </div>
+      </div>
+
+      <span class="showcase-label">2-Column Spec Grid</span>
+      <div class="spec-grid spec-grid-2" style="max-width:480px">
+        <div class="spec-grid-item">
+          <div class="spec-grid-item-label">NPU Performance</div>
+          <div class="spec-grid-item-value">11</div>
+          <div class="spec-grid-item-unit">TOPS dedicated AI</div>
+        </div>
+        <div class="spec-grid-item">
+          <div class="spec-grid-item-label">Platform AI Total</div>
+          <div class="spec-grid-item-value">120</div>
+          <div class="spec-grid-item-unit">TOPS (CPU+GPU+NPU)</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+</body>
+</html>
