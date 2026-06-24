@@ -1,0 +1,416 @@
+/* =============================================================================
+   AMD Design System — Design Tokens
+   Version 1.0.0 | AMD Brand Design Language
+   "Together We Advance"
+   ============================================================================= */
+
+/* Dark-first: :root defines the dark theme (AMD's primary web presence) */
+:root {
+
+  /* ---------------------------------------------------------------------------
+     BRAND COLORS — AMD Core Palette
+     --------------------------------------------------------------------------- */
+
+  /* AMD Red — Primary Brand Color */
+  --color-amd-red:              #ED1C24;
+  --color-amd-red-dark:         #C41017;
+  --color-amd-red-light:        #FF3B42;
+  --color-amd-red-glow:         rgba(237, 28, 36, 0.35);
+  --color-amd-red-glow-soft:    rgba(237, 28, 36, 0.15);
+
+  /* AMD Graphite */
+  --color-amd-graphite:         #7A7A7A;
+
+  /* AMD White */
+  --color-amd-white:            #FFFFFF;
+
+  /* ---------------------------------------------------------------------------
+     SUB-BRAND COLORS
+     --------------------------------------------------------------------------- */
+
+  /* Ryzen — Consumer Desktop/Laptop Processors */
+  --color-ryzen:                #FF6A00;
+  --color-ryzen-dark:           #D45800;
+  --color-ryzen-light:          #FF8C3A;
+  --color-ryzen-glow:           rgba(255, 106, 0, 0.30);
+
+  /* EPYC — Server/Data Center Processors */
+  --color-epyc:                 #00B4D8;
+  --color-epyc-dark:            #008FAD;
+  --color-epyc-light:           #33C6E2;
+  --color-epyc-glow:            rgba(0, 180, 216, 0.30);
+
+  /* Instinct — AI/ML Accelerators */
+  --color-instinct:             #7B2FBE;
+  --color-instinct-dark:        #601E9A;
+  --color-instinct-light:       #9B55D4;
+  --color-instinct-glow:        rgba(123, 47, 190, 0.30);
+
+  /* Radeon — Consumer/Professional GPUs */
+  --color-radeon:               #FF4500;
+  --color-radeon-dark:          #D43700;
+  --color-radeon-light:         #FF6B3A;
+  --color-radeon-glow:          rgba(255, 69, 0, 0.30);
+
+  /* ---------------------------------------------------------------------------
+     DARK MODE BACKGROUNDS (Default — Dark First)
+     --------------------------------------------------------------------------- */
+
+  --color-bg:                   #0D0D0D;
+  --color-bg-surface-1:         #1A1A1A;
+  --color-bg-surface-2:         #252525;
+  --color-bg-surface-3:         #303030;
+  --color-bg-surface-4:         #3A3A3A;
+  --color-bg-overlay:           rgba(0, 0, 0, 0.90);
+
+  /* ---------------------------------------------------------------------------
+     LABEL / TEXT COLORS (Dark Mode)
+     --------------------------------------------------------------------------- */
+
+  --color-label-primary:        #FFFFFF;
+  --color-label-secondary:      #A8A8A8;
+  --color-label-tertiary:       #606060;
+  --color-label-quaternary:     #404040;
+
+  /* ---------------------------------------------------------------------------
+     BORDERS (Dark Mode)
+     --------------------------------------------------------------------------- */
+
+  --color-border-subtle:        #2A2A2A;
+  --color-border-default:       #3D3D3D;
+  --color-border-strong:        #555555;
+  --color-border-red:           var(--color-amd-red);
+
+  /* ---------------------------------------------------------------------------
+     SEMANTIC COLOR MAPPINGS
+     --------------------------------------------------------------------------- */
+
+  --color-accent:               var(--color-amd-red);
+  --color-accent-hover:         var(--color-amd-red-dark);
+  --color-accent-light:         var(--color-amd-red-light);
+  --color-accent-glow:          var(--color-amd-red-glow);
+
+  --color-surface-primary:      var(--color-bg-surface-1);
+  --color-surface-secondary:    var(--color-bg-surface-2);
+  --color-surface-tertiary:     var(--color-bg-surface-3);
+
+  /* ---------------------------------------------------------------------------
+     STATUS COLORS
+     --------------------------------------------------------------------------- */
+
+  --color-success:              #22C55E;
+  --color-success-light:        rgba(34, 197, 94, 0.15);
+  --color-warning:              #F59E0B;
+  --color-warning-light:        rgba(245, 158, 11, 0.15);
+  --color-error:                var(--color-amd-red);
+  --color-error-light:          rgba(237, 28, 36, 0.15);
+  --color-info:                 var(--color-epyc);
+  --color-info-light:           var(--color-epyc-glow);
+
+  /* ---------------------------------------------------------------------------
+     LIGHT MODE COLORS (for light background sections)
+     --------------------------------------------------------------------------- */
+
+  --color-light-bg:             #F5F5F5;
+  --color-light-surface:        #FFFFFF;
+  --color-light-border:         #E0E0E0;
+  --color-light-text:           #1A1A1A;
+  --color-light-text-secondary: #555555;
+
+  /* ---------------------------------------------------------------------------
+     TYPOGRAPHY
+     --------------------------------------------------------------------------- */
+
+  /* Font Stacks */
+  --font-display:   "Barlow", "DM Sans", "Inter", system-ui, -apple-system, sans-serif;
+  --font-body:      "Barlow", "DM Sans", "Inter", system-ui, -apple-system, sans-serif;
+  --font-condensed: "Barlow Condensed", "Barlow", "DM Sans", system-ui, sans-serif;
+  --font-mono:      ui-monospace, "JetBrains Mono", "Fira Code", "SF Mono", Menlo, Consolas, monospace;
+
+  /* Type Scale — AMD (px-based for precision) */
+  --text-80:   80px;   /* display-hero */
+  --text-64:   64px;   /* display-large */
+  --text-48:   48px;   /* display */
+  --text-36:   36px;   /* heading-1 */
+  --text-28:   28px;   /* heading-2 */
+  --text-22:   22px;   /* heading-3 */
+  --text-18:   18px;   /* subhead / body-lg */
+  --text-16:   16px;   /* body */
+  --text-14:   14px;   /* body-sm */
+  --text-13:   13px;   /* caption / mono */
+  --text-12:   12px;   /* label */
+
+  /* Font Weights */
+  --weight-regular:    400;
+  --weight-medium:     500;
+  --weight-semibold:   600;
+  --weight-bold:       700;
+  --weight-extrabold:  800;
+  --weight-black:      900;
+
+  /* Line Heights */
+  --leading-hero:      1.0;
+  --leading-display:   1.05;
+  --leading-heading:   1.15;
+  --leading-subhead:   1.30;
+  --leading-body:      1.60;
+  --leading-body-lg:   1.65;
+  --leading-caption:   1.45;
+  --leading-tight:     1.10;
+
+  /* Letter Spacing */
+  --tracking-hero:      -0.02em;
+  --tracking-display:   -0.02em;
+  --tracking-heading:   -0.01em;
+  --tracking-body:       0em;
+  --tracking-caps:       0.08em;
+  --tracking-label:      0.10em;
+  --tracking-wide:       0.05em;
+
+  /* ---------------------------------------------------------------------------
+     SPACING — 4px Base Grid
+     --------------------------------------------------------------------------- */
+
+  --space-1:     4px;
+  --space-2:     8px;
+  --space-3:    12px;
+  --space-4:    16px;
+  --space-5:    20px;
+  --space-6:    24px;
+  --space-8:    32px;
+  --space-10:   40px;
+  --space-12:   48px;
+  --space-16:   64px;
+  --space-20:   80px;
+  --space-24:   96px;
+  --space-32:  128px;
+
+  /* ---------------------------------------------------------------------------
+     BORDER RADIUS — AMD is sharp / angular
+     --------------------------------------------------------------------------- */
+
+  --radius-none:  0px;
+  --radius-xs:    2px;
+  --radius-sm:    4px;
+  --radius-md:    8px;
+  --radius-pill:  9999px;
+
+  /* Component-specific radii */
+  --radius-button:  0px;   /* AMD uses sharp corners on buttons */
+  --radius-card:    0px;   /* AMD product cards — sharp */
+  --radius-card-sm: 4px;   /* Subtle rounding for small cards only */
+  --radius-input:   0px;   /* AMD uses sharp inputs */
+  --radius-modal:   0px;   /* Sharp modals */
+  --radius-badge:   2px;   /* Nearly sharp badges */
+  --radius-tag:     9999px; /* Pills for tags only */
+
+  /* ---------------------------------------------------------------------------
+     SHADOWS & GLOWS
+     --------------------------------------------------------------------------- */
+
+  /* Standard Dark Shadows */
+  --shadow-xs:    0 2px 4px  rgba(0, 0, 0, 0.40);
+  --shadow-sm:    0 4px 8px  rgba(0, 0, 0, 0.50);
+  --shadow-md:    0 4px 24px rgba(0, 0, 0, 0.60);
+  --shadow-lg:    0 8px 32px rgba(0, 0, 0, 0.70);
+  --shadow-xl:    0 16px 48px rgba(0, 0, 0, 0.80);
+  --shadow-2xl:   0 24px 64px rgba(0, 0, 0, 0.90);
+  --shadow-deep:  0 4px 24px rgba(0, 0, 0, 0.70);
+
+  /* AMD Red Glows — signature hover/focus effect */
+  --glow-red-sm:  0 0 12px rgba(237, 28, 36, 0.40);
+  --glow-red:     0 0 24px rgba(237, 28, 36, 0.30);
+  --glow-red-lg:  0 0 48px rgba(237, 28, 36, 0.15);
+  --glow-red-xl:  0 0 72px rgba(237, 28, 36, 0.20), 0 0 24px rgba(237, 28, 36, 0.40);
+  --glow-red-border: 0 0 0 1px var(--color-amd-red), 0 0 24px rgba(237, 28, 36, 0.30);
+
+  /* Sub-brand Glows */
+  --glow-ryzen:    0 0 24px rgba(255, 106, 0, 0.35);
+  --glow-epyc:     0 0 24px rgba(0, 180, 216, 0.35);
+  --glow-instinct: 0 0 24px rgba(123, 47, 190, 0.35);
+  --glow-radeon:   0 0 24px rgba(255, 69, 0, 0.35);
+
+  /* ---------------------------------------------------------------------------
+     MOTION
+     --------------------------------------------------------------------------- */
+
+  /* Durations */
+  --duration-instant:   100ms;
+  --duration-fast:      150ms;
+  --duration-normal:    300ms;
+  --duration-slow:      500ms;
+  --duration-dramatic:  700ms;
+  --duration-cinematic: 1000ms;
+
+  /* AMD Easing — Bold and kinetic */
+  --ease-amd:         cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out-strong:  cubic-bezier(0.0, 0, 0.2, 1);
+  --ease-in-strong:   cubic-bezier(0.4, 0, 1, 1);
+  --ease-spring:      cubic-bezier(0.34, 1.56, 0.64, 1.00);
+  --ease-linear:      linear;
+
+  /* Transition Shorthands */
+  --transition-fast:     all var(--duration-fast) var(--ease-amd);
+  --transition-normal:   all var(--duration-normal) var(--ease-amd);
+  --transition-slow:     all var(--duration-slow) var(--ease-amd);
+  --transition-glow:     box-shadow var(--duration-normal) var(--ease-amd),
+                         border-color var(--duration-normal) var(--ease-amd);
+
+  /* ---------------------------------------------------------------------------
+     Z-INDEX SCALE
+     --------------------------------------------------------------------------- */
+
+  --z-base:       0;
+  --z-raised:     10;
+  --z-overlay:    100;
+  --z-dropdown:   200;
+  --z-sticky:     300;
+  --z-navbar:     400;
+  --z-modal:      500;
+  --z-toast:      600;
+  --z-tooltip:    700;
+  --z-top:        9999;
+
+  /* ---------------------------------------------------------------------------
+     COMPONENT DIMENSIONS
+     --------------------------------------------------------------------------- */
+
+  --btn-height-sm:    32px;
+  --btn-height-md:    44px;
+  --btn-height-lg:    52px;
+  --btn-height-xl:    64px;
+
+  --input-height-sm:  36px;
+  --input-height-md:  44px;
+  --input-height-lg:  52px;
+
+  --nav-height:       64px;
+  --nav-height-mobile: 56px;
+  --sidebar-width:    280px;
+
+  --max-width-content: 1024px;
+  --max-width-site:    1280px;
+  --max-width-wide:    1440px;
+  --max-width-full:    100%;
+
+  /* ---------------------------------------------------------------------------
+     GRADIENT DEFINITIONS
+     --------------------------------------------------------------------------- */
+
+  --gradient-red:           linear-gradient(135deg, var(--color-amd-red) 0%, #FF6B35 100%);
+  --gradient-red-dark:      linear-gradient(135deg, var(--color-amd-red-dark) 0%, var(--color-amd-red) 100%);
+  --gradient-red-white:     linear-gradient(135deg, var(--color-amd-red) 0%, #FFFFFF 100%);
+  --gradient-hero:          linear-gradient(180deg, #0D0D0D 0%, #1A0A0A 100%);
+  --gradient-surface-fade:  linear-gradient(180deg, transparent 0%, var(--color-bg) 100%);
+  --gradient-red-glow-bg:   radial-gradient(ellipse at 50% 0%, rgba(237, 28, 36, 0.12) 0%, transparent 70%);
+  --gradient-card-overlay:  linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.85) 100%);
+
+  /* Sub-brand gradients */
+  --gradient-ryzen:    linear-gradient(135deg, #FF6A00 0%, #FF8C3A 100%);
+  --gradient-epyc:     linear-gradient(135deg, #008FAD 0%, #00B4D8 100%);
+  --gradient-instinct: linear-gradient(135deg, #601E9A 0%, #7B2FBE 100%);
+  --gradient-radeon:   linear-gradient(135deg, #D43700 0%, #FF4500 100%);
+
+  /* ---------------------------------------------------------------------------
+     CLIP PATH SHAPES — AMD angular design elements
+     --------------------------------------------------------------------------- */
+
+  --clip-diagonal:        polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  --clip-diagonal-rev:    polygon(0 0, 100% 0, 100% 100%, 0 85%);
+  --clip-chevron-left:    polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%);
+  --clip-arrow-right:     polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%, 15% 50%);
+  --clip-corner-cut:      polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+}
+
+/* =============================================================================
+   LIGHT MODE OVERRIDES
+   ============================================================================= */
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Backgrounds */
+    --color-bg:                 #F5F5F5;
+    --color-bg-surface-1:       #FFFFFF;
+    --color-bg-surface-2:       #F0F0F0;
+    --color-bg-surface-3:       #E8E8E8;
+    --color-bg-surface-4:       #DCDCDC;
+    --color-bg-overlay:         rgba(0, 0, 0, 0.50);
+
+    /* Labels */
+    --color-label-primary:      #0D0D0D;
+    --color-label-secondary:    #555555;
+    --color-label-tertiary:     #909090;
+    --color-label-quaternary:   #BBBBBB;
+
+    /* Borders */
+    --color-border-subtle:      #E0E0E0;
+    --color-border-default:     #C8C8C8;
+    --color-border-strong:      #A0A0A0;
+
+    /* Shadows lighter in light mode */
+    --shadow-xs:    0 1px 3px  rgba(0, 0, 0, 0.08);
+    --shadow-sm:    0 2px 8px  rgba(0, 0, 0, 0.10);
+    --shadow-md:    0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-lg:    0 8px 24px rgba(0, 0, 0, 0.14);
+    --shadow-xl:    0 16px 40px rgba(0, 0, 0, 0.16);
+    --shadow-2xl:   0 24px 64px rgba(0, 0, 0, 0.18);
+
+    /* Gradients override */
+    --gradient-hero: linear-gradient(180deg, #F5F5F5 0%, #FFFFFF 100%);
+    --gradient-red-glow-bg: radial-gradient(ellipse at 50% 0%, rgba(237, 28, 36, 0.06) 0%, transparent 70%);
+  }
+}
+
+/* =============================================================================
+   CSS RESET & BASE STYLES
+   ============================================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  color: var(--color-label-primary);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  line-height: var(--leading-heading);
+  color: var(--color-label-primary);
+}

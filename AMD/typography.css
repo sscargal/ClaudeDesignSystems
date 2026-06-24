@@ -1,0 +1,361 @@
+/* =============================================================================
+   AMD Design System — Typography
+   Version 1.0.0 | Barlow / DM Sans stack
+   "Together We Advance"
+   ============================================================================= */
+
+/* Import Barlow from Google Fonts — open-source AMD Font substitute */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+/* =============================================================================
+   DISPLAY — Hero-scale type for major headlines
+   ============================================================================= */
+
+/* Hero Display — "TOGETHER WE ADVANCE™" */
+.display-hero {
+  font-family: var(--font-display);
+  font-size: var(--text-80);
+  font-weight: var(--weight-extrabold);
+  line-height: var(--leading-hero);
+  letter-spacing: var(--tracking-hero);
+  text-transform: uppercase;
+  color: var(--color-label-primary);
+}
+
+/* Large Display */
+.display-large {
+  font-family: var(--font-display);
+  font-size: var(--text-64);
+  font-weight: var(--weight-extrabold);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  color: var(--color-label-primary);
+}
+
+/* Standard Display */
+.display {
+  font-family: var(--font-display);
+  font-size: var(--text-48);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-display);
+  letter-spacing: -0.01em;
+  color: var(--color-label-primary);
+}
+
+/* =============================================================================
+   HEADINGS
+   ============================================================================= */
+
+.heading-1 {
+  font-family: var(--font-display);
+  font-size: var(--text-36);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-label-primary);
+}
+
+.heading-2 {
+  font-family: var(--font-display);
+  font-size: var(--text-28);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-heading);
+  letter-spacing: -0.005em;
+  color: var(--color-label-primary);
+}
+
+.heading-3 {
+  font-family: var(--font-display);
+  font-size: var(--text-22);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-heading);
+  color: var(--color-label-primary);
+}
+
+/* =============================================================================
+   SUBHEADINGS & BODY
+   ============================================================================= */
+
+.subhead {
+  font-family: var(--font-body);
+  font-size: var(--text-18);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-subhead);
+  color: var(--color-label-secondary);
+}
+
+.body-lg {
+  font-family: var(--font-body);
+  font-size: var(--text-18);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body-lg);
+  color: var(--color-label-secondary);
+}
+
+.body {
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  color: var(--color-label-secondary);
+}
+
+.body-sm {
+  font-family: var(--font-body);
+  font-size: var(--text-14);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  color: var(--color-label-secondary);
+}
+
+/* =============================================================================
+   UTILITY TEXT STYLES
+   ============================================================================= */
+
+/* Caption — fine print, disclaimers */
+.caption {
+  font-family: var(--font-body);
+  font-size: var(--text-13);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-caption);
+  color: var(--color-label-secondary);
+}
+
+/* Label — all-caps small labels, nav items, badges */
+.label {
+  font-family: var(--font-display);
+  font-size: var(--text-12);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-label-secondary);
+}
+
+/* Mono — code, specs, benchmark numbers */
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-13);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  letter-spacing: 0.02em;
+}
+
+/* =============================================================================
+   AMD-SPECIFIC TYPE STYLES
+   ============================================================================= */
+
+/* Spec Value — benchmark numbers in AMD red, large mono */
+.spec-value {
+  font-family: var(--font-mono);
+  font-size: var(--text-48);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-amd-red);
+}
+
+.spec-value-sm {
+  font-family: var(--font-mono);
+  font-size: var(--text-28);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  color: var(--color-amd-red);
+}
+
+/* Spec Unit — small unit next to spec value */
+.spec-unit {
+  font-family: var(--font-mono);
+  font-size: var(--text-14);
+  font-weight: var(--weight-medium);
+  color: var(--color-label-secondary);
+  letter-spacing: 0.02em;
+  vertical-align: super;
+}
+
+/* Spec Line — compact inline spec text */
+.spec-line {
+  font-family: var(--font-mono);
+  font-size: var(--text-13);
+  font-weight: var(--weight-regular);
+  color: var(--color-label-secondary);
+  letter-spacing: 0.03em;
+}
+
+/* Product Tagline — "Zen 4 Architecture", "RDNA 4" — bold italic */
+.product-tagline {
+  font-family: var(--font-display);
+  font-size: var(--text-18);
+  font-weight: var(--weight-bold);
+  font-style: italic;
+  line-height: var(--leading-subhead);
+  letter-spacing: 0.02em;
+  color: var(--color-label-secondary);
+  text-transform: uppercase;
+}
+
+/* Eyebrow — small all-caps above headlines */
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--text-12);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-amd-red);
+}
+
+/* Hero Tagline — red subtitle under hero */
+.hero-tagline {
+  font-family: var(--font-display);
+  font-size: var(--text-22);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-subhead);
+  color: var(--color-label-secondary);
+}
+
+/* =============================================================================
+   GRADIENT TEXT
+   ============================================================================= */
+
+/* Red to orange gradient — CTA highlights */
+.text-red-gradient {
+  background: linear-gradient(90deg, var(--color-amd-red) 0%, #FF8C3A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Red to white gradient — hero copy */
+.text-amd-gradient {
+  background: linear-gradient(90deg, var(--color-amd-red) 0%, #FF6B35 40%, #FFFFFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* White to gray gradient */
+.text-silver-gradient {
+  background: linear-gradient(90deg, #FFFFFF 0%, #A8A8A8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* =============================================================================
+   SUB-BRAND LABELS
+   ============================================================================= */
+
+/* Ryzen — orange */
+.label-ryzen {
+  font-family: var(--font-display);
+  font-size: var(--text-12);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-ryzen);
+}
+
+/* EPYC — teal */
+.label-epyc {
+  font-family: var(--font-display);
+  font-size: var(--text-12);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-epyc);
+}
+
+/* Instinct — purple */
+.label-instinct {
+  font-family: var(--font-display);
+  font-size: var(--text-12);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-instinct);
+}
+
+/* Radeon — orange-red */
+.label-radeon {
+  font-family: var(--font-display);
+  font-size: var(--text-12);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-radeon);
+}
+
+/* =============================================================================
+   RESPONSIVE TYPOGRAPHY
+   ============================================================================= */
+
+@media (max-width: 1024px) {
+  .display-hero  { font-size: 60px; }
+  .display-large { font-size: 48px; }
+  .display       { font-size: 38px; }
+}
+
+@media (max-width: 768px) {
+  .display-hero  { font-size: 40px; letter-spacing: -0.01em; }
+  .display-large { font-size: 32px; }
+  .display       { font-size: 28px; }
+  .heading-1     { font-size: 28px; }
+  .heading-2     { font-size: 22px; }
+  .heading-3     { font-size: 18px; }
+  .spec-value    { font-size: 36px; }
+}
+
+/* =============================================================================
+   TYPOGRAPHY UTILITIES
+   ============================================================================= */
+
+.text-primary     { color: var(--color-label-primary); }
+.text-secondary   { color: var(--color-label-secondary); }
+.text-tertiary    { color: var(--color-label-tertiary); }
+.text-red         { color: var(--color-amd-red); }
+.text-graphite    { color: var(--color-amd-graphite); }
+.text-white       { color: #FFFFFF; }
+
+.text-uppercase   { text-transform: uppercase; }
+.text-left        { text-align: left; }
+.text-center      { text-align: center; }
+.text-right       { text-align: right; }
+
+.font-bold        { font-weight: var(--weight-bold); }
+.font-extrabold   { font-weight: var(--weight-extrabold); }
+.font-black       { font-weight: var(--weight-black); }
+.font-medium      { font-weight: var(--weight-medium); }
+.font-semibold    { font-weight: var(--weight-semibold); }
+.font-regular     { font-weight: var(--weight-regular); }
+.font-italic      { font-style: italic; }
+
+.tracking-tight   { letter-spacing: -0.02em; }
+.tracking-normal  { letter-spacing: 0; }
+.tracking-wide    { letter-spacing: 0.05em; }
+.tracking-widest  { letter-spacing: 0.10em; }
+
+.leading-tight    { line-height: 1.1; }
+.leading-normal   { line-height: 1.5; }
+.leading-relaxed  { line-height: 1.65; }
+
+/* Nowrap for product names */
+.text-nowrap      { white-space: nowrap; }
+
+/* Condensed variant — Barlow Condensed for hero/nav */
+.font-condensed {
+  font-family: var(--font-condensed);
+  letter-spacing: 0.01em;
+}
+
+/* AMD Trademark styling */
+.tm {
+  font-size: 0.5em;
+  vertical-align: super;
+  letter-spacing: 0;
+}

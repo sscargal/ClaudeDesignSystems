@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modals — AMD Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+</head>
+<body>
+
+<nav class="nav-amd" role="navigation" aria-label="AMD Design System Navigation">
+  <div class="container-wide">
+    <a href="../index.html" class="nav-brand" aria-label="AMD Home">
+      <svg width="80" height="24" viewBox="0 0 80 24" fill="none" aria-hidden="true">
+        <polygon points="0,0 14,0 20,12 14,24 0,24 6,12" fill="#ED1C24"/>
+        <text x="26" y="17" font-family="Barlow, DM Sans, Inter, sans-serif" font-size="16" font-weight="800" fill="white" letter-spacing="1">AMD</text>
+      </svg>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="../index.html" class="nav-link">Overview</a></li>
+      <li><a href="buttons.html" class="nav-link">Buttons</a></li>
+      <li><a href="cards.html" class="nav-link">Cards</a></li>
+      <li><a href="forms.html" class="nav-link">Forms</a></li>
+      <li><a href="navigation.html" class="nav-link">Navigation</a></li>
+      <li><a href="modals.html" class="nav-link is-active">Modals</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main style="padding-top:calc(var(--nav-height) + var(--space-12));">
+  <div class="container-wide">
+
+    <div class="section-header" style="margin-bottom:var(--space-12);">
+      <p class="eyebrow">Components</p>
+      <h1 class="heading-1">Modals &amp; Overlays</h1>
+      <p class="body" style="max-width:560px;">AMD modals are sharp-cornered, dark surface-2, with a 3px AMD Red left-border accent. Overlay is near-black rgba(0,0,0,0.90). Entry animation: scale(0.92) → scale(1) with spring easing.</p>
+    </div>
+
+    <!-- Trigger buttons -->
+    <section class="section-sm" aria-label="Modal triggers">
+      <h2 class="heading-3 mb-6">Open Modals</h2>
+      <div class="flex" style="gap:var(--space-4);flex-wrap:wrap;margin-bottom:var(--space-10);">
+        <button class="btn btn-primary" id="trigger-compare">COMPARE PRODUCTS</button>
+        <button class="btn btn-secondary" id="trigger-confirm">CONFIRM PURCHASE</button>
+        <button class="btn btn-outline" id="trigger-filter">FILTER RESULTS</button>
+        <button class="btn btn-ghost" id="trigger-info">PRODUCT INFO</button>
+      </div>
+    </section>
+
+    <!-- Inline demos -->
+    <section class="section-sm" aria-label="Modal examples">
+      <h2 class="heading-3 mb-6">Modal Variants (Inline Demo)</h2>
+      <p class="body-sm mb-6">Modals shown inline without overlay for documentation purposes. Live versions use the full overlay with backdrop.</p>
+
+      <div style="display:flex;flex-direction:column;gap:var(--space-8);">
+
+        <!-- Standard Modal -->
+        <div>
+          <p class="label mb-4" style="color:var(--color-label-tertiary);">Standard — Product Compare</p>
+          <div class="modal-amd" style="position:relative;transform:none;max-width:560px;border:1px solid var(--color-border-default);">
+            <div class="modal-header">
+              <h3 class="modal-title">Compare Processors</h3>
+              <button class="modal-close" aria-label="Close modal">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p class="body mb-6">Select up to 3 AMD processors to compare. Results include cores, clocks, TDP, cache, and benchmark performance.</p>
+              <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+                <div class="form-group">
+                  <label class="form-label" for="m-proc1">Processor 1</label>
+                  <select class="select" id="m-proc1">
+                    <option>Ryzen™ 9 9950X</option>
+                    <option>Ryzen™ 9 9900X</option>
+                    <option>Ryzen™ 7 9700X</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="m-proc2">Processor 2</label>
+                  <select class="select" id="m-proc2">
+                    <option>Select processor...</option>
+                    <option>Ryzen™ 9 7950X</option>
+                    <option>Ryzen™ 7 7700X</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="m-proc3">Processor 3 (Optional)</label>
+                  <select class="select" id="m-proc3">
+                    <option>Select processor...</option>
+                    <option>Ryzen™ 5 9600X</option>
+                    <option>Ryzen™ 5 7600X</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-ghost">CANCEL</button>
+              <button class="btn btn-primary">COMPARE NOW</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Confirmation Modal -->
+        <div>
+          <p class="label mb-4" style="color:var(--color-label-tertiary);">Confirmation — Destructive Action</p>
+          <div class="modal-amd" style="position:relative;transform:none;max-width:480px;border:1px solid var(--color-border-default);">
+            <div class="modal-header">
+              <h3 class="modal-title">Confirm Purchase</h3>
+              <button class="modal-close" aria-label="Close">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div style="display:flex;align-items:flex-start;gap:var(--space-4);">
+                <div style="width:40px;height:40px;background:rgba(237,28,36,0.15);border:1px solid rgba(237,28,36,0.30);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ED1C24" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </div>
+                <div>
+                  <p class="heading-3 mb-2">Ryzen™ 9 9950X — $649.00</p>
+                  <p class="body">You are about to purchase 1× AMD Ryzen™ 9 9950X Desktop Processor. This charge will appear on your statement as "AMD Store."</p>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-ghost">CANCEL</button>
+              <button class="btn btn-primary">CONFIRM PURCHASE</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Modal -->
+        <div>
+          <p class="label mb-4" style="color:var(--color-label-tertiary);">Filter Panel — Product Search</p>
+          <div class="modal-amd" style="position:relative;transform:none;max-width:480px;border:1px solid var(--color-border-default);">
+            <div class="modal-header">
+              <h3 class="modal-title">Filter Processors</h3>
+              <button class="modal-close" aria-label="Close">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div style="display:flex;flex-direction:column;gap:var(--space-6);">
+
+                <div class="form-group">
+                  <p class="form-label mb-3">Product Family</p>
+                  <div style="display:flex;flex-direction:column;gap:var(--space-2);">
+                    <label class="checkbox-group">
+                      <span class="checkbox"><input type="checkbox" checked><span class="checkbox-box"></span></span>
+                      <span class="checkbox-label" style="color:var(--color-ryzen);">Ryzen™ Processors</span>
+                    </label>
+                    <label class="checkbox-group">
+                      <span class="checkbox"><input type="checkbox"><span class="checkbox-box"></span></span>
+                      <span class="checkbox-label" style="color:var(--color-epyc);">EPYC™ Processors</span>
+                    </label>
+                    <label class="checkbox-group">
+                      <span class="checkbox"><input type="checkbox" checked><span class="checkbox-box"></span></span>
+                      <span class="checkbox-label" style="color:var(--color-radeon);">Radeon™ Graphics</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="m-socket">Socket</label>
+                  <select class="select" id="m-socket">
+                    <option>All Sockets</option>
+                    <option>AM5 (Consumer)</option>
+                    <option>SP6 (Server)</option>
+                    <option>sTR5 (Threadripper)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <p class="form-label mb-3">Core Count</p>
+                  <div style="display:flex;flex-direction:column;gap:var(--space-2);">
+                    <label class="radio-group">
+                      <span class="radio"><input type="radio" name="f-cores"><span class="radio-circle"></span></span>
+                      <span class="radio-label">Any Core Count</span>
+                    </label>
+                    <label class="radio-group">
+                      <span class="radio"><input type="radio" name="f-cores" checked><span class="radio-circle"></span></span>
+                      <span class="radio-label">8–16 Cores (Desktop)</span>
+                    </label>
+                    <label class="radio-group">
+                      <span class="radio"><input type="radio" name="f-cores"><span class="radio-circle"></span></span>
+                      <span class="radio-label">64–192 Cores (Server)</span>
+                    </label>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="modal-footer" style="justify-content:space-between;">
+              <button class="btn btn-ghost">CLEAR ALL</button>
+              <div class="flex" style="gap:var(--space-3);">
+                <button class="btn btn-outline">CANCEL</button>
+                <button class="btn btn-primary">APPLY FILTERS</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Info Modal -->
+        <div>
+          <p class="label mb-4" style="color:var(--color-label-tertiary);">Info / Detail Modal</p>
+          <div class="modal-amd" style="position:relative;transform:none;max-width:560px;border:1px solid var(--color-border-default);">
+            <div class="modal-header">
+              <h3 class="modal-title">Zen 5 Architecture</h3>
+              <button class="modal-close" aria-label="Close">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div style="height:160px;background:var(--color-bg);display:flex;align-items:center;justify-content:center;margin-bottom:var(--space-6);border:1px solid var(--color-border-subtle);">
+                <p class="display-large text-red-gradient" style="font-size:36px;">ZEN 5</p>
+              </div>
+              <p class="eyebrow mb-2">TSMC 4nm / 3nm Hybrid</p>
+              <h4 class="heading-3 mb-4">Next-Generation CPU Architecture</h4>
+              <p class="body mb-4">Zen 5 introduces a significantly wider frontend and execution engine with native AVX-512 support, delivering up to 16% higher IPC than Zen 4 at equivalent clock speeds.</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
+                <div style="padding:var(--space-3);background:var(--color-bg);border:1px solid var(--color-border-subtle);">
+                  <p class="spec-value" style="font-size:28px;">16%</p>
+                  <p class="caption">IPC Improvement</p>
+                </div>
+                <div style="padding:var(--space-3);background:var(--color-bg);border:1px solid var(--color-border-subtle);">
+                  <p class="spec-value" style="font-size:28px;">4nm</p>
+                  <p class="caption">Process Node</p>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-ghost">CLOSE</button>
+              <button class="btn btn-primary">LEARN MORE</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Toast / Notification -->
+    <section class="section-sm" aria-label="Toast notifications" style="margin-bottom:var(--space-16);">
+      <h2 class="heading-3 mb-6">Toast Notifications</h2>
+      <p class="body-sm mb-6">Non-blocking status messages. Appear at bottom-right, auto-dismiss after 4s. Red left border for AMD branding. Also support success (green) and info (teal) variants.</p>
+
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);max-width:400px;">
+
+        <!-- Success toast -->
+        <div style="background:var(--color-bg-surface-2);border:1px solid var(--color-border-subtle);border-left:3px solid var(--color-success);padding:var(--space-4);display:flex;align-items:flex-start;gap:var(--space-3);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" flex-shrink="0" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <div>
+            <p style="font-family:var(--font-display);font-size:var(--text-14);font-weight:var(--weight-bold);color:var(--color-label-primary);margin-bottom:4px;">Added to Cart</p>
+            <p class="body-sm">Ryzen™ 9 9950X has been added to your cart.</p>
+          </div>
+          <button class="btn btn-ghost btn-sm" style="margin-left:auto;min-width:auto;padding:0;height:auto;" aria-label="Dismiss">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <!-- Error toast -->
+        <div style="background:var(--color-bg-surface-2);border:1px solid var(--color-border-subtle);border-left:3px solid var(--color-amd-red);padding:var(--space-4);display:flex;align-items:flex-start;gap:var(--space-3);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ED1C24" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <p style="font-family:var(--font-display);font-size:var(--text-14);font-weight:var(--weight-bold);color:var(--color-label-primary);margin-bottom:4px;">Out of Stock</p>
+            <p class="body-sm">This product is temporarily out of stock. Join the waitlist to be notified.</p>
+          </div>
+          <button class="btn btn-ghost btn-sm" style="margin-left:auto;min-width:auto;padding:0;height:auto;" aria-label="Dismiss">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <!-- Info toast -->
+        <div style="background:var(--color-bg-surface-2);border:1px solid var(--color-border-subtle);border-left:3px solid var(--color-epyc);padding:var(--space-4);display:flex;align-items:flex-start;gap:var(--space-3);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <div>
+            <p style="font-family:var(--font-display);font-size:var(--text-14);font-weight:var(--weight-bold);color:var(--color-label-primary);margin-bottom:4px;">Driver Update Available</p>
+            <p class="body-sm">AMD Software: Adrenalin Edition 24.12.1 is now available for your Radeon™ GPU.</p>
+          </div>
+          <button class="btn btn-ghost btn-sm" style="margin-left:auto;min-width:auto;padding:0;height:auto;" aria-label="Dismiss">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- LIVE MODALS — controlled by JavaScript -->
+
+<!-- Compare Modal -->
+<div class="modal-overlay" id="modal-compare" role="dialog" aria-modal="true" aria-labelledby="modal-compare-title">
+  <div class="modal-amd">
+    <div class="modal-header">
+      <h2 class="modal-title" id="modal-compare-title">Compare Products</h2>
+      <button class="modal-close" data-close="modal-compare" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p class="body mb-4">Select up to 3 AMD processors to compare side-by-side.</p>
+      <div class="form-group mb-4">
+        <label class="form-label" for="live-m-p1">Processor 1</label>
+        <select class="select" id="live-m-p1">
+          <option>Ryzen™ 9 9950X</option>
+          <option>Ryzen™ 9 9900X</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="live-m-p2">Processor 2</label>
+        <select class="select" id="live-m-p2">
+          <option>Select processor...</option>
+          <option>Ryzen™ 9 7950X</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" data-close="modal-compare">CANCEL</button>
+      <button class="btn btn-primary">COMPARE</button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Modal -->
+<div class="modal-overlay" id="modal-confirm" role="dialog" aria-modal="true" aria-labelledby="modal-confirm-title">
+  <div class="modal-amd">
+    <div class="modal-header">
+      <h2 class="modal-title" id="modal-confirm-title">Confirm Purchase</h2>
+      <button class="modal-close" data-close="modal-confirm" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p class="heading-3 mb-2">Ryzen™ 9 9950X — $649.00</p>
+      <p class="body">Confirm your purchase of 1× AMD Ryzen™ 9 9950X. Includes free shipping and 3-year warranty.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" data-close="modal-confirm">CANCEL</button>
+      <button class="btn btn-primary">CONFIRM</button>
+    </div>
+  </div>
+</div>
+
+<!-- Filter Modal -->
+<div class="modal-overlay" id="modal-filter" role="dialog" aria-modal="true" aria-labelledby="modal-filter-title">
+  <div class="modal-amd">
+    <div class="modal-header">
+      <h2 class="modal-title" id="modal-filter-title">Filter Results</h2>
+      <button class="modal-close" data-close="modal-filter" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p class="form-label mb-4">Product Family</p>
+      <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+        <label class="checkbox-group"><span class="checkbox"><input type="checkbox" checked><span class="checkbox-box"></span></span><span class="checkbox-label">Ryzen™</span></label>
+        <label class="checkbox-group"><span class="checkbox"><input type="checkbox"><span class="checkbox-box"></span></span><span class="checkbox-label">EPYC™</span></label>
+        <label class="checkbox-group"><span class="checkbox"><input type="checkbox" checked><span class="checkbox-box"></span></span><span class="checkbox-label">Radeon™</span></label>
+        <label class="checkbox-group"><span class="checkbox"><input type="checkbox"><span class="checkbox-box"></span></span><span class="checkbox-label">Instinct™</span></label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" data-close="modal-filter">CANCEL</button>
+      <button class="btn btn-primary">APPLY</button>
+    </div>
+  </div>
+</div>
+
+<!-- Info Modal -->
+<div class="modal-overlay" id="modal-info" role="dialog" aria-modal="true" aria-labelledby="modal-info-title">
+  <div class="modal-amd">
+    <div class="modal-header">
+      <h2 class="modal-title" id="modal-info-title">Zen 5 Architecture</h2>
+      <button class="modal-close" data-close="modal-info" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p class="body">Zen 5 introduces a significantly wider frontend and execution engine with native AVX-512 support, delivering up to 16% higher IPC than Zen 4 at equivalent clock speeds. Built on TSMC 4nm process node.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" data-close="modal-info">CLOSE</button>
+      <a href="#" class="btn btn-primary">LEARN MORE</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer-amd" role="contentinfo">
+  <div class="container-wide">
+    <div class="footer-bottom">
+      <p class="footer-legal">&copy; 2024 Advanced Micro Devices, Inc. All rights reserved.</p>
+      <ul class="footer-legal-links">
+        <li><a href="navigation.html" class="footer-legal-link">← Navigation</a></li>
+        <li><a href="../index.html" class="footer-legal-link">Design System Home</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Modal controller — no dependencies */
+  (function () {
+    'use strict';
+
+    function openModal(id) {
+      var overlay = document.getElementById(id);
+      if (!overlay) return;
+      overlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      // Focus first focusable element
+      var focusable = overlay.querySelector('button, [href], input, select, textarea');
+      if (focusable) setTimeout(function () { focusable.focus(); }, 100);
+    }
+
+    function closeModal(id) {
+      var overlay = document.getElementById(id);
+      if (!overlay) return;
+      overlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    /* Open triggers */
+    var triggers = {
+      'trigger-compare': 'modal-compare',
+      'trigger-confirm': 'modal-confirm',
+      'trigger-filter':  'modal-filter',
+      'trigger-info':    'modal-info'
+    };
+
+    Object.keys(triggers).forEach(function (triggerId) {
+      var btn = document.getElementById(triggerId);
+      if (btn) {
+        btn.addEventListener('click', function () {
+          openModal(triggers[triggerId]);
+        });
+      }
+    });
+
+    /* Close via data-close attribute */
+    document.addEventListener('click', function (e) {
+      var target = e.target.closest('[data-close]');
+      if (target) {
+        closeModal(target.dataset.close);
+      }
+      /* Close on overlay click */
+      if (e.target.classList.contains('modal-overlay')) {
+        var id = e.target.id;
+        if (id) closeModal(id);
+      }
+    });
+
+    /* Close on Escape */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        var openOverlay = document.querySelector('.modal-overlay.is-open');
+        if (openOverlay) closeModal(openOverlay.id);
+      }
+    });
+  }());
+</script>
+
+</body>
+</html>

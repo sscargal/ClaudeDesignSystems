@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cards — AMD Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+</head>
+<body>
+
+<nav class="nav-amd" role="navigation" aria-label="AMD Design System Navigation">
+  <div class="container-wide">
+    <a href="../index.html" class="nav-brand" aria-label="AMD Home">
+      <svg width="80" height="24" viewBox="0 0 80 24" fill="none" aria-hidden="true">
+        <polygon points="0,0 14,0 20,12 14,24 0,24 6,12" fill="#ED1C24"/>
+        <text x="26" y="17" font-family="Barlow, DM Sans, Inter, sans-serif" font-size="16" font-weight="800" fill="white" letter-spacing="1">AMD</text>
+      </svg>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="../index.html" class="nav-link">Overview</a></li>
+      <li><a href="buttons.html" class="nav-link">Buttons</a></li>
+      <li><a href="cards.html" class="nav-link is-active">Cards</a></li>
+      <li><a href="forms.html" class="nav-link">Forms</a></li>
+      <li><a href="navigation.html" class="nav-link">Navigation</a></li>
+      <li><a href="modals.html" class="nav-link">Modals</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main style="padding-top:calc(var(--nav-height) + var(--space-12));">
+  <div class="container-wide">
+
+    <div class="section-header" style="margin-bottom:var(--space-12);">
+      <p class="eyebrow">Components</p>
+      <h1 class="heading-1">Cards</h1>
+      <p class="body" style="max-width:560px;">AMD's signature card components. Sharp corners, dark surfaces, sub-brand color accents, and red glow on hover. Product cards are the primary content unit across amd.com.</p>
+    </div>
+
+    <!-- Product Cards -->
+    <section class="section-sm" aria-label="Product cards">
+      <h2 class="heading-3 mb-2">Product Cards — AMD Signature</h2>
+      <p class="body-sm mb-6">Dark surface-1 background, sharp corners, colored header stripe, corner triangle accent in sub-brand color, full-width CTA. Hover: red/sub-brand glow border appears, card lifts 4px.</p>
+
+      <div class="grid-4">
+
+        <!-- Ryzen -->
+        <article class="card-product-amd ryzen">
+          <div class="card-product-header"></div>
+          <div class="card-product-image-area">
+            <div class="card-product-image-placeholder">
+              <svg viewBox="0 0 120 120" fill="none"><rect x="20" y="20" width="80" height="80" fill="white" opacity="0.4"/><rect x="35" y="35" width="50" height="50" fill="white" opacity="0.3"/><rect x="48" y="48" width="24" height="24" fill="white" opacity="0.7"/><line x1="20" y1="20" x2="35" y2="35" stroke="white" stroke-width="2" opacity="0.4"/><line x1="100" y1="20" x2="85" y2="35" stroke="white" stroke-width="2" opacity="0.4"/><line x1="20" y1="100" x2="35" y2="85" stroke="white" stroke-width="2" opacity="0.4"/><line x1="100" y1="100" x2="85" y2="85" stroke="white" stroke-width="2" opacity="0.4"/></svg>
+            </div>
+            <span class="card-product-badge">Ryzen™ 9</span>
+          </div>
+          <div class="card-product-body">
+            <p class="card-product-arch">Zen 5 Architecture</p>
+            <h3 class="card-product-name">Ryzen™ 9<br>9950X</h3>
+            <p class="card-product-spec">16 Cores | 32 Threads | 5.7GHz | 170W</p>
+            <div class="card-product-score">
+              <span class="card-product-score-value">98,450</span>
+              <span class="card-product-score-label">Cinebench<br>R23 nT</span>
+            </div>
+            <div class="card-product-cta">
+              <a href="#" class="btn btn-primary btn-full">BUY NOW — $649</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- EPYC -->
+        <article class="card-product-amd epyc">
+          <div class="card-product-header"></div>
+          <div class="card-product-image-area">
+            <div class="card-product-image-placeholder">
+              <svg viewBox="0 0 120 120" fill="none"><rect x="10" y="10" width="100" height="100" fill="white" opacity="0.25" rx="2"/><rect x="25" y="25" width="70" height="70" fill="white" opacity="0.25"/><rect x="40" y="40" width="40" height="40" fill="white" opacity="0.45"/><circle cx="60" cy="60" r="10" fill="white" opacity="0.8"/></svg>
+            </div>
+            <span class="card-product-badge">EPYC™ 9005</span>
+          </div>
+          <div class="card-product-body">
+            <p class="card-product-arch">Zen 5 / Turin</p>
+            <h3 class="card-product-name">EPYC™<br>9965P</h3>
+            <p class="card-product-spec">192 Cores | 384 Threads | 5.1GHz | 500W</p>
+            <div class="card-product-score">
+              <span class="card-product-score-value">2.1M</span>
+              <span class="card-product-score-label">SPECint<br>Base Est.</span>
+            </div>
+            <div class="card-product-cta">
+              <a href="#" class="btn btn-epyc btn-full">CONTACT SALES</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Radeon -->
+        <article class="card-product-amd radeon">
+          <div class="card-product-header"></div>
+          <div class="card-product-image-area">
+            <div class="card-product-image-placeholder">
+              <svg viewBox="0 0 120 120" fill="none"><rect x="10" y="40" width="100" height="40" fill="white" opacity="0.4" rx="4"/><rect x="20" y="50" width="30" height="20" fill="white" opacity="0.5"/><rect x="55" y="50" width="30" height="20" fill="white" opacity="0.5"/><rect x="30" y="80" width="8" height="30" fill="white" opacity="0.3"/><rect x="50" y="80" width="8" height="30" fill="white" opacity="0.3"/><rect x="70" y="80" width="8" height="30" fill="white" opacity="0.3"/></svg>
+            </div>
+            <span class="card-product-badge">Radeon™ RX</span>
+          </div>
+          <div class="card-product-body">
+            <p class="card-product-arch">RDNA 4 Architecture</p>
+            <h3 class="card-product-name">Radeon™ RX<br>9900 XTX</h3>
+            <p class="card-product-spec">64 CUs | 24GB GDDR6 | 330W TBP</p>
+            <div class="card-product-score">
+              <span class="card-product-score-value">4K/120</span>
+              <span class="card-product-score-label">Gaming<br>Target</span>
+            </div>
+            <div class="card-product-cta">
+              <a href="#" class="btn btn-radeon btn-full">BUY NOW — $999</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Instinct -->
+        <article class="card-product-amd instinct">
+          <div class="card-product-header"></div>
+          <div class="card-product-image-area">
+            <div class="card-product-image-placeholder">
+              <svg viewBox="0 0 120 120" fill="none"><polygon points="60,10 110,37 110,83 60,110 10,83 10,37" fill="none" stroke="white" stroke-width="2" opacity="0.5"/><polygon points="60,25 95,44 95,76 60,95 25,76 25,44" fill="none" stroke="white" stroke-width="1.5" opacity="0.4"/><polygon points="60,40 80,51 80,69 60,80 40,69 40,51" fill="white" opacity="0.3"/><circle cx="60" cy="60" r="10" fill="white" opacity="0.7"/></svg>
+            </div>
+            <span class="card-product-badge">Instinct™ MI</span>
+          </div>
+          <div class="card-product-body">
+            <p class="card-product-arch">CDNA 3 Architecture</p>
+            <h3 class="card-product-name">Instinct™<br>MI300X</h3>
+            <p class="card-product-spec">192GB HBM3 | 5.3TB/s | 750W TDP</p>
+            <div class="card-product-score">
+              <span class="card-product-score-value">1,307</span>
+              <span class="card-product-score-label">AI TOPS<br>FP8</span>
+            </div>
+            <div class="card-product-cta">
+              <a href="#" class="btn btn-instinct btn-full">CONTACT SALES</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Spec Cards -->
+    <section class="section-sm" aria-label="Spec cards">
+      <h2 class="heading-3 mb-2">Spec Cards</h2>
+      <p class="body-sm mb-6">Centered, large red spec value with unit, label below, optional comparison bar. Used for key specification callouts.</p>
+
+      <div class="grid-4">
+        <div class="card-spec-amd">
+          <div class="card-spec-value">192<span class="card-spec-unit" style="font-size:var(--text-22);">C</span></div>
+          <div class="card-spec-label">EPYC Max Cores</div>
+          <div class="card-spec-bar"><div class="card-spec-bar-fill" style="width:100%;"></div></div>
+        </div>
+        <div class="card-spec-amd">
+          <div class="card-spec-value">5.7<span class="card-spec-unit" style="font-size:var(--text-22);">GHz</span></div>
+          <div class="card-spec-label">Max Boost Clock</div>
+          <div class="card-spec-bar"><div class="card-spec-bar-fill" style="width:92%;"></div></div>
+        </div>
+        <div class="card-spec-amd">
+          <div class="card-spec-value">192<span class="card-spec-unit" style="font-size:var(--text-22);">GB</span></div>
+          <div class="card-spec-label">Instinct HBM3</div>
+          <div class="card-spec-bar"><div class="card-spec-bar-fill" style="width:85%;"></div></div>
+        </div>
+        <div class="card-spec-amd">
+          <div class="card-spec-value">1,307<span class="card-spec-unit" style="font-size:var(--text-16);">T</span></div>
+          <div class="card-spec-label">AI TOPS FP8</div>
+          <div class="card-spec-bar"><div class="card-spec-bar-fill" style="width:78%;"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Cards -->
+    <section class="section-sm" aria-label="Feature cards">
+      <h2 class="heading-3 mb-2">Feature Cards</h2>
+      <p class="body-sm mb-6">Full-width dark card with red gradient overlay, white headline, description, and CTA. Used for hero-adjacent feature spotlights.</p>
+
+      <div class="grid-2">
+        <div class="card-feature-amd">
+          <p class="feature-eyebrow">New Architecture</p>
+          <h3 class="feature-title">ZEN 5<br>ARCHITECTURE</h3>
+          <p class="feature-desc">The fifth generation of AMD's Zen architecture brings a 16% IPC uplift on 4nm process technology, with AVX-512 native execution units.</p>
+          <a href="#" class="btn btn-primary">LEARN MORE</a>
+        </div>
+        <div class="card-feature-amd" style="--family-color:var(--color-instinct);">
+          <p class="feature-eyebrow" style="color:var(--color-instinct);">AI Leadership</p>
+          <h3 class="feature-title" style="font-size:var(--text-36);">INSTINCT™<br>MI300X</h3>
+          <p class="feature-desc">The world's first APU for AI, combining 192GB of HBM3 memory with 304 CDNA 3 compute units in a single package.</p>
+          <a href="#" class="btn btn-instinct">CONTACT SALES</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Family Tiles -->
+    <section class="section-sm" aria-label="Product family tiles">
+      <h2 class="heading-3 mb-2">Product Family Tiles</h2>
+      <p class="body-sm mb-6">Horizontal strip tiles for the four AMD product families. Sub-brand color header bar + accent on hover.</p>
+
+      <div class="grid-4">
+        <div class="product-family-tile product-family-ryzen">
+          <div class="product-family-tile-name">Ryzen™</div>
+          <div class="product-family-tile-sub">Consumer CPUs</div>
+          <p class="product-family-tile-desc">Gaming, creating, and everyday computing at its peak.</p>
+          <a href="#" class="btn btn-ryzen btn-sm mt-4">EXPLORE</a>
+        </div>
+        <div class="product-family-tile product-family-epyc">
+          <div class="product-family-tile-name">EPYC™</div>
+          <div class="product-family-tile-sub">Server CPUs</div>
+          <p class="product-family-tile-desc">Up to 192 cores per socket for the modern data center.</p>
+          <a href="#" class="btn btn-epyc btn-sm mt-4">EXPLORE</a>
+        </div>
+        <div class="product-family-tile product-family-radeon">
+          <div class="product-family-tile-name">Radeon™</div>
+          <div class="product-family-tile-sub">Gaming GPUs</div>
+          <p class="product-family-tile-desc">RDNA 4 architecture delivers cinematic gaming experiences.</p>
+          <a href="#" class="btn btn-radeon btn-sm mt-4">EXPLORE</a>
+        </div>
+        <div class="product-family-tile product-family-instinct">
+          <div class="product-family-tile-name">Instinct™</div>
+          <div class="product-family-tile-sub">AI Accelerators</div>
+          <p class="product-family-tile-desc">Purpose-built for AI training and inference at hyperscale.</p>
+          <a href="#" class="btn btn-instinct btn-sm mt-4">EXPLORE</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skeleton Loading -->
+    <section class="section-sm" aria-label="Skeleton loading cards" style="margin-bottom:var(--space-16);">
+      <h2 class="heading-3 mb-2">Skeleton Loading</h2>
+      <p class="body-sm mb-6">Shimmer loading placeholders for product card content. Used during async data fetches.</p>
+
+      <div class="grid-4">
+        <div style="background:var(--color-bg-surface-1);border:1px solid var(--color-border-subtle);overflow:hidden;">
+          <div style="height:4px;" class="skeleton"></div>
+          <div style="height:180px;" class="skeleton skeleton-image"></div>
+          <div style="padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-3);">
+            <div class="skeleton skeleton-text" style="width:50%;"></div>
+            <div class="skeleton skeleton-heading" style="width:70%;"></div>
+            <div class="skeleton skeleton-text" style="width:90%;"></div>
+            <div class="skeleton skeleton-text" style="width:75%;"></div>
+            <div class="skeleton skeleton-btn" style="width:100%;margin-top:var(--space-2);"></div>
+          </div>
+        </div>
+        <div style="background:var(--color-bg-surface-1);border:1px solid var(--color-border-subtle);overflow:hidden;">
+          <div style="height:4px;" class="skeleton"></div>
+          <div style="height:180px;" class="skeleton skeleton-image"></div>
+          <div style="padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-3);">
+            <div class="skeleton skeleton-text" style="width:45%;"></div>
+            <div class="skeleton skeleton-heading" style="width:65%;"></div>
+            <div class="skeleton skeleton-text" style="width:88%;"></div>
+            <div class="skeleton skeleton-text" style="width:72%;"></div>
+            <div class="skeleton skeleton-btn" style="width:100%;margin-top:var(--space-2);"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer-amd" role="contentinfo">
+  <div class="container-wide">
+    <div class="footer-bottom">
+      <p class="footer-legal">&copy; 2024 Advanced Micro Devices, Inc. All rights reserved.</p>
+      <ul class="footer-legal-links">
+        <li><a href="buttons.html" class="footer-legal-link">← Buttons</a></li>
+        <li><a href="forms.html" class="footer-legal-link">Forms →</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

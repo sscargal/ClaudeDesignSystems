@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buttons — AMD Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+</head>
+<body>
+
+<nav class="nav-amd" role="navigation" aria-label="AMD Design System Navigation">
+  <div class="container-wide">
+    <a href="../index.html" class="nav-brand" aria-label="AMD Design System Home">
+      <svg width="80" height="24" viewBox="0 0 80 24" fill="none" aria-hidden="true">
+        <polygon points="0,0 14,0 20,12 14,24 0,24 6,12" fill="#ED1C24"/>
+        <text x="26" y="17" font-family="Barlow, DM Sans, Inter, sans-serif" font-size="16" font-weight="800" fill="white" letter-spacing="1">AMD</text>
+      </svg>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="../index.html" class="nav-link">Overview</a></li>
+      <li><a href="buttons.html" class="nav-link is-active">Buttons</a></li>
+      <li><a href="cards.html" class="nav-link">Cards</a></li>
+      <li><a href="forms.html" class="nav-link">Forms</a></li>
+      <li><a href="navigation.html" class="nav-link">Navigation</a></li>
+      <li><a href="modals.html" class="nav-link">Modals</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main style="padding-top:calc(var(--nav-height) + var(--space-12));">
+
+  <div class="container-wide">
+
+    <div class="section-header" style="margin-bottom:var(--space-12);">
+      <p class="eyebrow">Components</p>
+      <h1 class="heading-1">Buttons</h1>
+      <p class="body" style="max-width:560px;">AMD buttons are sharp-cornered, bold, uppercase, and energetic. The primary AMD Red communicates urgency and power. All interactive states include red glow on focus.</p>
+    </div>
+
+    <!-- Primary -->
+    <section class="section-sm" aria-label="Primary button">
+      <h2 class="heading-3 mb-2">Primary — AMD Red</h2>
+      <p class="body-sm mb-6">Main call-to-action. Fills with AMD Red (#ED1C24), white uppercase text, 44px height. Hover darkens to red-dark with red glow box-shadow.</p>
+      <div class="flex items-center" style="gap:var(--space-4);flex-wrap:wrap;padding:var(--space-8);background:var(--color-bg-surface-1);border:1px solid var(--color-border-subtle);">
+        <button class="btn btn-primary btn-sm">BUY SM</button>
+        <button class="btn btn-primary">BUY NOW</button>
+        <button class="btn btn-primary btn-lg">BUY LARGE</button>
+        <button class="btn btn-primary btn-xl">BUY X-LARGE</button>
+        <button class="btn btn-primary" disabled>DISABLED</button>
+        <button class="btn btn-primary is-loading">LOADING</button>
+      </div>
+      <div style="margin-top:var(--space-4);padding:var(--space-4);background:var(--color-bg-surface-2);border:1px solid var(--color-border-subtle);">
+        <p class="mono" style="font-size:12px;color:var(--color-label-tertiary);">&lt;button class="btn btn-primary"&gt;BUY NOW&lt;/button&gt;</p>
+      </div>
+    </section>
+
+    <!-- Secondary -->
+    <section class="section-sm" aria-label="Secondary button">
+      <h2 class="heading-3 mb-2">Secondary — Outlined Red</h2>
+      <p class="body-sm mb-6">Transparent background, 2px red border, red text. Hover fills with AMD Red and switches text to white. Used for secondary CTAs alongside primary.</p>
+      <div class="flex items-center" style="gap:var(--space-4);flex-wrap:wrap;padding:var(--space-8);background:var(--color-bg-surface-1);border:1px solid var(--color-border-subtle);">
+        <button class="btn btn-secondary btn-sm">COMPARE SM</button>
+        <button class="btn btn-secondary">COMPARE</button>
+        <button class="btn btn-secondary btn-lg">COMPARE LARGE</button>
+        <button class="btn btn-secondary" disabled>DISABLED</button>
+      </div>
+      <div style="margin-top:var(--space-4);padding:var(--space-4);background:var(--color-bg-surface-2);border:1px solid var(--color-border-subtle);">
+        <p class="mono" style="font-size:12px;color:var(--color-label-tertiary);">&lt;button class="btn btn-secondary"&gt;COMPARE&lt;/button&gt;</p>
+      </div>
+    </section>
+
+    <!-- Outline -->
+    <section class="section-sm" aria-label="Outline button">
+      <h2 class="heading-3 mb-2">Outline — Surface Fill</h2>
+      <p class="body-sm mb-6">Surface-2 background, gray border, white text. Hover lifts to surface-3. Used for tertiary actions, comparison selectors.</p>
+      <div class="flex items-center" style="gap:var(--space-4);flex-wrap:wrap;padding:var(--space-8);background:var(--color-bg-surface-1);border:1px solid var(--color-border-subtle);">
+        <button class="btn btn-outline btn-sm">VIEW SPECS SM</button>
+        <button class="btn btn-outline">VIEW SPECS</button>
+        <button class="btn btn-outline btn-lg">VIEW SPECS LG</button>
+        <button class="btn btn-outline" disabled>DISABLED</button>
+      </div>
+    </section>
+
+    <!-- Ghost -->
+    <section class="section-sm" aria-label="Ghost button">
+      <h2 class="heading-3 mb-2">Ghost — Text Only</h2>
+      <p class="body-sm mb-6">Transparent, label-secondary color, no border. Hover shows surface-1 background. Best for low-emphasis actions.</p>
+      <div class="flex items-center" style="gap:var(--space-4);flex-wrap:wrap;padding:var(--space-8);background:var(--color-bg-surface-1);border:1px solid var(--color-border-subtle);">
+        <button class="btn btn-ghost btn-sm">DISMISS</button>
+        <button class="btn btn-ghost">LEARN MORE</button>
+        <button class="btn btn-ghost btn-lg">LEARN MORE LG</button>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-sm" aria-label="CTA button">
+      <h2 class="heading-3 mb-2">CTA — Hero Call-to-Action</h2>
+      <p class="body-sm mb-6">52px height, extra-bold weight, wide letter spacing. Designed for hero sections and product landing CTAs. Lifts on hover with red XL glow.</p>
+      <div style="padding:var(--space-12);background: linear-gradient(135deg,#0D0D0D 0%,#1A0A0A 100%);border:1px solid var(--color-border-subtle);text-align:center;">
+        <h2 class="display-large mb-6">RYZEN™ 9 9950X</h2>
+        <div class="flex justify-center" style="gap:var(--space-4);flex-wrap:wrap;">
+          <button class="btn btn-cta">BUY NOW — $649</button>
+          <button class="btn btn-white btn-lg">VIEW FULL SPECS</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- White -->
+    <section class="section-sm" aria-label="White button">
+      <h2 class="heading-3 mb-2">White — Dark Background</h2>
+      <p class="body-sm mb-6">Transparent background with white border and white text. Used as a secondary CTA on hero/dark sections alongside the red primary.</p>
+      <div style="padding:var(--space-8);background:#0D0D0D;border:1px solid var(--color-border-subtle);display:flex;gap:var(--space-4);flex-wrap:wrap;">
+        <button class="btn btn-white btn-sm">VIEW MORE</button>
+        <button class="btn btn-white">VIEW MORE</button>
+        <button class="btn btn-white btn-lg">VIEW MORE LG</button>
+      </div>
+    </section>
+
+    <!-- Sub-brand buttons -->
+    <section class="section-sm" aria-label="Sub-brand buttons">
+      <h2 class="heading-3 mb-2">Sub-brand Variants</h2>
+      <p class="body-sm mb-6">Each product family has a dedicated button color. Used within product family sections and product cards. Each has a matching glow on hover.</p>
+      <div class="flex" style="gap:var(--space-4);flex-wrap:wrap;padding:var(--space-8);background:var(--color-bg-surface-1);border:1px solid var(--color-border-subtle);">
+        <button class="btn btn-ryzen">SHOP RYZEN™</button>
+        <button class="btn btn-epyc">SHOP EPYC™</button>
+        <button class="btn btn-instinct">SHOP INSTINCT™</button>
+        <button class="btn btn-radeon">SHOP RADEON™</button>
+      </div>
+      <div class="flex" style="gap:var(--space-4);flex-wrap:wrap;padding:var(--space-8) var(--space-8) 0;background:var(--color-bg-surface-1);border:1px solid var(--color-border-subtle);border-top:0;">
+        <button class="btn btn-ryzen btn-sm">RYZEN SM</button>
+        <button class="btn btn-epyc btn-sm">EPYC SM</button>
+        <button class="btn btn-instinct btn-sm">INSTINCT SM</button>
+        <button class="btn btn-radeon btn-sm">RADEON SM</button>
+      </div>
+      <div class="flex" style="gap:var(--space-4);flex-wrap:wrap;padding:var(--space-4) var(--space-8) var(--space-8);background:var(--color-bg-surface-1);border:1px solid var(--color-border-subtle);border-top:0;">
+        <button class="btn btn-ryzen btn-lg">RYZEN LG</button>
+        <button class="btn btn-epyc btn-lg">EPYC LG</button>
+        <button class="btn btn-instinct btn-lg">INSTINCT LG</button>
+        <button class="btn btn-radeon btn-lg">RADEON LG</button>
+      </div>
+    </section>
+
+    <!-- Icon Buttons -->
+    <section class="section-sm" aria-label="Icon buttons">
+      <h2 class="heading-3 mb-2">Icon Buttons</h2>
+      <p class="body-sm mb-6">Square icon-only buttons for toolbar and nav actions. Width = height.</p>
+      <div class="flex items-center" style="gap:var(--space-4);flex-wrap:wrap;padding:var(--space-8);background:var(--color-bg-surface-1);border:1px solid var(--color-border-subtle);">
+        <button class="btn btn-primary btn-icon btn-sm" aria-label="Search">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="btn btn-primary btn-icon" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="btn btn-outline btn-icon" aria-label="Settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
+        <button class="btn btn-ghost btn-icon" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- Button Groups -->
+    <section class="section-sm" aria-label="Button groups">
+      <h2 class="heading-3 mb-2">Button Groups</h2>
+      <p class="body-sm mb-6">Combine buttons with .btn-group. Supports mixed variants.</p>
+      <div style="padding:var(--space-8);background:var(--color-bg-surface-1);border:1px solid var(--color-border-subtle);display:flex;flex-direction:column;gap:var(--space-6);">
+        <div class="btn-group">
+          <button class="btn btn-primary">BUY NOW</button>
+          <button class="btn btn-secondary">COMPARE</button>
+          <button class="btn btn-ghost">VIEW SPECS</button>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-primary btn-sm">ADD TO CART</button>
+          <button class="btn btn-outline btn-sm">WISHLIST</button>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-cta">SHOP RYZEN™ 9</button>
+          <button class="btn btn-white btn-lg" style="background:transparent;border-color:#FFFFFF;">LEARN MORE</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Token reference -->
+    <section class="section-sm" aria-label="Button token reference" style="margin-bottom:var(--space-16);">
+      <h2 class="heading-3 mb-6">Design Tokens</h2>
+      <div style="overflow-x:auto;">
+        <table class="spec-table-amd">
+          <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+          <tbody>
+            <tr class="spec-row"><td>--btn-height-sm</td><td class="mono">32px</td><td>Small button height</td></tr>
+            <tr class="spec-row"><td>--btn-height-md</td><td class="mono">44px</td><td>Default button height</td></tr>
+            <tr class="spec-row"><td>--btn-height-lg</td><td class="mono">52px</td><td>Large button height</td></tr>
+            <tr class="spec-row"><td>--btn-height-xl</td><td class="mono">64px</td><td>XL / hero button height</td></tr>
+            <tr class="spec-row"><td>--radius-button</td><td class="mono">0px</td><td>Sharp corners — AMD identity</td></tr>
+            <tr class="spec-row"><td>--color-amd-red</td><td class="mono">#ED1C24</td><td>Primary button fill</td></tr>
+            <tr class="spec-row"><td>--color-amd-red-dark</td><td class="mono">#C41017</td><td>Primary button hover</td></tr>
+            <tr class="spec-row"><td>--glow-red</td><td class="mono">0 0 24px rgba(237,28,36,0.30)</td><td>Hover glow effect</td></tr>
+            <tr class="spec-row"><td>--glow-red-xl</td><td class="mono">0 0 72px rgba(237,28,36,0.20)...</td><td>Focus / CTA glow</td></tr>
+            <tr class="spec-row"><td>--duration-fast</td><td class="mono">150ms</td><td>Button state transitions</td></tr>
+            <tr class="spec-row"><td>--ease-amd</td><td class="mono">cubic-bezier(0.4,0,0.2,1)</td><td>All button transitions</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer-amd" role="contentinfo">
+  <div class="container-wide">
+    <div class="footer-bottom">
+      <p class="footer-legal">&copy; 2024 Advanced Micro Devices, Inc. All rights reserved.</p>
+      <ul class="footer-legal-links">
+        <li><a href="../index.html" class="footer-legal-link">Design System Home</a></li>
+        <li><a href="cards.html" class="footer-legal-link">Cards →</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

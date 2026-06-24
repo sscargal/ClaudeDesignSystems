@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms — AMD Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+</head>
+<body>
+
+<nav class="nav-amd" role="navigation" aria-label="AMD Design System Navigation">
+  <div class="container-wide">
+    <a href="../index.html" class="nav-brand" aria-label="AMD Home">
+      <svg width="80" height="24" viewBox="0 0 80 24" fill="none" aria-hidden="true">
+        <polygon points="0,0 14,0 20,12 14,24 0,24 6,12" fill="#ED1C24"/>
+        <text x="26" y="17" font-family="Barlow, DM Sans, Inter, sans-serif" font-size="16" font-weight="800" fill="white" letter-spacing="1">AMD</text>
+      </svg>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="../index.html" class="nav-link">Overview</a></li>
+      <li><a href="buttons.html" class="nav-link">Buttons</a></li>
+      <li><a href="cards.html" class="nav-link">Cards</a></li>
+      <li><a href="forms.html" class="nav-link is-active">Forms</a></li>
+      <li><a href="navigation.html" class="nav-link">Navigation</a></li>
+      <li><a href="modals.html" class="nav-link">Modals</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main style="padding-top:calc(var(--nav-height) + var(--space-12));">
+  <div class="container-wide">
+
+    <div class="section-header" style="margin-bottom:var(--space-12);">
+      <p class="eyebrow">Components</p>
+      <h1 class="heading-1">Forms</h1>
+      <p class="body" style="max-width:560px;">AMD form elements are sharp-cornered, dark-surfaced, with AMD Red focus states. Labels are uppercase 12px bold, matching AMD's energetic type system. Focus triggers a 2px red border and soft red glow.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-12);align-items:start;">
+
+      <!-- Left Column: Input variants -->
+      <div>
+
+        <section class="section-sm" aria-label="Text inputs">
+          <h2 class="heading-3 mb-6">Text Inputs</h2>
+
+          <div style="display:flex;flex-direction:column;gap:var(--space-6);">
+
+            <!-- Default -->
+            <div class="form-group">
+              <label class="form-label" for="f-default">Default State</label>
+              <input class="input" type="text" id="f-default" placeholder="Enter processor model...">
+              <p class="form-hint">Search across AMD's full product lineup.</p>
+            </div>
+
+            <!-- Small -->
+            <div class="form-group">
+              <label class="form-label" for="f-small">Small Input</label>
+              <input class="input input-sm" type="text" id="f-small" placeholder="Filter by cores...">
+            </div>
+
+            <!-- Large -->
+            <div class="form-group">
+              <label class="form-label" for="f-large">Large Input</label>
+              <input class="input input-lg" type="text" id="f-large" placeholder="Find your processor...">
+            </div>
+
+            <!-- With value -->
+            <div class="form-group">
+              <label class="form-label required" for="f-value">Required — With Value</label>
+              <input class="input" type="text" id="f-value" value="Ryzen 9 9950X">
+            </div>
+
+            <!-- Error state -->
+            <div class="form-group">
+              <label class="form-label" for="f-error">Error State</label>
+              <input class="input is-error" type="text" id="f-error" value="Bad-Product-Code-123" aria-invalid="true" aria-describedby="f-error-msg">
+              <p class="form-error" id="f-error-msg">Product code not recognized. Please verify and try again.</p>
+            </div>
+
+            <!-- Success state -->
+            <div class="form-group">
+              <label class="form-label" for="f-success">Success State</label>
+              <input class="input is-success" type="text" id="f-success" value="AMD-RYZEN-9-9950X">
+              <p class="form-success">Product found: AMD Ryzen™ 9 9950X — In Stock</p>
+            </div>
+
+            <!-- Disabled -->
+            <div class="form-group">
+              <label class="form-label" for="f-disabled" style="opacity:0.5;">Disabled</label>
+              <input class="input" type="text" id="f-disabled" value="Not editable" disabled style="opacity:0.4;cursor:not-allowed;">
+            </div>
+
+            <!-- Search -->
+            <div class="form-group">
+              <label class="form-label" for="f-search">Search</label>
+              <input class="input input-search" type="search" id="f-search" placeholder="Search products, drivers, support...">
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <label class="form-label required" for="f-email">Email</label>
+              <input class="input" type="email" id="f-email" placeholder="engineer@company.com" autocomplete="email">
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+              <label class="form-label required" for="f-password">Password</label>
+              <input class="input" type="password" id="f-password" placeholder="AMD Account password">
+            </div>
+
+          </div>
+        </section>
+
+        <section class="section-sm" aria-label="Textarea">
+          <h2 class="heading-3 mb-6">Textarea</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="f-textarea">Support Message</label>
+            <textarea class="textarea" id="f-textarea" rows="5" placeholder="Describe your issue. Include your system specs, AMD product model, and operating system..."></textarea>
+            <p class="form-hint">Attaching system info speeds up resolution. See AMD Bug Report Tool.</p>
+          </div>
+        </section>
+
+        <section class="section-sm" aria-label="Select dropdown">
+          <h2 class="heading-3 mb-6">Select / Dropdown</h2>
+
+          <div style="display:flex;flex-direction:column;gap:var(--space-6);">
+
+            <div class="form-group">
+              <label class="form-label" for="f-select">Product Family</label>
+              <select class="select" id="f-select">
+                <option value="">Select a product family</option>
+                <option value="ryzen">Ryzen™ Processors</option>
+                <option value="epyc">EPYC™ Server Processors</option>
+                <option value="radeon">Radeon™ Graphics</option>
+                <option value="instinct">Instinct™ AI Accelerators</option>
+                <option value="threadripper">Ryzen™ Threadripper™ PRO</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="f-select-2">Socket Type</label>
+              <select class="select" id="f-select-2">
+                <option>AM5 (Consumer Desktop)</option>
+                <option>SP6 (EPYC Server)</option>
+                <option>sTR5 (Threadripper)</option>
+                <option>FP8 (Mobile)</option>
+              </select>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Right column: Controls, full form -->
+      <div>
+
+        <section class="section-sm" aria-label="Checkboxes">
+          <h2 class="heading-3 mb-6">Checkboxes</h2>
+
+          <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+
+            <p class="form-label" style="margin-bottom:var(--space-2);">Filter by Product Line</p>
+
+            <label class="checkbox-group">
+              <span class="checkbox"><input type="checkbox" checked><span class="checkbox-box"></span></span>
+              <span class="checkbox-label">Ryzen™ Processors</span>
+            </label>
+            <label class="checkbox-group">
+              <span class="checkbox"><input type="checkbox" checked><span class="checkbox-box"></span></span>
+              <span class="checkbox-label">EPYC™ Server Processors</span>
+            </label>
+            <label class="checkbox-group">
+              <span class="checkbox"><input type="checkbox"><span class="checkbox-box"></span></span>
+              <span class="checkbox-label">Radeon™ Graphics Cards</span>
+            </label>
+            <label class="checkbox-group">
+              <span class="checkbox"><input type="checkbox"><span class="checkbox-box"></span></span>
+              <span class="checkbox-label">Instinct™ AI Accelerators</span>
+            </label>
+            <label class="checkbox-group">
+              <span class="checkbox"><input type="checkbox" disabled><span class="checkbox-box" style="opacity:0.4;"></span></span>
+              <span class="checkbox-label" style="opacity:0.4;cursor:not-allowed;">Legacy Products (Discontinued)</span>
+            </label>
+
+          </div>
+        </section>
+
+        <section class="section-sm" aria-label="Radio buttons">
+          <h2 class="heading-3 mb-6">Radio Buttons</h2>
+
+          <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+
+            <p class="form-label" style="margin-bottom:var(--space-2);">Architecture Generation</p>
+
+            <label class="radio-group">
+              <span class="radio"><input type="radio" name="arch" checked><span class="radio-circle"></span></span>
+              <span class="radio-label">Zen 5 (Ryzen 9000 / EPYC 9005)</span>
+            </label>
+            <label class="radio-group">
+              <span class="radio"><input type="radio" name="arch"><span class="radio-circle"></span></span>
+              <span class="radio-label">Zen 4 (Ryzen 7000 / EPYC 9004)</span>
+            </label>
+            <label class="radio-group">
+              <span class="radio"><input type="radio" name="arch"><span class="radio-circle"></span></span>
+              <span class="radio-label">Zen 3 (Ryzen 5000)</span>
+            </label>
+            <label class="radio-group">
+              <span class="radio"><input type="radio" name="arch" disabled><span class="radio-circle" style="opacity:0.4;"></span></span>
+              <span class="radio-label" style="opacity:0.4;cursor:not-allowed;">Zen 2 (Ryzen 3000) — Legacy</span>
+            </label>
+
+          </div>
+        </section>
+
+        <section class="section-sm" aria-label="Toggle switches">
+          <h2 class="heading-3 mb-6">Toggle Switches</h2>
+
+          <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+
+            <label class="toggle-group">
+              <span class="toggle"><input type="checkbox" checked><span class="toggle-track"></span></span>
+              <span class="toggle-label">AMD Precision Boost 2 (Enabled)</span>
+            </label>
+            <label class="toggle-group">
+              <span class="toggle"><input type="checkbox" checked><span class="toggle-track"></span></span>
+              <span class="toggle-label">AMD Adrenalin Auto-Detect (Enabled)</span>
+            </label>
+            <label class="toggle-group">
+              <span class="toggle"><input type="checkbox"><span class="toggle-track"></span></span>
+              <span class="toggle-label">Show Legacy Drivers</span>
+            </label>
+            <label class="toggle-group">
+              <span class="toggle"><input type="checkbox"><span class="toggle-track"></span></span>
+              <span class="toggle-label">Email Notifications (Off)</span>
+            </label>
+
+          </div>
+        </section>
+
+        <!-- Full example form -->
+        <section class="section-sm" aria-label="Complete form example" style="margin-bottom:var(--space-16);">
+          <h2 class="heading-3 mb-6">Complete Form — Product Registration</h2>
+
+          <form style="display:flex;flex-direction:column;gap:var(--space-5);background:var(--color-bg-surface-1);border:1px solid var(--color-border-subtle);padding:var(--space-8);border-left:3px solid var(--color-amd-red);" novalidate>
+
+            <div style="margin-bottom:var(--space-2);">
+              <p class="heading-3" style="color:var(--color-amd-red);">Register Your Product</p>
+              <p class="body-sm">Activate your warranty and receive driver updates.</p>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label required" for="reg-name">Full Name</label>
+              <input class="input" type="text" id="reg-name" placeholder="First Last" autocomplete="name">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label required" for="reg-email">Email Address</label>
+              <input class="input" type="email" id="reg-email" placeholder="you@company.com" autocomplete="email">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label required" for="reg-product">Product Family</label>
+              <select class="select" id="reg-product">
+                <option value="">Choose product family</option>
+                <option>Ryzen™</option>
+                <option>EPYC™</option>
+                <option>Radeon™</option>
+                <option>Instinct™</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label required" for="reg-serial">Serial / SKU</label>
+              <input class="input" type="text" id="reg-serial" placeholder="100-000000XXXX">
+              <p class="form-hint">Found on product box or under tray sticker.</p>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-notes">Optional Notes</label>
+              <textarea class="textarea" id="reg-notes" rows="3" placeholder="System integrator, build date, use case..."></textarea>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+              <label class="checkbox-group">
+                <span class="checkbox"><input type="checkbox"><span class="checkbox-box"></span></span>
+                <span class="checkbox-label">I agree to AMD's Terms of Service and Privacy Policy</span>
+              </label>
+              <label class="checkbox-group">
+                <span class="checkbox"><input type="checkbox" checked><span class="checkbox-box"></span></span>
+                <span class="checkbox-label">Send me product announcements and driver updates</span>
+              </label>
+            </div>
+
+            <div style="display:flex;gap:var(--space-4);flex-wrap:wrap;padding-top:var(--space-2);">
+              <button type="submit" class="btn btn-primary">REGISTER PRODUCT</button>
+              <button type="reset" class="btn btn-ghost">CLEAR FORM</button>
+            </div>
+
+          </form>
+        </section>
+
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="footer-amd" role="contentinfo">
+  <div class="container-wide">
+    <div class="footer-bottom">
+      <p class="footer-legal">&copy; 2024 Advanced Micro Devices, Inc. All rights reserved.</p>
+      <ul class="footer-legal-links">
+        <li><a href="cards.html" class="footer-legal-link">← Cards</a></li>
+        <li><a href="navigation.html" class="footer-legal-link">Navigation →</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,533 @@
+/* =============================================================================
+   AMD Design System — Animations & Motion
+   Version 1.0.0 | Bold, kinetic AMD motion language
+   ============================================================================= */
+
+/* =============================================================================
+   KEYFRAMES
+   ============================================================================= */
+
+/* Fade In — universal entry */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fade Out */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Slide In Up — cards, modals, toasts */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide In Down */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide In Left — product reveal from left */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-48px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide In Right */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(48px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Reveal Left — dramatic product reveal using clip-path */
+@keyframes revealLeft {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0 0% 0 0);
+    opacity: 1;
+  }
+}
+
+/* Reveal from Bottom — for text lines */
+@keyframes revealUp {
+  from {
+    clip-path: inset(0 0 100% 0);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0 0 0% 0);
+    opacity: 1;
+  }
+}
+
+/* Red Glow — box-shadow pulse on AMD-branded elements */
+@keyframes redGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 12px rgba(237, 28, 36, 0.20),
+      0 0 24px rgba(237, 28, 36, 0.10);
+  }
+  50% {
+    box-shadow:
+      0 0 24px rgba(237, 28, 36, 0.50),
+      0 0 48px rgba(237, 28, 36, 0.25),
+      0 0 72px rgba(237, 28, 36, 0.10);
+  }
+}
+
+/* Red Pulse — color pulse for red text/icons */
+@keyframes redPulse {
+  0%, 100% {
+    color: var(--color-amd-red);
+    text-shadow: none;
+  }
+  50% {
+    color: var(--color-amd-red-light);
+    text-shadow: 0 0 16px rgba(237, 28, 36, 0.60);
+  }
+}
+
+/* Border Flare — red border glow sweep around an element */
+@keyframes borderFlare {
+  0% {
+    box-shadow:
+      0 0 0 1px transparent,
+      0 0 0 rgba(237, 28, 36, 0);
+    border-color: var(--color-border-default);
+  }
+  40% {
+    box-shadow:
+      0 0 0 1px var(--color-amd-red),
+      0 0 16px rgba(237, 28, 36, 0.40);
+    border-color: var(--color-amd-red);
+  }
+  100% {
+    box-shadow:
+      0 0 0 1px rgba(237, 28, 36, 0.30),
+      0 0 24px rgba(237, 28, 36, 0.15);
+    border-color: rgba(237, 28, 36, 0.40);
+  }
+}
+
+/* Scanline — horizontal scan line moving down the element */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Shimmer — skeleton loading placeholder */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Count Up — benchmark number reveal animation */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Spin — loading spinner */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Scale In — modal / popover entry */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Diagonal Wipe — AMD-style reveal with red diagonal */
+@keyframes diagonalWipe {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+/* Red Bar Fill — performance bar fill animation */
+@keyframes barFill {
+  from {
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+}
+
+/* Flicker — CRT/tech aesthetic for hero scanlines */
+@keyframes flicker {
+  0%, 98%, 100% { opacity: 1; }
+  99%           { opacity: 0.85; }
+}
+
+/* Pulse Scale — for "Winner" badges and CTA attention */
+@keyframes pulseScale {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.06); }
+}
+
+/* Gradient Shift — animated gradient backgrounds */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* =============================================================================
+   ANIMATION UTILITY CLASSES
+   ============================================================================= */
+
+/* Fade */
+.animate-fade-in {
+  animation: fadeIn var(--duration-normal) var(--ease-amd) both;
+}
+
+.animate-fade-out {
+  animation: fadeOut var(--duration-normal) var(--ease-amd) both;
+}
+
+/* Slide entries */
+.animate-slide-up {
+  animation: slideInUp var(--duration-normal) var(--ease-amd) both;
+}
+
+.animate-slide-down {
+  animation: slideInDown var(--duration-fast) var(--ease-amd) both;
+}
+
+.animate-slide-left {
+  animation: slideInLeft var(--duration-normal) var(--ease-amd) both;
+}
+
+.animate-slide-right {
+  animation: slideInRight var(--duration-normal) var(--ease-amd) both;
+}
+
+/* Dramatic reveal */
+.animate-reveal-left {
+  animation: revealLeft var(--duration-slow) var(--ease-out-strong) both;
+}
+
+.animate-reveal-up {
+  animation: revealUp var(--duration-slow) var(--ease-out-strong) both;
+}
+
+/* Scale in */
+.animate-scale-in {
+  animation: scaleIn var(--duration-normal) var(--ease-spring) both;
+}
+
+/* AMD Red signature effects */
+.animate-red-glow {
+  animation: redGlow 2.5s var(--ease-amd) infinite;
+}
+
+.animate-red-pulse {
+  animation: redPulse 2s var(--ease-amd) infinite;
+}
+
+.animate-border-flare {
+  animation: borderFlare var(--duration-slow) var(--ease-amd) forwards;
+}
+
+/* Scanline effect */
+.animate-scanline {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-scanline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(237, 28, 36, 0.60) 30%,
+    rgba(237, 28, 36, 0.80) 50%,
+    rgba(237, 28, 36, 0.60) 70%,
+    transparent 100%
+  );
+  animation: scanline 3s linear infinite;
+  pointer-events: none;
+  z-index: var(--z-raised);
+}
+
+/* Shimmer / skeleton */
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-surface-1) 0%,
+    var(--color-bg-surface-3) 50%,
+    var(--color-bg-surface-1) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s var(--ease-linear) infinite;
+}
+
+/* Count up reveal */
+.animate-count-up {
+  animation: countUp var(--duration-slow) var(--ease-spring) both;
+}
+
+/* Loading spinner */
+.animate-spin {
+  animation: spin 0.8s var(--ease-linear) infinite;
+}
+
+/* Performance bar */
+.animate-bar-fill {
+  animation: barFill var(--duration-slow) var(--ease-out-strong) both;
+}
+
+/* Attention pulse */
+.animate-pulse-scale {
+  animation: pulseScale 1.5s var(--ease-amd) infinite;
+}
+
+/* =============================================================================
+   DELAY UTILITIES
+   ============================================================================= */
+
+.delay-100  { animation-delay: 100ms; }
+.delay-150  { animation-delay: 150ms; }
+.delay-200  { animation-delay: 200ms; }
+.delay-300  { animation-delay: 300ms; }
+.delay-400  { animation-delay: 400ms; }
+.delay-500  { animation-delay: 500ms; }
+.delay-600  { animation-delay: 600ms; }
+.delay-700  { animation-delay: 700ms; }
+.delay-800  { animation-delay: 800ms; }
+.delay-1000 { animation-delay: 1000ms; }
+.delay-1200 { animation-delay: 1200ms; }
+
+/* =============================================================================
+   DURATION UTILITIES
+   ============================================================================= */
+
+.duration-fast    { animation-duration: var(--duration-fast); }
+.duration-normal  { animation-duration: var(--duration-normal); }
+.duration-slow    { animation-duration: var(--duration-slow); }
+.duration-dramatic { animation-duration: var(--duration-dramatic); }
+
+/* =============================================================================
+   SKELETON LOADING
+   ============================================================================= */
+
+.skeleton {
+  background: var(--color-bg-surface-2);
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  position: relative;
+}
+
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.04) 40%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.04) 60%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+.skeleton-text {
+  height: 16px;
+  margin-bottom: var(--space-2);
+  border-radius: var(--radius-xs);
+}
+
+.skeleton-text.sm   { height: 12px; }
+.skeleton-text.lg   { height: 22px; }
+.skeleton-heading   { height: 32px; margin-bottom: var(--space-3); }
+.skeleton-image     { height: 200px; border-radius: 0; }
+.skeleton-btn       { height: 44px; width: 140px; border-radius: 0; }
+
+/* =============================================================================
+   TRANSITION UTILITIES
+   ============================================================================= */
+
+.transition-fast     { transition: var(--transition-fast); }
+.transition-normal   { transition: var(--transition-normal); }
+.transition-slow     { transition: var(--transition-slow); }
+.transition-glow     { transition: var(--transition-glow); }
+.transition-none     { transition: none; }
+
+/* =============================================================================
+   SCROLL-TRIGGERED ANIMATIONS (JavaScript-free defaults)
+   These classes are applied by JS intersection observer in production,
+   but default to visible so they work without JS
+   ============================================================================= */
+
+.on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--duration-slow) var(--ease-amd),
+    transform var(--duration-slow) var(--ease-amd);
+}
+
+.on-scroll.visible,
+.on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.on-scroll-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition:
+    opacity var(--duration-slow) var(--ease-amd),
+    transform var(--duration-slow) var(--ease-amd);
+}
+
+.on-scroll-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* =============================================================================
+   HOVER EFFECTS — AMD Signature Interactions
+   ============================================================================= */
+
+/* Red glow on hover — for product cards, featured elements */
+.hover-red-glow {
+  transition: var(--transition-glow);
+}
+
+.hover-red-glow:hover {
+  box-shadow: var(--glow-red-xl);
+}
+
+/* Lift on hover */
+.hover-lift {
+  transition:
+    transform var(--duration-fast) var(--ease-amd),
+    box-shadow var(--duration-normal) var(--ease-amd);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Red border appear on hover */
+.hover-red-border {
+  border: 1px solid var(--color-border-default);
+  transition: var(--transition-normal);
+}
+
+.hover-red-border:hover {
+  border-color: var(--color-amd-red);
+  box-shadow: 0 0 0 1px var(--color-amd-red), var(--glow-red);
+}
+
+/* =============================================================================
+   PREFERS-REDUCED-MOTION
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-scanline::after,
+  .animate-shimmer::after,
+  .skeleton::after {
+    animation: none;
+  }
+
+  .on-scroll,
+  .on-scroll-left {
+    opacity: 1;
+    transform: none;
+  }
+}

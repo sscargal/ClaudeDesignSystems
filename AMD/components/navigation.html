@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation — AMD Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+</head>
+<body>
+
+<nav class="nav-amd" role="navigation" aria-label="AMD Design System Navigation">
+  <div class="container-wide">
+    <a href="../index.html" class="nav-brand" aria-label="AMD Home">
+      <svg width="80" height="24" viewBox="0 0 80 24" fill="none" aria-hidden="true">
+        <polygon points="0,0 14,0 20,12 14,24 0,24 6,12" fill="#ED1C24"/>
+        <text x="26" y="17" font-family="Barlow, DM Sans, Inter, sans-serif" font-size="16" font-weight="800" fill="white" letter-spacing="1">AMD</text>
+      </svg>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="../index.html" class="nav-link">Overview</a></li>
+      <li><a href="buttons.html" class="nav-link">Buttons</a></li>
+      <li><a href="cards.html" class="nav-link">Cards</a></li>
+      <li><a href="forms.html" class="nav-link">Forms</a></li>
+      <li><a href="navigation.html" class="nav-link is-active">Navigation</a></li>
+      <li><a href="modals.html" class="nav-link">Modals</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main style="padding-top:calc(var(--nav-height) + var(--space-12));">
+  <div class="container-wide">
+
+    <div class="section-header" style="margin-bottom:var(--space-12);">
+      <p class="eyebrow">Components</p>
+      <h1 class="heading-1">Navigation</h1>
+      <p class="body" style="max-width:560px;">AMD's global navigation system. Near-black background, AMD logo left, product family links center in 12px uppercase bold, actions right. Mega menu with 4 product family columns, each sub-brand colored.</p>
+    </div>
+
+    <!-- Global Nav Anatomy -->
+    <section class="section-sm" aria-label="Global navigation">
+      <h2 class="heading-3 mb-2">Global Navigation Bar</h2>
+      <p class="body-sm mb-6">Fixed, 64px height, #0D0D0D background, 1px bottom border. Scrolls behind content. Logo + wordmark left, product family links center (uppercase 12px, 0.10em tracking), search + cart icons right.</p>
+
+      <!-- Nav demo (non-fixed, in context) -->
+      <div style="background:var(--color-bg);border:1px solid var(--color-border-subtle);overflow:hidden;">
+        <div style="display:flex;align-items:center;height:64px;padding:0 var(--space-8);gap:var(--space-8);border-bottom:1px solid var(--color-border-subtle);">
+
+          <!-- Logo -->
+          <a href="#" style="display:flex;align-items:center;flex-shrink:0;text-decoration:none;" aria-label="AMD">
+            <svg width="80" height="24" viewBox="0 0 80 24" fill="none" aria-hidden="true">
+              <polygon points="0,0 14,0 20,12 14,24 0,24 6,12" fill="#ED1C24"/>
+              <text x="26" y="17" font-family="Barlow, DM Sans, Inter, sans-serif" font-size="16" font-weight="800" fill="white" letter-spacing="1">AMD</text>
+            </svg>
+          </a>
+
+          <!-- Links -->
+          <ul style="display:flex;align-items:center;gap:4px;list-style:none;flex:1;" role="list">
+            <li><a href="#" class="nav-link is-active">PROCESSORS</a></li>
+            <li><a href="#" class="nav-link">GRAPHICS</a></li>
+            <li><a href="#" class="nav-link">WORKSTATIONS</a></li>
+            <li><a href="#" class="nav-link">SERVERS</a></li>
+            <li><a href="#" class="nav-link">AI &amp; INSTINCT</a></li>
+            <li><a href="#" class="nav-link">SUPPORT</a></li>
+          </ul>
+
+          <!-- Actions -->
+          <div style="display:flex;align-items:center;gap:var(--space-3);margin-left:auto;">
+            <button class="nav-action-btn" aria-label="Search">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </button>
+            <button class="nav-action-btn" aria-label="Cart">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Mega Menu -->
+    <section class="section-sm" aria-label="Mega menu dropdown">
+      <h2 class="heading-3 mb-2">Mega Menu — Processors</h2>
+      <p class="body-sm mb-6">4-column grid dropdown. Each column represents a product family with its sub-brand color header. Appears on hover/click of nav items. Dark surface-1 background.</p>
+
+      <div style="background:var(--color-bg-surface-1);border:1px solid var(--color-border-subtle);">
+        <div style="padding:var(--space-8);display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-8);">
+
+          <div class="nav-product-column">
+            <div class="nav-product-column-header ryzen">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><circle cx="5" cy="5" r="5"/></svg>
+              Ryzen™ Processors
+            </div>
+            <a href="#" class="nav-dropdown-link">Ryzen™ 9000 Series</a>
+            <a href="#" class="nav-dropdown-link">Ryzen™ 7000 Series</a>
+            <a href="#" class="nav-dropdown-link">Ryzen™ AI 300 Series</a>
+            <a href="#" class="nav-dropdown-link">Ryzen™ Threadripper™ PRO</a>
+            <a href="#" class="nav-dropdown-link">Ryzen™ Mobile</a>
+            <a href="#" class="nav-dropdown-link" style="color:var(--color-ryzen);margin-top:var(--space-3);">View All Ryzen™ →</a>
+          </div>
+
+          <div class="nav-product-column">
+            <div class="nav-product-column-header epyc">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><circle cx="5" cy="5" r="5"/></svg>
+              EPYC™ Processors
+            </div>
+            <a href="#" class="nav-dropdown-link">EPYC™ 9005 Series (Turin)</a>
+            <a href="#" class="nav-dropdown-link">EPYC™ 9004 Series (Genoa)</a>
+            <a href="#" class="nav-dropdown-link">EPYC™ 7003 Series (Milan)</a>
+            <a href="#" class="nav-dropdown-link">EPYC™ Embedded</a>
+            <a href="#" class="nav-dropdown-link">Data Center Solutions</a>
+            <a href="#" class="nav-dropdown-link" style="color:var(--color-epyc);margin-top:var(--space-3);">View All EPYC™ →</a>
+          </div>
+
+          <div class="nav-product-column">
+            <div class="nav-product-column-header radeon">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><circle cx="5" cy="5" r="5"/></svg>
+              Radeon™ Graphics
+            </div>
+            <a href="#" class="nav-dropdown-link">Radeon™ RX 9000 Series</a>
+            <a href="#" class="nav-dropdown-link">Radeon™ RX 7000 Series</a>
+            <a href="#" class="nav-dropdown-link">Radeon™ PRO W Series</a>
+            <a href="#" class="nav-dropdown-link">AMD Software: Adrenalin</a>
+            <a href="#" class="nav-dropdown-link">FreeSync™ Premium</a>
+            <a href="#" class="nav-dropdown-link" style="color:var(--color-radeon);margin-top:var(--space-3);">View All Radeon™ →</a>
+          </div>
+
+          <div class="nav-product-column">
+            <div class="nav-product-column-header instinct">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><circle cx="5" cy="5" r="5"/></svg>
+              Instinct™ AI
+            </div>
+            <a href="#" class="nav-dropdown-link">Instinct™ MI325X</a>
+            <a href="#" class="nav-dropdown-link">Instinct™ MI300X</a>
+            <a href="#" class="nav-dropdown-link">Instinct™ MI250X</a>
+            <a href="#" class="nav-dropdown-link">ROCm™ Open Software</a>
+            <a href="#" class="nav-dropdown-link">AI Cloud Partners</a>
+            <a href="#" class="nav-dropdown-link" style="color:var(--color-instinct);margin-top:var(--space-3);">View All Instinct™ →</a>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Breadcrumbs -->
+    <section class="section-sm" aria-label="Breadcrumbs">
+      <h2 class="heading-3 mb-6">Breadcrumbs</h2>
+
+      <div style="display:flex;flex-direction:column;gap:var(--space-6);">
+
+        <!-- Standard -->
+        <div style="padding:var(--space-4);background:var(--color-bg-surface-1);border:1px solid var(--color-border-subtle);">
+          <p class="caption" style="margin-bottom:var(--space-2);color:var(--color-label-tertiary);">Processor Detail Page</p>
+          <nav aria-label="Breadcrumb example 1">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">AMD.com</a></li>
+              <li class="breadcrumb-item"><a href="#">Processors</a></li>
+              <li class="breadcrumb-item"><a href="#">Ryzen™ 9000 Series</a></li>
+              <li class="breadcrumb-item">Ryzen™ 9 9950X</li>
+            </ol>
+          </nav>
+        </div>
+
+        <!-- Server -->
+        <div style="padding:var(--space-4);background:var(--color-bg-surface-1);border:1px solid var(--color-border-subtle);">
+          <p class="caption" style="margin-bottom:var(--space-2);color:var(--color-label-tertiary);">Server Products</p>
+          <nav aria-label="Breadcrumb example 2">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">AMD.com</a></li>
+              <li class="breadcrumb-item"><a href="#">Data Center</a></li>
+              <li class="breadcrumb-item"><a href="#">EPYC™ Processors</a></li>
+              <li class="breadcrumb-item"><a href="#">EPYC™ 9005 Series</a></li>
+              <li class="breadcrumb-item">EPYC™ 9965P</li>
+            </ol>
+          </nav>
+        </div>
+
+        <!-- Support -->
+        <div style="padding:var(--space-4);background:var(--color-bg-surface-1);border:1px solid var(--color-border-subtle);">
+          <p class="caption" style="margin-bottom:var(--space-2);color:var(--color-label-tertiary);">Support Pages</p>
+          <nav aria-label="Breadcrumb example 3">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">AMD.com</a></li>
+              <li class="breadcrumb-item"><a href="#">Support</a></li>
+              <li class="breadcrumb-item"><a href="#">Drivers &amp; Downloads</a></li>
+              <li class="breadcrumb-item">Radeon™ Software Adrenalin 24.12.1</li>
+            </ol>
+          </nav>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Logo Variants -->
+    <section class="section-sm" aria-label="Logo variants">
+      <h2 class="heading-3 mb-6">Logo / Brand Mark</h2>
+      <p class="body-sm mb-6">The AMD logo approximation: red chevron/polygon mark + AMD wordmark in 800-weight Barlow. Replace with licensed AMD SVG asset in production.</p>
+
+      <div style="display:flex;flex-direction:column;gap:var(--space-8);">
+
+        <!-- Sizes -->
+        <div style="padding:var(--space-8);background:var(--color-bg-surface-1);border:1px solid var(--color-border-subtle);display:flex;flex-wrap:wrap;gap:var(--space-8);align-items:center;">
+
+          <!-- SM -->
+          <div style="text-align:center;">
+            <a href="#" class="brand-logo brand-logo-sm" aria-label="AMD">
+              <svg width="56" height="17" viewBox="0 0 80 24" fill="none" aria-hidden="true">
+                <polygon points="0,0 14,0 20,12 14,24 0,24 6,12" fill="#ED1C24"/>
+                <text x="26" y="17" font-family="Barlow, DM Sans, Inter, sans-serif" font-size="16" font-weight="800" fill="white" letter-spacing="1">AMD</text>
+              </svg>
+            </a>
+            <p class="caption" style="margin-top:var(--space-2);">SM — 56×17px</p>
+          </div>
+
+          <!-- MD -->
+          <div style="text-align:center;">
+            <a href="#" class="brand-logo brand-logo-md" aria-label="AMD">
+              <svg width="80" height="24" viewBox="0 0 80 24" fill="none" aria-hidden="true">
+                <polygon points="0,0 14,0 20,12 14,24 0,24 6,12" fill="#ED1C24"/>
+                <text x="26" y="17" font-family="Barlow, DM Sans, Inter, sans-serif" font-size="16" font-weight="800" fill="white" letter-spacing="1">AMD</text>
+              </svg>
+            </a>
+            <p class="caption" style="margin-top:var(--space-2);">MD — 80×24px (default)</p>
+          </div>
+
+          <!-- LG -->
+          <div style="text-align:center;">
+            <a href="#" class="brand-logo brand-logo-lg" aria-label="AMD">
+              <svg width="112" height="34" viewBox="0 0 80 24" fill="none" aria-hidden="true">
+                <polygon points="0,0 14,0 20,12 14,24 0,24 6,12" fill="#ED1C24"/>
+                <text x="26" y="17" font-family="Barlow, DM Sans, Inter, sans-serif" font-size="16" font-weight="800" fill="white" letter-spacing="1">AMD</text>
+              </svg>
+            </a>
+            <p class="caption" style="margin-top:var(--space-2);">LG — 112×34px</p>
+          </div>
+
+          <!-- XL -->
+          <div style="text-align:center;">
+            <a href="#" class="brand-logo brand-logo-xl" aria-label="AMD">
+              <svg width="160" height="48" viewBox="0 0 80 24" fill="none" aria-hidden="true">
+                <polygon points="0,0 14,0 20,12 14,24 0,24 6,12" fill="#ED1C24"/>
+                <text x="26" y="17" font-family="Barlow, DM Sans, Inter, sans-serif" font-size="16" font-weight="800" fill="white" letter-spacing="1">AMD</text>
+              </svg>
+            </a>
+            <p class="caption" style="margin-top:var(--space-2);">XL — 160×48px</p>
+          </div>
+
+        </div>
+
+        <!-- Light background variant -->
+        <div style="padding:var(--space-8);background:#F5F5F5;border:1px solid var(--color-border-subtle);display:flex;align-items:center;gap:var(--space-8);">
+          <a href="#" class="brand-logo brand-logo-md" aria-label="AMD">
+            <svg width="80" height="24" viewBox="0 0 80 24" fill="none" aria-hidden="true">
+              <polygon points="0,0 14,0 20,12 14,24 0,24 6,12" fill="#ED1C24"/>
+              <text x="26" y="17" font-family="Barlow, DM Sans, Inter, sans-serif" font-size="16" font-weight="800" fill="#0D0D0D" letter-spacing="1">AMD</text>
+            </svg>
+          </a>
+          <p class="caption" style="color:#555;">Light background — wordmark in #0D0D0D</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Tab / Section Nav -->
+    <section class="section-sm" aria-label="Section navigation" style="margin-bottom:var(--space-16);">
+      <h2 class="heading-3 mb-6">Section / Tab Navigation</h2>
+
+      <!-- Tab bar -->
+      <div style="border-bottom:1px solid var(--color-border-subtle);margin-bottom:var(--space-8);">
+        <nav aria-label="Product tabs" style="display:flex;gap:0;">
+          <a href="#" style="padding:var(--space-3) var(--space-6);font-family:var(--font-display);font-size:var(--text-13);font-weight:var(--weight-bold);letter-spacing:0.08em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;border-bottom:2px solid var(--color-amd-red);margin-bottom:-1px;">Overview</a>
+          <a href="#" style="padding:var(--space-3) var(--space-6);font-family:var(--font-display);font-size:var(--text-13);font-weight:var(--weight-bold);letter-spacing:0.08em;text-transform:uppercase;color:var(--color-label-tertiary);text-decoration:none;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color 150ms;">Specifications</a>
+          <a href="#" style="padding:var(--space-3) var(--space-6);font-family:var(--font-display);font-size:var(--text-13);font-weight:var(--weight-bold);letter-spacing:0.08em;text-transform:uppercase;color:var(--color-label-tertiary);text-decoration:none;border-bottom:2px solid transparent;margin-bottom:-1px;">Compare</a>
+          <a href="#" style="padding:var(--space-3) var(--space-6);font-family:var(--font-display);font-size:var(--text-13);font-weight:var(--weight-bold);letter-spacing:0.08em;text-transform:uppercase;color:var(--color-label-tertiary);text-decoration:none;border-bottom:2px solid transparent;margin-bottom:-1px;">Support</a>
+        </nav>
+      </div>
+
+      <!-- Pagination demo -->
+      <h3 class="heading-3 mb-4" style="font-size:var(--text-16);">Pagination</h3>
+      <div style="display:flex;align-items:center;gap:var(--space-2);">
+        <button class="btn btn-ghost btn-sm" aria-label="Previous page" disabled>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <button class="btn btn-primary btn-sm" aria-current="page">1</button>
+        <button class="btn btn-outline btn-sm">2</button>
+        <button class="btn btn-outline btn-sm">3</button>
+        <button class="btn btn-ghost btn-sm">…</button>
+        <button class="btn btn-outline btn-sm">12</button>
+        <button class="btn btn-ghost btn-sm" aria-label="Next page">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer-amd" role="contentinfo">
+  <div class="container-wide">
+    <div class="footer-bottom">
+      <p class="footer-legal">&copy; 2024 Advanced Micro Devices, Inc. All rights reserved.</p>
+      <ul class="footer-legal-links">
+        <li><a href="forms.html" class="footer-legal-link">← Forms</a></li>
+        <li><a href="modals.html" class="footer-legal-link">Modals →</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
