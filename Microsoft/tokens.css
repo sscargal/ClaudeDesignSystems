@@ -1,0 +1,306 @@
+/* =============================================================================
+   Microsoft Fluent Design System — Design Tokens
+   Version 1.0.0 | Built on Fluent 2 Design Language
+   Reference: fluent2.microsoft.design
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     COLOR SYSTEM — Light Mode
+     Based on Fluent 2 Color Ramp
+     --------------------------------------------------------------------------- */
+
+  /* Brand / Accent Colors */
+  --color-brand:              #0078D4;
+  --color-brand-hover:        #106EBE;
+  --color-brand-pressed:      #005A9E;
+  --color-brand-light:        #2899F5;
+  --color-brand-dark:         #005A9E;
+  --color-communication:      #0063B1;
+  --color-brand-tint-10:      #C7E0F4;
+  --color-brand-tint-20:      #DEECF9;
+  --color-brand-tint-30:      #EFF6FC;
+  --color-brand-shade-10:     #106EBE;
+  --color-brand-shade-20:     #005A9E;
+  --color-brand-shade-30:     #004578;
+
+  /* Background Layers — Light */
+  --color-bg-base:            #FFFFFF;
+  --color-bg-layer-1:         #F3F3F3;
+  --color-bg-layer-2:         #FFFFFF;
+  --color-bg-layer-3:         #F9F9F9;
+  --color-bg-subtle:          #FAFAFA;
+  --color-bg-canvas:          #EBEBEB;
+
+  /* Surface Fills — Light */
+  --fill-default:             rgba(255, 255, 255, 1.0);
+  --fill-secondary:           rgba(243, 243, 243, 0.5);
+  --fill-tertiary:            rgba(243, 243, 243, 0.3);
+  --fill-quaternary:          rgba(243, 243, 243, 0.2);
+  --fill-subtle:              rgba(0, 0, 0, 0.04);
+  --fill-moderate:            rgba(0, 0, 0, 0.06);
+  --fill-strong:              rgba(0, 0, 0, 0.09);
+  --fill-accent-default:      #0078D4;
+  --fill-accent-secondary:    rgba(0, 120, 212, 0.15);
+  --fill-accent-tertiary:     rgba(0, 120, 212, 0.1);
+  --fill-caution:             rgba(121, 117, 0, 0.15);
+  --fill-critical:            rgba(196, 43, 28, 0.1);
+  --fill-success:             rgba(16, 124, 16, 0.1);
+
+  /* Text Labels — Light */
+  --label-primary:            #242424;
+  --label-secondary:          #616161;
+  --label-tertiary:           #A19F9D;
+  --label-disabled:           rgba(0, 0, 0, 0.36);
+  --label-on-accent:          #FFFFFF;
+  --label-placeholder:        #A19F9D;
+  --label-brand:              #0078D4;
+
+  /* Stroke / Border — Light */
+  --stroke-default:           #E0E0E0;
+  --stroke-strong:            #BDBDBD;
+  --stroke-subtle:            #F0F0F0;
+  --stroke-focus:             #0078D4;
+  --stroke-focus-inner:       #FFFFFF;
+  --stroke-divider:           rgba(0, 0, 0, 0.08);
+  --stroke-accent:            #0078D4;
+  --stroke-caution:           #797500;
+  --stroke-critical:          #C42B1C;
+  --stroke-success:           #107C10;
+
+  /* Status Colors */
+  --color-success:            #107C10;
+  --color-success-tint:       rgba(16, 124, 16, 0.1);
+  --color-warning:            #797500;
+  --color-warning-tint:       rgba(121, 117, 0, 0.1);
+  --color-error:              #C42B1C;
+  --color-error-tint:         rgba(196, 43, 28, 0.1);
+  --color-info:               #0078D4;
+  --color-info-tint:          rgba(0, 120, 212, 0.1);
+
+  /* Acrylic Material — Light */
+  --material-acrylic-tint:    rgba(243, 243, 243, 0.85);
+  --material-acrylic-filter:  blur(30px) saturate(125%);
+  --material-acrylic-stroke:  #E0E0E0;
+
+  /* Mica Material — Light (approximation, requires OS-level support) */
+  --material-mica-tint:       rgba(250, 250, 250, 0.9);
+  --material-mica-filter:     blur(60px) saturate(150%);
+
+  /* Shadow / Depth */
+  --depth-2:                  0 1px 2px rgba(0, 0, 0, 0.14), 0 0 2px rgba(0, 0, 0, 0.12);
+  --depth-4:                  0 2px 4px rgba(0, 0, 0, 0.14), 0 0 2px rgba(0, 0, 0, 0.12);
+  --depth-8:                  0 4px 8px rgba(0, 0, 0, 0.14), 0 0 2px rgba(0, 0, 0, 0.12);
+  --depth-16:                 0 8px 16px rgba(0, 0, 0, 0.14), 0 0 2px rgba(0, 0, 0, 0.12);
+  --depth-64:                 0 32px 64px rgba(0, 0, 0, 0.24), 0 2px 8px rgba(0, 0, 0, 0.14);
+
+  /* ---------------------------------------------------------------------------
+     TYPOGRAPHY — Segoe UI Variable
+     --------------------------------------------------------------------------- */
+
+  --font-base:    "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: "Segoe UI Variable Display", "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+  --font-mono:    "Cascadia Code", "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  /* Fluent 2 Type Scale */
+  --text-40:   40px;
+  --text-32:   32px;
+  --text-28:   28px;
+  --text-24:   24px;
+  --text-20:   20px;
+  --text-18:   18px;
+  --text-16:   16px;
+  --text-14:   14px;
+  --text-13:   13px;
+  --text-12:   12px;
+  --text-10:   10px;
+
+  /* Font Weights */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* Line Heights */
+  --leading-display:  1.2;
+  --leading-title:    1.25;
+  --leading-body:     1.5;
+  --leading-caption:  1.4;
+  --leading-dense:    1.35;
+
+  /* Letter Spacing */
+  --tracking-display: -0.015em;
+  --tracking-title:    0em;
+  --tracking-body:     0em;
+  --tracking-caption:  0.02em;
+  --tracking-caps:     0.06em;
+
+  /* ---------------------------------------------------------------------------
+     SPACING — 4px Base Grid
+     --------------------------------------------------------------------------- */
+
+  --space-0-5:   2px;
+  --space-1:     4px;
+  --space-1-5:   6px;
+  --space-2:     8px;
+  --space-2-5:  10px;
+  --space-3:    12px;
+  --space-4:    16px;
+  --space-5:    20px;
+  --space-6:    24px;
+  --space-8:    32px;
+  --space-10:   40px;
+  --space-12:   48px;
+  --space-16:   64px;
+  --space-20:   80px;
+  --space-24:   96px;
+
+  /* ---------------------------------------------------------------------------
+     BORDER RADIUS
+     --------------------------------------------------------------------------- */
+
+  --radius-none:   0px;
+  --radius-sm:     2px;
+  --radius-md:     4px;      /* Default — controls, inputs */
+  --radius-lg:     6px;
+  --radius-xl:     8px;      /* Cards */
+  --radius-2xl:   12px;      /* Flyouts, dialogs */
+  --radius-circle: 9999px;   /* Pills, avatars */
+
+  --radius-button:  var(--radius-md);
+  --radius-card:    var(--radius-xl);
+  --radius-input:   var(--radius-md);
+  --radius-flyout:  var(--radius-2xl);
+  --radius-badge:   var(--radius-circle);
+
+  /* ---------------------------------------------------------------------------
+     MOTION — Fluent Connected Motion
+     --------------------------------------------------------------------------- */
+
+  /* Durations */
+  --duration-ultra-fast:  83ms;
+  --duration-fast:       150ms;
+  --duration-moderate:   250ms;
+  --duration-slow:       350ms;
+  --duration-ultra-slow: 500ms;
+
+  /* Easing Curves */
+  --ease-fluent:       cubic-bezier(0.1, 0.9, 0.2, 1.0);   /* Entrance (decelerate) */
+  --ease-accelerate:   cubic-bezier(0.9, 0.1, 1.0, 0.2);   /* Exit */
+  --ease-standard:     cubic-bezier(0.8, 0.0, 0.2, 1.0);   /* Within screen */
+  --ease-linear:       linear;
+
+  /* Transitions */
+  --transition-fast:     all var(--duration-fast) var(--ease-fluent);
+  --transition-moderate: all var(--duration-moderate) var(--ease-fluent);
+  --transition-slow:     all var(--duration-slow) var(--ease-fluent);
+
+  /* ---------------------------------------------------------------------------
+     COMPONENT DIMENSIONS
+     --------------------------------------------------------------------------- */
+
+  --btn-height-sm:     24px;
+  --btn-height-md:     32px;
+  --btn-height-lg:     40px;
+  --input-height-sm:   24px;
+  --input-height-md:   32px;
+  --input-height-lg:   40px;
+  --nav-rail-width:    48px;
+  --nav-sidebar-width: 320px;
+  --nav-bar-height:    48px;
+  --command-bar-height: 40px;
+  --pivot-height:      44px;
+  --max-width-site:    1280px;
+  --max-width-content: 960px;
+
+  /* ---------------------------------------------------------------------------
+     Z-INDEX LAYERS
+     --------------------------------------------------------------------------- */
+
+  --z-base:      0;
+  --z-raised:    10;
+  --z-dropdown:  100;
+  --z-sticky:    200;
+  --z-overlay:   300;
+  --z-modal:     400;
+  --z-flyout:    500;
+  --z-toast:     600;
+  --z-tooltip:   700;
+}
+
+/* =============================================================================
+   DARK MODE — Fluent Dark Theme
+   ============================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+
+    /* Background Layers — Dark */
+    --color-bg-base:            #202020;
+    --color-bg-layer-1:         #2C2C2C;
+    --color-bg-layer-2:         #383838;
+    --color-bg-layer-3:         #272727;
+    --color-bg-subtle:          #252525;
+    --color-bg-canvas:          #1A1A1A;
+
+    /* Surface Fills — Dark */
+    --fill-default:             rgba(255, 255, 255, 0.06);
+    --fill-secondary:           rgba(255, 255, 255, 0.08);
+    --fill-tertiary:            rgba(255, 255, 255, 0.06);
+    --fill-quaternary:          rgba(255, 255, 255, 0.04);
+    --fill-subtle:              rgba(255, 255, 255, 0.05);
+    --fill-moderate:            rgba(255, 255, 255, 0.08);
+    --fill-strong:              rgba(255, 255, 255, 0.12);
+    --fill-accent-default:      #0078D4;
+    --fill-accent-secondary:    rgba(0, 120, 212, 0.25);
+    --fill-accent-tertiary:     rgba(0, 120, 212, 0.15);
+
+    /* Text Labels — Dark */
+    --label-primary:            rgba(255, 255, 255, 0.95);
+    --label-secondary:          rgba(255, 255, 255, 0.63);
+    --label-tertiary:           rgba(255, 255, 255, 0.45);
+    --label-disabled:           rgba(255, 255, 255, 0.28);
+    --label-on-accent:          #FFFFFF;
+    --label-placeholder:        rgba(255, 255, 255, 0.45);
+    --label-brand:              #2899F5;
+
+    /* Stroke / Border — Dark */
+    --stroke-default:           #3D3D3D;
+    --stroke-strong:            #525252;
+    --stroke-subtle:            #2D2D2D;
+    --stroke-focus:             #2899F5;
+    --stroke-focus-inner:       #1A1A1A;
+    --stroke-divider:           rgba(255, 255, 255, 0.08);
+    --stroke-accent:            #2899F5;
+    --stroke-caution:           #9D9300;
+    --stroke-critical:          #E37166;
+    --stroke-success:           #54B054;
+
+    /* Status Colors — Dark */
+    --color-success:            #54B054;
+    --color-success-tint:       rgba(84, 176, 84, 0.15);
+    --color-warning:            #9D9300;
+    --color-warning-tint:       rgba(157, 147, 0, 0.15);
+    --color-error:              #E37166;
+    --color-error-tint:         rgba(227, 113, 102, 0.15);
+    --color-info:               #2899F5;
+    --color-info-tint:          rgba(40, 153, 245, 0.15);
+
+    /* Acrylic Material — Dark (Mica-like) */
+    --material-acrylic-tint:    rgba(32, 32, 32, 0.9);
+    --material-acrylic-filter:  blur(60px) saturate(150%);
+    --material-acrylic-stroke:  #3D3D3D;
+
+    /* Mica Material — Dark */
+    --material-mica-tint:       rgba(26, 26, 26, 0.85);
+    --material-mica-filter:     blur(60px) saturate(150%);
+
+    /* Depth Shadows — Dark (stronger) */
+    --depth-2:                  0 1px 2px rgba(0, 0, 0, 0.40), 0 0 2px rgba(0, 0, 0, 0.30);
+    --depth-4:                  0 2px 4px rgba(0, 0, 0, 0.44), 0 0 2px rgba(0, 0, 0, 0.30);
+    --depth-8:                  0 4px 8px rgba(0, 0, 0, 0.48), 0 0 2px rgba(0, 0, 0, 0.30);
+    --depth-16:                 0 8px 16px rgba(0, 0, 0, 0.52), 0 0 4px rgba(0, 0, 0, 0.30);
+    --depth-64:                 0 32px 64px rgba(0, 0, 0, 0.64), 0 2px 8px rgba(0, 0, 0, 0.40);
+  }
+}

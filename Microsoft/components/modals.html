@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modals & Dialogs — Microsoft Fluent Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .page-wrap { min-height: 100vh; }
+    .page-header {
+      padding: var(--space-10) 0 var(--space-8);
+      border-bottom: 1px solid var(--stroke-divider);
+      margin-bottom: var(--space-10);
+    }
+    .back-link {
+      display: inline-flex; align-items: center; gap: var(--space-1-5);
+      font-size: var(--text-14); color: var(--color-brand); text-decoration: none;
+      margin-bottom: var(--space-5); transition: opacity var(--duration-fast) var(--ease-fluent);
+    }
+    .back-link:hover { opacity: 0.75; text-decoration: none; }
+    .showcase-block { margin-bottom: var(--space-12); }
+    .showcase-block-title { font-size: var(--text-20); font-weight: var(--weight-semibold); color: var(--label-primary); margin-bottom: var(--space-1); font-family: var(--font-display); }
+    .showcase-block-desc { font-size: var(--text-14); color: var(--label-secondary); margin-bottom: var(--space-5); line-height: 1.5; }
+    .section-divider { height: 1px; background: var(--stroke-divider); margin: var(--space-12) 0; }
+
+    .dialog-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: var(--space-6);
+    }
+    .dialog-demo-bg {
+      background: linear-gradient(135deg, rgba(0,120,212,0.04), rgba(40,153,245,0.04));
+      border-radius: var(--radius-xl);
+      padding: var(--space-8) var(--space-5);
+      border: 1px solid var(--stroke-default);
+      display: flex;
+      justify-content: center;
+    }
+    .flyout-demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-6);
+      align-items: flex-start;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <div class="container" style="padding-top:var(--space-8);padding-bottom:var(--space-16);">
+
+    <div class="page-header">
+      <a href="../index.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Fluent Design System
+      </a>
+      <h1 style="font-size:var(--text-40);font-weight:var(--weight-semibold);letter-spacing:-0.015em;margin-bottom:var(--space-3);">Dialogs &amp; Flyouts</h1>
+      <p style="font-size:var(--text-16);color:var(--label-secondary);max-width:560px;line-height:1.6;">
+        Fluent dialogs use a scaleIn entrance animation, depth-64 shadow, and a 12px radius — matching the flyout pattern.
+        Flyouts (menus, dropdowns, context menus) use the same surface and depth-16 shadow.
+      </p>
+    </div>
+
+    <!-- DIALOGS -->
+    <div class="showcase-block">
+      <div class="showcase-block-title">Dialog variants</div>
+      <div class="showcase-block-desc">Four semantic dialog types: informational, confirmation, danger (destructive), and success. Each uses a colored icon and matching action buttons.</div>
+
+      <div class="dialog-gallery">
+        <!-- Informational -->
+        <div class="dialog-demo-bg">
+          <div class="dialog" style="position:static;animation:none;max-width:360px;width:100%;">
+            <div class="dialog-header">
+              <div class="dialog-icon">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                  <circle cx="18" cy="18" r="16" fill="rgba(0,120,212,0.1)"/>
+                  <path d="M18 11v8M18 22v2" stroke="#0078D4" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="dialog-title">What's new in June</div>
+            </div>
+            <div class="dialog-body">
+              We've updated the design system with 14 new components, improved dark mode contrast, and added Windows 11 Mica material support across all surface tokens.
+            </div>
+            <div class="dialog-actions">
+              <button class="btn btn-subtle">Dismiss</button>
+              <button class="btn btn-accent">View release notes</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Confirmation -->
+        <div class="dialog-demo-bg">
+          <div class="dialog" style="position:static;animation:none;max-width:360px;width:100%;">
+            <div class="dialog-header">
+              <div class="dialog-icon">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                  <circle cx="18" cy="18" r="16" fill="rgba(121,117,0,0.1)"/>
+                  <path d="M10 18l6 6 10-10" stroke="#797500" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="dialog-title">Confirm action</div>
+            </div>
+            <div class="dialog-body">
+              You're about to move <strong>12 files</strong> to the <strong>Archive</strong> folder. Archived files won't appear in search results but can be restored at any time.
+            </div>
+            <div class="dialog-actions">
+              <button class="btn btn-subtle">Cancel</button>
+              <button class="btn btn-accent" style="background:var(--color-warning);border-color:var(--color-warning);">Move to archive</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Delete / Danger -->
+        <div class="dialog-demo-bg">
+          <div class="dialog" style="position:static;animation:none;max-width:360px;width:100%;">
+            <div class="dialog-header">
+              <div class="dialog-icon">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                  <circle cx="18" cy="18" r="16" fill="rgba(196,43,28,0.1)"/>
+                  <path d="M18 11v8M18 22v2" stroke="#C42B1C" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="dialog-title">Delete this team?</div>
+            </div>
+            <div class="dialog-body">
+              <strong>Contoso Design System</strong> and all its channels, files, and conversations will be permanently deleted. Members will lose access immediately.
+              <br><br>
+              This action <strong>cannot be undone</strong>.
+            </div>
+            <div class="dialog-actions">
+              <button class="btn btn-subtle">Cancel</button>
+              <button class="btn btn-danger">Delete team</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success -->
+        <div class="dialog-demo-bg">
+          <div class="dialog" style="position:static;animation:none;max-width:360px;width:100%;">
+            <div class="dialog-header">
+              <div class="dialog-icon">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                  <circle cx="18" cy="18" r="16" fill="rgba(16,124,16,0.1)"/>
+                  <path d="M11 18l5.5 5.5 9-9" stroke="#107C10" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="dialog-title">File shared successfully</div>
+            </div>
+            <div class="dialog-body">
+              <strong>Brand Guidelines 2026.pdf</strong> has been shared with 5 people. Each recipient will receive an email with a link to view the document.
+            </div>
+            <div class="dialog-actions">
+              <button class="btn btn-subtle">Copy link</button>
+              <button class="btn btn-accent" style="background:var(--color-success);border-color:var(--color-success);">Done</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- WIDE DIALOG / FORM DIALOG -->
+    <div class="showcase-block">
+      <div class="showcase-block-title">Wide dialog with form</div>
+      <div class="showcase-block-desc">The <code style="font-family:var(--font-mono);font-size:0.85em;background:var(--fill-subtle);border:1px solid var(--stroke-default);padding:1px 5px;border-radius:3px;">.dialog--wide</code> variant accommodates settings forms, detail views, and multi-step flows up to 640px.</div>
+
+      <div class="dialog-demo-bg" style="padding:var(--space-6);">
+        <div class="dialog dialog--wide" style="position:static;animation:none;width:100%;">
+          <div class="dialog-header">
+            <div class="dialog-title">Invite people</div>
+          </div>
+          <div class="dialog-body">
+            <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+              <div class="input-group">
+                <label class="input-label" for="m-invite">Name or email address</label>
+                <div class="input-wrapper has-prefix">
+                  <div class="input-prefix">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                  </div>
+                  <input type="text" id="m-invite" class="input" placeholder="Search by name or email…">
+                </div>
+              </div>
+              <div>
+                <div class="input-label" style="margin-bottom:var(--space-2);">Permission level</div>
+                <div style="display:flex;flex-direction:column;gap:var(--space-2);">
+                  <label class="radio"><input type="radio" name="perm" checked><div class="radio-circle"></div><span class="radio-label"><strong>Can view</strong> — Read-only access</span></label>
+                  <label class="radio"><input type="radio" name="perm"><div class="radio-circle"></div><span class="radio-label"><strong>Can edit</strong> — Full editing access</span></label>
+                  <label class="radio"><input type="radio" name="perm"><div class="radio-circle"></div><span class="radio-label"><strong>Owner</strong> — Can manage permissions</span></label>
+                </div>
+              </div>
+              <div class="input-group">
+                <label class="input-label" for="m-msg">Add a message <span style="font-weight:400;color:var(--label-tertiary);">(optional)</span></label>
+                <textarea id="m-msg" class="textarea" rows="2" placeholder="Hi! I'd like to share this document with you…"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="dialog-actions">
+            <label class="checkbox" style="margin-right:auto;">
+              <input type="checkbox" checked>
+              <div class="checkbox-box"></div>
+              <span class="checkbox-label">Send email notification</span>
+            </label>
+            <button class="btn btn-subtle">Cancel</button>
+            <button class="btn btn-accent">Send invite</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- FLYOUTS -->
+    <div class="showcase-block">
+      <div class="showcase-block-title">Flyout / Context Menu</div>
+      <div class="showcase-block-desc">Flyouts surface contextual actions. They use depth-16 shadow, 12px radius, and animate in with <code style="font-family:var(--font-mono);font-size:0.85em;">slideInDown</code>.</div>
+
+      <div class="flyout-demo-row">
+        <!-- Basic context menu -->
+        <div>
+          <div style="font-size:var(--text-12);font-weight:var(--weight-semibold);color:var(--label-tertiary);text-transform:uppercase;letter-spacing:var(--tracking-caps);margin-bottom:var(--space-3);">Context menu</div>
+          <div class="flyout" style="position:static;animation:none;">
+            <button class="flyout-item">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Open
+              <span class="flyout-item-shortcut">↵</span>
+            </button>
+            <button class="flyout-item">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M11.5 2.5l2 2L6 12H4v-2l7.5-7.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+              Rename
+              <span class="flyout-item-shortcut">F2</span>
+            </button>
+            <button class="flyout-item">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M3 9H2a1 1 0 01-1-1V2a1 1 0 011-1h6a1 1 0 011 1v1" stroke="currentColor" stroke-width="1.2"/></svg>
+              Copy
+              <span class="flyout-item-shortcut">⌘C</span>
+            </button>
+            <button class="flyout-item">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Share…
+            </button>
+            <button class="flyout-item">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.5 4H14l-3.7 2.7 1.4 4.3L8 10.5l-3.7 2.5 1.4-4.3L2 6h4.5L8 2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+              Add to favorites
+            </button>
+            <div class="flyout-separator"></div>
+            <button class="flyout-item">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Version history
+            </button>
+            <button class="flyout-item">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M8 5v3.5l2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              Properties
+            </button>
+            <div class="flyout-separator"></div>
+            <button class="flyout-item dangerous">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 5h10l-1 8H4L3 5zM1 5h14M6 5V3h4v2" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+              Delete
+              <span class="flyout-item-shortcut" style="color:var(--color-error);">Del</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Share flyout -->
+        <div>
+          <div style="font-size:var(--text-12);font-weight:var(--weight-semibold);color:var(--label-tertiary);text-transform:uppercase;letter-spacing:var(--tracking-caps);margin-bottom:var(--space-3);">Share flyout</div>
+          <div class="flyout" style="position:static;animation:none;min-width:260px;">
+            <div style="padding:var(--space-4) var(--space-3) var(--space-2);">
+              <div style="font-size:var(--text-14);font-weight:var(--weight-semibold);margin-bottom:var(--space-3);">Share document</div>
+              <div class="input-wrapper has-prefix" style="margin-bottom:var(--space-3);">
+                <div class="input-prefix">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="5.5" cy="5.5" r="4" stroke="currentColor" stroke-width="1.2"/><path d="M8.5 8.5L12 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                </div>
+                <input type="text" class="input input--sm" placeholder="Name or email…" style="border-radius:var(--radius-circle);padding-left:var(--space-7);">
+              </div>
+            </div>
+            <div class="flyout-separator" style="margin:0;"></div>
+            <div class="flyout-section-label">Quick share</div>
+            <button class="flyout-item">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 2L1 7.5l5 2L10 14l4-12z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+              Send link via email
+            </button>
+            <button class="flyout-item">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M3 9H2a1 1 0 01-1-1V2a1 1 0 011-1h6a1 1 0 011 1v1" stroke="currentColor" stroke-width="1.2"/></svg>
+              Copy link
+            </button>
+            <button class="flyout-item">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="12" cy="4" r="2" stroke="currentColor" stroke-width="1.2"/><circle cx="4" cy="8" r="2" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="1.2"/><path d="M5.8 9l4.4 2M5.8 7l4.4-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              Manage permissions…
+            </button>
+          </div>
+        </div>
+
+        <!-- Toolbar dropdown -->
+        <div>
+          <div style="font-size:var(--text-12);font-weight:var(--weight-semibold);color:var(--label-tertiary);text-transform:uppercase;letter-spacing:var(--tracking-caps);margin-bottom:var(--space-3);">Sort dropdown</div>
+          <div class="flyout" style="position:static;animation:none;min-width:200px;">
+            <div class="flyout-section-label">Sort by</div>
+            <button class="flyout-item" style="justify-content:space-between;">
+              Name
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l4 4 4-4" stroke="var(--color-brand)" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <button class="flyout-item">Date modified</button>
+            <button class="flyout-item">Date created</button>
+            <button class="flyout-item">File size</button>
+            <button class="flyout-item">Type</button>
+            <div class="flyout-separator"></div>
+            <div class="flyout-section-label">Order</div>
+            <button class="flyout-item" style="justify-content:space-between;">
+              Ascending (A → Z)
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 7l3 3 3-3" stroke="var(--color-brand)" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <button class="flyout-item">Descending (Z → A)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- TEACHING CALLOUT -->
+    <div class="showcase-block">
+      <div class="showcase-block-title">Teaching Callout (Coachmark)</div>
+      <div class="showcase-block-desc">Teaching callouts guide users to new features during first-run experiences. They use a colored top border to match the feature's brand color and an arrow pointer toward the target element.</div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:var(--space-6);align-items:flex-start;padding:var(--space-8);background:var(--fill-subtle);border-radius:var(--radius-xl);border:1px solid var(--stroke-default);">
+        <div class="callout callout--arrow-top">
+          <button class="callout-close" aria-label="Close">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2l8 8M10 2L2 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="callout-title">Step 1 of 3 — Command Bar</div>
+          <div class="callout-body">The Command Bar gives you quick access to the most common actions. Click any button to perform the action, or the chevron (▾) to see more options.</div>
+          <div class="callout-actions">
+            <button class="btn btn-accent btn--sm">Next</button>
+            <button class="btn btn-subtle btn--sm">Skip tour</button>
+          </div>
+        </div>
+
+        <div class="callout" style="border-top-color:var(--color-success);">
+          <button class="callout-close" aria-label="Close">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2l8 8M10 2L2 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="callout-title" style="color:var(--color-success);">New: Real-time collaboration</div>
+          <div class="callout-body">Multiple people can now edit this document at the same time. You'll see their cursors and changes as they happen — no refresh needed.</div>
+          <div class="callout-actions">
+            <button class="btn btn-accent btn--sm" style="background:var(--color-success);border-color:var(--color-success);">Try it</button>
+            <button class="btn btn-subtle btn--sm">Dismiss</button>
+          </div>
+        </div>
+
+        <div class="callout" style="border-top-color:var(--color-brand-light);max-width:260px;">
+          <button class="callout-close" aria-label="Close">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2l8 8M10 2L2 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="callout-title">Keyboard shortcut</div>
+          <div class="callout-body">
+            Press <kbd style="font-size:11px;background:var(--fill-subtle);border:1px solid var(--stroke-default);border-radius:3px;padding:1px 5px;font-family:var(--font-mono);">⌘ K</kbd> to open the command palette and instantly navigate to any file, person, or action.
+          </div>
+          <div class="callout-actions">
+            <button class="btn btn-accent btn--sm">Got it</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

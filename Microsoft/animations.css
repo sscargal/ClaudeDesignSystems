@@ -1,0 +1,439 @@
+/* =============================================================================
+   Microsoft Fluent Design System — Animations & Motion
+   Version 1.0.0 | Fluent Connected Motion Language
+   Reference: fluent2.microsoft.design/design-principles/motion
+   ============================================================================= */
+
+/* =============================================================================
+   KEYFRAMES
+   ============================================================================= */
+
+/* --- Fade --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* --- Slide — Fluent page transitions --- */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* --- Scale / Dialog entrance --- */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+}
+
+/* --- Reveal In — Fluent connected reveal for navigation transitions --- */
+@keyframes revealIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* --- Expand — for accordion / expanders --- */
+@keyframes expandDown {
+  from {
+    opacity: 0;
+    transform: scaleY(0.8);
+    transform-origin: top;
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+}
+
+/* --- Shimmer — skeleton loading --- */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+/* --- Spinner — circular progress --- */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* --- Progress bar indeterminate --- */
+@keyframes progressIndeterminate {
+  0%   { transform: translateX(-100%); width: 40%; }
+  50%  { transform: translateX(80%); width: 60%; }
+  100% { transform: translateX(300%); width: 40%; }
+}
+
+/* --- Pulse --- */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+/* --- Bounce — for notifications --- */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  40%       { transform: translateY(-6px); }
+  60%       { transform: translateY(-3px); }
+}
+
+/* --- Toast / notification slide in --- */
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes toastOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/* --- Ripple (button press feedback) --- */
+@keyframes ripple {
+  0%   { transform: scale(0); opacity: 0.5; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* --- Reveal Highlight (mouse-tracking glow, CSS-only approximation) --- */
+@keyframes revealGlow {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* --- Gradient shift (hero background) --- */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- Content stagger (enter) --- */
+@keyframes staggerFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =============================================================================
+   ANIMATION UTILITY CLASSES
+   ============================================================================= */
+
+/* Fade */
+.animate-fade-in        { animation: fadeIn var(--duration-moderate) var(--ease-fluent) both; }
+.animate-fade-out       { animation: fadeOut var(--duration-fast) var(--ease-accelerate) both; }
+.animate-fade-in-up     { animation: fadeInUp var(--duration-moderate) var(--ease-fluent) both; }
+.animate-fade-in-down   { animation: fadeInDown var(--duration-moderate) var(--ease-fluent) both; }
+.animate-fade-in-left   { animation: fadeInLeft var(--duration-moderate) var(--ease-fluent) both; }
+.animate-fade-in-right  { animation: fadeInRight var(--duration-moderate) var(--ease-fluent) both; }
+
+/* Slide */
+.animate-slide-in-down  { animation: slideInDown var(--duration-moderate) var(--ease-fluent) both; }
+.animate-slide-in-up    { animation: slideInUp var(--duration-moderate) var(--ease-fluent) both; }
+.animate-slide-in-right { animation: slideInRight var(--duration-moderate) var(--ease-fluent) both; }
+.animate-slide-out-down { animation: slideOutDown var(--duration-fast) var(--ease-accelerate) both; }
+
+/* Scale */
+.animate-scale-in       { animation: scaleIn var(--duration-moderate) var(--ease-fluent) both; }
+.animate-scale-out      { animation: scaleOut var(--duration-fast) var(--ease-accelerate) both; }
+.animate-reveal-in      { animation: revealIn var(--duration-slow) var(--ease-fluent) both; }
+
+/* Ongoing */
+.animate-spin           { animation: spin 1s var(--ease-linear) infinite; }
+.animate-pulse          { animation: pulse 2s ease-in-out infinite; }
+.animate-bounce         { animation: bounce 0.6s var(--ease-fluent); }
+
+/* Toast */
+.animate-toast-in       { animation: toastIn var(--duration-moderate) var(--ease-fluent) both; }
+.animate-toast-out      { animation: toastOut var(--duration-fast) var(--ease-accelerate) both; }
+
+/* Gradient */
+.animate-gradient {
+  background-size: 300% 300%;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* =============================================================================
+   STAGGER DELAYS — For orchestrated content entrance
+   ============================================================================= */
+
+.delay-50   { animation-delay: 50ms; }
+.delay-83   { animation-delay: 83ms; }
+.delay-100  { animation-delay: 100ms; }
+.delay-150  { animation-delay: 150ms; }
+.delay-200  { animation-delay: 200ms; }
+.delay-250  { animation-delay: 250ms; }
+.delay-300  { animation-delay: 300ms; }
+.delay-350  { animation-delay: 350ms; }
+.delay-400  { animation-delay: 400ms; }
+.delay-500  { animation-delay: 500ms; }
+
+/* =============================================================================
+   TRANSITION UTILITIES
+   ============================================================================= */
+
+.transition-none     { transition: none; }
+.transition-fast     { transition: var(--transition-fast); }
+.transition-moderate { transition: var(--transition-moderate); }
+.transition-slow     { transition: var(--transition-slow); }
+
+/* =============================================================================
+   SHIMMER / SKELETON LOADING — Fluent Placeholder State
+   ============================================================================= */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--fill-subtle) 25%,
+    var(--fill-moderate) 50%,
+    var(--fill-subtle) 75%
+  );
+  background-size: 400px 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+.skeleton-text {
+  height: 1em;
+  margin-bottom: 0.5em;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-text.short  { width: 35%; }
+.skeleton-text.medium { width: 60%; }
+.skeleton-text.long   { width: 85%; }
+
+.skeleton-circle {
+  border-radius: var(--radius-circle);
+}
+
+.skeleton-rect {
+  border-radius: var(--radius-xl);
+}
+
+/* =============================================================================
+   HOVER EFFECT UTILITIES
+   ============================================================================= */
+
+.hover-lift {
+  transition: transform var(--duration-fast) var(--ease-fluent),
+              box-shadow var(--duration-fast) var(--ease-fluent);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--depth-8);
+}
+
+.hover-scale {
+  transition: transform var(--duration-fast) var(--ease-fluent);
+}
+
+.hover-scale:hover  { transform: scale(1.02); }
+.hover-scale:active { transform: scale(0.98); }
+
+/* =============================================================================
+   RIPPLE EFFECT
+   ============================================================================= */
+
+.ripple-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(0);
+  animation: ripple 0.5s linear;
+  pointer-events: none;
+}
+
+/* =============================================================================
+   REVEAL HIGHLIGHT — Fluent Signature Effect
+   CSS-only approximation of mouse-tracking glow border
+   ============================================================================= */
+
+.reveal-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.reveal-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-fluent);
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(0, 120, 212, 0.5) 0%,
+    rgba(0, 120, 212, 0.2) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.reveal-border:hover::before {
+  opacity: 1;
+}
+
+.reveal-border > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* =============================================================================
+   REDUCED MOTION — Respect System Preference
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .skeleton {
+    animation: none;
+    background: var(--fill-subtle);
+  }
+
+  .animate-gradient {
+    animation: none;
+  }
+
+  .animate-spin {
+    animation: none;
+  }
+}

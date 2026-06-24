@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Microsoft Fluent Design System — A production-quality design system built on Fluent 2.">
+  <title>Microsoft Fluent Design System</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="typography.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    :root { scroll-behavior: smooth; }
+
+    /* ── Page shell ── */
+    .page-shell {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ── Section spacing ── */
+    .showcase-section {
+      padding: var(--space-16) 0;
+      border-bottom: 1px solid var(--stroke-divider);
+    }
+    .showcase-section:last-of-type { border-bottom: none; }
+
+    /* ── Color palette ── */
+    .palette-group { margin-bottom: var(--space-8); }
+    .palette-label {
+      font-size: var(--text-12);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--label-tertiary);
+      margin-bottom: var(--space-3);
+    }
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: var(--space-3);
+    }
+    .swatch { display: flex; flex-direction: column; gap: var(--space-1); }
+    .swatch-color {
+      height: 56px;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .swatch-name { font-size: var(--text-12); font-weight: var(--weight-semibold); color: var(--label-primary); }
+    .swatch-hex  { font-size: var(--text-10); font-family: var(--font-mono); color: var(--label-tertiary); }
+
+    /* ── Type specimen ── */
+    .type-specimen {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-8);
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--stroke-divider);
+    }
+    .type-specimen:last-child { border-bottom: none; }
+    .type-meta { width: 160px; flex-shrink: 0; }
+    .type-meta-name { font-size: var(--text-13); font-weight: var(--weight-semibold); color: var(--label-secondary); }
+    .type-meta-spec { font-size: var(--text-11); font-family: var(--font-mono); color: var(--label-tertiary); margin-top: 2px; }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--color-bg-base);
+      padding: var(--space-20) 0 var(--space-16);
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 60% -10%, rgba(0,120,212,0.12) 0%, transparent 60%),
+                  radial-gradient(ellipse 50% 40% at 90% 80%, rgba(40,153,245,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 620px;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-12);
+      font-weight: var(--weight-semibold);
+      color: var(--color-brand);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-caps);
+      margin-bottom: var(--space-4);
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: var(--weight-semibold);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--label-primary);
+      margin-bottom: var(--space-5);
+    }
+    .hero-title .accent {
+      background: linear-gradient(135deg, var(--color-brand), var(--color-brand-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-subtitle {
+      font-size: var(--text-18);
+      color: var(--label-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-8);
+      max-width: 540px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    /* Windows 11 desktop mockup */
+    .desktop-mockup {
+      position: relative;
+      width: 520px;
+      height: 340px;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, #0f3460, #16213e, #1a1a2e);
+      box-shadow: var(--depth-64);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .desktop-wallpaper {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 60%, rgba(0,120,212,0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(40,153,245,0.25) 0%, transparent 45%),
+        linear-gradient(160deg, #0c1b33 0%, #1a2744 40%, #0d1b2a 100%);
+    }
+    .desktop-taskbar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: rgba(32,32,32,0.85);
+      backdrop-filter: blur(20px) saturate(150%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 0 8px;
+    }
+    .taskbar-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .taskbar-icon-start {
+      background: linear-gradient(135deg, #0078d4, #2899f5);
+    }
+    .taskbar-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.6); }
+    .taskbar-apps { display: flex; align-items: center; gap: 4px; }
+    .taskbar-app {
+      width: 28px;
+      height: 28px;
+      border-radius: 5px;
+      opacity: 0.85;
+    }
+    .taskbar-clock {
+      position: absolute;
+      right: 8px;
+      font-size: 10px;
+      color: rgba(255,255,255,0.9);
+    }
+    /* Floating window on mockup */
+    .desktop-window {
+      position: absolute;
+      top: 20px;
+      left: 16px;
+      width: 240px;
+      background: rgba(243,243,243,0.92);
+      backdrop-filter: blur(30px) saturate(125%);
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      overflow: hidden;
+    }
+    .window-titlebar {
+      height: 28px;
+      background: rgba(255,255,255,0.8);
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      gap: 6px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .window-controls { display: flex; gap: 4px; margin-left: auto; }
+    .win-btn {
+      width: 16px;
+      height: 16px;
+      border-radius: 2px;
+      background: rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      color: rgba(0,0,0,0.5);
+    }
+    .win-btn-close { background: #c42b1c; color: white; }
+    .window-title { font-size: 10px; font-weight: 600; color: #242424; }
+    .window-body { padding: 8px; }
+    .window-list-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 6px;
+      border-radius: 4px;
+      font-size: 10px;
+      color: #242424;
+      margin-bottom: 2px;
+    }
+    .window-list-item.active { background: rgba(0,120,212,0.12); color: #0078d4; }
+    .window-list-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .window-list-dot.blue   { background: #0078d4; }
+    .window-list-dot.green  { background: #107c10; }
+    .window-list-dot.orange { background: #ff8c00; }
+    .desktop-widget {
+      position: absolute;
+      top: 20px;
+      right: 16px;
+      width: 120px;
+      background: rgba(32,32,32,0.75);
+      backdrop-filter: blur(20px);
+      border-radius: 10px;
+      padding: 10px;
+      color: white;
+    }
+    .widget-time { font-size: 22px; font-weight: 600; line-height: 1; }
+    .widget-date { font-size: 9px; opacity: 0.7; margin-top: 2px; }
+    .widget-weather { margin-top: 8px; font-size: 10px; opacity: 0.8; display: flex; align-items: center; gap: 4px; }
+
+    /* ── Material showcase ── */
+    .material-demo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+    }
+    .material-card {
+      border-radius: var(--radius-2xl);
+      padding: var(--space-6);
+      min-height: 220px;
+      position: relative;
+      overflow: hidden;
+    }
+    .material-card-bg-light {
+      background: linear-gradient(135deg, #e8f4fd, #c7e0f4, #deecf9);
+    }
+    .material-card-bg-dark {
+      background: linear-gradient(135deg, #1a2744, #0f1f3d, #0d1b2a);
+    }
+    .material-surface {
+      position: relative;
+      z-index: 1;
+      border-radius: var(--radius-xl);
+      padding: var(--space-4);
+    }
+    .material-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      font-size: var(--text-12);
+      font-weight: var(--weight-semibold);
+      color: var(--color-brand);
+      background: rgba(0,120,212,0.1);
+      padding: var(--space-0-5) var(--space-2);
+      border-radius: var(--radius-circle);
+      margin-bottom: var(--space-3);
+    }
+
+    /* ── Grid layout for hero ── */
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--space-12);
+      align-items: center;
+    }
+    @media (max-width: 960px) {
+      .hero-layout { grid-template-columns: 1fr; }
+      .desktop-mockup { display: none; }
+    }
+
+    /* ── Controls grid ── */
+    .controls-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-4);
+    }
+    .control-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      background: var(--fill-subtle);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--stroke-default);
+    }
+    .control-label {
+      font-size: var(--text-12);
+      font-weight: var(--weight-semibold);
+      color: var(--label-tertiary);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-caps);
+    }
+
+    /* ── Nav showcase ── */
+    .nav-showcase {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--space-6);
+      border: 1px solid var(--stroke-default);
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      min-height: 320px;
+    }
+    .nav-showcase-content {
+      padding: var(--space-6);
+      background: var(--color-bg-base);
+    }
+
+    /* ── Data grid wrapper ── */
+    .data-grid-wrapper {
+      border: 1px solid var(--stroke-default);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: var(--fill-default);
+    }
+
+    /* ── Dialog demo area ── */
+    .dialog-demo {
+      background: linear-gradient(135deg, rgba(0,120,212,0.04), rgba(40,153,245,0.04));
+      border-radius: var(--radius-2xl);
+      padding: var(--space-12) var(--space-6);
+      display: flex;
+      justify-content: center;
+      border: 1px solid var(--stroke-default);
+    }
+    .dialog-static {
+      background-color: var(--fill-default);
+      border-radius: var(--radius-flyout);
+      box-shadow: var(--depth-64);
+      width: 100%;
+      max-width: 400px;
+      border: 1px solid var(--stroke-default);
+      overflow: hidden;
+    }
+
+    /* ── Motion section ── */
+    .motion-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--space-4);
+    }
+    .motion-demo-box {
+      height: 100px;
+      background: var(--fill-accent-secondary);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-12);
+      font-weight: var(--weight-semibold);
+      color: var(--label-brand);
+      cursor: pointer;
+      border: 1px solid var(--stroke-accent);
+      transition: transform var(--duration-moderate) var(--ease-fluent),
+                  box-shadow var(--duration-moderate) var(--ease-fluent),
+                  background-color var(--duration-fast) var(--ease-fluent);
+    }
+    .motion-demo-box:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: var(--depth-8);
+      background: var(--fill-accent-tertiary);
+    }
+
+    /* ── Footer ── */
+    .site-footer {
+      background-color: #1B1B1B;
+      color: rgba(255,255,255,0.7);
+      padding: var(--space-12) 0 var(--space-8);
+      margin-top: auto;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--space-8);
+      margin-bottom: var(--space-10);
+    }
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .footer-brand { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3); }
+    .footer-brand-name { color: #FFFFFF; font-weight: var(--weight-semibold); font-size: var(--text-16); }
+    .footer-tagline { font-size: var(--text-14); color: rgba(255,255,255,0.5); line-height: 1.5; max-width: 260px; }
+    .footer-col-title { color: #FFFFFF; font-size: var(--text-14); font-weight: var(--weight-semibold); margin-bottom: var(--space-4); }
+    .footer-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+    .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: var(--text-14); transition: color var(--duration-fast) var(--ease-fluent); }
+    .footer-links a:hover { color: #FFFFFF; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-4); padding-top: var(--space-6); border-top: 1px solid rgba(255,255,255,0.1); }
+    .footer-legal { font-size: var(--text-12); color: rgba(255,255,255,0.4); }
+    .footer-bottom-links { display: flex; gap: var(--space-4); }
+    .footer-bottom-links a { font-size: var(--text-12); color: rgba(255,255,255,0.4); text-decoration: none; }
+    .footer-bottom-links a:hover { color: rgba(255,255,255,0.7); }
+
+    /* ── Microsoft logo SVG coloring ── */
+    .ms-logo { display: flex; gap: 1px; width: 20px; height: 20px; flex-shrink: 0; }
+    .ms-logo-sq { width: 9px; height: 9px; border-radius: 1px; }
+    .ms-logo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; width: 20px; height: 20px; }
+    .ms-sq-1 { background: #F35325; }
+    .ms-sq-2 { background: #81BC06; }
+    .ms-sq-3 { background: #05A6F0; }
+    .ms-sq-4 { background: #FFBA08; }
+  </style>
+</head>
+<body>
+<div class="page-shell">
+
+  <!-- ============================================================ NAV BAR -->
+  <nav class="nav-bar" role="navigation" aria-label="Primary navigation">
+    <a href="index.html" class="nav-bar-brand">
+      <div class="ms-logo-grid">
+        <div class="ms-logo-sq ms-sq-1"></div>
+        <div class="ms-logo-sq ms-sq-2"></div>
+        <div class="ms-logo-sq ms-sq-3"></div>
+        <div class="ms-logo-sq ms-sq-4"></div>
+      </div>
+      <span class="nav-bar-brand-name">Fluent Design System</span>
+    </a>
+
+    <div class="nav-bar-links" role="list">
+      <a href="#components" class="nav-bar-link" role="listitem">Components</a>
+      <a href="#tokens"     class="nav-bar-link" role="listitem">Tokens</a>
+      <a href="#typography" class="nav-bar-link" role="listitem">Typography</a>
+      <a href="#motion"     class="nav-bar-link" role="listitem">Motion</a>
+      <a href="components/buttons.html"    class="nav-bar-link" role="listitem">Buttons</a>
+      <a href="components/forms.html"      class="nav-bar-link" role="listitem">Forms</a>
+    </div>
+
+    <div class="nav-bar-actions">
+      <!-- Search -->
+      <button class="nav-bar-icon-btn" aria-label="Search">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <!-- Settings -->
+      <button class="nav-bar-icon-btn" aria-label="Settings">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M8 10a2 2 0 100-4 2 2 0 000 4z" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M13.3 8a5.3 5.3 0 00-.1-.9l1.6-1.2-1.5-2.6-1.8.7a5.2 5.2 0 00-1.6-.9L9.6 2H6.4l-.3 1.9a5.2 5.2 0 00-1.6.9l-1.8-.7L1.2 6.8l1.6 1.2a5.3 5.3 0 000 1.8L1.2 11l1.5 2.6 1.8-.7a5.2 5.2 0 001.6.9L6.4 16h3.2l.3-1.9a5.2 5.2 0 001.6-.9l1.8.7L14.8 11 13.3 9a5.3 5.3 0 00.1-.9z" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+      </button>
+      <div class="avatar" aria-label="Account" role="button" tabindex="0">FD</div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ============================================================ HERO -->
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-layout">
+          <div class="hero-content animate-fade-in-up">
+            <div class="hero-eyebrow">
+              <div class="ms-logo-grid" style="width:14px;height:14px;">
+                <div class="ms-logo-sq ms-sq-1" style="width:6px;height:6px;"></div>
+                <div class="ms-logo-sq ms-sq-2" style="width:6px;height:6px;"></div>
+                <div class="ms-logo-sq ms-sq-3" style="width:6px;height:6px;"></div>
+                <div class="ms-logo-sq ms-sq-4" style="width:6px;height:6px;"></div>
+              </div>
+              Fluent 2 Design System
+            </div>
+            <h1 class="hero-title">
+              Designed for<br>
+              <span class="accent">everyone.</span>
+            </h1>
+            <p class="hero-subtitle">
+              A production-quality design system built on Microsoft Fluent 2.
+              Acrylic and Mica materials, connected motion, and a calm information
+              density that scales from Windows 11 to Microsoft 365.
+            </p>
+            <div class="hero-actions">
+              <a href="#components" class="btn btn-accent btn--lg">Explore components</a>
+              <a href="components/buttons.html" class="btn btn-standard btn--lg">View all</a>
+            </div>
+          </div>
+
+          <!-- Windows 11 mockup -->
+          <div class="desktop-mockup animate-fade-in delay-200" aria-hidden="true">
+            <div class="desktop-wallpaper"></div>
+
+            <!-- Floating app window -->
+            <div class="desktop-window">
+              <div class="window-titlebar">
+                <span class="window-title">File Explorer</span>
+                <div class="window-controls">
+                  <div class="win-btn">—</div>
+                  <div class="win-btn">&#9633;</div>
+                  <div class="win-btn win-btn-close">✕</div>
+                </div>
+              </div>
+              <div class="window-body">
+                <div class="window-list-item active">
+                  <div class="window-list-dot blue"></div>Quick access
+                </div>
+                <div class="window-list-item">
+                  <div class="window-list-dot green"></div>OneDrive
+                </div>
+                <div class="window-list-item">
+                  <div class="window-list-dot orange"></div>Documents
+                </div>
+                <div class="window-list-item">
+                  <div class="window-list-dot" style="background:#8764b8"></div>Downloads
+                </div>
+                <div class="window-list-item">
+                  <div class="window-list-dot" style="background:#107c10"></div>Pictures
+                </div>
+              </div>
+            </div>
+
+            <!-- Widget -->
+            <div class="desktop-widget">
+              <div class="widget-time">10:42</div>
+              <div class="widget-date">Tuesday, June 24</div>
+              <div class="widget-weather">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="5" fill="currentColor" opacity="0.8"/>
+                  <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                72°F · Sunny
+              </div>
+            </div>
+
+            <!-- Taskbar -->
+            <div class="desktop-taskbar">
+              <div class="taskbar-icon taskbar-icon-start">
+                <div class="ms-logo-grid" style="width:14px;height:14px;">
+                  <div class="ms-logo-sq ms-sq-1" style="width:6px;height:6px;"></div>
+                  <div class="ms-logo-sq ms-sq-2" style="width:6px;height:6px;"></div>
+                  <div class="ms-logo-sq ms-sq-3" style="width:6px;height:6px;"></div>
+                  <div class="ms-logo-sq ms-sq-4" style="width:6px;height:6px;"></div>
+                </div>
+              </div>
+              <div class="taskbar-apps">
+                <div class="taskbar-app" style="background:linear-gradient(135deg,#0078d4,#2899f5);border-radius:5px;"></div>
+                <div class="taskbar-app" style="background:linear-gradient(135deg,#107c10,#57a773);border-radius:5px;"></div>
+                <div class="taskbar-app" style="background:linear-gradient(135deg,#d83b01,#f7630c);border-radius:5px;"></div>
+                <div class="taskbar-app" style="background:linear-gradient(135deg,#8764b8,#b4a0e5);border-radius:5px;"></div>
+              </div>
+              <div class="taskbar-clock">10:42 AM<br>6/24/2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ MATERIAL SHOWCASE -->
+    <section class="showcase-section" id="materials">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Materials</div>
+          <h2 class="section-title">Acrylic &amp; Mica</h2>
+          <p class="section-subtitle">Fluent's translucency system brings depth and context-awareness to surfaces, connecting UI to the physical world.</p>
+        </div>
+
+        <div class="material-demo">
+          <!-- Acrylic -->
+          <div class="material-card material-card-bg-light">
+            <div class="material-surface material-acrylic">
+              <div class="material-tag">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
+                  <rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="2"/>
+                  <path d="M7 12h10M12 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Acrylic
+              </div>
+              <h3 style="font-size:var(--text-18);font-weight:var(--weight-semibold);margin-bottom:var(--space-2);color:var(--label-primary);">Light Material</h3>
+              <p style="font-size:var(--text-13);color:var(--label-secondary);line-height:1.5;margin-bottom:var(--space-4);">
+                Translucent background using <code style="font-family:var(--font-mono);font-size:0.9em;background:rgba(0,0,0,0.06);padding:1px 4px;border-radius:3px;">blur(30px) saturate(125%)</code>.
+                Used for transient surfaces: menus, flyouts, panels.
+              </p>
+              <div style="display:flex;gap:var(--space-2);">
+                <span class="btn btn-accent">Accept</span>
+                <span class="btn btn-subtle">Cancel</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mica -->
+          <div class="material-card material-card-bg-dark">
+            <div class="material-surface material-mica" style="border:1px solid rgba(255,255,255,0.08);">
+              <div class="material-tag" style="background:rgba(40,153,245,0.15);color:#2899f5;">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="currentColor" opacity="0.4"/>
+                  <path d="M12 2C6.48 2 2 6.48 2 12h10V2z" fill="currentColor"/>
+                </svg>
+                Mica
+              </div>
+              <h3 style="font-size:var(--text-18);font-weight:var(--weight-semibold);margin-bottom:var(--space-2);color:rgba(255,255,255,0.95);">Dark Material</h3>
+              <p style="font-size:var(--text-13);color:rgba(255,255,255,0.55);line-height:1.5;margin-bottom:var(--space-4);">
+                Deeper blur (<code style="font-family:var(--font-mono);font-size:0.9em;background:rgba(255,255,255,0.08);padding:1px 4px;border-radius:3px;color:rgba(255,255,255,0.7);">blur(60px) saturate(150%)</code>) sampled from the
+                desktop wallpaper. Used for persistent surfaces: titlebars, navigation.
+              </p>
+              <div style="display:flex;gap:var(--space-2);">
+                <span class="btn btn-accent">Accept</span>
+                <span class="btn btn-outline" style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.85);">Cancel</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ COLOR TOKENS -->
+    <section class="showcase-section" id="tokens">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Design Tokens</div>
+          <h2 class="section-title">Color System</h2>
+          <p class="section-subtitle">Semantic color tokens derived from the Fluent 2 color ramp. All tokens adapt to light and dark mode automatically.</p>
+        </div>
+
+        <div class="palette-group">
+          <div class="palette-label">Brand</div>
+          <div class="palette-grid">
+            <div class="swatch"><div class="swatch-color" style="background:#0078D4"></div><div class="swatch-name">Brand</div><div class="swatch-hex">#0078D4</div></div>
+            <div class="swatch"><div class="swatch-color" style="background:#2899F5"></div><div class="swatch-name">Brand Light</div><div class="swatch-hex">#2899F5</div></div>
+            <div class="swatch"><div class="swatch-color" style="background:#005A9E"></div><div class="swatch-name">Brand Dark</div><div class="swatch-hex">#005A9E</div></div>
+            <div class="swatch"><div class="swatch-color" style="background:#106EBE"></div><div class="swatch-name">Hover</div><div class="swatch-hex">#106EBE</div></div>
+            <div class="swatch"><div class="swatch-color" style="background:#0063B1"></div><div class="swatch-name">Communication</div><div class="swatch-hex">#0063B1</div></div>
+            <div class="swatch"><div class="swatch-color" style="background:#C7E0F4"></div><div class="swatch-name">Tint 10</div><div class="swatch-hex">#C7E0F4</div></div>
+            <div class="swatch"><div class="swatch-color" style="background:#EFF6FC"></div><div class="swatch-name">Tint 30</div><div class="swatch-hex">#EFF6FC</div></div>
+          </div>
+        </div>
+
+        <div class="palette-group">
+          <div class="palette-label">Status</div>
+          <div class="palette-grid">
+            <div class="swatch"><div class="swatch-color" style="background:#107C10"></div><div class="swatch-name">Success</div><div class="swatch-hex">#107C10</div></div>
+            <div class="swatch"><div class="swatch-color" style="background:#797500"></div><div class="swatch-name">Warning</div><div class="swatch-hex">#797500</div></div>
+            <div class="swatch"><div class="swatch-color" style="background:#C42B1C"></div><div class="swatch-name">Error</div><div class="swatch-hex">#C42B1C</div></div>
+            <div class="swatch"><div class="swatch-color" style="background:#0078D4"></div><div class="swatch-name">Info</div><div class="swatch-hex">#0078D4</div></div>
+          </div>
+        </div>
+
+        <div class="palette-group">
+          <div class="palette-label">Neutral — Light</div>
+          <div class="palette-grid">
+            <div class="swatch"><div class="swatch-color" style="background:#FFFFFF;border:1px solid #e0e0e0"></div><div class="swatch-name">Base</div><div class="swatch-hex">#FFFFFF</div></div>
+            <div class="swatch"><div class="swatch-color" style="background:#FAFAFA"></div><div class="swatch-name">Subtle</div><div class="swatch-hex">#FAFAFA</div></div>
+            <div class="swatch"><div class="swatch-color" style="background:#F3F3F3"></div><div class="swatch-name">Surface</div><div class="swatch-hex">#F3F3F3</div></div>
+            <div class="swatch"><div class="swatch-color" style="background:#E0E0E0"></div><div class="swatch-name">Stroke</div><div class="swatch-hex">#E0E0E0</div></div>
+            <div class="swatch"><div class="swatch-color" style="background:#A19F9D"></div><div class="swatch-name">Tertiary</div><div class="swatch-hex">#A19F9D</div></div>
+            <div class="swatch"><div class="swatch-color" style="background:#616161"></div><div class="swatch-name">Secondary</div><div class="swatch-hex">#616161</div></div>
+            <div class="swatch"><div class="swatch-color" style="background:#242424"></div><div class="swatch-name">Primary</div><div class="swatch-hex">#242424</div></div>
+          </div>
+        </div>
+
+        <div class="palette-group">
+          <div class="palette-label">Neutral — Dark</div>
+          <div class="palette-grid">
+            <div class="swatch"><div class="swatch-color" style="background:#202020"></div><div class="swatch-name">Base</div><div class="swatch-hex">#202020</div></div>
+            <div class="swatch"><div class="swatch-color" style="background:#2C2C2C"></div><div class="swatch-name">Surface</div><div class="swatch-hex">#2C2C2C</div></div>
+            <div class="swatch"><div class="swatch-color" style="background:#383838"></div><div class="swatch-name">Subtle</div><div class="swatch-hex">#383838</div></div>
+            <div class="swatch"><div class="swatch-color" style="background:#3D3D3D"></div><div class="swatch-name">Stroke</div><div class="swatch-hex">#3D3D3D</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ TYPOGRAPHY -->
+    <section class="showcase-section" id="typography">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Typography</div>
+          <h2 class="section-title">Fluent 2 Type Ramp</h2>
+          <p class="section-subtitle">Segoe UI Variable — a variable font optimized for on-screen readability across all sizes.</p>
+        </div>
+
+        <div class="type-specimen">
+          <div class="type-meta"><div class="type-meta-name">Display</div><div class="type-meta-spec">40px / 600 / -0.015em</div></div>
+          <span class="display">The quick brown fox</span>
+        </div>
+        <div class="type-specimen">
+          <div class="type-meta"><div class="type-meta-name">Title Large</div><div class="type-meta-spec">28px / 600</div></div>
+          <span class="title-large">The quick brown fox</span>
+        </div>
+        <div class="type-specimen">
+          <div class="type-meta"><div class="type-meta-name">Title</div><div class="type-meta-spec">24px / 600</div></div>
+          <span class="title">The quick brown fox</span>
+        </div>
+        <div class="type-specimen">
+          <div class="type-meta"><div class="type-meta-name">Title 2</div><div class="type-meta-spec">20px / 600</div></div>
+          <span class="title-2">The quick brown fox</span>
+        </div>
+        <div class="type-specimen">
+          <div class="type-meta"><div class="type-meta-name">Subtitle</div><div class="type-meta-spec">20px / 400</div></div>
+          <span class="subtitle">The quick brown fox jumps</span>
+        </div>
+        <div class="type-specimen">
+          <div class="type-meta"><div class="type-meta-name">Body Large</div><div class="type-meta-spec">18px / 400 / lh 28</div></div>
+          <span class="body-large">The quick brown fox jumps over the lazy dog</span>
+        </div>
+        <div class="type-specimen">
+          <div class="type-meta"><div class="type-meta-name">Body</div><div class="type-meta-spec">14px / 400 / lh 20 — default</div></div>
+          <span class="body">The quick brown fox jumps over the lazy dog. Fluent 2 body text.</span>
+        </div>
+        <div class="type-specimen">
+          <div class="type-meta"><div class="type-meta-name">Body Strong</div><div class="type-meta-spec">14px / 600</div></div>
+          <span class="body-strong">The quick brown fox jumps over the lazy dog.</span>
+        </div>
+        <div class="type-specimen">
+          <div class="type-meta"><div class="type-meta-name">Caption</div><div class="type-meta-spec">13px / 400</div></div>
+          <span class="caption">The quick brown fox jumps over the lazy dog. Supporting metadata.</span>
+        </div>
+        <div class="type-specimen">
+          <div class="type-meta"><div class="type-meta-name">Caption 2</div><div class="type-meta-spec">12px / 400</div></div>
+          <span class="caption-2">The quick brown fox jumps over the lazy dog. Smallest text.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ BUTTONS -->
+    <section class="showcase-section" id="components">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Components</div>
+          <h2 class="section-title">Buttons</h2>
+          <p class="section-subtitle">Five Fluent button variants, three sizes, and a compound button. <a href="components/buttons.html">Full documentation →</a></p>
+        </div>
+
+        <div class="demo-block">
+          <div class="demo-block-title">Variants</div>
+          <div class="demo-row">
+            <button class="btn btn-accent">Accent</button>
+            <button class="btn btn-standard">Standard</button>
+            <button class="btn btn-subtle">Subtle</button>
+            <button class="btn btn-outline">Outline</button>
+            <button class="btn btn-transparent">Transparent</button>
+            <button class="btn btn-danger">Danger</button>
+          </div>
+        </div>
+
+        <div class="demo-block">
+          <div class="demo-block-title">Sizes</div>
+          <div class="demo-row" style="align-items:center;">
+            <button class="btn btn-accent btn--sm">Small</button>
+            <button class="btn btn-accent">Medium</button>
+            <button class="btn btn-accent btn--lg">Large</button>
+          </div>
+        </div>
+
+        <div class="demo-block">
+          <div class="demo-block-title">With Icons</div>
+          <div class="demo-row">
+            <button class="btn btn-accent">
+              <svg class="btn-icon" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              New item
+            </button>
+            <button class="btn btn-standard">
+              <svg class="btn-icon" viewBox="0 0 20 20" fill="none">
+                <path d="M15 10H5M10 5l-5 5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Back
+            </button>
+            <button class="btn btn-subtle">
+              <svg class="btn-icon" viewBox="0 0 20 20" fill="none">
+                <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              Close
+            </button>
+            <button class="btn btn-icon-only btn-standard" aria-label="Settings">
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M16.2 10c0-.3 0-.6-.1-1l1.9-1.5-1.8-3.1-2.1.8c-.5-.4-1-.7-1.6-1L12 2H8l-.5 2.2c-.6.3-1.1.6-1.6 1L3.8 4.4 2 7.5 3.9 9c-.1.4-.1.7-.1 1s0 .6.1 1L2 12.5l1.8 3.1 2.1-.8c.5.4 1 .7 1.6 1L8 18h4l.5-2.2c.6-.3 1.1-.6 1.6-1l2.1.8L18 12.5 16.1 11c.1-.4.1-.7.1-1z" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="demo-block">
+          <div class="demo-block-title">Compound Button</div>
+          <div class="demo-row">
+            <button class="btn btn-compound">
+              <svg style="width:24px;height:24px;color:var(--color-brand);" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <span class="btn-compound-primary">Create new</span>
+              <span class="btn-compound-secondary">Start from a blank document</span>
+            </button>
+            <button class="btn btn-compound">
+              <svg style="width:24px;height:24px;color:var(--color-brand);" viewBox="0 0 24 24" fill="none">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="btn-compound-primary">Upload file</span>
+              <span class="btn-compound-secondary">Share from your local device</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="demo-block">
+          <div class="demo-block-title">States</div>
+          <div class="demo-row">
+            <button class="btn btn-accent" disabled>Disabled Accent</button>
+            <button class="btn btn-standard" disabled>Disabled Standard</button>
+            <button class="btn btn-danger" disabled>Disabled Danger</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ CONTROLS -->
+    <section class="showcase-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Controls</div>
+          <h2 class="section-title">Form Controls</h2>
+          <p class="section-subtitle">Toggles, checkboxes, radio buttons, sliders, and progress indicators.</p>
+        </div>
+
+        <div class="controls-grid">
+          <!-- Toggle switches -->
+          <div class="control-item">
+            <div class="control-label">Toggle Switch</div>
+            <label class="toggle-switch">
+              <input type="checkbox" checked>
+              <div class="toggle-track"><div class="toggle-thumb"></div></div>
+              <span class="toggle-label">On (default)</span>
+            </label>
+            <label class="toggle-switch">
+              <input type="checkbox">
+              <div class="toggle-track"><div class="toggle-thumb"></div></div>
+              <span class="toggle-label">Off</span>
+            </label>
+            <label class="toggle-switch">
+              <input type="checkbox" disabled>
+              <div class="toggle-track"><div class="toggle-thumb"></div></div>
+              <span class="toggle-label" style="color:var(--label-disabled);">Disabled</span>
+            </label>
+          </div>
+
+          <!-- Checkboxes -->
+          <div class="control-item">
+            <div class="control-label">Checkbox</div>
+            <label class="checkbox">
+              <input type="checkbox" checked>
+              <div class="checkbox-box"></div>
+              <span class="checkbox-label">Checked</span>
+            </label>
+            <label class="checkbox">
+              <input type="checkbox">
+              <div class="checkbox-box"></div>
+              <span class="checkbox-label">Unchecked</span>
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" disabled>
+              <div class="checkbox-box"></div>
+              <span class="checkbox-label" style="color:var(--label-disabled);">Disabled</span>
+            </label>
+          </div>
+
+          <!-- Radio buttons -->
+          <div class="control-item">
+            <div class="control-label">Radio Button</div>
+            <label class="radio">
+              <input type="radio" name="demo-radio" checked>
+              <div class="radio-circle"></div>
+              <span class="radio-label">Selected</span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="demo-radio">
+              <div class="radio-circle"></div>
+              <span class="radio-label">Unselected</span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="demo-radio" disabled>
+              <div class="radio-circle"></div>
+              <span class="radio-label" style="color:var(--label-disabled);">Disabled</span>
+            </label>
+          </div>
+
+          <!-- Slider -->
+          <div class="control-item">
+            <div class="control-label">Slider</div>
+            <div class="slider-container">
+              <label style="font-size:var(--text-13);color:var(--label-secondary);">Volume</label>
+              <input type="range" class="slider" min="0" max="100" value="65">
+            </div>
+            <div class="slider-container">
+              <label style="font-size:var(--text-13);color:var(--label-secondary);">Brightness</label>
+              <input type="range" class="slider" min="0" max="100" value="30">
+            </div>
+          </div>
+
+          <!-- Spinner -->
+          <div class="control-item">
+            <div class="control-label">Spinner</div>
+            <div style="display:flex;align-items:center;gap:var(--space-4);">
+              <div class="spinner spinner--sm"></div>
+              <div class="spinner"></div>
+              <div class="spinner spinner--lg"></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:var(--space-2);margin-top:var(--space-2);">
+              <div class="spinner spinner--sm"></div>
+              <span style="font-size:var(--text-13);color:var(--label-secondary);">Loading data…</span>
+            </div>
+          </div>
+
+          <!-- Progress bar -->
+          <div class="control-item">
+            <div class="control-label">Progress Bar</div>
+            <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+              <div>
+                <div style="font-size:var(--text-12);color:var(--label-secondary);margin-bottom:var(--space-1);">65% complete</div>
+                <div class="progress-bar"><div class="progress-bar-fill" style="width:65%"></div></div>
+              </div>
+              <div>
+                <div style="font-size:var(--text-12);color:var(--label-secondary);margin-bottom:var(--space-1);">Indeterminate</div>
+                <div class="progress-bar progress-bar--indeterminate"><div class="progress-bar-fill"></div></div>
+              </div>
+              <div>
+                <div style="font-size:var(--text-12);color:var(--label-secondary);margin-bottom:var(--space-1);">Complete</div>
+                <div class="progress-bar"><div class="progress-bar-fill" style="width:100%;background:var(--color-success)"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ PIVOT / COMMAND BAR -->
+    <section class="showcase-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Navigation Controls</div>
+          <h2 class="section-title">Pivot &amp; Command Bar</h2>
+        </div>
+
+        <div class="demo-block" style="padding:0;overflow:hidden;">
+          <div class="command-bar">
+            <button class="command-bar-item">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              New
+            </button>
+            <button class="command-bar-item">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Share
+              <svg class="command-bar-chevron" viewBox="0 0 10 10" fill="none">
+                <path d="M3 4l2 2 2-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <div class="command-bar-separator"></div>
+            <button class="command-bar-item">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M13 2H3a1 1 0 00-1 1v10a1 1 0 001 1h10a1 1 0 001-1V3a1 1 0 00-1-1z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M10 2v5H6V2" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              Save
+            </button>
+            <button class="command-bar-item">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M12 4L7 9l-3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Filter
+              <svg class="command-bar-chevron" viewBox="0 0 10 10" fill="none">
+                <path d="M3 4l2 2 2-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <div class="command-bar-separator"></div>
+            <button class="command-bar-item">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <circle cx="6.5" cy="6.5" r="4" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M9.5 9.5L13 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              Search
+            </button>
+            <button class="overflow-button" aria-label="More options">•••</button>
+          </div>
+        </div>
+
+        <div style="margin-top:var(--space-8);">
+          <div class="demo-block-title" style="margin-bottom:var(--space-3);">Pivot — Underline</div>
+          <div class="pivot" role="tablist">
+            <button class="pivot-item active" role="tab" aria-selected="true">All</button>
+            <button class="pivot-item" role="tab" aria-selected="false">
+              Documents
+              <span class="pivot-item-badge">12</span>
+            </button>
+            <button class="pivot-item" role="tab" aria-selected="false">Images</button>
+            <button class="pivot-item" role="tab" aria-selected="false">Shared with me</button>
+            <button class="pivot-item" role="tab" aria-selected="false">Favorites</button>
+          </div>
+        </div>
+
+        <div style="margin-top:var(--space-8);">
+          <div class="demo-block-title" style="margin-bottom:var(--space-3);">Pivot — Pills</div>
+          <div class="pivot pivot--pills" role="tablist">
+            <button class="pivot-item active" role="tab" aria-selected="true">Overview</button>
+            <button class="pivot-item" role="tab" aria-selected="false">Analytics</button>
+            <button class="pivot-item" role="tab" aria-selected="false">Reports</button>
+            <button class="pivot-item" role="tab" aria-selected="false">Settings</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ NAVIGATION -->
+    <section class="showcase-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Navigation</div>
+          <h2 class="section-title">Nav Rail &amp; Sidebar</h2>
+          <p class="section-subtitle">Windows 11 navigation patterns — icon-only rail and full expanded sidebar. <a href="components/navigation.html">Full page →</a></p>
+        </div>
+
+        <div class="nav-showcase">
+          <!-- Nav Rail -->
+          <nav class="nav-rail" aria-label="Application navigation">
+            <a href="#" class="nav-rail-item active" aria-label="Home" aria-current="page">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M3 9.5L10 3l7 6.5V17a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M7 18v-6h6v6" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              <span class="nav-rail-tooltip">Home</span>
+            </a>
+            <a href="#" class="nav-rail-item" aria-label="Files">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 3h7l4 4v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M11 3v4h4" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              <span class="nav-rail-tooltip">Files</span>
+            </a>
+            <a href="#" class="nav-rail-item" aria-label="Search">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span class="nav-rail-tooltip">Search</span>
+            </a>
+            <a href="#" class="nav-rail-item" aria-label="Calendar">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <rect x="3" y="4" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M3 9h14M7 2v4M13 2v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span class="nav-rail-tooltip">Calendar</span>
+            </a>
+            <a href="#" class="nav-rail-item" aria-label="Settings" style="margin-top:auto;">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 12.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M16.8 10a6.8 6.8 0 00-.1-1.1l2-1.5-1.9-3.2-2.2.9a6.7 6.7 0 00-2-1.1L12 2H8l-.6 2a6.7 6.7 0 00-2 1.1L3.2 4.2 1.3 7.4l2 1.5A6.8 6.8 0 003.2 10c0 .4 0 .8.1 1.1l-2 1.5 1.9 3.2 2.2-.9a6.7 6.7 0 002 1.1L8 18h4l.6-2a6.7 6.7 0 002-1.1l2.2.9 1.9-3.2-2-1.5c.1-.3.1-.7.1-1.1z" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              <span class="nav-rail-tooltip">Settings</span>
+            </a>
+          </nav>
+
+          <!-- Showcase content area -->
+          <div class="nav-showcase-content">
+            <div class="breadcrumb" style="margin-bottom:var(--space-5);">
+              <div class="breadcrumb-item">
+                <a href="#" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator">/</span>
+              </div>
+              <div class="breadcrumb-item">
+                <a href="#" class="breadcrumb-link">Documents</a>
+                <span class="breadcrumb-separator">/</span>
+              </div>
+              <div class="breadcrumb-item">
+                <a href="#" class="breadcrumb-link">Projects</a>
+              </div>
+            </div>
+            <h3 style="font-size:var(--text-20);font-weight:var(--weight-semibold);margin-bottom:var(--space-2);">Projects</h3>
+            <p class="caption" style="margin-bottom:var(--space-6);">Showing 12 items · Last modified today</p>
+            <div class="demo-row">
+              <span class="tag tag--accent">Design</span>
+              <span class="tag">Engineering</span>
+              <span class="tag">Q2 2026</span>
+              <span class="tag">Active</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ CARDS -->
+    <section class="showcase-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Components</div>
+          <h2 class="section-title">Cards</h2>
+          <p class="section-subtitle">Card variants for content containers, product surfaces, and interactive selections. <a href="components/cards.html">Full page →</a></p>
+        </div>
+
+        <div class="grid-3" style="margin-bottom:var(--space-6);">
+          <!-- Standard card -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-header-content">
+                <div class="card-title">Standard Card</div>
+                <div class="card-subtitle">Depth 4 · 1px border</div>
+              </div>
+            </div>
+            <div class="card-body">Default card with white/surface background, 8px radius, and a subtle shadow for depth separation.</div>
+            <div class="card-footer">
+              <button class="btn btn-accent btn--sm">Action</button>
+              <button class="btn btn-subtle btn--sm">Dismiss</button>
+            </div>
+          </div>
+
+          <!-- Interactive card -->
+          <div class="card card--interactive">
+            <div class="card-header">
+              <div class="card-header-content">
+                <div class="card-title">Interactive Card</div>
+                <div class="card-subtitle">Hover for depth-8</div>
+              </div>
+              <div class="card-header-action">
+                <span class="badge">New</span>
+              </div>
+            </div>
+            <div class="card-body">Hover this card to see the elevation increase and border darken — Fluent's depth-based interaction feedback.</div>
+            <div class="card-footer">
+              <span class="tag tag--accent">Featured</span>
+            </div>
+          </div>
+
+          <!-- Selected card -->
+          <div class="card card--selected">
+            <div class="card-header">
+              <div class="card-header-content">
+                <div class="card-title">Selected Card</div>
+                <div class="card-subtitle">Blue 2px border</div>
+              </div>
+              <div class="card-header-action">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <circle cx="10" cy="10" r="9" fill="var(--fill-accent-default)"/>
+                  <path d="M6 10l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            <div class="card-body">Selected state uses a 2px accent-colored border to clearly communicate the selection to the user.</div>
+          </div>
+        </div>
+
+        <!-- Horizontal card -->
+        <div class="card card-horizontal card--interactive" style="margin-bottom:var(--space-4);">
+          <div class="card-image" style="width:100px;min-height:100px;background:linear-gradient(135deg,var(--fill-accent-secondary),rgba(40,153,245,0.1));display:flex;align-items:center;justify-content:center;">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <rect x="4" y="4" width="24" height="24" rx="6" fill="var(--fill-accent-default)" opacity="0.15"/>
+              <path d="M16 10v12M10 16h12" stroke="var(--fill-accent-default)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="card-content">
+            <div class="card-title">Horizontal Card Layout</div>
+            <div class="card-subtitle" style="margin-bottom:var(--space-2);">Image left, content right — ideal for list items</div>
+            <div class="card-body">Use for file listings, contacts, search results, and any scannable list of items where a thumbnail provides quick recognition.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ DATA GRID -->
+    <section class="showcase-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Components</div>
+          <h2 class="section-title">Data Grid</h2>
+          <p class="section-subtitle">Clean tabular data presentation with sorting indicators and row states.</p>
+        </div>
+
+        <div class="data-grid-wrapper">
+          <table class="data-grid">
+            <thead class="data-grid-header">
+              <tr>
+                <th style="width:32px;padding-left:var(--space-4);">
+                  <input type="checkbox" style="width:16px;height:16px;cursor:pointer;" aria-label="Select all">
+                </th>
+                <th class="sortable sorted-asc">
+                  Name
+                  <span class="column-sort"><span></span><span></span></span>
+                </th>
+                <th class="sortable">Status</th>
+                <th class="sortable">Modified</th>
+                <th class="sortable">Size</th>
+                <th>Shared with</th>
+                <th style="width:40px;"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="data-grid-row selected">
+                <td class="data-grid-cell" style="padding-left:var(--space-4);"><input type="checkbox" checked style="width:16px;height:16px;cursor:pointer;"></td>
+                <td class="data-grid-cell" style="display:table-cell;">
+                  <div style="display:flex;align-items:center;gap:var(--space-2);">
+                    <div style="width:28px;height:28px;background:rgba(0,120,212,0.1);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="1" width="10" height="12" rx="1.5" stroke="#0078d4" stroke-width="1.2"/><path d="M4 5h6M4 7.5h4" stroke="#0078d4" stroke-width="1.2" stroke-linecap="round"/></svg>
+                    </div>
+                    <span style="font-weight:var(--weight-semibold);">Design Tokens v2.css</span>
+                  </div>
+                </td>
+                <td class="data-grid-cell"><span class="tag tag--accent" style="height:20px;font-size:11px;">Active</span></td>
+                <td class="data-grid-cell secondary">Today, 10:42 AM</td>
+                <td class="data-grid-cell secondary">48 KB</td>
+                <td class="data-grid-cell">
+                  <div style="display:flex;align-items:center;gap:-4px;">
+                    <div class="avatar avatar--sm">JD</div>
+                    <div class="avatar avatar--sm" style="margin-left:-6px;background:linear-gradient(135deg,#107c10,#57a773);">SK</div>
+                  </div>
+                </td>
+                <td class="data-grid-cell"><button class="btn btn-transparent btn--sm btn-icon-only" aria-label="More"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="2.5" r="1.2" fill="currentColor"/><circle cx="7" cy="7" r="1.2" fill="currentColor"/><circle cx="7" cy="11.5" r="1.2" fill="currentColor"/></svg></button></td>
+              </tr>
+              <tr class="data-grid-row">
+                <td class="data-grid-cell" style="padding-left:var(--space-4);"><input type="checkbox" style="width:16px;height:16px;cursor:pointer;"></td>
+                <td class="data-grid-cell">
+                  <div style="display:flex;align-items:center;gap:var(--space-2);">
+                    <div style="width:28px;height:28px;background:rgba(16,124,16,0.1);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="1" width="10" height="12" rx="1.5" stroke="#107c10" stroke-width="1.2"/><path d="M4 5h6M4 7.5h6M4 10h4" stroke="#107c10" stroke-width="1.2" stroke-linecap="round"/></svg>
+                    </div>
+                    <span>Component Library.figma</span>
+                  </div>
+                </td>
+                <td class="data-grid-cell"><span class="tag" style="height:20px;font-size:11px;">Draft</span></td>
+                <td class="data-grid-cell secondary">Yesterday, 3:15 PM</td>
+                <td class="data-grid-cell secondary">2.4 MB</td>
+                <td class="data-grid-cell"><div class="avatar avatar--sm">MR</div></td>
+                <td class="data-grid-cell"><button class="btn btn-transparent btn--sm btn-icon-only" aria-label="More"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="2.5" r="1.2" fill="currentColor"/><circle cx="7" cy="7" r="1.2" fill="currentColor"/><circle cx="7" cy="11.5" r="1.2" fill="currentColor"/></svg></button></td>
+              </tr>
+              <tr class="data-grid-row">
+                <td class="data-grid-cell" style="padding-left:var(--space-4);"><input type="checkbox" style="width:16px;height:16px;cursor:pointer;"></td>
+                <td class="data-grid-cell">
+                  <div style="display:flex;align-items:center;gap:var(--space-2);">
+                    <div style="width:28px;height:28px;background:rgba(121,117,0,0.1);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="#797500" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </div>
+                    <span>Brand Guidelines 2026.pdf</span>
+                  </div>
+                </td>
+                <td class="data-grid-cell"><span class="tag" style="height:20px;font-size:11px;border-color:var(--color-warning);color:var(--color-warning);">Review</span></td>
+                <td class="data-grid-cell secondary">Jun 20, 9:00 AM</td>
+                <td class="data-grid-cell secondary">18.7 MB</td>
+                <td class="data-grid-cell">
+                  <div style="display:flex;align-items:center;">
+                    <div class="avatar avatar--sm">AL</div>
+                    <div class="avatar avatar--sm" style="margin-left:-6px;background:linear-gradient(135deg,#d83b01,#f7630c);">BK</div>
+                    <div class="avatar avatar--sm" style="margin-left:-6px;background:#616161;font-size:9px;">+4</div>
+                  </div>
+                </td>
+                <td class="data-grid-cell"><button class="btn btn-transparent btn--sm btn-icon-only" aria-label="More"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="2.5" r="1.2" fill="currentColor"/><circle cx="7" cy="7" r="1.2" fill="currentColor"/><circle cx="7" cy="11.5" r="1.2" fill="currentColor"/></svg></button></td>
+              </tr>
+              <tr class="data-grid-row">
+                <td class="data-grid-cell" style="padding-left:var(--space-4);"><input type="checkbox" style="width:16px;height:16px;cursor:pointer;"></td>
+                <td class="data-grid-cell">
+                  <div style="display:flex;align-items:center;gap:var(--space-2);">
+                    <div style="width:28px;height:28px;background:rgba(135,100,184,0.1);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="2" width="10" height="10" rx="2" stroke="#8764b8" stroke-width="1.2"/><path d="M5 7l2 2 4-3" stroke="#8764b8" stroke-width="1.2" stroke-linecap="round"/></svg>
+                    </div>
+                    <span>Accessibility Audit.xlsx</span>
+                  </div>
+                </td>
+                <td class="data-grid-cell"><span class="tag" style="height:20px;font-size:11px;border-color:var(--color-success);color:var(--color-success);">Complete</span></td>
+                <td class="data-grid-cell secondary">Jun 18, 2:30 PM</td>
+                <td class="data-grid-cell secondary">340 KB</td>
+                <td class="data-grid-cell"><div class="avatar avatar--sm" style="background:linear-gradient(135deg,#8764b8,#b4a0e5);">PW</div></td>
+                <td class="data-grid-cell"><button class="btn btn-transparent btn--sm btn-icon-only" aria-label="More"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="2.5" r="1.2" fill="currentColor"/><circle cx="7" cy="7" r="1.2" fill="currentColor"/><circle cx="7" cy="11.5" r="1.2" fill="currentColor"/></svg></button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ FORMS -->
+    <section class="showcase-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Components</div>
+          <h2 class="section-title">Forms &amp; Inputs</h2>
+          <p class="section-subtitle">Fluent input styles with underline emphasis on active state. <a href="components/forms.html">Full page →</a></p>
+        </div>
+
+        <div class="grid-2">
+          <div style="display:flex;flex-direction:column;gap:var(--space-5);">
+            <div class="input-group">
+              <label class="input-label" for="name">Full name <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <div class="input-prefix">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                </div>
+                <input type="text" id="name" class="input has-prefix" placeholder="Jane Smith" value="Jane Smith">
+              </div>
+            </div>
+            <div class="input-group">
+              <label class="input-label" for="email">Email address <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <div class="input-prefix">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M2 5l6 4.5L14 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                </div>
+                <input type="email" id="email" class="input has-prefix" placeholder="jane@contoso.com">
+              </div>
+              <span class="input-error-message">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--color-error)" stroke-width="1.2"/><path d="M6 4v3M6 8.5v.5" stroke="var(--color-error)" stroke-width="1.2" stroke-linecap="round"/></svg>
+                This field is required
+              </span>
+            </div>
+            <div class="input-group">
+              <label class="input-label" for="dept">Department</label>
+              <div class="combobox">
+                <select id="dept" class="combobox-input">
+                  <option>Engineering</option>
+                  <option>Design</option>
+                  <option>Product</option>
+                  <option>Marketing</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:var(--space-5);">
+            <div class="input-group">
+              <label class="input-label" for="bio">About</label>
+              <div class="input-description">Brief description for your profile. URLs are hyperlinked.</div>
+              <textarea id="bio" class="textarea" rows="4" placeholder="Tell us a bit about yourself…">Passionate about design systems and building scalable UIs at Microsoft.</textarea>
+            </div>
+            <div class="input-group">
+              <label class="input-label" for="search">Search</label>
+              <div class="input-wrapper has-prefix has-suffix">
+                <div class="input-prefix">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.2"/><path d="M10.5 10.5L13 13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                </div>
+                <input type="search" id="search" class="input" placeholder="Search files, people, and more…" style="padding-left:var(--space-8);padding-right:var(--space-8);">
+                <div class="input-suffix">
+                  <kbd style="font-size:10px;background:var(--fill-subtle);border:1px solid var(--stroke-default);border-radius:3px;padding:1px 4px;font-family:var(--font-mono);color:var(--label-tertiary);">⌘K</kbd>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ DIALOGS & FLYOUTS -->
+    <section class="showcase-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Components</div>
+          <h2 class="section-title">Dialogs &amp; Flyouts</h2>
+          <p class="section-subtitle">Modal dialogs with scaleIn animation, and flyout menus for contextual actions. <a href="components/modals.html">Full page →</a></p>
+        </div>
+
+        <div class="grid-2">
+          <!-- Static dialog preview -->
+          <div>
+            <div class="demo-block-title" style="margin-bottom:var(--space-3);">Dialog</div>
+            <div class="dialog-static">
+              <div class="dialog-header">
+                <div class="dialog-icon">
+                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                    <circle cx="18" cy="18" r="16" fill="rgba(196,43,28,0.1)"/>
+                    <path d="M18 12v7M18 23v1" stroke="#C42B1C" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div class="dialog-title">Delete this file?</div>
+              </div>
+              <div class="dialog-body">
+                <strong>Brand Guidelines 2026.pdf</strong> will be permanently deleted from OneDrive. Files shared with others will no longer be accessible.
+              </div>
+              <div class="dialog-actions">
+                <button class="btn btn-subtle">Cancel</button>
+                <button class="btn btn-danger">Delete file</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flyout preview -->
+          <div>
+            <div class="demo-block-title" style="margin-bottom:var(--space-3);">Context Menu / Flyout</div>
+            <div class="flyout" style="position:static;animation:none;max-width:240px;">
+              <div class="flyout-section-label">Actions</div>
+              <button class="flyout-item">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Open
+                <span class="flyout-item-shortcut">↵</span>
+              </button>
+              <button class="flyout-item">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 2H6a1 1 0 00-1 1v1H3a1 1 0 00-1 1v9a1 1 0 001 1h10a1 1 0 001-1V5a1 1 0 00-1-1h-2V3a1 1 0 00-1-1z" stroke="currentColor" stroke-width="1.2"/></svg>
+                Copy
+                <span class="flyout-item-shortcut">⌘C</span>
+              </button>
+              <button class="flyout-item">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Share
+              </button>
+              <div class="flyout-separator"></div>
+              <div class="flyout-section-label">Edit</div>
+              <button class="flyout-item">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M11.5 2.5l2 2L6 12H4v-2l7.5-7.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+                Rename
+                <span class="flyout-item-shortcut">F2</span>
+              </button>
+              <div class="flyout-separator"></div>
+              <button class="flyout-item dangerous">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 5h10l-1 8H4L3 5zM1 5h14M6 5V3h4v2" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+                Delete
+                <span class="flyout-item-shortcut">Del</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ INFO BARS -->
+    <section class="showcase-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Components</div>
+          <h2 class="section-title">Info Bar</h2>
+          <p class="section-subtitle">System-level status messages with four semantic variants.</p>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+          <div class="infobar infobar--info">
+            <svg class="infobar-icon" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M10 9v5M10 7v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div class="infobar-content">
+              <div class="infobar-title">App update available</div>
+              <div class="infobar-body">Version 3.2.1 is ready to install. Restart the app to apply updates.</div>
+              <div class="infobar-actions">
+                <button class="btn btn-accent btn--sm">Update now</button>
+                <button class="btn btn-subtle btn--sm">Remind me later</button>
+              </div>
+            </div>
+            <button class="infobar-close" aria-label="Dismiss">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2l8 8M10 2L2 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+
+          <div class="infobar infobar--success">
+            <svg class="infobar-icon" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6.5 10l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="infobar-content">
+              <div class="infobar-title">File saved successfully</div>
+              <div class="infobar-body">Brand Guidelines 2026.pdf has been saved to OneDrive and shared with 3 people.</div>
+            </div>
+            <button class="infobar-close" aria-label="Dismiss">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2l8 8M10 2L2 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+
+          <div class="infobar infobar--warning">
+            <svg class="infobar-icon" viewBox="0 0 20 20" fill="none">
+              <path d="M10 3L2 17h16L10 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M10 9v4M10 14.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div class="infobar-content">
+              <div class="infobar-title">Storage space running low</div>
+              <div class="infobar-body">Your OneDrive is 89% full. Free up space to avoid sync issues.</div>
+              <div class="infobar-actions">
+                <button class="btn btn-outline btn--sm" style="border-color:var(--color-warning);color:var(--color-warning);">Manage storage</button>
+              </div>
+            </div>
+            <button class="infobar-close" aria-label="Dismiss">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2l8 8M10 2L2 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+
+          <div class="infobar infobar--error">
+            <svg class="infobar-icon" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M7 7l6 6M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div class="infobar-content">
+              <div class="infobar-title">Sync failed</div>
+              <div class="infobar-body">Unable to sync Design Tokens v2.css — the file is open in another application. Close the file and try again.</div>
+              <div class="infobar-actions">
+                <button class="btn btn-danger btn--sm">Retry sync</button>
+                <button class="btn btn-subtle btn--sm">Learn more</button>
+              </div>
+            </div>
+            <button class="infobar-close" aria-label="Dismiss">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2l8 8M10 2L2 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ TEACHING CALLOUT -->
+    <section class="showcase-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Components</div>
+          <h2 class="section-title">Teaching Callout</h2>
+          <p class="section-subtitle">Fluent coachmarks that guide users to new features during onboarding.</p>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-6);align-items:flex-start;">
+          <div class="callout callout--arrow-top">
+            <button class="callout-close" aria-label="Close">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2l8 8M10 2L2 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <div class="callout-title">New: Intelligent search</div>
+            <div class="callout-body">
+              Press <kbd style="font-size:11px;background:var(--fill-subtle);border:1px solid var(--stroke-default);border-radius:3px;padding:1px 5px;font-family:var(--font-mono);">⌘K</kbd> anywhere to instantly search across all your files, people, and content with AI-powered suggestions.
+            </div>
+            <div class="callout-actions">
+              <button class="btn btn-accent btn--sm">Try it now</button>
+              <button class="btn btn-subtle btn--sm">Got it</button>
+            </div>
+          </div>
+
+          <div class="callout" style="border-top-color:var(--color-success);max-width:280px;">
+            <button class="callout-close" aria-label="Close">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2l8 8M10 2L2 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <div class="callout-title" style="color:var(--color-success);">Step 2 of 4 — Share</div>
+            <div class="callout-body">Click the <strong>Share</strong> button to invite collaborators. They'll receive an email with a link to view or edit this document.</div>
+            <div class="callout-actions">
+              <button class="btn btn-accent btn--sm" style="background:var(--color-success);border-color:var(--color-success);">Next</button>
+              <button class="btn btn-subtle btn--sm">Skip tour</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ MOTION -->
+    <section class="showcase-section" id="motion">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Motion</div>
+          <h2 class="section-title">Connected Motion</h2>
+          <p class="section-subtitle">Fluent 2 uses purposeful animation to communicate spatial relationships and guide attention. Hover each card to preview the effect.</p>
+        </div>
+
+        <div class="motion-grid">
+          <div class="motion-demo-box animate-fade-in delay-50">Fade In<br><span style="font-weight:400;opacity:0.7;font-size:11px;">150ms fluent ease</span></div>
+          <div class="motion-demo-box animate-fade-in delay-150">Slide Down<br><span style="font-weight:400;opacity:0.7;font-size:11px;">dropdown entrance</span></div>
+          <div class="motion-demo-box animate-fade-in delay-250">Scale In<br><span style="font-weight:400;opacity:0.7;font-size:11px;">dialog / modal</span></div>
+          <div class="motion-demo-box animate-fade-in delay-350">Reveal<br><span style="font-weight:400;opacity:0.7;font-size:11px;">connected motion</span></div>
+        </div>
+
+        <div style="margin-top:var(--space-8);padding:var(--space-6);background:var(--fill-subtle);border-radius:var(--radius-xl);border:1px solid var(--stroke-default);">
+          <h4 style="font-size:var(--text-16);font-weight:var(--weight-semibold);margin-bottom:var(--space-4);">Timing curves</h4>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-4);">
+            <div style="padding:var(--space-3);background:var(--fill-default);border-radius:var(--radius-lg);border:1px solid var(--stroke-default);">
+              <div style="font-size:var(--text-13);font-weight:var(--weight-semibold);margin-bottom:var(--space-1);">Entrance (Decelerate)</div>
+              <div style="font-family:var(--font-mono);font-size:var(--text-11);color:var(--label-secondary);">cubic-bezier(0.1, 0.9, 0.2, 1)</div>
+              <div style="font-size:var(--text-12);color:var(--label-tertiary);margin-top:var(--space-1);">83ms, 150ms, 250ms, 350ms</div>
+            </div>
+            <div style="padding:var(--space-3);background:var(--fill-default);border-radius:var(--radius-lg);border:1px solid var(--stroke-default);">
+              <div style="font-size:var(--text-13);font-weight:var(--weight-semibold);margin-bottom:var(--space-1);">Exit (Accelerate)</div>
+              <div style="font-family:var(--font-mono);font-size:var(--text-11);color:var(--label-secondary);">cubic-bezier(0.9, 0.1, 1.0, 0.2)</div>
+              <div style="font-size:var(--text-12);color:var(--label-tertiary);margin-top:var(--space-1);">83ms, 150ms</div>
+            </div>
+            <div style="padding:var(--space-3);background:var(--fill-default);border-radius:var(--radius-lg);border:1px solid var(--stroke-default);">
+              <div style="font-size:var(--text-13);font-weight:var(--weight-semibold);margin-bottom:var(--space-1);">Within Page (Standard)</div>
+              <div style="font-family:var(--font-mono);font-size:var(--text-11);color:var(--label-secondary);">cubic-bezier(0.8, 0.0, 0.2, 1)</div>
+              <div style="font-size:var(--text-12);color:var(--label-tertiary);margin-top:var(--space-1);">150ms, 250ms, 350ms</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skeleton loading demo -->
+        <div style="margin-top:var(--space-6);">
+          <h4 style="font-size:var(--text-16);font-weight:var(--weight-semibold);margin-bottom:var(--space-4);">Skeleton / Shimmer loading state</h4>
+          <div class="card" style="max-width:360px;">
+            <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-4);">
+              <div class="skeleton skeleton-circle" style="width:40px;height:40px;flex-shrink:0;"></div>
+              <div style="flex:1;">
+                <div class="skeleton skeleton-text medium" style="margin-bottom:var(--space-2);"></div>
+                <div class="skeleton skeleton-text short"></div>
+              </div>
+            </div>
+            <div class="skeleton skeleton-rect" style="height:100px;margin-bottom:var(--space-3);"></div>
+            <div class="skeleton skeleton-text long" style="margin-bottom:var(--space-2);"></div>
+            <div class="skeleton skeleton-text medium"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================ FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <div class="ms-logo-grid" style="width:18px;height:18px;">
+              <div class="ms-logo-sq ms-sq-1" style="width:8px;height:8px;"></div>
+              <div class="ms-logo-sq ms-sq-2" style="width:8px;height:8px;"></div>
+              <div class="ms-logo-sq ms-sq-3" style="width:8px;height:8px;"></div>
+              <div class="ms-logo-sq ms-sq-4" style="width:8px;height:8px;"></div>
+            </div>
+            <span class="footer-brand-name">Fluent Design System</span>
+          </div>
+          <p class="footer-tagline">Microsoft's design language for building coherent, beautiful experiences across Windows 11 and Microsoft 365.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">System</div>
+          <ul class="footer-links">
+            <li><a href="#tokens">Design Tokens</a></li>
+            <li><a href="#typography">Typography</a></li>
+            <li><a href="#materials">Materials</a></li>
+            <li><a href="#motion">Motion</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Components</div>
+          <ul class="footer-links">
+            <li><a href="components/buttons.html">Buttons</a></li>
+            <li><a href="components/cards.html">Cards</a></li>
+            <li><a href="components/forms.html">Forms</a></li>
+            <li><a href="components/navigation.html">Navigation</a></li>
+            <li><a href="components/modals.html">Modals</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Resources</div>
+          <ul class="footer-links">
+            <li><a href="https://fluent2.microsoft.design" target="_blank" rel="noopener">Fluent 2 Docs</a></li>
+            <li><a href="https://github.com/microsoft/fluentui" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://www.figma.com/community/file/836828295772957889" target="_blank" rel="noopener">Figma Kit</a></li>
+            <li><a href="prompt.md">Generation Prompt</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-legal">© 2026 Microsoft Corporation. Design system reference implementation.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms of use</a>
+          <a href="#">Accessibility</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

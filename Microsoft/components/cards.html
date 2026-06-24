@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cards — Microsoft Fluent Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .page-wrap { min-height: 100vh; }
+    .page-header {
+      padding: var(--space-10) 0 var(--space-8);
+      border-bottom: 1px solid var(--stroke-divider);
+      margin-bottom: var(--space-10);
+    }
+    .back-link {
+      display: inline-flex; align-items: center; gap: var(--space-1-5);
+      font-size: var(--text-14); color: var(--color-brand); text-decoration: none;
+      margin-bottom: var(--space-5); transition: opacity var(--duration-fast) var(--ease-fluent);
+    }
+    .back-link:hover { opacity: 0.75; text-decoration: none; }
+    .showcase-block { margin-bottom: var(--space-12); }
+    .showcase-block-title { font-size: var(--text-20); font-weight: var(--weight-semibold); color: var(--label-primary); margin-bottom: var(--space-1); font-family: var(--font-display); }
+    .showcase-block-desc { font-size: var(--text-14); color: var(--label-secondary); margin-bottom: var(--space-5); line-height: 1.5; }
+    .section-divider { height: 1px; background: var(--stroke-divider); margin: var(--space-12) 0; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-4); }
+    .demo-bg {
+      background: linear-gradient(135deg, rgba(0,120,212,0.04), rgba(40,153,245,0.04));
+      padding: var(--space-6); border-radius: var(--radius-xl); border: 1px solid var(--stroke-default);
+      margin-bottom: var(--space-4);
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <div class="container" style="padding-top:var(--space-8);padding-bottom:var(--space-16);">
+
+    <div class="page-header">
+      <a href="../index.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Fluent Design System
+      </a>
+      <h1 style="font-size:var(--text-40);font-weight:var(--weight-semibold);letter-spacing:-0.015em;margin-bottom:var(--space-3);">Card</h1>
+      <p style="font-size:var(--text-16);color:var(--label-secondary);max-width:560px;line-height:1.6;">
+        Cards group related information into a contained surface. Fluent 2 cards use a white/surface background,
+        1px border, 8px radius, and depth-4 shadow for a clean separation from the page background.
+      </p>
+    </div>
+
+    <!-- STANDARD CARDS -->
+    <div class="showcase-block">
+      <div class="showcase-block-title">Standard, Interactive, Selected</div>
+      <div class="showcase-block-desc">Three states of the base card: at rest, interactive (responds to hover), and selected (blue border signals active selection).</div>
+
+      <div class="card-grid">
+        <!-- Standard -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-header-content">
+              <div class="card-title">Standard Card</div>
+              <div class="card-subtitle">8px radius · depth-4 · 1px border</div>
+            </div>
+          </div>
+          <div class="card-body">Use for static content groups: announcements, profile summaries, data panels. Cards separate content from the background without heavy visual weight.</div>
+          <div class="card-footer">
+            <button class="btn btn-accent btn--sm">Primary action</button>
+            <button class="btn btn-subtle btn--sm">Dismiss</button>
+          </div>
+        </div>
+
+        <!-- Interactive -->
+        <div class="card card--interactive">
+          <div class="card-header">
+            <div class="card-header-content">
+              <div class="card-title">Interactive Card</div>
+              <div class="card-subtitle">Hover → depth-8 + border darkens</div>
+            </div>
+            <div class="card-header-action">
+              <span class="badge">3</span>
+            </div>
+          </div>
+          <div class="card-body">Click or tap this card. Hover to preview the elevation increase. Used for navigable items — file tiles, product cards, settings panels.</div>
+          <div class="card-footer">
+            <span class="tag tag--accent">Featured</span>
+            <span class="tag">Components</span>
+          </div>
+        </div>
+
+        <!-- Selected -->
+        <div class="card card--selected">
+          <div class="card-header">
+            <div class="card-header-content">
+              <div class="card-title">Selected Card</div>
+              <div class="card-subtitle">2px accent border · checked icon</div>
+            </div>
+            <div class="card-header-action">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <circle cx="11" cy="11" r="10" fill="var(--fill-accent-default)"/>
+                <path d="M7 11l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-body">The selected state communicates the current selection in multi-select grids. The 2px blue border is the Fluent selection indicator.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- HORIZONTAL CARD -->
+    <div class="showcase-block">
+      <div class="showcase-block-title">Horizontal Card</div>
+      <div class="showcase-block-desc">Image or icon on the left with content on the right. Best for list-style layouts where a thumbnail aids recognition.</div>
+
+      <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+        <div class="card card-horizontal card--interactive">
+          <div class="card-image" style="width:88px;min-height:88px;background:linear-gradient(135deg,rgba(0,120,212,0.12),rgba(40,153,245,0.06));display:flex;align-items:center;justify-content:center;">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <rect x="4" y="2" width="20" height="24" rx="3" fill="rgba(0,120,212,0.15)" stroke="var(--color-brand)" stroke-width="1.5"/>
+              <path d="M8 10h12M8 14h12M8 18h8" stroke="var(--color-brand)" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="card-content">
+            <div class="card-title">Brand Guidelines 2026.pdf</div>
+            <div class="card-subtitle" style="margin-bottom:var(--space-1-5);">Last modified June 20 · 18.7 MB</div>
+            <div style="display:flex;gap:var(--space-2);">
+              <span class="tag" style="height:20px;font-size:11px;">PDF</span>
+              <span class="tag tag--accent" style="height:20px;font-size:11px;">Shared</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-horizontal card--interactive">
+          <div class="card-image" style="width:88px;min-height:88px;background:linear-gradient(135deg,rgba(16,124,16,0.12),rgba(16,124,16,0.05));display:flex;align-items:center;justify-content:center;">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <rect x="4" y="2" width="20" height="24" rx="3" fill="rgba(16,124,16,0.12)" stroke="var(--color-success)" stroke-width="1.5"/>
+              <path d="M9 14l4 4 6-7" stroke="var(--color-success)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="card-content">
+            <div class="card-title">Accessibility Audit — Q2.xlsx</div>
+            <div class="card-subtitle" style="margin-bottom:var(--space-1-5);">Last modified June 18 · 340 KB</div>
+            <div style="display:flex;gap:var(--space-2);">
+              <span class="tag" style="height:20px;font-size:11px;">XLSX</span>
+              <span class="tag" style="height:20px;font-size:11px;border-color:var(--color-success);color:var(--color-success);">Complete</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-horizontal card--selected">
+          <div class="card-image" style="width:88px;min-height:88px;background:linear-gradient(135deg,rgba(0,120,212,0.15),rgba(40,153,245,0.08));display:flex;align-items:center;justify-content:center;">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <circle cx="14" cy="14" r="11" fill="rgba(0,120,212,0.12)" stroke="var(--color-brand)" stroke-width="1.5"/>
+              <path d="M9 14l3.5 3.5 6.5-7" stroke="var(--color-brand)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="card-content" style="display:flex;justify-content:space-between;align-items:flex-start;gap:var(--space-3);">
+            <div>
+              <div class="card-title">Design Tokens v2.css — Selected</div>
+              <div class="card-subtitle" style="margin-bottom:var(--space-1-5);">Today, 10:42 AM · 48 KB</div>
+              <div style="display:flex;gap:var(--space-2);">
+                <span class="tag tag--accent" style="height:20px;font-size:11px;">Active</span>
+              </div>
+            </div>
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" style="flex-shrink:0;margin-top:2px;">
+              <circle cx="11" cy="11" r="10" fill="var(--fill-accent-default)"/>
+              <path d="M7 11l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- MEDIA CARDS -->
+    <div class="showcase-block">
+      <div class="showcase-block-title">Media Card</div>
+      <div class="showcase-block-desc">A card with an image or media header above the content. Used for articles, gallery tiles, and feature spotlights.</div>
+
+      <div class="card-grid">
+        <div class="card card-media card--interactive">
+          <div class="card-media-image" style="background:linear-gradient(135deg,#0f3460,#1a2744,#0078d4);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);min-height:140px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <rect x="4" y="4" width="32" height="32" rx="8" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+              <path d="M15 20l5 5 10-10" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="card-media-body">
+            <div class="card-title">Fluent 2 Deep Dive</div>
+            <div class="card-body" style="margin-top:var(--space-1);">Explore the full design system specification including color tokens, type ramp, and component anatomy.</div>
+            <div class="card-footer">
+              <button class="btn btn-accent btn--sm">Read more</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-media card--interactive">
+          <div class="card-media-image" style="background:linear-gradient(135deg,#107c10,#2d8a2d,#43a843);display:flex;align-items:center;justify-content:center;min-height:140px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <path d="M20 8v24M8 20h24" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="20" cy="20" r="14" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="card-media-body">
+            <div class="card-title">Accessible by default</div>
+            <div class="card-body" style="margin-top:var(--space-1);">Every Fluent 2 component ships with WCAG 2.1 AA compliance baked in — focus management, ARIA, and keyboard navigation.</div>
+            <div class="card-footer">
+              <button class="btn btn-accent btn--sm" style="background:var(--color-success);border-color:var(--color-success);">Learn more</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-media card--interactive">
+          <div class="card-media-image" style="background:linear-gradient(135deg,#8764b8,#6e48aa,#b4a0e5);display:flex;align-items:center;justify-content:center;min-height:140px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <path d="M20 6l3.5 10h10.5l-8.5 6.5 3.5 10L20 27l-9 5.5L14.5 22.5 6 16h10.5L20 6z" stroke="rgba(255,255,255,0.8)" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="card-media-body">
+            <div class="card-title">Motion principles</div>
+            <div class="card-body" style="margin-top:var(--space-1);">Connected motion uses timing and easing to create spatial relationships that feel natural and purposeful.</div>
+            <div class="card-footer">
+              <button class="btn btn-accent btn--sm" style="background:#8764b8;border-color:#8764b8;">Explore motion</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- CARD WITH ACRYLIC -->
+    <div class="showcase-block">
+      <div class="showcase-block-title">Acrylic Material Card</div>
+      <div class="showcase-block-desc">Cards can be combined with Fluent's Acrylic material utility for overlays and transient surfaces.</div>
+
+      <div class="demo-bg">
+        <div class="card material-acrylic" style="max-width:380px;">
+          <div class="card-header">
+            <div class="card-header-content">
+              <div class="card-title">Acrylic surface</div>
+              <div class="card-subtitle">backdrop-filter: blur(30px) saturate(125%)</div>
+            </div>
+          </div>
+          <div class="card-body">This card uses the <code style="font-family:var(--font-mono);font-size:0.85em;background:var(--fill-subtle);padding:1px 4px;border-radius:3px;">.material-acrylic</code> utility class, giving it translucency that reveals the content behind it.</div>
+          <div class="card-footer">
+            <button class="btn btn-accent btn--sm">Accept</button>
+            <button class="btn btn-subtle btn--sm">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

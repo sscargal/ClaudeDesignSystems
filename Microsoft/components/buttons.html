@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buttons — Microsoft Fluent Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .page-wrap { display: flex; flex-direction: column; min-height: 100vh; }
+    .page-header {
+      padding: var(--space-10) 0 var(--space-8);
+      border-bottom: 1px solid var(--stroke-divider);
+      margin-bottom: var(--space-10);
+    }
+    .back-link {
+      display: inline-flex; align-items: center; gap: var(--space-1-5);
+      font-size: var(--text-14); color: var(--color-brand); text-decoration: none;
+      margin-bottom: var(--space-5);
+      transition: opacity var(--duration-fast) var(--ease-fluent);
+    }
+    .back-link:hover { opacity: 0.75; text-decoration: none; }
+    .showcase-block { margin-bottom: var(--space-12); }
+    .showcase-block-title {
+      font-size: var(--text-20); font-weight: var(--weight-semibold);
+      color: var(--label-primary); margin-bottom: var(--space-1); font-family: var(--font-display);
+    }
+    .showcase-block-desc {
+      font-size: var(--text-14); color: var(--label-secondary); margin-bottom: var(--space-5);
+      line-height: 1.5;
+    }
+    .demo-area {
+      display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3);
+      padding: var(--space-6); background: var(--fill-subtle);
+      border-radius: var(--radius-xl); margin-bottom: var(--space-2);
+      border: 1px solid var(--stroke-default);
+    }
+    .demo-area.dark { background: #202020; border-color: #3d3d3d; }
+    .demo-label {
+      width: 100%; font-size: var(--text-11); font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--label-tertiary);
+    }
+    .spec-table { width: 100%; border-collapse: collapse; margin-top: var(--space-4); }
+    .spec-table th {
+      text-align: left; padding: var(--space-2) var(--space-3); font-size: var(--text-12);
+      font-weight: var(--weight-semibold); color: var(--label-secondary);
+      border-bottom: 1px solid var(--stroke-default); background: var(--fill-subtle);
+    }
+    .spec-table td {
+      padding: var(--space-3) var(--space-3); font-size: var(--text-13); color: var(--label-primary);
+      border-bottom: 1px solid var(--stroke-divider); vertical-align: top;
+    }
+    .spec-table tr:last-child td { border-bottom: none; }
+    .code-token {
+      font-family: var(--font-mono); font-size: 0.85em;
+      background: var(--fill-subtle); border: 1px solid var(--stroke-default);
+      padding: 1px 5px; border-radius: 3px; color: var(--label-secondary);
+    }
+    .section-divider {
+      height: 1px; background: var(--stroke-divider); margin: var(--space-12) 0;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <div class="container" style="padding-top:var(--space-8);">
+
+    <div class="page-header">
+      <a href="../index.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M10 4L6 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Fluent Design System
+      </a>
+      <h1 style="font-size:var(--text-40);font-weight:var(--weight-semibold);letter-spacing:-0.015em;margin-bottom:var(--space-3);">Button</h1>
+      <p style="font-size:var(--text-16);color:var(--label-secondary);max-width:560px;line-height:1.6;">
+        Buttons trigger actions or navigate users through a flow. Fluent 2 offers five visual variants
+        and three size options, each with consistent interaction states.
+      </p>
+    </div>
+
+    <!-- VARIANTS -->
+    <div class="showcase-block">
+      <div class="showcase-block-title">Variants</div>
+      <div class="showcase-block-desc">
+        Choose the variant that matches the action's hierarchy. Use one Accent per context, Standard for secondary actions, and Subtle or Transparent for tertiary.
+      </div>
+
+      <div class="demo-area">
+        <div class="demo-label">All variants — light background</div>
+        <button class="btn btn-accent">Accent</button>
+        <button class="btn btn-standard">Standard</button>
+        <button class="btn btn-subtle">Subtle</button>
+        <button class="btn btn-outline">Outline</button>
+        <button class="btn btn-transparent">Transparent</button>
+        <button class="btn btn-danger">Danger</button>
+      </div>
+
+      <div class="demo-area dark">
+        <div class="demo-label" style="color:rgba(255,255,255,0.4);">All variants — dark background</div>
+        <button class="btn btn-accent">Accent</button>
+        <button class="btn btn-standard" style="background:rgba(255,255,255,0.06);border-color:#525252;color:rgba(255,255,255,0.9);">Standard</button>
+        <button class="btn btn-subtle" style="color:rgba(255,255,255,0.9);">Subtle</button>
+        <button class="btn btn-outline" style="border-color:#525252;color:rgba(255,255,255,0.9);">Outline</button>
+        <button class="btn btn-danger">Danger</button>
+      </div>
+
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Variant</th>
+            <th>Class</th>
+            <th>Use when</th>
+            <th>Background</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><button class="btn btn-accent btn--sm">Accent</button></td>
+            <td><code class="code-token">.btn-accent</code></td>
+            <td>Primary call-to-action. One per view.</td>
+            <td><code class="code-token">--fill-accent-default</code> (#0078D4)</td>
+          </tr>
+          <tr>
+            <td><button class="btn btn-standard btn--sm">Standard</button></td>
+            <td><code class="code-token">.btn-standard</code></td>
+            <td>Secondary action alongside Accent.</td>
+            <td>White / Surface fill + border</td>
+          </tr>
+          <tr>
+            <td><button class="btn btn-subtle btn--sm">Subtle</button></td>
+            <td><code class="code-token">.btn-subtle</code></td>
+            <td>Tertiary, low-priority actions.</td>
+            <td>Transparent → fill-subtle on hover</td>
+          </tr>
+          <tr>
+            <td><button class="btn btn-outline btn--sm">Outline</button></td>
+            <td><code class="code-token">.btn-outline</code></td>
+            <td>Balanced weight between Subtle and Standard.</td>
+            <td>Transparent + border</td>
+          </tr>
+          <tr>
+            <td><button class="btn btn-transparent btn--sm">Transparent</button></td>
+            <td><code class="code-token">.btn-transparent</code></td>
+            <td>Minimal UI — toolbars, inline actions.</td>
+            <td>Fully transparent</td>
+          </tr>
+          <tr>
+            <td><button class="btn btn-danger btn--sm">Danger</button></td>
+            <td><code class="code-token">.btn-danger</code></td>
+            <td>Destructive actions (delete, remove).</td>
+            <td><code class="code-token">--color-error</code> (#C42B1C)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- SIZES -->
+    <div class="showcase-block">
+      <div class="showcase-block-title">Sizes</div>
+      <div class="showcase-block-desc">Three sizes map to different UI density contexts. Small for compact toolbars, Medium as the default, Large for hero CTAs.</div>
+
+      <div class="demo-area">
+        <div class="demo-label">Size variants</div>
+        <button class="btn btn-accent btn--sm">Small — 24px</button>
+        <button class="btn btn-accent">Medium — 32px (default)</button>
+        <button class="btn btn-accent btn--lg">Large — 40px</button>
+      </div>
+
+      <table class="spec-table">
+        <thead>
+          <tr><th>Size</th><th>Class modifier</th><th>Height</th><th>Font size</th><th>Padding</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Small</td><td><code class="code-token">.btn--sm</code></td><td>24px</td><td>12px</td><td>0 8px</td></tr>
+          <tr><td>Medium</td><td>(default)</td><td>32px</td><td>14px</td><td>0 12px</td></tr>
+          <tr><td>Large</td><td><code class="code-token">.btn--lg</code></td><td>40px</td><td>16px</td><td>0 20px</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ICON BUTTONS -->
+    <div class="showcase-block">
+      <div class="showcase-block-title">With Icons &amp; Icon-Only</div>
+      <div class="showcase-block-desc">Icons reinforce meaning. Use icon-only buttons when space is limited — always provide an accessible <code class="code-token">aria-label</code>.</div>
+
+      <div class="demo-area">
+        <div class="demo-label">Leading icons</div>
+        <button class="btn btn-accent">
+          <svg class="btn-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          New file
+        </button>
+        <button class="btn btn-standard">
+          <svg class="btn-icon" viewBox="0 0 20 20" fill="none"><path d="M17 12v5H3v-5M10 3v10M6 7l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Upload
+        </button>
+        <button class="btn btn-subtle">
+          <svg class="btn-icon" viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Search
+        </button>
+      </div>
+
+      <div class="demo-area">
+        <div class="demo-label">Icon-only (square)</div>
+        <button class="btn btn-accent btn-icon-only" aria-label="Add">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <button class="btn btn-standard btn-icon-only" aria-label="Edit">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M11 2.5l2.5 2.5L6 12.5H3.5V10L11 2.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="btn btn-subtle btn-icon-only" aria-label="Delete">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 5h10l-1 8H4L3 5zM1 5h14M6 5V3h4v2" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="btn btn-transparent btn-icon-only" aria-label="More options">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="3" r="1.2" fill="currentColor"/><circle cx="8" cy="8" r="1.2" fill="currentColor"/><circle cx="8" cy="13" r="1.2" fill="currentColor"/></svg>
+        </button>
+        <div style="width:1px;height:24px;background:var(--stroke-default);"></div>
+        <button class="btn btn-accent btn-icon-only btn--sm" aria-label="Add small">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <button class="btn btn-standard btn-icon-only btn--sm" aria-label="Settings small">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="2" stroke="currentColor" stroke-width="1.2"/><path d="M10 6a4 4 0 00-.1-.8l1.2-.9-1.1-1.9-1.3.5A4 4 0 007.6 2.1L7.3 1H4.7l-.3 1.1a4 4 0 00-1.1.8L2 2.4.9 4.3l1.2.9A4 4 0 002 6c0 .3 0 .5.1.8L.9 7.7 2 9.6l1.3-.5a4 4 0 001.1.8l.3 1.1h2.6l.3-1.1a4 4 0 001.1-.8l1.3.5L11.1 7.7 9.9 6.8A4 4 0 0010 6z" stroke="currentColor" stroke-width="1.2"/></svg>
+        </button>
+        <button class="btn btn-accent btn-icon-only btn--lg" aria-label="Add large">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- COMPOUND -->
+    <div class="showcase-block">
+      <div class="showcase-block-title">Compound Button</div>
+      <div class="showcase-block-desc">A larger button with an icon plus a primary label and a secondary description — ideal for onboarding flows and feature selection.</div>
+      <div class="demo-area">
+        <div class="demo-label">Compound buttons</div>
+        <button class="btn btn-compound">
+          <svg style="width:24px;height:24px;color:var(--color-brand);" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span class="btn-compound-primary">Create new document</span>
+          <span class="btn-compound-secondary">Start from a blank slate</span>
+        </button>
+        <button class="btn btn-compound">
+          <svg style="width:24px;height:24px;color:var(--color-brand);" viewBox="0 0 24 24" fill="none">
+            <path d="M4 12h16M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="btn-compound-primary">Import existing</span>
+          <span class="btn-compound-secondary">Bring in a file from your device</span>
+        </button>
+        <button class="btn btn-compound">
+          <svg style="width:24px;height:24px;color:var(--color-brand);" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="2"/>
+            <path d="M9 12h6M12 9v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span class="btn-compound-primary">Use a template</span>
+          <span class="btn-compound-secondary">Start faster with a prebuilt layout</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- STATES -->
+    <div class="showcase-block">
+      <div class="showcase-block-title">States</div>
+      <div class="showcase-block-desc">All variants support rest, hover, pressed, focused, and disabled states with smooth transitions.</div>
+      <div class="demo-area">
+        <div class="demo-label">Disabled — all variants</div>
+        <button class="btn btn-accent" disabled>Accent</button>
+        <button class="btn btn-standard" disabled>Standard</button>
+        <button class="btn btn-subtle" disabled>Subtle</button>
+        <button class="btn btn-outline" disabled>Outline</button>
+        <button class="btn btn-danger" disabled>Danger</button>
+      </div>
+
+      <table class="spec-table">
+        <thead>
+          <tr><th>State</th><th>Visual change</th><th>CSS property</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Rest</td><td>Default appearance</td><td>—</td></tr>
+          <tr><td>Hover</td><td>Darker background or border</td><td><code class="code-token">:hover</code></td></tr>
+          <tr><td>Pressed</td><td>scale(0.98) + darker fill</td><td><code class="code-token">:active</code></td></tr>
+          <tr><td>Focused</td><td>2px outline at var(--stroke-focus)</td><td><code class="code-token">:focus-visible</code></td></tr>
+          <tr><td>Disabled</td><td>opacity: 0.45; pointer-events: none</td><td><code class="code-token">:disabled</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

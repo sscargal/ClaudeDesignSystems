@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms — Microsoft Fluent Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .page-wrap { min-height: 100vh; }
+    .page-header {
+      padding: var(--space-10) 0 var(--space-8);
+      border-bottom: 1px solid var(--stroke-divider);
+      margin-bottom: var(--space-10);
+    }
+    .back-link {
+      display: inline-flex; align-items: center; gap: var(--space-1-5);
+      font-size: var(--text-14); color: var(--color-brand); text-decoration: none;
+      margin-bottom: var(--space-5); transition: opacity var(--duration-fast) var(--ease-fluent);
+    }
+    .back-link:hover { opacity: 0.75; text-decoration: none; }
+    .showcase-block { margin-bottom: var(--space-12); }
+    .showcase-block-title { font-size: var(--text-20); font-weight: var(--weight-semibold); color: var(--label-primary); margin-bottom: var(--space-1); font-family: var(--font-display); }
+    .showcase-block-desc { font-size: var(--text-14); color: var(--label-secondary); margin-bottom: var(--space-5); line-height: 1.5; }
+    .section-divider { height: 1px; background: var(--stroke-divider); margin: var(--space-12) 0; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); }
+    @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } }
+    .code-token {
+      font-family: var(--font-mono); font-size: 0.85em;
+      background: var(--fill-subtle); border: 1px solid var(--stroke-default);
+      padding: 1px 5px; border-radius: 3px; color: var(--label-secondary);
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <div class="container" style="padding-top:var(--space-8);padding-bottom:var(--space-16);">
+
+    <div class="page-header">
+      <a href="../index.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Fluent Design System
+      </a>
+      <h1 style="font-size:var(--text-40);font-weight:var(--weight-semibold);letter-spacing:-0.015em;margin-bottom:var(--space-3);">Forms &amp; Inputs</h1>
+      <p style="font-size:var(--text-16);color:var(--label-secondary);max-width:560px;line-height:1.6;">
+        Fluent 2 inputs use an underline emphasis on the bottom border to indicate focus — a hallmark of
+        the system's calm, information-dense style. Form controls follow a label-above pattern for optimal readability.
+      </p>
+    </div>
+
+    <!-- TEXT INPUT -->
+    <div class="showcase-block">
+      <div class="showcase-block-title">Text Input</div>
+      <div class="showcase-block-desc">
+        The default Fluent input uses a top-and-side 1px border with a 2px bottom border that deepens on focus.
+        Focus ring: <code class="code-token">2px solid rgba(0,120,212,0.3)</code>.
+      </div>
+
+      <div class="form-grid">
+        <div style="display:flex;flex-direction:column;gap:var(--space-5);">
+          <div class="input-group">
+            <label class="input-label" for="i-rest">Default state</label>
+            <input type="text" id="i-rest" class="input" placeholder="Placeholder text">
+          </div>
+
+          <div class="input-group">
+            <label class="input-label" for="i-filled">Filled state</label>
+            <input type="text" id="i-filled" class="input" value="Jane Smith">
+          </div>
+
+          <div class="input-group">
+            <label class="input-label" for="i-prefix">With icon prefix</label>
+            <div class="input-wrapper has-prefix">
+              <div class="input-prefix">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <circle cx="8" cy="5" r="3" stroke="currentColor" stroke-width="1.2"/>
+                  <path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <input type="text" id="i-prefix" class="input" placeholder="Search users…">
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label" for="i-suffix">With suffix action</label>
+            <div class="input-wrapper has-suffix">
+              <input type="text" id="i-suffix" class="input" value="contoso.sharepoint.com" readonly style="padding-right:var(--space-8);">
+              <div class="input-suffix">
+                <button class="btn btn-transparent btn--sm btn-icon-only" aria-label="Copy link" style="width:auto;height:auto;padding:0;">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <rect x="5" y="5" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+                    <path d="M3 9H2a1 1 0 01-1-1V2a1 1 0 011-1h6a1 1 0 011 1v1" stroke="currentColor" stroke-width="1.2"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:var(--space-5);">
+          <div class="input-group">
+            <label class="input-label" for="i-error">Error state <span class="required">*</span></label>
+            <input type="email" id="i-error" class="input input--error" value="not-an-email" aria-invalid="true" aria-describedby="email-err">
+            <span class="input-error-message" id="email-err">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <circle cx="6" cy="6" r="5" stroke="var(--color-error)" stroke-width="1.2"/>
+                <path d="M6 4v3M6 8.5v.5" stroke="var(--color-error)" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+              Enter a valid email address
+            </span>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label" for="i-disabled">Disabled</label>
+            <input type="text" id="i-disabled" class="input" value="Read-only content" disabled>
+            <span class="input-description">This field cannot be edited.</span>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label" for="i-sm">Small input</label>
+            <input type="text" id="i-sm" class="input input--sm" placeholder="Small size — 24px">
+          </div>
+
+          <div class="input-group">
+            <label class="input-label" for="i-lg">Large input</label>
+            <input type="text" id="i-lg" class="input input--lg" placeholder="Large size — 40px">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- TEXTAREA -->
+    <div class="showcase-block">
+      <div class="showcase-block-title">Textarea</div>
+      <div class="showcase-block-desc">Multi-line text input that follows the same underline focus pattern. Vertically resizable by the user.</div>
+
+      <div class="form-grid">
+        <div class="input-group">
+          <label class="input-label" for="ta-default">Description</label>
+          <div class="input-description">Up to 500 characters. Markdown is supported.</div>
+          <textarea id="ta-default" class="textarea" rows="4" placeholder="Describe this project or document…"></textarea>
+          <div style="text-align:right;font-size:var(--text-11);color:var(--label-tertiary);margin-top:var(--space-1);">0 / 500</div>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="ta-filled">Filled example</label>
+          <textarea id="ta-filled" class="textarea" rows="4">Passionate about design systems and the craft of building scalable, accessible UI components that feel right on any device.</textarea>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:var(--space-1);">
+            <span style="font-size:var(--text-11);color:var(--label-success);">✓ Saved automatically</span>
+            <span style="font-size:var(--text-11);color:var(--label-tertiary);">148 / 500</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- COMBOBOX / SELECT -->
+    <div class="showcase-block">
+      <div class="showcase-block-title">Combobox &amp; Select</div>
+      <div class="showcase-block-desc">Dropdown selects styled with the Fluent underline pattern and a custom chevron indicator.</div>
+
+      <div class="form-grid">
+        <div style="display:flex;flex-direction:column;gap:var(--space-5);">
+          <div class="input-group">
+            <label class="input-label" for="cb-region">Region</label>
+            <div class="combobox">
+              <select id="cb-region" class="combobox-input">
+                <option value="">Select a region…</option>
+                <option>North America</option>
+                <option>Europe</option>
+                <option>Asia Pacific</option>
+                <option>Latin America</option>
+                <option>Middle East &amp; Africa</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label" for="cb-role">Role</label>
+            <div class="combobox">
+              <select id="cb-role" class="combobox-input">
+                <option>Designer</option>
+                <option selected>Engineer</option>
+                <option>Product Manager</option>
+                <option>Engineering Manager</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:var(--space-5);">
+          <div class="input-group">
+            <label class="input-label" for="cb-lang">Language</label>
+            <div class="combobox">
+              <select id="cb-lang" class="combobox-input">
+                <option>English (United States)</option>
+                <option>English (United Kingdom)</option>
+                <option>Deutsch</option>
+                <option>Español</option>
+                <option>Français</option>
+                <option>日本語</option>
+                <option>中文（简体）</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label" for="cb-disabled">Disabled select</label>
+            <div class="combobox">
+              <select id="cb-disabled" class="combobox-input" disabled>
+                <option>Not available</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- COMPLETE SIGN-UP FORM -->
+    <div class="showcase-block">
+      <div class="showcase-block-title">Complete Form Example</div>
+      <div class="showcase-block-desc">A realistic account creation form showing label hierarchy, field grouping, validation messages, and action buttons.</div>
+
+      <div class="card" style="max-width:520px;">
+        <div style="margin-bottom:var(--space-6);">
+          <h2 style="font-size:var(--text-20);font-weight:var(--weight-semibold);margin-bottom:var(--space-1);">Create your account</h2>
+          <p class="caption">Already have an account? <a href="#">Sign in</a></p>
+        </div>
+
+        <form style="display:flex;flex-direction:column;gap:var(--space-5);" novalidate>
+          <div class="form-grid" style="gap:var(--space-4);">
+            <div class="input-group">
+              <label class="input-label" for="f-first">First name <span class="required">*</span></label>
+              <input type="text" id="f-first" class="input" placeholder="Jane" required>
+            </div>
+            <div class="input-group">
+              <label class="input-label" for="f-last">Last name <span class="required">*</span></label>
+              <input type="text" id="f-last" class="input" placeholder="Smith" required>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label" for="f-email">Work email <span class="required">*</span></label>
+            <div class="input-wrapper has-prefix">
+              <div class="input-prefix">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <rect x="2" y="4" width="12" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+                  <path d="M2 5l6 4.5L14 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <input type="email" id="f-email" class="input" placeholder="jane@contoso.com" required>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label" for="f-org">Organization <span class="required">*</span></label>
+            <div class="combobox">
+              <select id="f-org" class="combobox-input">
+                <option value="">Select your organization type…</option>
+                <option>Enterprise (1000+ employees)</option>
+                <option>Mid-market (100–999)</option>
+                <option>Small business (&lt; 100)</option>
+                <option>Education</option>
+                <option>Non-profit</option>
+                <option>Government</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label" for="f-pw">Password <span class="required">*</span></label>
+            <div class="input-wrapper has-suffix">
+              <input type="password" id="f-pw" class="input" placeholder="At least 12 characters" style="padding-right:var(--space-8);" required>
+              <div class="input-suffix">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="color:var(--label-tertiary);">
+                  <path d="M8 4C4.5 4 2 8 2 8s2.5 4 6 4 6-4 6-4-2.5-4-6-4z" stroke="currentColor" stroke-width="1.2"/>
+                  <circle cx="8" cy="8" r="1.8" stroke="currentColor" stroke-width="1.2"/>
+                </svg>
+              </div>
+            </div>
+            <div class="input-description">
+              Use 12+ characters with uppercase, numbers, and symbols.
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+            <label class="checkbox">
+              <input type="checkbox" required>
+              <div class="checkbox-box"></div>
+              <span class="checkbox-label" style="font-size:var(--text-13);">
+                I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+              </span>
+            </label>
+            <label class="checkbox">
+              <input type="checkbox">
+              <div class="checkbox-box"></div>
+              <span class="checkbox-label" style="font-size:var(--text-13);">Send me product updates and tips</span>
+            </label>
+          </div>
+
+          <div style="display:flex;gap:var(--space-3);padding-top:var(--space-2);">
+            <button type="submit" class="btn btn-accent btn--lg" style="flex:1;">Create account</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- CONTROLS IN FORMS -->
+    <div class="showcase-block">
+      <div class="showcase-block-title">Inline Controls</div>
+      <div class="showcase-block-desc">Toggle switches, checkboxes, and radio groups as they appear within settings forms.</div>
+
+      <div class="card" style="max-width:520px;">
+        <h3 style="font-size:var(--text-16);font-weight:var(--weight-semibold);margin-bottom:var(--space-5);">Notification preferences</h3>
+
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) 0;border-bottom:1px solid var(--stroke-divider);">
+            <div>
+              <div style="font-size:var(--text-14);font-weight:var(--weight-semibold);margin-bottom:2px;">Email notifications</div>
+              <div class="caption">Receive updates about shared files and comments</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" checked>
+              <div class="toggle-track"><div class="toggle-thumb"></div></div>
+            </label>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) 0;border-bottom:1px solid var(--stroke-divider);">
+            <div>
+              <div style="font-size:var(--text-14);font-weight:var(--weight-semibold);margin-bottom:2px;">Desktop push notifications</div>
+              <div class="caption">Show notifications in Action Center</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" checked>
+              <div class="toggle-track"><div class="toggle-thumb"></div></div>
+            </label>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) 0;border-bottom:1px solid var(--stroke-divider);">
+            <div>
+              <div style="font-size:var(--text-14);font-weight:var(--weight-semibold);margin-bottom:2px;">Weekly digest</div>
+              <div class="caption">Summary email every Monday morning</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox">
+              <div class="toggle-track"><div class="toggle-thumb"></div></div>
+            </label>
+          </div>
+          <div style="padding:var(--space-4) 0;">
+            <div style="font-size:var(--text-14);font-weight:var(--weight-semibold);margin-bottom:var(--space-3);">Theme preference</div>
+            <div style="display:flex;flex-direction:column;gap:var(--space-2);">
+              <label class="radio"><input type="radio" name="theme" checked><div class="radio-circle"></div><span class="radio-label">System default</span></label>
+              <label class="radio"><input type="radio" name="theme"><div class="radio-circle"></div><span class="radio-label">Light</span></label>
+              <label class="radio"><input type="radio" name="theme"><div class="radio-circle"></div><span class="radio-label">Dark</span></label>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:var(--space-2);margin-top:var(--space-4);">
+          <button class="btn btn-accent">Save preferences</button>
+          <button class="btn btn-subtle">Reset to defaults</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

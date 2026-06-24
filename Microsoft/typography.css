@@ -1,0 +1,310 @@
+/* =============================================================================
+   Microsoft Fluent Design System — Typography
+   Version 1.0.0 | Fluent 2 Type Ramp
+   Font: Segoe UI Variable
+   ============================================================================= */
+
+/* ---------------------------------------------------------------------------
+   BASE RESET
+   --------------------------------------------------------------------------- */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-base);
+  font-size: var(--text-14);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  color: var(--label-primary);
+  background-color: var(--color-bg-base);
+}
+
+/* ---------------------------------------------------------------------------
+   FLUENT 2 TYPE RAMP
+   Based on the official Fluent 2 type scale
+   --------------------------------------------------------------------------- */
+
+/* Display — Hero headlines, marketing copy */
+.display {
+  font-family: var(--font-display);
+  font-size: var(--text-40);
+  font-weight: var(--weight-semibold);
+  line-height: 52px;
+  letter-spacing: var(--tracking-display);
+  color: var(--label-primary);
+}
+
+/* Large Title — Page headers, major sections */
+.title-large {
+  font-family: var(--font-display);
+  font-size: var(--text-28);
+  font-weight: var(--weight-semibold);
+  line-height: 36px;
+  letter-spacing: -0.008em;
+  color: var(--label-primary);
+}
+
+/* Title — Section headers */
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-24);
+  font-weight: var(--weight-semibold);
+  line-height: 32px;
+  letter-spacing: -0.005em;
+  color: var(--label-primary);
+}
+
+/* Title 2 — Sub-section headers, dialog titles */
+.title-2 {
+  font-family: var(--font-display);
+  font-size: var(--text-20);
+  font-weight: var(--weight-semibold);
+  line-height: 28px;
+  letter-spacing: 0;
+  color: var(--label-primary);
+}
+
+/* Subtitle — Slightly larger body text, feature descriptions */
+.subtitle {
+  font-family: var(--font-base);
+  font-size: var(--text-20);
+  font-weight: var(--weight-regular);
+  line-height: 28px;
+  letter-spacing: 0;
+  color: var(--label-primary);
+}
+
+/* Body Large — Introductory text, readable long-form */
+.body-large {
+  font-family: var(--font-base);
+  font-size: var(--text-18);
+  font-weight: var(--weight-regular);
+  line-height: 28px;
+  letter-spacing: 0;
+  color: var(--label-primary);
+}
+
+/* Body — Default body text, the Fluent standard */
+.body {
+  font-family: var(--font-base);
+  font-size: var(--text-14);
+  font-weight: var(--weight-regular);
+  line-height: 20px;
+  letter-spacing: 0;
+  color: var(--label-primary);
+}
+
+/* Body Strong — Emphasized body text */
+.body-strong {
+  font-family: var(--font-base);
+  font-size: var(--text-14);
+  font-weight: var(--weight-semibold);
+  line-height: 20px;
+  letter-spacing: 0;
+  color: var(--label-primary);
+}
+
+/* Body 2 — Dense UI text, data, labels */
+.body-2 {
+  font-family: var(--font-base);
+  font-size: var(--text-12);
+  font-weight: var(--weight-regular);
+  line-height: 16px;
+  letter-spacing: 0;
+  color: var(--label-primary);
+}
+
+/* Caption — Supporting labels, metadata */
+.caption {
+  font-family: var(--font-base);
+  font-size: var(--text-13);
+  font-weight: var(--weight-regular);
+  line-height: 18px;
+  letter-spacing: 0;
+  color: var(--label-secondary);
+}
+
+/* Caption 2 — Smallest readable text */
+.caption-2 {
+  font-family: var(--font-base);
+  font-size: var(--text-12);
+  font-weight: var(--weight-regular);
+  line-height: 16px;
+  letter-spacing: 0.01em;
+  color: var(--label-tertiary);
+}
+
+/* ---------------------------------------------------------------------------
+   HEADING RESETS — Semantic HTML with Fluent styling
+   --------------------------------------------------------------------------- */
+
+h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-40);
+  font-weight: var(--weight-semibold);
+  line-height: 52px;
+  letter-spacing: var(--tracking-display);
+  margin: 0;
+  color: var(--label-primary);
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-28);
+  font-weight: var(--weight-semibold);
+  line-height: 36px;
+  letter-spacing: -0.008em;
+  margin: 0;
+  color: var(--label-primary);
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-24);
+  font-weight: var(--weight-semibold);
+  line-height: 32px;
+  letter-spacing: -0.005em;
+  margin: 0;
+  color: var(--label-primary);
+}
+
+h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-20);
+  font-weight: var(--weight-semibold);
+  line-height: 28px;
+  margin: 0;
+  color: var(--label-primary);
+}
+
+h5 {
+  font-family: var(--font-base);
+  font-size: var(--text-16);
+  font-weight: var(--weight-semibold);
+  line-height: 22px;
+  margin: 0;
+  color: var(--label-primary);
+}
+
+h6 {
+  font-family: var(--font-base);
+  font-size: var(--text-14);
+  font-weight: var(--weight-semibold);
+  line-height: 20px;
+  margin: 0;
+  color: var(--label-secondary);
+}
+
+p {
+  margin: 0;
+  color: var(--label-primary);
+}
+
+/* ---------------------------------------------------------------------------
+   TEXT UTILITIES
+   --------------------------------------------------------------------------- */
+
+/* Colors */
+.text-primary     { color: var(--label-primary); }
+.text-secondary   { color: var(--label-secondary); }
+.text-tertiary    { color: var(--label-tertiary); }
+.text-disabled    { color: var(--label-disabled); }
+.text-accent      { color: var(--color-brand); }
+.text-success     { color: var(--color-success); }
+.text-warning     { color: var(--color-warning); }
+.text-error       { color: var(--color-error); }
+.text-on-accent   { color: var(--label-on-accent); }
+
+/* Weights */
+.text-light       { font-weight: var(--weight-light); }
+.text-regular     { font-weight: var(--weight-regular); }
+.text-semibold    { font-weight: var(--weight-semibold); }
+.text-bold        { font-weight: var(--weight-bold); }
+
+/* Alignment */
+.text-left        { text-align: left; }
+.text-center      { text-align: center; }
+.text-right       { text-align: right; }
+
+/* Transform */
+.text-uppercase   { text-transform: uppercase; letter-spacing: var(--tracking-caps); }
+.text-lowercase   { text-transform: lowercase; }
+.text-nowrap      { white-space: nowrap; }
+.text-truncate    {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Monospace */
+.text-mono {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+/* Overline / Label style (Fluent: all-caps with letter spacing) */
+.text-overline {
+  font-size: var(--text-12);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--label-secondary);
+}
+
+/* Links */
+a {
+  color: var(--color-brand);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-fluent);
+}
+
+a:hover {
+  color: var(--color-brand-hover);
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--stroke-focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+   RESPONSIVE TYPE SCALE
+   --------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .display {
+    font-size: var(--text-32);
+    line-height: 40px;
+  }
+
+  .title-large {
+    font-size: var(--text-24);
+    line-height: 32px;
+  }
+
+  .title {
+    font-size: var(--text-20);
+    line-height: 28px;
+  }
+
+  h1 {
+    font-size: var(--text-32);
+    line-height: 40px;
+  }
+
+  h2 {
+    font-size: var(--text-24);
+    line-height: 32px;
+  }
+}
