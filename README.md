@@ -11,9 +11,14 @@ Every system is self-contained HTML + CSS: no frameworks, no build tools, no dep
 | Brand | Aesthetic | Status |
 |-------|-----------|--------|
 | [Apple](./Apple/) | Apple.com · iOS 18 — SF Pro, frosted glass, neutral palette | ✅ Complete |
-| Nike | nike.com — bold typography, high contrast, motion-forward | 🔜 Coming soon |
-| Microsoft | Fluent Design — Acrylic, depth, motion | 🔜 Coming soon |
-| Claude.ai | Anthropic brand — warm neutrals, clean AI-first UI | 🔜 Coming soon |
+| [Nike](./Nike/) | nike.com — kinetic, sharp, dark-first, volt accent | ✅ Complete |
+| [Linear](./Linear/) | linear.app — dark-first, developer-minimal, purple | ✅ Complete |
+| [Stripe](./Stripe/) | stripe.com — light-first, financial precision, blurple | ✅ Complete |
+| [Claude](./Claude/) | claude.ai — warm neutrals, conversation UI, coral | ✅ Complete |
+| [Microsoft](./Microsoft/) | Fluent Design 2 — Acrylic/Mica, Windows 11 depth | ✅ Complete |
+| [Google](./Google/) | Material You M3 — dynamic color, tonal palettes | ✅ Complete |
+| [Vercel](./Vercel/) | vercel.com — pure black, minimal, developer-focused | ✅ Complete |
+| [Notion](./Notion/) | notion.so — content-first, warm off-white, block editor | ✅ Complete |
 | Steve Scargall | stevescargall.com — personal brand | 🔜 Coming soon |
 | Liqid | liqid.com — enterprise tech, precision | 🔜 Coming soon |
 

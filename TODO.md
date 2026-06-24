@@ -8,7 +8,7 @@ Tracking all planned design systems and the companion website. Check off items a
 
 ### Tier 1 — High Impact (Build These First)
 
-- [ ] **Nike** `Nike/`
+- [x] **Nike** `Nike/`
   - Aesthetic: kinetic, aggressive, full-bleed — maximum contrast to Apple
   - Typography: Futura Bold / Trade Gothic condensed, extreme weight contrast
   - Colors: Pure black `#111111`, white `#FFFFFF`, Nike volt `#CFFC03`, sport red
@@ -16,7 +16,7 @@ Tracking all planned design systems and the companion website. Check off items a
   - Dark-first: yes — black canvas is the default
   - Reference: nike.com
 
-- [ ] **Linear** `Linear/`
+- [x] **Linear** `Linear/`
   - Aesthetic: developer cult favorite, dark-first, keyboard-centric, ultra-minimal
   - Typography: Inter, tight tracking, monospace accents for metadata
   - Colors: Deep black `#0F0F11`, Linear purple `#5E6AD2`, muted surface grays, subtle borders
@@ -24,7 +24,7 @@ Tracking all planned design systems and the companion website. Check off items a
   - Dark-first: yes — light mode is secondary
   - Reference: linear.app
 
-- [ ] **Stripe** `Stripe/`
+- [x] **Stripe** `Stripe/`
   - Aesthetic: B2B gold standard — precision prose, pastel gradient heroes, polished data
   - Typography: Sohne (system fallback: Inter), careful line-length control, well-spaced body
   - Colors: Blurple `#635BFF`, soft indigo gradients, white canvas, precise gray scale
@@ -32,7 +32,7 @@ Tracking all planned design systems and the companion website. Check off items a
   - Dark-first: no — light canvas with optional dark code blocks
   - Reference: stripe.com, stripe.com/docs
 
-- [ ] **Claude.ai** `Claude/`
+- [x] **Claude.ai** `Claude/`
   - Aesthetic: Anthropic brand — warm neutrals, conversation-first UI, calm and intelligent
   - Typography: Styrene (fallback: system-ui), generous line-height, high legibility
   - Colors: Claude orange-coral `#DA7756`, warm cream `#FAF9F5`, deep brown-black `#1A1310`, muted sand tones
@@ -42,7 +42,7 @@ Tracking all planned design systems and the companion website. Check off items a
 
 ### Tier 2 — Broader Audience
 
-- [ ] **Microsoft Fluent** `Microsoft/`
+- [x] **Microsoft Fluent** `Microsoft/`
   - Aesthetic: Fluent Design 2 — Acrylic/Mica materials, depth layers, Windows 11 language
   - Typography: Segoe UI Variable, clear hierarchy, dense information
   - Colors: Microsoft blue `#0078D4`, Fluent neutrals, semantic color system (success/warning/error/info)
@@ -50,7 +50,7 @@ Tracking all planned design systems and the companion website. Check off items a
   - Dark-first: both — Windows respects system preference
   - Reference: fluent2.microsoft.design, microsoft.com
 
-- [ ] **Google Material You** `Google/`
+- [x] **Google Material You** `Google/`
   - Aesthetic: Material Design 3 — dynamic color, adaptive surfaces, expressive motion
   - Typography: Google Sans / Roboto, Material type scale (Display → Label)
   - Colors: Dynamic tonal palette (primary, secondary, tertiary, surface, error tones) — simulate with a fixed seed color
@@ -58,7 +58,7 @@ Tracking all planned design systems and the companion website. Check off items a
   - Dark-first: both — M3 has robust dark semantics
   - Reference: m3.material.io
 
-- [ ] **Vercel** `Vercel/`
+- [x] **Vercel** `Vercel/`
   - Aesthetic: minimal, dark-first, developer-focused, precision whitespace
   - Typography: Geist (custom, fallback: Inter), monospace for paths/code, clean hierarchy
   - Colors: Pure black `#000000`, white `#FFFFFF`, Vercel teal `#50E3C2`, muted gray `#888888`
@@ -66,7 +66,7 @@ Tracking all planned design systems and the companion website. Check off items a
   - Dark-first: yes
   - Reference: vercel.com
 
-- [ ] **Notion** `Notion/`
+- [x] **Notion** `Notion/`
   - Aesthetic: content-first, block editor, soft neutrals, almost invisible chrome
   - Typography: ui-sans-serif fallback, medium weight, generous line-height, emoji-friendly
   - Colors: Soft white `#FFFFFF`, light gray surfaces, Notion black `#191919`, 8 block colors (gray/brown/orange/yellow/green/blue/purple/pink)
