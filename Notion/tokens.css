@@ -1,0 +1,300 @@
+/* =============================================================================
+   Notion Design System — Design Tokens
+   Version 1.0.0 | Built on Notion's Content-First Design Philosophy
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     COLOR SYSTEM — Light Mode
+     Notion's palette is intentionally restrained — soft neutrals that let
+     content breathe, not a visual identity that competes with it.
+     --------------------------------------------------------------------------- */
+
+  /* Core Backgrounds */
+  --color-bg:                   #FFFFFF;
+  --color-surface:              #F7F6F3;
+  --color-surface-hover:        #EFEFEC;
+  --color-surface-active:       #E8E8E5;
+
+  /* Notion Black & Neutrals */
+  --color-notion-black:         #191919;
+  --color-label-primary:        #191919;
+  --color-label-secondary:      #787774;
+  --color-label-tertiary:       #ACAAA8;
+  --color-label-placeholder:    #C7C5C2;
+
+  /* Borders */
+  --color-border-subtle:        #E3E2E0;
+  --color-border-default:       #D9D9D7;
+  --color-border-strong:        #BEBDBA;
+
+  /* Interactive accent */
+  --color-blue:                 #337EA9;
+  --color-blue-hover:           #2C6E93;
+  --color-blue-bg:              #E7F3F8;
+
+  /* ---------------------------------------------------------------------------
+     NOTION NAMED COLORS — 9 colors × 2 variants (bg + text)
+     Used for callouts, tags, highlights, and text colors.
+     --------------------------------------------------------------------------- */
+
+  /* Gray */
+  --color-gray-bg:              #F1F1EF;
+  --color-gray-text:            #787774;
+
+  /* Brown */
+  --color-brown-bg:             #F4EEEE;
+  --color-brown-text:           #9F6B53;
+
+  /* Orange */
+  --color-orange-bg:            #FAEBDD;
+  --color-orange-text:          #D9730D;
+
+  /* Yellow */
+  --color-yellow-bg:            #FBF3DB;
+  --color-yellow-text:          #CB912F;
+
+  /* Green */
+  --color-green-bg:             #EDF3EC;
+  --color-green-text:           #448361;
+
+  /* Blue */
+  --color-blue-tag-bg:          #E7F3F8;
+  --color-blue-tag-text:        #337EA9;
+
+  /* Purple */
+  --color-purple-bg:            #F6F3F8;
+  --color-purple-text:          #9065B0;
+
+  /* Pink */
+  --color-pink-bg:              #FAF1F5;
+  --color-pink-text:            #C14C8A;
+
+  /* Red */
+  --color-red-bg:               #FDEBEC;
+  --color-red-text:             #D44C47;
+
+  /* ---------------------------------------------------------------------------
+     TYPOGRAPHY
+     Notion uses the system UI font with emoji support — the UI disappears
+     and the words take center stage.
+     --------------------------------------------------------------------------- */
+
+  --font-sans:   ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono:   ui-monospace, SFMono-Regular, "SF Mono", "Cascadia Code", "Fira Code", Menlo, Consolas, "Liberation Mono", monospace;
+  --font-serif:  Georgia, Cambria, "Times New Roman", Times, serif;
+
+  /* Type Scale */
+  --text-40:   40px;
+  --text-32:   32px;
+  --text-24:   24px;
+  --text-20:   20px;
+  --text-18:   18px;
+  --text-16:   16px;
+  --text-14:   14px;
+  --text-13:   13px;
+  --text-12:   12px;
+  --text-11:   11px;
+
+  /* Font Weights */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* Line Heights */
+  --leading-tight:    1.2;
+  --leading-snug:     1.35;
+  --leading-normal:   1.5;
+  --leading-relaxed:  1.65;
+  --leading-loose:    1.8;
+
+  /* Letter Spacing */
+  --tracking-tight:    -0.01em;
+  --tracking-normal:    0em;
+  --tracking-wide:      0.04em;
+  --tracking-caps:      0.06em;
+
+  /* ---------------------------------------------------------------------------
+     SPACING — 4px Base Grid
+     --------------------------------------------------------------------------- */
+
+  --space-0-5:   2px;
+  --space-1:     4px;
+  --space-1-5:   6px;
+  --space-2:     8px;
+  --space-2-5:  10px;
+  --space-3:    12px;
+  --space-4:    16px;
+  --space-5:    20px;
+  --space-6:    24px;
+  --space-8:    32px;
+  --space-10:   40px;
+  --space-12:   48px;
+  --space-16:   64px;
+  --space-20:   80px;
+  --space-24:   96px;
+
+  /* Block editor specific */
+  --editor-padding-x:   180px;
+  --editor-padding-x-md: 96px;
+  --editor-padding-x-sm: 24px;
+  --editor-padding-y:    96px;
+  --block-min-height:    30px;
+  --line-height-block:   1.65;
+
+  /* ---------------------------------------------------------------------------
+     BORDER RADIUS
+     Notion uses very small radii — nothing feels rounded or bubbly.
+     --------------------------------------------------------------------------- */
+
+  --radius-none:  0px;
+  --radius-xs:    3px;
+  --radius-sm:    4px;
+  --radius-md:    6px;
+  --radius-lg:    8px;
+  --radius-pill:  9999px;
+
+  /* Semantic */
+  --radius-button: var(--radius-xs);
+  --radius-input:  var(--radius-sm);
+  --radius-modal:  var(--radius-lg);
+  --radius-card:   var(--radius-md);
+  --radius-tag:    var(--radius-sm);
+  --radius-popover: var(--radius-md);
+
+  /* ---------------------------------------------------------------------------
+     SHADOWS
+     Notion's shadows are barely-there — just enough to lift, not to decorate.
+     --------------------------------------------------------------------------- */
+
+  --shadow-xs:      0 1px 2px rgba(15, 15, 15, 0.04);
+  --shadow-sm:      0 1px 2px rgba(15, 15, 15, 0.04), 0 2px 6px rgba(15, 15, 15, 0.04);
+  --shadow-md:      0 3px 8px rgba(15, 15, 15, 0.07), 0 1px 2px rgba(15, 15, 15, 0.04);
+  --shadow-lg:      0 6px 24px rgba(15, 15, 15, 0.10), 0 2px 6px rgba(15, 15, 15, 0.06);
+  --shadow-xl:      0 12px 40px rgba(15, 15, 15, 0.12), 0 4px 12px rgba(15, 15, 15, 0.07);
+  --shadow-focus:   0 0 0 2px rgba(51, 126, 169, 0.35);
+
+  /* ---------------------------------------------------------------------------
+     MOTION
+     Gentle, minimal — the content is the star, not the animation.
+     --------------------------------------------------------------------------- */
+
+  --duration-instant:  80ms;
+  --duration-fast:    120ms;
+  --duration-normal:  200ms;
+  --duration-slow:    300ms;
+
+  --ease-gentle:     cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-out:        cubic-bezier(0.0, 0.0, 0.2, 1);
+  --ease-in-out:     cubic-bezier(0.4, 0.0, 0.2, 1);
+
+  --transition-fast:    all var(--duration-fast) var(--ease-gentle);
+  --transition-normal:  all var(--duration-normal) var(--ease-gentle);
+  --transition-slow:    all var(--duration-slow) var(--ease-gentle);
+
+  /* ---------------------------------------------------------------------------
+     Z-INDEX
+     --------------------------------------------------------------------------- */
+
+  --z-base:       0;
+  --z-raised:     10;
+  --z-sticky:     100;
+  --z-dropdown:   200;
+  --z-overlay:    300;
+  --z-modal:      400;
+  --z-toast:      500;
+  --z-tooltip:    600;
+
+  /* ---------------------------------------------------------------------------
+     COMPONENT DIMENSIONS
+     --------------------------------------------------------------------------- */
+
+  --sidebar-width:      240px;
+  --topbar-height:       45px;
+  --btn-height-sm:       28px;
+  --btn-height-md:       32px;
+  --btn-height-lg:       36px;
+  --input-height-sm:     28px;
+  --input-height-md:     32px;
+  --input-height-lg:     36px;
+  --checkbox-size:        16px;
+  --sidebar-item-height:  28px;
+  --db-row-height:        34px;
+  --block-handle-size:    18px;
+  --page-icon-size:       72px;
+  --cover-height:        120px;
+
+}
+
+/* =============================================================================
+   DARK MODE
+   Notion's dark mode uses deep near-black backgrounds with barely-opaque
+   whites for text and borders — never stark, always readable.
+   ============================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+
+    /* Core Backgrounds */
+    --color-bg:                   #191919;
+    --color-surface:              #202020;
+    --color-surface-hover:        #2F2F2F;
+    --color-surface-active:       #373737;
+
+    /* Labels */
+    --color-notion-black:         #FFFFFF;
+    --color-label-primary:        rgba(255, 255, 255, 0.90);
+    --color-label-secondary:      rgba(255, 255, 255, 0.45);
+    --color-label-tertiary:       rgba(255, 255, 255, 0.28);
+    --color-label-placeholder:    rgba(255, 255, 255, 0.20);
+
+    /* Borders */
+    --color-border-subtle:        rgba(255, 255, 255, 0.07);
+    --color-border-default:       rgba(255, 255, 255, 0.09);
+    --color-border-strong:        rgba(255, 255, 255, 0.16);
+
+    /* Interactive accent */
+    --color-blue:                 #529AC8;
+    --color-blue-hover:           #67ABDA;
+    --color-blue-bg:              rgba(51, 126, 169, 0.15);
+
+    /* Named colors — dark mode softened */
+    --color-gray-bg:              rgba(241, 241, 239, 0.08);
+    --color-gray-text:            rgba(255, 255, 255, 0.55);
+
+    --color-brown-bg:             rgba(159, 107, 83, 0.15);
+    --color-brown-text:           #C4896B;
+
+    --color-orange-bg:            rgba(217, 115, 13, 0.15);
+    --color-orange-text:          #F2994A;
+
+    --color-yellow-bg:            rgba(203, 145, 47, 0.15);
+    --color-yellow-text:          #F2C94C;
+
+    --color-green-bg:             rgba(68, 131, 97, 0.15);
+    --color-green-text:           #6CBB8F;
+
+    --color-blue-tag-bg:          rgba(51, 126, 169, 0.15);
+    --color-blue-tag-text:        #529AC8;
+
+    --color-purple-bg:            rgba(144, 101, 176, 0.15);
+    --color-purple-text:          #B07DD1;
+
+    --color-pink-bg:              rgba(193, 76, 138, 0.15);
+    --color-pink-text:            #DA7DB5;
+
+    --color-red-bg:               rgba(212, 76, 71, 0.15);
+    --color-red-text:             #E57373;
+
+    /* Shadows — darker, slightly stronger in dark mode */
+    --shadow-xs:      0 1px 2px rgba(0, 0, 0, 0.20);
+    --shadow-sm:      0 1px 2px rgba(0, 0, 0, 0.24), 0 2px 6px rgba(0, 0, 0, 0.20);
+    --shadow-md:      0 3px 8px rgba(0, 0, 0, 0.36), 0 1px 2px rgba(0, 0, 0, 0.24);
+    --shadow-lg:      0 6px 24px rgba(0, 0, 0, 0.48), 0 2px 6px rgba(0, 0, 0, 0.32);
+    --shadow-xl:      0 12px 40px rgba(0, 0, 0, 0.56), 0 4px 12px rgba(0, 0, 0, 0.36);
+    --shadow-focus:   0 0 0 2px rgba(82, 154, 200, 0.40);
+
+  }
+}

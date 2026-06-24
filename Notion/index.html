@@ -1,0 +1,2194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Notion Design System — A production-quality design system faithful to Notion's content-first aesthetic.">
+  <title>Notion Design System</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="typography.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    /* =========================================================================
+       Page-specific showcase layout
+       ========================================================================= */
+
+    .showcase-nav {
+      position: sticky;
+      top: 0;
+      z-index: var(--z-sticky);
+      background-color: var(--color-bg);
+      border-bottom: 1px solid var(--color-border-subtle);
+      height: var(--topbar-height);
+      display: flex;
+      align-items: center;
+      padding: 0 var(--space-6);
+      gap: var(--space-4);
+    }
+
+    .showcase-nav-logo {
+      font-size: var(--text-16);
+      font-weight: var(--weight-bold);
+      color: var(--color-label-primary);
+      flex-shrink: 0;
+    }
+
+    .showcase-nav-links {
+      display: flex;
+      gap: var(--space-1);
+      overflow-x: auto;
+      flex: 1;
+    }
+
+    .showcase-nav-link {
+      display: flex;
+      align-items: center;
+      height: 28px;
+      padding: 0 var(--space-2);
+      font-size: var(--text-13);
+      color: var(--color-label-secondary);
+      text-decoration: none;
+      border-radius: var(--radius-xs);
+      white-space: nowrap;
+      transition: background-color var(--duration-fast) var(--ease-gentle),
+                  color var(--duration-fast) var(--ease-gentle);
+    }
+
+    .showcase-nav-link:hover {
+      background-color: var(--color-surface-hover);
+      color: var(--color-label-primary);
+    }
+
+    /* Main showcase layout */
+    .showcase-layout {
+      display: flex;
+      min-height: calc(100vh - var(--topbar-height));
+    }
+
+    /* Showcase sidebar (section index) */
+    .showcase-sidebar {
+      width: 200px;
+      min-width: 200px;
+      background-color: var(--color-surface);
+      border-right: 1px solid var(--color-border-subtle);
+      padding: var(--space-6) var(--space-2);
+      position: sticky;
+      top: var(--topbar-height);
+      height: calc(100vh - var(--topbar-height));
+      overflow-y: auto;
+    }
+
+    .showcase-sidebar-label {
+      font-size: var(--text-11);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      padding: 0 var(--space-2);
+      margin-bottom: var(--space-2);
+    }
+
+    .showcase-sidebar-link {
+      display: flex;
+      align-items: center;
+      height: 26px;
+      padding: 0 var(--space-2);
+      font-size: var(--text-13);
+      color: var(--color-label-secondary);
+      text-decoration: none;
+      border-radius: var(--radius-xs);
+      transition: background-color var(--duration-fast) var(--ease-gentle),
+                  color var(--duration-fast) var(--ease-gentle);
+      white-space: nowrap;
+    }
+
+    .showcase-sidebar-link:hover {
+      background-color: var(--color-surface-hover);
+      color: var(--color-label-primary);
+    }
+
+    /* Main content */
+    .showcase-content {
+      flex: 1;
+      min-width: 0;
+      padding: var(--space-10) var(--space-10) var(--space-20);
+    }
+
+    /* Section */
+    .showcase-section {
+      margin-bottom: var(--space-12);
+      padding-bottom: var(--space-12);
+      border-bottom: 1px solid var(--color-border-subtle);
+      scroll-margin-top: calc(var(--topbar-height) + var(--space-6));
+    }
+
+    .showcase-section:last-child {
+      border-bottom: none;
+    }
+
+    .showcase-section-title {
+      font-size: var(--text-24);
+      font-weight: var(--weight-bold);
+      color: var(--color-label-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .showcase-section-desc {
+      font-size: var(--text-14);
+      color: var(--color-label-secondary);
+      margin-bottom: var(--space-8);
+      max-width: 520px;
+      line-height: var(--leading-relaxed);
+    }
+
+    /* Sub-section */
+    .showcase-subsection {
+      margin-bottom: var(--space-8);
+    }
+
+    .showcase-subsection-title {
+      font-size: var(--text-13);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-4);
+    }
+
+    /* Component frame */
+    .frame {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      margin-bottom: var(--space-4);
+    }
+
+    .frame--white {
+      background-color: var(--color-bg);
+    }
+
+    .frame--dark {
+      background-color: var(--color-notion-black);
+    }
+
+    /* Grid helpers */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: var(--space-4);
+    }
+
+    .grid-auto {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: var(--space-3);
+    }
+
+    @media (max-width: 768px) {
+      .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .showcase-sidebar {
+        display: none;
+      }
+
+      .showcase-content {
+        padding: var(--space-6) var(--space-4) var(--space-12);
+      }
+    }
+
+    /* Color swatch */
+    .swatch {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1-5);
+    }
+
+    .swatch-color {
+      height: 52px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border-subtle);
+    }
+
+    .swatch-name {
+      font-size: var(--text-13);
+      font-weight: var(--weight-medium);
+      color: var(--color-label-primary);
+    }
+
+    .swatch-value {
+      font-size: var(--text-12);
+      font-family: var(--font-mono);
+      color: var(--color-label-tertiary);
+    }
+
+    /* Notion color block (callout-like) */
+    .color-block {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-xs);
+      margin-bottom: var(--space-1);
+    }
+
+    .color-block-label {
+      font-size: var(--text-14);
+      font-weight: var(--weight-medium);
+    }
+
+    .color-block-hex {
+      font-size: var(--text-12);
+      font-family: var(--font-mono);
+      opacity: 0.65;
+    }
+
+    /* Type specimen row */
+    .type-specimen {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-6);
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+
+    .type-specimen:last-child {
+      border-bottom: none;
+    }
+
+    .type-meta {
+      width: 120px;
+      min-width: 120px;
+      font-size: var(--text-11);
+      font-family: var(--font-mono);
+      color: var(--color-label-tertiary);
+      line-height: 1.4;
+      flex-shrink: 0;
+    }
+
+    .type-example {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* Motion demos */
+    .motion-demo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-4);
+      background-color: var(--color-surface);
+      border-radius: var(--radius-sm);
+      margin-bottom: var(--space-2);
+    }
+
+    .motion-demo-box {
+      width: 40px;
+      height: 40px;
+      background-color: var(--color-blue-tag-bg);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .motion-demo-info {
+      flex: 1;
+    }
+
+    .motion-demo-name {
+      font-size: var(--text-14);
+      font-weight: var(--weight-medium);
+      color: var(--color-label-primary);
+    }
+
+    .motion-demo-desc {
+      font-size: var(--text-13);
+      color: var(--color-label-secondary);
+    }
+
+    /* Inline Notion page simulation */
+    .page-sim {
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .page-sim-topbar {
+      height: var(--topbar-height);
+      background-color: var(--color-bg);
+      border-bottom: 1px solid var(--color-border-subtle);
+      display: flex;
+      align-items: center;
+      padding: 0 var(--space-4);
+      gap: var(--space-2);
+    }
+
+    .page-sim-body {
+      display: flex;
+    }
+
+    .page-sim-sidebar {
+      width: 200px;
+      background-color: var(--color-surface);
+      border-right: 1px solid var(--color-border-subtle);
+      padding: var(--space-3) var(--space-1-5);
+      min-height: 400px;
+    }
+
+    .page-sim-content {
+      flex: 1;
+      padding: var(--space-6) var(--space-8);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================================
+       TOP NAVIGATION BAR
+       ========================================================================= -->
+  <nav class="showcase-nav" role="navigation" aria-label="Design system navigation">
+    <div class="showcase-nav-logo">☁ Notion DS</div>
+    <div class="showcase-nav-links">
+      <a href="#page-anatomy"   class="showcase-nav-link">Page Anatomy</a>
+      <a href="#colors"         class="showcase-nav-link">Colors</a>
+      <a href="#typography"     class="showcase-nav-link">Typography</a>
+      <a href="#blocks"         class="showcase-nav-link">Block Editor</a>
+      <a href="#database"       class="showcase-nav-link">Database</a>
+      <a href="#sidebar"        class="showcase-nav-link">Sidebar</a>
+      <a href="#buttons"        class="showcase-nav-link">Buttons</a>
+      <a href="#forms"          class="showcase-nav-link">Forms</a>
+      <a href="#menus"          class="showcase-nav-link">Menus</a>
+      <a href="#modals"         class="showcase-nav-link">Modals</a>
+      <a href="#feedback"       class="showcase-nav-link">Feedback</a>
+      <a href="#motion"         class="showcase-nav-link">Motion</a>
+    </div>
+  </nav>
+
+  <!-- =========================================================================
+       FULL NOTION PAGE SIMULATION
+       ========================================================================= -->
+  <div class="showcase-section" id="page-anatomy" style="margin: 0; padding: 0; border: none;">
+    <div class="page-sim animate-fade-in">
+
+      <!-- Top bar -->
+      <div class="page-sim-topbar">
+        <!-- Sidebar toggle -->
+        <button class="topbar-btn" aria-label="Toggle sidebar" style="font-size:16px; width:28px; padding:0;">☰</button>
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Page path" style="flex:1;">
+          <div class="breadcrumb-item">
+            <span class="breadcrumb-icon">🏠</span>
+            <span>Acme Corp</span>
+          </div>
+          <span class="breadcrumb-separator" aria-hidden="true">/</span>
+          <div class="breadcrumb-item">
+            <span class="breadcrumb-icon">📚</span>
+            <span>Design</span>
+          </div>
+          <span class="breadcrumb-separator" aria-hidden="true">/</span>
+          <div class="breadcrumb-item" aria-current="page">
+            <span class="breadcrumb-icon">📐</span>
+            <span>Notion Design System</span>
+          </div>
+        </nav>
+
+        <!-- Actions -->
+        <div class="topbar-actions">
+          <button class="topbar-btn" aria-label="Comments">💬</button>
+          <button class="topbar-btn" aria-label="Favorite">⭐</button>
+          <button class="topbar-btn topbar-btn--primary" aria-label="Share">Share</button>
+          <button class="topbar-btn" aria-label="More options" style="width:28px; padding:0;">•••</button>
+        </div>
+      </div>
+
+      <!-- Body: sidebar + content -->
+      <div class="page-sim-body">
+
+        <!-- Sidebar -->
+        <aside class="page-sim-sidebar" aria-label="Page navigation">
+          <!-- Workspace switcher -->
+          <div class="workspace-switcher" role="button" tabindex="0" aria-haspopup="true">
+            <div class="workspace-avatar" aria-hidden="true">A</div>
+            <span class="workspace-name">Acme Corp</span>
+            <span class="workspace-chevron" aria-hidden="true">⌄</span>
+          </div>
+
+          <!-- Actions -->
+          <div class="sidebar-actions">
+            <button class="sidebar-action-btn">
+              <span class="sidebar-action-icon" aria-hidden="true">🔍</span>
+              Search
+            </button>
+            <button class="sidebar-action-btn">
+              <span class="sidebar-action-icon" aria-hidden="true">🏠</span>
+              Home
+            </button>
+            <button class="sidebar-action-btn">
+              <span class="sidebar-action-icon" aria-hidden="true">📬</span>
+              Inbox
+            </button>
+          </div>
+
+          <!-- Favorites section -->
+          <div class="sidebar-section">
+            <div class="sidebar-section-header">
+              <span class="sidebar-section-label">Favorites</span>
+              <span class="sidebar-section-add" role="button" tabindex="0" aria-label="Add favorite">+</span>
+            </div>
+            <div class="sidebar-item sidebar-item--active" role="treeitem" aria-selected="true" tabindex="0">
+              <span class="sidebar-item-toggle" aria-hidden="true">▶</span>
+              <span class="sidebar-item-icon" aria-hidden="true">📐</span>
+              <span class="sidebar-item-title">Notion Design System</span>
+            </div>
+          </div>
+
+          <!-- Pages section -->
+          <div class="sidebar-section">
+            <div class="sidebar-section-header">
+              <span class="sidebar-section-label">Teamspace</span>
+              <span class="sidebar-section-add" role="button" tabindex="0" aria-label="Add page">+</span>
+            </div>
+            <div class="sidebar-item sidebar-item--expanded" role="treeitem" tabindex="0">
+              <span class="sidebar-item-toggle" aria-hidden="true">▶</span>
+              <span class="sidebar-item-icon" aria-hidden="true">📁</span>
+              <span class="sidebar-item-title">Design</span>
+              <div class="sidebar-item-actions" aria-hidden="true">
+                <span class="sidebar-item-action">+</span>
+                <span class="sidebar-item-action">⋯</span>
+              </div>
+            </div>
+            <div class="sidebar-children">
+              <div class="sidebar-item sidebar-item--active" role="treeitem" tabindex="0">
+                <span class="sidebar-item-toggle" aria-hidden="true">▶</span>
+                <span class="sidebar-item-icon" aria-hidden="true">📐</span>
+                <span class="sidebar-item-title truncate">Notion Design System</span>
+              </div>
+              <div class="sidebar-item" role="treeitem" tabindex="0">
+                <span class="sidebar-item-toggle" aria-hidden="true">▶</span>
+                <span class="sidebar-item-icon" aria-hidden="true">🎨</span>
+                <span class="sidebar-item-title truncate">Brand Guidelines</span>
+              </div>
+              <div class="sidebar-item" role="treeitem" tabindex="0">
+                <span class="sidebar-item-toggle" aria-hidden="true">▶</span>
+                <span class="sidebar-item-icon" aria-hidden="true">🖼️</span>
+                <span class="sidebar-item-title truncate">Asset Library</span>
+              </div>
+            </div>
+            <div class="sidebar-item" role="treeitem" tabindex="0">
+              <span class="sidebar-item-toggle" aria-hidden="true">▶</span>
+              <span class="sidebar-item-icon" aria-hidden="true">📊</span>
+              <span class="sidebar-item-title">Product Roadmap</span>
+            </div>
+            <div class="sidebar-item" role="treeitem" tabindex="0">
+              <span class="sidebar-item-toggle" aria-hidden="true">▶</span>
+              <span class="sidebar-item-icon" aria-hidden="true">📝</span>
+              <span class="sidebar-item-title">Meeting Notes</span>
+            </div>
+            <div class="sidebar-item" role="treeitem" tabindex="0">
+              <span class="sidebar-item-toggle" aria-hidden="true">▶</span>
+              <span class="sidebar-item-icon" aria-hidden="true">🗂️</span>
+              <span class="sidebar-item-title">Engineering Wiki</span>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="sidebar-footer">
+            <div class="sidebar-item" role="button" tabindex="0">
+              <span class="sidebar-item-icon" aria-hidden="true">🗑️</span>
+              <span class="sidebar-item-title">Trash</span>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Page content -->
+        <main class="page-sim-content">
+
+          <!-- Page header -->
+          <header class="page-header">
+            <!-- Cover placeholder -->
+            <div class="page-cover" role="img" aria-label="Page cover image" style="background: linear-gradient(135deg, #EDF3EC 0%, #E7F3F8 50%, #F6F3F8 100%); height: 120px; border-radius: 0;"></div>
+
+            <div class="page-header-content">
+              <!-- Page icon -->
+              <div class="page-icon" role="img" aria-label="Page icon: design compass" title="Click to change icon">📐</div>
+
+              <!-- Add icon / add cover controls -->
+              <div class="page-header-controls">
+                <button class="page-header-control-btn">+ Add icon</button>
+                <button class="page-header-control-btn">+ Add cover</button>
+                <button class="page-header-control-btn">+ Add comment</button>
+              </div>
+
+              <!-- Page title -->
+              <div class="page-title"
+                   role="heading"
+                   aria-level="1"
+                   contenteditable="true"
+                   spellcheck="true"
+                   data-placeholder="Untitled">Notion Design System</div>
+            </div>
+          </header>
+
+          <!-- Block editor content -->
+          <article class="block-editor">
+
+            <!-- Intro callout -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-callout block-callout--blue">
+                  <span class="block-callout-icon" aria-hidden="true">💡</span>
+                  <div class="block-callout-text">This design system faithfully reproduces Notion's content-first visual language. Every token, every component, and every interaction pattern reflects real Notion UI decisions.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- H1 -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-h1">Overview</div>
+              </div>
+            </div>
+
+            <!-- Body paragraph -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-text">Notion's design philosophy centers on one idea: the content is the product. The UI chrome is intentionally invisible — soft neutrals, barely-there borders, and restrained motion ensure that words, images, and data occupy all the visual attention.</div>
+              </div>
+            </div>
+
+            <!-- H2 -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-h2">Design Principles</div>
+              </div>
+            </div>
+
+            <!-- Bulleted list -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-bulleted-list"><span>Content-first — every pixel serves the words, not the shell.</span></div>
+              </div>
+            </div>
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-bulleted-list"><span>Invisible chrome — the interface recedes when you're not interacting with it.</span></div>
+              </div>
+            </div>
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-bulleted-list"><span>Gentle motion — 120ms transitions, never flashy, always purposeful.</span></div>
+              </div>
+            </div>
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-bulleted-list"><span>Warm neutrals — <span class="text-secondary">#F7F6F3</span> sidebar, not stark white or cool gray.</span></div>
+              </div>
+            </div>
+
+            <!-- H2 -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-h2">Implementation Status</div>
+              </div>
+            </div>
+
+            <!-- To-do items -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-todo">
+                  <div class="block-todo-checkbox block-todo-checkbox--checked" role="checkbox" aria-checked="true"></div>
+                  <span class="block-todo-text--checked">Design tokens (colors, typography, spacing, motion)</span>
+                </div>
+              </div>
+            </div>
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-todo">
+                  <div class="block-todo-checkbox block-todo-checkbox--checked" role="checkbox" aria-checked="true"></div>
+                  <span class="block-todo-text--checked">Block editor with all 12 block types</span>
+                </div>
+              </div>
+            </div>
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-todo">
+                  <div class="block-todo-checkbox block-todo-checkbox--checked" role="checkbox" aria-checked="true"></div>
+                  <span class="block-todo-text--checked">Inline database table view</span>
+                </div>
+              </div>
+            </div>
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-todo">
+                  <div class="block-todo-checkbox" role="checkbox" aria-checked="false"></div>
+                  <span>Gallery and board views</span>
+                </div>
+              </div>
+            </div>
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-todo">
+                  <div class="block-todo-checkbox" role="checkbox" aria-checked="false"></div>
+                  <span>AI writing assistant integration</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <hr class="block-divider" aria-hidden="true">
+              </div>
+            </div>
+
+            <!-- H2 -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-h2">Key Insights</div>
+              </div>
+            </div>
+
+            <!-- Quote -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-quote">The best interface is no interface. Notion's design team internalized this so completely that the product itself became the proof of concept.</div>
+              </div>
+            </div>
+
+            <!-- Toggle block -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-toggle-wrapper block-toggle-wrapper--open">
+                  <div class="block-toggle-header" role="button" tabindex="0" aria-expanded="true">
+                    <span class="block-toggle-arrow" aria-hidden="true">▶</span>
+                    <span>Color philosophy — why Notion avoids pure white</span>
+                  </div>
+                  <div class="block-toggle-content">
+                    <div class="block-text" style="padding: var(--space-1) 0; color: var(--color-label-secondary);">
+                      Pure white creates harsh contrast. Notion's sidebar is #F7F6F3 — a barely-warm off-white that feels like aged paper. It reduces eye strain during long writing sessions and creates a subtle visual hierarchy between the navigation layer and the content canvas.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Code block -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-code-wrapper" role="region" aria-label="Code block">
+                  <div class="block-code-header">
+                    <span class="block-code-language">CSS</span>
+                    <button class="block-code-copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="block-code-content" tabindex="0"><code>:root {
+  /* Notion's three surface layers */
+  --color-bg:             #FFFFFF;  /* content canvas */
+  --color-surface:        #F7F6F3;  /* sidebar & panels */
+  --color-surface-hover:  #EFEFEC;  /* interactive hover */
+
+  /* The barely-there border system */
+  --color-border-subtle:  #E3E2E0;
+  --color-border-default: #D9D9D7;
+}</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <!-- Numbered list -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-h3">Getting Started</div>
+              </div>
+            </div>
+
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-numbered-list">
+                  <span class="block-list-number">1.</span>
+                  <span>Link <code>tokens.css</code> first — it defines all CSS custom properties.</span>
+                </div>
+              </div>
+            </div>
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-numbered-list">
+                  <span class="block-list-number">2.</span>
+                  <span>Add <code>typography.css</code> for the type scale and utilities.</span>
+                </div>
+              </div>
+            </div>
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-numbered-list">
+                  <span class="block-list-number">3.</span>
+                  <span>Include <code>animations.css</code> for motion utilities and keyframes.</span>
+                </div>
+              </div>
+            </div>
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-numbered-list">
+                  <span class="block-list-number">4.</span>
+                  <span>Load <code>components.css</code> last for the full component library.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bookmark block -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <a class="block-bookmark" href="https://notion.so" target="_blank" rel="noopener" aria-label="Notion — link to notion.so">
+                  <div class="block-bookmark-info">
+                    <div class="block-bookmark-title">Notion — One workspace. Every team.</div>
+                    <div class="block-bookmark-description">We're more than a doc. Or a table. We're a single connected workspace where better, faster work happens.</div>
+                    <div class="block-bookmark-meta">
+                      <div class="block-bookmark-favicon" aria-hidden="true" style="background: #191919; border-radius: 3px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:9px; font-weight:bold;">N</div>
+                      <span class="block-bookmark-domain">notion.so</span>
+                    </div>
+                  </div>
+                  <div class="block-bookmark-thumb" aria-hidden="true" style="background: linear-gradient(135deg, #F7F6F3 0%, #EFEFEC 100%);"></div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Image block -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-image-wrapper">
+                  <div class="block-image-area" role="button" tabindex="0" aria-label="Image placeholder — click to upload">
+                    <span aria-hidden="true" style="font-size:24px;">🖼️</span>
+                    <span style="font-size: var(--text-14); color: var(--color-label-secondary);">Add an image</span>
+                  </div>
+                  <div class="block-image-caption" contenteditable="true" data-placeholder="Add a caption…" aria-label="Image caption"></div>
+                </div>
+              </div>
+            </div>
+
+          </article><!-- /block-editor -->
+
+        </main>
+      </div><!-- /page-sim-body -->
+    </div><!-- /page-sim -->
+  </div>
+
+  <!-- =========================================================================
+       MAIN SHOWCASE — two-column layout
+       ========================================================================= -->
+  <div class="showcase-layout">
+
+    <!-- Sidebar index -->
+    <nav class="showcase-sidebar" aria-label="Section index">
+      <div class="showcase-sidebar-label">Sections</div>
+      <a href="#colors"     class="showcase-sidebar-link">Colors</a>
+      <a href="#typography" class="showcase-sidebar-link">Typography</a>
+      <a href="#blocks"     class="showcase-sidebar-link">Block Types</a>
+      <a href="#database"   class="showcase-sidebar-link">Database</a>
+      <a href="#sidebar"    class="showcase-sidebar-link">Sidebar</a>
+      <a href="#buttons"    class="showcase-sidebar-link">Buttons</a>
+      <a href="#forms"      class="showcase-sidebar-link">Forms</a>
+      <a href="#menus"      class="showcase-sidebar-link">Menus</a>
+      <a href="#modals"     class="showcase-sidebar-link">Modals</a>
+      <a href="#feedback"   class="showcase-sidebar-link">Feedback</a>
+      <a href="#motion"     class="showcase-sidebar-link">Motion</a>
+    </nav>
+
+    <!-- Showcase content -->
+    <div class="showcase-content">
+
+      <!-- =======================================================================
+           COLORS
+           ======================================================================= -->
+      <section class="showcase-section" id="colors">
+        <h2 class="showcase-section-title">Color System</h2>
+        <p class="showcase-section-desc">
+          Notion's palette is intentionally restrained. Three neutral surface layers, one interactive blue, a carefully-chosen set of named colors for content — and that's it. Light and dark mode are equally considered.
+        </p>
+
+        <!-- Core surfaces -->
+        <div class="showcase-subsection">
+          <div class="showcase-subsection-title">Core Surfaces &amp; Labels</div>
+          <div class="grid-auto">
+            <div class="swatch">
+              <div class="swatch-color" style="background: #FFFFFF; box-shadow: 0 0 0 1px var(--color-border-subtle);"></div>
+              <div class="swatch-name">Background</div>
+              <div class="swatch-value">#FFFFFF</div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background: #F7F6F3;"></div>
+              <div class="swatch-name">Surface</div>
+              <div class="swatch-value">#F7F6F3</div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background: #EFEFEC;"></div>
+              <div class="swatch-name">Surface Hover</div>
+              <div class="swatch-value">#EFEFEC</div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background: #191919;"></div>
+              <div class="swatch-name">Notion Black</div>
+              <div class="swatch-value">#191919</div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background: #787774;"></div>
+              <div class="swatch-name">Label Secondary</div>
+              <div class="swatch-value">#787774</div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background: #ACAAA8;"></div>
+              <div class="swatch-name">Label Tertiary</div>
+              <div class="swatch-value">#ACAAA8</div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background: #E3E2E0;"></div>
+              <div class="swatch-name">Border Subtle</div>
+              <div class="swatch-value">#E3E2E0</div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background: #337EA9;"></div>
+              <div class="swatch-name">Blue (Interactive)</div>
+              <div class="swatch-value">#337EA9</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9 Notion named colors -->
+        <div class="showcase-subsection">
+          <div class="showcase-subsection-title">Notion Named Colors — Background &amp; Text Pairs</div>
+          <div class="frame frame--white" style="padding: var(--space-4);">
+            <div class="color-block" style="background: var(--color-gray-bg);">
+              <span style="font-size:16px;">⬜</span>
+              <span class="color-block-label" style="color: var(--color-gray-text);">Gray</span>
+              <span class="color-block-hex" style="color: var(--color-gray-text);">bg #F1F1EF / text #787774</span>
+            </div>
+            <div class="color-block" style="background: var(--color-brown-bg);">
+              <span style="font-size:16px;">🟫</span>
+              <span class="color-block-label" style="color: var(--color-brown-text);">Brown</span>
+              <span class="color-block-hex" style="color: var(--color-brown-text);">bg #F4EEEE / text #9F6B53</span>
+            </div>
+            <div class="color-block" style="background: var(--color-orange-bg);">
+              <span style="font-size:16px;">🟧</span>
+              <span class="color-block-label" style="color: var(--color-orange-text);">Orange</span>
+              <span class="color-block-hex" style="color: var(--color-orange-text);">bg #FAEBDD / text #D9730D</span>
+            </div>
+            <div class="color-block" style="background: var(--color-yellow-bg);">
+              <span style="font-size:16px;">🟨</span>
+              <span class="color-block-label" style="color: var(--color-yellow-text);">Yellow</span>
+              <span class="color-block-hex" style="color: var(--color-yellow-text);">bg #FBF3DB / text #CB912F</span>
+            </div>
+            <div class="color-block" style="background: var(--color-green-bg);">
+              <span style="font-size:16px;">🟩</span>
+              <span class="color-block-label" style="color: var(--color-green-text);">Green</span>
+              <span class="color-block-hex" style="color: var(--color-green-text);">bg #EDF3EC / text #448361</span>
+            </div>
+            <div class="color-block" style="background: var(--color-blue-tag-bg);">
+              <span style="font-size:16px;">🟦</span>
+              <span class="color-block-label" style="color: var(--color-blue-tag-text);">Blue</span>
+              <span class="color-block-hex" style="color: var(--color-blue-tag-text);">bg #E7F3F8 / text #337EA9</span>
+            </div>
+            <div class="color-block" style="background: var(--color-purple-bg);">
+              <span style="font-size:16px;">🟪</span>
+              <span class="color-block-label" style="color: var(--color-purple-text);">Purple</span>
+              <span class="color-block-hex" style="color: var(--color-purple-text);">bg #F6F3F8 / text #9065B0</span>
+            </div>
+            <div class="color-block" style="background: var(--color-pink-bg);">
+              <span style="font-size:16px;">🌸</span>
+              <span class="color-block-label" style="color: var(--color-pink-text);">Pink</span>
+              <span class="color-block-hex" style="color: var(--color-pink-text);">bg #FAF1F5 / text #C14C8A</span>
+            </div>
+            <div class="color-block" style="background: var(--color-red-bg);">
+              <span style="font-size:16px;">🟥</span>
+              <span class="color-block-label" style="color: var(--color-red-text);">Red</span>
+              <span class="color-block-hex" style="color: var(--color-red-text);">bg #FDEBEC / text #D44C47</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dark mode surfaces -->
+        <div class="showcase-subsection">
+          <div class="showcase-subsection-title">Dark Mode Surfaces</div>
+          <div class="grid-auto">
+            <div class="swatch">
+              <div class="swatch-color" style="background: #191919;"></div>
+              <div class="swatch-name">Dark BG</div>
+              <div class="swatch-value">#191919</div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background: #202020;"></div>
+              <div class="swatch-name">Dark Surface</div>
+              <div class="swatch-value">#202020</div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background: #2F2F2F;"></div>
+              <div class="swatch-name">Dark Hover</div>
+              <div class="swatch-value">#2F2F2F</div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background: rgba(255,255,255,0.9); border: 1px solid #444;"></div>
+              <div class="swatch-name">Dark Primary Label</div>
+              <div class="swatch-value">white 90%</div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background: rgba(255,255,255,0.45); border: 1px solid #444;"></div>
+              <div class="swatch-name">Dark Secondary</div>
+              <div class="swatch-value">white 45%</div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background: rgba(255,255,255,0.09); border: 1px solid #444;"></div>
+              <div class="swatch-name">Dark Border</div>
+              <div class="swatch-value">white 9%</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================================
+           TYPOGRAPHY
+           ======================================================================= -->
+      <section class="showcase-section" id="typography">
+        <h2 class="showcase-section-title">Typography</h2>
+        <p class="showcase-section-desc">
+          Notion uses the system UI sans-serif font with emoji support — no custom typeface. The type scale runs from 40px page titles down to 11px overlines. Generous 1.65 line-height for body text makes long-form reading comfortable.
+        </p>
+
+        <div class="frame frame--white">
+          <!-- Title LG -->
+          <div class="type-specimen">
+            <div class="type-meta">.title-lg<br>40px · 700<br>lh 1.2</div>
+            <div class="type-example title-lg">Notion Design System</div>
+          </div>
+          <!-- Title -->
+          <div class="type-specimen">
+            <div class="type-meta">.title<br>32px · 700<br>lh 1.2</div>
+            <div class="type-example title">Content-First Design</div>
+          </div>
+          <!-- Heading 1 -->
+          <div class="type-specimen">
+            <div class="type-meta">.heading-1<br>24px · 600<br>lh 1.35</div>
+            <div class="type-example heading-1">Block Editor Overview</div>
+          </div>
+          <!-- Heading 2 -->
+          <div class="type-specimen">
+            <div class="type-meta">.heading-2<br>20px · 600<br>lh 1.35</div>
+            <div class="type-example heading-2">Design Principles</div>
+          </div>
+          <!-- Heading 3 -->
+          <div class="type-specimen">
+            <div class="type-meta">.heading-3<br>18px · 600<br>lh 1.5</div>
+            <div class="type-example heading-3">Color Tokens</div>
+          </div>
+          <!-- Body -->
+          <div class="type-specimen">
+            <div class="type-meta">.body<br>16px · 400<br>lh 1.65</div>
+            <div class="type-example body">The quick brown fox jumps over the lazy dog. Notion's body text is set at 16px with a generous 1.65 line height — optimized for long-form reading in a collaborative document environment.</div>
+          </div>
+          <!-- UI body -->
+          <div class="type-specimen">
+            <div class="type-meta">.ui-body<br>14px · 400<br>lh 1.5</div>
+            <div class="type-example ui-body">Sidebar item text, toolbar labels, menu options, and cell content all use this size. The UI disappears at 14px.</div>
+          </div>
+          <!-- Caption -->
+          <div class="type-specimen">
+            <div class="type-meta">.caption<br>13px · 400<br>lh 1.5</div>
+            <div class="type-example caption">Last edited by Steve Scargall · Jun 24, 2026 at 3:41 PM</div>
+          </div>
+          <!-- Label -->
+          <div class="type-specimen">
+            <div class="type-meta">.label<br>12px · 500<br>caps · 0.06em</div>
+            <div class="type-example label">Teamspace · Favorites · Private pages</div>
+          </div>
+          <!-- Overline -->
+          <div class="type-specimen">
+            <div class="type-meta">.overline<br>11px · 500<br>caps · 0.06em</div>
+            <div class="type-example overline">Recently visited · Suggested</div>
+          </div>
+          <!-- Mono -->
+          <div class="type-specimen">
+            <div class="type-meta">.mono<br>14px mono<br>lh 1.6</div>
+            <div class="type-example mono" style="font-family: var(--font-mono); font-size: var(--text-14);">const block = { type: 'paragraph', content: 'Hello world' };</div>
+          </div>
+        </div>
+
+        <!-- Text color utilities -->
+        <div class="showcase-subsection" style="margin-top: var(--space-6);">
+          <div class="showcase-subsection-title">Text Color Utilities</div>
+          <div class="frame frame--white">
+            <p style="margin: var(--space-1) 0; font-size: var(--text-16);">
+              <span class="text-gray">Gray text</span> ·
+              <span class="text-brown">Brown text</span> ·
+              <span class="text-orange">Orange text</span> ·
+              <span class="text-yellow">Yellow text</span> ·
+              <span class="text-green">Green text</span> ·
+              <span class="text-blue">Blue text</span> ·
+              <span class="text-purple">Purple text</span> ·
+              <span class="text-pink">Pink text</span> ·
+              <span class="text-red">Red text</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================================
+           BLOCK TYPES
+           ======================================================================= -->
+      <section class="showcase-section" id="blocks">
+        <h2 class="showcase-section-title">Block Types</h2>
+        <p class="showcase-section-desc">
+          Notion's block editor supports a rich set of content types — each with distinct visual treatment. Hover any block to reveal the drag handle and type switcher.
+        </p>
+
+        <div class="frame frame--white">
+          <div class="block-editor" style="padding: var(--space-4) 0; max-width: 680px; margin: 0 auto;">
+
+            <!-- Heading blocks -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content"><div class="block-h1">Heading 1 — 24px semibold</div></div>
+            </div>
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content"><div class="block-h2">Heading 2 — 20px semibold</div></div>
+            </div>
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content"><div class="block-h3">Heading 3 — 18px semibold</div></div>
+            </div>
+
+            <!-- Plain text -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-text">Plain text block — 16px regular, 1.65 line-height. This is the default block type when you press Enter in Notion. It supports inline formatting like <strong>bold</strong>, <em>italic</em>, <u>underline</u>, <s>strikethrough</s>, and <code>inline code</code>.</div>
+              </div>
+            </div>
+
+            <!-- Bulleted list -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content"><div class="block-bulleted-list"><span>Bulleted list item one</span></div></div>
+            </div>
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content"><div class="block-bulleted-list"><span>Bulleted list item two with a <a href="#">link</a></span></div></div>
+            </div>
+
+            <!-- Numbered list -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-numbered-list"><span class="block-list-number">1.</span><span>Numbered list item one</span></div>
+              </div>
+            </div>
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-numbered-list"><span class="block-list-number">2.</span><span>Numbered list item two</span></div>
+              </div>
+            </div>
+
+            <!-- Todo -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-todo">
+                  <div class="block-todo-checkbox" role="checkbox" aria-checked="false"></div>
+                  <span>Unchecked to-do item</span>
+                </div>
+              </div>
+            </div>
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-todo">
+                  <div class="block-todo-checkbox block-todo-checkbox--checked" role="checkbox" aria-checked="true"></div>
+                  <span class="block-todo-text--checked">Checked to-do item — strikethrough + secondary color</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Toggle -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-toggle-wrapper block-toggle-wrapper--open">
+                  <div class="block-toggle-header" role="button" tabindex="0" aria-expanded="true">
+                    <span class="block-toggle-arrow" aria-hidden="true">▶</span>
+                    <span>Toggle block — click to expand or collapse</span>
+                  </div>
+                  <div class="block-toggle-content">
+                    <div class="block-text" style="color: var(--color-label-secondary);">Hidden content reveals here. Toggle blocks are great for progressive disclosure of information without leaving the page.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quote -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-quote">Quote block — left border, italic text, secondary color. Perfect for referencing external sources or highlighting key statements.</div>
+              </div>
+            </div>
+
+            <!-- Callouts — all 9 colors -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-callout block-callout--blue"><span class="block-callout-icon">💡</span><div class="block-callout-text"><strong>Blue callout</strong> — great for tips and notes.</div></div>
+              </div>
+            </div>
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-callout block-callout--yellow"><span class="block-callout-icon">⚠️</span><div class="block-callout-text"><strong>Yellow callout</strong> — caution or warning state.</div></div>
+              </div>
+            </div>
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-callout block-callout--green"><span class="block-callout-icon">✅</span><div class="block-callout-text"><strong>Green callout</strong> — success or completion.</div></div>
+              </div>
+            </div>
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-callout block-callout--red"><span class="block-callout-icon">🚨</span><div class="block-callout-text"><strong>Red callout</strong> — danger, errors, or critical information.</div></div>
+              </div>
+            </div>
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-callout block-callout--purple"><span class="block-callout-icon">🔮</span><div class="block-callout-text"><strong>Purple callout</strong> — ideas, design thinking.</div></div>
+              </div>
+            </div>
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-callout block-callout--gray"><span class="block-callout-icon">📌</span><div class="block-callout-text"><strong>Gray callout</strong> — neutral, supplementary context.</div></div>
+              </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content"><hr class="block-divider" aria-label="Divider"></div>
+            </div>
+
+            <!-- Code -->
+            <div class="block-row">
+              <div class="block-drag-handle" aria-hidden="true"></div>
+              <div class="block-type-switcher" aria-hidden="true">+</div>
+              <div class="block-content">
+                <div class="block-code-wrapper">
+                  <div class="block-code-header">
+                    <span class="block-code-language">JavaScript</span>
+                    <button class="block-code-copy">Copy</button>
+                  </div>
+                  <pre class="block-code-content"><code>function createBlock(type, content) {
+  return {
+    id: crypto.randomUUID(),
+    type,
+    content,
+    createdAt: new Date().toISOString()
+  };
+}</code></pre>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================================
+           DATABASE
+           ======================================================================= -->
+      <section class="showcase-section" id="database">
+        <h2 class="showcase-section-title">Inline Database — Table View</h2>
+        <p class="showcase-section-desc">
+          Notion's database is a spreadsheet, a Kanban board, a gallery, and a calendar — all in one. The table view is the most common starting point.
+        </p>
+
+        <div class="database-wrapper" role="region" aria-label="Projects database">
+          <div class="database-title-bar">
+            <span class="database-title">Projects</span>
+            <div class="database-views">
+              <div class="database-view-tab database-view-tab--active">📋 Table</div>
+              <div class="database-view-tab">📋 Board</div>
+              <div class="database-view-tab">🗓 Calendar</div>
+              <div class="database-view-tab">🖼 Gallery</div>
+            </div>
+          </div>
+          <table class="database-table" role="table" aria-label="Projects table">
+            <thead>
+              <tr class="database-header-row">
+                <th class="database-header-cell" scope="col" style="min-width:200px;">
+                  <span class="db-prop-icon">🅰️ Name</span>
+                </th>
+                <th class="database-header-cell" scope="col" style="min-width:120px;">
+                  <span class="db-prop-icon">🏷 Status</span>
+                </th>
+                <th class="database-header-cell" scope="col" style="min-width:120px;">
+                  <span class="db-prop-icon">👤 Owner</span>
+                </th>
+                <th class="database-header-cell" scope="col" style="min-width:100px;">
+                  <span class="db-prop-icon">📅 Due</span>
+                </th>
+                <th class="database-header-cell" scope="col" style="min-width:80px;">
+                  <span class="db-prop-icon">✅ Done</span>
+                </th>
+                <th class="database-header-cell" scope="col" style="min-width:80px;">
+                  <span class="db-prop-icon">🔢 Tasks</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="database-row">
+                <td class="database-cell database-cell--title">
+                  <a class="page-mention" href="#"><span class="page-mention-icon">📐</span>Notion Design System</a>
+                </td>
+                <td class="database-cell property-type-select">
+                  <span class="property-select-tag property-select-tag--green">In Progress</span>
+                </td>
+                <td class="database-cell property-type-text">Steve S.</td>
+                <td class="database-cell property-type-date">Jun 30, 2026</td>
+                <td class="database-cell property-type-checkbox">
+                  <input type="checkbox" class="checkbox" checked aria-label="Done">
+                </td>
+                <td class="database-cell property-type-number">14</td>
+              </tr>
+              <tr class="database-row">
+                <td class="database-cell database-cell--title">
+                  <a class="page-mention" href="#"><span class="page-mention-icon">🎨</span>Brand Refresh</a>
+                </td>
+                <td class="database-cell property-type-select">
+                  <span class="property-select-tag property-select-tag--yellow">Review</span>
+                </td>
+                <td class="database-cell property-type-text">Maya L.</td>
+                <td class="database-cell property-type-date">Jul 15, 2026</td>
+                <td class="database-cell property-type-checkbox">
+                  <input type="checkbox" class="checkbox" aria-label="Done">
+                </td>
+                <td class="database-cell property-type-number">8</td>
+              </tr>
+              <tr class="database-row">
+                <td class="database-cell database-cell--title">
+                  <a class="page-mention" href="#"><span class="page-mention-icon">🚀</span>Q3 Launch</a>
+                </td>
+                <td class="database-cell property-type-select">
+                  <span class="property-select-tag property-select-tag--blue">Planning</span>
+                </td>
+                <td class="database-cell property-type-text">Alex T.</td>
+                <td class="database-cell property-type-date">Aug 1, 2026</td>
+                <td class="database-cell property-type-checkbox">
+                  <input type="checkbox" class="checkbox" aria-label="Done">
+                </td>
+                <td class="database-cell property-type-number">23</td>
+              </tr>
+              <tr class="database-row">
+                <td class="database-cell database-cell--title">
+                  <a class="page-mention" href="#"><span class="page-mention-icon">📊</span>Analytics Dashboard</a>
+                </td>
+                <td class="database-cell property-type-select">
+                  <span class="property-select-tag property-select-tag--gray">Backlog</span>
+                </td>
+                <td class="database-cell property-type-text">Jordan K.</td>
+                <td class="database-cell property-type-date">Aug 20, 2026</td>
+                <td class="database-cell property-type-checkbox">
+                  <input type="checkbox" class="checkbox" aria-label="Done">
+                </td>
+                <td class="database-cell property-type-number">6</td>
+              </tr>
+              <tr class="database-row">
+                <td class="database-cell database-cell--title">
+                  <a class="page-mention" href="#"><span class="page-mention-icon">🔒</span>Security Audit</a>
+                </td>
+                <td class="database-cell property-type-select">
+                  <span class="property-select-tag property-select-tag--red">Blocked</span>
+                </td>
+                <td class="database-cell property-type-text">Sam R.</td>
+                <td class="database-cell property-type-date">Jul 5, 2026</td>
+                <td class="database-cell property-type-checkbox">
+                  <input type="checkbox" class="checkbox" aria-label="Done">
+                </td>
+                <td class="database-cell property-type-number">11</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="database-add-row" role="button" tabindex="0" aria-label="New row">
+            <span>+</span>
+            <span>New</span>
+          </div>
+        </div>
+
+        <!-- Select tags catalog -->
+        <div class="showcase-subsection" style="margin-top: var(--space-6);">
+          <div class="showcase-subsection-title">Select Property Tags — All 9 Colors</div>
+          <div class="frame" style="display:flex; flex-wrap:wrap; gap:var(--space-2); align-items:center;">
+            <span class="property-select-tag property-select-tag--gray">Gray</span>
+            <span class="property-select-tag property-select-tag--brown">Brown</span>
+            <span class="property-select-tag property-select-tag--orange">Orange</span>
+            <span class="property-select-tag property-select-tag--yellow">Yellow</span>
+            <span class="property-select-tag property-select-tag--green">Green</span>
+            <span class="property-select-tag property-select-tag--blue">Blue</span>
+            <span class="property-select-tag property-select-tag--purple">Purple</span>
+            <span class="property-select-tag property-select-tag--pink">Pink</span>
+            <span class="property-select-tag property-select-tag--red">Red</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================================
+           SIDEBAR
+           ======================================================================= -->
+      <section class="showcase-section" id="sidebar">
+        <h2 class="showcase-section-title">Sidebar &amp; Navigation</h2>
+        <p class="showcase-section-desc">
+          240px of warm off-white. The sidebar hosts the workspace switcher, search, home, inbox, and an infinitely-nestable page tree. Everything is 28px tall, 4px radius — restrained.
+        </p>
+
+        <div class="frame" style="padding:0; max-width: 280px; background: var(--color-surface); height: 480px; display:flex; flex-direction:column; overflow:hidden; border-radius: var(--radius-md);">
+          <div style="background: var(--color-surface); flex:1; overflow:hidden;">
+            <div class="workspace-switcher" style="margin: var(--space-2) var(--space-1-5);">
+              <div class="workspace-avatar">N</div>
+              <span class="workspace-name">Notion Design</span>
+              <span class="workspace-chevron">⌄</span>
+            </div>
+            <div class="sidebar-actions">
+              <button class="sidebar-action-btn"><span class="sidebar-action-icon">🔍</span>Search <kbd style="margin-left:auto;">⌘K</kbd></button>
+              <button class="sidebar-action-btn"><span class="sidebar-action-icon">🏠</span>Home</button>
+              <button class="sidebar-action-btn"><span class="sidebar-action-icon">📬</span>Inbox <span class="badge badge--red" style="margin-left:auto; font-size:10px; height:16px;">3</span></button>
+              <button class="sidebar-action-btn"><span class="sidebar-action-icon">⚙️</span>Settings &amp; members</button>
+            </div>
+            <div class="sidebar-section">
+              <div class="sidebar-section-header">
+                <span class="sidebar-section-label">Private</span>
+                <span class="sidebar-section-add">+</span>
+              </div>
+              <div class="sidebar-item sidebar-item--active">
+                <span class="sidebar-item-toggle">▶</span>
+                <span class="sidebar-item-icon">📐</span>
+                <span class="sidebar-item-title">Design System</span>
+                <div class="sidebar-item-actions"><span class="sidebar-item-action">+</span><span class="sidebar-item-action">⋯</span></div>
+              </div>
+              <div class="sidebar-children">
+                <div class="sidebar-item">
+                  <span class="sidebar-item-toggle">▶</span>
+                  <span class="sidebar-item-icon">🎨</span>
+                  <span class="sidebar-item-title">Tokens</span>
+                </div>
+                <div class="sidebar-item">
+                  <span class="sidebar-item-toggle">▶</span>
+                  <span class="sidebar-item-icon">🔤</span>
+                  <span class="sidebar-item-title">Typography</span>
+                </div>
+                <div class="sidebar-item">
+                  <span class="sidebar-item-toggle">▶</span>
+                  <span class="sidebar-item-icon">🧩</span>
+                  <span class="sidebar-item-title">Components</span>
+                </div>
+              </div>
+              <div class="sidebar-item">
+                <span class="sidebar-item-toggle">▶</span>
+                <span class="sidebar-item-icon">📝</span>
+                <span class="sidebar-item-title">Quick Notes</span>
+              </div>
+              <div class="sidebar-item">
+                <span class="sidebar-item-toggle">▶</span>
+                <span class="sidebar-item-icon">📊</span>
+                <span class="sidebar-item-title">Projects</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================================
+           BUTTONS
+           ======================================================================= -->
+      <section class="showcase-section" id="buttons">
+        <h2 class="showcase-section-title">Buttons</h2>
+        <p class="showcase-section-desc">
+          Notion's buttons are deliberately understated. Ghost is the default. Primary (dark) is used sparingly — usually just the Share button. Blue text links handle most primary actions inline.
+        </p>
+
+        <div class="showcase-subsection">
+          <div class="showcase-subsection-title">All Variants</div>
+          <div class="frame" style="display:flex; flex-wrap:wrap; gap:var(--space-3); align-items:center;">
+            <button class="btn btn-primary">Primary</button>
+            <button class="btn btn-secondary">Secondary</button>
+            <button class="btn btn-ghost">Ghost</button>
+            <button class="btn btn-blue">Blue Text</button>
+            <button class="btn btn-danger">Danger</button>
+          </div>
+        </div>
+
+        <div class="showcase-subsection">
+          <div class="showcase-subsection-title">Sizes</div>
+          <div class="frame" style="display:flex; flex-wrap:wrap; gap:var(--space-3); align-items:center;">
+            <button class="btn btn-primary btn-sm">Small</button>
+            <button class="btn btn-primary">Default (32px)</button>
+            <button class="btn btn-primary btn-lg">Large</button>
+          </div>
+        </div>
+
+        <div class="showcase-subsection">
+          <div class="showcase-subsection-title">States</div>
+          <div class="frame" style="display:flex; flex-wrap:wrap; gap:var(--space-3); align-items:center;">
+            <button class="btn btn-primary">Default</button>
+            <button class="btn btn-primary" disabled>Disabled</button>
+            <button class="btn btn-secondary" disabled>Secondary Disabled</button>
+          </div>
+        </div>
+
+        <div class="showcase-subsection">
+          <div class="showcase-subsection-title">With Icons</div>
+          <div class="frame" style="display:flex; flex-wrap:wrap; gap:var(--space-3); align-items:center;">
+            <button class="btn btn-primary">+ New page</button>
+            <button class="btn btn-secondary">↑ Import</button>
+            <button class="btn btn-ghost">🔍 Search</button>
+            <button class="btn btn-ghost btn-icon btn-sm" aria-label="More options">⋯</button>
+            <button class="btn btn-ghost btn-icon" aria-label="Share">🔗</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================================
+           FORMS
+           ======================================================================= -->
+      <section class="showcase-section" id="forms">
+        <h2 class="showcase-section-title">Forms &amp; Inputs</h2>
+        <p class="showcase-section-desc">
+          Clean, minimal inputs. White backgrounds in light mode, system surfaces in dark. Focus state uses Notion's blue with a subtle ring — not a heavy glow.
+        </p>
+
+        <div class="grid-2">
+          <!-- Input states -->
+          <div class="showcase-subsection">
+            <div class="showcase-subsection-title">Text Input</div>
+            <div class="frame frame--white" style="display:flex; flex-direction:column; gap: var(--space-3);">
+              <div class="form-group">
+                <label class="form-label" for="inp-default">Default</label>
+                <input class="input" id="inp-default" type="text" placeholder="Enter text…">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="inp-focus">Focus</label>
+                <input class="input" id="inp-focus" type="text" value="Focused state" style="border-color: var(--color-blue); box-shadow: var(--shadow-focus);">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="inp-error">Error</label>
+                <input class="input input--error" id="inp-error" type="text" value="Invalid value" aria-invalid="true" aria-describedby="inp-error-msg">
+                <span class="form-error" id="inp-error-msg">This field is required.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="inp-disabled">Disabled</label>
+                <input class="input" id="inp-disabled" type="text" value="Read only" disabled>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="inp-sm">Small input</label>
+                <input class="input input--sm" id="inp-sm" type="text" placeholder="Small…">
+              </div>
+            </div>
+          </div>
+
+          <!-- Other form elements -->
+          <div class="showcase-subsection">
+            <div class="showcase-subsection-title">Other Controls</div>
+            <div class="frame frame--white" style="display:flex; flex-direction:column; gap: var(--space-4);">
+              <div class="form-group">
+                <label class="form-label" for="sel-status">Select</label>
+                <select class="select" id="sel-status">
+                  <option>In Progress</option>
+                  <option>Review</option>
+                  <option>Done</option>
+                  <option>Backlog</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="ta-notes">Textarea</label>
+                <textarea class="textarea" id="ta-notes" placeholder="Write something…" rows="3"></textarea>
+              </div>
+              <div class="form-group">
+                <div class="showcase-subsection-title" style="margin-bottom: var(--space-2);">Checkboxes</div>
+                <div style="display:flex; flex-direction:column; gap:var(--space-2);">
+                  <label class="checkbox-wrapper">
+                    <input type="checkbox" class="checkbox" checked>
+                    <span class="checkbox-label">Checked state</span>
+                  </label>
+                  <label class="checkbox-wrapper">
+                    <input type="checkbox" class="checkbox">
+                    <span class="checkbox-label">Unchecked state</span>
+                  </label>
+                  <label class="checkbox-wrapper" style="opacity:0.4;">
+                    <input type="checkbox" class="checkbox" disabled>
+                    <span class="checkbox-label">Disabled state</span>
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="showcase-subsection-title" style="margin-bottom: var(--space-2);">Toggle Switches</div>
+                <div style="display:flex; flex-direction:column; gap:var(--space-3);">
+                  <label style="display:flex; align-items:center; gap:var(--space-2); cursor:pointer;">
+                    <div class="toggle-switch">
+                      <input type="checkbox" class="toggle-switch-input" checked>
+                      <div class="toggle-switch-track"></div>
+                      <div class="toggle-switch-thumb"></div>
+                    </div>
+                    <span class="checkbox-label">Dark mode</span>
+                  </label>
+                  <label style="display:flex; align-items:center; gap:var(--space-2); cursor:pointer;">
+                    <div class="toggle-switch">
+                      <input type="checkbox" class="toggle-switch-input">
+                      <div class="toggle-switch-track"></div>
+                      <div class="toggle-switch-thumb"></div>
+                    </div>
+                    <span class="checkbox-label">Full-width pages</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================================
+           MENUS & TOOLBARS
+           ======================================================================= -->
+      <section class="showcase-section" id="menus">
+        <h2 class="showcase-section-title">Menus &amp; Toolbars</h2>
+        <p class="showcase-section-desc">
+          Slash menu for block insertion, selection toolbar for inline formatting, and popovers for property editing — Notion's contextual UI layer.
+        </p>
+
+        <div class="grid-2">
+          <!-- Slash menu -->
+          <div class="showcase-subsection">
+            <div class="showcase-subsection-title">Slash Menu</div>
+            <div class="slash-menu" style="position:relative; animation:none;" role="dialog" aria-label="Block type picker">
+              <div class="slash-menu-section">
+                <div class="slash-menu-section-label">Basic blocks</div>
+                <div class="slash-menu-item slash-menu-item--focused" role="option" aria-selected="true">
+                  <div class="slash-menu-item-icon" aria-hidden="true">📝</div>
+                  <div class="slash-menu-item-info">
+                    <div class="slash-menu-item-title">Text</div>
+                    <div class="slash-menu-item-desc">Just start writing with plain text.</div>
+                  </div>
+                </div>
+                <div class="slash-menu-item" role="option">
+                  <div class="slash-menu-item-icon" aria-hidden="true">H1</div>
+                  <div class="slash-menu-item-info">
+                    <div class="slash-menu-item-title">Heading 1</div>
+                    <div class="slash-menu-item-desc">Big section heading.</div>
+                  </div>
+                </div>
+                <div class="slash-menu-item" role="option">
+                  <div class="slash-menu-item-icon" aria-hidden="true">H2</div>
+                  <div class="slash-menu-item-info">
+                    <div class="slash-menu-item-title">Heading 2</div>
+                    <div class="slash-menu-item-desc">Medium section heading.</div>
+                  </div>
+                </div>
+                <div class="slash-menu-item" role="option">
+                  <div class="slash-menu-item-icon" aria-hidden="true">•</div>
+                  <div class="slash-menu-item-info">
+                    <div class="slash-menu-item-title">Bulleted list</div>
+                    <div class="slash-menu-item-desc">Create a simple bulleted list.</div>
+                  </div>
+                </div>
+                <div class="slash-menu-item" role="option">
+                  <div class="slash-menu-item-icon" aria-hidden="true">☑</div>
+                  <div class="slash-menu-item-info">
+                    <div class="slash-menu-item-title">To-do list</div>
+                    <div class="slash-menu-item-desc">Track tasks with a to-do list.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="slash-menu-section">
+                <div class="slash-menu-section-label">Media</div>
+                <div class="slash-menu-item" role="option">
+                  <div class="slash-menu-item-icon" aria-hidden="true">🖼</div>
+                  <div class="slash-menu-item-info">
+                    <div class="slash-menu-item-title">Image</div>
+                    <div class="slash-menu-item-desc">Upload or embed an image.</div>
+                  </div>
+                </div>
+                <div class="slash-menu-item" role="option">
+                  <div class="slash-menu-item-icon" aria-hidden="true">{}</div>
+                  <div class="slash-menu-item-info">
+                    <div class="slash-menu-item-title">Code</div>
+                    <div class="slash-menu-item-desc">Capture a code snippet.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Selection toolbar + Popover -->
+          <div class="showcase-subsection">
+            <div class="showcase-subsection-title">Selection Toolbar</div>
+            <div style="padding: var(--space-4) 0;">
+              <div class="selection-toolbar" role="toolbar" aria-label="Text formatting options">
+                <button class="selection-toolbar-btn selection-toolbar-btn--active" title="Bold" aria-label="Bold"><strong>B</strong></button>
+                <button class="selection-toolbar-btn" title="Italic" aria-label="Italic"><em>I</em></button>
+                <button class="selection-toolbar-btn" title="Underline" aria-label="Underline"><u>U</u></button>
+                <button class="selection-toolbar-btn" title="Strikethrough" aria-label="Strikethrough"><s>S</s></button>
+                <div class="selection-toolbar-divider" aria-hidden="true"></div>
+                <button class="selection-toolbar-btn" title="Inline code" aria-label="Code" style="font-family: var(--font-mono); font-size:11px;">code</button>
+                <div class="selection-toolbar-divider" aria-hidden="true"></div>
+                <button class="selection-toolbar-btn" title="Text color" aria-label="Color">A</button>
+                <button class="selection-toolbar-btn" title="Link" aria-label="Link">🔗</button>
+                <button class="selection-toolbar-btn" title="Comment" aria-label="Comment">💬</button>
+                <button class="selection-toolbar-btn" title="More" aria-label="More options">⋯</button>
+              </div>
+            </div>
+
+            <div class="showcase-subsection-title" style="margin-top:var(--space-4);">Popover Menu</div>
+            <div class="popover" style="position:relative; animation:none;" role="menu" aria-label="Block options">
+              <div class="popover-section-label">Transform into</div>
+              <div class="popover-item" role="menuitem"><span>📝</span>Text</div>
+              <div class="popover-item" role="menuitem"><span>H1</span>Heading 1</div>
+              <div class="popover-item" role="menuitem"><span>💡</span>Callout</div>
+              <div class="popover-divider" role="separator"></div>
+              <div class="popover-item" role="menuitem"><span>🔗</span>Copy link to block</div>
+              <div class="popover-item" role="menuitem"><span>✂️</span>Duplicate</div>
+              <div class="popover-item popover-item--danger" role="menuitem"><span>🗑</span>Delete</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Breadcrumb -->
+        <div class="showcase-subsection">
+          <div class="showcase-subsection-title">Breadcrumb</div>
+          <div class="frame frame--white">
+            <nav class="breadcrumb" aria-label="Page path">
+              <div class="breadcrumb-item"><span class="breadcrumb-icon">🏠</span>Workspace</div>
+              <span class="breadcrumb-separator" aria-hidden="true">/</span>
+              <div class="breadcrumb-item"><span class="breadcrumb-icon">📁</span>Design</div>
+              <span class="breadcrumb-separator" aria-hidden="true">/</span>
+              <div class="breadcrumb-item"><span class="breadcrumb-icon">🧩</span>Components</div>
+              <span class="breadcrumb-separator" aria-hidden="true">/</span>
+              <div class="breadcrumb-item" aria-current="page"><span class="breadcrumb-icon">📝</span>Button Spec</div>
+            </nav>
+          </div>
+        </div>
+
+        <!-- Page mention & mention chip -->
+        <div class="showcase-subsection">
+          <div class="showcase-subsection-title">Inline Elements</div>
+          <div class="frame frame--white">
+            <p class="body" style="margin:0;">
+              See the <a class="page-mention" href="#"><span class="page-mention-icon">📐</span>Notion Design System</a> for reference. This was last updated by
+              <span class="mention-chip"><span class="mention-avatar">S</span>Steve S.</span>
+              on Jun 24, 2026. Check out the
+              <a class="page-mention" href="#"><span class="page-mention-icon">🎨</span>Brand Guidelines</a>
+              for more context.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================================
+           MODALS
+           ======================================================================= -->
+      <section class="showcase-section" id="modals">
+        <h2 class="showcase-section-title">Modals &amp; Panels</h2>
+        <p class="showcase-section-desc">
+          Notion uses three overlay patterns: a centered modal (settings, confirmations), a peek panel (right-side page view), and contextual popovers. All use scaleInCenter animation.
+        </p>
+
+        <div class="grid-2">
+          <!-- Standard modal -->
+          <div class="showcase-subsection">
+            <div class="showcase-subsection-title">Standard Modal</div>
+            <div class="modal" style="position:relative; animation:none; box-shadow: var(--shadow-md); max-width:100%;" role="dialog" aria-modal="true" aria-label="Delete page dialog">
+              <div class="modal-header">
+                <div class="modal-title">Delete "Brand Guidelines"?</div>
+                <button class="modal-close" aria-label="Close">✕</button>
+              </div>
+              <div class="modal-body">
+                <p class="ui-body" style="margin:0; color: var(--color-label-secondary);">
+                  This page and all its subpages will be moved to Trash. You can restore them from Trash at any time.
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-ghost">Cancel</button>
+                <button class="btn btn-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Settings layout -->
+          <div class="showcase-subsection">
+            <div class="showcase-subsection-title">Settings Panel Layout</div>
+            <div style="border: 1px solid var(--color-border-subtle); border-radius: var(--radius-md); overflow:hidden; height:320px; display:flex;">
+              <div class="settings-sidebar" style="min-height:unset; flex-shrink:0;">
+                <div class="settings-sidebar-section">
+                  <div class="settings-sidebar-label">Account</div>
+                  <div class="settings-sidebar-item settings-sidebar-item--active">
+                    <span class="settings-sidebar-icon">👤</span>My profile
+                  </div>
+                  <div class="settings-sidebar-item">
+                    <span class="settings-sidebar-icon">🔔</span>Notifications
+                  </div>
+                </div>
+                <div class="settings-sidebar-section">
+                  <div class="settings-sidebar-label">Workspace</div>
+                  <div class="settings-sidebar-item">
+                    <span class="settings-sidebar-icon">⚙️</span>Settings
+                  </div>
+                  <div class="settings-sidebar-item">
+                    <span class="settings-sidebar-icon">👥</span>Members
+                  </div>
+                  <div class="settings-sidebar-item">
+                    <span class="settings-sidebar-icon">💳</span>Plans
+                  </div>
+                </div>
+              </div>
+              <div class="settings-content" style="overflow:auto;">
+                <div class="settings-section" style="margin-bottom:var(--space-6); padding-bottom:var(--space-6);">
+                  <div class="settings-section-heading">My profile</div>
+                  <div class="settings-row">
+                    <div class="settings-row-info">
+                      <div class="settings-row-label">Photo</div>
+                      <div class="settings-row-desc">Upload a picture.</div>
+                    </div>
+                    <div class="settings-row-control">
+                      <div class="avatar avatar-md" style="background:var(--color-blue-tag-text);">S</div>
+                      <button class="btn btn-ghost btn-sm">Change</button>
+                    </div>
+                  </div>
+                  <div class="settings-row">
+                    <div class="settings-row-info">
+                      <div class="settings-row-label">Full name</div>
+                    </div>
+                    <div class="settings-row-control">
+                      <input class="input input--sm" type="text" value="Steve Scargall" style="width:160px;">
+                    </div>
+                  </div>
+                  <div class="settings-row">
+                    <div class="settings-row-info">
+                      <div class="settings-row-label">Theme</div>
+                      <div class="settings-row-desc">Select light, dark, or system.</div>
+                    </div>
+                    <div class="settings-row-control">
+                      <select class="select" style="width:120px; height:28px; font-size:var(--text-13);">
+                        <option>System</option>
+                        <option>Light</option>
+                        <option>Dark</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Peek modal preview -->
+        <div class="showcase-subsection" style="margin-top:var(--space-6);">
+          <div class="showcase-subsection-title">Peek Modal (Page Peek)</div>
+          <div style="position:relative; height:260px; border:1px solid var(--color-border-subtle); border-radius:var(--radius-md); overflow:hidden; background: rgba(0,0,0,0.04);">
+            <!-- Underlying page hint -->
+            <div style="padding: var(--space-4); opacity:0.3; font-size: var(--text-14); color:var(--color-label-secondary);">Main page content…</div>
+            <!-- Peek panel -->
+            <div style="position:absolute; top:0; right:0; bottom:0; width:55%; background:var(--color-bg); border-left:1px solid var(--color-border-subtle); display:flex; flex-direction:column;">
+              <div class="peek-modal-header">
+                <nav class="breadcrumb" style="flex:1;">
+                  <div class="breadcrumb-item"><span>📁</span>Design</div>
+                  <span class="breadcrumb-separator">/</span>
+                  <div class="breadcrumb-item" aria-current="page"><span>📝</span>Brand Guidelines</div>
+                </nav>
+                <button class="btn btn-ghost btn-icon btn-sm" aria-label="Open full page">↗</button>
+                <button class="btn btn-ghost btn-icon btn-sm" aria-label="Close peek">✕</button>
+              </div>
+              <div class="peek-modal-body" style="padding: var(--space-4) var(--space-6);">
+                <div style="font-size:32px; margin-bottom:var(--space-2);">🎨</div>
+                <div class="page-title" style="font-size:var(--text-20); margin-bottom:var(--space-3);">Brand Guidelines</div>
+                <div class="block-callout block-callout--blue" style="margin-bottom:var(--space-3);">
+                  <span class="block-callout-icon">💡</span>
+                  <div class="block-callout-text" style="font-size:var(--text-13);">Peek view — full page in a right-side panel at 50% width.</div>
+                </div>
+                <div class="block-text" style="font-size:var(--text-14); color:var(--color-label-secondary);">Page content appears here, scrollable within the panel.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================================
+           FEEDBACK
+           ======================================================================= -->
+      <section class="showcase-section" id="feedback">
+        <h2 class="showcase-section-title">Feedback &amp; Communication</h2>
+        <p class="showcase-section-desc">
+          Comments, toasts, mentions, badges, and status indicators — Notion's communication layer is quiet but expressive.
+        </p>
+
+        <div class="grid-2">
+          <!-- Comments -->
+          <div class="showcase-subsection">
+            <div class="showcase-subsection-title">Comment Thread</div>
+            <div class="frame frame--white">
+              <div class="comment-thread" role="group" aria-label="Comment thread">
+                <div class="comment-bubble">
+                  <div class="comment-avatar" style="background: var(--color-blue-tag-text);" aria-label="Steve S. avatar">S</div>
+                  <div class="comment-body">
+                    <div class="comment-meta">
+                      <span class="comment-author">Steve Scargall</span>
+                      <span class="comment-timestamp">Jun 24, 2026 · 3:41 PM</span>
+                    </div>
+                    <div class="comment-text">Should the sidebar be collapsible on desktop too? Notion does this with a hover reveal.</div>
+                    <div class="comment-actions">
+                      <button class="comment-action-btn" aria-label="Reply">↩ Reply</button>
+                      <button class="comment-action-btn" aria-label="React">😊</button>
+                      <button class="comment-action-btn" aria-label="Resolve">✓ Resolve</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="comment-bubble">
+                  <div class="comment-avatar" style="background: var(--color-purple-text);" aria-label="Maya L. avatar">M</div>
+                  <div class="comment-body">
+                    <div class="comment-meta">
+                      <span class="comment-author">Maya L.</span>
+                      <span class="comment-timestamp">Today at 4:02 PM</span>
+                    </div>
+                    <div class="comment-text">Yes, I'll add a collapse animation with the sidebar CSS transition. Should take 200ms with ease-gentle.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Toasts & badges -->
+          <div class="showcase-subsection">
+            <div class="showcase-subsection-title">Toast Notifications</div>
+            <div class="frame frame--white" style="display:flex; flex-direction:column; gap:var(--space-2);">
+              <div class="toast" style="position:relative; bottom:auto; right:auto; max-width:100%;">
+                <span class="toast-icon">✅</span>
+                <span class="toast-text">Page saved</span>
+                <button class="toast-dismiss" aria-label="Dismiss">✕</button>
+              </div>
+              <div class="toast toast--warning" style="position:relative; bottom:auto; right:auto; max-width:100%;">
+                <span class="toast-icon">⚠️</span>
+                <span class="toast-text">Connection lost — retrying…</span>
+                <button class="toast-dismiss" aria-label="Dismiss">✕</button>
+              </div>
+              <div class="toast toast--error" style="position:relative; bottom:auto; right:auto; max-width:100%;">
+                <span class="toast-icon">✕</span>
+                <span class="toast-text">Failed to save. Please try again.</span>
+                <button class="toast-dismiss" aria-label="Dismiss">✕</button>
+              </div>
+            </div>
+
+            <div class="showcase-subsection-title" style="margin-top:var(--space-4);">Badges</div>
+            <div class="frame" style="display:flex; flex-wrap:wrap; gap:var(--space-2); align-items:center;">
+              <span class="badge badge--gray">Draft</span>
+              <span class="badge badge--blue">In Progress</span>
+              <span class="badge badge--green">Done</span>
+              <span class="badge badge--orange">Review</span>
+              <span class="badge badge--red">Blocked</span>
+              <span class="badge badge--purple">Idea</span>
+            </div>
+
+            <div class="showcase-subsection-title" style="margin-top:var(--space-4);">Keyboard Shortcuts</div>
+            <div class="frame" style="display:flex; gap:var(--space-2); align-items:center; flex-wrap:wrap;">
+              <kbd>⌘</kbd><kbd>K</kbd> — Search
+              <span style="margin:0 var(--space-2); color:var(--color-label-tertiary);">·</span>
+              <kbd>/</kbd> — Slash menu
+              <span style="margin:0 var(--space-2); color:var(--color-label-tertiary);">·</span>
+              <kbd>@</kbd> — Mention
+            </div>
+          </div>
+        </div>
+
+        <!-- Empty state -->
+        <div class="showcase-subsection">
+          <div class="showcase-subsection-title">Empty State</div>
+          <div class="frame frame--white">
+            <div class="empty-state">
+              <div class="empty-state-icon" aria-hidden="true">📝</div>
+              <div class="empty-state-title">No pages yet</div>
+              <div class="empty-state-desc">Create your first page to get started with your workspace.</div>
+              <button class="btn btn-primary">+ New page</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skeleton loading -->
+        <div class="showcase-subsection">
+          <div class="showcase-subsection-title">Skeleton Loading</div>
+          <div class="frame frame--white">
+            <div style="display:flex; align-items:center; gap:var(--space-3); margin-bottom:var(--space-4);">
+              <div class="skeleton skeleton-circle" style="width:32px; height:32px; flex-shrink:0;" aria-hidden="true"></div>
+              <div style="flex:1;">
+                <div class="skeleton skeleton-text medium" aria-hidden="true"></div>
+                <div class="skeleton skeleton-text short" aria-hidden="true"></div>
+              </div>
+            </div>
+            <div class="skeleton skeleton-block" style="height:40px; margin-bottom:var(--space-3);" aria-hidden="true"></div>
+            <div class="skeleton skeleton-text full" aria-hidden="true"></div>
+            <div class="skeleton skeleton-text long" aria-hidden="true"></div>
+            <div class="skeleton skeleton-text medium" aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================================
+           MOTION
+           ======================================================================= -->
+      <section class="showcase-section" id="motion">
+        <h2 class="showcase-section-title">Motion &amp; Animation</h2>
+        <p class="showcase-section-desc">
+          Notion's motion language is defined by restraint. Four durations (80–300ms), one gentle easing curve, and six keyframe animations — all purposeful, none decorative.
+        </p>
+
+        <!-- Duration scale -->
+        <div class="showcase-subsection">
+          <div class="showcase-subsection-title">Duration Scale</div>
+          <div class="frame" style="display:flex; flex-direction:column; gap:var(--space-2);">
+            <div class="motion-demo">
+              <div class="motion-demo-box" style="animation: fadeIn 80ms var(--ease-gentle) infinite alternate;">⚡</div>
+              <div class="motion-demo-info">
+                <div class="motion-demo-name">Instant — 80ms</div>
+                <div class="motion-demo-desc">Hover states, tooltip appear, checkbox toggle</div>
+              </div>
+              <code style="font-size:var(--text-12); color:var(--color-label-tertiary);">--duration-instant</code>
+            </div>
+            <div class="motion-demo">
+              <div class="motion-demo-box" style="animation: fadeIn 120ms var(--ease-gentle) infinite alternate;">🏃</div>
+              <div class="motion-demo-info">
+                <div class="motion-demo-name">Fast — 120ms</div>
+                <div class="motion-demo-desc">Button click feedback, drag handle appear, menu item hover</div>
+              </div>
+              <code style="font-size:var(--text-12); color:var(--color-label-tertiary);">--duration-fast</code>
+            </div>
+            <div class="motion-demo">
+              <div class="motion-demo-box" style="animation: fadeIn 200ms var(--ease-gentle) infinite alternate;">🚶</div>
+              <div class="motion-demo-info">
+                <div class="motion-demo-name">Normal — 200ms</div>
+                <div class="motion-demo-desc">Menu open/close, modal appear, sidebar item active</div>
+              </div>
+              <code style="font-size:var(--text-12); color:var(--color-label-tertiary);">--duration-normal</code>
+            </div>
+            <div class="motion-demo">
+              <div class="motion-demo-box" style="animation: fadeIn 300ms var(--ease-gentle) infinite alternate;">🐢</div>
+              <div class="motion-demo-info">
+                <div class="motion-demo-name">Slow — 300ms</div>
+                <div class="motion-demo-desc">Peek panel slide-in, sidebar collapse, toggle block expand</div>
+              </div>
+              <code style="font-size:var(--text-12); color:var(--color-label-tertiary);">--duration-slow</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Animation classes -->
+        <div class="showcase-subsection">
+          <div class="showcase-subsection-title">Animation Keyframes</div>
+          <div class="grid-2">
+            <div class="frame" style="display:flex; flex-direction:column; gap:var(--space-3);">
+              <div style="font-size:var(--text-13); font-weight:var(--weight-medium); color:var(--color-label-primary);">fadeIn</div>
+              <div class="motion-demo-box animate-fade-in" style="animation-duration:1s; animation-iteration-count:infinite; animation-direction:alternate; margin:0;">✨</div>
+              <div class="frame frame--white" style="padding:var(--space-2);">
+                <code style="font-size:var(--text-12); font-family:var(--font-mono);">opacity: 0 → 1</code>
+              </div>
+            </div>
+            <div class="frame" style="display:flex; flex-direction:column; gap:var(--space-3);">
+              <div style="font-size:var(--text-13); font-weight:var(--weight-medium); color:var(--color-label-primary);">fadeInUp</div>
+              <div class="motion-demo-box animate-fade-in-up" style="animation-duration:1s; animation-iteration-count:infinite; animation-direction:alternate; margin:0;">⬆️</div>
+              <div class="frame frame--white" style="padding:var(--space-2);">
+                <code style="font-size:var(--text-12); font-family:var(--font-mono);">opacity + translateY(8px)</code>
+              </div>
+            </div>
+            <div class="frame" style="display:flex; flex-direction:column; gap:var(--space-3);">
+              <div style="font-size:var(--text-13); font-weight:var(--weight-medium); color:var(--color-label-primary);">scaleInCenter</div>
+              <div class="motion-demo-box animate-scale-in" style="animation-duration:0.8s; animation-iteration-count:infinite; animation-direction:alternate; margin:0;">📦</div>
+              <div class="frame frame--white" style="padding:var(--space-2);">
+                <code style="font-size:var(--text-12); font-family:var(--font-mono);">scale(0.96 → 1)</code>
+              </div>
+            </div>
+            <div class="frame" style="display:flex; flex-direction:column; gap:var(--space-3);">
+              <div style="font-size:var(--text-13); font-weight:var(--weight-medium); color:var(--color-label-primary);">slideInLeft</div>
+              <div class="motion-demo-box animate-slide-in-left" style="animation-duration:1s; animation-iteration-count:infinite; animation-direction:alternate; margin:0;">◀</div>
+              <div class="frame frame--white" style="padding:var(--space-2);">
+                <code style="font-size:var(--text-12); font-family:var(--font-mono);">translateX(-12px → 0)</code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reduced motion note -->
+        <div class="block-callout block-callout--gray" style="margin-top: var(--space-4);">
+          <span class="block-callout-icon">♿</span>
+          <div class="block-callout-text">
+            <strong>Accessibility:</strong> All animations respect <code>prefers-reduced-motion: reduce</code>. When this system preference is set, animation duration collapses to 0.01ms and iteration counts are forced to 1 — the transition effects are instant but state changes still occur.
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /showcase-content -->
+  </div><!-- /showcase-layout -->
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer style="border-top: 1px solid var(--color-border-subtle); padding: var(--space-8) var(--space-6); text-align:center;">
+    <p class="caption" style="margin:0;">
+      Notion Design System — Production-quality reference implementation. Faithful to
+      <a href="https://notion.so" target="_blank" rel="noopener" style="color: var(--color-label-secondary);">notion.so</a>
+      visual design language. Built with zero dependencies. &copy; 2026.
+    </p>
+    <p class="overline" style="margin: var(--space-2) 0 0;">
+      tokens.css &bull; typography.css &bull; animations.css &bull; components.css
+    </p>
+  </footer>
+
+  <script>
+    // =========================================================================
+    // Minimal interactivity — no dependencies, no frameworks
+    // =========================================================================
+
+    // Toggle block expand/collapse
+    document.querySelectorAll('.block-toggle-header').forEach(function(header) {
+      header.addEventListener('click', function() {
+        var wrapper = this.closest('.block-toggle-wrapper');
+        var isOpen = wrapper.classList.contains('block-toggle-wrapper--open');
+        wrapper.classList.toggle('block-toggle-wrapper--open', !isOpen);
+        this.setAttribute('aria-expanded', String(!isOpen));
+      });
+      header.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.click();
+        }
+      });
+    });
+
+    // Todo checkbox toggle
+    document.querySelectorAll('.block-todo-checkbox').forEach(function(checkbox) {
+      checkbox.addEventListener('click', function() {
+        var isChecked = this.classList.contains('block-todo-checkbox--checked');
+        this.classList.toggle('block-todo-checkbox--checked', !isChecked);
+        this.setAttribute('aria-checked', String(!isChecked));
+        var textEl = this.nextElementSibling;
+        if (textEl) {
+          textEl.classList.toggle('block-todo-text--checked', !isChecked);
+        }
+      });
+      checkbox.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.click();
+        }
+      });
+    });
+
+    // Code copy button
+    document.querySelectorAll('.block-code-copy').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var code = this.closest('.block-code-wrapper').querySelector('.block-code-content');
+        if (code && navigator.clipboard) {
+          navigator.clipboard.writeText(code.innerText).then(function() {}).catch(function() {});
+        }
+        var original = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(function() { btn.textContent = original; }, 1500);
+      });
+    });
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

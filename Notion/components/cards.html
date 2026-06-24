@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cards — Notion Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    body { background-color: var(--color-surface); }
+
+    .page {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: var(--space-10) var(--space-6) var(--space-20);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      font-size: var(--text-13);
+      color: var(--color-label-secondary);
+      text-decoration: none;
+      margin-bottom: var(--space-6);
+      padding: 2px var(--space-1);
+      border-radius: var(--radius-xs);
+      transition: background-color var(--duration-fast) var(--ease-gentle),
+                  color var(--duration-fast) var(--ease-gentle);
+    }
+    .back-link:hover {
+      background-color: var(--color-surface-hover);
+      color: var(--color-label-primary);
+    }
+
+    .page-icon { font-size: 48px; margin-bottom: var(--space-2); }
+
+    .section {
+      margin-bottom: var(--space-10);
+      padding-bottom: var(--space-10);
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+    .section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-size: var(--text-11);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-4);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .demo-label {
+      font-size: var(--text-12);
+      color: var(--color-label-tertiary);
+      font-family: var(--font-mono);
+      margin-top: var(--space-3);
+      padding: 0 var(--space-1);
+    }
+  </style>
+</head>
+<body>
+<main class="page">
+
+  <a href="../index.html" class="back-link" aria-label="Back to design system index">← Notion Design System</a>
+
+  <div class="page-icon" aria-hidden="true">🃏</div>
+  <h1 class="title" style="margin-bottom: var(--space-2);">Cards</h1>
+  <p class="ui-body" style="color: var(--color-label-secondary); margin-bottom: var(--space-10); max-width: 520px;">
+    Notion cards appear in Gallery view, link previews, and content templates. They're defined by minimal borders, restrained shadows, and 6px radii — nothing that competes with the content inside.
+  </p>
+
+  <!-- Standard card -->
+  <div class="section">
+    <div class="section-label">Standard Card</div>
+
+    <div style="max-width: 400px;">
+      <div class="card" role="article">
+        <div class="card-header">
+          <div style="display:flex; align-items:center; gap:var(--space-2);">
+            <span style="font-size:20px;" aria-hidden="true">📐</span>
+            <span class="ui-body" style="font-weight:var(--weight-semibold);">Design System</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="ui-body" style="color: var(--color-label-secondary); margin:0;">
+            A production-quality design system built on Notion's content-first philosophy. Includes tokens, typography, components, and animation utilities.
+          </p>
+          <div style="display:flex; gap:var(--space-1); margin-top:var(--space-3); flex-wrap:wrap;">
+            <span class="property-select-tag property-select-tag--green">In Progress</span>
+            <span class="property-select-tag property-select-tag--blue">Design</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="caption">Updated Jun 24, 2026</span>
+          <button class="btn btn-ghost btn-sm">Open →</button>
+        </div>
+      </div>
+    </div>
+    <div class="demo-label">.card — Base card. Use .card-header, .card-body, .card-footer for layout.</div>
+  </div>
+
+  <!-- Gallery cards -->
+  <div class="section">
+    <div class="section-label">Gallery Cards — Database Gallery View</div>
+
+    <div class="card-grid">
+      <div class="gallery-card" role="button" tabindex="0" aria-label="Notion Design System">
+        <div class="gallery-card-cover" style="background: linear-gradient(135deg, #EDF3EC 0%, #E7F3F8 100%); display:flex; align-items:center; justify-content:center; font-size:32px;" aria-hidden="true">📐</div>
+        <div class="gallery-card-body">
+          <div class="gallery-card-title">Notion Design System</div>
+          <div class="gallery-card-props">
+            <span class="property-select-tag property-select-tag--green">In Progress</span>
+            <span class="property-select-tag property-select-tag--blue">Design</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card" role="button" tabindex="0" aria-label="Brand Guidelines">
+        <div class="gallery-card-cover" style="background: linear-gradient(135deg, #FAF1F5 0%, #F6F3F8 100%); display:flex; align-items:center; justify-content:center; font-size:32px;" aria-hidden="true">🎨</div>
+        <div class="gallery-card-body">
+          <div class="gallery-card-title">Brand Guidelines</div>
+          <div class="gallery-card-props">
+            <span class="property-select-tag property-select-tag--yellow">Review</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card" role="button" tabindex="0" aria-label="Product Roadmap Q3">
+        <div class="gallery-card-cover" style="background: linear-gradient(135deg, #FAEBDD 0%, #FBF3DB 100%); display:flex; align-items:center; justify-content:center; font-size:32px;" aria-hidden="true">🚀</div>
+        <div class="gallery-card-body">
+          <div class="gallery-card-title">Product Roadmap Q3</div>
+          <div class="gallery-card-props">
+            <span class="property-select-tag property-select-tag--blue">Planning</span>
+            <span class="property-select-tag property-select-tag--orange">High Priority</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card" role="button" tabindex="0" aria-label="Engineering Wiki">
+        <div class="gallery-card-cover" style="background: linear-gradient(135deg, #F4EEEE 0%, #F1F1EF 100%); display:flex; align-items:center; justify-content:center; font-size:32px;" aria-hidden="true">🗂️</div>
+        <div class="gallery-card-body">
+          <div class="gallery-card-title">Engineering Wiki</div>
+          <div class="gallery-card-props">
+            <span class="property-select-tag property-select-tag--gray">Reference</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card" role="button" tabindex="0" aria-label="Security Audit">
+        <div class="gallery-card-cover" style="background: linear-gradient(135deg, #FDEBEC 0%, #FAF1F5 100%); display:flex; align-items:center; justify-content:center; font-size:32px;" aria-hidden="true">🔒</div>
+        <div class="gallery-card-body">
+          <div class="gallery-card-title">Security Audit 2026</div>
+          <div class="gallery-card-props">
+            <span class="property-select-tag property-select-tag--red">Blocked</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add new card -->
+      <div class="gallery-card" role="button" tabindex="0" aria-label="New page" style="border-style: dashed; cursor:pointer; display:flex; align-items:center; justify-content:center; min-height: 120px;">
+        <div style="text-align:center; color: var(--color-label-tertiary);">
+          <div style="font-size:24px; margin-bottom:var(--space-1);" aria-hidden="true">+</div>
+          <div style="font-size:var(--text-13);">New page</div>
+        </div>
+      </div>
+    </div>
+    <div class="demo-label">.gallery-card — Used in database gallery view. 100px tall cover, flex prop tags below.</div>
+  </div>
+
+  <!-- Bookmark card -->
+  <div class="section">
+    <div class="section-label">Bookmark / URL Card Block</div>
+
+    <div style="max-width: 600px; display: flex; flex-direction: column; gap: var(--space-3);">
+      <a class="block-bookmark" href="https://notion.so" target="_blank" rel="noopener" aria-label="Notion — All-in-one workspace">
+        <div class="block-bookmark-info">
+          <div class="block-bookmark-title">Notion — One workspace. Every team.</div>
+          <div class="block-bookmark-description">We're more than a doc. Or a table. We're a single connected workspace where better, faster work happens — whether you're a team of one or a thousand.</div>
+          <div class="block-bookmark-meta">
+            <div class="block-bookmark-favicon" style="background:#191919; display:flex; align-items:center; justify-content:center; color:#fff; font-size:9px; font-weight:bold;" aria-hidden="true">N</div>
+            <span class="block-bookmark-domain">notion.so</span>
+          </div>
+        </div>
+        <div class="block-bookmark-thumb" style="background: linear-gradient(135deg, #F7F6F3 0%, #EFEFEC 100%);" aria-hidden="true"></div>
+      </a>
+
+      <a class="block-bookmark" href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub — Where the world builds software">
+        <div class="block-bookmark-info">
+          <div class="block-bookmark-title">GitHub — Where the world builds software</div>
+          <div class="block-bookmark-description">Millions of developers and companies build, ship, and maintain their software on GitHub — the largest and most advanced development platform in the world.</div>
+          <div class="block-bookmark-meta">
+            <div class="block-bookmark-favicon" style="background:#24292E; display:flex; align-items:center; justify-content:center; color:#fff; font-size:9px;" aria-hidden="true">GH</div>
+            <span class="block-bookmark-domain">github.com</span>
+          </div>
+        </div>
+        <div class="block-bookmark-thumb" style="background: linear-gradient(135deg, #1B1F23 0%, #24292E 100%);" aria-hidden="true"></div>
+      </a>
+    </div>
+    <div class="demo-label">.block-bookmark — Inline URL card. Title + description + domain + optional thumbnail.</div>
+  </div>
+
+  <!-- Callout card -->
+  <div class="section">
+    <div class="section-label">Callout Blocks — All 9 Colors</div>
+
+    <div style="display: flex; flex-direction: column; gap: var(--space-2); max-width: 600px;">
+      <div class="block-callout block-callout--gray"><span class="block-callout-icon" aria-hidden="true">📌</span><div class="block-callout-text"><strong>Gray callout</strong> — neutral context, supplementary information.</div></div>
+      <div class="block-callout block-callout--brown"><span class="block-callout-icon" aria-hidden="true">🪵</span><div class="block-callout-text"><strong>Brown callout</strong> — earthy, grounded secondary notes.</div></div>
+      <div class="block-callout block-callout--orange"><span class="block-callout-icon" aria-hidden="true">🔥</span><div class="block-callout-text"><strong>Orange callout</strong> — warm attention, important context.</div></div>
+      <div class="block-callout block-callout--yellow"><span class="block-callout-icon" aria-hidden="true">⚠️</span><div class="block-callout-text"><strong>Yellow callout</strong> — caution, warnings, things to watch.</div></div>
+      <div class="block-callout block-callout--green"><span class="block-callout-icon" aria-hidden="true">✅</span><div class="block-callout-text"><strong>Green callout</strong> — success, completion, positive outcomes.</div></div>
+      <div class="block-callout block-callout--blue"><span class="block-callout-icon" aria-hidden="true">💡</span><div class="block-callout-text"><strong>Blue callout</strong> — tips, notes, informational content.</div></div>
+      <div class="block-callout block-callout--purple"><span class="block-callout-icon" aria-hidden="true">🔮</span><div class="block-callout-text"><strong>Purple callout</strong> — ideas, design thinking, creative direction.</div></div>
+      <div class="block-callout block-callout--pink"><span class="block-callout-icon" aria-hidden="true">🌸</span><div class="block-callout-text"><strong>Pink callout</strong> — soft emphasis, creative highlights.</div></div>
+      <div class="block-callout block-callout--red"><span class="block-callout-icon" aria-hidden="true">🚨</span><div class="block-callout-text"><strong>Red callout</strong> — danger, errors, critical information requiring immediate action.</div></div>
+    </div>
+    <div class="demo-label">.block-callout.block-callout--{color} — Each uses the corresponding bg/text color pair from tokens.css.</div>
+  </div>
+
+</main>
+</body>
+</html>

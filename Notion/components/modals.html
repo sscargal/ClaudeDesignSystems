@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modals — Notion Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    body { background-color: var(--color-surface); }
+
+    .page {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: var(--space-10) var(--space-6) var(--space-20);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      font-size: var(--text-13);
+      color: var(--color-label-secondary);
+      text-decoration: none;
+      margin-bottom: var(--space-6);
+      padding: 2px var(--space-1);
+      border-radius: var(--radius-xs);
+      transition: background-color var(--duration-fast) var(--ease-gentle),
+                  color var(--duration-fast) var(--ease-gentle);
+    }
+    .back-link:hover {
+      background-color: var(--color-surface-hover);
+      color: var(--color-label-primary);
+    }
+
+    .page-icon { font-size: 48px; margin-bottom: var(--space-2); }
+
+    .section {
+      margin-bottom: var(--space-10);
+      padding-bottom: var(--space-10);
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+    .section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-size: var(--text-11);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-4);
+    }
+
+    .demo-label {
+      font-size: var(--text-12);
+      color: var(--color-label-tertiary);
+      font-family: var(--font-mono);
+      margin-top: var(--space-3);
+    }
+
+    /* Inline modal demo (no overlay) */
+    .modal-preview {
+      position: relative;
+      animation: none;
+    }
+  </style>
+</head>
+<body>
+<main class="page">
+
+  <a href="../index.html" class="back-link" aria-label="Back to design system index">← Notion Design System</a>
+
+  <div class="page-icon" aria-hidden="true">🗔</div>
+  <h1 class="title" style="margin-bottom: var(--space-2);">Modals &amp; Overlays</h1>
+  <p class="ui-body" style="color: var(--color-label-secondary); margin-bottom: var(--space-10); max-width: 520px;">
+    Notion uses four overlay patterns: a centered dialog modal, a contextual popover, a right-side peek panel, and inline slash/selection menus. All animate with scaleInCenter (modal) or menuAppear (popovers) — gentle, 120–200ms.
+  </p>
+
+  <!-- Dialog modal -->
+  <div class="section">
+    <div class="section-label">Dialog Modal</div>
+
+    <!-- Confirmation -->
+    <div style="max-width: 480px; margin-bottom: var(--space-6);">
+      <div class="modal modal-preview" role="dialog" aria-modal="true" aria-labelledby="modal-delete-title">
+        <div class="modal-header">
+          <div class="modal-title" id="modal-delete-title">Delete "Brand Guidelines"?</div>
+          <button class="modal-close" aria-label="Close dialog">✕</button>
+        </div>
+        <div class="modal-body">
+          <p class="ui-body" style="color: var(--color-label-secondary); margin:0;">
+            This page and all its subpages will be moved to Trash. You can restore them from Trash at any time.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-ghost">Cancel</button>
+          <button class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+    <div class="demo-label">.modal — 8px radius, shadow-xl, max-width 480px. Header/body/footer structure. scaleInCenter animation.</div>
+
+    <!-- Share modal -->
+    <div style="max-width: 480px; margin-top: var(--space-6);">
+      <div class="modal modal-preview" role="dialog" aria-modal="true" aria-labelledby="modal-share-title">
+        <div class="modal-header">
+          <div class="modal-title" id="modal-share-title">Share "Design System"</div>
+          <button class="modal-close" aria-label="Close dialog">✕</button>
+        </div>
+        <div class="modal-body" style="padding-bottom:var(--space-4);">
+          <div class="form-group" style="margin-bottom:var(--space-4);">
+            <div class="input" style="display:flex; align-items:center; gap:var(--space-2); padding: 0 var(--space-2);">
+              <span style="color:var(--color-label-tertiary); font-size:14px;" aria-hidden="true">🔍</span>
+              <input type="text" placeholder="Add people or groups…" style="border:none; outline:none; flex:1; font-family:var(--font-sans); font-size:var(--text-14); background:transparent; color:var(--color-label-primary);" aria-label="Search people or groups">
+            </div>
+          </div>
+
+          <div class="settings-section-heading" style="margin-bottom:var(--space-2); font-size:var(--text-13);">Who has access</div>
+
+          <div class="settings-row" style="padding: var(--space-2) 0; min-height:44px;">
+            <div style="display:flex; align-items:center; gap:var(--space-2);">
+              <div class="avatar avatar-sm" style="background:var(--color-blue-tag-text);" aria-label="Steve Scargall avatar">S</div>
+              <div>
+                <div style="font-size:var(--text-14); font-weight:var(--weight-medium);">Steve Scargall</div>
+                <div class="caption">steve@example.com · you</div>
+              </div>
+            </div>
+            <div class="settings-row-control">
+              <span class="caption">Owner</span>
+            </div>
+          </div>
+          <div class="settings-row" style="padding: var(--space-2) 0; min-height:44px;">
+            <div style="display:flex; align-items:center; gap:var(--space-2);">
+              <div class="avatar avatar-sm" style="background:var(--color-purple-text);" aria-label="Maya L. avatar">M</div>
+              <div>
+                <div style="font-size:var(--text-14); font-weight:var(--weight-medium);">Maya L.</div>
+                <div class="caption">maya@example.com</div>
+              </div>
+            </div>
+            <div class="settings-row-control">
+              <select class="select" style="height:26px; font-size:var(--text-13); width:100px;" aria-label="Maya's access level">
+                <option>Full access</option>
+                <option>Can edit</option>
+                <option>Can view</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="margin-top:var(--space-4); padding-top:var(--space-4); border-top:1px solid var(--color-border-subtle);">
+            <div class="settings-row" style="padding: var(--space-1) 0; min-height:auto; border:none;">
+              <div>
+                <div style="font-size:var(--text-14); font-weight:var(--weight-medium);">Publish to web</div>
+                <div class="caption">Anyone on the internet can view this page.</div>
+              </div>
+              <div class="settings-row-control">
+                <div class="toggle-switch">
+                  <input type="checkbox" class="toggle-switch-input" aria-label="Publish to web">
+                  <div class="toggle-switch-track"></div>
+                  <div class="toggle-switch-thumb"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer" style="justify-content:space-between;">
+          <button class="btn btn-ghost btn-sm">Copy link</button>
+          <button class="btn btn-primary">Done</button>
+        </div>
+      </div>
+    </div>
+    <div class="demo-label">Share modal — common Notion pattern. Combines input, user list (settings-row), and toggle in one modal.</div>
+  </div>
+
+  <!-- Popovers -->
+  <div class="section">
+    <div class="section-label">Popovers &amp; Contextual Menus</div>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:var(--space-5);">
+
+      <!-- Block context menu -->
+      <div>
+        <div class="caption" style="margin-bottom:var(--space-2);">Block context menu</div>
+        <div class="popover" style="position:relative; animation:none;" role="menu" aria-label="Block options">
+          <div class="popover-section-label">Transform into</div>
+          <div class="popover-item" role="menuitem">📝 Text</div>
+          <div class="popover-item" role="menuitem">H1 Heading 1</div>
+          <div class="popover-item" role="menuitem">• Bulleted list</div>
+          <div class="popover-item" role="menuitem">☑ To-do list</div>
+          <div class="popover-item" role="menuitem">💡 Callout</div>
+          <div class="popover-divider" role="separator"></div>
+          <div class="popover-section-label">Actions</div>
+          <div class="popover-item" role="menuitem">🔗 Copy link to block</div>
+          <div class="popover-item" role="menuitem">✂️ Duplicate <kbd style="margin-left:auto; font-size:10px;">⌘D</kbd></div>
+          <div class="popover-item" role="menuitem">⬆️ Move to</div>
+          <div class="popover-divider" role="separator"></div>
+          <div class="popover-item popover-item--danger" role="menuitem">🗑 Delete <kbd style="margin-left:auto; font-size:10px;">Del</kbd></div>
+        </div>
+      </div>
+
+      <!-- Color picker popover -->
+      <div>
+        <div class="caption" style="margin-bottom:var(--space-2);">Color picker</div>
+        <div class="popover" style="position:relative; animation:none;" role="dialog" aria-label="Text and background color">
+          <div class="popover-section-label">Color</div>
+          <div class="popover-item" role="option" aria-selected="false" style="color:var(--color-gray-text);">A Default</div>
+          <div class="popover-item" role="option" style="color:var(--color-gray-text);">A Gray</div>
+          <div class="popover-item" role="option" style="color:var(--color-brown-text);">A Brown</div>
+          <div class="popover-item" role="option" style="color:var(--color-orange-text);">A Orange</div>
+          <div class="popover-item" role="option" style="color:var(--color-green-text);">A Green</div>
+          <div class="popover-item" role="option" style="color:var(--color-blue-tag-text);">A Blue</div>
+          <div class="popover-item" role="option" style="color:var(--color-red-text);">A Red</div>
+          <div class="popover-divider" role="separator"></div>
+          <div class="popover-section-label">Background</div>
+          <div class="popover-item" role="option"><span style="display:inline-block; width:14px; height:14px; border-radius:2px; background:var(--color-gray-bg); border:1px solid var(--color-border-subtle); margin-right:6px; vertical-align:middle;"></span>Gray</div>
+          <div class="popover-item" role="option"><span style="display:inline-block; width:14px; height:14px; border-radius:2px; background:var(--color-green-bg); border:1px solid var(--color-border-subtle); margin-right:6px; vertical-align:middle;"></span>Green</div>
+          <div class="popover-item" role="option"><span style="display:inline-block; width:14px; height:14px; border-radius:2px; background:var(--color-blue-tag-bg); border:1px solid var(--color-border-subtle); margin-right:6px; vertical-align:middle;"></span>Blue</div>
+        </div>
+      </div>
+
+      <!-- Emoji picker trigger area -->
+      <div>
+        <div class="caption" style="margin-bottom:var(--space-2);">Property options</div>
+        <div class="popover" style="position:relative; animation:none;" role="dialog" aria-label="Property configuration">
+          <div class="popover-section-label">Property type</div>
+          <div class="popover-item" role="option">🅰️ Text</div>
+          <div class="popover-item" role="option">🔢 Number</div>
+          <div class="popover-item" role="option" style="background:var(--color-surface-hover); border-radius:var(--radius-xs);">🏷 Select ✓</div>
+          <div class="popover-item" role="option">🏷 Multi-select</div>
+          <div class="popover-item" role="option">📅 Date</div>
+          <div class="popover-item" role="option">👤 Person</div>
+          <div class="popover-item" role="option">📎 Files &amp; media</div>
+          <div class="popover-item" role="option">☑ Checkbox</div>
+          <div class="popover-item" role="option">🔗 URL</div>
+        </div>
+      </div>
+    </div>
+    <div class="demo-label">.popover — 6px radius, shadow-md, 1px border. .popover-item, .popover-section-label, .popover-divider.</div>
+  </div>
+
+  <!-- Peek modal -->
+  <div class="section">
+    <div class="section-label">Peek Modal — Page Peek (Right-side Panel)</div>
+
+    <div style="position:relative; height:400px; border:1px solid var(--color-border-subtle); border-radius:var(--radius-md); overflow:hidden; background: rgba(0,0,0,0.03);" role="presentation">
+      <!-- Underlying page -->
+      <div style="padding: var(--space-8); opacity:0.25;" aria-hidden="true">
+        <div style="font-size:48px; margin-bottom:var(--space-2);">📐</div>
+        <div style="font-size:var(--text-32); font-weight:var(--weight-bold); margin-bottom:var(--space-4); color:var(--color-label-primary);">Design System</div>
+        <div style="height:12px; background:var(--color-surface-hover); border-radius:3px; width:80%; margin-bottom:var(--space-2);"></div>
+        <div style="height:12px; background:var(--color-surface-hover); border-radius:3px; width:65%; margin-bottom:var(--space-2);"></div>
+        <div style="height:12px; background:var(--color-surface-hover); border-radius:3px; width:70%;"></div>
+      </div>
+
+      <!-- Peek panel -->
+      <div style="position:absolute; top:0; right:0; bottom:0; width:52%; background:var(--color-bg); border-left:1px solid var(--color-border-subtle); display:flex; flex-direction:column;" role="dialog" aria-modal="true" aria-label="Page peek: Brand Guidelines">
+        <div class="peek-modal-header">
+          <nav class="breadcrumb" style="flex:1;" aria-label="Peek page path">
+            <div class="breadcrumb-item"><span>📁</span>Design</div>
+            <span class="breadcrumb-separator" aria-hidden="true">/</span>
+            <div class="breadcrumb-item" aria-current="page"><span>🎨</span>Brand Guidelines</div>
+          </nav>
+          <button class="btn btn-ghost btn-icon btn-sm" aria-label="Open full page" title="Open as full page">↗</button>
+          <button class="btn btn-ghost btn-icon btn-sm" aria-label="Close peek" title="Close">✕</button>
+        </div>
+        <div class="peek-modal-body" style="padding: var(--space-4) var(--space-5); overflow-y:auto;">
+          <div style="font-size:40px; margin-bottom:var(--space-2);" aria-hidden="true">🎨</div>
+          <div class="page-title" style="font-size:var(--text-24); margin-bottom:var(--space-4);">Brand Guidelines</div>
+          <div class="block-callout block-callout--blue" style="margin-bottom:var(--space-3);">
+            <span class="block-callout-icon" aria-hidden="true">💡</span>
+            <div class="block-callout-text" style="font-size:var(--text-14);">This page opens in peek mode — 50% width, slide-in from right. Click ↗ to open as full page.</div>
+          </div>
+          <div class="block-text" style="font-size:var(--text-14); color:var(--color-label-secondary);">Brand colors, typography choices, logo usage guidelines, and voice/tone documentation. Maintained by the design team.</div>
+          <div style="margin-top: var(--space-4);">
+            <div class="block-h3" style="margin-bottom:var(--space-2);">Contents</div>
+            <div class="block-bulleted-list" style="font-size:var(--text-14);"><span>Brand Colors</span></div>
+            <div class="block-bulleted-list" style="font-size:var(--text-14);"><span>Typography System</span></div>
+            <div class="block-bulleted-list" style="font-size:var(--text-14);"><span>Logo Usage</span></div>
+            <div class="block-bulleted-list" style="font-size:var(--text-14);"><span>Voice &amp; Tone</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="demo-label">.peek-modal — fixed, right:0, width:50%, slideInFromRight animation (300ms). Full page accessible within panel.</div>
+  </div>
+
+  <!-- Settings modal layout -->
+  <div class="section">
+    <div class="section-label">Settings Modal — Full Layout</div>
+
+    <div style="border:1px solid var(--color-border-subtle); border-radius:var(--radius-md); overflow:hidden; height:460px; display:flex;" role="dialog" aria-label="Settings">
+      <!-- Settings sidebar -->
+      <div class="settings-sidebar" style="min-height:unset;">
+        <div class="settings-sidebar-section">
+          <div class="settings-sidebar-label">Account</div>
+          <div class="settings-sidebar-item settings-sidebar-item--active" role="button" aria-current="page">
+            <span class="settings-sidebar-icon" aria-hidden="true">👤</span>My profile
+          </div>
+          <div class="settings-sidebar-item" role="button">
+            <span class="settings-sidebar-icon" aria-hidden="true">🔔</span>Notifications
+          </div>
+          <div class="settings-sidebar-item" role="button">
+            <span class="settings-sidebar-icon" aria-hidden="true">⌨️</span>My devices
+          </div>
+        </div>
+        <div class="settings-sidebar-section">
+          <div class="settings-sidebar-label">Workspace</div>
+          <div class="settings-sidebar-item" role="button">
+            <span class="settings-sidebar-icon" aria-hidden="true">⚙️</span>Settings
+          </div>
+          <div class="settings-sidebar-item" role="button">
+            <span class="settings-sidebar-icon" aria-hidden="true">👥</span>Members
+          </div>
+          <div class="settings-sidebar-item" role="button">
+            <span class="settings-sidebar-icon" aria-hidden="true">🔗</span>Connections
+          </div>
+          <div class="settings-sidebar-item" role="button">
+            <span class="settings-sidebar-icon" aria-hidden="true">💳</span>Plans
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings content -->
+      <div class="settings-content" style="overflow-y:auto;">
+        <div class="settings-section">
+          <div class="settings-section-heading">My profile</div>
+          <div class="settings-row">
+            <div class="settings-row-info">
+              <div class="settings-row-label">Photo</div>
+              <div class="settings-row-desc">Upload a photo to personalize your account.</div>
+            </div>
+            <div class="settings-row-control">
+              <div class="avatar avatar-lg" style="background:var(--color-blue-tag-text);" aria-label="User avatar">S</div>
+              <button class="btn btn-ghost btn-sm">Change photo</button>
+            </div>
+          </div>
+          <div class="settings-row">
+            <div class="settings-row-info">
+              <div class="settings-row-label">Preferred name</div>
+            </div>
+            <div class="settings-row-control">
+              <input class="input input--sm" type="text" value="Steve Scargall" style="width:180px;" aria-label="Preferred name">
+            </div>
+          </div>
+          <div class="settings-row">
+            <div class="settings-row-info">
+              <div class="settings-row-label">Appearance</div>
+              <div class="settings-row-desc">Customize how Notion looks on your device.</div>
+            </div>
+            <div class="settings-row-control">
+              <select class="select" style="width:130px; height:28px; font-size:var(--text-13);" aria-label="Appearance theme">
+                <option selected>System default</option>
+                <option>Light</option>
+                <option>Dark</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-section-heading">Privacy</div>
+          <div class="settings-row">
+            <div class="settings-row-info">
+              <div class="settings-row-label">Profile visible to guests</div>
+              <div class="settings-row-desc">Allow guests to see your name and photo.</div>
+            </div>
+            <div class="settings-row-control">
+              <div class="toggle-switch">
+                <input type="checkbox" class="toggle-switch-input" checked aria-label="Profile visible to guests">
+                <div class="toggle-switch-track"></div>
+                <div class="toggle-switch-thumb"></div>
+              </div>
+            </div>
+          </div>
+          <div class="settings-row">
+            <div class="settings-row-info">
+              <div class="settings-row-label">Allow analytics</div>
+              <div class="settings-row-desc">Share usage data to help improve Notion.</div>
+            </div>
+            <div class="settings-row-control">
+              <div class="toggle-switch">
+                <input type="checkbox" class="toggle-switch-input" aria-label="Allow analytics">
+                <div class="toggle-switch-track"></div>
+                <div class="toggle-switch-thumb"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="demo-label">.settings-layout = .settings-sidebar (220px) + .settings-content. Uses .settings-row for label-left/control-right layout.</div>
+  </div>
+
+  <!-- Toast examples -->
+  <div class="section">
+    <div class="section-label">Toast Notifications</div>
+
+    <div style="display:flex; flex-direction:column; gap:var(--space-3); max-width:400px;" role="region" aria-label="Notification examples" aria-live="polite">
+      <div class="toast" style="position:relative; bottom:auto; right:auto;" role="status">
+        <span class="toast-icon" aria-hidden="true">✅</span>
+        <span class="toast-text">Saved to workspace</span>
+        <button class="toast-dismiss" aria-label="Dismiss notification">✕</button>
+      </div>
+      <div class="toast toast--warning" style="position:relative; bottom:auto; right:auto;" role="status">
+        <span class="toast-icon" aria-hidden="true">⚠️</span>
+        <span class="toast-text">No internet connection</span>
+        <button class="toast-dismiss" aria-label="Dismiss notification">✕</button>
+      </div>
+      <div class="toast toast--error" style="position:relative; bottom:auto; right:auto;" role="alert">
+        <span class="toast-icon" aria-hidden="true">✕</span>
+        <span class="toast-text">Failed to save. Changes may be lost.</span>
+        <button class="toast-dismiss" aria-label="Dismiss notification">✕</button>
+      </div>
+      <div class="toast" style="position:relative; bottom:auto; right:auto;" role="status">
+        <span class="toast-icon" aria-hidden="true">🔗</span>
+        <span class="toast-text">Link copied to clipboard</span>
+      </div>
+    </div>
+    <div class="demo-label">.toast — Dark bg, white text, toastIn animation. Fixed bottom-right in production. role=status for info, role=alert for errors.</div>
+  </div>
+
+</main>
+</body>
+</html>

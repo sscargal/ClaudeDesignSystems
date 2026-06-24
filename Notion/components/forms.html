@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms — Notion Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    body { background-color: var(--color-surface); }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: var(--space-10) var(--space-6) var(--space-20);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      font-size: var(--text-13);
+      color: var(--color-label-secondary);
+      text-decoration: none;
+      margin-bottom: var(--space-6);
+      padding: 2px var(--space-1);
+      border-radius: var(--radius-xs);
+      transition: background-color var(--duration-fast) var(--ease-gentle),
+                  color var(--duration-fast) var(--ease-gentle);
+    }
+    .back-link:hover {
+      background-color: var(--color-surface-hover);
+      color: var(--color-label-primary);
+    }
+
+    .page-icon { font-size: 48px; margin-bottom: var(--space-2); }
+
+    .section {
+      margin-bottom: var(--space-10);
+      padding-bottom: var(--space-10);
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+    .section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-size: var(--text-11);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-4);
+    }
+
+    .demo-frame {
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-5);
+      margin-bottom: var(--space-3);
+    }
+
+    .demo-label {
+      font-size: var(--text-12);
+      color: var(--color-label-tertiary);
+      font-family: var(--font-mono);
+      margin-top: var(--space-1);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<main class="page">
+
+  <a href="../index.html" class="back-link" aria-label="Back to design system index">← Notion Design System</a>
+
+  <div class="page-icon" aria-hidden="true">📋</div>
+  <h1 class="title" style="margin-bottom: var(--space-2);">Forms</h1>
+  <p class="ui-body" style="color: var(--color-label-secondary); margin-bottom: var(--space-10); max-width: 480px;">
+    Clean, minimal inputs designed to disappear into the page. White backgrounds in light mode, subtle surface fills in dark. Focus rings use Notion's blue — visible but not loud.
+  </p>
+
+  <!-- Text inputs -->
+  <div class="section">
+    <div class="section-label">Text Input</div>
+
+    <div class="demo-frame">
+      <div style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 400px;">
+        <div class="form-group">
+          <label class="form-label" for="demo-default">Default</label>
+          <input class="input" id="demo-default" type="text" placeholder="Enter text…">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="demo-hint">With hint text</label>
+          <input class="input" id="demo-hint" type="text" placeholder="workspace-name">
+          <span class="form-hint">This will be your workspace URL slug.</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="demo-focus">Focus state (click to see)</label>
+          <input class="input" id="demo-focus" type="text" placeholder="Click me to focus…">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="demo-error">Error state</label>
+          <input class="input input--error" id="demo-error" type="email" value="invalid-email" aria-invalid="true" aria-describedby="demo-error-hint">
+          <span class="form-error" id="demo-error-hint">Enter a valid email address.</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="demo-disabled">Disabled</label>
+          <input class="input" id="demo-disabled" type="text" value="Read-only value" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="demo-label">.input — 32px height, 1px border, 4px radius, 14px font. Focus: blue border + shadow-focus ring.</div>
+  </div>
+
+  <!-- Sizes -->
+  <div class="section">
+    <div class="section-label">Input Sizes</div>
+
+    <div class="demo-frame">
+      <div style="display:flex; flex-direction:column; gap:var(--space-3); max-width:400px;">
+        <div class="form-group">
+          <label class="form-label" for="inp-sm">Small — 28px</label>
+          <input class="input input--sm" id="inp-sm" type="text" placeholder="Small input…">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inp-md">Default — 32px</label>
+          <input class="input" id="inp-md" type="text" placeholder="Default input…">
+        </div>
+      </div>
+    </div>
+    <div class="demo-label">.input — 32px default. .input--sm — 28px, 13px font. For toolbar and inline use.</div>
+  </div>
+
+  <!-- Select -->
+  <div class="section">
+    <div class="section-label">Select</div>
+
+    <div class="demo-frame">
+      <div style="display:flex; flex-direction:column; gap:var(--space-4); max-width:400px;">
+        <div class="form-group">
+          <label class="form-label" for="sel-status">Status property</label>
+          <select class="select" id="sel-status">
+            <option value="">— Select status —</option>
+            <option value="not-started">Not started</option>
+            <option value="in-progress" selected>In Progress</option>
+            <option value="done">Done</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="sel-theme">Appearance theme</label>
+          <select class="select" id="sel-theme">
+            <option value="system" selected>System default</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="demo-label">.select — Custom arrow, surface background, 32px height. Matches input sizing system.</div>
+  </div>
+
+  <!-- Textarea -->
+  <div class="section">
+    <div class="section-label">Textarea</div>
+
+    <div class="demo-frame">
+      <div style="max-width:480px;">
+        <div class="form-group">
+          <label class="form-label" for="ta-desc">Description</label>
+          <textarea class="textarea" id="ta-desc" placeholder="Add a description to your workspace…" rows="4"></textarea>
+          <span class="form-hint">Shown on your workspace settings page.</span>
+        </div>
+      </div>
+    </div>
+    <div class="demo-label">.textarea — Resizable vertically. Same border/radius/focus as .input. Min-height 80px.</div>
+  </div>
+
+  <!-- Checkboxes -->
+  <div class="section">
+    <div class="section-label">Checkboxes</div>
+
+    <div class="demo-frame">
+      <div style="display:flex; flex-direction:column; gap:var(--space-3);">
+        <label class="checkbox-wrapper">
+          <input type="checkbox" class="checkbox" checked aria-checked="true">
+          <span class="checkbox-label">Enable spell check</span>
+        </label>
+        <label class="checkbox-wrapper">
+          <input type="checkbox" class="checkbox" aria-checked="false">
+          <span class="checkbox-label">Show page comments by default</span>
+        </label>
+        <label class="checkbox-wrapper">
+          <input type="checkbox" class="checkbox" aria-checked="false">
+          <span class="checkbox-label">Allow link sharing</span>
+        </label>
+        <label class="checkbox-wrapper" style="opacity:0.45;">
+          <input type="checkbox" class="checkbox" disabled aria-disabled="true">
+          <span class="checkbox-label">Locked by admin (disabled)</span>
+        </label>
+      </div>
+    </div>
+    <div class="demo-label">.checkbox — 16px square, 3px radius. Checked: blue fill + white checkmark. Hover: blue border.</div>
+  </div>
+
+  <!-- Toggle switches -->
+  <div class="section">
+    <div class="section-label">Toggle Switches</div>
+
+    <div class="demo-frame">
+      <div style="display:flex; flex-direction:column; gap:var(--space-4);">
+        <label style="display:flex; align-items:center; justify-content:space-between; cursor:pointer;">
+          <div>
+            <div class="ui-body" style="font-weight:var(--weight-medium);">Dark mode</div>
+            <div class="caption">Match your system appearance.</div>
+          </div>
+          <div class="toggle-switch">
+            <input type="checkbox" class="toggle-switch-input" checked aria-label="Dark mode">
+            <div class="toggle-switch-track"></div>
+            <div class="toggle-switch-thumb"></div>
+          </div>
+        </label>
+        <div style="height:1px; background:var(--color-border-subtle);"></div>
+        <label style="display:flex; align-items:center; justify-content:space-between; cursor:pointer;">
+          <div>
+            <div class="ui-body" style="font-weight:var(--weight-medium);">Full-width pages</div>
+            <div class="caption">Show page content edge to edge.</div>
+          </div>
+          <div class="toggle-switch">
+            <input type="checkbox" class="toggle-switch-input" aria-label="Full-width pages">
+            <div class="toggle-switch-track"></div>
+            <div class="toggle-switch-thumb"></div>
+          </div>
+        </label>
+        <div style="height:1px; background:var(--color-border-subtle);"></div>
+        <label style="display:flex; align-items:center; justify-content:space-between; cursor:pointer;">
+          <div>
+            <div class="ui-body" style="font-weight:var(--weight-medium);">Small text</div>
+            <div class="caption">Reduce font size for denser content.</div>
+          </div>
+          <div class="toggle-switch">
+            <input type="checkbox" class="toggle-switch-input" aria-label="Small text">
+            <div class="toggle-switch-track"></div>
+            <div class="toggle-switch-thumb"></div>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div class="demo-label">.toggle-switch — 36×20px. Blue when on, border-default when off. Thumb slides 16px. Pure CSS.</div>
+  </div>
+
+  <!-- Complete form example -->
+  <div class="section">
+    <div class="section-label">Complete Form — Settings Row Pattern</div>
+
+    <div class="demo-frame" style="padding: var(--space-4) var(--space-5);">
+      <div class="settings-section-heading" style="margin-bottom:var(--space-4);">My profile</div>
+
+      <div class="settings-row">
+        <div class="settings-row-info">
+          <div class="settings-row-label">Full name</div>
+          <div class="settings-row-desc">Used across your workspace.</div>
+        </div>
+        <div class="settings-row-control">
+          <input class="input input--sm" type="text" value="Steve Scargall" style="width: 180px;" aria-label="Full name">
+        </div>
+      </div>
+
+      <div class="settings-row">
+        <div class="settings-row-info">
+          <div class="settings-row-label">Email</div>
+          <div class="settings-row-desc">Your login and notification address.</div>
+        </div>
+        <div class="settings-row-control">
+          <input class="input input--sm" type="email" value="steve@example.com" style="width: 200px;" aria-label="Email address">
+        </div>
+      </div>
+
+      <div class="settings-row">
+        <div class="settings-row-info">
+          <div class="settings-row-label">Language &amp; region</div>
+        </div>
+        <div class="settings-row-control">
+          <select class="select" style="width: 160px; height: 28px; font-size: var(--text-13);" aria-label="Language">
+            <option selected>English (US)</option>
+            <option>English (UK)</option>
+            <option>Deutsch</option>
+            <option>日本語</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="settings-row">
+        <div class="settings-row-info">
+          <div class="settings-row-label">Email notifications</div>
+          <div class="settings-row-desc">Receive emails for mentions and updates.</div>
+        </div>
+        <div class="settings-row-control">
+          <div class="toggle-switch">
+            <input type="checkbox" class="toggle-switch-input" checked aria-label="Email notifications">
+            <div class="toggle-switch-track"></div>
+            <div class="toggle-switch-thumb"></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:var(--space-5); display:flex; gap:var(--space-2); justify-content:flex-end;">
+        <button class="btn btn-ghost">Cancel</button>
+        <button class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+    <div class="demo-label">.settings-row — Label left, control right. Dividers between rows. Used in Notion's Settings modal.</div>
+  </div>
+
+</main>
+</body>
+</html>

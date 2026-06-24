@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buttons — Notion Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    body { background-color: var(--color-surface); }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: var(--space-10) var(--space-6) var(--space-20);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      font-size: var(--text-13);
+      color: var(--color-label-secondary);
+      text-decoration: none;
+      margin-bottom: var(--space-6);
+      padding: 2px var(--space-1);
+      border-radius: var(--radius-xs);
+      transition: background-color var(--duration-fast) var(--ease-gentle),
+                  color var(--duration-fast) var(--ease-gentle);
+    }
+    .back-link:hover {
+      background-color: var(--color-surface-hover);
+      color: var(--color-label-primary);
+    }
+
+    .page-icon { font-size: 48px; margin-bottom: var(--space-2); }
+
+    .section {
+      margin-bottom: var(--space-10);
+      padding-bottom: var(--space-10);
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+    .section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-size: var(--text-11);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-4);
+    }
+
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-5);
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-4);
+    }
+
+    .demo-label {
+      font-size: var(--text-12);
+      color: var(--color-label-tertiary);
+      font-family: var(--font-mono);
+      margin-top: var(--space-1);
+      padding: 0 var(--space-1);
+    }
+
+    .prop-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-14);
+    }
+    .prop-table th {
+      text-align: left;
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--text-12);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      border-bottom: 1px solid var(--color-border-subtle);
+      background-color: var(--color-surface);
+    }
+    .prop-table td {
+      padding: var(--space-2) var(--space-3);
+      border-bottom: 1px solid var(--color-border-subtle);
+      color: var(--color-label-primary);
+      vertical-align: top;
+    }
+    .prop-table td:first-child { font-family: var(--font-mono); font-size: var(--text-13); color: var(--color-blue-tag-text); }
+    .prop-table tr:last-child td { border-bottom: none; }
+  </style>
+</head>
+<body>
+<main class="page">
+
+  <a href="../index.html" class="back-link" aria-label="Back to design system index">← Notion Design System</a>
+
+  <div class="page-icon" aria-hidden="true">🔘</div>
+  <h1 class="title" style="margin-bottom: var(--space-2);">Buttons</h1>
+  <p class="ui-body" style="color: var(--color-label-secondary); margin-bottom: var(--space-10); max-width: 480px;">
+    Notion's buttons are deliberately understated. Ghost is the everyday pattern — visible only when needed. Primary (dark) is reserved for high-stakes actions like Share. Blue text handles most inline primary calls-to-action.
+  </p>
+
+  <!-- Variants -->
+  <div class="section">
+    <div class="section-label">Variants</div>
+
+    <div class="demo-row">
+      <button class="btn btn-primary">Primary</button>
+    </div>
+    <div class="demo-label">.btn .btn-primary — Dark background, white text. Used for Share, Publish, Confirm.</div>
+
+    <div class="demo-row" style="margin-top: var(--space-4);">
+      <button class="btn btn-secondary">Secondary</button>
+    </div>
+    <div class="demo-label">.btn .btn-secondary — Bordered, surface background. For Cancel, Back, secondary actions.</div>
+
+    <div class="demo-row" style="margin-top: var(--space-4);">
+      <button class="btn btn-ghost">Ghost</button>
+    </div>
+    <div class="demo-label">.btn .btn-ghost — Transparent until hover. The most common Notion button in toolbars and sidebars.</div>
+
+    <div class="demo-row" style="margin-top: var(--space-4);">
+      <button class="btn btn-blue">Blue text</button>
+    </div>
+    <div class="demo-label">.btn .btn-blue — No background, blue text. For primary actions within content flows.</div>
+
+    <div class="demo-row" style="margin-top: var(--space-4);">
+      <button class="btn btn-danger">Delete</button>
+    </div>
+    <div class="demo-label">.btn .btn-danger — Red background + text. Destructive confirmations only.</div>
+  </div>
+
+  <!-- Sizes -->
+  <div class="section">
+    <div class="section-label">Sizes</div>
+
+    <div class="demo-row">
+      <button class="btn btn-primary btn-sm">Small — 28px</button>
+      <button class="btn btn-primary">Default — 32px</button>
+      <button class="btn btn-primary btn-lg">Large — 36px</button>
+    </div>
+    <div class="demo-label">Three sizes: .btn-sm (28px), default (32px), .btn-lg (36px). Font scales accordingly: 13/14/16px.</div>
+  </div>
+
+  <!-- States -->
+  <div class="section">
+    <div class="section-label">States</div>
+
+    <div class="demo-row">
+      <button class="btn btn-primary">Default</button>
+      <button class="btn btn-primary">Hover (hover me)</button>
+      <button class="btn btn-primary" disabled>Disabled</button>
+      <button class="btn btn-secondary" disabled>Secondary disabled</button>
+    </div>
+    <div class="demo-label">Disabled: opacity 0.4, pointer-events: none. Focus: box-shadow var(--shadow-focus) with blue ring.</div>
+  </div>
+
+  <!-- Icon variations -->
+  <div class="section">
+    <div class="section-label">With Icons &amp; Icon-only</div>
+
+    <div class="demo-row">
+      <button class="btn btn-primary">+ New page</button>
+      <button class="btn btn-secondary">↑ Import</button>
+      <button class="btn btn-ghost">🔍 Search <kbd>⌘K</kbd></button>
+      <button class="btn btn-ghost btn-icon" aria-label="More options">⋯</button>
+      <button class="btn btn-ghost btn-icon btn-sm" aria-label="Close">✕</button>
+      <button class="btn btn-ghost btn-icon" aria-label="Share">🔗</button>
+    </div>
+    <div class="demo-label">.btn-icon removes padding and makes the button square. Works with all variants.</div>
+  </div>
+
+  <!-- Groups -->
+  <div class="section">
+    <div class="section-label">Button Group Pattern</div>
+
+    <div class="demo-row">
+      <div role="group" aria-label="View type" style="display:flex; gap:2px;">
+        <button class="btn btn-secondary btn-sm" aria-pressed="true" style="border-radius: var(--radius-xs) 0 0 var(--radius-xs);">📋 Table</button>
+        <button class="btn btn-ghost btn-sm" style="border-radius:0;">📋 Board</button>
+        <button class="btn btn-ghost btn-sm" style="border-radius: 0 var(--radius-xs) var(--radius-xs) 0;">🗓 Calendar</button>
+      </div>
+    </div>
+    <div class="demo-label">Adjacent buttons with modified border radii form a segmented control for view switching.</div>
+  </div>
+
+  <!-- CSS API -->
+  <div class="section">
+    <div class="section-label">CSS API — All Modifiers</div>
+
+    <table class="prop-table" role="table">
+      <thead>
+        <tr>
+          <th scope="col">Class</th>
+          <th scope="col">Description</th>
+          <th scope="col">Height</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>.btn</td>
+          <td>Base class — always required</td>
+          <td>32px</td>
+        </tr>
+        <tr>
+          <td>.btn-primary</td>
+          <td>Dark/black background, white text</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>.btn-secondary</td>
+          <td>Bordered, surface background</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>.btn-ghost</td>
+          <td>Transparent, hover shows surface</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>.btn-blue</td>
+          <td>Blue text, no background</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>.btn-danger</td>
+          <td>Red destructive action</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>.btn-sm</td>
+          <td>Small size modifier</td>
+          <td>28px</td>
+        </tr>
+        <tr>
+          <td>.btn-lg</td>
+          <td>Large size modifier</td>
+          <td>36px</td>
+        </tr>
+        <tr>
+          <td>.btn-icon</td>
+          <td>Square, no padding — icon-only</td>
+          <td>32px (square)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+</body>
+</html>

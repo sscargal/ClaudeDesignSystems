@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation — Notion Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    body { background-color: var(--color-surface); }
+
+    .page {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: var(--space-10) var(--space-6) var(--space-20);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      font-size: var(--text-13);
+      color: var(--color-label-secondary);
+      text-decoration: none;
+      margin-bottom: var(--space-6);
+      padding: 2px var(--space-1);
+      border-radius: var(--radius-xs);
+      transition: background-color var(--duration-fast) var(--ease-gentle),
+                  color var(--duration-fast) var(--ease-gentle);
+    }
+    .back-link:hover {
+      background-color: var(--color-surface-hover);
+      color: var(--color-label-primary);
+    }
+
+    .page-icon { font-size: 48px; margin-bottom: var(--space-2); }
+
+    .section {
+      margin-bottom: var(--space-10);
+      padding-bottom: var(--space-10);
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+    .section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-size: var(--text-11);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-4);
+    }
+
+    .demo-frame {
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: var(--space-3);
+    }
+
+    .demo-label {
+      font-size: var(--text-12);
+      color: var(--color-label-tertiary);
+      font-family: var(--font-mono);
+      margin-top: var(--space-1);
+    }
+  </style>
+</head>
+<body>
+<main class="page">
+
+  <a href="../index.html" class="back-link" aria-label="Back to design system index">← Notion Design System</a>
+
+  <div class="page-icon" aria-hidden="true">🗺️</div>
+  <h1 class="title" style="margin-bottom: var(--space-2);">Navigation</h1>
+  <p class="ui-body" style="color: var(--color-label-secondary); margin-bottom: var(--space-10); max-width: 520px;">
+    Notion's navigation is intentionally minimal. The top bar disappears when reading; the sidebar fades at the edges. Everything is 28px or 45px tall — nothing more, because the page needs the room.
+  </p>
+
+  <!-- Top bar -->
+  <div class="section">
+    <div class="section-label">Top Bar</div>
+
+    <div class="demo-frame">
+      <div class="topbar">
+        <button class="topbar-btn" aria-label="Toggle sidebar" style="font-size:16px; width:28px; padding:0;">☰</button>
+        <nav class="breadcrumb" aria-label="Page path" style="flex:1;">
+          <div class="breadcrumb-item"><span class="breadcrumb-icon">🏠</span><span>Acme Corp</span></div>
+          <span class="breadcrumb-separator" aria-hidden="true">/</span>
+          <div class="breadcrumb-item"><span class="breadcrumb-icon">📁</span><span>Design</span></div>
+          <span class="breadcrumb-separator" aria-hidden="true">/</span>
+          <div class="breadcrumb-item" aria-current="page"><span class="breadcrumb-icon">📐</span><span>Design System</span></div>
+        </nav>
+        <div class="topbar-actions">
+          <button class="topbar-btn" aria-label="Updates">🔔</button>
+          <button class="topbar-btn" aria-label="Comments">💬</button>
+          <button class="topbar-btn" aria-label="Favorite">⭐</button>
+          <button class="topbar-btn topbar-btn--primary">Share</button>
+          <button class="topbar-btn" aria-label="More" style="width:28px;padding:0;">•••</button>
+        </div>
+      </div>
+    </div>
+    <div class="demo-label">.topbar — 45px height, sticky. Contains breadcrumb (flex:1) and action buttons. Clean, borderless.</div>
+  </div>
+
+  <!-- Breadcrumb variants -->
+  <div class="section">
+    <div class="section-label">Breadcrumb</div>
+
+    <div class="demo-frame" style="padding: var(--space-4);">
+      <div style="display:flex; flex-direction:column; gap:var(--space-4);">
+        <!-- Short path -->
+        <div>
+          <div class="caption" style="margin-bottom:var(--space-2);">Short path</div>
+          <nav class="breadcrumb" aria-label="Short page path">
+            <div class="breadcrumb-item"><span class="breadcrumb-icon">🏠</span><span>Home</span></div>
+            <span class="breadcrumb-separator" aria-hidden="true">/</span>
+            <div class="breadcrumb-item" aria-current="page"><span class="breadcrumb-icon">📝</span><span>Meeting Notes</span></div>
+          </nav>
+        </div>
+
+        <!-- Long path -->
+        <div>
+          <div class="caption" style="margin-bottom:var(--space-2);">Long path</div>
+          <nav class="breadcrumb" aria-label="Long page path">
+            <div class="breadcrumb-item"><span class="breadcrumb-icon">🏠</span><span>Acme Corp</span></div>
+            <span class="breadcrumb-separator" aria-hidden="true">/</span>
+            <div class="breadcrumb-item"><span class="breadcrumb-icon">👥</span><span>Teams</span></div>
+            <span class="breadcrumb-separator" aria-hidden="true">/</span>
+            <div class="breadcrumb-item"><span class="breadcrumb-icon">🎨</span><span>Design</span></div>
+            <span class="breadcrumb-separator" aria-hidden="true">/</span>
+            <div class="breadcrumb-item"><span class="breadcrumb-icon">🧩</span><span>Components</span></div>
+            <span class="breadcrumb-separator" aria-hidden="true">/</span>
+            <div class="breadcrumb-item" aria-current="page"><span class="breadcrumb-icon">🔘</span><span>Button Spec</span></div>
+          </nav>
+        </div>
+
+        <!-- Emoji icons -->
+        <div>
+          <div class="caption" style="margin-bottom:var(--space-2);">With custom icons</div>
+          <nav class="breadcrumb" aria-label="Custom icon path">
+            <div class="breadcrumb-item"><span class="breadcrumb-icon">🗂️</span><span>Wiki</span></div>
+            <span class="breadcrumb-separator" aria-hidden="true">/</span>
+            <div class="breadcrumb-item"><span class="breadcrumb-icon">🚀</span><span>Engineering</span></div>
+            <span class="breadcrumb-separator" aria-hidden="true">/</span>
+            <div class="breadcrumb-item" aria-current="page"><span class="breadcrumb-icon">🔒</span><span>Auth System</span></div>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="demo-label">.breadcrumb — Each .breadcrumb-item is 13px, clickable. Last item is label-primary weight. Uses '/' separator.</div>
+  </div>
+
+  <!-- Full sidebar -->
+  <div class="section">
+    <div class="section-label">Sidebar — Complete Example</div>
+
+    <div class="demo-frame" style="display:flex;">
+      <!-- Sidebar panel -->
+      <div class="sidebar" style="position:relative; height:520px; overflow-y:auto; flex-shrink:0;">
+        <div class="workspace-switcher" style="margin: var(--space-2) var(--space-1-5);">
+          <div class="workspace-avatar">N</div>
+          <span class="workspace-name">Notion Design</span>
+          <span class="workspace-chevron">⌄</span>
+        </div>
+
+        <div class="sidebar-actions">
+          <button class="sidebar-action-btn">
+            <span class="sidebar-action-icon">🔍</span>
+            Search
+            <kbd style="margin-left:auto; font-size:10px;">⌘K</kbd>
+          </button>
+          <button class="sidebar-action-btn">
+            <span class="sidebar-action-icon">🏠</span>
+            Home
+          </button>
+          <button class="sidebar-action-btn">
+            <span class="sidebar-action-icon">📬</span>
+            Inbox
+            <span class="badge badge--red" style="margin-left:auto; height:16px; font-size:10px;">5</span>
+          </button>
+          <button class="sidebar-action-btn">
+            <span class="sidebar-action-icon">⚙️</span>
+            Settings &amp; members
+          </button>
+          <button class="sidebar-action-btn">
+            <span class="sidebar-action-icon">📦</span>
+            Templates
+          </button>
+        </div>
+
+        <!-- Private section -->
+        <div class="sidebar-section">
+          <div class="sidebar-section-header">
+            <span class="sidebar-section-label">Private</span>
+            <span class="sidebar-section-add">+</span>
+          </div>
+
+          <!-- Active page with children -->
+          <div class="sidebar-item sidebar-item--expanded sidebar-item--active" role="treeitem" aria-expanded="true">
+            <span class="sidebar-item-toggle">▶</span>
+            <span class="sidebar-item-icon">📐</span>
+            <span class="sidebar-item-title">Design System</span>
+            <div class="sidebar-item-actions">
+              <span class="sidebar-item-action">+</span>
+              <span class="sidebar-item-action">⋯</span>
+            </div>
+          </div>
+          <div class="sidebar-children">
+            <div class="sidebar-item" role="treeitem">
+              <span class="sidebar-item-toggle">▶</span>
+              <span class="sidebar-item-icon">🎨</span>
+              <span class="sidebar-item-title">Tokens</span>
+            </div>
+            <div class="sidebar-item" role="treeitem">
+              <span class="sidebar-item-toggle">▶</span>
+              <span class="sidebar-item-icon">🔤</span>
+              <span class="sidebar-item-title">Typography</span>
+            </div>
+            <div class="sidebar-item" role="treeitem">
+              <span class="sidebar-item-toggle">▶</span>
+              <span class="sidebar-item-icon">🧩</span>
+              <span class="sidebar-item-title">Components</span>
+            </div>
+            <div class="sidebar-children">
+              <div class="sidebar-item sidebar-item--expanded" role="treeitem">
+                <span class="sidebar-item-toggle" style="opacity:1; transform:rotate(90deg);">▶</span>
+                <span class="sidebar-item-icon">🔘</span>
+                <span class="sidebar-item-title">Buttons</span>
+              </div>
+              <div class="sidebar-children">
+                <div class="sidebar-item" role="treeitem">
+                  <span class="sidebar-item-toggle">▶</span>
+                  <span class="sidebar-item-icon">📝</span>
+                  <span class="sidebar-item-title">Spec</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-item" role="treeitem">
+            <span class="sidebar-item-toggle">▶</span>
+            <span class="sidebar-item-icon">📊</span>
+            <span class="sidebar-item-title">Projects</span>
+            <div class="sidebar-item-actions">
+              <span class="sidebar-item-action">+</span>
+              <span class="sidebar-item-action">⋯</span>
+            </div>
+          </div>
+          <div class="sidebar-item" role="treeitem">
+            <span class="sidebar-item-toggle">▶</span>
+            <span class="sidebar-item-icon">📝</span>
+            <span class="sidebar-item-title">Quick Notes</span>
+          </div>
+          <div class="sidebar-item" role="treeitem">
+            <span class="sidebar-item-toggle">▶</span>
+            <span class="sidebar-item-icon">📅</span>
+            <span class="sidebar-item-title">Weekly Review</span>
+          </div>
+        </div>
+
+        <!-- Teamspace section -->
+        <div class="sidebar-section">
+          <div class="sidebar-section-header">
+            <span class="sidebar-section-label">Teamspace</span>
+            <span class="sidebar-section-add">+</span>
+          </div>
+          <div class="sidebar-item" role="treeitem">
+            <span class="sidebar-item-toggle">▶</span>
+            <span class="sidebar-item-icon">🗺️</span>
+            <span class="sidebar-item-title">Roadmap</span>
+          </div>
+          <div class="sidebar-item" role="treeitem">
+            <span class="sidebar-item-toggle">▶</span>
+            <span class="sidebar-item-icon">🗂️</span>
+            <span class="sidebar-item-title">Engineering Wiki</span>
+          </div>
+          <div class="sidebar-item" role="treeitem">
+            <span class="sidebar-item-toggle">▶</span>
+            <span class="sidebar-item-icon">👥</span>
+            <span class="sidebar-item-title">People Ops</span>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="sidebar-footer">
+          <div class="sidebar-item" role="button">
+            <span class="sidebar-item-icon">🗑️</span>
+            <span class="sidebar-item-title">Trash</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content hint -->
+      <div style="flex:1; padding: var(--space-6); background: var(--color-bg); display:flex; align-items:center; justify-content:center;">
+        <div style="text-align:center; color:var(--color-label-tertiary);">
+          <div style="font-size:32px; margin-bottom:var(--space-2);" aria-hidden="true">📄</div>
+          <div class="ui-body">Page content area</div>
+        </div>
+      </div>
+    </div>
+    <div class="demo-label">.sidebar — 240px, var(--color-surface) background, border-right. All items 28px tall, 4px radius.</div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="section">
+    <div class="section-label">Tabs — Database View Switcher Pattern</div>
+
+    <div class="demo-frame" style="padding: var(--space-4);">
+      <nav class="tabs" role="tablist" aria-label="Database views">
+        <div class="tab tab--active" role="tab" aria-selected="true" tabindex="0">📋 Table</div>
+        <div class="tab" role="tab" aria-selected="false" tabindex="-1">📋 Board</div>
+        <div class="tab" role="tab" aria-selected="false" tabindex="-1">🗓 Calendar</div>
+        <div class="tab" role="tab" aria-selected="false" tabindex="-1">🖼 Gallery</div>
+        <div class="tab" role="tab" aria-selected="false" tabindex="-1">📋 List</div>
+        <div class="tab" role="tab" aria-selected="false" tabindex="-1">📈 Timeline</div>
+      </nav>
+    </div>
+    <div class="demo-label">.tabs + .tab — Bottom border highlight for active tab. 36px height. label-secondary → label-primary on hover/active.</div>
+  </div>
+
+  <!-- Workspace switcher -->
+  <div class="section">
+    <div class="section-label">Workspace Switcher</div>
+
+    <div class="demo-frame" style="padding: var(--space-4); max-width: 280px;">
+      <div style="display:flex; flex-direction:column; gap:var(--space-1);">
+        <!-- Active workspace -->
+        <div class="workspace-switcher" style="margin:0; background: var(--color-surface-hover);">
+          <div class="workspace-avatar">N</div>
+          <span class="workspace-name">Notion Design</span>
+          <span class="workspace-chevron">✓</span>
+        </div>
+        <!-- Other workspaces -->
+        <div class="workspace-switcher" style="margin:0;">
+          <div class="workspace-avatar" style="background: linear-gradient(135deg, #4A90D9 0%, #357ABD 100%);">A</div>
+          <span class="workspace-name">Acme Corp</span>
+          <span class="workspace-chevron"></span>
+        </div>
+        <div class="workspace-switcher" style="margin:0;">
+          <div class="workspace-avatar" style="background: linear-gradient(135deg, #6CBB8F 0%, #448361 100%);">S</div>
+          <span class="workspace-name">Side Project</span>
+          <span class="workspace-chevron"></span>
+        </div>
+        <div style="height:1px; background:var(--color-border-subtle); margin: var(--space-1) 0;"></div>
+        <button class="sidebar-action-btn" style="height:28px;">
+          <span class="sidebar-action-icon">+</span>
+          Create or join a workspace
+        </button>
+      </div>
+    </div>
+    <div class="demo-label">.workspace-switcher — Top of sidebar. Workspace avatar (20px), name (semibold), chevron. 32px height.</div>
+  </div>
+
+</main>
+</body>
+</html>
