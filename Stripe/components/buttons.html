@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buttons — Stripe Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .page-header {
+      padding: var(--space-12) 0 var(--space-8);
+      border-bottom: var(--border-default);
+      margin-bottom: var(--space-10);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-14);
+      color: var(--color-label-tertiary);
+      text-decoration: none;
+      margin-bottom: var(--space-4);
+      transition: color var(--duration-fast) var(--ease-standard);
+    }
+
+    .back-link:hover {
+      color: var(--color-blurple);
+      text-decoration: none;
+    }
+
+    .spec-section {
+      margin-bottom: var(--space-12);
+    }
+
+    .spec-label {
+      font-size: var(--text-12);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-4);
+    }
+
+    .spec-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-5) 0;
+      border-bottom: var(--border-default);
+    }
+
+    .spec-row:last-child {
+      border-bottom: none;
+    }
+
+    .spec-meta {
+      min-width: 200px;
+      flex-shrink: 0;
+    }
+
+    .spec-class {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: var(--text-13);
+      color: var(--color-blurple);
+      margin-bottom: var(--space-1);
+    }
+
+    .spec-desc {
+      font-size: var(--text-13);
+      color: var(--color-label-tertiary);
+    }
+
+    .spec-tokens {
+      background: var(--color-surface-1);
+      border: var(--border-default);
+      border-radius: var(--radius-card);
+      padding: var(--space-5);
+      margin-top: var(--space-4);
+      font-size: var(--text-13);
+    }
+
+    .token-row {
+      display: flex;
+      gap: var(--space-3);
+      padding: var(--space-2) 0;
+      border-bottom: var(--border-default);
+      font-family: var(--font-mono);
+    }
+
+    .token-row:last-child {
+      border-bottom: none;
+    }
+
+    .token-name {
+      color: var(--color-blurple);
+      min-width: 200px;
+    }
+
+    .token-value {
+      color: var(--color-label-secondary);
+    }
+
+    .dark-strip {
+      background: var(--color-bg-dark);
+      border-radius: var(--radius-card);
+      padding: var(--space-6);
+      margin-top: var(--space-4);
+    }
+  </style>
+</head>
+<body>
+  <div class="container" style="max-width: 900px;">
+    <div class="page-header">
+      <a href="../index.html" class="back-link">← Back to System</a>
+      <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2);">
+        <h1 class="heading-1">Buttons</h1>
+        <span class="badge badge--success">Stable</span>
+      </div>
+      <p class="body-lg" style="margin-bottom: var(--space-4);">
+        Stripe's button system communicates action hierarchy through fill, border, and weight.
+        Primary actions use Blurple fill; secondary uses white with border; ghost uses transparent.
+        All transitions run at 200ms standard easing.
+      </p>
+
+      <div class="code-block" style="max-width: 600px;">
+        <div class="code-block-header">
+          <span class="code-block-filename">Usage</span>
+        </div>
+        <div class="code-block-body">
+          <pre><code><span class="token-tag">&lt;button</span> <span class="token-attr">class</span><span class="token-operator">=</span><span class="token-string">"btn btn-primary"</span><span class="token-tag">&gt;</span>
+  Get started
+<span class="token-tag">&lt;/button&gt;</span>
+
+<span class="token-tag">&lt;a</span> <span class="token-attr">href</span><span class="token-operator">=</span><span class="token-string">"#"</span> <span class="token-attr">class</span><span class="token-operator">=</span><span class="token-string">"btn btn-secondary btn-lg"</span><span class="token-tag">&gt;</span>
+  Learn more
+<span class="token-tag">&lt;/a&gt;</span></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Variants -->
+    <div class="spec-section">
+      <div class="spec-label">Variants</div>
+
+      <div class="spec-row">
+        <div class="spec-meta">
+          <span class="spec-class">.btn-primary</span>
+          <span class="spec-desc">Primary action</span>
+        </div>
+        <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+          <button class="btn btn-primary btn-sm">Small</button>
+          <button class="btn btn-primary">Default (md)</button>
+          <button class="btn btn-primary btn-lg">Large</button>
+          <button class="btn btn-primary" disabled>Disabled</button>
+        </div>
+      </div>
+
+      <div class="spec-row">
+        <div class="spec-meta">
+          <span class="spec-class">.btn-secondary</span>
+          <span class="spec-desc">Secondary action</span>
+        </div>
+        <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+          <button class="btn btn-secondary btn-sm">Small</button>
+          <button class="btn btn-secondary">Default (md)</button>
+          <button class="btn btn-secondary btn-lg">Large</button>
+          <button class="btn btn-secondary" disabled>Disabled</button>
+        </div>
+      </div>
+
+      <div class="spec-row">
+        <div class="spec-meta">
+          <span class="spec-class">.btn-ghost</span>
+          <span class="spec-desc">Tertiary / minimal</span>
+        </div>
+        <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+          <button class="btn btn-ghost btn-sm">Small</button>
+          <button class="btn btn-ghost">Default (md)</button>
+          <button class="btn btn-ghost btn-lg">Large</button>
+        </div>
+      </div>
+
+      <div class="spec-row">
+        <div class="spec-meta">
+          <span class="spec-class">.btn-danger</span>
+          <span class="spec-desc">Destructive action</span>
+        </div>
+        <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+          <button class="btn btn-danger btn-sm">Delete</button>
+          <button class="btn btn-danger">Delete account</button>
+          <button class="btn btn-danger btn-lg">Delete all data</button>
+        </div>
+      </div>
+
+      <div class="spec-row">
+        <div class="spec-meta">
+          <span class="spec-class">.btn-link</span>
+          <span class="spec-desc">Inline text action</span>
+        </div>
+        <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+          <button class="btn btn-link btn-sm">View docs →</button>
+          <button class="btn btn-link">View all transactions →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dark context -->
+    <div class="spec-section">
+      <div class="spec-label">Dark context</div>
+      <div class="dark-strip">
+        <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+          <button class="btn btn-primary">Start now</button>
+          <button class="btn btn-dark">Contact sales</button>
+          <button class="btn btn-dark btn-sm">Sign in</button>
+          <button class="btn btn-link" style="color: rgba(255,255,255,0.65);">Learn more →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sizes -->
+    <div class="spec-section">
+      <div class="spec-label">Size scale</div>
+
+      <div class="spec-row">
+        <div class="spec-meta">
+          <span class="spec-class">.btn-sm</span>
+          <span class="spec-desc">32px · 13px · 4px radius</span>
+        </div>
+        <button class="btn btn-primary btn-sm">Get started</button>
+      </div>
+
+      <div class="spec-row">
+        <div class="spec-meta">
+          <span class="spec-class">.btn-md (default)</span>
+          <span class="spec-desc">40px · 15px · 6px radius</span>
+        </div>
+        <button class="btn btn-primary btn-md">Get started</button>
+      </div>
+
+      <div class="spec-row">
+        <div class="spec-meta">
+          <span class="spec-class">.btn-lg</span>
+          <span class="spec-desc">48px · 16px · 6px radius</span>
+        </div>
+        <button class="btn btn-primary btn-lg">Get started</button>
+      </div>
+    </div>
+
+    <!-- Button with icons -->
+    <div class="spec-section">
+      <div class="spec-label">With icons & suffixes</div>
+
+      <div class="spec-row">
+        <div class="spec-meta">
+          <span class="spec-desc">Leading icon</span>
+        </div>
+        <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+          <button class="btn btn-primary"><span>⚡</span> Start now</button>
+          <button class="btn btn-secondary"><span>📄</span> Export CSV</button>
+          <button class="btn btn-ghost"><span>🔗</span> Copy link</button>
+        </div>
+      </div>
+
+      <div class="spec-row">
+        <div class="spec-meta">
+          <span class="spec-desc">Loading state</span>
+        </div>
+        <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+          <button class="btn btn-primary" disabled>
+            <span class="animate-spin" style="display: inline-block; font-size: 14px;">⟳</span>
+            Processing...
+          </button>
+          <button class="btn btn-secondary" disabled>
+            <span class="animate-spin" style="display: inline-block; font-size: 14px;">⟳</span>
+            Loading
+          </button>
+        </div>
+      </div>
+
+      <div class="spec-row">
+        <div class="spec-meta">
+          <span class="spec-desc">With badge</span>
+        </div>
+        <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+          <button class="btn btn-primary">
+            Notifications
+            <span class="badge" style="background: rgba(255,255,255,0.2); color: #fff; font-size: 10px;">3</span>
+          </button>
+          <button class="btn btn-secondary">
+            API keys
+            <span class="badge badge--blurple">New</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full-width -->
+    <div class="spec-section">
+      <div class="spec-label">Full width</div>
+      <div style="max-width: 320px; display: flex; flex-direction: column; gap: var(--space-3);">
+        <button class="btn btn-primary" style="width: 100%;">Pay $299.00</button>
+        <button class="btn btn-secondary" style="width: 100%;">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Design tokens -->
+    <div class="spec-section">
+      <div class="spec-label">Design tokens</div>
+      <div class="spec-tokens">
+        <div class="token-row">
+          <span class="token-name">--radius-btn</span>
+          <span class="token-value">6px</span>
+        </div>
+        <div class="token-row">
+          <span class="token-name">--btn-height-sm</span>
+          <span class="token-value">32px</span>
+        </div>
+        <div class="token-row">
+          <span class="token-name">--btn-height-md</span>
+          <span class="token-value">40px</span>
+        </div>
+        <div class="token-row">
+          <span class="token-name">--btn-height-lg</span>
+          <span class="token-value">48px</span>
+        </div>
+        <div class="token-row">
+          <span class="token-name">--color-blurple</span>
+          <span class="token-value">#635BFF (primary fill)</span>
+        </div>
+        <div class="token-row">
+          <span class="token-name">--color-blurple-dark</span>
+          <span class="token-value">#4B44CC (primary hover)</span>
+        </div>
+        <div class="token-row">
+          <span class="token-name">--color-error</span>
+          <span class="token-value">#C0123C (danger fill)</span>
+        </div>
+        <div class="token-row">
+          <span class="token-name">--duration-normal</span>
+          <span class="token-value">200ms (transition)</span>
+        </div>
+        <div class="token-row">
+          <span class="token-name">--shadow-blurple</span>
+          <span class="token-value">0 8px 24px rgba(99,91,255,0.28)</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: var(--space-20);">
+      <a href="../index.html" class="btn btn-secondary">← Back to System</a>
+    </div>
+  </div>
+</body>
+</html>

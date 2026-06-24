@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation — Stripe Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .page-header {
+      padding: var(--space-12) 0 var(--space-8);
+      border-bottom: var(--border-default);
+      margin-bottom: var(--space-10);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-14);
+      color: var(--color-label-tertiary);
+      text-decoration: none;
+      margin-bottom: var(--space-4);
+      transition: color var(--duration-fast) var(--ease-standard);
+    }
+
+    .back-link:hover {
+      color: var(--color-blurple);
+      text-decoration: none;
+    }
+
+    .spec-section {
+      margin-bottom: var(--space-16);
+    }
+
+    .spec-label {
+      font-size: var(--text-12);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-3);
+      border-bottom: var(--border-default);
+    }
+
+    .preview-frame {
+      border: var(--border-default);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+    }
+
+    .preview-label {
+      padding: var(--space-3) var(--space-4);
+      background: var(--color-surface-1);
+      border-bottom: var(--border-default);
+      font-size: var(--text-12);
+      color: var(--color-label-tertiary);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+    }
+
+    .preview-body {
+      padding: var(--space-6);
+    }
+  </style>
+</head>
+<body>
+  <div class="container" style="max-width: 1000px;">
+    <div class="page-header">
+      <a href="../index.html" class="back-link">← Back to System</a>
+      <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2);">
+        <h1 class="heading-1">Navigation</h1>
+        <span class="badge badge--success">Stable</span>
+      </div>
+      <p class="body-lg">
+        Stripe's navigation is minimal and confident. The global nav has a clean white surface
+        with blur backdrop on scroll. Docs sidebar uses section labels with nested link indentation.
+        All links use smooth 150ms transitions.
+      </p>
+    </div>
+
+    <!-- Global nav variants -->
+    <div class="spec-section">
+      <div class="spec-label">Global nav · .nav-global</div>
+
+      <div class="preview-frame" style="margin-bottom: var(--space-4);">
+        <div class="preview-label">Default (not scrolled)</div>
+        <div class="preview-body" style="background: var(--color-bg);">
+          <div style="display: flex; align-items: center; gap: var(--space-6); height: 56px; padding: 0 var(--space-4); background: rgba(255,255,255,0.95); border: var(--border-default); border-radius: var(--radius-card);">
+            <a href="#" class="nav-logo" style="position: static;">Stripe</a>
+            <ul style="display: flex; align-items: center; gap: 0; list-style: none; margin: 0; padding: 0; flex: 1;">
+              <li><a href="#" class="nav-link">Products</a></li>
+              <li><a href="#" class="nav-link">Solutions</a></li>
+              <li><a href="#" class="nav-link active">Developers</a></li>
+              <li><a href="#" class="nav-link">Pricing</a></li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: var(--space-2);">
+              <a href="#" class="nav-sign-in">Sign in</a>
+              <a href="#" class="btn btn-primary btn-sm">Start now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-frame" style="margin-bottom: var(--space-4);">
+        <div class="preview-label">Scrolled (.is-scrolled) — blur backdrop + shadow</div>
+        <div class="preview-body" style="background: var(--color-surface-1);">
+          <div style="display: flex; align-items: center; gap: var(--space-6); height: 56px; padding: 0 var(--space-4); background: rgba(255,255,255,0.90); backdrop-filter: blur(20px); border: var(--border-default); border-radius: var(--radius-card); box-shadow: var(--shadow-sm);">
+            <a href="#" class="nav-logo" style="position: static;">Stripe</a>
+            <ul style="display: flex; align-items: center; gap: 0; list-style: none; margin: 0; padding: 0; flex: 1;">
+              <li><a href="#" class="nav-link">Products</a></li>
+              <li><a href="#" class="nav-link">Solutions</a></li>
+              <li><a href="#" class="nav-link active">Developers</a></li>
+              <li><a href="#" class="nav-link">Pricing</a></li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: var(--space-2);">
+              <a href="#" class="nav-sign-in">Sign in</a>
+              <a href="#" class="btn btn-primary btn-sm">Start now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-frame">
+        <div class="preview-label">Dark nav (on hero dark sections)</div>
+        <div class="preview-body" style="background: var(--color-bg-dark); border-radius: 0 0 var(--radius-card) var(--radius-card);">
+          <div style="display: flex; align-items: center; gap: var(--space-6); height: 56px; padding: 0 var(--space-4);">
+            <a href="#" class="nav-logo" style="position: static; color: #FFFFFF;">Stripe</a>
+            <ul style="display: flex; align-items: center; gap: 0; list-style: none; margin: 0; padding: 0; flex: 1;">
+              <li><a href="#" class="nav-link" style="color: rgba(255,255,255,0.55);">Products</a></li>
+              <li><a href="#" class="nav-link" style="color: rgba(255,255,255,0.55);">Solutions</a></li>
+              <li><a href="#" class="nav-link" style="color: rgba(255,255,255,0.90);">Developers</a></li>
+              <li><a href="#" class="nav-link" style="color: rgba(255,255,255,0.55);">Pricing</a></li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: var(--space-2);">
+              <a href="#" class="nav-sign-in" style="color: rgba(255,255,255,0.65);">Sign in</a>
+              <a href="#" class="btn btn-primary btn-sm">Start now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Breadcrumbs -->
+    <div class="spec-section">
+      <div class="spec-label">Breadcrumbs · .breadcrumb</div>
+
+      <div class="preview-frame" style="margin-bottom: var(--space-3);">
+        <div class="preview-label">2-level</div>
+        <div class="preview-body">
+          <nav aria-label="Breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+              <li class="breadcrumb-separator">/</li>
+              <li class="breadcrumb-item current" aria-current="page">Payments</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+
+      <div class="preview-frame" style="margin-bottom: var(--space-3);">
+        <div class="preview-label">Deep nesting</div>
+        <div class="preview-body">
+          <nav aria-label="Breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Docs</a></li>
+              <li class="breadcrumb-separator">/</li>
+              <li class="breadcrumb-item"><a href="#">Payments</a></li>
+              <li class="breadcrumb-separator">/</li>
+              <li class="breadcrumb-item"><a href="#">Payment Intents</a></li>
+              <li class="breadcrumb-separator">/</li>
+              <li class="breadcrumb-item current" aria-current="page">Create a PaymentIntent</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="spec-section">
+      <div class="spec-label">Tabs · .tabs</div>
+
+      <div class="preview-frame" style="margin-bottom: var(--space-4);">
+        <div class="preview-label">Underline tabs (default)</div>
+        <div class="preview-body">
+          <div class="tabs" role="tablist">
+            <button class="tab active" role="tab" aria-selected="true">Overview</button>
+            <button class="tab" role="tab">API Reference</button>
+            <button class="tab" role="tab">Changelog</button>
+            <button class="tab" role="tab">
+              Testing
+              <span class="badge badge--blurple">New</span>
+            </button>
+          </div>
+          <div style="padding: var(--space-5) 0; font-size: var(--text-14); color: var(--color-label-secondary);">
+            Tab panel content renders here. Active tab is indicated by the blurple underline.
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-frame">
+        <div class="preview-label">Compact pill tabs (dashboard context)</div>
+        <div class="preview-body">
+          <div style="display: flex; gap: var(--space-1); background: var(--color-surface-1); border-radius: var(--radius-card); padding: var(--space-1); width: fit-content;">
+            <button style="padding: var(--space-2) var(--space-4); font-size: var(--text-13); font-weight: var(--weight-semibold); border: none; border-radius: var(--radius-sm); background: var(--color-bg); color: var(--color-label-primary); cursor: pointer; box-shadow: var(--shadow-xs);">24h</button>
+            <button style="padding: var(--space-2) var(--space-4); font-size: var(--text-13); font-weight: var(--weight-medium); border: none; border-radius: var(--radius-sm); background: transparent; color: var(--color-label-secondary); cursor: pointer;">7d</button>
+            <button style="padding: var(--space-2) var(--space-4); font-size: var(--text-13); font-weight: var(--weight-medium); border: none; border-radius: var(--radius-sm); background: transparent; color: var(--color-label-secondary); cursor: pointer;">30d</button>
+            <button style="padding: var(--space-2) var(--space-4); font-size: var(--text-13); font-weight: var(--weight-medium); border: none; border-radius: var(--radius-sm); background: transparent; color: var(--color-label-secondary); cursor: pointer;">12m</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Docs sidebar -->
+    <div class="spec-section">
+      <div class="spec-label">Docs sidebar · .nav-docs</div>
+
+      <div class="preview-frame">
+        <div class="preview-label">Documentation navigation</div>
+        <div style="display: grid; grid-template-columns: 260px 1fr;">
+          <div style="border-right: var(--border-default); padding: var(--space-6); background: var(--color-surface-1);">
+            <nav class="nav-docs">
+              <div>
+                <div class="nav-docs-section-label">Getting started</div>
+                <ul class="nav-docs-links">
+                  <li><a href="#" class="nav-docs-link">Introduction</a></li>
+                  <li><a href="#" class="nav-docs-link active" aria-current="page">Quickstart</a></li>
+                  <li><a href="#" class="nav-docs-link">Authentication</a></li>
+                  <li><a href="#" class="nav-docs-link">Errors</a></li>
+                  <li><a href="#" class="nav-docs-link">Versioning</a></li>
+                </ul>
+              </div>
+              <div>
+                <div class="nav-docs-section-label">Core resources</div>
+                <ul class="nav-docs-links">
+                  <li><a href="#" class="nav-docs-link">Payment Intents</a></li>
+                  <li><a href="#" class="nav-docs-link">Payment Methods</a></li>
+                  <li><a href="#" class="nav-docs-link">Charges</a></li>
+                  <li><a href="#" class="nav-docs-link">Refunds</a></li>
+                  <li><a href="#" class="nav-docs-link">Customers</a></li>
+                  <li><a href="#" class="nav-docs-link">Disputes</a></li>
+                </ul>
+              </div>
+              <div>
+                <div class="nav-docs-section-label">Billing</div>
+                <ul class="nav-docs-links">
+                  <li><a href="#" class="nav-docs-link">Subscriptions</a></li>
+                  <li><a href="#" class="nav-docs-link">Plans</a></li>
+                  <li><a href="#" class="nav-docs-link">Invoices</a></li>
+                  <li><a href="#" class="nav-docs-link">Usage records</a></li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+          <div style="padding: var(--space-8);">
+            <nav aria-label="Breadcrumb" style="margin-bottom: var(--space-4);">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Docs</a></li>
+                <li class="breadcrumb-separator">/</li>
+                <li class="breadcrumb-item current">Quickstart</li>
+              </ol>
+            </nav>
+            <h2 style="font-size: var(--text-24); font-weight: var(--weight-bold); margin-bottom: var(--space-3);">Accept your first payment</h2>
+            <p class="body" style="color: var(--color-label-secondary); margin-bottom: 0;">
+              Get up and running with the Stripe API in under 10 minutes. Create a PaymentIntent,
+              confirm with Stripe.js, and handle the webhook confirmation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Link styles -->
+    <div class="spec-section">
+      <div class="spec-label">Nav link states</div>
+      <div class="preview-frame">
+        <div class="preview-label">All link states</div>
+        <div class="preview-body" style="display: flex; gap: var(--space-2);">
+          <a href="#" class="nav-link">Default</a>
+          <a href="#" class="nav-link active">Active</a>
+          <a href="#" class="nav-docs-link" style="border-radius: var(--radius-sm);">Docs default</a>
+          <a href="#" class="nav-docs-link active" style="border-radius: var(--radius-sm);">Docs active</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: var(--space-20);">
+      <a href="../index.html" class="btn btn-secondary">← Back to System</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,292 @@
+/* =============================================================================
+   Stripe Design System — Design Tokens
+   Version 1.0.0 | Built on Stripe's Design Language
+   stripe.com · stripe.com/docs
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     COLOR SYSTEM — Light Mode (Light-first)
+     --------------------------------------------------------------------------- */
+
+  /* Stripe Brand — Blurple Scale */
+  --color-blurple:            #635BFF;
+  --color-blurple-dark:       #4B44CC;
+  --color-blurple-light:      #8A84FF;
+  --color-blurple-subtle:     rgba(99, 91, 255, 0.08);
+  --color-blurple-glow:       rgba(99, 91, 255, 0.15);
+  --color-blurple-shadow:     rgba(99, 91, 255, 0.28);
+
+  /* Backgrounds */
+  --color-bg:                 #FFFFFF;
+  --color-bg-dark:            #0A2540;
+  --color-bg-darker:          #061A2E;
+
+  /* Surfaces */
+  --color-surface-1:          #F6F9FC;
+  --color-surface-2:          #EBEDF0;
+  --color-surface-3:          #DDE1E7;
+
+  /* Labels */
+  --color-label-primary:      #0A2540;
+  --color-label-secondary:    #425466;
+  --color-label-tertiary:     #8898A9;
+  --color-label-inverse:      #FFFFFF;
+
+  /* Borders */
+  --color-border:             #E0E7EC;
+  --color-border-strong:      #C8D0DA;
+  --color-border-focus:       var(--color-blurple);
+
+  /* Semantic — Success */
+  --color-success:            #09825D;
+  --color-success-bg:         rgba(9, 130, 93, 0.08);
+  --color-success-border:     rgba(9, 130, 93, 0.24);
+
+  /* Semantic — Warning */
+  --color-warning:            #B45309;
+  --color-warning-bg:         rgba(180, 83, 9, 0.08);
+  --color-warning-border:     rgba(180, 83, 9, 0.24);
+
+  /* Semantic — Error */
+  --color-error:              #C0123C;
+  --color-error-bg:           rgba(192, 18, 60, 0.08);
+  --color-error-border:       rgba(192, 18, 60, 0.24);
+
+  /* Semantic — Info */
+  --color-info:               #0073E6;
+  --color-info-bg:            rgba(0, 115, 230, 0.08);
+  --color-info-border:        rgba(0, 115, 230, 0.24);
+
+  /* Accent aliases */
+  --color-accent:             var(--color-blurple);
+  --color-accent-hover:       var(--color-blurple-dark);
+  --color-accent-light:       var(--color-blurple-subtle);
+
+  /* Hero gradient stops */
+  --color-gradient-start:     #635BFF;
+  --color-gradient-mid:       #9F7AFF;
+  --color-gradient-end:       #C4B5FD;
+
+  /* Terminal / Code dark surface */
+  --color-code-bg:            #0A2540;
+  --color-code-surface:       #0E2D4A;
+  --color-code-border:        rgba(255, 255, 255, 0.08);
+
+  /* ---------------------------------------------------------------------------
+     TYPOGRAPHY
+     --------------------------------------------------------------------------- */
+
+  --font-sans:   "Sohne", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono:   "Sohne Mono", "JetBrains Mono", "Fira Code", "Cascadia Code", "SF Mono", Consolas, monospace;
+
+  /* Type Scale */
+  --text-52:  52px;
+  --text-40:  40px;
+  --text-32:  32px;
+  --text-24:  24px;
+  --text-20:  20px;
+  --text-18:  18px;
+  --text-16:  16px;
+  --text-15:  15px;
+  --text-14:  14px;
+  --text-13:  13px;
+  --text-12:  12px;
+
+  /* Font Weights */
+  --weight-regular:   400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+  --weight-bold:      700;
+
+  /* Line Heights */
+  --leading-display:  1.1;
+  --leading-heading:  1.2;
+  --leading-body:     1.7;
+  --leading-body-md:  1.6;
+  --leading-ui:       1.4;
+  --leading-mono:     1.55;
+
+  /* Letter Spacing */
+  --tracking-display:   -0.02em;
+  --tracking-heading-1: -0.01em;
+  --tracking-heading:    0em;
+  --tracking-body:       0em;
+  --tracking-label:      0.08em;
+  --tracking-mono:       0em;
+
+  /* Max line-length for body reading */
+  --measure:     65ch;
+  --measure-sm:  55ch;
+  --measure-xs:  45ch;
+
+  /* ---------------------------------------------------------------------------
+     SPACING — 4px Base Grid
+     --------------------------------------------------------------------------- */
+
+  --space-1:    4px;
+  --space-2:    8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-32: 128px;
+
+  /* ---------------------------------------------------------------------------
+     BORDER RADIUS
+     --------------------------------------------------------------------------- */
+
+  --radius-none:    0px;
+  --radius-input:   4px;
+  --radius-btn:     6px;
+  --radius-sm:      6px;
+  --radius-card:    8px;
+  --radius-md:      8px;
+  --radius-modal:  12px;
+  --radius-lg:     12px;
+  --radius-pill:   20px;
+  --radius-hero:   20px;
+  --radius-xl:     24px;
+  --radius-full: 9999px;
+
+  /* ---------------------------------------------------------------------------
+     SHADOWS — Stripe's characteristic cool-toned depth
+     --------------------------------------------------------------------------- */
+
+  --shadow-xs:   0 1px 3px rgba(10, 37, 64, 0.06);
+  --shadow-sm:   0 2px 6px rgba(10, 37, 64, 0.08);
+  --shadow-md:   0 4px 16px rgba(10, 37, 64, 0.12);
+  --shadow-lg:   0 8px 32px rgba(10, 37, 64, 0.16);
+  --shadow-xl:   0 16px 48px rgba(10, 37, 64, 0.20);
+  --shadow-2xl:  0 24px 64px rgba(10, 37, 64, 0.24);
+
+  --shadow-blurple: 0 8px 24px rgba(99, 91, 255, 0.28);
+  --shadow-inset:   inset 0 1px 2px rgba(10, 37, 64, 0.06);
+  --shadow-focus:   0 0 0 3px rgba(99, 91, 255, 0.15);
+
+  /* ---------------------------------------------------------------------------
+     MOTION
+     --------------------------------------------------------------------------- */
+
+  --duration-instant:    0ms;
+  --duration-fast:     150ms;
+  --duration-normal:   200ms;
+  --duration-moderate: 300ms;
+  --duration-slow:     400ms;
+  --duration-deliberate: 600ms;
+
+  --ease-standard:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-decelerate: cubic-bezier(0.00, 0.00, 0.20, 1.00);
+  --ease-accelerate: cubic-bezier(0.40, 0.00, 1.00, 1.00);
+  --ease-spring:     cubic-bezier(0.34, 1.20, 0.64, 1.00);
+
+  --transition-fast:     all var(--duration-fast) var(--ease-standard);
+  --transition-normal:   all var(--duration-normal) var(--ease-standard);
+  --transition-moderate: all var(--duration-moderate) var(--ease-standard);
+
+  /* ---------------------------------------------------------------------------
+     BORDERS
+     --------------------------------------------------------------------------- */
+
+  --border-default:   1px solid var(--color-border);
+  --border-strong:    1px solid var(--color-border-strong);
+  --border-focused:   1px solid var(--color-border-focus);
+  --border-code:      1px solid var(--color-code-border);
+
+  /* ---------------------------------------------------------------------------
+     LAYOUT
+     --------------------------------------------------------------------------- */
+
+  --max-width-site:       1200px;
+  --max-width-content:     960px;
+  --max-width-narrow:      720px;
+  --max-width-docs-sidebar: 260px;
+  --nav-height:              64px;
+
+  /* ---------------------------------------------------------------------------
+     COMPONENT DIMENSIONS
+     --------------------------------------------------------------------------- */
+
+  --btn-height-sm:    32px;
+  --btn-height-md:    40px;
+  --btn-height-lg:    48px;
+  --input-height-sm:  32px;
+  --input-height-md:  40px;
+  --input-height-lg:  48px;
+
+  /* ---------------------------------------------------------------------------
+     Z-INDEX SCALE
+     --------------------------------------------------------------------------- */
+
+  --z-base:     0;
+  --z-raised:   10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-toast:    500;
+  --z-tooltip:  600;
+}
+
+/* =============================================================================
+   DARK MODE
+   The Stripe palette is light-first. Dark mode inverts backgrounds + surfaces
+   while Blurple shifts slightly brighter for contrast.
+   ============================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Backgrounds */
+    --color-bg:                 #0A1929;
+    --color-bg-dark:            #060F1A;
+
+    /* Surfaces */
+    --color-surface-1:          #0F2237;
+    --color-surface-2:          #162D44;
+    --color-surface-3:          #1D3752;
+
+    /* Labels */
+    --color-label-primary:      #E8F0F9;
+    --color-label-secondary:    #8CAABE;
+    --color-label-tertiary:     #4E6E87;
+    --color-label-inverse:      #0A2540;
+
+    /* Borders */
+    --color-border:             rgba(255, 255, 255, 0.10);
+    --color-border-strong:      rgba(255, 255, 255, 0.18);
+
+    /* Blurple slightly brighter for dark mode legibility */
+    --color-blurple:            #7B75FF;
+    --color-blurple-dark:       #635BFF;
+    --color-blurple-light:      #A29EFF;
+    --color-blurple-subtle:     rgba(123, 117, 255, 0.12);
+    --color-blurple-glow:       rgba(123, 117, 255, 0.20);
+
+    /* Semantic */
+    --color-success:            #0FAE7A;
+    --color-success-bg:         rgba(15, 174, 122, 0.12);
+    --color-warning:            #D97706;
+    --color-warning-bg:         rgba(217, 119, 6, 0.12);
+    --color-error:              #F04A74;
+    --color-error-bg:           rgba(240, 74, 116, 0.12);
+
+    /* Code surfaces remain dark in both modes */
+    --color-code-bg:            #060F1A;
+    --color-code-surface:       #0A1929;
+
+    /* Shadows intensified for dark depth */
+    --shadow-xs:   0 1px 3px rgba(0, 0, 0, 0.24);
+    --shadow-sm:   0 2px 6px rgba(0, 0, 0, 0.32);
+    --shadow-md:   0 4px 16px rgba(0, 0, 0, 0.40);
+    --shadow-lg:   0 8px 32px rgba(0, 0, 0, 0.48);
+    --shadow-xl:   0 16px 48px rgba(0, 0, 0, 0.56);
+    --shadow-2xl:  0 24px 64px rgba(0, 0, 0, 0.64);
+  }
+}

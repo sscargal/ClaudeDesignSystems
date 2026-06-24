@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stripe Design System — A production-quality design system built on Stripe's design language. Financial precision, developer-trusted.">
+  <title>Stripe Design System</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="typography.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    /* =====================================================================
+       Showcase page layout styles
+       ===================================================================== */
+
+    .showcase-nav {
+      display: flex;
+      gap: var(--space-4);
+      padding: var(--space-4) 0;
+      flex-wrap: wrap;
+    }
+
+    .showcase-nav a {
+      font-size: var(--text-13);
+      color: var(--color-label-tertiary);
+      text-decoration: none;
+      transition: color var(--duration-fast) var(--ease-standard);
+    }
+
+    .showcase-nav a:hover {
+      color: var(--color-blurple);
+      text-decoration: none;
+    }
+
+    .showcase-section {
+      padding: var(--space-20) 0;
+      border-bottom: 1px solid var(--color-border);
+      scroll-margin-top: calc(var(--nav-height) + var(--space-6));
+    }
+
+    .showcase-section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-label {
+      font-size: var(--text-12);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-blurple);
+      margin-bottom: var(--space-2);
+    }
+
+    .section-title {
+      font-size: var(--text-32);
+      font-weight: var(--weight-bold);
+      color: var(--color-label-primary);
+      margin-bottom: var(--space-3);
+      letter-spacing: -0.01em;
+    }
+
+    .section-description {
+      font-size: var(--text-16);
+      color: var(--color-label-secondary);
+      max-width: 600px;
+      line-height: var(--leading-body-md);
+      margin-bottom: var(--space-10);
+    }
+
+    /* Spacer for fixed nav */
+    .nav-spacer {
+      height: var(--nav-height);
+    }
+
+    /* =====================================================================
+       Color palette
+       ===================================================================== */
+
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: var(--space-3);
+    }
+
+    .swatch {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .swatch-color {
+      height: 60px;
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-xs), inset 0 0 0 1px rgba(0,0,0,0.06);
+    }
+
+    .swatch-name {
+      font-size: var(--text-13);
+      font-weight: var(--weight-medium);
+      color: var(--color-label-primary);
+    }
+
+    .swatch-hex {
+      font-size: var(--text-12);
+      font-family: var(--font-mono);
+      color: var(--color-label-tertiary);
+    }
+
+    .palette-section-label {
+      font-size: var(--text-12);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-3);
+      margin-top: var(--space-6);
+    }
+
+    /* =====================================================================
+       Type specimens
+       ===================================================================== */
+
+    .type-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-6);
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .type-row:last-child {
+      border-bottom: none;
+    }
+
+    .type-meta {
+      min-width: 160px;
+      flex-shrink: 0;
+    }
+
+    .type-class {
+      font-family: var(--font-mono);
+      font-size: var(--text-12);
+      color: var(--color-blurple);
+      display: block;
+    }
+
+    .type-spec {
+      font-size: var(--text-12);
+      color: var(--color-label-tertiary);
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* =====================================================================
+       Button showcase
+       ===================================================================== */
+
+    .component-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .component-row:last-child {
+      border-bottom: none;
+    }
+
+    .component-row-label {
+      font-size: var(--text-13);
+      color: var(--color-label-tertiary);
+      min-width: 120px;
+      flex-shrink: 0;
+    }
+
+    /* =====================================================================
+       Hero section
+       ===================================================================== */
+
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--color-bg);
+    }
+
+    .hero-mesh {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.50;
+    }
+
+    .hero-orb-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, #635BFF 0%, transparent 70%);
+      top: -200px;
+      right: -100px;
+      animation: meshFloat 18s ease-in-out infinite;
+      opacity: 0.25;
+    }
+
+    .hero-orb-2 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, #9F7AFF 0%, transparent 70%);
+      top: 200px;
+      right: 200px;
+      animation: meshFloat2 14s ease-in-out infinite;
+      opacity: 0.20;
+    }
+
+    .hero-orb-3 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, #C4B5FD 0%, transparent 70%);
+      bottom: -150px;
+      right: 300px;
+      animation: meshFloat 22s ease-in-out infinite reverse;
+      opacity: 0.15;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-5);
+    }
+
+    .hero-display {
+      font-size: clamp(var(--text-40), 5.5vw, var(--text-52));
+      font-weight: var(--weight-bold);
+      line-height: var(--leading-display);
+      letter-spacing: var(--tracking-display);
+      color: var(--color-label-primary);
+      margin-bottom: var(--space-6);
+    }
+
+    .hero-body {
+      font-size: var(--text-18);
+      color: var(--color-label-secondary);
+      line-height: var(--leading-body);
+      max-width: var(--measure);
+      margin-bottom: var(--space-8);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    /* =====================================================================
+       Dashboard layout
+       ===================================================================== */
+
+    .dashboard-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: var(--space-4);
+    }
+
+    @media (max-width: 1024px) {
+      .dashboard-layout {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* =====================================================================
+       Dark section
+       ===================================================================== */
+
+    .dark-section {
+      background: var(--color-bg-dark);
+      padding: var(--space-20) 0;
+    }
+
+    .dark-section .section-title {
+      color: #FFFFFF;
+    }
+
+    .dark-section .section-label {
+      color: var(--color-blurple-light);
+    }
+
+    .dark-section .section-description {
+      color: rgba(255, 255, 255, 0.60);
+    }
+
+    /* =====================================================================
+       Navigation demo
+       ===================================================================== */
+
+    .nav-demo {
+      border: var(--border-default);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+    }
+
+    .nav-demo-header {
+      padding: var(--space-3) var(--space-4);
+      background: var(--color-surface-1);
+      border-bottom: var(--border-default);
+      font-size: var(--text-12);
+      color: var(--color-label-tertiary);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+    }
+
+    .nav-demo-body {
+      padding: var(--space-4);
+    }
+
+    /* Simulated nav inside showcase */
+    .nav-demo-bar {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+      height: 56px;
+      padding: 0 var(--space-6);
+      background: var(--color-bg);
+      border: var(--border-default);
+      border-radius: var(--radius-card);
+    }
+
+    /* =====================================================================
+       Docs layout demo
+       ===================================================================== */
+
+    .docs-layout {
+      display: grid;
+      grid-template-columns: var(--max-width-docs-sidebar) 1fr;
+      gap: var(--space-10);
+      border: var(--border-default);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+    }
+
+    .docs-sidebar {
+      border-right: var(--border-default);
+      padding: var(--space-6);
+      background: var(--color-surface-1);
+    }
+
+    .docs-content {
+      padding: var(--space-6);
+    }
+
+    @media (max-width: 768px) {
+      .docs-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .docs-sidebar {
+        border-right: none;
+        border-bottom: var(--border-default);
+      }
+    }
+
+    /* =====================================================================
+       Modal demo — static display
+       ===================================================================== */
+
+    .modal-demo {
+      position: relative;
+      height: 360px;
+      background: rgba(10, 37, 64, 0.20);
+      border-radius: var(--radius-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .modal-demo .modal {
+      position: relative;
+      animation: none;
+    }
+
+    /* =====================================================================
+       Payment form demo
+       ===================================================================== */
+
+    .payment-form {
+      max-width: 480px;
+      background: var(--color-bg);
+      border: var(--border-default);
+      border-radius: var(--radius-modal);
+      box-shadow: var(--shadow-md);
+      padding: var(--space-8);
+    }
+
+    .payment-form-title {
+      font-size: var(--text-20);
+      font-weight: var(--weight-bold);
+      color: var(--color-label-primary);
+      margin-bottom: var(--space-6);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================
+       GLOBAL NAVIGATION
+       ========================================================= -->
+  <nav class="nav-global" id="main-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="Stripe Design System home">Stripe</a>
+      <ul class="nav-links" role="list">
+        <li><a href="#typography" class="nav-link">Typography</a></li>
+        <li><a href="#components" class="nav-link">Components</a></li>
+        <li><a href="#code" class="nav-link">Code</a></li>
+        <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+        <li><a href="components/buttons.html" class="nav-link">Buttons</a></li>
+        <li><a href="components/forms.html" class="nav-link">Forms</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="#" class="nav-sign-in">Sign in</a>
+        <a href="#" class="btn btn-primary btn-sm">Start now</a>
+      </div>
+      <button class="nav-mobile-toggle" aria-label="Toggle mobile menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-spacer"></div>
+
+  <!-- =========================================================
+       HERO SECTION
+       ========================================================= -->
+  <section class="hero" aria-label="Hero">
+    <div class="hero-mesh" aria-hidden="true">
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-orb hero-orb-3"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content animate-fade-in-up">
+        <div class="hero-eyebrow">
+          <span class="badge badge--blurple">Design System v1.0</span>
+          <span class="badge">stripe.com</span>
+        </div>
+        <h1 class="hero-display">
+          Financial infrastructure for the
+          <span class="text-gradient">internet</span>
+        </h1>
+        <p class="hero-body">
+          A production-quality design system built on Stripe's design language —
+          warm, approachable, yet serious. Financial precision through typography
+          and whitespace, not decoration.
+        </p>
+        <div class="hero-actions">
+          <a href="#components" class="btn btn-primary btn-lg">Explore components</a>
+          <a href="components/buttons.html" class="btn btn-secondary btn-lg">View docs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       TRUSTED BY
+       ========================================================= -->
+  <section class="showcase-section" style="padding: var(--space-12) 0;">
+    <div class="container">
+      <div class="trusted-by">
+        <span class="trusted-by-label">Trusted by</span>
+        <span class="trusted-logo">Amazon</span>
+        <span class="trusted-logo">Shopify</span>
+        <span class="trusted-logo">Notion</span>
+        <span class="trusted-logo">Figma</span>
+        <span class="trusted-logo">GitHub</span>
+        <span class="trusted-logo">Atlassian</span>
+        <span class="trusted-logo">Salesforce</span>
+        <span class="trusted-logo">Lyft</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       INNER PAGE NAV
+       ========================================================= -->
+  <div class="container" style="padding-top: var(--space-4); padding-bottom: var(--space-4);">
+    <nav class="showcase-nav" aria-label="Showcase navigation">
+      <a href="#colors">Colors</a>
+      <a href="#typography">Typography</a>
+      <a href="#buttons">Buttons</a>
+      <a href="#cards">Cards</a>
+      <a href="#code">Code Block</a>
+      <a href="#data-table">Data Table</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#forms">Forms</a>
+      <a href="#navigation">Navigation</a>
+      <a href="#modals">Modals & Alerts</a>
+      <a href="#badges">Badges</a>
+      <a href="#animations">Animations</a>
+    </nav>
+  </div>
+
+  <!-- =========================================================
+       COLOR PALETTE
+       ========================================================= -->
+  <section class="showcase-section" id="colors">
+    <div class="container">
+      <div class="section-label">Foundation</div>
+      <h2 class="section-title">Color System</h2>
+      <p class="section-description">
+        Stripe's palette centers on Blurple — a distinctive blue-purple that balances
+        credibility with approachability. Light-first canvas with cool-toned label hierarchy.
+      </p>
+
+      <p class="palette-section-label">Brand — Blurple</p>
+      <div class="palette-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #635BFF;"></div>
+          <div class="swatch-name">Blurple</div>
+          <div class="swatch-hex">#635BFF</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #4B44CC;"></div>
+          <div class="swatch-name">Blurple Dark</div>
+          <div class="swatch-hex">#4B44CC</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #8A84FF;"></div>
+          <div class="swatch-name">Blurple Light</div>
+          <div class="swatch-hex">#8A84FF</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: rgba(99,91,255,0.08); border: 1px solid var(--color-border);"></div>
+          <div class="swatch-name">Blurple Subtle</div>
+          <div class="swatch-hex">8% opacity</div>
+        </div>
+      </div>
+
+      <p class="palette-section-label">Hero Gradient</p>
+      <div class="palette-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #635BFF;"></div>
+          <div class="swatch-name">Gradient Start</div>
+          <div class="swatch-hex">#635BFF</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #9F7AFF;"></div>
+          <div class="swatch-name">Gradient Mid</div>
+          <div class="swatch-hex">#9F7AFF</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #C4B5FD;"></div>
+          <div class="swatch-name">Gradient End</div>
+          <div class="swatch-hex">#C4B5FD</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: linear-gradient(135deg, #635BFF, #9F7AFF, #C4B5FD);"></div>
+          <div class="swatch-name">Full Gradient</div>
+          <div class="swatch-hex">Hero mesh</div>
+        </div>
+      </div>
+
+      <p class="palette-section-label">Backgrounds & Surfaces</p>
+      <div class="palette-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #FFFFFF; border: 1px solid var(--color-border);"></div>
+          <div class="swatch-name">Background</div>
+          <div class="swatch-hex">#FFFFFF</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #F6F9FC; border: 1px solid var(--color-border);"></div>
+          <div class="swatch-name">Surface 1</div>
+          <div class="swatch-hex">#F6F9FC</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #EBEDF0;"></div>
+          <div class="swatch-name">Surface 2</div>
+          <div class="swatch-hex">#EBEDF0</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #0A2540;"></div>
+          <div class="swatch-name">Dark BG</div>
+          <div class="swatch-hex">#0A2540</div>
+        </div>
+      </div>
+
+      <p class="palette-section-label">Labels</p>
+      <div class="palette-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #0A2540;"></div>
+          <div class="swatch-name">Label Primary</div>
+          <div class="swatch-hex">#0A2540</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #425466;"></div>
+          <div class="swatch-name">Label Secondary</div>
+          <div class="swatch-hex">#425466</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #8898A9;"></div>
+          <div class="swatch-name">Label Tertiary</div>
+          <div class="swatch-hex">#8898A9</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #E0E7EC; border: 1px solid var(--color-border);"></div>
+          <div class="swatch-name">Border</div>
+          <div class="swatch-hex">#E0E7EC</div>
+        </div>
+      </div>
+
+      <p class="palette-section-label">Semantic</p>
+      <div class="palette-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #09825D;"></div>
+          <div class="swatch-name">Success</div>
+          <div class="swatch-hex">#09825D</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #B45309;"></div>
+          <div class="swatch-name">Warning</div>
+          <div class="swatch-hex">#B45309</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #C0123C;"></div>
+          <div class="swatch-name">Error</div>
+          <div class="swatch-hex">#C0123C</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #0073E6;"></div>
+          <div class="swatch-name">Info</div>
+          <div class="swatch-hex">#0073E6</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       TYPOGRAPHY SCALE
+       ========================================================= -->
+  <section class="showcase-section" id="typography">
+    <div class="container">
+      <div class="section-label">Foundation</div>
+      <h2 class="section-title">Typography Scale</h2>
+      <p class="section-description">
+        Sohne with Inter and system fallbacks. Well-spaced body text, precise line-length
+        control (65ch max), and a mono stack for financial data and code.
+      </p>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-class">.display</span>
+          <span class="type-spec">52px · 700 · −0.02em</span>
+        </div>
+        <div class="display">Financial precision</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-class">.heading-1</span>
+          <span class="type-spec">40px · 700 · −0.01em</span>
+        </div>
+        <div class="heading-1">Infrastructure for growth</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-class">.heading-2</span>
+          <span class="type-spec">32px · 700 · 0em</span>
+        </div>
+        <div class="heading-2">Unified commerce platform</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-class">.heading-3</span>
+          <span class="type-spec">24px · 600</span>
+        </div>
+        <div class="heading-3">Accept payments worldwide</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-class">.heading-4</span>
+          <span class="type-spec">20px · 600</span>
+        </div>
+        <div class="heading-4">Recurring billing made simple</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-class">.body-lg</span>
+          <span class="type-spec">18px · 400 · 1.7</span>
+        </div>
+        <div class="body-lg">Stripe's financial infrastructure powers millions of businesses — from startups to the world's largest enterprises.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-class">.body</span>
+          <span class="type-spec">16px · 400 · 1.6</span>
+        </div>
+        <div class="body" style="margin: 0; max-width: var(--measure);">Processing payments across 195 countries and 135+ currencies, with automatic fraud prevention powered by machine learning trained on billions of data points.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-class">.body-sm</span>
+          <span class="type-spec">15px · 400 · 1.6</span>
+        </div>
+        <div class="body-sm">Manage disputes, refunds, and chargebacks from a single dashboard.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-class">.caption</span>
+          <span class="type-spec">13px · 400</span>
+        </div>
+        <div class="caption">Last updated June 24, 2026 · Stripe API version 2024-06-20</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-class">.label</span>
+          <span class="type-spec">12px · 600 · uppercase · 0.08em</span>
+        </div>
+        <div class="label">Section label · Eyebrow text</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-class">.mono</span>
+          <span class="type-spec">14px mono</span>
+        </div>
+        <div class="mono">pk_live_51NxGz2SJ... · ch_3OtYsX2eZvKYlo2C</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-class">.amount</span>
+          <span class="type-spec">24px mono · 600</span>
+        </div>
+        <div class="amount">$14,892.50</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-class">.amount-lg</span>
+          <span class="type-spec">40px mono · 600</span>
+        </div>
+        <div class="amount-lg">$142,390.00</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-class">.text-gradient</span>
+          <span class="type-spec">Blurple gradient</span>
+        </div>
+        <div class="heading-2 text-gradient">Built for developers</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       BUTTONS
+       ========================================================= -->
+  <section class="showcase-section" id="buttons">
+    <div class="container">
+      <div class="section-label">Components</div>
+      <h2 class="section-title">Buttons</h2>
+      <p class="section-description">
+        Six variants covering the full spectrum from primary action to destructive.
+        Three sizes: 32px, 40px, 48px. 6px radius, Sohne 600, smooth hover lift.
+      </p>
+
+      <div class="component-row">
+        <span class="component-row-label">Primary</span>
+        <button class="btn btn-primary btn-sm">Get started</button>
+        <button class="btn btn-primary btn-md">Get started</button>
+        <button class="btn btn-primary btn-lg">Get started</button>
+        <button class="btn btn-primary" disabled>Disabled</button>
+      </div>
+      <div class="component-row">
+        <span class="component-row-label">Secondary</span>
+        <button class="btn btn-secondary btn-sm">Learn more</button>
+        <button class="btn btn-secondary btn-md">Learn more</button>
+        <button class="btn btn-secondary btn-lg">Learn more</button>
+        <button class="btn btn-secondary" disabled>Disabled</button>
+      </div>
+      <div class="component-row">
+        <span class="component-row-label">Ghost</span>
+        <button class="btn btn-ghost btn-sm">View docs</button>
+        <button class="btn btn-ghost btn-md">View docs</button>
+        <button class="btn btn-ghost btn-lg">View docs</button>
+      </div>
+      <div class="component-row">
+        <span class="component-row-label">Danger</span>
+        <button class="btn btn-danger btn-sm">Delete</button>
+        <button class="btn btn-danger btn-md">Delete account</button>
+        <button class="btn btn-danger btn-lg">Delete account</button>
+      </div>
+      <div class="component-row">
+        <span class="component-row-label">Link</span>
+        <button class="btn btn-link btn-sm">Read more →</button>
+        <button class="btn btn-link btn-md">View all transactions →</button>
+      </div>
+      <div class="component-row" style="background: var(--color-bg-dark); border-radius: var(--radius-card); padding: var(--space-4) var(--space-4);">
+        <span class="component-row-label" style="color: rgba(255,255,255,0.5);">Dark context</span>
+        <button class="btn btn-dark btn-sm">Sign in</button>
+        <button class="btn btn-dark btn-md">Contact sales</button>
+        <button class="btn btn-primary btn-md">Start for free</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       CODE BLOCK
+       ========================================================= -->
+  <section class="showcase-section" id="code">
+    <div class="container">
+      <div class="section-label">Developer</div>
+      <h2 class="section-title">Code Block</h2>
+      <p class="section-description">
+        Stripe's signature developer component. Dark surface, multi-language tabs,
+        precise syntax coloring, and one-click copy. The most recognized code UI in fintech.
+      </p>
+
+      <div class="code-block">
+        <div class="code-block-tabs">
+          <button class="code-block-tab active">Node.js</button>
+          <button class="code-block-tab">Python</button>
+          <button class="code-block-tab">Ruby</button>
+          <button class="code-block-tab">PHP</button>
+          <button class="code-block-tab">Go</button>
+          <button class="code-block-tab">Java</button>
+        </div>
+        <div class="code-block-header">
+          <span class="code-block-filename">create-payment-intent.js</span>
+          <button class="code-block-copy" onclick="this.textContent='Copied!'; setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
+        </div>
+        <div class="code-block-body">
+          <pre><code><span class="token-keyword">const</span> <span class="token-variable">stripe</span> <span class="token-operator">=</span> <span class="token-function">require</span><span class="token-punctuation">(</span><span class="token-string">'stripe'</span><span class="token-punctuation">)(</span><span class="token-variable">process</span><span class="token-punctuation">.</span><span class="token-property">env</span><span class="token-punctuation">.</span><span class="token-property">STRIPE_SECRET_KEY</span><span class="token-punctuation">);</span>
+
+<span class="token-keyword">const</span> <span class="token-variable">app</span> <span class="token-operator">=</span> <span class="token-function">express</span><span class="token-punctuation">();</span>
+
+<span class="token-variable">app</span><span class="token-punctuation">.</span><span class="token-function">post</span><span class="token-punctuation">(</span><span class="token-string">'/create-payment-intent'</span><span class="token-punctuation">,</span> <span class="token-keyword">async</span> <span class="token-punctuation">(</span><span class="token-variable">req</span><span class="token-punctuation">,</span> <span class="token-variable">res</span><span class="token-punctuation">)</span> <span class="token-operator">=></span> <span class="token-punctuation">{</span>
+  <span class="token-keyword">const</span> <span class="token-punctuation">{</span> <span class="token-variable">amount</span><span class="token-punctuation">,</span> <span class="token-variable">currency</span> <span class="token-punctuation">}</span> <span class="token-operator">=</span> <span class="token-variable">req</span><span class="token-punctuation">.</span><span class="token-property">body</span><span class="token-punctuation">;</span>
+
+  <span class="token-comment">// Create a PaymentIntent with the order amount and currency</span>
+  <span class="token-keyword">const</span> <span class="token-variable">paymentIntent</span> <span class="token-operator">=</span> <span class="token-keyword">await</span> <span class="token-variable">stripe</span><span class="token-punctuation">.</span><span class="token-property">paymentIntents</span><span class="token-punctuation">.</span><span class="token-function">create</span><span class="token-punctuation">({</span>
+    <span class="token-property">amount</span><span class="token-operator">:</span> <span class="token-variable">amount</span><span class="token-punctuation">,</span>
+    <span class="token-property">currency</span><span class="token-operator">:</span> <span class="token-variable">currency</span><span class="token-punctuation">,</span>
+    <span class="token-property">automatic_payment_methods</span><span class="token-operator">:</span> <span class="token-punctuation">{</span>
+      <span class="token-property">enabled</span><span class="token-operator">:</span> <span class="token-keyword">true</span><span class="token-punctuation">,</span>
+    <span class="token-punctuation">},</span>
+  <span class="token-punctuation">});</span>
+
+  <span class="token-variable">res</span><span class="token-punctuation">.</span><span class="token-function">send</span><span class="token-punctuation">({</span>
+    <span class="token-property">clientSecret</span><span class="token-operator">:</span> <span class="token-variable">paymentIntent</span><span class="token-punctuation">.</span><span class="token-property">client_secret</span><span class="token-punctuation">,</span>
+  <span class="token-punctuation">});</span>
+<span class="token-punctuation">});</span></code></pre>
+        </div>
+      </div>
+
+      <div style="margin-top: var(--space-6);">
+        <div class="terminal">
+          <div class="terminal-line">
+            <span class="terminal-prompt">$</span>
+            <span class="terminal-command">npm install stripe</span>
+          </div>
+          <div class="terminal-line">
+            <span class="terminal-output">+ stripe@14.21.0</span>
+          </div>
+          <div class="terminal-line">
+            <span class="terminal-output">added 12 packages in 1.842s</span>
+          </div>
+          <div class="terminal-line" style="margin-top: var(--space-2);">
+            <span class="terminal-prompt">$</span>
+            <span class="terminal-command">stripe listen --forward-to localhost:3000/webhook</span>
+          </div>
+          <div class="terminal-line">
+            <span class="terminal-output">Ready! Your webhook signing secret is <span style="color: var(--color-blurple-light);">whsec_Tg4u8c...</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       DATA TABLE
+       ========================================================= -->
+  <section class="showcase-section" id="data-table">
+    <div class="container">
+      <div class="section-label">Components</div>
+      <h2 class="section-title">Data Table</h2>
+      <p class="section-description">
+        Transaction and payment data display. Clean row separators, monospace amounts,
+        status pills, and hover row highlight. The heartbeat of every Stripe dashboard.
+      </p>
+
+      <div class="data-table-wrapper">
+        <table class="data-table" aria-label="Transactions">
+          <thead>
+            <tr class="data-table-header">
+              <th>Description</th>
+              <th>Transaction ID</th>
+              <th>Customer</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th style="text-align:right;">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="data-table-row">
+              <td><span style="font-size: var(--text-14); font-weight: var(--weight-medium); color: var(--color-label-primary);">Pro plan subscription</span></td>
+              <td class="id-cell">ch_3OtYsX2eZvKYlo2C18Ab4k</td>
+              <td><span style="font-size: var(--text-14); color: var(--color-label-secondary);">Acme Corp</span></td>
+              <td class="caption" style="white-space: nowrap;">Jun 24, 2026</td>
+              <td><span class="status-pill status-pill--success">Succeeded</span></td>
+              <td class="amount-cell">$299.00</td>
+            </tr>
+            <tr class="data-table-row">
+              <td><span style="font-size: var(--text-14); font-weight: var(--weight-medium); color: var(--color-label-primary);">Enterprise seats × 12</span></td>
+              <td class="id-cell">ch_3OtXrK2eZvKYlo2C0d8mn2</td>
+              <td><span style="font-size: var(--text-14); color: var(--color-label-secondary);">Notion Labs</span></td>
+              <td class="caption" style="white-space: nowrap;">Jun 23, 2026</td>
+              <td><span class="status-pill status-pill--success">Succeeded</span></td>
+              <td class="amount-cell">$3,588.00</td>
+            </tr>
+            <tr class="data-table-row">
+              <td><span style="font-size: var(--text-14); font-weight: var(--weight-medium); color: var(--color-label-primary);">One-time API credit</span></td>
+              <td class="id-cell">ch_3OtVmP2eZvKYlo2C0zQ1pX</td>
+              <td><span style="font-size: var(--text-14); color: var(--color-label-secondary);">DevCo Inc</span></td>
+              <td class="caption" style="white-space: nowrap;">Jun 23, 2026</td>
+              <td><span class="status-pill status-pill--warning">Pending</span></td>
+              <td class="amount-cell">$500.00</td>
+            </tr>
+            <tr class="data-table-row">
+              <td><span style="font-size: var(--text-14); font-weight: var(--weight-medium); color: var(--color-label-primary);">Starter plan upgrade</span></td>
+              <td class="id-cell">ch_3OtRaG2eZvKYlo2C0bP9Qn</td>
+              <td><span style="font-size: var(--text-14); color: var(--color-label-secondary);">Figma, Inc.</span></td>
+              <td class="caption" style="white-space: nowrap;">Jun 22, 2026</td>
+              <td><span class="status-pill status-pill--error">Failed</span></td>
+              <td class="amount-cell">$99.00</td>
+            </tr>
+            <tr class="data-table-row">
+              <td><span style="font-size: var(--text-14); font-weight: var(--weight-medium); color: var(--color-label-primary);">Pro plan subscription</span></td>
+              <td class="id-cell">ch_3OtNhW2eZvKYlo2C0aT2vY</td>
+              <td><span style="font-size: var(--text-14); color: var(--color-label-secondary);">Vercel Inc</span></td>
+              <td class="caption" style="white-space: nowrap;">Jun 22, 2026</td>
+              <td><span class="status-pill status-pill--neutral">Refunded</span></td>
+              <td class="amount-cell" style="color: var(--color-label-tertiary);">−$299.00</td>
+            </tr>
+            <tr class="data-table-row">
+              <td><span style="font-size: var(--text-14); font-weight: var(--weight-medium); color: var(--color-label-primary);">Custom integration</span></td>
+              <td class="id-cell">ch_3OtJkL2eZvKYlo2C0nM3wZ</td>
+              <td><span style="font-size: var(--text-14); color: var(--color-label-secondary);">Shopify Ltd</span></td>
+              <td class="caption" style="white-space: nowrap;">Jun 21, 2026</td>
+              <td><span class="status-pill status-pill--success">Succeeded</span></td>
+              <td class="amount-cell">$12,500.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       DASHBOARD METRICS
+       ========================================================= -->
+  <section class="showcase-section" id="dashboard">
+    <div class="container">
+      <div class="section-label">Dashboard</div>
+      <h2 class="section-title">Metrics & Analytics</h2>
+      <p class="section-description">
+        Metric cards with sparklines, CSS bar charts, and live activity feeds.
+        Monospace amounts, tabular numerics, trend indicators.
+      </p>
+
+      <!-- Metric cards -->
+      <div class="dashboard-layout" style="margin-bottom: var(--space-6);">
+        <div class="metric-card animate-fade-in-up">
+          <div class="metric-card-header">
+            <span class="metric-card-title">Gross volume</span>
+            <span class="badge badge--success">Live</span>
+          </div>
+          <div class="metric-card-value">$142,390</div>
+          <div class="metric-card-change positive">
+            <span>↑</span> 24.3% vs last month
+          </div>
+          <div class="sparkline">
+            <div class="sparkline-bar" style="height: 35%;"></div>
+            <div class="sparkline-bar" style="height: 52%;"></div>
+            <div class="sparkline-bar" style="height: 44%;"></div>
+            <div class="sparkline-bar" style="height: 61%;"></div>
+            <div class="sparkline-bar" style="height: 48%;"></div>
+            <div class="sparkline-bar" style="height: 73%;"></div>
+            <div class="sparkline-bar" style="height: 66%;"></div>
+            <div class="sparkline-bar" style="height: 81%;"></div>
+            <div class="sparkline-bar" style="height: 70%;"></div>
+            <div class="sparkline-bar" style="height: 88%;"></div>
+            <div class="sparkline-bar" style="height: 79%;"></div>
+            <div class="sparkline-bar active" style="height: 100%;"></div>
+          </div>
+        </div>
+
+        <div class="metric-card animate-fade-in-up delay-100">
+          <div class="metric-card-header">
+            <span class="metric-card-title">Net revenue</span>
+            <span class="badge">30 days</span>
+          </div>
+          <div class="metric-card-value">$98,241</div>
+          <div class="metric-card-change positive">
+            <span>↑</span> 18.7% vs last month
+          </div>
+          <div class="sparkline">
+            <div class="sparkline-bar" style="height: 45%;"></div>
+            <div class="sparkline-bar" style="height: 38%;"></div>
+            <div class="sparkline-bar" style="height: 62%;"></div>
+            <div class="sparkline-bar" style="height: 55%;"></div>
+            <div class="sparkline-bar" style="height: 71%;"></div>
+            <div class="sparkline-bar" style="height: 64%;"></div>
+            <div class="sparkline-bar" style="height: 78%;"></div>
+            <div class="sparkline-bar" style="height: 85%;"></div>
+            <div class="sparkline-bar" style="height: 76%;"></div>
+            <div class="sparkline-bar" style="height: 90%;"></div>
+            <div class="sparkline-bar" style="height: 83%;"></div>
+            <div class="sparkline-bar active" style="height: 100%;"></div>
+          </div>
+        </div>
+
+        <div class="metric-card animate-fade-in-up delay-200">
+          <div class="metric-card-header">
+            <span class="metric-card-title">Disputes</span>
+            <span class="badge badge--error">Attention</span>
+          </div>
+          <div class="metric-card-value" style="color: var(--color-error);">3</div>
+          <div class="metric-card-change negative">
+            <span>↑</span> 2 new this week
+          </div>
+          <div class="sparkline">
+            <div class="sparkline-bar" style="height: 20%; background: var(--color-error-bg);"></div>
+            <div class="sparkline-bar" style="height: 10%; background: var(--color-error-bg);"></div>
+            <div class="sparkline-bar" style="height: 30%; background: var(--color-error-bg);"></div>
+            <div class="sparkline-bar" style="height: 15%; background: var(--color-error-bg);"></div>
+            <div class="sparkline-bar" style="height: 5%; background: var(--color-error-bg);"></div>
+            <div class="sparkline-bar" style="height: 25%; background: var(--color-error-bg);"></div>
+            <div class="sparkline-bar" style="height: 10%; background: var(--color-error-bg);"></div>
+            <div class="sparkline-bar" style="height: 15%; background: var(--color-error-bg);"></div>
+            <div class="sparkline-bar" style="height: 20%; background: var(--color-error-bg);"></div>
+            <div class="sparkline-bar" style="height: 10%; background: var(--color-error-bg);"></div>
+            <div class="sparkline-bar" style="height: 35%; background: var(--color-error-bg);"></div>
+            <div class="sparkline-bar" style="height: 60%; background: var(--color-error);"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CSS Bar Chart -->
+      <div class="card" style="margin-bottom: var(--space-6);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-4);">
+          <div>
+            <div class="label" style="margin-bottom: var(--space-1);">Revenue</div>
+            <div style="font-size: var(--text-20); font-weight: var(--weight-bold); color: var(--color-label-primary);">Last 12 weeks</div>
+          </div>
+          <div class="tabs" style="border-bottom: none; gap: var(--space-1);">
+            <button class="tab active" style="padding: var(--space-1) var(--space-3); border-bottom: none; border-radius: var(--radius-sm); background: var(--color-blurple-subtle);">12W</button>
+            <button class="tab" style="padding: var(--space-1) var(--space-3); border-bottom: none; border-radius: var(--radius-sm);">1M</button>
+            <button class="tab" style="padding: var(--space-1) var(--space-3); border-bottom: none; border-radius: var(--radius-sm);">3M</button>
+          </div>
+        </div>
+        <div class="chart-placeholder">
+          <div class="chart-bar-group"><div class="chart-bar" style="height: 42%;"></div></div>
+          <div class="chart-bar-group"><div class="chart-bar" style="height: 58%;"></div></div>
+          <div class="chart-bar-group"><div class="chart-bar" style="height: 51%;"></div></div>
+          <div class="chart-bar-group"><div class="chart-bar" style="height: 67%;"></div></div>
+          <div class="chart-bar-group"><div class="chart-bar" style="height: 73%;"></div></div>
+          <div class="chart-bar-group"><div class="chart-bar" style="height: 61%;"></div></div>
+          <div class="chart-bar-group"><div class="chart-bar" style="height: 84%;"></div></div>
+          <div class="chart-bar-group"><div class="chart-bar" style="height: 79%;"></div></div>
+          <div class="chart-bar-group"><div class="chart-bar" style="height: 88%;"></div></div>
+          <div class="chart-bar-group"><div class="chart-bar" style="height: 92%;"></div></div>
+          <div class="chart-bar-group"><div class="chart-bar" style="height: 85%;"></div></div>
+          <div class="chart-bar-group"><div class="chart-bar active" style="height: 100%;"></div></div>
+        </div>
+        <div class="chart-labels">
+          <div class="chart-label">Apr</div>
+          <div class="chart-label">Apr</div>
+          <div class="chart-label">May</div>
+          <div class="chart-label">May</div>
+          <div class="chart-label">May</div>
+          <div class="chart-label">Jun</div>
+          <div class="chart-label">Jun</div>
+          <div class="chart-label">Jun</div>
+          <div class="chart-label">Jun</div>
+          <div class="chart-label">Jun</div>
+          <div class="chart-label">Jun</div>
+          <div class="chart-label">Jun 24</div>
+        </div>
+      </div>
+
+      <!-- Activity feed -->
+      <div class="card">
+        <div class="label" style="margin-bottom: var(--space-4);">Recent activity</div>
+        <div class="activity-feed">
+          <div class="activity-item">
+            <div class="activity-dot-container">
+              <div class="activity-dot success"></div>
+            </div>
+            <div class="activity-content">
+              <div class="activity-title">Payment succeeded — Acme Corp</div>
+              <div class="activity-meta"><span class="mono" style="font-size: var(--text-13);">$299.00</span> · 2 minutes ago</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot-container">
+              <div class="activity-dot"></div>
+            </div>
+            <div class="activity-content">
+              <div class="activity-title">New customer: hello@devco.io</div>
+              <div class="activity-meta">cus_QGhv3K4NxZ6L · 14 minutes ago</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot-container">
+              <div class="activity-dot warning"></div>
+            </div>
+            <div class="activity-content">
+              <div class="activity-title">Dispute opened — $500.00</div>
+              <div class="activity-meta">Respond by Jul 1, 2026 · 1 hour ago</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot-container">
+              <div class="activity-dot success"></div>
+            </div>
+            <div class="activity-content">
+              <div class="activity-title">Payout sent — $34,210.00</div>
+              <div class="activity-meta">Chase ···· 4242 · 3 hours ago</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot-container">
+              <div class="activity-dot error"></div>
+            </div>
+            <div class="activity-content">
+              <div class="activity-title">Payment failed — card declined</div>
+              <div class="activity-meta">Figma Inc · 5 hours ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       CARDS
+       ========================================================= -->
+  <section class="showcase-section" id="cards">
+    <div class="container">
+      <div class="section-label">Components</div>
+      <h2 class="section-title">Cards</h2>
+      <p class="section-description">
+        Six card types covering feature marketing, pricing, products, stats, and social proof.
+        The feature card uses Stripe's characteristic gradient mesh background.
+      </p>
+
+      <!-- Feature card (full width) -->
+      <div class="card-feature" style="margin-bottom: var(--space-6);">
+        <div class="card-feature-label">Global infrastructure</div>
+        <h3 class="card-feature-title">Payments built for scale</h3>
+        <p class="card-feature-body" style="max-width: 520px;">
+          Process payments in 195+ countries across 135+ currencies.
+          Stripe's global network dynamically routes payments to maximize acceptance rates
+          — all through a single API integration.
+        </p>
+        <div style="margin-top: var(--space-6); display: flex; gap: var(--space-3);">
+          <a href="#" class="btn btn-primary">Explore Payments</a>
+          <a href="#" class="btn btn-dark">View docs →</a>
+        </div>
+      </div>
+
+      <!-- Product cards -->
+      <div class="grid-3" style="margin-bottom: var(--space-6);">
+        <div class="card-product hover-lift">
+          <div class="card-product-icon">⚡</div>
+          <div class="card-product-title">Payments</div>
+          <p class="card-product-description">A fully integrated suite of payment products. Accept and optimize payments across channels globally.</p>
+          <a href="#" class="card-product-link">Learn about Payments</a>
+        </div>
+        <div class="card-product hover-lift">
+          <div class="card-product-icon">🔄</div>
+          <div class="card-product-title">Billing</div>
+          <p class="card-product-description">Flexible billing logic for recurring revenue. Supports trials, metered pricing, and complex invoice schedules.</p>
+          <a href="#" class="card-product-link">Learn about Billing</a>
+        </div>
+        <div class="card-product hover-lift">
+          <div class="card-product-icon">🛡️</div>
+          <div class="card-product-title">Radar</div>
+          <p class="card-product-description">Fight fraud with machine learning trained on billions of data points across the Stripe network.</p>
+          <a href="#" class="card-product-link">Learn about Radar</a>
+        </div>
+      </div>
+
+      <!-- Pricing cards -->
+      <div class="grid-3" style="margin-bottom: var(--space-6);">
+        <div class="card-pricing">
+          <div class="card-pricing-header">
+            <div class="card-pricing-name">Starter</div>
+            <div class="card-pricing-description">For individuals and small teams just getting started.</div>
+          </div>
+          <div class="card-pricing-price">
+            <span class="card-pricing-amount">$0</span>
+            <span class="card-pricing-period">/ month</span>
+          </div>
+          <ul class="feature-list">
+            <li>Up to $10,000 / month</li>
+            <li>2.9% + 30¢ per transaction</li>
+            <li>Basic fraud protection</li>
+            <li>Email support</li>
+          </ul>
+          <div class="card-pricing-cta">
+            <a href="#" class="btn btn-secondary" style="width: 100%;">Get started free</a>
+          </div>
+        </div>
+
+        <div class="card-pricing is-featured">
+          <div class="card-pricing-header">
+            <div style="display: flex; align-items: center; gap: var(--space-2);">
+              <div class="card-pricing-name">Pro</div>
+              <span class="badge badge--blurple">Most popular</span>
+            </div>
+            <div class="card-pricing-description">For growing businesses with advanced payment needs.</div>
+          </div>
+          <div class="card-pricing-price">
+            <span class="card-pricing-amount">$99</span>
+            <span class="card-pricing-period">/ month</span>
+          </div>
+          <ul class="feature-list">
+            <li>Unlimited volume</li>
+            <li>2.7% + 25¢ per transaction</li>
+            <li>Advanced Radar fraud rules</li>
+            <li>Priority support + Slack</li>
+            <li>Custom webhooks</li>
+          </ul>
+          <div class="card-pricing-cta">
+            <a href="#" class="btn btn-primary" style="width: 100%;">Start Pro trial</a>
+          </div>
+        </div>
+
+        <div class="card-pricing">
+          <div class="card-pricing-header">
+            <div class="card-pricing-name">Enterprise</div>
+            <div class="card-pricing-description">Custom pricing for large-scale operations and complex requirements.</div>
+          </div>
+          <div class="card-pricing-price">
+            <span class="card-pricing-amount" style="font-size: var(--text-32);">Custom</span>
+          </div>
+          <ul class="feature-list">
+            <li>Volume discounts available</li>
+            <li>Dedicated account manager</li>
+            <li>Custom contracts and SLAs</li>
+            <li>24/7 phone + email support</li>
+            <li>On-premise deployment</li>
+          </ul>
+          <div class="card-pricing-cta">
+            <a href="#" class="btn btn-secondary" style="width: 100%;">Contact sales</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stat cards -->
+      <div class="grid-4" style="margin-bottom: var(--space-6);">
+        <div class="card-stat">
+          <div class="card-stat-label">GMV processed</div>
+          <div class="card-stat-value">$1.2T</div>
+          <div class="card-stat-trend up">
+            <span class="trend-arrow">↑</span> 31% YoY
+          </div>
+        </div>
+        <div class="card-stat">
+          <div class="card-stat-label">Countries</div>
+          <div class="card-stat-value">195</div>
+          <div class="card-stat-trend up">
+            <span class="trend-arrow">+</span> 8 new markets
+          </div>
+        </div>
+        <div class="card-stat">
+          <div class="card-stat-label">Uptime SLA</div>
+          <div class="card-stat-value">99.999%</div>
+          <div class="card-stat-trend up">
+            <span class="trend-arrow">↑</span> Last 12 months
+          </div>
+        </div>
+        <div class="card-stat">
+          <div class="card-stat-label">Radar accuracy</div>
+          <div class="card-stat-value">97.4%</div>
+          <div class="card-stat-trend up">
+            <span class="trend-arrow">↑</span> Fraud detection
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial cards -->
+      <div class="grid-3">
+        <div class="card-testimonial hover-lift">
+          <blockquote class="card-testimonial-quote" style="font-size: var(--text-16);">
+            Stripe has been transformative for us. We went from zero to processing $50M in our first year, and the API is genuinely a joy to work with.
+          </blockquote>
+          <div class="card-testimonial-author">
+            <div class="card-testimonial-avatar">A</div>
+            <div>
+              <div class="card-testimonial-name">Aiko Tanaka</div>
+              <div class="card-testimonial-title">CTO, Shopwave</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-testimonial hover-lift">
+          <blockquote class="card-testimonial-quote" style="font-size: var(--text-16);">
+            We switched from a legacy processor and saw a 12% lift in authorization rates on day one. The Radar fraud rules alone paid for the migration.
+          </blockquote>
+          <div class="card-testimonial-author">
+            <div class="card-testimonial-avatar" style="background: rgba(9,130,93,0.12); color: var(--color-success);">M</div>
+            <div>
+              <div class="card-testimonial-name">Marcus Rodriguez</div>
+              <div class="card-testimonial-title">VP Engineering, CartCo</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-testimonial hover-lift">
+          <blockquote class="card-testimonial-quote" style="font-size: var(--text-16);">
+            Stripe Connect let us launch a marketplace in 6 weeks that would have taken 18 months to build compliance and payouts from scratch.
+          </blockquote>
+          <div class="card-testimonial-author">
+            <div class="card-testimonial-avatar" style="background: rgba(180,83,9,0.10); color: var(--color-warning);">S</div>
+            <div>
+              <div class="card-testimonial-name">Sophie Laurent</div>
+              <div class="card-testimonial-title">CEO, Loom Market</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FORMS
+       ========================================================= -->
+  <section class="showcase-section" id="forms">
+    <div class="container">
+      <div class="section-label">Components</div>
+      <h2 class="section-title">Forms</h2>
+      <p class="section-description">
+        Stripe's form language: clean 1px borders, blurple focus glow, and the
+        iconic field-card payment component. Inputs feel precise, not clinical.
+      </p>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-10); align-items: start;">
+
+        <!-- Payment form -->
+        <div class="payment-form">
+          <div class="payment-form-title">Complete payment</div>
+
+          <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+            <div class="input-group">
+              <label class="input-label" for="email">Email address <span class="input-required">*</span></label>
+              <input class="input" type="email" id="email" placeholder="you@company.com" autocomplete="email">
+            </div>
+
+            <div class="input-group">
+              <label class="input-label">Card information</label>
+              <div class="field-card">
+                <div class="field-card-row">
+                  <input class="field-card-field" type="text" placeholder="1234 1234 1234 1234" maxlength="19" autocomplete="cc-number">
+                </div>
+                <div class="field-card-divider-h"></div>
+                <div class="field-card-row">
+                  <input class="field-card-field" type="text" placeholder="MM / YY" maxlength="7" style="flex: 1;" autocomplete="cc-exp">
+                  <div class="field-card-divider"></div>
+                  <input class="field-card-field" type="text" placeholder="CVC" maxlength="4" style="flex: 1;" autocomplete="cc-csc">
+                </div>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label class="input-label" for="name">Name on card</label>
+              <input class="input" type="text" id="name" placeholder="Jane Smith" autocomplete="cc-name">
+            </div>
+
+            <div class="input-group">
+              <label class="input-label" for="country">Country</label>
+              <select class="select" id="country">
+                <option value="">Select country</option>
+                <option value="us" selected>United States</option>
+                <option value="gb">United Kingdom</option>
+                <option value="ca">Canada</option>
+                <option value="au">Australia</option>
+                <option value="de">Germany</option>
+              </select>
+            </div>
+
+            <button class="btn btn-primary btn-lg" style="width: 100%; margin-top: var(--space-2);">
+              Pay $299.00
+            </button>
+
+            <p class="caption text-center" style="text-align: center;">
+              Secured by <strong>Stripe</strong> · 256-bit TLS encryption
+            </p>
+          </div>
+        </div>
+
+        <!-- Form controls showcase -->
+        <div style="display: flex; flex-direction: column; gap: var(--space-6);">
+
+          <div class="input-group">
+            <label class="input-label">Default state</label>
+            <input class="input" type="text" placeholder="Placeholder text">
+            <span class="input-help">Helper text appears below the input field.</span>
+          </div>
+
+          <div class="input-group input-error">
+            <label class="input-label">Error state</label>
+            <input class="input is-error" type="text" value="invalid@" aria-invalid="true">
+            <span class="input-error-msg">✕ Please enter a valid email address.</span>
+          </div>
+
+          <div class="input-group input-success">
+            <label class="input-label">Success state</label>
+            <input class="input is-success" type="text" value="john@acme.com">
+            <span class="input-success-msg">✓ Email is available</span>
+          </div>
+
+          <div>
+            <label class="input-label" style="margin-bottom: var(--space-3);">Checkboxes</label>
+            <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+              <label class="checkbox-wrapper">
+                <input type="checkbox" class="checkbox" checked>
+                <span class="checkbox-label">Send me product updates</span>
+              </label>
+              <label class="checkbox-wrapper">
+                <input type="checkbox" class="checkbox">
+                <span class="checkbox-label">Enable two-factor authentication</span>
+              </label>
+              <label class="checkbox-wrapper">
+                <input type="checkbox" class="checkbox" checked>
+                <span class="checkbox-label">Agree to Terms of Service</span>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label class="input-label" style="margin-bottom: var(--space-3);">Radio buttons</label>
+            <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+              <label class="radio-wrapper">
+                <input type="radio" name="plan" class="radio" checked>
+                <span class="checkbox-label">Monthly billing</span>
+              </label>
+              <label class="radio-wrapper">
+                <input type="radio" name="plan" class="radio">
+                <span class="checkbox-label">Annual billing (save 20%)</span>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label class="input-label" style="margin-bottom: var(--space-3);">Toggles</label>
+            <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+              <div class="toggle-wrapper">
+                <label class="toggle">
+                  <input type="checkbox" checked>
+                  <div class="toggle-track"></div>
+                  <div class="toggle-thumb"></div>
+                </label>
+                <span class="toggle-label">Enable Radar fraud protection</span>
+              </div>
+              <div class="toggle-wrapper">
+                <label class="toggle">
+                  <input type="checkbox">
+                  <div class="toggle-track"></div>
+                  <div class="toggle-thumb"></div>
+                </label>
+                <span class="toggle-label">Send test webhooks</span>
+              </div>
+              <div class="toggle-wrapper">
+                <label class="toggle">
+                  <input type="checkbox" checked>
+                  <div class="toggle-track"></div>
+                  <div class="toggle-thumb"></div>
+                </label>
+                <span class="toggle-label">Live mode</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       NAVIGATION PATTERNS
+       ========================================================= -->
+  <section class="showcase-section" id="navigation">
+    <div class="container">
+      <div class="section-label">Components</div>
+      <h2 class="section-title">Navigation</h2>
+      <p class="section-description">
+        Global nav with blur backdrop, docs sidebar with nested links, breadcrumbs,
+        and underline-style tabs. All with smooth hover states.
+      </p>
+
+      <!-- Global nav demo -->
+      <div class="nav-demo" style="margin-bottom: var(--space-6);">
+        <div class="nav-demo-header">Global navigation (static preview)</div>
+        <div class="nav-demo-body">
+          <div class="nav-demo-bar">
+            <span class="nav-logo" style="position: static;">Stripe</span>
+            <ul class="nav-links" style="position: static; background: none; border: none; padding: 0; height: auto; display: flex; flex-direction: row;">
+              <li><a href="#" class="nav-link">Products</a></li>
+              <li><a href="#" class="nav-link">Solutions</a></li>
+              <li><a href="#" class="nav-link active">Developers</a></li>
+              <li><a href="#" class="nav-link">Pricing</a></li>
+              <li><a href="#" class="nav-link">Blog</a></li>
+            </ul>
+            <div class="nav-actions">
+              <a href="#" class="nav-sign-in">Sign in</a>
+              <a href="#" class="btn btn-primary btn-sm">Start now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Breadcrumbs -->
+      <div class="nav-demo" style="margin-bottom: var(--space-6);">
+        <div class="nav-demo-header">Breadcrumbs</div>
+        <div class="nav-demo-body">
+          <nav aria-label="Breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Docs</a></li>
+              <li class="breadcrumb-separator" aria-hidden="true">/</li>
+              <li class="breadcrumb-item"><a href="#">Payments</a></li>
+              <li class="breadcrumb-separator" aria-hidden="true">/</li>
+              <li class="breadcrumb-item"><a href="#">Payment Intents</a></li>
+              <li class="breadcrumb-separator" aria-hidden="true">/</li>
+              <li class="breadcrumb-item current" aria-current="page">Create a PaymentIntent</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="nav-demo" style="margin-bottom: var(--space-6);">
+        <div class="nav-demo-header">Tabs</div>
+        <div class="nav-demo-body">
+          <div class="tabs" role="tablist">
+            <button class="tab active" role="tab" aria-selected="true">Overview</button>
+            <button class="tab" role="tab" aria-selected="false">API Reference</button>
+            <button class="tab" role="tab" aria-selected="false">Changelog</button>
+            <button class="tab" role="tab" aria-selected="false">
+              Testing
+              <span class="badge badge--blurple">New</span>
+            </button>
+          </div>
+          <div style="padding: var(--space-4) 0; font-size: var(--text-14); color: var(--color-label-secondary);">
+            Tab content area — overview documentation would appear here.
+          </div>
+        </div>
+      </div>
+
+      <!-- Docs sidebar layout -->
+      <div class="docs-layout">
+        <nav class="docs-sidebar" aria-label="Documentation navigation">
+          <div class="nav-docs">
+            <div>
+              <div class="nav-docs-section-label">Getting started</div>
+              <ul class="nav-docs-links">
+                <li><a href="#" class="nav-docs-link">Introduction</a></li>
+                <li><a href="#" class="nav-docs-link active" aria-current="page">Quickstart</a></li>
+                <li><a href="#" class="nav-docs-link">Authentication</a></li>
+                <li><a href="#" class="nav-docs-link">Errors</a></li>
+              </ul>
+            </div>
+            <div>
+              <div class="nav-docs-section-label">Payments</div>
+              <ul class="nav-docs-links">
+                <li><a href="#" class="nav-docs-link">Payment Intents</a></li>
+                <li><a href="#" class="nav-docs-link">Payment Methods</a></li>
+                <li><a href="#" class="nav-docs-link">Charges</a></li>
+                <li><a href="#" class="nav-docs-link">Refunds</a></li>
+              </ul>
+            </div>
+            <div>
+              <div class="nav-docs-section-label">Billing</div>
+              <ul class="nav-docs-links">
+                <li><a href="#" class="nav-docs-link">Subscriptions</a></li>
+                <li><a href="#" class="nav-docs-link">Invoices</a></li>
+                <li><a href="#" class="nav-docs-link">Products</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <div class="docs-content">
+          <nav aria-label="Page breadcrumb" style="margin-bottom: var(--space-4);">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Docs</a></li>
+              <li class="breadcrumb-separator" aria-hidden="true">/</li>
+              <li class="breadcrumb-item current">Quickstart</li>
+            </ol>
+          </nav>
+          <h1 style="font-size: var(--text-32); font-weight: var(--weight-bold); margin-bottom: var(--space-4);">Accept your first payment</h1>
+          <p class="body-lg" style="margin-bottom: var(--space-4);">
+            Get up and running with the Stripe API in under 10 minutes. This guide walks you through
+            creating a PaymentIntent, confirming with Stripe.js, and handling the result.
+          </p>
+          <div class="alert-banner alert-banner--info" style="margin-bottom: var(--space-4);">
+            <div class="alert-banner-icon">ℹ</div>
+            <div class="alert-banner-content">
+              <div class="alert-banner-title">Test mode enabled</div>
+              <div class="alert-banner-body">You are viewing test data. Switch to live mode to process real payments.</div>
+            </div>
+          </div>
+          <p class="body" style="color: var(--color-label-secondary);">
+            Before you begin, you'll need a Stripe account. If you don't have one, sign up at
+            <a href="#">dashboard.stripe.com</a>. Your API keys are available in the Developers section.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       MODALS & ALERTS
+       ========================================================= -->
+  <section class="showcase-section" id="modals">
+    <div class="container">
+      <div class="section-label">Components</div>
+      <h2 class="section-title">Modals & Alerts</h2>
+      <p class="section-description">
+        Alert dialog, confirmation modal, and full-width alert banners in
+        info / success / warning / error variants.
+      </p>
+
+      <!-- Alert banners -->
+      <div style="display: flex; flex-direction: column; gap: var(--space-3); margin-bottom: var(--space-8);">
+        <div class="alert-banner alert-banner--info">
+          <div class="alert-banner-icon">ℹ</div>
+          <div class="alert-banner-content">
+            <div class="alert-banner-title">API version update available</div>
+            <div class="alert-banner-body">A new Stripe API version (2026-06-01) is available with improved idempotency handling. <a href="#" style="color: inherit; text-decoration: underline;">View migration guide</a></div>
+          </div>
+        </div>
+        <div class="alert-banner alert-banner--success">
+          <div class="alert-banner-icon">✓</div>
+          <div class="alert-banner-content">
+            <div class="alert-banner-title">Payout successfully initiated</div>
+            <div class="alert-banner-body">$34,210.00 will arrive in your Chase account ending in 4242 within 2 business days.</div>
+          </div>
+        </div>
+        <div class="alert-banner alert-banner--warning">
+          <div class="alert-banner-icon">⚠</div>
+          <div class="alert-banner-content">
+            <div class="alert-banner-title">Dispute requires action</div>
+            <div class="alert-banner-body">You have 3 disputes that require a response by July 1, 2026 or will be automatically lost.</div>
+          </div>
+        </div>
+        <div class="alert-banner alert-banner--error">
+          <div class="alert-banner-icon">✕</div>
+          <div class="alert-banner-content">
+            <div class="alert-banner-title">Webhook delivery failed</div>
+            <div class="alert-banner-body">Events have failed to deliver to https://api.yourapp.com/webhooks for 24 hours. Check your endpoint configuration.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal static preview -->
+      <div class="modal-demo">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+          <div class="modal-header">
+            <div class="modal-title" id="modal-title">Delete API key</div>
+            <button class="modal-close" aria-label="Close modal">✕</button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete the API key <code>sk_live_51NxGz2...</code>?
+            Any integrations using this key will immediately stop working.
+            This action cannot be undone.
+          </div>
+          <div class="modal-actions">
+            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-danger">Delete key</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       BADGES
+       ========================================================= -->
+  <section class="showcase-section" id="badges">
+    <div class="container">
+      <div class="section-label">Components</div>
+      <h2 class="section-title">Badges</h2>
+      <p class="section-description">
+        Compact pills for status, metadata, and feature labels.
+        20px height, 12px Sohne 600, four semantic variants.
+      </p>
+
+      <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+        <span class="badge">Default</span>
+        <span class="badge badge--blurple">Blurple</span>
+        <span class="badge badge--success">Succeeded</span>
+        <span class="badge badge--warning">Pending</span>
+        <span class="badge badge--error">Failed</span>
+        <span class="badge badge--new">New</span>
+        <span class="badge">API v2026.06</span>
+        <span class="badge badge--blurple">Beta</span>
+        <span class="badge badge--success">Live</span>
+        <span class="badge">30 days</span>
+      </div>
+
+      <div style="margin-top: var(--space-8);">
+        <div class="label" style="margin-bottom: var(--space-4);">Status Pills (in-table context)</div>
+        <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+          <span class="status-pill status-pill--success">Succeeded</span>
+          <span class="status-pill status-pill--warning">Pending</span>
+          <span class="status-pill status-pill--error">Failed</span>
+          <span class="status-pill status-pill--neutral">Refunded</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       ANIMATIONS
+       ========================================================= -->
+  <section class="showcase-section" id="animations">
+    <div class="container">
+      <div class="section-label">Foundation</div>
+      <h2 class="section-title">Animation System</h2>
+      <p class="section-description">
+        Smooth, confident motion at 200–400ms. Standard easing reflects Stripe's
+        financial precision — no bounciness, just confident transitions.
+      </p>
+
+      <!-- Skeleton loading -->
+      <div style="margin-bottom: var(--space-8);">
+        <div class="label" style="margin-bottom: var(--space-4);">Skeleton loading</div>
+        <div class="card">
+          <div style="display: flex; gap: var(--space-4); margin-bottom: var(--space-4);">
+            <div class="skeleton skeleton-circle" style="width: 40px; height: 40px; flex-shrink: 0;"></div>
+            <div style="flex: 1;">
+              <div class="skeleton skeleton-text medium" style="margin-bottom: var(--space-2);"></div>
+              <div class="skeleton skeleton-text short"></div>
+            </div>
+          </div>
+          <div class="skeleton skeleton-text long" style="margin-bottom: var(--space-2);"></div>
+          <div class="skeleton skeleton-text medium" style="margin-bottom: var(--space-2);"></div>
+          <div class="skeleton skeleton-text short"></div>
+        </div>
+      </div>
+
+      <!-- Motion tokens -->
+      <div class="label" style="margin-bottom: var(--space-4);">Motion tokens</div>
+      <div class="data-table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr class="data-table-header">
+              <th>Token</th>
+              <th>Value</th>
+              <th>Use case</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="data-table-row">
+              <td class="mono" style="color: var(--color-blurple); font-size: var(--text-13);">--duration-fast</td>
+              <td><span class="mono" style="font-size: var(--text-13);">150ms</span></td>
+              <td style="font-size: var(--text-14); color: var(--color-label-secondary);">Hover states, tooltips, icon changes</td>
+            </tr>
+            <tr class="data-table-row">
+              <td class="mono" style="color: var(--color-blurple); font-size: var(--text-13);">--duration-normal</td>
+              <td><span class="mono" style="font-size: var(--text-13);">200ms</span></td>
+              <td style="font-size: var(--text-14); color: var(--color-label-secondary);">Button interactions, color transitions</td>
+            </tr>
+            <tr class="data-table-row">
+              <td class="mono" style="color: var(--color-blurple); font-size: var(--text-13);">--duration-moderate</td>
+              <td><span class="mono" style="font-size: var(--text-13);">300ms</span></td>
+              <td style="font-size: var(--text-14); color: var(--color-label-secondary);">Cards, panels, content reveals</td>
+            </tr>
+            <tr class="data-table-row">
+              <td class="mono" style="color: var(--color-blurple); font-size: var(--text-13);">--duration-slow</td>
+              <td><span class="mono" style="font-size: var(--text-13);">400ms</span></td>
+              <td style="font-size: var(--text-14); color: var(--color-label-secondary);">Modals, page transitions, large elements</td>
+            </tr>
+            <tr class="data-table-row">
+              <td class="mono" style="color: var(--color-blurple); font-size: var(--text-13);">--ease-standard</td>
+              <td><span class="mono" style="font-size: var(--text-13);">cubic-bezier(0.25, 0.46, 0.45, 0.94)</span></td>
+              <td style="font-size: var(--text-14); color: var(--color-label-secondary);">Default — confident, smooth</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <footer class="footer-dark" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">Stripe</div>
+          <div class="footer-tagline">Financial infrastructure for the internet. Millions of businesses use Stripe to accept payments, send payouts, and manage their businesses online.</div>
+        </div>
+        <div>
+          <div class="footer-col-title">Products</div>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">Payments</a></li>
+            <li><a href="#" class="footer-link">Billing</a></li>
+            <li><a href="#" class="footer-link">Connect</a></li>
+            <li><a href="#" class="footer-link">Radar</a></li>
+            <li><a href="#" class="footer-link">Terminal</a></li>
+            <li><a href="#" class="footer-link">Atlas</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Developers</div>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">Documentation</a></li>
+            <li><a href="#" class="footer-link">API Reference</a></li>
+            <li><a href="#" class="footer-link">API Status</a></li>
+            <li><a href="#" class="footer-link">Open source</a></li>
+            <li><a href="#" class="footer-link">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Company</div>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">About</a></li>
+            <li><a href="#" class="footer-link">Customers</a></li>
+            <li><a href="#" class="footer-link">Enterprise</a></li>
+            <li><a href="#" class="footer-link">Newsroom</a></li>
+            <li><a href="#" class="footer-link">Careers</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Resources</div>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">Support</a></li>
+            <li><a href="#" class="footer-link">Contact sales</a></li>
+            <li><a href="#" class="footer-link">Partners</a></li>
+            <li><a href="#" class="footer-link">Guides</a></li>
+            <li><a href="#" class="footer-link">Changelog</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">© 2026 Stripe Design System. Built on Stripe's design language.</div>
+        <ul class="footer-legal-links">
+          <li><a href="#" class="footer-legal-link">Privacy</a></li>
+          <li><a href="#" class="footer-legal-link">Terms</a></li>
+          <li><a href="#" class="footer-legal-link">Cookie settings</a></li>
+          <li><a href="#" class="footer-legal-link">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll state
+    (function () {
+      var nav = document.getElementById('main-nav');
+      if (!nav) return;
+      function onScroll() {
+        if (window.scrollY > 24) {
+          nav.classList.add('is-scrolled');
+        } else {
+          nav.classList.remove('is-scrolled');
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // Code block tab switching
+      var tabs = document.querySelectorAll('.code-block-tab');
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          tabs.forEach(function (t) { t.classList.remove('active'); });
+          tab.classList.add('active');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

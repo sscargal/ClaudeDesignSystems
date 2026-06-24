@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modals — Stripe Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .page-header {
+      padding: var(--space-12) 0 var(--space-8);
+      border-bottom: var(--border-default);
+      margin-bottom: var(--space-10);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-14);
+      color: var(--color-label-tertiary);
+      text-decoration: none;
+      margin-bottom: var(--space-4);
+      transition: color var(--duration-fast) var(--ease-standard);
+    }
+
+    .back-link:hover {
+      color: var(--color-blurple);
+      text-decoration: none;
+    }
+
+    .spec-section {
+      margin-bottom: var(--space-16);
+    }
+
+    .spec-label {
+      font-size: var(--text-12);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-3);
+      border-bottom: var(--border-default);
+    }
+
+    /* Static modal preview container */
+    .modal-preview {
+      background: rgba(10, 37, 64, 0.20);
+      border-radius: var(--radius-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-10);
+      border: var(--border-default);
+    }
+
+    /* Override animation for static preview */
+    .modal-preview .modal {
+      animation: none;
+      position: relative;
+    }
+
+    /* Live modal overlay */
+    #live-modal-overlay {
+      display: none;
+    }
+
+    #live-modal-overlay.is-open {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <!-- Live modal overlay (hidden by default) -->
+  <div class="modal-overlay" id="live-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="live-modal-title" onclick="if(event.target===this)closeModal()">
+    <div class="modal animate-slide-in-up">
+      <div class="modal-header">
+        <div class="modal-title" id="live-modal-title">Confirm API key deletion</div>
+        <button class="modal-close" aria-label="Close modal" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        You are about to permanently delete the API key
+        <code>sk_live_51NxGz2SJ...</code>. Any integrations using this key will
+        immediately stop working. This action <strong>cannot be undone</strong>.
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-danger" onclick="closeModal()">Delete key</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="max-width: 900px;">
+    <div class="page-header">
+      <a href="../index.html" class="back-link">← Back to System</a>
+      <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2);">
+        <h1 class="heading-1">Modals & Overlays</h1>
+        <span class="badge badge--success">Stable</span>
+      </div>
+      <p class="body-lg">
+        Stripe's modal system communicates decisions clearly. Dark blurred backdrop, white centered dialog,
+        12px radius, and a confident slide-in-up entrance. Alert banners cover four semantic states.
+      </p>
+      <button class="btn btn-primary" onclick="openModal()" style="margin-top: var(--space-4);">
+        Open live modal demo →
+      </button>
+    </div>
+
+    <!-- Confirmation modal -->
+    <div class="spec-section">
+      <div class="spec-label">Confirmation modal · .modal</div>
+      <div class="modal-preview">
+        <div class="modal" role="dialog" aria-labelledby="confirm-title">
+          <div class="modal-header">
+            <div class="modal-title" id="confirm-title">Delete API key</div>
+            <button class="modal-close" aria-label="Close">✕</button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete <code>sk_live_51NxGz2...</code>?
+            Any integrations using this key will immediately stop working.
+            This action cannot be undone.
+          </div>
+          <div class="modal-actions">
+            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-danger">Delete key</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Informational modal -->
+    <div class="spec-section">
+      <div class="spec-label">Informational modal</div>
+      <div class="modal-preview">
+        <div class="modal" role="dialog" aria-labelledby="info-title">
+          <div class="modal-header">
+            <div class="modal-title" id="info-title">Webhook verification</div>
+            <button class="modal-close" aria-label="Close">✕</button>
+          </div>
+          <div class="modal-body">
+            <p style="margin-bottom: var(--space-4);">Verify webhook signatures to ensure events were sent by Stripe. Add the following header check to your endpoint:</p>
+            <div class="code-block" style="font-size: var(--text-13);">
+              <div class="code-block-body" style="padding: var(--space-4);">
+                <pre><code><span class="token-keyword">const</span> <span class="token-variable">sig</span> <span class="token-operator">=</span> <span class="token-variable">req</span><span class="token-punctuation">.</span><span class="token-property">headers</span><span class="token-punctuation">[</span><span class="token-string">'stripe-signature'</span><span class="token-punctuation">]</span><span class="token-punctuation">;</span>
+<span class="token-variable">stripe</span><span class="token-punctuation">.</span><span class="token-property">webhooks</span><span class="token-punctuation">.</span><span class="token-function">constructEvent</span><span class="token-punctuation">(</span>
+  <span class="token-variable">body</span><span class="token-punctuation">,</span> <span class="token-variable">sig</span><span class="token-punctuation">,</span> <span class="token-variable">endpointSecret</span>
+<span class="token-punctuation">);</span></code></pre>
+              </div>
+            </div>
+          </div>
+          <div class="modal-actions">
+            <button class="btn btn-secondary">Copy snippet</button>
+            <button class="btn btn-primary">Open in docs</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form modal -->
+    <div class="spec-section">
+      <div class="spec-label">Form modal</div>
+      <div class="modal-preview">
+        <div class="modal" style="max-width: 480px; width: 100%;" role="dialog" aria-labelledby="form-title">
+          <div class="modal-header">
+            <div class="modal-title" id="form-title">Add webhook endpoint</div>
+            <button class="modal-close" aria-label="Close">✕</button>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: var(--space-4); margin-bottom: var(--space-6);">
+            <div class="input-group">
+              <label class="input-label">Endpoint URL <span class="input-required">*</span></label>
+              <input class="input" type="url" placeholder="https://example.com/webhook">
+              <span class="input-help">The URL where webhook events will be delivered.</span>
+            </div>
+            <div class="input-group">
+              <label class="input-label">Description</label>
+              <input class="input" type="text" placeholder="Production payment events">
+            </div>
+            <div>
+              <label class="input-label" style="margin-bottom: var(--space-2);">Events to send</label>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <label class="checkbox-wrapper">
+                  <input type="checkbox" class="checkbox" checked>
+                  <span class="checkbox-label">payment_intent.succeeded</span>
+                </label>
+                <label class="checkbox-wrapper">
+                  <input type="checkbox" class="checkbox" checked>
+                  <span class="checkbox-label">payment_intent.payment_failed</span>
+                </label>
+                <label class="checkbox-wrapper">
+                  <input type="checkbox" class="checkbox">
+                  <span class="checkbox-label">customer.subscription.updated</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="modal-actions">
+            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-primary">Add endpoint</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alert banners — all variants -->
+    <div class="spec-section">
+      <div class="spec-label">Alert banners · .alert-banner</div>
+      <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+
+        <div class="alert-banner alert-banner--info">
+          <div class="alert-banner-icon">ℹ</div>
+          <div class="alert-banner-content">
+            <div class="alert-banner-title">API version update available</div>
+            <div class="alert-banner-body">
+              Stripe API 2026-06-01 adds improved idempotency handling and expanded
+              metadata limits. <a href="#" style="color: inherit; text-decoration: underline; font-weight: var(--weight-semibold);">View migration guide →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert-banner alert-banner--success">
+          <div class="alert-banner-icon">✓</div>
+          <div class="alert-banner-content">
+            <div class="alert-banner-title">Webhook endpoint verified</div>
+            <div class="alert-banner-body">
+              Your endpoint at https://api.yourapp.com/webhook is receiving events correctly.
+              Last event delivered 2 minutes ago.
+            </div>
+          </div>
+        </div>
+
+        <div class="alert-banner alert-banner--warning">
+          <div class="alert-banner-icon">⚠</div>
+          <div class="alert-banner-content">
+            <div class="alert-banner-title">Dispute requires action by July 1, 2026</div>
+            <div class="alert-banner-body">
+              You have 3 open disputes that will be automatically closed in your favor if
+              no action is taken by the deadline. <a href="#" style="color: inherit; text-decoration: underline; font-weight: var(--weight-semibold);">View disputes →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert-banner alert-banner--error">
+          <div class="alert-banner-icon">✕</div>
+          <div class="alert-banner-content">
+            <div class="alert-banner-title">Webhook delivery failed (24 hours)</div>
+            <div class="alert-banner-body">
+              Events have failed to deliver to https://api.yourapp.com/webhooks.
+              Check that your server returns HTTP 200. Stripe will retry for 72 hours total.
+              <a href="#" style="color: inherit; text-decoration: underline; font-weight: var(--weight-semibold);">Inspect failed events →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast notifications -->
+    <div class="spec-section">
+      <div class="spec-label">Toast notifications (static preview)</div>
+      <div style="display: flex; flex-direction: column; gap: var(--space-3); max-width: 360px;">
+        <div style="background: var(--color-label-primary); color: #FFFFFF; padding: var(--space-3) var(--space-4); border-radius: var(--radius-card); font-size: var(--text-14); display: flex; align-items: center; gap: var(--space-3); box-shadow: var(--shadow-lg);">
+          <span style="font-size: 16px;">✓</span>
+          <span>API key copied to clipboard</span>
+        </div>
+        <div style="background: var(--color-bg); border: var(--border-default); color: var(--color-label-primary); padding: var(--space-3) var(--space-4); border-radius: var(--radius-card); font-size: var(--text-14); display: flex; align-items: center; gap: var(--space-3); box-shadow: var(--shadow-md);">
+          <span style="font-size: 16px; color: var(--color-success);">✓</span>
+          <div>
+            <div style="font-weight: var(--weight-semibold);">Payment succeeded</div>
+            <div style="font-size: var(--text-13); color: var(--color-label-tertiary);">$299.00 from Acme Corp</div>
+          </div>
+        </div>
+        <div style="background: var(--color-bg); border: var(--border-default); color: var(--color-label-primary); padding: var(--space-3) var(--space-4); border-radius: var(--radius-card); font-size: var(--text-14); display: flex; align-items: center; gap: var(--space-3); box-shadow: var(--shadow-md);">
+          <span style="font-size: 16px; color: var(--color-error);">✕</span>
+          <div>
+            <div style="font-weight: var(--weight-semibold);">Payment failed</div>
+            <div style="font-size: var(--text-13); color: var(--color-label-tertiary);">Card declined: insufficient funds</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: var(--space-20);">
+      <a href="../index.html" class="btn btn-secondary">← Back to System</a>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      var overlay = document.getElementById('live-modal-overlay');
+      overlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      // Focus the first button in the modal
+      var firstBtn = overlay.querySelector('.btn');
+      if (firstBtn) setTimeout(function() { firstBtn.focus(); }, 100);
+    }
+
+    function closeModal() {
+      var overlay = document.getElementById('live-modal-overlay');
+      overlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+</body>
+</html>

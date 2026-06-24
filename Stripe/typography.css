@@ -1,0 +1,500 @@
+/* =============================================================================
+   Stripe Design System — Typography
+   Version 1.0.0 | Sohne Type Scale
+   stripe.com design language
+   ============================================================================= */
+
+/* =============================================================================
+   BASE RESET & DEFAULTS
+   ============================================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-16);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body-md);
+  letter-spacing: var(--tracking-body);
+  color: var(--color-label-primary);
+  background-color: var(--color-bg);
+  margin: 0;
+  padding: 0;
+}
+
+/* =============================================================================
+   DISPLAY & HEADING CLASSES
+   Stripe's type scale is confident and controlled.
+   Display text: tight tracking, high contrast.
+   Body: generous line-height, constrained measure.
+   ============================================================================= */
+
+/* Display — Hero headlines, page titles */
+.display {
+  font-family: var(--font-sans);
+  font-size: var(--text-52);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  color: var(--color-label-primary);
+}
+
+/* Heading 1 — Section heroes */
+.heading-1,
+h1 {
+  font-family: var(--font-sans);
+  font-size: var(--text-40);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-heading-1);
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+/* Heading 2 — Major sections */
+.heading-2,
+h2 {
+  font-family: var(--font-sans);
+  font-size: var(--text-32);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+/* Heading 3 — Subsections */
+.heading-3,
+h3 {
+  font-family: var(--font-sans);
+  font-size: var(--text-24);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+/* Heading 4 — Component headers */
+.heading-4,
+h4 {
+  font-family: var(--font-sans);
+  font-size: var(--text-20);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+/* Heading 5 */
+h5 {
+  font-family: var(--font-sans);
+  font-size: var(--text-18);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-heading);
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+/* Heading 6 */
+h6 {
+  font-family: var(--font-sans);
+  font-size: var(--text-16);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-heading);
+  color: var(--color-label-primary);
+  margin: 0;
+}
+
+/* =============================================================================
+   BODY TEXT
+   ============================================================================= */
+
+/* Body Large — Intro paragraphs, marketing copy */
+.body-lg {
+  font-family: var(--font-sans);
+  font-size: var(--text-18);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  color: var(--color-label-secondary);
+  max-width: var(--measure);
+}
+
+/* Body — Default reading text */
+.body,
+p {
+  font-family: var(--font-sans);
+  font-size: var(--text-16);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body-md);
+  color: var(--color-label-primary);
+  margin: 0 0 1em;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* Body Small — Secondary paragraphs */
+.body-sm {
+  font-family: var(--font-sans);
+  font-size: var(--text-15);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body-md);
+  color: var(--color-label-secondary);
+}
+
+/* Caption — Metadata, timestamps */
+.caption {
+  font-family: var(--font-sans);
+  font-size: var(--text-13);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-ui);
+  color: var(--color-label-tertiary);
+}
+
+/* Label — Section markers, ALL CAPS eyebrow text */
+.label {
+  font-family: var(--font-sans);
+  font-size: var(--text-12);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-ui);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-label-tertiary);
+}
+
+/* Overline — above a heading */
+.overline {
+  font-family: var(--font-sans);
+  font-size: var(--text-13);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-blurple);
+}
+
+/* Lead — Slightly larger intro text without full .body-lg width constraint */
+.lead {
+  font-family: var(--font-sans);
+  font-size: var(--text-18);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  color: var(--color-label-secondary);
+}
+
+/* =============================================================================
+   MONOSPACE
+   ============================================================================= */
+
+/* Base mono — code, API keys, amounts */
+.mono,
+code,
+kbd,
+samp {
+  font-family: var(--font-mono);
+  font-size: var(--text-14);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-mono);
+  letter-spacing: var(--tracking-mono);
+}
+
+code {
+  background: var(--color-surface-1);
+  color: var(--color-blurple);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-input);
+  padding: 0.1em 0.4em;
+}
+
+pre {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-14);
+  line-height: var(--leading-mono);
+  background: var(--color-code-bg);
+  color: #A8C4DC;
+  border-radius: var(--radius-card);
+  padding: var(--space-6);
+  overflow-x: auto;
+  margin: 0;
+}
+
+pre code {
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* Amount — Financial display figures */
+.amount {
+  font-family: var(--font-mono);
+  font-size: var(--text-24);
+  font-weight: var(--weight-semibold);
+  line-height: 1;
+  color: var(--color-label-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.amount-lg {
+  font-family: var(--font-mono);
+  font-size: var(--text-40);
+  font-weight: var(--weight-semibold);
+  line-height: 1;
+  color: var(--color-label-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* =============================================================================
+   GRADIENT TEXT UTILITY — Stripe blurple gradient
+   ============================================================================= */
+
+.text-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-gradient-start)  0%,
+    var(--color-gradient-mid)   50%,
+    var(--color-gradient-end)  100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-blurple {
+  background: linear-gradient(135deg, var(--color-blurple) 0%, var(--color-blurple-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* =============================================================================
+   COLOR UTILITIES
+   ============================================================================= */
+
+.text-primary   { color: var(--color-label-primary); }
+.text-secondary { color: var(--color-label-secondary); }
+.text-tertiary  { color: var(--color-label-tertiary); }
+.text-blurple   { color: var(--color-blurple); }
+.text-success   { color: var(--color-success); }
+.text-warning   { color: var(--color-warning); }
+.text-error     { color: var(--color-error); }
+.text-inverse   { color: var(--color-label-inverse); }
+
+/* =============================================================================
+   WEIGHT UTILITIES
+   ============================================================================= */
+
+.font-regular  { font-weight: var(--weight-regular); }
+.font-medium   { font-weight: var(--weight-medium); }
+.font-semibold { font-weight: var(--weight-semibold); }
+.font-bold     { font-weight: var(--weight-bold); }
+
+/* =============================================================================
+   ALIGNMENT UTILITIES
+   ============================================================================= */
+
+.text-left   { text-align: left; }
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+
+/* =============================================================================
+   TRUNCATION
+   ============================================================================= */
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* =============================================================================
+   INLINE ELEMENTS
+   ============================================================================= */
+
+a {
+  color: var(--color-blurple);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-standard),
+              opacity var(--duration-fast) var(--ease-standard);
+}
+
+a:hover {
+  color: var(--color-blurple-dark);
+  text-decoration: underline;
+}
+
+strong, b {
+  font-weight: var(--weight-semibold);
+}
+
+em, i {
+  font-style: italic;
+}
+
+mark {
+  background: rgba(99, 91, 255, 0.12);
+  color: var(--color-blurple-dark);
+  padding: 0.05em 0.25em;
+  border-radius: var(--radius-input);
+}
+
+abbr[title] {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
+/* =============================================================================
+   LISTS
+   ============================================================================= */
+
+ul, ol {
+  padding-left: var(--space-5);
+  margin: 0 0 1em;
+}
+
+li {
+  margin-bottom: 0.4em;
+  line-height: var(--leading-body-md);
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
+/* Feature list — checkmark bullets, common on stripe.com/pricing */
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-2) 0;
+  font-size: var(--text-15);
+  color: var(--color-label-secondary);
+}
+
+.feature-list li::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='8' fill='%2309825D' opacity='0.12'/%3E%3Cpath d='M4.5 8l2.5 2.5 4.5-5' stroke='%2309825D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-top: 2px;
+}
+
+/* =============================================================================
+   BLOCKQUOTE
+   ============================================================================= */
+
+blockquote {
+  margin: var(--space-6) 0;
+  padding: var(--space-4) var(--space-6);
+  border-left: 3px solid var(--color-blurple);
+  background: var(--color-blurple-subtle);
+  border-radius: 0 var(--radius-card) var(--radius-card) 0;
+  font-size: var(--text-16);
+  color: var(--color-label-secondary);
+  font-style: italic;
+}
+
+blockquote cite {
+  display: block;
+  margin-top: var(--space-2);
+  font-size: var(--text-13);
+  font-style: normal;
+  color: var(--color-label-tertiary);
+  font-weight: var(--weight-medium);
+}
+
+/* =============================================================================
+   RESPONSIVE TYPOGRAPHY
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  .display {
+    font-size: var(--text-40);
+  }
+
+  .heading-1, h1 {
+    font-size: var(--text-32);
+  }
+
+  .heading-2, h2 {
+    font-size: var(--text-24);
+  }
+
+  .heading-3, h3 {
+    font-size: var(--text-20);
+  }
+
+  .body-lg {
+    font-size: var(--text-16);
+  }
+
+  .amount-lg {
+    font-size: var(--text-32);
+  }
+}
+
+@media (max-width: 480px) {
+  .display {
+    font-size: var(--text-32);
+  }
+
+  .heading-1, h1 {
+    font-size: var(--text-24);
+  }
+
+  .heading-2, h2 {
+    font-size: var(--text-20);
+  }
+}
+
+/* =============================================================================
+   REDUCED MOTION
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

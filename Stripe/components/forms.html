@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms — Stripe Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .page-header {
+      padding: var(--space-12) 0 var(--space-8);
+      border-bottom: var(--border-default);
+      margin-bottom: var(--space-10);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-14);
+      color: var(--color-label-tertiary);
+      text-decoration: none;
+      margin-bottom: var(--space-4);
+      transition: color var(--duration-fast) var(--ease-standard);
+    }
+
+    .back-link:hover {
+      color: var(--color-blurple);
+      text-decoration: none;
+    }
+
+    .spec-section {
+      margin-bottom: var(--space-16);
+    }
+
+    .spec-label {
+      font-size: var(--text-12);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-3);
+      border-bottom: var(--border-default);
+    }
+
+    .form-demo {
+      background: var(--color-bg);
+      border: var(--border-default);
+      border-radius: var(--radius-modal);
+      box-shadow: var(--shadow-md);
+      padding: var(--space-8);
+      max-width: 480px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" style="max-width: 1000px;">
+    <div class="page-header">
+      <a href="../index.html" class="back-link">← Back to System</a>
+      <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2);">
+        <h1 class="heading-1">Forms</h1>
+        <span class="badge badge--success">Stable</span>
+      </div>
+      <p class="body-lg">
+        Stripe's form components are precise and legible. Clean 1px borders, blurple focus glow
+        at 3px spread, and the iconic field-card payment component. Every state is considered.
+      </p>
+    </div>
+
+    <!-- Input states -->
+    <div class="spec-section">
+      <div class="spec-label">Input states · .input</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8);">
+        <div>
+          <div class="input-group" style="margin-bottom: var(--space-4);">
+            <label class="input-label">Default</label>
+            <input class="input" type="text" placeholder="Placeholder text">
+            <span class="input-help">Helper text for additional context.</span>
+          </div>
+
+          <div class="input-group" style="margin-bottom: var(--space-4);">
+            <label class="input-label">With value</label>
+            <input class="input" type="text" value="hello@company.com">
+          </div>
+
+          <div class="input-group" style="margin-bottom: var(--space-4);">
+            <label class="input-label">Required <span class="input-required">*</span></label>
+            <input class="input" type="email" placeholder="you@company.com" required>
+          </div>
+
+          <div class="input-group" style="margin-bottom: var(--space-4);">
+            <label class="input-label">Disabled</label>
+            <input class="input" type="text" value="Cannot edit this" disabled style="opacity: 0.5; cursor: not-allowed;">
+          </div>
+        </div>
+
+        <div>
+          <div class="input-group input-error" style="margin-bottom: var(--space-4);">
+            <label class="input-label">Error state</label>
+            <input class="input is-error" type="email" value="invalid-email" aria-invalid="true" aria-describedby="email-error">
+            <span class="input-error-msg" id="email-error">✕ Please enter a valid email address.</span>
+          </div>
+
+          <div class="input-group input-success" style="margin-bottom: var(--space-4);">
+            <label class="input-label">Success state</label>
+            <input class="input is-success" type="text" value="acme-corp">
+            <span class="input-success-msg">✓ This subdomain is available</span>
+          </div>
+
+          <div class="input-group" style="margin-bottom: var(--space-4);">
+            <label class="input-label">Textarea</label>
+            <textarea class="input" placeholder="Describe your integration…" rows="4"></textarea>
+            <span class="input-help">Up to 500 characters.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input sizes -->
+    <div class="spec-section">
+      <div class="spec-label">Input sizes</div>
+      <div style="display: flex; flex-direction: column; gap: var(--space-3); max-width: 400px;">
+        <div class="input-group">
+          <label class="input-label">Small · 32px</label>
+          <input class="input input-sm" type="text" placeholder="Small input">
+        </div>
+        <div class="input-group">
+          <label class="input-label">Medium (default) · 40px</label>
+          <input class="input" type="text" placeholder="Default input">
+        </div>
+        <div class="input-group">
+          <label class="input-label">Large · 48px</label>
+          <input class="input input-lg" type="text" placeholder="Large input">
+        </div>
+      </div>
+    </div>
+
+    <!-- Select -->
+    <div class="spec-section">
+      <div class="spec-label">Select · .select</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8);">
+        <div>
+          <div class="input-group" style="margin-bottom: var(--space-4);">
+            <label class="input-label">Country</label>
+            <select class="select">
+              <option value="">Select a country</option>
+              <option value="us" selected>United States</option>
+              <option value="gb">United Kingdom</option>
+              <option value="ca">Canada</option>
+              <option value="au">Australia</option>
+              <option value="de">Germany</option>
+              <option value="fr">France</option>
+              <option value="jp">Japan</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label">Currency</label>
+            <select class="select">
+              <option value="usd" selected>USD — US Dollar</option>
+              <option value="eur">EUR — Euro</option>
+              <option value="gbp">GBP — British Pound</option>
+              <option value="jpy">JPY — Japanese Yen</option>
+              <option value="cad">CAD — Canadian Dollar</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checkboxes -->
+    <div class="spec-section">
+      <div class="spec-label">Checkboxes · .checkbox</div>
+      <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+        <label class="checkbox-wrapper">
+          <input type="checkbox" class="checkbox" checked>
+          <span class="checkbox-label">Send me product announcements and feature updates</span>
+        </label>
+        <label class="checkbox-wrapper">
+          <input type="checkbox" class="checkbox">
+          <span class="checkbox-label">Enable Stripe's cookie-based cross-site tracking prevention</span>
+        </label>
+        <label class="checkbox-wrapper">
+          <input type="checkbox" class="checkbox" checked>
+          <span class="checkbox-label">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
+        </label>
+        <label class="checkbox-wrapper">
+          <input type="checkbox" class="checkbox" disabled>
+          <span class="checkbox-label" style="opacity: 0.5;">This option is not available (disabled)</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Radio buttons -->
+    <div class="spec-section">
+      <div class="spec-label">Radio buttons · .radio</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8);">
+        <div>
+          <fieldset style="border: none; padding: 0; margin: 0;">
+            <legend class="input-label" style="margin-bottom: var(--space-3);">Billing period</legend>
+            <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+              <label class="radio-wrapper">
+                <input type="radio" name="billing" class="radio" checked>
+                <div>
+                  <div class="checkbox-label">Monthly billing</div>
+                  <div class="caption">$99 / month</div>
+                </div>
+              </label>
+              <label class="radio-wrapper">
+                <input type="radio" name="billing" class="radio">
+                <div>
+                  <div class="checkbox-label">Annual billing <span class="badge badge--success" style="font-size: 10px; vertical-align: middle;">Save 20%</span></div>
+                  <div class="caption">$950 / year ($79.17/mo)</div>
+                </div>
+              </label>
+            </div>
+          </fieldset>
+        </div>
+        <div>
+          <fieldset style="border: none; padding: 0; margin: 0;">
+            <legend class="input-label" style="margin-bottom: var(--space-3);">Payout schedule</legend>
+            <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+              <label class="radio-wrapper">
+                <input type="radio" name="payout" class="radio" checked>
+                <div>
+                  <div class="checkbox-label">Daily</div>
+                  <div class="caption">Payouts sent every business day</div>
+                </div>
+              </label>
+              <label class="radio-wrapper">
+                <input type="radio" name="payout" class="radio">
+                <div>
+                  <div class="checkbox-label">Weekly</div>
+                  <div class="caption">Every Monday morning</div>
+                </div>
+              </label>
+              <label class="radio-wrapper">
+                <input type="radio" name="payout" class="radio">
+                <div>
+                  <div class="checkbox-label">Manual</div>
+                  <div class="caption">Initiate payouts yourself</div>
+                </div>
+              </label>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toggles -->
+    <div class="spec-section">
+      <div class="spec-label">Toggles · .toggle</div>
+      <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+        <div class="toggle-wrapper">
+          <label class="toggle">
+            <input type="checkbox" checked>
+            <div class="toggle-track"></div>
+            <div class="toggle-thumb"></div>
+          </label>
+          <span class="toggle-label">Enable Radar fraud protection</span>
+        </div>
+        <div class="toggle-wrapper">
+          <label class="toggle">
+            <input type="checkbox">
+            <div class="toggle-track"></div>
+            <div class="toggle-thumb"></div>
+          </label>
+          <span class="toggle-label">Forward events to additional endpoints</span>
+        </div>
+        <div class="toggle-wrapper">
+          <label class="toggle">
+            <input type="checkbox" checked>
+            <div class="toggle-track"></div>
+            <div class="toggle-thumb"></div>
+          </label>
+          <span class="toggle-label">Live mode (toggle to switch to test mode)</span>
+        </div>
+        <div class="toggle-wrapper">
+          <label class="toggle">
+            <input type="checkbox">
+            <div class="toggle-track"></div>
+            <div class="toggle-thumb"></div>
+          </label>
+          <span class="toggle-label" style="opacity: 0.5;">Experimental feature (restricted)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment field -->
+    <div class="spec-section">
+      <div class="spec-label">Payment card field · .field-card</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: start;">
+        <div class="form-demo">
+          <div style="font-size: var(--text-18); font-weight: var(--weight-bold); margin-bottom: var(--space-6);">Payment details</div>
+          <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+            <div class="input-group">
+              <label class="input-label">Email <span class="input-required">*</span></label>
+              <input class="input" type="email" placeholder="you@company.com">
+            </div>
+            <div class="input-group">
+              <label class="input-label">Card information</label>
+              <div class="field-card">
+                <div class="field-card-row">
+                  <input class="field-card-field" type="text" placeholder="1234 1234 1234 1234" maxlength="19">
+                </div>
+                <div class="field-card-divider-h"></div>
+                <div class="field-card-row">
+                  <input class="field-card-field" type="text" placeholder="MM / YY" style="flex: 1;">
+                  <div class="field-card-divider"></div>
+                  <input class="field-card-field" type="text" placeholder="CVC" style="flex: 1;">
+                </div>
+              </div>
+            </div>
+            <div class="input-group">
+              <label class="input-label">Country</label>
+              <select class="select">
+                <option>United States</option>
+                <option>United Kingdom</option>
+                <option>Canada</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;">Pay $99.00</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="input-group" style="margin-bottom: var(--space-4);">
+            <label class="input-label">API key entry</label>
+            <div class="field-card" style="border-radius: var(--radius-card);">
+              <div class="field-card-row" style="align-items: center;">
+                <input class="field-card-field" type="password" value="sk_live_51NxGz2SJ..." style="font-family: var(--font-mono);">
+                <button class="btn btn-ghost btn-sm" style="margin-right: var(--space-2); flex-shrink: 0;">Reveal</button>
+              </div>
+            </div>
+            <span class="input-help">Keep this key secret. Never share it in client-side code.</span>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label">Search</label>
+            <div style="position: relative;">
+              <div style="position: absolute; left: var(--space-3); top: 50%; transform: translateY(-50%); color: var(--color-label-tertiary); font-size: 14px; pointer-events: none;">🔍</div>
+              <input class="input" type="search" placeholder="Search transactions…" style="padding-left: var(--space-8);">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full account form -->
+    <div class="spec-section">
+      <div class="spec-label">Complete form example</div>
+      <div class="form-demo" style="max-width: 560px;">
+        <div style="font-size: var(--text-18); font-weight: var(--weight-bold); margin-bottom: var(--space-2);">Account settings</div>
+        <p class="body-sm" style="margin-bottom: var(--space-6);">Update your business information and preferences.</p>
+
+        <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+            <div class="input-group">
+              <label class="input-label">First name</label>
+              <input class="input" type="text" value="Jane">
+            </div>
+            <div class="input-group">
+              <label class="input-label">Last name</label>
+              <input class="input" type="text" value="Smith">
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label">Business email <span class="input-required">*</span></label>
+            <input class="input is-success" type="email" value="jane@acmecorp.com">
+            <span class="input-success-msg">✓ Verified</span>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label">Business name</label>
+            <input class="input" type="text" value="Acme Corporation">
+          </div>
+
+          <div class="input-group">
+            <label class="input-label">Website</label>
+            <div style="position: relative;">
+              <span style="position: absolute; left: var(--space-3); top: 50%; transform: translateY(-50%); font-size: var(--text-14); color: var(--color-label-tertiary);">https://</span>
+              <input class="input" type="text" value="acmecorp.com" style="padding-left: 64px;">
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label">Description</label>
+            <textarea class="input" rows="3" placeholder="Briefly describe what your business does…">Enterprise SaaS platform for supply chain management</textarea>
+          </div>
+
+          <hr class="divider" style="margin: var(--space-2) 0;">
+
+          <div class="label" style="margin-bottom: var(--space-2);">Notifications</div>
+
+          <label class="checkbox-wrapper">
+            <input type="checkbox" class="checkbox" checked>
+            <span class="checkbox-label">Email me when a payment succeeds</span>
+          </label>
+          <label class="checkbox-wrapper">
+            <input type="checkbox" class="checkbox" checked>
+            <span class="checkbox-label">Email me when a dispute is filed</span>
+          </label>
+          <label class="checkbox-wrapper">
+            <input type="checkbox" class="checkbox">
+            <span class="checkbox-label">Weekly summary report</span>
+          </label>
+
+          <div style="display: flex; gap: var(--space-3); justify-content: flex-end; margin-top: var(--space-2);">
+            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: var(--space-20);">
+      <a href="../index.html" class="btn btn-secondary">← Back to System</a>
+    </div>
+  </div>
+</body>
+</html>
