@@ -22,8 +22,8 @@ Every system is self-contained HTML + CSS: no frameworks, no build tools, no dep
 | [NVIDIA](./NVIDIA/) | nvidia.com — dark-first, NVIDIA green, GPU cards, AI/gaming | ✅ Complete |
 | [Intel](./Intel/) | intel.com — light-first, Intel Blue, enterprise CPU precision | ✅ Complete |
 | [AMD](./AMD/) | amd.com — dark-first, AMD Red, 4 sub-brands (Ryzen/EPYC/Radeon/Instinct) | ✅ Complete |
-| Steve Scargall | stevescargall.com — personal brand | 🔜 Coming soon |
-| Liqid | liqid.com — enterprise tech, precision | 🔜 Coming soon |
+| [Steve Scargall](./SteveScargall/) | Personal brand — dark navy, blog post cards, code blocks, author bio | ✅ Complete |
+| [Liqid](./Liqid/) | liqid.com — enterprise composable infrastructure, rack diagram, metrics | ✅ Complete |
 
 ---
 

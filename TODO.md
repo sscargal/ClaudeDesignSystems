@@ -76,13 +76,13 @@ Tracking all planned design systems and the companion website. Check off items a
 
 ### Tier 3 — Personal & Niche
 
-- [ ] **Steve Scargall Personal Brand** `SteveScargall/`
+- [x] **Steve Scargall Personal Brand** `SteveScargall/`
   - Source: stevescargall.com
   - Extract: actual colors, fonts, and component patterns from the live site
   - Components: blog post card, author bio block, tech tag pills, code snippet block, newsletter signup
   - Note: scrape site before building to ensure accuracy
 
-- [ ] **Liqid** `Liqid/`
+- [x] **Liqid** `Liqid/`
   - Source: liqid.com
   - Aesthetic: enterprise storage/compute — precision engineering, data-dense, technical credibility
   - Extract: actual brand colors, typography from live site
