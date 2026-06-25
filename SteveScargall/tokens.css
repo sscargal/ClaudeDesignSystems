@@ -1,10 +1,14 @@
 /* =============================================================================
    Steve Scargall Design System — Design Tokens
-   Version 1.0.0
+   Version 1.1.0 — Patched from live site CSS (stevescargall.com)
    Author/Brand: Steve Scargall — Senior Technology Executive, Author
    Topics: AI, Memory Computing, CXL, PMDK, NVIDIA, Open Source
-   Aesthetic: Clean, professional, developer-forward. Dark mode preferred.
-   Primary palette: Deep navy backgrounds, blue/teal accents, warm off-white text.
+   Aesthetic: Minimal, near-monochrome. White/gray canvas (light), dark gray
+   canvas (dark). Near-black as the primary action color. Signika headings,
+   Heebo body — both sourced from Google Fonts.
+   Source CSS files analyzed:
+     style.min.e018ebd9...css — main stylesheet (Tailwind-based)
+     style-lazy.min.5d85e889...css — Swiper, GLightbox, Font Awesome
    ============================================================================= */
 
 :root {
@@ -18,13 +22,13 @@
      - Code: Dark surface (#0D1117 GitHub-style)
      --------------------------------------------------------------------------- */
 
-  /* Base Backgrounds */
-  --color-bg-primary:              #FAFBFC;
+  /* Base Backgrounds — from real site */
+  --color-bg-primary:              #FFFFFF;    /* body background */
   --color-bg-secondary:            #FFFFFF;
-  --color-bg-tertiary:             #F3F4F6;
-  --color-bg-code:                 #0D1117;
-  --color-bg-terminal:             #1A1A2E;
-  --color-bg-overlay:              rgba(10, 15, 30, 0.60);
+  --color-bg-tertiary:             #F6F6F6;    /* cards, code blocks, blockquotes, thead */
+  --color-bg-code:                 #F6F6F6;    /* pre/code (site uses light code bg) */
+  --color-bg-terminal:             #1A1A1A;
+  --color-bg-overlay:              rgba(4, 4, 4, 0.60);
 
   /* Surface Colors */
   --color-surface-primary:         #FFFFFF;
@@ -36,63 +40,57 @@
   --color-surface-card:            #FFFFFF;
   --color-surface-inset:           #F3F4F6;
 
-  /* Label / Text Colors */
-  --color-label-primary:           #0F172A;
-  --color-label-secondary:         #475569;
-  --color-label-tertiary:          #94A3B8;
-  --color-label-quaternary:        #CBD5E1;
+  /* Label / Text Colors — from real site */
+  --color-label-primary:           #040404;    /* headings */
+  --color-label-secondary:         #444444;    /* body text */
+  --color-label-tertiary:          #717171;    /* muted text */
+  --color-label-quaternary:        #AAAAAA;
   --color-label-on-accent:         #FFFFFF;
-  --color-label-on-dark:           #F1F5F9;
+  --color-label-on-dark:           #FFFFFF;
 
-  /* Brand Accent — Electric Blue */
-  --color-accent:                  #0070F3;
-  --color-accent-hover:            #005CC5;
-  --color-accent-light:            rgba(0, 112, 243, 0.10);
-  --color-accent-medium:           rgba(0, 112, 243, 0.20);
+  /* Primary Action — real site uses near-black, not blue */
+  --color-accent:                  #121212;    /* btn-primary bg, links hover */
+  --color-accent-hover:            #000000;
+  --color-accent-light:            rgba(18, 18, 18, 0.06);
+  --color-accent-medium:           rgba(18, 18, 18, 0.12);
 
-  /* Teal — Secondary Accent (memory/compute topics) */
-  --color-teal:                    #06B6D4;
-  --color-teal-hover:              #0891B2;
-  --color-teal-light:              rgba(6, 182, 212, 0.12);
-  --color-teal-medium:             rgba(6, 182, 212, 0.24);
+  /* Link color (real site: same as body text with underline) */
+  --color-link:                    #444444;
+  --color-link-hover:              #121212;
 
-  /* Deep Blue — Tertiary / Hero gradient anchor */
-  --color-deep-blue:               #1E3A8A;
-  --color-deep-blue-light:         rgba(30, 58, 138, 0.08);
+  /* Note blue — used in prose callout blocks */
+  --color-note:                    #1B83E2;
+  --color-note-light:              rgba(27, 131, 226, 0.10);
 
-  /* Indigo — Code / technical highlights */
-  --color-indigo:                  #6366F1;
-  --color-indigo-light:            rgba(99, 102, 241, 0.12);
+  /* Semantic Callout Colors — extracted from real site */
+  --color-success:                 #40D294;    /* .tip callout */
+  --color-success-light:           rgba(64, 210, 148, 0.12);
+  --color-warning:                 #DB2C23;    /* .warning callout */
+  --color-warning-light:           rgba(219, 44, 35, 0.10);
+  --color-danger:                  #DB2C23;
+  --color-danger-light:            rgba(219, 44, 35, 0.10);
+  --color-info:                    #E3A72C;    /* .info callout */
+  --color-info-light:              rgba(227, 167, 44, 0.12);
 
-  /* Semantic Status */
-  --color-success:                 #10B981;
-  --color-success-light:           rgba(16, 185, 129, 0.12);
-  --color-warning:                 #F59E0B;
-  --color-warning-light:           rgba(245, 158, 11, 0.12);
-  --color-danger:                  #EF4444;
-  --color-danger-light:            rgba(239, 68, 68, 0.12);
-  --color-info:                    #3B82F6;
-  --color-info-light:              rgba(59, 130, 246, 0.12);
+  /* Gray Scale — calibrated to real site values */
+  --color-gray-50:                 #F6F6F6;    /* surfaces */
+  --color-gray-100:                #EAEAEA;    /* borders */
+  --color-gray-200:                #D0D0D0;
+  --color-gray-300:                #AAAAAA;
+  --color-gray-400:                #888888;
+  --color-gray-500:                #717171;
+  --color-gray-600:                #555555;
+  --color-gray-700:                #444444;    /* body text */
+  --color-gray-800:                #222222;
+  --color-gray-900:                #121212;    /* buttons */
+  --color-gray-950:                #040404;    /* headings */
 
-  /* Gray Scale */
-  --color-gray-50:                 #F8FAFC;
-  --color-gray-100:                #F1F5F9;
-  --color-gray-200:                #E2E8F0;
-  --color-gray-300:                #CBD5E1;
-  --color-gray-400:                #94A3B8;
-  --color-gray-500:                #64748B;
-  --color-gray-600:                #475569;
-  --color-gray-700:                #334155;
-  --color-gray-800:                #1E293B;
-  --color-gray-900:                #0F172A;
-  --color-gray-950:                #020617;
-
-  /* Separator & Border */
-  --color-separator:               rgba(15, 23, 42, 0.10);
-  --color-separator-opaque:        #E2E8F0;
-  --color-border:                  #E2E8F0;
-  --color-border-hover:            #CBD5E1;
-  --color-border-focused:          #0070F3;
+  /* Separator & Border — from real site */
+  --color-separator:               rgba(4, 4, 4, 0.08);
+  --color-separator-opaque:        #EAEAEA;
+  --color-border:                  #EAEAEA;    /* real site: rgb(234 234 234) */
+  --color-border-hover:            #D0D0D0;
+  --color-border-focused:          #121212;
 
   /* Fill / Interactive Surface */
   --color-fill-primary:            rgba(15, 23, 42, 0.08);
@@ -120,23 +118,32 @@
      System fallbacks ensure zero CDN dependency.
      --------------------------------------------------------------------------- */
 
-  --font-display:  "Inter", "SF Pro Display", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  --font-body:     "Inter", "SF Pro Text", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  --font-mono:     "JetBrains Mono", "Fira Code", "Cascadia Code", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  /* Fonts — from real site Google Fonts import:
+     Headings: Signika (wght 500, 700) — condensed geometric sans
+     Body:     Heebo   (wght 400, 600) — humanist sans, excellent readability
+     Code:     system monospace (site uses ui-monospace stack)             */
+  --font-display:  "Signika", "Trebuchet MS", "DM Sans", system-ui, sans-serif;
+  --font-body:     "Heebo", "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --font-mono:     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 
-  /* Type Scale — calibrated for a technical blog */
+  /* Type Scale — from real site rem values (base 16px)
+     h1: 2.687rem (~43px) / 2.986rem (~48px) at md+
+     h2: 2.239rem (~36px) / 2.488rem (~40px) at md+
+     h3: 1.866rem (~30px) / 2.074rem (~33px) at md+
+     h4: 1.728rem (~28px)
+     body: 16px                                      */
   --text-xs:    11px;
   --text-sm:    13px;
-  --text-base:  16px;
+  --text-base:  16px;    /* body */
   --text-md:    17px;
-  --text-lg:    19px;
-  --text-xl:    22px;
-  --text-2xl:   26px;
-  --text-3xl:   32px;
-  --text-4xl:   40px;
-  --text-5xl:   48px;
-  --text-6xl:   60px;
-  --text-7xl:   72px;
+  --text-lg:    20px;
+  --text-xl:    24px;
+  --text-2xl:   28px;    /* h4 ~1.728rem */
+  --text-3xl:   30px;    /* h3 mobile */
+  --text-4xl:   36px;    /* h2 mobile */
+  --text-5xl:   43px;    /* h1 mobile */
+  --text-6xl:   48px;    /* h1 desktop */
+  --text-7xl:   60px;
 
   /* Font Weights */
   --weight-light:    300;
@@ -313,213 +320,150 @@
 }
 
 /* =============================================================================
-   DARK MODE — Deep navy/slate preferred aesthetic
-   Background: #0A0F1E deep space navy
-   Surface: #0F172A slate-900 level
-   Cards: #1E293B slate-800
-   Text: #F1F5F9 (primary), #94A3B8 (secondary)
-   Accent: #3B9EFF (brightened blue for dark backgrounds)
+   DARK MODE — from real site
+   Background: #1c1c1c (body), #222222 (cards/secondary surfaces)
+   Text: #b4aeb6 (body), #ffffff (headings hover / primary)
+   Borders: #3e3e3e
+   Buttons: inverted — #ffffff bg + #121212 text
    ============================================================================= */
 
 /* Explicit dark theme (JS toggle via data-theme attribute) */
 [data-theme="dark"] :root,
 [data-theme="dark"]:root {
-  /* Dark Backgrounds */
-  --color-bg-primary:              #0A0F1E;
-    --color-bg-secondary:            #0F172A;
-    --color-bg-tertiary:             #1E293B;
-    --color-bg-code:                 #0D1117;
-    --color-bg-terminal:             #0D0D1A;
-    --color-bg-overlay:              rgba(0, 0, 0, 0.75);
-
-    /* Dark Surfaces */
-    --color-surface-primary:         #0F172A;
-    --color-surface-secondary:       rgba(30, 41, 59, 0.90);
-    --color-surface-tertiary:        rgba(51, 65, 85, 0.70);
-    --color-surface-glass:           rgba(15, 23, 42, 0.80);
-    --color-surface-glass-heavy:     rgba(15, 23, 42, 0.95);
-    --color-surface-raised:          #1E293B;
-    --color-surface-card:            #1E293B;
-    --color-surface-inset:           #0A0F1E;
-
-    /* Dark Labels */
-    --color-label-primary:           #F1F5F9;
-    --color-label-secondary:         #94A3B8;
-    --color-label-tertiary:          #475569;
-    --color-label-quaternary:        #334155;
-    --color-label-on-accent:         #FFFFFF;
-    --color-label-on-dark:           #F1F5F9;
-
-    /* Dark Accent — brightened for contrast on dark bg */
-    --color-accent:                  #3B9EFF;
-    --color-accent-hover:            #60B0FF;
-    --color-accent-light:            rgba(59, 158, 255, 0.15);
-    --color-accent-medium:           rgba(59, 158, 255, 0.25);
-
-    /* Dark Teal */
-    --color-teal:                    #22D3EE;
-    --color-teal-hover:              #67E8F9;
-    --color-teal-light:              rgba(34, 211, 238, 0.15);
-    --color-teal-medium:             rgba(34, 211, 238, 0.25);
-
-    /* Dark Deep Blue */
-    --color-deep-blue:               #3B82F6;
-    --color-deep-blue-light:         rgba(59, 130, 246, 0.15);
-
-    /* Dark Indigo */
-    --color-indigo:                  #818CF8;
-    --color-indigo-light:            rgba(129, 140, 248, 0.15);
-
-    /* Dark Semantic */
-    --color-success:                 #34D399;
-    --color-success-light:           rgba(52, 211, 153, 0.15);
-    --color-warning:                 #FBBF24;
-    --color-warning-light:           rgba(251, 191, 36, 0.15);
-    --color-danger:                  #F87171;
-    --color-danger-light:            rgba(248, 113, 113, 0.15);
-    --color-info:                    #60A5FA;
-    --color-info-light:              rgba(96, 165, 250, 0.15);
-
-    /* Dark Grays */
-    --color-gray-50:                 #0F172A;
-    --color-gray-100:                #1E293B;
-    --color-gray-200:                #334155;
-    --color-gray-300:                #475569;
-    --color-gray-400:                #64748B;
-    --color-gray-500:                #94A3B8;
-    --color-gray-600:                #CBD5E1;
-    --color-gray-700:                #E2E8F0;
-    --color-gray-800:                #F1F5F9;
-    --color-gray-900:                #F8FAFC;
-    --color-gray-950:                #FFFFFF;
-
-    /* Dark Separators */
-    --color-separator:               rgba(241, 245, 249, 0.10);
-    --color-separator-opaque:        #334155;
-    --color-border:                  #1E293B;
-    --color-border-hover:            #334155;
-    --color-border-focused:          #3B9EFF;
-
-    /* Dark Fills */
-    --color-fill-primary:            rgba(241, 245, 249, 0.10);
-    --color-fill-secondary:          rgba(241, 245, 249, 0.07);
-    --color-fill-tertiary:           rgba(241, 245, 249, 0.04);
-
-    /* Dark Tag Colors */
-    --color-tag-ai:                  #A78BFA;
-    --color-tag-ai-bg:               rgba(167, 139, 250, 0.15);
-    --color-tag-memory:              #22D3EE;
-    --color-tag-memory-bg:           rgba(34, 211, 238, 0.15);
-    --color-tag-cxl:                 #3B9EFF;
-    --color-tag-cxl-bg:              rgba(59, 158, 255, 0.15);
-    --color-tag-opensource:          #34D399;
-    --color-tag-opensource-bg:       rgba(52, 211, 153, 0.15);
-    --color-tag-performance:         #FBBF24;
-    --color-tag-performance-bg:      rgba(251, 191, 36, 0.15);
-    --color-tag-nvidia:              #A3D977;
-    --color-tag-nvidia-bg:           rgba(163, 217, 119, 0.15);
-
-    /* Dark Shadows — stronger */
-    --shadow-xs:   0 1px 2px rgba(0, 0, 0, 0.30);
-    --shadow-sm:   0 1px 3px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.25);
-    --shadow-md:   0 4px 12px rgba(0, 0, 0, 0.55), 0 2px 4px rgba(0, 0, 0, 0.30);
-    --shadow-lg:   0 8px 24px rgba(0, 0, 0, 0.65), 0 4px 8px rgba(0, 0, 0, 0.38);
-    --shadow-xl:   0 16px 40px rgba(0, 0, 0, 0.72), 0 8px 16px rgba(0, 0, 0, 0.45);
-    --shadow-2xl:  0 24px 64px rgba(0, 0, 0, 0.80), 0 12px 24px rgba(0, 0, 0, 0.55);
-
-    --shadow-accent:  0 8px 32px rgba(59, 158, 255, 0.30);
-    --shadow-teal:    0 8px 32px rgba(34, 211, 238, 0.25);
-    --shadow-indigo:  0 8px 32px rgba(129, 140, 248, 0.25);
-
-    --shadow-focus:   0 0 0 3px rgba(59, 158, 255, 0.35);
-
-  --vibrancy: blur(16px) saturate(200%) brightness(0.80);
+  --color-bg-primary:              #1C1C1C;    /* real site dark body bg */
+  --color-bg-secondary:            #222222;    /* real site dark card/surface bg */
+  --color-bg-tertiary:             #2A2A2A;
+  --color-bg-code:                 #222222;
+  --color-bg-terminal:             #111111;
+  --color-bg-overlay:              rgba(0, 0, 0, 0.80);
+  --color-surface-primary:         #222222;
+  --color-surface-secondary:       rgba(34, 34, 34, 0.95);
+  --color-surface-tertiary:        rgba(42, 42, 42, 0.80);
+  --color-surface-glass:           rgba(28, 28, 28, 0.85);
+  --color-surface-glass-heavy:     rgba(28, 28, 28, 0.96);
+  --color-surface-raised:          #2A2A2A;
+  --color-surface-card:            #222222;
+  --color-surface-inset:           #1C1C1C;
+  --color-label-primary:           #FFFFFF;
+  --color-label-secondary:         #B4AEB6;    /* real site dark text */
+  --color-label-tertiary:          #717171;
+  --color-label-quaternary:        #555555;
+  --color-label-on-accent:         #121212;
+  --color-label-on-dark:           #FFFFFF;
+  --color-accent:                  #FFFFFF;    /* inverted buttons in dark mode */
+  --color-accent-hover:            #F0F0F0;
+  --color-accent-light:            rgba(255, 255, 255, 0.08);
+  --color-accent-medium:           rgba(255, 255, 255, 0.15);
+  --color-link:                    #B4AEB6;    /* real site dark link color */
+  --color-link-hover:              #FFFFFF;
+  --color-note:                    #5BA8F0;
+  --color-note-light:              rgba(91, 168, 240, 0.12);
+  --color-success:                 #40D294;
+  --color-success-light:           rgba(64, 210, 148, 0.15);
+  --color-warning:                 #E05550;
+  --color-warning-light:           rgba(224, 85, 80, 0.15);
+  --color-danger:                  #E05550;
+  --color-danger-light:            rgba(224, 85, 80, 0.15);
+  --color-info:                    #F0B840;
+  --color-info-light:              rgba(240, 184, 64, 0.15);
+  --color-gray-50:                 #1C1C1C;
+  --color-gray-100:                #222222;
+  --color-gray-200:                #2A2A2A;
+  --color-gray-300:                #3E3E3E;    /* real site dark border */
+  --color-gray-400:                #555555;
+  --color-gray-500:                #717171;
+  --color-gray-600:                #888888;
+  --color-gray-700:                #B4AEB6;    /* real site dark body text */
+  --color-gray-800:                #D0D0D0;
+  --color-gray-900:                #F0F0F0;
+  --color-gray-950:                #FFFFFF;
+  --color-separator:               rgba(255, 255, 255, 0.08);
+  --color-separator-opaque:        #3E3E3E;
+  --color-border:                  #3E3E3E;    /* real site dark border */
+  --color-border-hover:            #555555;
+  --color-border-focused:          #FFFFFF;
+  --color-fill-primary:            rgba(255, 255, 255, 0.08);
+  --color-fill-secondary:          rgba(255, 255, 255, 0.05);
+  --color-fill-tertiary:           rgba(255, 255, 255, 0.03);
+  /* Tag colors stay the same in dark — they're already vibrant enough */
+  --shadow-xs:   0 1px 2px rgba(0, 0, 0, 0.40);
+  --shadow-sm:   0 1px 3px rgba(0, 0, 0, 0.55), 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md:   0 4px 12px rgba(0, 0, 0, 0.65), 0 2px 4px rgba(0, 0, 0, 0.40);
+  --shadow-lg:   0 8px 24px rgba(0, 0, 0, 0.75), 0 4px 8px rgba(0, 0, 0, 0.50);
+  --shadow-xl:   0 16px 40px rgba(0, 0, 0, 0.80), 0 8px 16px rgba(0, 0, 0, 0.55);
+  --shadow-2xl:  0 24px 64px rgba(0, 0, 0, 0.85), 0 12px 24px rgba(0, 0, 0, 0.60);
+  --shadow-accent:  0 4px 16px rgba(255, 255, 255, 0.08);
+  --shadow-focus:   0 0 0 3px rgba(255, 255, 255, 0.20);
+  --vibrancy: blur(16px) saturate(180%) brightness(0.75);
 }
 
-/* System dark mode (no JS toggle required) */
+/* System dark mode (no JS toggle required) — same real values as [data-theme="dark"] */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg-primary:              #0A0F1E;
-    --color-bg-secondary:            #0F172A;
-    --color-bg-tertiary:             #1E293B;
-    --color-bg-code:                 #0D1117;
-    --color-bg-terminal:             #0D0D1A;
-    --color-bg-overlay:              rgba(0, 0, 0, 0.75);
-    --color-surface-primary:         #0F172A;
-    --color-surface-secondary:       rgba(30, 41, 59, 0.90);
-    --color-surface-tertiary:        rgba(51, 65, 85, 0.70);
-    --color-surface-glass:           rgba(15, 23, 42, 0.80);
-    --color-surface-glass-heavy:     rgba(15, 23, 42, 0.95);
-    --color-surface-raised:          #1E293B;
-    --color-surface-card:            #1E293B;
-    --color-surface-inset:           #0A0F1E;
-    --color-label-primary:           #F1F5F9;
-    --color-label-secondary:         #94A3B8;
-    --color-label-tertiary:          #475569;
-    --color-label-quaternary:        #334155;
-    --color-label-on-accent:         #FFFFFF;
-    --color-label-on-dark:           #F1F5F9;
-    --color-accent:                  #3B9EFF;
-    --color-accent-hover:            #60B0FF;
-    --color-accent-light:            rgba(59, 158, 255, 0.15);
-    --color-accent-medium:           rgba(59, 158, 255, 0.25);
-    --color-teal:                    #22D3EE;
-    --color-teal-hover:              #67E8F9;
-    --color-teal-light:              rgba(34, 211, 238, 0.15);
-    --color-teal-medium:             rgba(34, 211, 238, 0.25);
-    --color-deep-blue:               #3B82F6;
-    --color-deep-blue-light:         rgba(59, 130, 246, 0.15);
-    --color-indigo:                  #818CF8;
-    --color-indigo-light:            rgba(129, 140, 248, 0.15);
-    --color-success:                 #34D399;
-    --color-success-light:           rgba(52, 211, 153, 0.15);
-    --color-warning:                 #FBBF24;
-    --color-warning-light:           rgba(251, 191, 36, 0.15);
-    --color-danger:                  #F87171;
-    --color-danger-light:            rgba(248, 113, 113, 0.15);
-    --color-info:                    #60A5FA;
-    --color-info-light:              rgba(96, 165, 250, 0.15);
-    --color-gray-50:                 #0F172A;
-    --color-gray-100:                #1E293B;
-    --color-gray-200:                #334155;
-    --color-gray-300:                #475569;
-    --color-gray-400:                #64748B;
-    --color-gray-500:                #94A3B8;
-    --color-gray-600:                #CBD5E1;
-    --color-gray-700:                #E2E8F0;
-    --color-gray-800:                #F1F5F9;
-    --color-gray-900:                #F8FAFC;
+    --color-bg-primary:              #1C1C1C;    /* real site dark body bg */
+    --color-bg-secondary:            #222222;    /* real site dark card/surface bg */
+    --color-bg-tertiary:             #2A2A2A;
+    --color-bg-code:                 #222222;
+    --color-bg-terminal:             #111111;
+    --color-bg-overlay:              rgba(0, 0, 0, 0.80);
+    --color-surface-primary:         #222222;
+    --color-surface-secondary:       rgba(34, 34, 34, 0.95);
+    --color-surface-tertiary:        rgba(42, 42, 42, 0.80);
+    --color-surface-glass:           rgba(28, 28, 28, 0.85);
+    --color-surface-glass-heavy:     rgba(28, 28, 28, 0.96);
+    --color-surface-raised:          #2A2A2A;
+    --color-surface-card:            #222222;
+    --color-surface-inset:           #1C1C1C;
+    --color-label-primary:           #FFFFFF;
+    --color-label-secondary:         #B4AEB6;    /* real site dark text */
+    --color-label-tertiary:          #717171;
+    --color-label-quaternary:        #555555;
+    --color-label-on-accent:         #121212;
+    --color-label-on-dark:           #FFFFFF;
+    --color-accent:                  #FFFFFF;    /* inverted buttons in dark mode */
+    --color-accent-hover:            #F0F0F0;
+    --color-accent-light:            rgba(255, 255, 255, 0.08);
+    --color-accent-medium:           rgba(255, 255, 255, 0.15);
+    --color-link:                    #B4AEB6;    /* real site dark link color */
+    --color-link-hover:              #FFFFFF;
+    --color-note:                    #5BA8F0;
+    --color-note-light:              rgba(91, 168, 240, 0.12);
+    --color-success:                 #40D294;
+    --color-success-light:           rgba(64, 210, 148, 0.15);
+    --color-warning:                 #E05550;
+    --color-warning-light:           rgba(224, 85, 80, 0.15);
+    --color-danger:                  #E05550;
+    --color-danger-light:            rgba(224, 85, 80, 0.15);
+    --color-info:                    #F0B840;
+    --color-info-light:              rgba(240, 184, 64, 0.15);
+    --color-gray-50:                 #1C1C1C;
+    --color-gray-100:                #222222;
+    --color-gray-200:                #2A2A2A;
+    --color-gray-300:                #3E3E3E;    /* real site dark border */
+    --color-gray-400:                #555555;
+    --color-gray-500:                #717171;
+    --color-gray-600:                #888888;
+    --color-gray-700:                #B4AEB6;    /* real site dark body text */
+    --color-gray-800:                #D0D0D0;
+    --color-gray-900:                #F0F0F0;
     --color-gray-950:                #FFFFFF;
-    --color-separator:               rgba(241, 245, 249, 0.10);
-    --color-separator-opaque:        #334155;
-    --color-border:                  #1E293B;
-    --color-border-hover:            #334155;
-    --color-border-focused:          #3B9EFF;
-    --color-fill-primary:            rgba(241, 245, 249, 0.10);
-    --color-fill-secondary:          rgba(241, 245, 249, 0.07);
-    --color-fill-tertiary:           rgba(241, 245, 249, 0.04);
-    --color-tag-ai:                  #A78BFA;
-    --color-tag-ai-bg:               rgba(167, 139, 250, 0.15);
-    --color-tag-memory:              #22D3EE;
-    --color-tag-memory-bg:           rgba(34, 211, 238, 0.15);
-    --color-tag-cxl:                 #3B9EFF;
-    --color-tag-cxl-bg:              rgba(59, 158, 255, 0.15);
-    --color-tag-opensource:          #34D399;
-    --color-tag-opensource-bg:       rgba(52, 211, 153, 0.15);
-    --color-tag-performance:         #FBBF24;
-    --color-tag-performance-bg:      rgba(251, 191, 36, 0.15);
-    --color-tag-nvidia:              #A3D977;
-    --color-tag-nvidia-bg:           rgba(163, 217, 119, 0.15);
-    --shadow-xs:     0 1px 2px rgba(0, 0, 0, 0.30);
-    --shadow-sm:     0 1px 3px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.25);
-    --shadow-md:     0 4px 12px rgba(0, 0, 0, 0.55), 0 2px 4px rgba(0, 0, 0, 0.30);
-    --shadow-lg:     0 8px 24px rgba(0, 0, 0, 0.65), 0 4px 8px rgba(0, 0, 0, 0.38);
-    --shadow-xl:     0 16px 40px rgba(0, 0, 0, 0.72), 0 8px 16px rgba(0, 0, 0, 0.45);
-    --shadow-2xl:    0 24px 64px rgba(0, 0, 0, 0.80), 0 12px 24px rgba(0, 0, 0, 0.55);
-    --shadow-accent: 0 8px 32px rgba(59, 158, 255, 0.30);
-    --shadow-teal:   0 8px 32px rgba(34, 211, 238, 0.25);
-    --shadow-indigo: 0 8px 32px rgba(129, 140, 248, 0.25);
-    --shadow-focus:  0 0 0 3px rgba(59, 158, 255, 0.35);
-    --vibrancy: blur(16px) saturate(200%) brightness(0.80);
+    --color-separator:               rgba(255, 255, 255, 0.08);
+    --color-separator-opaque:        #3E3E3E;
+    --color-border:                  #3E3E3E;    /* real site dark border */
+    --color-border-hover:            #555555;
+    --color-border-focused:          #FFFFFF;
+    --color-fill-primary:            rgba(255, 255, 255, 0.08);
+    --color-fill-secondary:          rgba(255, 255, 255, 0.05);
+    --color-fill-tertiary:           rgba(255, 255, 255, 0.03);
+    /* Tag colors stay the same in dark — they're already vibrant enough */
+    --shadow-xs:   0 1px 2px rgba(0, 0, 0, 0.40);
+    --shadow-sm:   0 1px 3px rgba(0, 0, 0, 0.55), 0 1px 2px rgba(0, 0, 0, 0.35);
+    --shadow-md:   0 4px 12px rgba(0, 0, 0, 0.65), 0 2px 4px rgba(0, 0, 0, 0.40);
+    --shadow-lg:   0 8px 24px rgba(0, 0, 0, 0.75), 0 4px 8px rgba(0, 0, 0, 0.50);
+    --shadow-xl:   0 16px 40px rgba(0, 0, 0, 0.80), 0 8px 16px rgba(0, 0, 0, 0.55);
+    --shadow-2xl:  0 24px 64px rgba(0, 0, 0, 0.85), 0 12px 24px rgba(0, 0, 0, 0.60);
+    --shadow-accent:  0 4px 16px rgba(255, 255, 255, 0.08);
+    --shadow-focus:   0 0 0 3px rgba(255, 255, 255, 0.20);
+    --vibrancy: blur(16px) saturate(180%) brightness(0.75);
   }
 }
