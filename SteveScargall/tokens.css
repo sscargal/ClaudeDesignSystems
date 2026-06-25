@@ -1,0 +1,525 @@
+/* =============================================================================
+   Steve Scargall Design System — Design Tokens
+   Version 1.0.0
+   Author/Brand: Steve Scargall — Senior Technology Executive, Author
+   Topics: AI, Memory Computing, CXL, PMDK, NVIDIA, Open Source
+   Aesthetic: Clean, professional, developer-forward. Dark mode preferred.
+   Primary palette: Deep navy backgrounds, blue/teal accents, warm off-white text.
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     COLOR SYSTEM — Light Mode
+     Inspired by a professional tech author/speaker brand:
+     - Background: Clean off-white, not pure white (warm paper feel)
+     - Text: Deep charcoal for readability
+     - Accent: Electric blue (#0070F3 family) + teal highlights
+     - Code: Dark surface (#0D1117 GitHub-style)
+     --------------------------------------------------------------------------- */
+
+  /* Base Backgrounds */
+  --color-bg-primary:              #FAFBFC;
+  --color-bg-secondary:            #FFFFFF;
+  --color-bg-tertiary:             #F3F4F6;
+  --color-bg-code:                 #0D1117;
+  --color-bg-terminal:             #1A1A2E;
+  --color-bg-overlay:              rgba(10, 15, 30, 0.60);
+
+  /* Surface Colors */
+  --color-surface-primary:         #FFFFFF;
+  --color-surface-secondary:       rgba(255, 255, 255, 0.80);
+  --color-surface-tertiary:        rgba(255, 255, 255, 0.60);
+  --color-surface-glass:           rgba(255, 255, 255, 0.72);
+  --color-surface-glass-heavy:     rgba(255, 255, 255, 0.92);
+  --color-surface-raised:          #FFFFFF;
+  --color-surface-card:            #FFFFFF;
+  --color-surface-inset:           #F3F4F6;
+
+  /* Label / Text Colors */
+  --color-label-primary:           #0F172A;
+  --color-label-secondary:         #475569;
+  --color-label-tertiary:          #94A3B8;
+  --color-label-quaternary:        #CBD5E1;
+  --color-label-on-accent:         #FFFFFF;
+  --color-label-on-dark:           #F1F5F9;
+
+  /* Brand Accent — Electric Blue */
+  --color-accent:                  #0070F3;
+  --color-accent-hover:            #005CC5;
+  --color-accent-light:            rgba(0, 112, 243, 0.10);
+  --color-accent-medium:           rgba(0, 112, 243, 0.20);
+
+  /* Teal — Secondary Accent (memory/compute topics) */
+  --color-teal:                    #06B6D4;
+  --color-teal-hover:              #0891B2;
+  --color-teal-light:              rgba(6, 182, 212, 0.12);
+  --color-teal-medium:             rgba(6, 182, 212, 0.24);
+
+  /* Deep Blue — Tertiary / Hero gradient anchor */
+  --color-deep-blue:               #1E3A8A;
+  --color-deep-blue-light:         rgba(30, 58, 138, 0.08);
+
+  /* Indigo — Code / technical highlights */
+  --color-indigo:                  #6366F1;
+  --color-indigo-light:            rgba(99, 102, 241, 0.12);
+
+  /* Semantic Status */
+  --color-success:                 #10B981;
+  --color-success-light:           rgba(16, 185, 129, 0.12);
+  --color-warning:                 #F59E0B;
+  --color-warning-light:           rgba(245, 158, 11, 0.12);
+  --color-danger:                  #EF4444;
+  --color-danger-light:            rgba(239, 68, 68, 0.12);
+  --color-info:                    #3B82F6;
+  --color-info-light:              rgba(59, 130, 246, 0.12);
+
+  /* Gray Scale */
+  --color-gray-50:                 #F8FAFC;
+  --color-gray-100:                #F1F5F9;
+  --color-gray-200:                #E2E8F0;
+  --color-gray-300:                #CBD5E1;
+  --color-gray-400:                #94A3B8;
+  --color-gray-500:                #64748B;
+  --color-gray-600:                #475569;
+  --color-gray-700:                #334155;
+  --color-gray-800:                #1E293B;
+  --color-gray-900:                #0F172A;
+  --color-gray-950:                #020617;
+
+  /* Separator & Border */
+  --color-separator:               rgba(15, 23, 42, 0.10);
+  --color-separator-opaque:        #E2E8F0;
+  --color-border:                  #E2E8F0;
+  --color-border-hover:            #CBD5E1;
+  --color-border-focused:          #0070F3;
+
+  /* Fill / Interactive Surface */
+  --color-fill-primary:            rgba(15, 23, 42, 0.08);
+  --color-fill-secondary:          rgba(15, 23, 42, 0.05);
+  --color-fill-tertiary:           rgba(15, 23, 42, 0.03);
+
+  /* Category tag colors — topic areas */
+  --color-tag-ai:                  #7C3AED;
+  --color-tag-ai-bg:               rgba(124, 58, 237, 0.10);
+  --color-tag-memory:              #0891B2;
+  --color-tag-memory-bg:           rgba(8, 145, 178, 0.10);
+  --color-tag-cxl:                 #0070F3;
+  --color-tag-cxl-bg:              rgba(0, 112, 243, 0.10);
+  --color-tag-opensource:          #10B981;
+  --color-tag-opensource-bg:       rgba(16, 185, 129, 0.10);
+  --color-tag-performance:         #F59E0B;
+  --color-tag-performance-bg:      rgba(245, 158, 11, 0.10);
+  --color-tag-nvidia:              #76B900;
+  --color-tag-nvidia-bg:           rgba(118, 185, 0, 0.10);
+
+  /* ---------------------------------------------------------------------------
+     TYPOGRAPHY
+     Inter is Steve Scargall's likely web font (professional tech ecosystem).
+     JetBrains Mono for code blocks.
+     System fallbacks ensure zero CDN dependency.
+     --------------------------------------------------------------------------- */
+
+  --font-display:  "Inter", "SF Pro Display", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-body:     "Inter", "SF Pro Text", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono:     "JetBrains Mono", "Fira Code", "Cascadia Code", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* Type Scale — calibrated for a technical blog */
+  --text-xs:    11px;
+  --text-sm:    13px;
+  --text-base:  16px;
+  --text-md:    17px;
+  --text-lg:    19px;
+  --text-xl:    22px;
+  --text-2xl:   26px;
+  --text-3xl:   32px;
+  --text-4xl:   40px;
+  --text-5xl:   48px;
+  --text-6xl:   60px;
+  --text-7xl:   72px;
+
+  /* Font Weights */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-extrabold: 800;
+  --weight-black:    900;
+
+  /* Line Heights */
+  --leading-none:     1.0;
+  --leading-tight:    1.15;
+  --leading-snug:     1.30;
+  --leading-normal:   1.50;
+  --leading-relaxed:  1.65;
+  --leading-loose:    1.80;
+  --leading-article:  1.75;   /* Long-form blog reading comfort */
+  --leading-code:     1.60;
+
+  /* Letter Spacing */
+  --tracking-tight:   -0.025em;
+  --tracking-snug:    -0.015em;
+  --tracking-normal:   0em;
+  --tracking-wide:     0.025em;
+  --tracking-wider:    0.05em;
+  --tracking-caps:     0.08em;
+
+  /* ---------------------------------------------------------------------------
+     SPACING — 4px Base Grid
+     --------------------------------------------------------------------------- */
+
+  --space-0:    0px;
+  --space-1:    4px;
+  --space-2:    8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-7:   28px;
+  --space-8:   32px;
+  --space-9:   36px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-14:  56px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-28: 112px;
+  --space-32: 128px;
+  --space-40: 160px;
+
+  /* ---------------------------------------------------------------------------
+     BORDER RADIUS
+     Developer/tech aesthetic: moderate radius — not too rounded, not square.
+     --------------------------------------------------------------------------- */
+
+  --radius-none:   0px;
+  --radius-xs:     2px;
+  --radius-sm:     4px;
+  --radius-md:     6px;
+  --radius-lg:     8px;
+  --radius-xl:    12px;
+  --radius-2xl:   16px;
+  --radius-3xl:   20px;
+  --radius-4xl:   24px;
+  --radius-pill:  9999px;
+
+  /* Semantic Radius */
+  --radius-button:  var(--radius-lg);
+  --radius-card:    var(--radius-xl);
+  --radius-input:   var(--radius-lg);
+  --radius-modal:   var(--radius-2xl);
+  --radius-badge:   var(--radius-pill);
+  --radius-code:    var(--radius-md);
+  --radius-tag:     var(--radius-sm);
+  --radius-avatar:  var(--radius-pill);
+
+  /* ---------------------------------------------------------------------------
+     SHADOWS — Subtle, professional. Not decorative.
+     --------------------------------------------------------------------------- */
+
+  --shadow-xs:   0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm:   0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md:   0 4px 12px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-lg:   0 8px 24px rgba(0, 0, 0, 0.09), 0 4px 8px rgba(0, 0, 0, 0.05);
+  --shadow-xl:   0 16px 40px rgba(0, 0, 0, 0.11), 0 8px 16px rgba(0, 0, 0, 0.06);
+  --shadow-2xl:  0 24px 64px rgba(0, 0, 0, 0.14), 0 12px 24px rgba(0, 0, 0, 0.08);
+
+  /* Accent Glow — for featured content */
+  --shadow-accent:  0 8px 32px rgba(0, 112, 243, 0.22);
+  --shadow-teal:    0 8px 32px rgba(6, 182, 212, 0.22);
+  --shadow-indigo:  0 8px 32px rgba(99, 102, 241, 0.22);
+
+  --shadow-inset:   inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-focus:   0 0 0 3px rgba(0, 112, 243, 0.25);
+
+  /* ---------------------------------------------------------------------------
+     BLUR / BACKDROP FILTER
+     --------------------------------------------------------------------------- */
+
+  --blur-xs:  blur(4px);
+  --blur-sm:  blur(8px);
+  --blur-md:  blur(16px);
+  --blur-lg:  blur(24px);
+  --blur-xl:  blur(40px);
+
+  --vibrancy: blur(16px) saturate(180%) brightness(1.02);
+
+  /* ---------------------------------------------------------------------------
+     MOTION — Professional, not flashy
+     --------------------------------------------------------------------------- */
+
+  --duration-instant:    50ms;
+  --duration-fast:      150ms;
+  --duration-normal:    200ms;
+  --duration-moderate:  300ms;
+  --duration-slow:      400ms;
+  --duration-deliberate: 600ms;
+
+  --ease-standard:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-decelerate: cubic-bezier(0.00, 0.00, 0.20, 1.00);
+  --ease-accelerate: cubic-bezier(0.40, 0.00, 1.00, 1.00);
+  --ease-spring:     cubic-bezier(0.34, 1.40, 0.64, 1.00);
+  --ease-out-back:   cubic-bezier(0.175, 0.885, 0.320, 1.275);
+
+  --transition-fast:     all var(--duration-fast) var(--ease-standard);
+  --transition-normal:   all var(--duration-normal) var(--ease-standard);
+  --transition-moderate: all var(--duration-moderate) var(--ease-standard);
+  --transition-spring:   all var(--duration-moderate) var(--ease-spring);
+
+  /* ---------------------------------------------------------------------------
+     BORDERS
+     --------------------------------------------------------------------------- */
+
+  --border-default:    1px solid var(--color-border);
+  --border-strong:     1px solid var(--color-border-hover);
+  --border-focused:    2px solid var(--color-accent);
+  --border-separator:  1px solid var(--color-separator);
+
+  /* ---------------------------------------------------------------------------
+     Z-INDEX
+     --------------------------------------------------------------------------- */
+
+  --z-base:      0;
+  --z-raised:   10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-toast:    500;
+  --z-tooltip:  600;
+
+  /* ---------------------------------------------------------------------------
+     LAYOUT
+     --------------------------------------------------------------------------- */
+
+  --max-width-content:    720px;    /* Article reading width */
+  --max-width-site:       960px;    /* Standard site width */
+  --max-width-wide:      1200px;    /* Wide layout */
+  --max-width-full:      1440px;    /* Full bleed */
+
+  --nav-height:           64px;
+  --sidebar-width:       260px;
+  --toc-width:           220px;
+
+  /* Component heights */
+  --btn-height-sm:    32px;
+  --btn-height-md:    42px;
+  --btn-height-lg:    52px;
+  --input-height-sm:  36px;
+  --input-height-md:  42px;
+  --input-height-lg:  52px;
+}
+
+/* =============================================================================
+   DARK MODE — Deep navy/slate preferred aesthetic
+   Background: #0A0F1E deep space navy
+   Surface: #0F172A slate-900 level
+   Cards: #1E293B slate-800
+   Text: #F1F5F9 (primary), #94A3B8 (secondary)
+   Accent: #3B9EFF (brightened blue for dark backgrounds)
+   ============================================================================= */
+
+/* Explicit dark theme (JS toggle via data-theme attribute) */
+[data-theme="dark"] :root,
+[data-theme="dark"]:root {
+  /* Dark Backgrounds */
+  --color-bg-primary:              #0A0F1E;
+    --color-bg-secondary:            #0F172A;
+    --color-bg-tertiary:             #1E293B;
+    --color-bg-code:                 #0D1117;
+    --color-bg-terminal:             #0D0D1A;
+    --color-bg-overlay:              rgba(0, 0, 0, 0.75);
+
+    /* Dark Surfaces */
+    --color-surface-primary:         #0F172A;
+    --color-surface-secondary:       rgba(30, 41, 59, 0.90);
+    --color-surface-tertiary:        rgba(51, 65, 85, 0.70);
+    --color-surface-glass:           rgba(15, 23, 42, 0.80);
+    --color-surface-glass-heavy:     rgba(15, 23, 42, 0.95);
+    --color-surface-raised:          #1E293B;
+    --color-surface-card:            #1E293B;
+    --color-surface-inset:           #0A0F1E;
+
+    /* Dark Labels */
+    --color-label-primary:           #F1F5F9;
+    --color-label-secondary:         #94A3B8;
+    --color-label-tertiary:          #475569;
+    --color-label-quaternary:        #334155;
+    --color-label-on-accent:         #FFFFFF;
+    --color-label-on-dark:           #F1F5F9;
+
+    /* Dark Accent — brightened for contrast on dark bg */
+    --color-accent:                  #3B9EFF;
+    --color-accent-hover:            #60B0FF;
+    --color-accent-light:            rgba(59, 158, 255, 0.15);
+    --color-accent-medium:           rgba(59, 158, 255, 0.25);
+
+    /* Dark Teal */
+    --color-teal:                    #22D3EE;
+    --color-teal-hover:              #67E8F9;
+    --color-teal-light:              rgba(34, 211, 238, 0.15);
+    --color-teal-medium:             rgba(34, 211, 238, 0.25);
+
+    /* Dark Deep Blue */
+    --color-deep-blue:               #3B82F6;
+    --color-deep-blue-light:         rgba(59, 130, 246, 0.15);
+
+    /* Dark Indigo */
+    --color-indigo:                  #818CF8;
+    --color-indigo-light:            rgba(129, 140, 248, 0.15);
+
+    /* Dark Semantic */
+    --color-success:                 #34D399;
+    --color-success-light:           rgba(52, 211, 153, 0.15);
+    --color-warning:                 #FBBF24;
+    --color-warning-light:           rgba(251, 191, 36, 0.15);
+    --color-danger:                  #F87171;
+    --color-danger-light:            rgba(248, 113, 113, 0.15);
+    --color-info:                    #60A5FA;
+    --color-info-light:              rgba(96, 165, 250, 0.15);
+
+    /* Dark Grays */
+    --color-gray-50:                 #0F172A;
+    --color-gray-100:                #1E293B;
+    --color-gray-200:                #334155;
+    --color-gray-300:                #475569;
+    --color-gray-400:                #64748B;
+    --color-gray-500:                #94A3B8;
+    --color-gray-600:                #CBD5E1;
+    --color-gray-700:                #E2E8F0;
+    --color-gray-800:                #F1F5F9;
+    --color-gray-900:                #F8FAFC;
+    --color-gray-950:                #FFFFFF;
+
+    /* Dark Separators */
+    --color-separator:               rgba(241, 245, 249, 0.10);
+    --color-separator-opaque:        #334155;
+    --color-border:                  #1E293B;
+    --color-border-hover:            #334155;
+    --color-border-focused:          #3B9EFF;
+
+    /* Dark Fills */
+    --color-fill-primary:            rgba(241, 245, 249, 0.10);
+    --color-fill-secondary:          rgba(241, 245, 249, 0.07);
+    --color-fill-tertiary:           rgba(241, 245, 249, 0.04);
+
+    /* Dark Tag Colors */
+    --color-tag-ai:                  #A78BFA;
+    --color-tag-ai-bg:               rgba(167, 139, 250, 0.15);
+    --color-tag-memory:              #22D3EE;
+    --color-tag-memory-bg:           rgba(34, 211, 238, 0.15);
+    --color-tag-cxl:                 #3B9EFF;
+    --color-tag-cxl-bg:              rgba(59, 158, 255, 0.15);
+    --color-tag-opensource:          #34D399;
+    --color-tag-opensource-bg:       rgba(52, 211, 153, 0.15);
+    --color-tag-performance:         #FBBF24;
+    --color-tag-performance-bg:      rgba(251, 191, 36, 0.15);
+    --color-tag-nvidia:              #A3D977;
+    --color-tag-nvidia-bg:           rgba(163, 217, 119, 0.15);
+
+    /* Dark Shadows — stronger */
+    --shadow-xs:   0 1px 2px rgba(0, 0, 0, 0.30);
+    --shadow-sm:   0 1px 3px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.25);
+    --shadow-md:   0 4px 12px rgba(0, 0, 0, 0.55), 0 2px 4px rgba(0, 0, 0, 0.30);
+    --shadow-lg:   0 8px 24px rgba(0, 0, 0, 0.65), 0 4px 8px rgba(0, 0, 0, 0.38);
+    --shadow-xl:   0 16px 40px rgba(0, 0, 0, 0.72), 0 8px 16px rgba(0, 0, 0, 0.45);
+    --shadow-2xl:  0 24px 64px rgba(0, 0, 0, 0.80), 0 12px 24px rgba(0, 0, 0, 0.55);
+
+    --shadow-accent:  0 8px 32px rgba(59, 158, 255, 0.30);
+    --shadow-teal:    0 8px 32px rgba(34, 211, 238, 0.25);
+    --shadow-indigo:  0 8px 32px rgba(129, 140, 248, 0.25);
+
+    --shadow-focus:   0 0 0 3px rgba(59, 158, 255, 0.35);
+
+  --vibrancy: blur(16px) saturate(200%) brightness(0.80);
+}
+
+/* System dark mode (no JS toggle required) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg-primary:              #0A0F1E;
+    --color-bg-secondary:            #0F172A;
+    --color-bg-tertiary:             #1E293B;
+    --color-bg-code:                 #0D1117;
+    --color-bg-terminal:             #0D0D1A;
+    --color-bg-overlay:              rgba(0, 0, 0, 0.75);
+    --color-surface-primary:         #0F172A;
+    --color-surface-secondary:       rgba(30, 41, 59, 0.90);
+    --color-surface-tertiary:        rgba(51, 65, 85, 0.70);
+    --color-surface-glass:           rgba(15, 23, 42, 0.80);
+    --color-surface-glass-heavy:     rgba(15, 23, 42, 0.95);
+    --color-surface-raised:          #1E293B;
+    --color-surface-card:            #1E293B;
+    --color-surface-inset:           #0A0F1E;
+    --color-label-primary:           #F1F5F9;
+    --color-label-secondary:         #94A3B8;
+    --color-label-tertiary:          #475569;
+    --color-label-quaternary:        #334155;
+    --color-label-on-accent:         #FFFFFF;
+    --color-label-on-dark:           #F1F5F9;
+    --color-accent:                  #3B9EFF;
+    --color-accent-hover:            #60B0FF;
+    --color-accent-light:            rgba(59, 158, 255, 0.15);
+    --color-accent-medium:           rgba(59, 158, 255, 0.25);
+    --color-teal:                    #22D3EE;
+    --color-teal-hover:              #67E8F9;
+    --color-teal-light:              rgba(34, 211, 238, 0.15);
+    --color-teal-medium:             rgba(34, 211, 238, 0.25);
+    --color-deep-blue:               #3B82F6;
+    --color-deep-blue-light:         rgba(59, 130, 246, 0.15);
+    --color-indigo:                  #818CF8;
+    --color-indigo-light:            rgba(129, 140, 248, 0.15);
+    --color-success:                 #34D399;
+    --color-success-light:           rgba(52, 211, 153, 0.15);
+    --color-warning:                 #FBBF24;
+    --color-warning-light:           rgba(251, 191, 36, 0.15);
+    --color-danger:                  #F87171;
+    --color-danger-light:            rgba(248, 113, 113, 0.15);
+    --color-info:                    #60A5FA;
+    --color-info-light:              rgba(96, 165, 250, 0.15);
+    --color-gray-50:                 #0F172A;
+    --color-gray-100:                #1E293B;
+    --color-gray-200:                #334155;
+    --color-gray-300:                #475569;
+    --color-gray-400:                #64748B;
+    --color-gray-500:                #94A3B8;
+    --color-gray-600:                #CBD5E1;
+    --color-gray-700:                #E2E8F0;
+    --color-gray-800:                #F1F5F9;
+    --color-gray-900:                #F8FAFC;
+    --color-gray-950:                #FFFFFF;
+    --color-separator:               rgba(241, 245, 249, 0.10);
+    --color-separator-opaque:        #334155;
+    --color-border:                  #1E293B;
+    --color-border-hover:            #334155;
+    --color-border-focused:          #3B9EFF;
+    --color-fill-primary:            rgba(241, 245, 249, 0.10);
+    --color-fill-secondary:          rgba(241, 245, 249, 0.07);
+    --color-fill-tertiary:           rgba(241, 245, 249, 0.04);
+    --color-tag-ai:                  #A78BFA;
+    --color-tag-ai-bg:               rgba(167, 139, 250, 0.15);
+    --color-tag-memory:              #22D3EE;
+    --color-tag-memory-bg:           rgba(34, 211, 238, 0.15);
+    --color-tag-cxl:                 #3B9EFF;
+    --color-tag-cxl-bg:              rgba(59, 158, 255, 0.15);
+    --color-tag-opensource:          #34D399;
+    --color-tag-opensource-bg:       rgba(52, 211, 153, 0.15);
+    --color-tag-performance:         #FBBF24;
+    --color-tag-performance-bg:      rgba(251, 191, 36, 0.15);
+    --color-tag-nvidia:              #A3D977;
+    --color-tag-nvidia-bg:           rgba(163, 217, 119, 0.15);
+    --shadow-xs:     0 1px 2px rgba(0, 0, 0, 0.30);
+    --shadow-sm:     0 1px 3px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.25);
+    --shadow-md:     0 4px 12px rgba(0, 0, 0, 0.55), 0 2px 4px rgba(0, 0, 0, 0.30);
+    --shadow-lg:     0 8px 24px rgba(0, 0, 0, 0.65), 0 4px 8px rgba(0, 0, 0, 0.38);
+    --shadow-xl:     0 16px 40px rgba(0, 0, 0, 0.72), 0 8px 16px rgba(0, 0, 0, 0.45);
+    --shadow-2xl:    0 24px 64px rgba(0, 0, 0, 0.80), 0 12px 24px rgba(0, 0, 0, 0.55);
+    --shadow-accent: 0 8px 32px rgba(59, 158, 255, 0.30);
+    --shadow-teal:   0 8px 32px rgba(34, 211, 238, 0.25);
+    --shadow-indigo: 0 8px 32px rgba(129, 140, 248, 0.25);
+    --shadow-focus:  0 0 0 3px rgba(59, 158, 255, 0.35);
+    --vibrancy: blur(16px) saturate(200%) brightness(0.80);
+  }
+}

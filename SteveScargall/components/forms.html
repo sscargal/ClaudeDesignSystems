@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms — Steve Scargall Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .showcase-page { padding: var(--space-12) 0; }
+    .showcase-section { margin-bottom: var(--space-16); }
+    .showcase-label {
+      font-size: var(--text-xs); font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-caps); text-transform: uppercase;
+      color: var(--color-label-tertiary); margin-bottom: var(--space-6);
+      padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-separator);
+    }
+    .form-demo-wrapper {
+      background: var(--color-surface-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      max-width: 540px;
+    }
+    .form-demo-title {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      margin: 0 0 var(--space-6);
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="site-nav-inner">
+      <a href="../index.html" class="brand-logo">
+        <svg class="brand-logo-mark" viewBox="0 0 36 36" fill="none">
+          <rect width="36" height="36" rx="9" fill="url(#f-logo)"/>
+          <text x="50%" y="54%" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800" fill="white" text-anchor="middle" dominant-baseline="middle" letter-spacing="-0.5">SS</text>
+          <defs><linearGradient id="f-logo" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#1E3A8A"/><stop offset="55%" stop-color="#0070F3"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient></defs>
+        </svg>
+        <span class="brand-logo-name">Design System</span>
+      </a>
+      <ul class="site-nav-links">
+        <li><a href="../index.html" class="site-nav-link">Overview</a></li>
+        <li><a href="buttons.html" class="site-nav-link">Buttons</a></li>
+        <li><a href="cards.html" class="site-nav-link">Cards</a></li>
+        <li><a href="forms.html" class="site-nav-link active">Forms</a></li>
+        <li><a href="navigation.html" class="site-nav-link">Navigation</a></li>
+        <li><a href="modals.html" class="site-nav-link">Modals</a></li>
+      </ul>
+      <div class="site-nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="showcase-page">
+    <div class="container-wide">
+      <h1 style="margin-bottom: var(--space-2);">Forms</h1>
+      <p class="lead" style="margin-bottom: var(--space-10);">Form components — inputs, textareas, selects, checkboxes, and composite forms.</p>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: start;">
+
+        <!-- Contact Form -->
+        <section class="showcase-section" style="margin-bottom:0;">
+          <p class="showcase-label">Contact Form</p>
+          <div class="form-demo-wrapper">
+            <h2 class="form-demo-title">Get in Touch</h2>
+            <form novalidate onsubmit="return false;">
+              <fieldset class="form-fieldset" style="border:none; padding:0; gap: var(--space-5);">
+                <div class="form-group">
+                  <label class="form-label" for="name">Full Name</label>
+                  <input type="text" id="name" class="form-input" placeholder="Jane Smith" autocomplete="name">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="email">Email Address</label>
+                  <input type="email" id="email" class="form-input" placeholder="jane@example.com" autocomplete="email">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="company">Company <span class="form-label-optional">(optional)</span></label>
+                  <input type="text" id="company" class="form-input" placeholder="Your company or affiliation">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="inquiry">Inquiry Type</label>
+                  <select id="inquiry" class="form-input form-select">
+                    <option value="">Select a topic…</option>
+                    <option>Speaking Engagement</option>
+                    <option>Book / Writing Collaboration</option>
+                    <option>Technical Consulting</option>
+                    <option>Press / Media</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="message">Message</label>
+                  <textarea id="message" class="form-input form-textarea" placeholder="Tell me about your project or inquiry…" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                  <label class="form-check">
+                    <input type="checkbox" class="form-check-input">
+                    <span class="form-check-label">I agree to receive follow-up emails about my inquiry.</span>
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Send Message →</button>
+              </fieldset>
+            </form>
+          </div>
+        </section>
+
+        <!-- Right column: smaller forms -->
+        <div style="display: flex; flex-direction: column; gap: var(--space-8);">
+
+          <!-- Newsletter signup -->
+          <section class="showcase-section" style="margin-bottom:0;">
+            <p class="showcase-label">Newsletter Signup</p>
+            <div class="form-demo-wrapper">
+              <h2 class="form-demo-title">Join the Newsletter</h2>
+              <p style="color: var(--color-label-secondary); margin-bottom: var(--space-5); font-size: var(--text-sm);">
+                Twice-monthly deep dives on memory computing, CXL, and AI infrastructure.
+              </p>
+              <form novalidate onsubmit="return false;">
+                <div class="form-group" style="margin-bottom: var(--space-3);">
+                  <label class="form-label" for="nl-email">Email Address</label>
+                  <input type="email" id="nl-email" class="form-input" placeholder="you@example.com" autocomplete="email">
+                </div>
+                <div class="form-group" style="margin-bottom: var(--space-4);">
+                  <label class="form-check">
+                    <input type="checkbox" class="form-check-input" checked>
+                    <span class="form-check-label">Include weekly reading recommendations</span>
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Subscribe Free →</button>
+                <p class="form-helper" style="margin-top: var(--space-3); text-align: center;">No spam. Unsubscribe anytime.</p>
+              </form>
+            </div>
+          </section>
+
+          <!-- Search -->
+          <section class="showcase-section" style="margin-bottom:0;">
+            <p class="showcase-label">Search</p>
+            <div class="form-demo-wrapper">
+              <h2 class="form-demo-title">Search Articles</h2>
+              <form role="search" onsubmit="return false;">
+                <div class="form-group" style="margin-bottom: var(--space-3);">
+                  <div class="search-form">
+                    <span class="search-icon" aria-hidden="true">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    </span>
+                    <input type="search" id="search" class="form-input" placeholder="CXL latency, pmem, NVIDIA…" autocomplete="off" aria-label="Search articles">
+                  </div>
+                </div>
+                <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
+                  <span style="font-size: var(--text-xs); color: var(--color-label-tertiary); align-self: center; white-space: nowrap;">Suggested:</span>
+                  <a href="#" class="tag tag--link">CXL</a>
+                  <a href="#" class="tag tag--link">PMDK</a>
+                  <a href="#" class="tag tag--link">LLM training</a>
+                  <a href="#" class="tag tag--link">benchmarks</a>
+                </div>
+              </form>
+            </div>
+          </section>
+
+          <!-- Form States -->
+          <section class="showcase-section" style="margin-bottom:0;">
+            <p class="showcase-label">Input States</p>
+            <div class="form-demo-wrapper">
+              <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+                <div class="form-group">
+                  <label class="form-label" for="s-default">Default</label>
+                  <input type="email" id="s-default" class="form-input" placeholder="you@example.com">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="s-filled">Filled</label>
+                  <input type="email" id="s-filled" class="form-input" value="steve@stevescargall.com">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="s-error">Error</label>
+                  <input type="email" id="s-error" class="form-input error" value="not-an-email" aria-invalid="true" aria-describedby="s-error-help">
+                  <p id="s-error-help" class="form-helper error">Please enter a valid email address.</p>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="s-success">Success</label>
+                  <input type="email" id="s-success" class="form-input success" value="steve@stevescargall.com">
+                  <p class="form-helper success">Looks good!</p>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Disabled</label>
+                  <input type="email" class="form-input" disabled placeholder="Not available right now">
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+      <!-- TEXTAREA + CHECKBOX DEMO -->
+      <section style="margin-top: var(--space-12);">
+        <p class="showcase-label">Textarea &amp; Checkboxes</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); max-width: 900px;">
+          <div class="form-group">
+            <label class="form-label" for="ta-demo">Article Notes</label>
+            <textarea id="ta-demo" class="form-input form-textarea" rows="6" placeholder="Your thoughts on this article…"></textarea>
+            <p class="form-helper">Supports Markdown formatting.</p>
+          </div>
+          <div>
+            <div class="form-group" style="margin-bottom: var(--space-4);">
+              <p class="form-label" style="margin-bottom: var(--space-3);">Subscribe to topics</p>
+              <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+                <label class="form-check"><input type="checkbox" class="form-check-input" checked><span class="form-check-label">Memory Computing &amp; CXL</span></label>
+                <label class="form-check"><input type="checkbox" class="form-check-input" checked><span class="form-check-label">AI Infrastructure</span></label>
+                <label class="form-check"><input type="checkbox" class="form-check-input"><span class="form-check-label">Open Source Projects</span></label>
+                <label class="form-check"><input type="checkbox" class="form-check-input"><span class="form-check-label">Speaking &amp; Events</span></label>
+                <label class="form-check"><input type="checkbox" class="form-check-input"><span class="form-check-label">Book Updates</span></label>
+              </div>
+            </div>
+            <div class="form-group">
+              <p class="form-label" style="margin-bottom: var(--space-3);">Preferred format</p>
+              <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+                <label class="form-check"><input type="radio" name="format" class="form-check-input" checked><span class="form-check-label">HTML email (formatted)</span></label>
+                <label class="form-check"><input type="radio" name="format" class="form-check-input"><span class="form-check-label">Plain text</span></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    const t = document.getElementById('theme-toggle');
+    const h = document.documentElement;
+    const setTheme = (s) => { h.dataset.theme = s; t.textContent = s === 'dark' ? '☀️' : '🌙'; localStorage.setItem('ss-theme', s); };
+    const stored = localStorage.getItem('ss-theme');
+    setTheme(stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+    t.addEventListener('click', () => setTheme(h.dataset.theme === 'dark' ? 'light' : 'dark'));
+  </script>
+</body>
+</html>

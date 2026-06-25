@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cards — Steve Scargall Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    .showcase-page { padding: var(--space-12) 0; }
+    .showcase-section { margin-bottom: var(--space-16); }
+    .showcase-label {
+      font-size: var(--text-xs); font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-caps); text-transform: uppercase;
+      color: var(--color-label-tertiary); margin-bottom: var(--space-6);
+      padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-separator);
+    }
+    .subsection-title { font-size: var(--text-xl); font-weight: var(--weight-bold); margin: 0 0 var(--space-6); }
+    .card-demo-bg { background: var(--color-bg-tertiary); border-radius: var(--radius-2xl); padding: var(--space-8); }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="site-nav-inner">
+      <a href="../index.html" class="brand-logo">
+        <svg class="brand-logo-mark" viewBox="0 0 36 36" fill="none">
+          <rect width="36" height="36" rx="9" fill="url(#c-logo)"/>
+          <text x="50%" y="54%" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800" fill="white" text-anchor="middle" dominant-baseline="middle" letter-spacing="-0.5">SS</text>
+          <defs><linearGradient id="c-logo" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#1E3A8A"/><stop offset="55%" stop-color="#0070F3"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient></defs>
+        </svg>
+        <span class="brand-logo-name">Design System</span>
+      </a>
+      <ul class="site-nav-links">
+        <li><a href="../index.html" class="site-nav-link">Overview</a></li>
+        <li><a href="buttons.html" class="site-nav-link">Buttons</a></li>
+        <li><a href="cards.html" class="site-nav-link active">Cards</a></li>
+        <li><a href="forms.html" class="site-nav-link">Forms</a></li>
+        <li><a href="navigation.html" class="site-nav-link">Navigation</a></li>
+        <li><a href="modals.html" class="site-nav-link">Modals</a></li>
+      </ul>
+      <div class="site-nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="showcase-page">
+    <div class="container-wide">
+      <h1 style="margin-bottom: var(--space-2);">Post Cards</h1>
+      <p class="lead" style="margin-bottom: var(--space-10);">Blog post card components — standard, featured, and compact variants.</p>
+
+      <!-- FEATURED CARD -->
+      <section class="showcase-section">
+        <p class="showcase-label">Featured Card (.post-card--featured)</p>
+        <div class="card-demo-bg">
+          <div class="post-grid">
+            <article class="post-card post-card--featured">
+              <div class="post-card-image post-card-image--memory">
+                <div class="post-card-image-placeholder">🧠</div>
+              </div>
+              <div class="post-card-body">
+                <div class="post-card-tags">
+                  <span class="tag tag--memory">Memory Computing</span>
+                  <span class="tag tag--cxl">CXL</span>
+                </div>
+                <h2 class="post-card-title post-title--featured">CXL 3.0: The Architecture That Will Define the Next Decade of Data Center Memory</h2>
+                <p class="post-card-excerpt">Compute Express Link 3.0 introduces fabric-attached memory, peer-to-peer device communication, and shared memory semantics. Here's everything you need to know about what changed and why it matters for the next generation of AI infrastructure.</p>
+                <div class="post-card-footer">
+                  <div class="post-card-byline">
+                    <div class="post-card-avatar">SS</div>
+                    <div class="post-card-meta"><strong>Steve Scargall</strong> · June 20, 2026 · 14 min read</div>
+                  </div>
+                  <a href="#" class="read-more">Read more</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- STANDARD GRID -->
+      <section class="showcase-section">
+        <p class="showcase-label">Standard Cards (.post-card) — 3-Column Grid</p>
+        <div class="card-demo-bg">
+          <div class="post-grid">
+
+            <article class="post-card">
+              <div class="post-card-image post-card-image--ai"><div class="post-card-image-placeholder">🤖</div></div>
+              <div class="post-card-body">
+                <div class="post-card-tags"><span class="tag tag--ai">AI</span><span class="tag tag--memory">Memory</span></div>
+                <h3 class="post-card-title">Training LLMs with Persistent Memory: Near-Zero Overhead Checkpointing</h3>
+                <p class="post-card-excerpt">Model checkpointing is one of the biggest I/O bottlenecks in LLM training. Persistent memory offers a path to near-zero overhead — here's how we implemented it at scale.</p>
+                <div class="post-card-footer">
+                  <div class="post-card-byline">
+                    <div class="post-card-avatar">SS</div>
+                    <div class="post-card-meta"><strong>Steve Scargall</strong> · Jun 15 · 11 min</div>
+                  </div>
+                  <a href="#" class="read-more">Read</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="post-card">
+              <div class="post-card-image post-card-image--cxl"><div class="post-card-image-placeholder">⚡</div></div>
+              <div class="post-card-body">
+                <div class="post-card-tags"><span class="tag tag--cxl">CXL</span><span class="tag tag--performance">Performance</span></div>
+                <h3 class="post-card-title">Benchmarking CXL Memory Expanders: Real-World Latency Numbers</h3>
+                <p class="post-card-excerpt">I ran a comprehensive benchmark suite against three generations of CXL memory expanders. The latency gap is shrinking faster than expected.</p>
+                <div class="post-card-footer">
+                  <div class="post-card-byline">
+                    <div class="post-card-avatar">SS</div>
+                    <div class="post-card-meta"><strong>Steve Scargall</strong> · Jun 10 · 9 min</div>
+                  </div>
+                  <a href="#" class="read-more">Read</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="post-card">
+              <div class="post-card-image post-card-image--opensource"><div class="post-card-image-placeholder">🔓</div></div>
+              <div class="post-card-body">
+                <div class="post-card-tags"><span class="tag tag--opensource">Open Source</span></div>
+                <h3 class="post-card-title">PMDK 2.0: What's New in the Persistent Memory Development Kit</h3>
+                <p class="post-card-excerpt">The latest major release of PMDK brings improved CXL support, a revamped libpmemobj API, and new tooling for detecting data consistency issues.</p>
+                <div class="post-card-footer">
+                  <div class="post-card-byline">
+                    <div class="post-card-avatar">SS</div>
+                    <div class="post-card-meta"><strong>Steve Scargall</strong> · May 28 · 7 min</div>
+                  </div>
+                  <a href="#" class="read-more">Read</a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPACT CARDS -->
+      <section class="showcase-section">
+        <p class="showcase-label">Compact Cards (.post-card--compact) — List View</p>
+        <div style="display: flex; flex-direction: column; gap: var(--space-3); max-width: 720px;">
+          <article class="post-card post-card--compact">
+            <div class="post-card-image post-card-image--ai"></div>
+            <div class="post-card-body">
+              <div class="post-card-tags"><span class="tag tag--ai">AI</span></div>
+              <h3 class="post-card-title">Training LLMs with Persistent Memory</h3>
+              <p class="post-card-excerpt">Near-zero overhead checkpointing using pmem for large language model training pipelines.</p>
+              <div class="post-card-footer">
+                <div class="post-card-meta">Jun 15, 2026 · 11 min read</div>
+                <a href="#" class="read-more">Read</a>
+              </div>
+            </div>
+          </article>
+          <article class="post-card post-card--compact">
+            <div class="post-card-image post-card-image--cxl"></div>
+            <div class="post-card-body">
+              <div class="post-card-tags"><span class="tag tag--cxl">CXL</span></div>
+              <h3 class="post-card-title">Benchmarking CXL Memory Expanders</h3>
+              <p class="post-card-excerpt">Three generations of hardware, measured latency, and what it means for your workloads.</p>
+              <div class="post-card-footer">
+                <div class="post-card-meta">Jun 10, 2026 · 9 min read</div>
+                <a href="#" class="read-more">Read</a>
+              </div>
+            </div>
+          </article>
+          <article class="post-card post-card--compact">
+            <div class="post-card-image post-card-image--nvidia"></div>
+            <div class="post-card-body">
+              <div class="post-card-tags"><span class="tag tag--nvidia">NVIDIA</span></div>
+              <h3 class="post-card-title">Grace Hopper Superchip Redefines Memory-Compute Coupling</h3>
+              <p class="post-card-excerpt">480GB HBM3 + 480GB LPDDR5 on one module, NVLink-C2C interconnect, profound AI inference implications.</p>
+              <div class="post-card-footer">
+                <div class="post-card-meta">Jun 3, 2026 · 12 min read</div>
+                <a href="#" class="read-more">Read</a>
+              </div>
+            </div>
+          </article>
+          <article class="post-card post-card--compact">
+            <div class="post-card-image post-card-image--performance"></div>
+            <div class="post-card-body">
+              <div class="post-card-tags"><span class="tag tag--performance">Performance</span></div>
+              <h3 class="post-card-title">The Hidden Cost of Memory Bandwidth in AI Training</h3>
+              <p class="post-card-excerpt">Bandwidth, not compute, is often the real bottleneck. Here's how to find it and what to do.</p>
+              <div class="post-card-footer">
+                <div class="post-card-meta">May 20, 2026 · 10 min read</div>
+                <a href="#" class="read-more">Read</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- SKELETON CARDS -->
+      <section class="showcase-section">
+        <p class="showcase-label">Skeleton / Loading Cards</p>
+        <div class="post-grid" style="max-width: 900px;">
+          <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-card-body">
+              <div class="skeleton-text skeleton-text--caption"></div>
+              <div class="skeleton-text skeleton-text--heading"></div>
+              <div class="skeleton-text skeleton-text--body"></div>
+              <div class="skeleton-text skeleton-text--body"></div>
+              <div class="skeleton-text skeleton-text--short"></div>
+            </div>
+          </div>
+          <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-card-body">
+              <div class="skeleton-text skeleton-text--caption"></div>
+              <div class="skeleton-text skeleton-text--heading"></div>
+              <div class="skeleton-text skeleton-text--body"></div>
+              <div class="skeleton-text skeleton-text--short"></div>
+            </div>
+          </div>
+          <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-card-body">
+              <div class="skeleton-text skeleton-text--caption"></div>
+              <div class="skeleton-text skeleton-text--heading"></div>
+              <div class="skeleton-text skeleton-text--body"></div>
+              <div class="skeleton-text skeleton-text--body"></div>
+              <div class="skeleton-text skeleton-text--short"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    const t = document.getElementById('theme-toggle');
+    const h = document.documentElement;
+    const setTheme = (s) => { h.dataset.theme = s; t.textContent = s === 'dark' ? '☀️' : '🌙'; localStorage.setItem('ss-theme', s); };
+    const stored = localStorage.getItem('ss-theme');
+    setTheme(stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+    t.addEventListener('click', () => setTheme(h.dataset.theme === 'dark' ? 'light' : 'dark'));
+  </script>
+</body>
+</html>

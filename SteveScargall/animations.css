@@ -1,0 +1,536 @@
+/* =============================================================================
+   Steve Scargall Design System — Animations
+   Version 1.0.0
+   Philosophy: Purposeful, subtle. Animations inform — they don't entertain.
+   All animations respect prefers-reduced-motion.
+   ============================================================================= */
+
+/* =============================================================================
+   KEYFRAME DEFINITIONS
+   ============================================================================= */
+
+/* --- Fade In --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* --- Fade Out --- */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* --- Slide In Up (cards, content sections) --- */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Slide In Down (dropdowns, tooltips) --- */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Slide In Left (sidebar, panel) --- */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* --- Slide In Right (toast notifications) --- */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* --- Scale In (modals, dialogs) --- */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- Scale In Spring (interactive elements) --- */
+@keyframes scaleInSpring {
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+  60% {
+    transform: scale(1.03);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- Shimmer — skeleton loading placeholder --- */
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+/* --- Pulse — subtle live indicator --- */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+/* --- Spin — loading spinner --- */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Bounce — subtle attention indicator --- */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(-6px);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+/* --- Float — hero element gentle bob --- */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* --- Gradient Shift — animated gradient background --- */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* --- Blink — cursor or typing indicator --- */
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* --- Underline Draw — link hover effect --- */
+@keyframes underlineDraw {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* --- Toast Slide Out --- */
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+
+/* --- Accordion expand --- */
+@keyframes accordionOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =============================================================================
+   ANIMATION UTILITY CLASSES
+   ============================================================================= */
+
+/* Core utilities */
+.animate-fade-in      { animation: fadeIn var(--duration-moderate) var(--ease-decelerate) both; }
+.animate-fade-out     { animation: fadeOut var(--duration-normal) var(--ease-accelerate) both; }
+.animate-slide-up     { animation: slideInUp var(--duration-moderate) var(--ease-decelerate) both; }
+.animate-slide-down   { animation: slideInDown var(--duration-normal) var(--ease-decelerate) both; }
+.animate-slide-left   { animation: slideInLeft var(--duration-moderate) var(--ease-decelerate) both; }
+.animate-slide-right  { animation: slideInRight var(--duration-normal) var(--ease-decelerate) both; }
+.animate-scale-in     { animation: scaleIn var(--duration-normal) var(--ease-spring) both; }
+.animate-scale-spring { animation: scaleInSpring var(--duration-moderate) var(--ease-standard) both; }
+.animate-spin         { animation: spin 0.8s linear infinite; }
+.animate-pulse        { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+.animate-bounce       { animation: bounce 1.2s infinite; }
+.animate-float        { animation: float 4s ease-in-out infinite; }
+
+/* Delay utilities */
+.animation-delay-100  { animation-delay: 100ms; }
+.animation-delay-200  { animation-delay: 200ms; }
+.animation-delay-300  { animation-delay: 300ms; }
+.animation-delay-400  { animation-delay: 400ms; }
+.animation-delay-500  { animation-delay: 500ms; }
+.animation-delay-600  { animation-delay: 600ms; }
+.animation-delay-700  { animation-delay: 700ms; }
+.animation-delay-800  { animation-delay: 800ms; }
+
+/* =============================================================================
+   SKELETON / SHIMMER LOADING
+   For blog post list and card loading states
+   ============================================================================= */
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-fill-secondary);
+  border-radius: var(--radius-md);
+}
+
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-fill-primary) 40%,
+    transparent 80%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+.skeleton-text {
+  height: 1em;
+  border-radius: var(--radius-sm);
+  background: var(--color-fill-secondary);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: var(--space-2);
+}
+
+.skeleton-text::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-fill-primary) 40%,
+    transparent 80%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+.skeleton-text--heading { height: 1.8em; width: 75%; }
+.skeleton-text--body    { height: 1em; width: 100%; }
+.skeleton-text--short   { height: 1em; width: 45%; }
+.skeleton-text--caption { height: 0.8em; width: 35%; }
+
+.skeleton-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--color-fill-secondary);
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.skeleton-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-fill-primary) 40%,
+    transparent 80%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+.skeleton-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-pill);
+  background: var(--color-fill-secondary);
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-avatar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-fill-primary) 40%,
+    transparent 80%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+/* Skeleton card — full post card */
+.skeleton-card {
+  background: var(--color-surface-card);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.skeleton-card-body {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* =============================================================================
+   SCROLL REVEAL — Intersection observer companion classes
+   JS adds .is-visible when element enters viewport
+   ============================================================================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity var(--duration-moderate) var(--ease-decelerate),
+    transform var(--duration-moderate) var(--ease-decelerate);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition:
+    opacity var(--duration-moderate) var(--ease-decelerate),
+    transform var(--duration-moderate) var(--ease-decelerate);
+}
+
+.reveal-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(20px);
+  transition:
+    opacity var(--duration-moderate) var(--ease-decelerate),
+    transform var(--duration-moderate) var(--ease-decelerate);
+}
+
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.96);
+  transition:
+    opacity var(--duration-moderate) var(--ease-decelerate),
+    transform var(--duration-moderate) var(--ease-spring);
+}
+
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Staggered reveal children */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--duration-moderate) var(--ease-decelerate),
+    transform var(--duration-moderate) var(--ease-decelerate);
+}
+
+.reveal-stagger.is-visible > *:nth-child(1)  { opacity: 1; transform: none; transition-delay: 0ms; }
+.reveal-stagger.is-visible > *:nth-child(2)  { opacity: 1; transform: none; transition-delay: 80ms; }
+.reveal-stagger.is-visible > *:nth-child(3)  { opacity: 1; transform: none; transition-delay: 160ms; }
+.reveal-stagger.is-visible > *:nth-child(4)  { opacity: 1; transform: none; transition-delay: 240ms; }
+.reveal-stagger.is-visible > *:nth-child(5)  { opacity: 1; transform: none; transition-delay: 320ms; }
+.reveal-stagger.is-visible > *:nth-child(6)  { opacity: 1; transform: none; transition-delay: 400ms; }
+
+/* =============================================================================
+   HOVER ANIMATIONS — Card lift, link, button
+   ============================================================================= */
+
+.hover-lift {
+  transition:
+    transform var(--duration-normal) var(--ease-spring),
+    box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+}
+
+.hover-lift-sm {
+  transition:
+    transform var(--duration-fast) var(--ease-spring),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+.hover-lift-sm:hover {
+  transform: translateY(-2px);
+}
+
+.hover-scale {
+  transition: transform var(--duration-fast) var(--ease-spring);
+}
+
+.hover-scale:hover {
+  transform: scale(1.03);
+}
+
+.hover-glow {
+  transition:
+    box-shadow var(--duration-normal) var(--ease-standard),
+    transform var(--duration-normal) var(--ease-spring);
+}
+
+.hover-glow:hover {
+  box-shadow: var(--shadow-accent);
+  transform: translateY(-2px);
+}
+
+/* =============================================================================
+   TRANSITION UTILITIES
+   ============================================================================= */
+
+.transition-none     { transition: none; }
+.transition-fast     { transition: var(--transition-fast); }
+.transition-normal   { transition: var(--transition-normal); }
+.transition-moderate { transition: var(--transition-moderate); }
+.transition-spring   { transition: var(--transition-spring); }
+
+/* =============================================================================
+   PREFERS-REDUCED-MOTION — Always last, always respected
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .reveal-stagger > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .skeleton::after,
+  .skeleton-text::after,
+  .skeleton-image::after,
+  .skeleton-avatar::after {
+    animation: none;
+    background: none;
+  }
+
+  .animate-float,
+  .animate-bounce,
+  .animate-pulse {
+    animation: none;
+  }
+
+  .hover-lift:hover,
+  .hover-lift-sm:hover,
+  .hover-scale:hover {
+    transform: none;
+  }
+}
