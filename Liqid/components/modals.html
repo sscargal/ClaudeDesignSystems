@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modals — Liqid Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    body { background: var(--color-liqid-navy-deep); padding: var(--space-10); min-height: 100vh; }
+    .demo-section { margin-bottom: var(--space-16); }
+    .demo-label {
+      font-size: var(--text-11);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: rgba(240,244,255,0.30);
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    /* Static display of modals for showcase */
+    .modal-showcase {
+      position: relative;
+      max-width: 720px;
+    }
+    .modal-showcase .modal {
+      position: relative;
+      animation: none;
+    }
+    .modal-showcase .modal-dark {
+      position: relative;
+      animation: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-h2" style="margin-bottom: var(--space-2); color: #F0F4FF">Modals</h1>
+    <p style="color: rgba(240,244,255,0.55); font-size: var(--text-16); margin-bottom: var(--space-12); line-height: var(--leading-body)">Dialog and modal patterns for the Liqid design system. Shown statically for showcase — in production, modals render over a backdrop overlay.</p>
+
+    <!-- DEMO REQUEST MODAL -->
+    <div class="demo-section">
+      <div class="demo-label">Demo Request Modal — Dark</div>
+      <div class="modal-showcase">
+        <div class="modal modal-demo-request modal-dark">
+          <div class="modal-header">
+            <div style="display: flex; align-items: flex-start; gap: var(--space-4);">
+              <div class="modal-header-accent" style="background: rgba(0,112,243,0.15);">🚀</div>
+              <div>
+                <h2 class="modal-title">Request a Personalized Demo</h2>
+                <p class="modal-subtitle">Our composable infrastructure specialists will design a demo around your specific use case and scale requirements.</p>
+              </div>
+            </div>
+            <button class="modal-close" aria-label="Close modal">✕</button>
+          </div>
+          <div class="modal-body">
+            <form class="form-contact" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" style="color: rgba(240,244,255,0.80)">First Name <span class="required">*</span></label>
+                  <input class="input-enterprise input-dark" type="text" placeholder="Alex" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" style="color: rgba(240,244,255,0.80)">Last Name <span class="required">*</span></label>
+                  <input class="input-enterprise input-dark" type="text" placeholder="Chen" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" style="color: rgba(240,244,255,0.80)">Work Email <span class="required">*</span></label>
+                <input class="input-enterprise input-dark" type="email" placeholder="alex@company.com" required>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" style="color: rgba(240,244,255,0.80)">Company <span class="required">*</span></label>
+                  <input class="input-enterprise input-dark" type="text" placeholder="Acme Corp" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" style="color: rgba(240,244,255,0.80)">Primary Use Case</label>
+                  <select class="select-enterprise input-dark">
+                    <option value="">Select...</option>
+                    <option>AI / Machine Learning</option>
+                    <option>High Performance Computing</option>
+                    <option>Private Cloud</option>
+                    <option>Edge / DoD</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" style="color: rgba(240,244,255,0.80)">Infrastructure challenge or goal</label>
+                <textarea class="textarea-enterprise textarea-dark" rows="3" placeholder="Describe your current setup and what you're trying to achieve..."></textarea>
+              </div>
+              <label class="checkbox-enterprise">
+                <input type="checkbox">
+                <span class="checkbox-label" style="color: rgba(240,244,255,0.50)">I'd like to receive product updates and news from Liqid.</span>
+              </label>
+            </form>
+          </div>
+          <div class="modal-footer" style="border-top-color: var(--color-liqid-navy-border)">
+            <button class="btn btn-ghost-light">Cancel</button>
+            <button class="btn btn-gradient btn-lg">Request Demo →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESOURCE DOWNLOAD MODAL -->
+    <div class="demo-section">
+      <div class="demo-label">Resource Download Modal — Light</div>
+      <div class="modal-showcase" style="max-width: 520px;">
+        <div class="modal modal-resource" style="background: var(--color-surface-primary);">
+          <div class="modal-header" style="border-bottom-color: var(--color-separator)">
+            <div style="display: flex; align-items: flex-start; gap: var(--space-4);">
+              <div class="modal-header-accent">📄</div>
+              <div>
+                <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-1)">
+                  <span class="badge badge-error" style="font-size: 10px; padding: 2px 5px;">PDF · 2.4 MB</span>
+                </div>
+                <h2 class="modal-title" style="color: var(--color-label-primary); font-size: var(--text-20)">Liqid Matrix™ Data Sheet</h2>
+                <p class="modal-subtitle" style="color: var(--color-label-secondary)">Complete technical specs, performance benchmarks, and form factor details.</p>
+              </div>
+            </div>
+            <button class="modal-close" aria-label="Close">✕</button>
+          </div>
+          <div class="modal-body">
+            <p style="font-size: var(--text-14); color: var(--color-label-secondary); margin-bottom: var(--space-5); line-height: var(--leading-body)">Please provide your contact information to receive this resource. You'll get an email with a direct download link.</p>
+            <form class="form-contact" novalidate>
+              <div class="form-group">
+                <label class="form-label">Work Email <span class="required">*</span></label>
+                <input class="input-enterprise" type="email" placeholder="name@company.com" required>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">First Name</label>
+                  <input class="input-enterprise" type="text" placeholder="First">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Company</label>
+                  <input class="input-enterprise" type="text" placeholder="Company name">
+                </div>
+              </div>
+              <label class="checkbox-enterprise">
+                <input type="checkbox">
+                <span class="checkbox-label">I'd like to receive relevant technical content and updates from Liqid.</span>
+              </label>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-ghost">Cancel</button>
+            <button class="btn btn-primary">Download Resource</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONFIRMATION MODAL -->
+    <div class="demo-section">
+      <div class="demo-label">Confirmation Modal</div>
+      <div class="modal-showcase" style="max-width: 480px;">
+        <div class="modal" style="background: var(--color-liqid-navy); border: 1px solid var(--color-liqid-navy-border);">
+          <div class="modal-header" style="border-bottom-color: var(--color-liqid-navy-border)">
+            <div style="display: flex; align-items: flex-start; gap: var(--space-4);">
+              <div class="modal-header-accent" style="background: rgba(239,68,68,0.12); border-color: rgba(239,68,68,0.20);">⚠</div>
+              <div>
+                <h2 class="modal-title" style="font-size: var(--text-20)">Decommission Rack Unit?</h2>
+                <p class="modal-subtitle">This will release all composed resources from Unit 12 (Liqid Matrix Controller). Connected nodes will lose fabric access immediately.</p>
+              </div>
+            </div>
+            <button class="modal-close" aria-label="Close">✕</button>
+          </div>
+          <div class="modal-body" style="padding-top: var(--space-5)">
+            <div style="background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.20); border-radius: var(--radius-lg); padding: var(--space-4); display: flex; align-items: flex-start; gap: var(--space-3)">
+              <span style="color: var(--color-status-error); font-size: 18px; flex-shrink: 0;">⚠</span>
+              <div>
+                <div style="font-size: var(--text-13); font-weight: var(--weight-semibold); color: var(--color-status-error); margin-bottom: 4px;">16 active connections will be terminated</div>
+                <div style="font-size: var(--text-12); color: rgba(240,244,255,0.45);">Running workloads on nodes 04–07 may be interrupted. Ensure workloads are quiesced before proceeding.</div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer" style="border-top-color: var(--color-liqid-navy-border)">
+            <button class="btn btn-ghost-light">Cancel</button>
+            <button class="btn btn-destructive">Decommission Unit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

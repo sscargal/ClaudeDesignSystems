@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation — Liqid Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    body { background: var(--color-liqid-navy-deep); min-height: 100vh; }
+    .demo-section {
+      padding: var(--space-10);
+      margin-bottom: var(--space-8);
+    }
+    .demo-label {
+      font-size: var(--text-11);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: rgba(240,244,255,0.30);
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ENTERPRISE NAV — LIVE (sticky at top) -->
+  <nav class="nav-enterprise" role="navigation" aria-label="Main navigation">
+    <div class="nav-enterprise-inner">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo" aria-label="Liqid Home">
+        <div class="brand-logo-mark">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Liqid logo mark: stylized "L" with circuit/fabric connection nodes -->
+            <rect width="36" height="36" rx="8" fill="#0070F3" fill-opacity="0.15"/>
+            <rect x="1" y="1" width="34" height="34" rx="7" stroke="#0070F3" stroke-opacity="0.30" stroke-width="1"/>
+            <!-- L-shape main strokes -->
+            <path d="M10 8 L10 24 L26 24" stroke="#0070F3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Accent dot at corner of L -->
+            <circle cx="10" cy="24" r="2.5" fill="#00C8FF"/>
+            <!-- Fabric connection nodes -->
+            <circle cx="10" cy="8" r="2" fill="#0070F3" fill-opacity="0.60"/>
+            <circle cx="26" cy="24" r="2" fill="#0070F3" fill-opacity="0.60"/>
+            <!-- Diagonal accent line (fabric path) -->
+            <line x1="14" y1="12" x2="22" y2="20" stroke="#00C8FF" stroke-width="1" stroke-opacity="0.40" stroke-dasharray="2 2"/>
+          </svg>
+        </div>
+        <span class="brand-logo-wordmark">Liqid<span>.</span></span>
+      </a>
+
+      <!-- Primary Navigation -->
+      <ul class="nav-enterprise-menu" role="list">
+        <li class="nav-enterprise-item open">
+          <button aria-expanded="true" aria-haspopup="true">
+            Products <span class="nav-chevron"></span>
+          </button>
+          <!-- Mega menu -->
+          <div class="nav-mega-menu" role="region" aria-label="Products menu">
+            <div class="nav-mega-menu-header">Composable Infrastructure Portfolio</div>
+            <div class="nav-mega-menu-grid">
+              <a href="#" class="nav-mega-menu-item">
+                <div class="nav-mega-menu-icon">🔗</div>
+                <div>
+                  <div class="nav-mega-menu-item-name">Liqid Matrix™</div>
+                  <div class="nav-mega-menu-item-desc">PCIe fabric controller for disaggregation</div>
+                </div>
+              </a>
+              <a href="#" class="nav-mega-menu-item">
+                <div class="nav-mega-menu-icon gpu">⬡</div>
+                <div>
+                  <div class="nav-mega-menu-item-name">GPU Compose</div>
+                  <div class="nav-mega-menu-item-desc">Dynamic GPU pooling for AI workloads</div>
+                </div>
+              </a>
+              <a href="#" class="nav-mega-menu-item">
+                <div class="nav-mega-menu-icon storage">💾</div>
+                <div>
+                  <div class="nav-mega-menu-item-name">NVMe-oF Storage</div>
+                  <div class="nav-mega-menu-item-desc">Disaggregated petabyte-scale block storage</div>
+                </div>
+              </a>
+              <a href="#" class="nav-mega-menu-item">
+                <div class="nav-mega-menu-icon compute">⬛</div>
+                <div>
+                  <div class="nav-mega-menu-item-name">Compute Pool</div>
+                  <div class="nav-mega-menu-item-desc">CPU resource disaggregation at scale</div>
+                </div>
+              </a>
+              <a href="#" class="nav-mega-menu-item">
+                <div class="nav-mega-menu-icon networking">🔀</div>
+                <div>
+                  <div class="nav-mega-menu-item-name">Fabric Networking</div>
+                  <div class="nav-mega-menu-item-desc">400 Gbps network fabric integration</div>
+                </div>
+              </a>
+              <a href="#" class="nav-mega-menu-item">
+                <div class="nav-mega-menu-icon">🖥</div>
+                <div>
+                  <div class="nav-mega-menu-item-name">Liqid Command™</div>
+                  <div class="nav-mega-menu-item-desc">Software management and orchestration</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-enterprise-item">
+          <button aria-expanded="false" aria-haspopup="true">
+            Solutions <span class="nav-chevron"></span>
+          </button>
+        </li>
+        <li class="nav-enterprise-item">
+          <a href="#">Resources</a>
+        </li>
+        <li class="nav-enterprise-item">
+          <a href="#">Partners</a>
+        </li>
+        <li class="nav-enterprise-item">
+          <a href="#">Company</a>
+        </li>
+      </ul>
+
+      <!-- Actions -->
+      <div class="nav-enterprise-actions">
+        <a href="#" class="btn btn-ghost-light btn-sm">Log in</a>
+        <a href="#" class="btn btn-primary btn-sm">Request Demo</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- UTILITY NAV (secondary) -->
+  <div class="demo-section">
+    <div class="demo-label">Utility Nav</div>
+    <nav class="nav-utility" role="navigation" aria-label="Utility navigation">
+      <div class="nav-utility-inner">
+        <a href="#">Support Portal</a>
+        <a href="#">Documentation</a>
+        <a href="#">GitHub</a>
+        <a href="#">Status</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- NAV STATES EXPLAINED -->
+  <div class="demo-section">
+    <div class="demo-label">Navigation Notes</div>
+    <div style="padding: var(--space-8); background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-xl)">
+      <p style="color: rgba(240,244,255,0.60); font-size: var(--text-14); line-height: var(--leading-body); margin: 0;">
+        The enterprise nav above is shown with the <strong style="color: rgba(240,244,255,0.85)">Products mega-menu open</strong> (class <code style="font-family: var(--font-mono); font-size: 13px; background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px;">.nav-enterprise-item.open</code>). In production, toggle this class via JavaScript on hover or click. The nav is sticky-positioned and uses backdrop-filter for glass effect. Mega-menu is centered under its trigger.
+      </p>
+    </div>
+  </div>
+
+  <!-- BRAND LOGO VARIANTS -->
+  <div class="demo-section">
+    <div class="demo-label">Brand Logo Variants</div>
+    <div style="display: flex; flex-direction: column; gap: var(--space-8); align-items: flex-start;">
+      <!-- Small -->
+      <a href="#" class="brand-logo brand-logo--sm" aria-label="Liqid">
+        <div class="brand-logo-mark">
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="36" height="36" rx="8" fill="#0070F3" fill-opacity="0.15"/>
+            <rect x="1" y="1" width="34" height="34" rx="7" stroke="#0070F3" stroke-opacity="0.30" stroke-width="1"/>
+            <path d="M10 8 L10 24 L26 24" stroke="#0070F3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="10" cy="24" r="2.5" fill="#00C8FF"/>
+            <circle cx="10" cy="8" r="2" fill="#0070F3" fill-opacity="0.60"/>
+            <circle cx="26" cy="24" r="2" fill="#0070F3" fill-opacity="0.60"/>
+          </svg>
+        </div>
+        <span class="brand-logo-wordmark" style="font-size: var(--text-16)">Liqid<span>.</span></span>
+      </a>
+
+      <!-- Default -->
+      <a href="#" class="brand-logo" aria-label="Liqid">
+        <div class="brand-logo-mark">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="36" height="36" rx="8" fill="#0070F3" fill-opacity="0.15"/>
+            <rect x="1" y="1" width="34" height="34" rx="7" stroke="#0070F3" stroke-opacity="0.30" stroke-width="1"/>
+            <path d="M10 8 L10 24 L26 24" stroke="#0070F3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="10" cy="24" r="2.5" fill="#00C8FF"/>
+            <circle cx="10" cy="8" r="2" fill="#0070F3" fill-opacity="0.60"/>
+            <circle cx="26" cy="24" r="2" fill="#0070F3" fill-opacity="0.60"/>
+            <line x1="14" y1="12" x2="22" y2="20" stroke="#00C8FF" stroke-width="1" stroke-opacity="0.40" stroke-dasharray="2 2"/>
+          </svg>
+        </div>
+        <span class="brand-logo-wordmark">Liqid<span>.</span></span>
+      </a>
+
+      <!-- Large -->
+      <a href="#" class="brand-logo brand-logo--lg" aria-label="Liqid">
+        <div class="brand-logo-mark">
+          <svg width="48" height="48" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="36" height="36" rx="8" fill="#0070F3" fill-opacity="0.15"/>
+            <rect x="1" y="1" width="34" height="34" rx="7" stroke="#0070F3" stroke-opacity="0.30" stroke-width="1"/>
+            <path d="M10 8 L10 24 L26 24" stroke="#0070F3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="10" cy="24" r="2.5" fill="#00C8FF"/>
+            <circle cx="10" cy="8" r="2" fill="#0070F3" fill-opacity="0.60"/>
+            <circle cx="26" cy="24" r="2" fill="#0070F3" fill-opacity="0.60"/>
+            <line x1="14" y1="12" x2="22" y2="20" stroke="#00C8FF" stroke-width="1" stroke-opacity="0.40" stroke-dasharray="2 2"/>
+          </svg>
+        </div>
+        <span class="brand-logo-wordmark" style="font-size: var(--text-28)">Liqid<span>.</span></span>
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

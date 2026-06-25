@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Liqid Design System — Enterprise composable infrastructure brand system. Colors, typography, components, and patterns faithful to the Liqid brand.">
+  <title>Liqid Design System</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="typography.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    /* =========================================================================
+       Page-level layout utilities
+       ========================================================================= */
+    body {
+      background: var(--color-liqid-navy-deep);
+      color: #F0F4FF;
+    }
+
+    /* Design system showcase section wrappers */
+    .ds-section {
+      padding-block: var(--space-20);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .ds-section-light {
+      padding-block: var(--space-20);
+      background: var(--color-bg-primary);
+      border-bottom: 1px solid var(--color-separator);
+    }
+
+    .ds-section-mid {
+      padding-block: var(--space-20);
+      background: var(--color-liqid-navy);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .ds-section-surface {
+      padding-block: var(--space-20);
+      background: var(--color-liqid-navy-mid);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* Section header for showcase sections */
+    .ds-heading {
+      font-size: var(--text-11);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: rgba(240, 244, 255, 0.30);
+      margin-bottom: var(--space-8);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .ds-heading-light {
+      font-size: var(--text-11);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-8);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--color-separator);
+    }
+
+    /* Demo notes */
+    .ds-note {
+      font-size: var(--text-13);
+      color: rgba(240, 244, 255, 0.35);
+      font-family: var(--font-mono);
+      padding: var(--space-4) var(--space-5);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-lg);
+      margin-top: var(--space-6);
+      line-height: var(--leading-body);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================================
+       1. ENTERPRISE NAVIGATION
+       ========================================================================= -->
+  <nav class="nav-enterprise" role="navigation" aria-label="Liqid main navigation">
+    <div class="nav-enterprise-inner">
+      <a href="#" class="brand-logo" aria-label="Liqid Home">
+        <div class="brand-logo-mark">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="36" height="36" rx="8" fill="#0070F3" fill-opacity="0.15"/>
+            <rect x="1" y="1" width="34" height="34" rx="7" stroke="#0070F3" stroke-opacity="0.30" stroke-width="1"/>
+            <path d="M10 8 L10 24 L26 24" stroke="#0070F3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="10" cy="24" r="2.5" fill="#00C8FF"/>
+            <circle cx="10" cy="8" r="2" fill="#0070F3" fill-opacity="0.60"/>
+            <circle cx="26" cy="24" r="2" fill="#0070F3" fill-opacity="0.60"/>
+            <line x1="14" y1="12" x2="22" y2="20" stroke="#00C8FF" stroke-width="1" stroke-opacity="0.40" stroke-dasharray="2 2"/>
+          </svg>
+        </div>
+        <span class="brand-logo-wordmark">Liqid<span>.</span></span>
+      </a>
+
+      <ul class="nav-enterprise-menu" role="list">
+        <li class="nav-enterprise-item open">
+          <button aria-expanded="true" aria-haspopup="true">
+            Products <span class="nav-chevron"></span>
+          </button>
+          <div class="nav-mega-menu" role="region" aria-label="Products">
+            <div class="nav-mega-menu-header">Composable Infrastructure Portfolio</div>
+            <div class="nav-mega-menu-grid">
+              <a href="#" class="nav-mega-menu-item">
+                <div class="nav-mega-menu-icon">🔗</div>
+                <div><div class="nav-mega-menu-item-name">Liqid Matrix™</div><div class="nav-mega-menu-item-desc">PCIe fabric controller</div></div>
+              </a>
+              <a href="#" class="nav-mega-menu-item">
+                <div class="nav-mega-menu-icon gpu">⬡</div>
+                <div><div class="nav-mega-menu-item-name">GPU Compose</div><div class="nav-mega-menu-item-desc">Dynamic GPU resource pooling</div></div>
+              </a>
+              <a href="#" class="nav-mega-menu-item">
+                <div class="nav-mega-menu-icon storage">💾</div>
+                <div><div class="nav-mega-menu-item-name">NVMe-oF Storage</div><div class="nav-mega-menu-item-desc">Disaggregated block storage</div></div>
+              </a>
+              <a href="#" class="nav-mega-menu-item">
+                <div class="nav-mega-menu-icon compute">⬛</div>
+                <div><div class="nav-mega-menu-item-name">Compute Pools</div><div class="nav-mega-menu-item-desc">CPU disaggregation at scale</div></div>
+              </a>
+              <a href="#" class="nav-mega-menu-item">
+                <div class="nav-mega-menu-icon networking">🔀</div>
+                <div><div class="nav-mega-menu-item-name">Fabric Networking</div><div class="nav-mega-menu-item-desc">400 Gbps switching fabric</div></div>
+              </a>
+              <a href="#" class="nav-mega-menu-item">
+                <div class="nav-mega-menu-icon">🖥</div>
+                <div><div class="nav-mega-menu-item-name">Liqid Command™</div><div class="nav-mega-menu-item-desc">Software orchestration</div></div>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-enterprise-item"><a href="#">Solutions</a></li>
+        <li class="nav-enterprise-item"><a href="#">Resources</a></li>
+        <li class="nav-enterprise-item"><a href="#">Partners</a></li>
+        <li class="nav-enterprise-item"><a href="#">Company</a></li>
+      </ul>
+
+      <div class="nav-enterprise-actions">
+        <a href="#" class="btn btn-ghost-light btn-sm">Log in</a>
+        <a href="#" class="btn btn-primary btn-sm">Request Demo</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =========================================================================
+       2. HERO SECTION
+       ========================================================================= -->
+  <section class="hero-enterprise" aria-label="Hero">
+    <div class="hero-enterprise-inner">
+      <div class="hero-enterprise-content">
+        <div class="hero-enterprise-eyebrow animate-fade-in">
+          <span class="status-dot status-dot--active"></span>
+          Composable Infrastructure · Gen 4 PCIe Fabric
+        </div>
+
+        <h1 class="hero-enterprise-headline animate-slide-up delay-100">
+          The Infrastructure<br>
+          That <span class="highlight">Composes</span> Itself
+        </h1>
+
+        <p class="hero-enterprise-subtitle animate-slide-up delay-200">
+          Liqid's PCIe fabric disaggregates compute, GPU, storage, and networking into dynamic pools. Compose any infrastructure configuration in software — at any scale, in real time.
+        </p>
+
+        <div class="hero-enterprise-ctas animate-slide-up delay-300">
+          <a href="#" class="btn btn-demo btn-xl">Request Demo →</a>
+          <a href="#" class="btn btn-outline-light btn-xl">Explore Products</a>
+        </div>
+      </div>
+
+      <!-- Hero stats bar -->
+      <div class="hero-stats animate-slide-up delay-400">
+        <div class="hero-stat">
+          <div class="hero-stat-value">400<span>Gbps</span></div>
+          <div class="hero-stat-label">Fabric Bandwidth</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">&lt;1<span>µs</span></div>
+          <div class="hero-stat-label">Switching Latency</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">1000<span>+</span></div>
+          <div class="hero-stat-label">Nodes Per Fabric</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">60<span>s</span></div>
+          <div class="hero-stat-label">Compose Time</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       3. COLOR PALETTE
+       ========================================================================= -->
+  <section class="ds-section-light">
+    <div class="container">
+      <div class="ds-heading-light">Color Palette — Design Tokens</div>
+
+      <!-- Brand Blues -->
+      <h3 class="text-h5" style="margin-bottom: var(--space-4)">Brand — Electric Blue</h3>
+      <div class="swatch-grid" style="margin-bottom: var(--space-10)">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #0070F3;"></div>
+          <div class="swatch-name">Liqid Blue</div>
+          <div class="swatch-value">#0070F3</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #005FCC;"></div>
+          <div class="swatch-name">Blue Hover</div>
+          <div class="swatch-value">#005FCC</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #004FAA;"></div>
+          <div class="swatch-name">Blue Active</div>
+          <div class="swatch-value">#004FAA</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #00C8FF;"></div>
+          <div class="swatch-name">Liqid Cyan</div>
+          <div class="swatch-value">#00C8FF</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #00AADE;"></div>
+          <div class="swatch-name">Cyan Hover</div>
+          <div class="swatch-value">#00AADE</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: rgba(0,112,243,0.12); border: 1px solid rgba(0,112,243,0.20);"></div>
+          <div class="swatch-name">Blue Light</div>
+          <div class="swatch-value">rgba(0,112,243,.12)</div>
+        </div>
+      </div>
+
+      <!-- Navy Scale -->
+      <h3 class="text-h5" style="margin-bottom: var(--space-4)">Deep Navy — Structural Darks</h3>
+      <div class="swatch-grid" style="margin-bottom: var(--space-10)">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #050A14; border: 1px solid #1C2B45;"></div>
+          <div class="swatch-name">Navy Deepest</div>
+          <div class="swatch-value">#050A14</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #0A0F1E; border: 1px solid #1C2B45;"></div>
+          <div class="swatch-name">Navy Deep</div>
+          <div class="swatch-value">#0A0F1E</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #111827; border: 1px solid #1C2B45;"></div>
+          <div class="swatch-name">Navy</div>
+          <div class="swatch-value">#111827</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #1C2B45;"></div>
+          <div class="swatch-name">Navy Mid</div>
+          <div class="swatch-value">#1C2B45</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #263550;"></div>
+          <div class="swatch-name">Navy Light</div>
+          <div class="swatch-value">#263550</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #2E405E;"></div>
+          <div class="swatch-name">Navy Border</div>
+          <div class="swatch-value">#2E405E</div>
+        </div>
+      </div>
+
+      <!-- Product Category Colors -->
+      <h3 class="text-h5" style="margin-bottom: var(--space-4)">Product Category Colors</h3>
+      <div class="swatch-grid" style="margin-bottom: var(--space-10)">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #0070F3;"></div>
+          <div class="swatch-name">Fabric</div>
+          <div class="swatch-value">#0070F3</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #8B5CF6;"></div>
+          <div class="swatch-name">Compute</div>
+          <div class="swatch-value">#8B5CF6</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #06B6D4;"></div>
+          <div class="swatch-name">Storage</div>
+          <div class="swatch-value">#06B6D4</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #10B981;"></div>
+          <div class="swatch-name">Networking</div>
+          <div class="swatch-value">#10B981</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #F59E0B;"></div>
+          <div class="swatch-name">GPU</div>
+          <div class="swatch-value">#F59E0B</div>
+        </div>
+      </div>
+
+      <!-- Status Colors -->
+      <h3 class="text-h5" style="margin-bottom: var(--space-4)">Status / Semantic</h3>
+      <div class="swatch-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #00D97E;"></div>
+          <div class="swatch-name">Active / Online</div>
+          <div class="swatch-value">#00D97E</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #F59E0B;"></div>
+          <div class="swatch-name">Warning</div>
+          <div class="swatch-value">#F59E0B</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #EF4444;"></div>
+          <div class="swatch-name">Error</div>
+          <div class="swatch-value">#EF4444</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #64748B;"></div>
+          <div class="swatch-name">Offline</div>
+          <div class="swatch-value">#64748B</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. TYPOGRAPHY SCALE
+       ========================================================================= -->
+  <section class="ds-section-mid">
+    <div class="container">
+      <div class="ds-heading">Typography Scale</div>
+
+      <div style="margin-bottom: var(--space-8)">
+        <div class="text-eyebrow" style="margin-bottom: var(--space-3)">Display / Hero Text</div>
+        <div class="text-display-lg" style="color: #F0F4FF; margin-bottom: var(--space-6)">Composable at Scale</div>
+        <div style="font-family: var(--font-display); font-size: var(--text-56); font-weight: var(--weight-bold); line-height: var(--leading-hero); letter-spacing: var(--tracking-tight); color: #F0F4FF; margin-bottom: var(--space-6)">Build any infrastructure</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); margin-bottom: var(--space-10)">
+        <div>
+          <div class="text-section-label" style="margin-bottom: var(--space-5)">Section Headings</div>
+          <h1 style="color: #F0F4FF; margin-bottom: var(--space-3)">Heading One — H1</h1>
+          <h2 style="color: #F0F4FF; margin-bottom: var(--space-3)">Heading Two — H2</h2>
+          <h3 style="color: #F0F4FF; margin-bottom: var(--space-3)">Heading Three — H3</h3>
+          <h4 style="color: rgba(240,244,255,0.85); margin-bottom: var(--space-3)">Heading Four — H4</h4>
+          <h5 style="color: rgba(240,244,255,0.80)">Heading Five — H5</h5>
+        </div>
+        <div>
+          <div class="text-section-label" style="margin-bottom: var(--space-5)">Body &amp; Utility</div>
+          <p class="text-xl" style="color: rgba(240,244,255,0.70); margin-bottom: var(--space-4)">Large body text for hero subtitles and feature descriptions. Generous line-height for readability.</p>
+          <p class="text-base" style="color: rgba(240,244,255,0.60); margin-bottom: var(--space-4)">Standard body text at 16px / 1.60 line-height. Used for product descriptions, spec explanations, and general prose content throughout the design system.</p>
+          <p class="text-sm" style="margin-bottom: var(--space-4)">Small body text for metadata, captions, and secondary information at 14px.</p>
+          <p class="text-caption">Caption text — timestamps, footnotes, legal copy</p>
+        </div>
+      </div>
+
+      <!-- Technical / Mono text -->
+      <div class="text-section-label" style="margin-bottom: var(--space-5)">Technical / Monospace Text</div>
+      <div style="display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); background: rgba(0,0,0,0.30); border-radius: var(--radius-xl); border: 1px solid rgba(255,255,255,0.06)">
+        <div class="text-mono-lg" style="color: #E2E8F0">./liqid-compose --nodes 8 --gpu 4 --nvme 16TB --fabric gen4</div>
+        <div class="text-spec">PCIe Gen 4 · 16 GT/s · x16 lanes · 400 Gbps aggregate</div>
+        <div style="display: flex; gap: var(--space-8)">
+          <div>
+            <div class="text-stat" style="color: #F0F4FF">400</div>
+            <div class="text-stat-unit">Gbps</div>
+          </div>
+          <div>
+            <div class="text-stat" style="color: #F0F4FF">&lt;1</div>
+            <div class="text-stat-unit">µs</div>
+          </div>
+          <div>
+            <div class="text-stat" style="color: #F0F4FF">1PB</div>
+            <div class="text-stat-unit">NVMe</div>
+          </div>
+        </div>
+        <div class="text-mono-sm">Matrix-1408 · FW 4.2.1 · uptime 847d · fabric-id: 0xF3A2B</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. BUTTONS
+       ========================================================================= -->
+  <section class="ds-section">
+    <div class="container">
+      <div class="ds-heading">Button System</div>
+      <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); margin-bottom: var(--space-8)">
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-gradient">Gradient</button>
+        <button class="btn btn-demo">Request Demo</button>
+        <button class="btn btn-secondary" style="border-color: rgba(255,255,255,0.30); color: rgba(255,255,255,0.75)">Secondary</button>
+        <button class="btn btn-outline-light">Outline Light</button>
+        <button class="btn btn-cyan">Cyan</button>
+        <button class="btn btn-ghost-light">Ghost</button>
+        <button class="btn btn-success">Success</button>
+        <button class="btn btn-destructive">Destructive</button>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); margin-bottom: var(--space-8)">
+        <button class="btn btn-primary btn-sm">Small</button>
+        <button class="btn btn-primary">Medium</button>
+        <button class="btn btn-primary btn-lg">Large</button>
+        <button class="btn btn-primary btn-xl">Extra Large</button>
+        <button class="btn btn-primary loading">Loading</button>
+        <button class="btn btn-primary" disabled>Disabled</button>
+      </div>
+      <!-- Badges row -->
+      <div style="display: flex; flex-wrap: wrap; gap: var(--space-2)">
+        <span class="badge badge-new">New</span>
+        <span class="badge badge-featured">Featured</span>
+        <span class="badge badge-compute">Compute</span>
+        <span class="badge badge-storage">Storage</span>
+        <span class="badge badge-networking">Networking</span>
+        <span class="badge badge-fabric">PCIe Fabric</span>
+        <span class="badge badge-gpu">GPU</span>
+        <span class="badge badge-active">Active</span>
+        <span class="badge badge-warning">Warning</span>
+        <span class="badge badge-error">Error</span>
+        <span class="badge badge-dark">Enterprise</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. PRODUCT / SOLUTION CARDS
+       ========================================================================= -->
+  <section class="ds-section-surface">
+    <div class="container">
+      <div class="ds-heading">Product &amp; Solution Cards</div>
+      <div class="section-header left" style="margin-bottom: var(--space-10)">
+        <div class="section-header-eyebrow">Product Portfolio</div>
+        <h2 class="section-header-title">Composable Infrastructure Components</h2>
+        <p class="section-header-subtitle">Disaggregate, pool, and dynamically compose physical resources — compute, GPU, storage, and networking — via PCIe fabric.</p>
+      </div>
+
+      <div class="grid-3">
+        <!-- PCIe Fabric -->
+        <div class="card-product animate-fade-in-scale">
+          <div class="card-product-header">
+            <div>
+              <span class="badge badge-fabric" style="margin-bottom: var(--space-3)">PCIe Fabric</span>
+              <h3 class="card-product-name">Liqid Matrix™</h3>
+            </div>
+            <div class="card-product-icon">🔗</div>
+          </div>
+          <p class="card-product-desc">Gen 4 PCIe fabric controller enabling dynamic composition of compute, storage, GPU, and network resources at wire speed.</p>
+          <ul class="card-product-specs">
+            <li class="card-product-spec-item">PCIe Gen 4 / Gen 5</li>
+            <li class="card-product-spec-item">400 Gbps fabric bandwidth</li>
+            <li class="card-product-spec-item">&lt;1µs switching latency</li>
+          </ul>
+          <div class="card-product-footer">
+            <a href="#" class="btn btn-outline-light btn-sm" style="width:100%; justify-content: center;">Learn More →</a>
+          </div>
+        </div>
+
+        <!-- GPU Compose -->
+        <div class="card-product animate-fade-in-scale delay-100">
+          <div class="card-product-header">
+            <div>
+              <span class="badge badge-gpu" style="margin-bottom: var(--space-3)">GPU</span>
+              <h3 class="card-product-name">GPU Compose</h3>
+            </div>
+            <div class="card-product-icon" style="background: rgba(245,158,11,0.12); border-color: rgba(245,158,11,0.25); color: var(--color-cat-gpu)">⬡</div>
+          </div>
+          <p class="card-product-desc">Disaggregated GPU resource pools shared across AI training, inference, and rendering workloads with software-defined allocation.</p>
+          <ul class="card-product-specs">
+            <li class="card-product-spec-item">NVIDIA H100, A100, L40S</li>
+            <li class="card-product-spec-item">Dynamic GPU partitioning</li>
+            <li class="card-product-spec-item">NVLink fabric integration</li>
+          </ul>
+          <div class="card-product-footer">
+            <a href="#" class="btn btn-outline-light btn-sm" style="width:100%; justify-content: center;">Learn More →</a>
+          </div>
+        </div>
+
+        <!-- NVMe Storage -->
+        <div class="card-product animate-fade-in-scale delay-200">
+          <div class="card-product-header">
+            <div>
+              <span class="badge badge-storage" style="margin-bottom: var(--space-3)">Storage</span>
+              <h3 class="card-product-name">NVMe-oF Pool</h3>
+            </div>
+            <div class="card-product-icon" style="background: rgba(6,182,212,0.12); border-color: rgba(6,182,212,0.25); color: var(--color-cat-storage)">💾</div>
+          </div>
+          <p class="card-product-desc">Composable NVMe-over-Fabrics storage at petabyte scale, disaggregated from compute for flexible capacity allocation.</p>
+          <ul class="card-product-specs">
+            <li class="card-product-spec-item">NVMe-oF PCIe / RoCE / TCP</li>
+            <li class="card-product-spec-item">60+ GB/s sequential read</li>
+            <li class="card-product-spec-item">&lt;100µs access latency</li>
+          </ul>
+          <div class="card-product-footer">
+            <a href="#" class="btn btn-outline-light btn-sm" style="width:100%; justify-content: center;">Learn More →</a>
+          </div>
+        </div>
+
+        <!-- Compute Pool -->
+        <div class="card-product animate-fade-in-scale delay-300">
+          <div class="card-product-header">
+            <div>
+              <span class="badge badge-compute" style="margin-bottom: var(--space-3)">Compute</span>
+              <h3 class="card-product-name">Compute Pools</h3>
+            </div>
+            <div class="card-product-icon" style="background: rgba(139,92,246,0.12); border-color: rgba(139,92,246,0.25); color: var(--color-cat-compute)">⬛</div>
+          </div>
+          <p class="card-product-desc">CPU resource disaggregation across AMD EPYC and Intel Xeon platforms, enabling shared processor pools independent of memory and storage.</p>
+          <ul class="card-product-specs">
+            <li class="card-product-spec-item">AMD EPYC / Intel Xeon</li>
+            <li class="card-product-spec-item">Up to 512 cores per pool</li>
+            <li class="card-product-spec-item">NUMA-aware allocation</li>
+          </ul>
+          <div class="card-product-footer">
+            <a href="#" class="btn btn-outline-light btn-sm" style="width:100%; justify-content: center;">Learn More →</a>
+          </div>
+        </div>
+
+        <!-- Networking -->
+        <div class="card-product animate-fade-in-scale delay-400">
+          <div class="card-product-header">
+            <div>
+              <span class="badge badge-networking" style="margin-bottom: var(--space-3)">Networking</span>
+              <h3 class="card-product-name">Fabric Networking</h3>
+            </div>
+            <div class="card-product-icon" style="background: rgba(16,185,129,0.12); border-color: rgba(16,185,129,0.25); color: var(--color-cat-networking)">🔀</div>
+          </div>
+          <p class="card-product-desc">High-bandwidth PCIe fabric network integration supporting RoCE v2, NVLink, and InfiniBand interconnects for AI supercomputing.</p>
+          <ul class="card-product-specs">
+            <li class="card-product-spec-item">RoCE v2 / InfiniBand / TCP</li>
+            <li class="card-product-spec-item">400 Gbps per endpoint</li>
+            <li class="card-product-spec-item">RDMA acceleration</li>
+          </ul>
+          <div class="card-product-footer">
+            <a href="#" class="btn btn-outline-light btn-sm" style="width:100%; justify-content: center;">Learn More →</a>
+          </div>
+        </div>
+
+        <!-- Liqid Command -->
+        <div class="card-product animate-fade-in-scale delay-500">
+          <div class="card-product-header">
+            <div>
+              <span class="badge badge-new" style="margin-bottom: var(--space-3)">Software</span>
+              <h3 class="card-product-name">Liqid Command™</h3>
+            </div>
+            <div class="card-product-icon">🖥</div>
+          </div>
+          <p class="card-product-desc">Unified software management and orchestration platform for composable infrastructure. REST API, CLI, and GUI — full automation ready.</p>
+          <ul class="card-product-specs">
+            <li class="card-product-spec-item">REST API &amp; Python SDK</li>
+            <li class="card-product-spec-item">Kubernetes integration</li>
+            <li class="card-product-spec-item">Terraform provider</li>
+          </ul>
+          <div class="card-product-footer">
+            <a href="#" class="btn btn-outline-light btn-sm" style="width:100%; justify-content: center;">Learn More →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Cards — Light -->
+  <section class="ds-section-light">
+    <div class="container">
+      <div class="ds-heading-light">Solution Cards</div>
+      <div class="grid-3">
+        <div class="card-solution">
+          <div class="card-solution-icon">🤖</div>
+          <span class="badge badge-new">AI Infrastructure</span>
+          <h3 class="card-solution-title">AI / ML Clusters</h3>
+          <p class="card-solution-body">Purpose-built composable clusters for large-scale AI training. Scale GPU and NVMe capacity independently as workloads and models evolve.</p>
+          <a href="#" class="card-solution-link">Explore →</a>
+        </div>
+        <div class="card-solution">
+          <div class="card-solution-icon" style="background: rgba(6,182,212,0.10); border-color: rgba(6,182,212,0.20); color: var(--color-cat-storage)">🖧</div>
+          <span class="badge badge-category">HPC</span>
+          <h3 class="card-solution-title">High-Performance Computing</h3>
+          <p class="card-solution-body">Composable HPC clusters that eliminate resource silos. Re-allocate CPU, GPU, and NVMe resources between simulation workloads dynamically.</p>
+          <a href="#" class="card-solution-link">Explore →</a>
+        </div>
+        <div class="card-solution">
+          <div class="card-solution-icon" style="background: rgba(139,92,246,0.10); border-color: rgba(139,92,246,0.20); color: var(--color-cat-compute)">🏛</div>
+          <span class="badge badge-category">Government</span>
+          <h3 class="card-solution-title">DoD / SCIF Deployments</h3>
+          <p class="card-solution-body">Air-gapped composable infrastructure for defense and intelligence environments. FIPS 140-2 compliant, no external dependencies.</p>
+          <a href="#" class="card-solution-link">Explore →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       7. RACK DIAGRAM — Signature Component
+       ========================================================================= -->
+  <section class="ds-section">
+    <div class="container">
+      <div class="ds-heading">Rack Diagram — CSS Infrastructure Visualization</div>
+      <div style="display: flex; gap: var(--space-10); align-items: flex-start; flex-wrap: wrap;">
+
+        <!-- Primary rack (42U) -->
+        <div class="rack-diagram" style="--rack-width: 340px; flex-shrink: 0;" role="region" aria-label="Server rack diagram — Rack A">
+          <div class="rack-diagram-header">
+            <span class="rack-diagram-title">Rack A — Fabric Controller</span>
+            <div class="rack-diagram-status">
+              <span class="status-dot status-dot--active"></span>
+              ONLINE
+            </div>
+          </div>
+          <div class="rack-diagram-body">
+            <div class="rack-unit rack-unit--liqid">
+              <span class="rack-unit-num">01</span>
+              <span class="rack-unit-label">Liqid Matrix™ Fabric Controller</span>
+              <div class="rack-unit-leds">
+                <div class="rack-unit-led on-blue"></div>
+                <div class="rack-unit-led on-green"></div>
+                <div class="rack-unit-led on-green"></div>
+              </div>
+            </div>
+            <div class="rack-unit rack-unit--switch">
+              <span class="rack-unit-num">02</span>
+              <span class="rack-unit-label">100GbE Top-of-Rack Switch</span>
+              <div class="rack-unit-leds">
+                <div class="rack-unit-led on-green"></div>
+                <div class="rack-unit-led on-green"></div>
+              </div>
+            </div>
+            <div class="rack-unit rack-unit--active rack-unit--2u">
+              <span class="rack-unit-num">03</span>
+              <span class="rack-unit-label">Compute Node A — EPYC 9654 (2S)</span>
+              <div class="rack-unit-leds">
+                <div class="rack-unit-led on-blue"></div>
+                <div class="rack-unit-led on-green"></div>
+              </div>
+            </div>
+            <div class="rack-unit rack-unit--active rack-unit--2u">
+              <span class="rack-unit-num">05</span>
+              <span class="rack-unit-label">Compute Node B — EPYC 9654 (2S)</span>
+              <div class="rack-unit-leds">
+                <div class="rack-unit-led on-blue"></div>
+                <div class="rack-unit-led on-green"></div>
+              </div>
+            </div>
+            <div class="rack-unit rack-unit--gpu rack-unit--2u">
+              <span class="rack-unit-num">07</span>
+              <span class="rack-unit-label">GPU Tray — 8x NVIDIA H100 SXM5</span>
+              <div class="rack-unit-leds">
+                <div class="rack-unit-led on-amber"></div>
+                <div class="rack-unit-led on-green"></div>
+                <div class="rack-unit-led on-green"></div>
+              </div>
+            </div>
+            <div class="rack-unit rack-unit--gpu rack-unit--2u">
+              <span class="rack-unit-num">09</span>
+              <span class="rack-unit-label">GPU Tray — 8x NVIDIA H100 SXM5</span>
+              <div class="rack-unit-leds">
+                <div class="rack-unit-led on-green"></div>
+                <div class="rack-unit-led on-green"></div>
+                <div class="rack-unit-led on-green"></div>
+              </div>
+            </div>
+            <div class="rack-unit rack-unit--storage rack-unit--2u">
+              <span class="rack-unit-num">11</span>
+              <span class="rack-unit-label">NVMe Array — 24x 15.36TB U.2</span>
+              <div class="rack-unit-leds">
+                <div class="rack-unit-led on-blue"></div>
+                <div class="rack-unit-led on-green"></div>
+              </div>
+            </div>
+            <div class="rack-unit rack-unit--storage rack-unit--2u">
+              <span class="rack-unit-num">13</span>
+              <span class="rack-unit-label">NVMe Array — 24x 15.36TB U.2</span>
+              <div class="rack-unit-leds">
+                <div class="rack-unit-led on-blue"></div>
+                <div class="rack-unit-led on-green"></div>
+              </div>
+            </div>
+            <div class="rack-unit">
+              <span class="rack-unit-num">15</span>
+              <span class="rack-unit-label">PCIe Gen 4 Fabric Extender</span>
+              <div class="rack-unit-leds">
+                <div class="rack-unit-led on-blue"></div>
+              </div>
+            </div>
+            <div class="rack-unit rack-unit--empty">
+              <span class="rack-unit-num">16</span>
+              <span class="rack-unit-label">— empty slot —</span>
+            </div>
+            <div class="rack-unit rack-unit--empty">
+              <span class="rack-unit-num">17</span>
+              <span class="rack-unit-label">— empty slot —</span>
+            </div>
+            <div class="rack-unit">
+              <span class="rack-unit-num">18</span>
+              <span class="rack-unit-label">Dual 10kW PDU (A+B feed)</span>
+              <div class="rack-unit-leds">
+                <div class="rack-unit-led on-green"></div>
+                <div class="rack-unit-led on-green"></div>
+              </div>
+            </div>
+          </div>
+          <div class="rack-diagram-footer">
+            <span class="rack-diagram-footer-stat">Power: <strong>7.2kW / 10kW</strong></span>
+            <span class="rack-diagram-footer-stat">Temp: <strong>22°C</strong></span>
+            <span class="rack-diagram-footer-stat">Fabric: <strong>Gen 4</strong></span>
+          </div>
+        </div>
+
+        <!-- Rack legend / info -->
+        <div style="flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: var(--space-6);">
+          <div>
+            <h3 style="color: #F0F4FF; font-size: var(--text-20); font-weight: var(--weight-semibold); margin-bottom: var(--space-4)">CSS Rack Visualization</h3>
+            <p style="color: rgba(240,244,255,0.55); font-size: var(--text-14); line-height: var(--leading-body); margin-bottom: var(--space-6)">The rack diagram is a signature Liqid design system component — pure CSS, no images. Represents physical infrastructure as software-defined objects.</p>
+          </div>
+
+          <!-- Unit type legend -->
+          <div style="display: flex; flex-direction: column; gap: var(--space-3)">
+            <div class="text-section-label" style="color: rgba(240,244,255,0.30); margin-bottom: var(--space-2)">Unit Types</div>
+            <div style="display: flex; align-items: center; gap: var(--space-3)">
+              <div style="width: 16px; height: 16px; border-radius: 2px; background: rgba(0,112,243,0.14); border: 1px solid rgba(0,112,243,0.45);"></div>
+              <span style="font-size: var(--text-13); color: rgba(240,244,255,0.65);">.rack-unit--liqid — Liqid Fabric Controller</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: var(--space-3)">
+              <div style="width: 16px; height: 16px; border-radius: 2px; background: rgba(0,112,243,0.10); border: 1px solid rgba(0,112,243,0.40);"></div>
+              <span style="font-size: var(--text-13); color: rgba(240,244,255,0.65);">.rack-unit--active — Active / Selected unit</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: var(--space-3)">
+              <div style="width: 16px; height: 16px; border-radius: 2px; background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.20);"></div>
+              <span style="font-size: var(--text-13); color: rgba(240,244,255,0.65);">.rack-unit--gpu — GPU tray</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: var(--space-3)">
+              <div style="width: 16px; height: 16px; border-radius: 2px; background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.20);"></div>
+              <span style="font-size: var(--text-13); color: rgba(240,244,255,0.65);">.rack-unit--storage — NVMe array</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: var(--space-3)">
+              <div style="width: 16px; height: 16px; border-radius: 2px; background: rgba(6,182,212,0.08); border: 1px solid rgba(6,182,212,0.25);"></div>
+              <span style="font-size: var(--text-13); color: rgba(240,244,255,0.65);">.rack-unit--switch — Network switch</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: var(--space-3)">
+              <div style="width: 16px; height: 16px; border-radius: 2px; background: rgba(0,0,0,0.20); border: 1px dashed rgba(255,255,255,0.06);"></div>
+              <span style="font-size: var(--text-13); color: rgba(240,244,255,0.65);">.rack-unit--empty — Empty slot</span>
+            </div>
+          </div>
+
+          <!-- LED legend -->
+          <div style="display: flex; flex-direction: column; gap: var(--space-3)">
+            <div class="text-section-label" style="color: rgba(240,244,255,0.30); margin-bottom: var(--space-2)">LED Indicators</div>
+            <div style="display: flex; gap: var(--space-6)">
+              <div style="display: flex; align-items: center; gap: var(--space-2)">
+                <div class="rack-unit-led on-green"></div>
+                <span style="font-size: var(--text-12); color: rgba(240,244,255,0.50)">Online</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: var(--space-2)">
+                <div class="rack-unit-led on-blue"></div>
+                <span style="font-size: var(--text-12); color: rgba(240,244,255,0.50)">Activity</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: var(--space-2)">
+                <div class="rack-unit-led on-amber"></div>
+                <span style="font-size: var(--text-12); color: rgba(240,244,255,0.50)">Warning</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       8. PERFORMANCE METRICS DASHBOARD
+       ========================================================================= -->
+  <section class="ds-section-mid">
+    <div class="container">
+      <div class="ds-heading">Performance Metrics Dashboard</div>
+      <div class="section-header left" style="margin-bottom: var(--space-8)">
+        <div class="section-header-eyebrow">Live Cluster Metrics</div>
+        <h2 class="section-header-title">Fabric A — Real-Time Telemetry</h2>
+      </div>
+
+      <!-- Metric cards -->
+      <div class="metrics-dashboard">
+        <div class="metric-card" style="--metric-bar-color: #0070F3">
+          <div class="metric-card-label">
+            Fabric Throughput
+            <span class="status-dot status-dot--active" style="width:8px; height:8px;"></span>
+          </div>
+          <div class="metric-card-value">387<span class="metric-card-unit">Gbps</span></div>
+          <div class="metric-card-trend up">↑ 12% vs. last hour</div>
+        </div>
+        <div class="metric-card" style="--metric-bar-color: #00C8FF">
+          <div class="metric-card-label">Switch Latency</div>
+          <div class="metric-card-value">0.8<span class="metric-card-unit">µs</span></div>
+          <div class="metric-card-trend up">↓ 0.1µs improved</div>
+        </div>
+        <div class="metric-card" style="--metric-bar-color: #8B5CF6">
+          <div class="metric-card-label">GPU Utilization</div>
+          <div class="metric-card-value">94<span class="metric-card-unit">%</span></div>
+          <div class="metric-card-trend up">↑ 6% vs. baseline</div>
+        </div>
+        <div class="metric-card" style="--metric-bar-color: #10B981">
+          <div class="metric-card-label">NVMe IOPS</div>
+          <div class="metric-card-value">4.2<span class="metric-card-unit">M</span></div>
+          <div class="metric-card-trend flat">→ stable</div>
+        </div>
+      </div>
+
+      <!-- Bar Chart -->
+      <div class="metric-chart">
+        <div class="metric-chart-header">
+          <span class="metric-chart-title">Hourly Fabric Throughput (Gbps)</span>
+          <span style="font-size: var(--text-12); color: rgba(240,244,255,0.35); font-family: var(--font-mono)">Last 12 hours</span>
+        </div>
+        <div class="metric-chart-bars">
+          <div class="metric-chart-bar-wrap">
+            <div class="metric-chart-bar" style="height: 55%"></div>
+            <div class="metric-chart-bar-label">12h</div>
+          </div>
+          <div class="metric-chart-bar-wrap">
+            <div class="metric-chart-bar" style="height: 62%"></div>
+            <div class="metric-chart-bar-label">11h</div>
+          </div>
+          <div class="metric-chart-bar-wrap">
+            <div class="metric-chart-bar" style="height: 48%"></div>
+            <div class="metric-chart-bar-label">10h</div>
+          </div>
+          <div class="metric-chart-bar-wrap">
+            <div class="metric-chart-bar" style="height: 70%"></div>
+            <div class="metric-chart-bar-label">9h</div>
+          </div>
+          <div class="metric-chart-bar-wrap">
+            <div class="metric-chart-bar" style="height: 85%"></div>
+            <div class="metric-chart-bar-label">8h</div>
+          </div>
+          <div class="metric-chart-bar-wrap">
+            <div class="metric-chart-bar" style="height: 90%"></div>
+            <div class="metric-chart-bar-label">7h</div>
+          </div>
+          <div class="metric-chart-bar-wrap">
+            <div class="metric-chart-bar" style="height: 78%"></div>
+            <div class="metric-chart-bar-label">6h</div>
+          </div>
+          <div class="metric-chart-bar-wrap">
+            <div class="metric-chart-bar" style="height: 82%"></div>
+            <div class="metric-chart-bar-label">5h</div>
+          </div>
+          <div class="metric-chart-bar-wrap">
+            <div class="metric-chart-bar" style="height: 88%"></div>
+            <div class="metric-chart-bar-label">4h</div>
+          </div>
+          <div class="metric-chart-bar-wrap">
+            <div class="metric-chart-bar" style="height: 92%"></div>
+            <div class="metric-chart-bar-label">3h</div>
+          </div>
+          <div class="metric-chart-bar-wrap">
+            <div class="metric-chart-bar" style="height: 95%"></div>
+            <div class="metric-chart-bar-label">2h</div>
+          </div>
+          <div class="metric-chart-bar-wrap">
+            <div class="metric-chart-bar" style="height: 97%"></div>
+            <div class="metric-chart-bar-label">1h</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Throughput bars -->
+      <div style="margin-top: var(--space-8); display: flex; flex-direction: column; gap: var(--space-5); background: var(--color-liqid-navy); border: 1px solid var(--color-liqid-navy-border); border-radius: var(--radius-card); padding: var(--space-6)">
+        <div class="text-section-label" style="color: rgba(240,244,255,0.30); margin-bottom: var(--space-2)">Endpoint Throughput Allocation</div>
+        <div class="throughput-row">
+          <div class="throughput-row-header">
+            <span class="throughput-row-label">Node-01 → NVMe Pool A</span>
+            <span class="throughput-row-value">38.4 GB/s</span>
+          </div>
+          <div class="throughput-bar"><div class="throughput-bar-fill high" style="width: 96%"></div></div>
+        </div>
+        <div class="throughput-row">
+          <div class="throughput-row-header">
+            <span class="throughput-row-label">Node-02 → GPU Array (H100×8)</span>
+            <span class="throughput-row-value">24.7 GB/s</span>
+          </div>
+          <div class="throughput-bar"><div class="throughput-bar-fill" style="width: 62%"></div></div>
+        </div>
+        <div class="throughput-row">
+          <div class="throughput-row-header">
+            <span class="throughput-row-label">Node-03 → NVMe Pool B</span>
+            <span class="throughput-row-value">31.2 GB/s</span>
+          </div>
+          <div class="throughput-bar"><div class="throughput-bar-fill" style="width: 78%"></div></div>
+        </div>
+        <div class="throughput-row">
+          <div class="throughput-row-header">
+            <span class="throughput-row-label">Node-04 → Network (400GbE)</span>
+            <span class="throughput-row-value" style="color: var(--color-status-warning)">39.8 GB/s</span>
+          </div>
+          <div class="throughput-bar"><div class="throughput-bar-fill warning" style="width: 99%"></div></div>
+        </div>
+        <div class="throughput-row">
+          <div class="throughput-row-header">
+            <span class="throughput-row-label">Node-05 → GPU Array (A100×4)</span>
+            <span class="throughput-row-value">11.3 GB/s</span>
+          </div>
+          <div class="throughput-bar"><div class="throughput-bar-fill" style="width: 28%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       9. SPEC TABLE
+       ========================================================================= -->
+  <section class="ds-section-light">
+    <div class="container">
+      <div class="ds-heading-light">Enterprise Spec Table</div>
+      <table class="spec-table-enterprise">
+        <caption>Liqid Matrix™ — Gen 4 PCIe Fabric Controller Technical Specifications</caption>
+        <tbody>
+          <tr class="spec-category"><td colspan="2">Fabric Interface</td></tr>
+          <tr class="spec-row spec-row--highlight">
+            <td>PCIe Generation</td>
+            <td>PCIe Gen 4 (16 GT/s) standard; Gen 5 (32 GT/s) with Matrix-2000 series</td>
+          </tr>
+          <tr class="spec-row">
+            <td>Lane Width</td>
+            <td>x4, x8, x16 per endpoint (software-selectable)</td>
+          </tr>
+          <tr class="spec-row spec-row--highlight">
+            <td>Aggregate Bandwidth</td>
+            <td>Up to 400 Gbps full-duplex per fabric controller</td>
+          </tr>
+          <tr class="spec-row">
+            <td>Switching Latency</td>
+            <td>&lt;1µs end-to-end (fabric controller to endpoint)</td>
+          </tr>
+          <tr class="spec-row">
+            <td>Max Endpoints</td>
+            <td>96 endpoints per controller; 1,024+ with fabric expansion</td>
+          </tr>
+
+          <tr class="spec-category"><td colspan="2">Management &amp; Software</td></tr>
+          <tr class="spec-row">
+            <td>Management Interface</td>
+            <td>1GbE dedicated OOB management port (RJ-45)</td>
+          </tr>
+          <tr class="spec-row">
+            <td>API</td>
+            <td>REST API v2.0; Python SDK; Terraform provider; Ansible modules</td>
+          </tr>
+          <tr class="spec-row">
+            <td>Orchestration</td>
+            <td>Kubernetes device plugin; VMware vCenter plugin; OpenStack driver</td>
+          </tr>
+          <tr class="spec-row">
+            <td>Monitoring</td>
+            <td>SNMP v3; Prometheus exporter; Grafana dashboard templates</td>
+          </tr>
+
+          <tr class="spec-category"><td colspan="2">Physical &amp; Environmental</td></tr>
+          <tr class="spec-row">
+            <td>Form Factor</td>
+            <td>1U rackmount, standard 19" EIA-310</td>
+          </tr>
+          <tr class="spec-row">
+            <td>Power Consumption</td>
+            <td>Typical: 85W · Maximum: 120W</td>
+          </tr>
+          <tr class="spec-row">
+            <td>Operating Temperature</td>
+            <td>0°C to 45°C (ASHRAE A3 compliant)</td>
+          </tr>
+          <tr class="spec-row">
+            <td>Humidity</td>
+            <td>5% to 95% RH, non-condensing</td>
+          </tr>
+          <tr class="spec-row">
+            <td>Certifications</td>
+            <td>UL/CE/FCC Class A; RoHS 2.0; REACH compliant; FIPS 140-2 Level 2</td>
+          </tr>
+
+          <tr class="spec-category"><td colspan="2">High Availability</td></tr>
+          <tr class="spec-row">
+            <td>Redundancy</td>
+            <td>Dual hot-swap power supplies (1+1); redundant fan modules</td>
+          </tr>
+          <tr class="spec-row">
+            <td>MTBF</td>
+            <td>&gt;500,000 hours (BELLCORE/Telcordia)</td>
+          </tr>
+          <tr class="spec-row">
+            <td>Warranty</td>
+            <td>3-year hardware; optional 5-year with Liqid Assure™</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       10. FEATURE ROWS
+       ========================================================================= -->
+  <section class="ds-section-mid">
+    <div class="container">
+      <div class="ds-heading">Feature / Capability Rows</div>
+
+      <!-- Feature row 1 — image left, text right -->
+      <div class="feature-row">
+        <div class="feature-row-visual">
+          <div class="feature-row-visual-placeholder">
+            <div class="feature-row-visual-icon animate-float">🔗</div>
+            <div class="feature-row-visual-label">PCIe Fabric Topology</div>
+            <!-- Mini rack sketch in the visual area -->
+            <div style="display: flex; gap: 8px; margin-top: var(--space-4);">
+              <div style="width: 60px; background: rgba(0,112,243,0.20); border: 1px solid rgba(0,112,243,0.40); border-radius: 4px; height: 80px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(0,200,255,0.60); font-family: var(--font-mono)">CPU</div>
+              <div style="width: 8px; background: rgba(0,200,255,0.20); border-radius: 2px; height: 80px; position: relative; display: flex; align-items: center; justify-content: center; font-size: 8px; color: rgba(0,200,255,0.40); writing-mode: vertical-rl;">PCIe</div>
+              <div style="width: 70px; background: rgba(0,112,243,0.30); border: 1.5px solid rgba(0,112,243,0.60); border-radius: 4px; height: 80px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--color-liqid-cyan); font-family: var(--font-mono); font-weight: 600;">FABRIC</div>
+              <div style="width: 8px; background: rgba(0,200,255,0.20); border-radius: 2px; height: 80px; display: flex; align-items: center; justify-content: center; font-size: 8px; color: rgba(0,200,255,0.40); writing-mode: vertical-rl;">PCIe</div>
+              <div style="width: 60px; background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.35); border-radius: 4px; height: 80px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(245,158,11,0.70); font-family: var(--font-mono)">GPU</div>
+            </div>
+          </div>
+        </div>
+        <div class="feature-row-content">
+          <div class="text-eyebrow">PCIe Fabric Technology</div>
+          <h2 style="color: #F0F4FF; font-size: var(--text-36); font-weight: var(--weight-bold); line-height: var(--leading-title); letter-spacing: var(--tracking-tight); margin: 0 0 var(--space-4);">One fabric. Every resource.</h2>
+          <p style="color: rgba(240,244,255,0.60); font-size: var(--text-16); line-height: var(--leading-body); margin: 0 0 var(--space-6)">Liqid Matrix creates a universal PCIe fabric that connects every physical resource — CPU, GPU, NVMe, and network — into a single composable pool. Any resource can be dynamically assigned to any host in seconds.</p>
+          <ul class="capability-list">
+            <li class="capability-item">
+              <div class="capability-icon">⚡</div>
+              <div>
+                <div class="capability-content-title" style="color: #F0F4FF">Sub-microsecond composition</div>
+                <div class="capability-content-desc">Compose new resource configurations in under 60 seconds from a software API call.</div>
+              </div>
+            </li>
+            <li class="capability-item">
+              <div class="capability-icon" style="background: rgba(245,158,11,0.12); border-color: rgba(245,158,11,0.20);">🔒</div>
+              <div>
+                <div class="capability-content-title" style="color: #F0F4FF">Hardware-isolated tenancy</div>
+                <div class="capability-content-desc">PCIe access control lists enforce strict hardware isolation between composed workloads.</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="divider-dark">
+
+      <!-- Feature row 2 — text left, visual right (reverse) -->
+      <div class="feature-row reverse">
+        <div class="feature-row-visual">
+          <div class="feature-row-visual-placeholder">
+            <div class="feature-row-visual-icon animate-float" style="animation-delay: 1s">🤖</div>
+            <div class="feature-row-visual-label">AI Infrastructure Layer</div>
+            <div style="margin-top: var(--space-4); display: flex; flex-direction: column; gap: 4px; width: 200px;">
+              <div style="height: 8px; background: linear-gradient(90deg, #8B5CF6, rgba(139,92,246,0.20)); border-radius: 4px; width: 100%"></div>
+              <div style="height: 8px; background: linear-gradient(90deg, #0070F3, rgba(0,112,243,0.20)); border-radius: 4px; width: 85%"></div>
+              <div style="height: 8px; background: linear-gradient(90deg, #00C8FF, rgba(0,200,255,0.20)); border-radius: 4px; width: 72%"></div>
+              <div style="height: 8px; background: linear-gradient(90deg, #F59E0B, rgba(245,158,11,0.20)); border-radius: 4px; width: 94%"></div>
+            </div>
+            <div class="text-spec" style="margin-top: var(--space-3)">GPU utilization: 94%</div>
+          </div>
+        </div>
+        <div class="feature-row-content">
+          <div class="text-eyebrow">AI Supercomputing</div>
+          <h2 style="color: #F0F4FF; font-size: var(--text-36); font-weight: var(--weight-bold); line-height: var(--leading-title); letter-spacing: var(--tracking-tight); margin: 0 0 var(--space-4)">Maximize GPU utilization for AI</h2>
+          <p style="color: rgba(240,244,255,0.60); font-size: var(--text-16); line-height: var(--leading-body); margin: 0 0 var(--space-6)">Traditional servers waste 30–50% of GPU capacity due to rigid 1:1 host-GPU binding. Liqid's composable fabric pools every GPU across your cluster, assigning them to whichever workload needs them most.</p>
+          <ul class="capability-list">
+            <li class="capability-item">
+              <div class="capability-icon" style="background: rgba(139,92,246,0.12); border-color: rgba(139,92,246,0.20)">⬡</div>
+              <div>
+                <div class="capability-content-title" style="color: #F0F4FF">Up to 40% more GPU throughput</div>
+                <div class="capability-content-desc">Customers report 30–40% higher GPU utilization versus fixed-server deployments.</div>
+              </div>
+            </li>
+            <li class="capability-item">
+              <div class="capability-icon" style="background: rgba(0,200,255,0.10); border-color: rgba(0,200,255,0.20)">♾</div>
+              <div>
+                <div class="capability-content-title" style="color: #F0F4FF">Future-proof scaling</div>
+                <div class="capability-content-desc">Add new GPU generations without re-architecting. Just plug into the fabric.</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       11. RESOURCE DOWNLOADS
+       ========================================================================= -->
+  <section class="ds-section-light">
+    <div class="container">
+      <div class="ds-heading-light">Resource Downloads</div>
+      <div class="section-header" style="margin-bottom: var(--space-10)">
+        <div class="section-header-eyebrow">Technical Resources</div>
+        <h2 class="section-header-title">Data Sheets, Briefs &amp; Case Studies</h2>
+      </div>
+      <div class="grid-4">
+        <div class="card-resource">
+          <div class="card-resource-type-bar pdf"></div>
+          <div class="card-resource-body">
+            <div class="card-resource-meta">
+              <div class="card-resource-doc-icon">📄</div>
+              <span class="badge badge-error" style="font-size:10px; padding:2px 5px;">PDF</span>
+            </div>
+            <h4 class="card-resource-title">Liqid Matrix™ Data Sheet</h4>
+            <p class="card-resource-desc">Complete technical specifications, performance benchmarks, and form factor details for the Liqid Matrix fabric controller.</p>
+          </div>
+          <div class="card-resource-footer">
+            <span class="card-resource-size">2.4 MB</span>
+            <a href="#" class="btn btn-secondary btn-sm">Download</a>
+          </div>
+        </div>
+        <div class="card-resource">
+          <div class="card-resource-type-bar brief"></div>
+          <div class="card-resource-body">
+            <div class="card-resource-meta">
+              <div class="card-resource-doc-icon">📋</div>
+              <span class="badge badge-fabric" style="font-size:10px; padding:2px 5px;">Brief</span>
+            </div>
+            <h4 class="card-resource-title">AI Infrastructure Solution Brief</h4>
+            <p class="card-resource-desc">How composable disaggregated infrastructure reduces AI infrastructure costs while improving GPU utilization by up to 40%.</p>
+          </div>
+          <div class="card-resource-footer">
+            <span class="card-resource-size">840 KB</span>
+            <a href="#" class="btn btn-secondary btn-sm">Download</a>
+          </div>
+        </div>
+        <div class="card-resource">
+          <div class="card-resource-type-bar video"></div>
+          <div class="card-resource-body">
+            <div class="card-resource-meta">
+              <div class="card-resource-doc-icon">▶</div>
+              <span class="badge badge-compute" style="font-size:10px; padding:2px 5px;">Video</span>
+            </div>
+            <h4 class="card-resource-title">Live Composable Infrastructure Demo</h4>
+            <p class="card-resource-desc">Watch Liqid's software compose a full GPU cluster — 8 nodes, 64 GPUs, petabyte NVMe — in under 60 seconds.</p>
+          </div>
+          <div class="card-resource-footer">
+            <span class="card-resource-size">12 min</span>
+            <a href="#" class="btn btn-secondary btn-sm">Watch</a>
+          </div>
+        </div>
+        <div class="card-resource">
+          <div class="card-resource-type-bar case"></div>
+          <div class="card-resource-body">
+            <div class="card-resource-meta">
+              <div class="card-resource-doc-icon">🏛</div>
+              <span class="badge badge-networking" style="font-size:10px; padding:2px 5px;">Case Study</span>
+            </div>
+            <h4 class="card-resource-title">National Lab Achieves 3x HPC Throughput</h4>
+            <p class="card-resource-desc">A US national laboratory reduced HPC idle time from 38% to 6% using Liqid composable infrastructure across 2,000 nodes.</p>
+          </div>
+          <div class="card-resource-footer">
+            <span class="card-resource-size">1.1 MB</span>
+            <a href="#" class="btn btn-secondary btn-sm">Read</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       12. NAVIGATION MEGA-MENU OPEN STATE (static showcase)
+       ========================================================================= -->
+  <section class="ds-section">
+    <div class="container">
+      <div class="ds-heading">Navigation — Mega Menu (Open State)</div>
+      <div style="position: relative; background: var(--color-liqid-navy); border: 1px solid var(--color-liqid-navy-border); border-radius: var(--radius-2xl); padding: var(--space-6);">
+        <div class="nav-mega-menu" style="display: block; position: relative; top: 0; left: 0; transform: none; min-width: 0; box-shadow: none; border-color: rgba(255,255,255,0.08);">
+          <div class="nav-mega-menu-header">Composable Infrastructure Portfolio</div>
+          <div class="nav-mega-menu-grid">
+            <a href="#" class="nav-mega-menu-item">
+              <div class="nav-mega-menu-icon">🔗</div>
+              <div><div class="nav-mega-menu-item-name">Liqid Matrix™</div><div class="nav-mega-menu-item-desc">PCIe fabric controller for disaggregation</div></div>
+            </a>
+            <a href="#" class="nav-mega-menu-item">
+              <div class="nav-mega-menu-icon gpu">⬡</div>
+              <div><div class="nav-mega-menu-item-name">GPU Compose</div><div class="nav-mega-menu-item-desc">Dynamic GPU pooling for AI workloads</div></div>
+            </a>
+            <a href="#" class="nav-mega-menu-item">
+              <div class="nav-mega-menu-icon storage">💾</div>
+              <div><div class="nav-mega-menu-item-name">NVMe-oF Storage</div><div class="nav-mega-menu-item-desc">Disaggregated petabyte-scale block storage</div></div>
+            </a>
+            <a href="#" class="nav-mega-menu-item">
+              <div class="nav-mega-menu-icon compute">⬛</div>
+              <div><div class="nav-mega-menu-item-name">Compute Pool</div><div class="nav-mega-menu-item-desc">CPU resource disaggregation at scale</div></div>
+            </a>
+            <a href="#" class="nav-mega-menu-item">
+              <div class="nav-mega-menu-icon networking">🔀</div>
+              <div><div class="nav-mega-menu-item-name">Fabric Networking</div><div class="nav-mega-menu-item-desc">400 Gbps network fabric integration</div></div>
+            </a>
+            <a href="#" class="nav-mega-menu-item">
+              <div class="nav-mega-menu-icon">🖥</div>
+              <div><div class="nav-mega-menu-item-name">Liqid Command™</div><div class="nav-mega-menu-item-desc">Software management and orchestration</div></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       13. FORMS
+       ========================================================================= -->
+  <section class="ds-section-mid">
+    <div class="container">
+      <div class="ds-heading">Enterprise Forms</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-10); align-items: start;">
+
+        <!-- Contact form dark -->
+        <div style="background: var(--color-liqid-navy-mid); border: 1px solid var(--color-liqid-navy-border); border-radius: var(--radius-2xl); padding: var(--space-8)">
+          <h3 style="color: #F0F4FF; margin-bottom: var(--space-2); font-size: var(--text-24); font-weight: var(--weight-bold)">Request a Demo</h3>
+          <p style="color: rgba(240,244,255,0.50); font-size: var(--text-14); margin-bottom: var(--space-7); line-height: var(--leading-body)">Speak with a composable infrastructure specialist.</p>
+          <form class="form-contact" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" style="color: rgba(240,244,255,0.75)">First Name</label>
+                <input class="input-enterprise input-dark" type="text" placeholder="Alex">
+              </div>
+              <div class="form-group">
+                <label class="form-label" style="color: rgba(240,244,255,0.75)">Last Name</label>
+                <input class="input-enterprise input-dark" type="text" placeholder="Chen">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" style="color: rgba(240,244,255,0.75)">Work Email <span class="required">*</span></label>
+              <input class="input-enterprise input-dark" type="email" placeholder="alex@company.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label" style="color: rgba(240,244,255,0.75)">Company</label>
+              <input class="input-enterprise input-dark" type="text" placeholder="National Lab / Enterprise">
+            </div>
+            <div class="form-group">
+              <label class="form-label" style="color: rgba(240,244,255,0.75)">Primary Use Case</label>
+              <select class="select-enterprise input-dark">
+                <option value="">Select use case...</option>
+                <option>AI / Machine Learning</option>
+                <option>High Performance Computing</option>
+                <option>Private Cloud</option>
+                <option>Government / Defense</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" style="color: rgba(240,244,255,0.75)">Message</label>
+              <textarea class="textarea-enterprise textarea-dark" rows="3" placeholder="Describe your infrastructure challenge..."></textarea>
+            </div>
+            <label class="checkbox-enterprise">
+              <input type="checkbox">
+              <span class="checkbox-label" style="color: rgba(240,244,255,0.45)">I agree to receive updates from Liqid.</span>
+            </label>
+            <button type="submit" class="btn btn-gradient btn-lg" style="width:100%; justify-content:center;">Request Demo →</button>
+          </form>
+        </div>
+
+        <!-- Newsletter + input demo -->
+        <div style="display: flex; flex-direction: column; gap: var(--space-8)">
+          <!-- Newsletter signup -->
+          <div style="background: rgba(0,112,243,0.08); border: 1px solid rgba(0,112,243,0.20); border-radius: var(--radius-2xl); padding: var(--space-8); text-align: center;">
+            <h4 style="color: #F0F4FF; margin-bottom: var(--space-3); font-size: var(--text-20); font-weight: var(--weight-semibold)">Stay current on composable infrastructure</h4>
+            <p style="color: rgba(240,244,255,0.50); font-size: var(--text-14); margin-bottom: var(--space-5); line-height: var(--leading-body)">Technical deep-dives, product updates, and events — no spam.</p>
+            <form class="form-newsletter" style="margin-bottom: var(--space-3);">
+              <input class="input-enterprise input-dark" type="email" placeholder="Work email address" style="flex:1">
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+            <p class="text-legal">We respect your privacy. Unsubscribe anytime.</p>
+          </div>
+
+          <!-- Input states reference -->
+          <div style="background: var(--color-liqid-navy); border: 1px solid var(--color-liqid-navy-border); border-radius: var(--radius-2xl); padding: var(--space-6)">
+            <div class="text-section-label" style="color: rgba(240,244,255,0.30); margin-bottom: var(--space-5)">Input States</div>
+            <div style="display: flex; flex-direction: column; gap: var(--space-4)">
+              <div class="form-group">
+                <label class="form-label" style="color: rgba(240,244,255,0.60)">Default</label>
+                <input class="input-enterprise input-dark" type="text" placeholder="Placeholder text">
+              </div>
+              <div class="form-group">
+                <label class="form-label" style="color: rgba(240,244,255,0.60)">Filled</label>
+                <input class="input-enterprise input-dark" type="text" value="Liqid Matrix v4.2">
+              </div>
+              <div class="form-group">
+                <label class="form-label" style="color: rgba(240,244,255,0.60)">Error</label>
+                <input class="input-enterprise error" type="text" value="invalid-entry">
+                <span style="font-size: var(--text-12); color: var(--color-status-error)">This field contains an error.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       14. PARTNER / CERTIFICATION ROW
+       ========================================================================= -->
+  <section class="ds-section-surface">
+    <div class="container">
+      <div class="ds-heading">Partners &amp; Certifications</div>
+      <div class="section-header" style="margin-bottom: var(--space-10)">
+        <div class="section-header-eyebrow">Technology Ecosystem</div>
+        <h2 class="section-header-title">Integrated &amp; Certified</h2>
+        <p class="section-header-subtitle">Liqid works with the leading compute, GPU, storage, and orchestration vendors in the enterprise data center ecosystem.</p>
+      </div>
+
+      <!-- Partner logos (text-based) -->
+      <div class="partner-logo-grid" style="margin-bottom: var(--space-12)">
+        <a href="#" class="partner-logo-item"><span class="partner-logo-text" style="color: rgba(240,244,255,0.85)">NVIDIA</span></a>
+        <a href="#" class="partner-logo-item"><span class="partner-logo-text" style="color: rgba(240,244,255,0.85)">AMD</span></a>
+        <a href="#" class="partner-logo-item"><span class="partner-logo-text" style="color: rgba(240,244,255,0.85)">Intel</span></a>
+        <a href="#" class="partner-logo-item"><span class="partner-logo-text" style="color: rgba(240,244,255,0.85)">Samsung</span></a>
+        <a href="#" class="partner-logo-item"><span class="partner-logo-text" style="color: rgba(240,244,255,0.85)">Micron</span></a>
+        <a href="#" class="partner-logo-item"><span class="partner-logo-text" style="color: rgba(240,244,255,0.85)">Mellanox</span></a>
+        <a href="#" class="partner-logo-item"><span class="partner-logo-text" style="color: rgba(240,244,255,0.85)">VMware</span></a>
+        <a href="#" class="partner-logo-item"><span class="partner-logo-text" style="color: rgba(240,244,255,0.85)">Red Hat</span></a>
+        <a href="#" class="partner-logo-item"><span class="partner-logo-text" style="color: rgba(240,244,255,0.85)">Lenovo</span></a>
+        <a href="#" class="partner-logo-item"><span class="partner-logo-text" style="color: rgba(240,244,255,0.85)">Supermicro</span></a>
+      </div>
+
+      <!-- Certification badges -->
+      <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center;">
+        <div class="certification-badge" style="background: var(--color-liqid-navy); border-color: var(--color-liqid-navy-border)">
+          <div class="certification-badge-icon">🔒</div>
+          <div>
+            <div class="certification-badge-name" style="color: #F0F4FF">FIPS 140-2</div>
+            <div class="certification-badge-desc">Level 2 validated</div>
+          </div>
+        </div>
+        <div class="certification-badge" style="background: var(--color-liqid-navy); border-color: var(--color-liqid-navy-border)">
+          <div class="certification-badge-icon">🛡</div>
+          <div>
+            <div class="certification-badge-name" style="color: #F0F4FF">SOC 2 Type II</div>
+            <div class="certification-badge-desc">Attestation report</div>
+          </div>
+        </div>
+        <div class="certification-badge" style="background: var(--color-liqid-navy); border-color: var(--color-liqid-navy-border)">
+          <div class="certification-badge-icon">⚡</div>
+          <div>
+            <div class="certification-badge-name" style="color: #F0F4FF">ASHRAE A3</div>
+            <div class="certification-badge-desc">Thermal compliant</div>
+          </div>
+        </div>
+        <div class="certification-badge" style="background: var(--color-liqid-navy); border-color: var(--color-liqid-navy-border)">
+          <div class="certification-badge-icon">🌿</div>
+          <div>
+            <div class="certification-badge-name" style="color: #F0F4FF">RoHS 2.0</div>
+            <div class="certification-badge-desc">RoHS &amp; REACH</div>
+          </div>
+        </div>
+        <div class="certification-badge" style="background: var(--color-liqid-navy); border-color: var(--color-liqid-navy-border)">
+          <div class="certification-badge-icon">🏛</div>
+          <div>
+            <div class="certification-badge-name" style="color: #F0F4FF">DoD IL4</div>
+            <div class="certification-badge-desc">Impact Level 4</div>
+          </div>
+        </div>
+        <div class="certification-badge" style="background: var(--color-liqid-navy); border-color: var(--color-liqid-navy-border)">
+          <div class="certification-badge-icon">☁</div>
+          <div>
+            <div class="certification-badge-name" style="color: #F0F4FF">FedRAMP</div>
+            <div class="certification-badge-desc">In process</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       15. MOTION / ANIMATIONS
+       ========================================================================= -->
+  <section class="ds-section">
+    <div class="container">
+      <div class="ds-heading">Motion System &amp; Animations</div>
+
+      <div class="motion-demo-grid">
+        <!-- Fade In -->
+        <div class="motion-demo-card dark">
+          <div class="motion-demo-item animate-fade-in" style="animation-iteration-count: infinite; animation-duration: 2s; animation-direction: alternate;">
+            ✦
+          </div>
+          <div class="motion-demo-label">Fade In</div>
+          <div class="motion-demo-timing">fadeIn · 300ms · ease-out</div>
+        </div>
+
+        <!-- Slide Up -->
+        <div class="motion-demo-card dark">
+          <div class="motion-demo-item animate-slide-up" style="animation-iteration-count: infinite; animation-duration: 1.5s; animation-direction: alternate;">
+            ↑
+          </div>
+          <div class="motion-demo-label">Slide In Up</div>
+          <div class="motion-demo-timing">slideInUp · 300ms</div>
+        </div>
+
+        <!-- Glow Pulse -->
+        <div class="motion-demo-card dark">
+          <div class="motion-demo-item animate-glow-pulse">
+            ◉
+          </div>
+          <div class="motion-demo-label">Glow Pulse</div>
+          <div class="motion-demo-timing">glowPulse · 2.5s · ∞</div>
+        </div>
+
+        <!-- Count Up -->
+        <div class="motion-demo-card dark">
+          <div class="motion-demo-item animate-count-up" style="animation-iteration-count: infinite; animation-duration: 2s; animation-direction: alternate;">
+            42
+          </div>
+          <div class="motion-demo-label">Count Up</div>
+          <div class="motion-demo-timing">countUp · 400ms</div>
+        </div>
+
+        <!-- Float -->
+        <div class="motion-demo-card dark">
+          <div class="motion-demo-item animate-float">
+            ⬛
+          </div>
+          <div class="motion-demo-label">Float</div>
+          <div class="motion-demo-timing">float · 4s · ∞</div>
+        </div>
+
+        <!-- Spin -->
+        <div class="motion-demo-card dark">
+          <div class="motion-demo-item animate-spin" style="background: rgba(0,200,255,0.15); border: 2px solid transparent; border-top-color: var(--color-liqid-cyan); border-radius: 50%;">
+          </div>
+          <div class="motion-demo-label">Loading Spinner</div>
+          <div class="motion-demo-timing">spin · 0.75s · linear · ∞</div>
+        </div>
+
+        <!-- Status dots -->
+        <div class="motion-demo-card dark" style="gap: var(--space-4)">
+          <div style="display: flex; gap: var(--space-4); align-items: center;">
+            <span class="status-dot status-dot--active"></span>
+            <span class="status-dot status-dot--warning"></span>
+            <span class="status-dot status-dot--error"></span>
+            <span class="status-dot status-dot--offline"></span>
+          </div>
+          <div class="motion-demo-label">Status Dots · Ping</div>
+          <div class="motion-demo-timing">ping · 1.4s · ∞</div>
+        </div>
+
+        <!-- Shimmer -->
+        <div class="motion-demo-card dark" style="gap: var(--space-3)">
+          <div class="skeleton-dark" style="height: 12px; width: 100%; border-radius: var(--radius-xs)"></div>
+          <div class="skeleton-dark" style="height: 12px; width: 75%; border-radius: var(--radius-xs)"></div>
+          <div class="skeleton-dark" style="height: 12px; width: 90%; border-radius: var(--radius-xs)"></div>
+          <div class="motion-demo-label">Shimmer Skeleton</div>
+          <div class="motion-demo-timing">shimmer · 1.6s · ∞</div>
+        </div>
+
+        <!-- Scan Line (rack) -->
+        <div class="motion-demo-card dark">
+          <div style="width: 80px; height: 60px; background: #080E1A; border: 1px solid #1E3050; border-radius: 4px; overflow: hidden; position: relative;">
+            <div style="position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(0,200,255,0.50), transparent); animation: scanLine 2s ease-in-out infinite;"></div>
+            <div style="display: flex; flex-direction: column; gap: 2px; padding: 4px;">
+              <div style="height: 8px; background: rgba(0,112,243,0.20); border-radius: 1px; border: 1px solid rgba(0,112,243,0.40)"></div>
+              <div style="height: 8px; background: rgba(245,158,11,0.15); border-radius: 1px; border: 1px solid rgba(245,158,11,0.25)"></div>
+              <div style="height: 8px; background: rgba(255,255,255,0.03); border-radius: 1px; border: 1px dashed rgba(255,255,255,0.08)"></div>
+              <div style="height: 8px; background: rgba(139,92,246,0.12); border-radius: 1px; border: 1px solid rgba(139,92,246,0.25)"></div>
+            </div>
+          </div>
+          <div class="motion-demo-label">Rack Scan Line</div>
+          <div class="motion-demo-timing">scanLine · 3s · ∞</div>
+        </div>
+      </div>
+
+      <!-- Motion timing tokens -->
+      <div style="margin-top: var(--space-10); background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-xl); padding: var(--space-6)">
+        <div class="text-section-label" style="color: rgba(240,244,255,0.30); margin-bottom: var(--space-5)">Motion Tokens</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-4)">
+          <div style="font-size: var(--text-13); color: rgba(240,244,255,0.50); font-family: var(--font-mono)">--duration-fast: <strong style="color: rgba(240,244,255,0.80)">150ms</strong></div>
+          <div style="font-size: var(--text-13); color: rgba(240,244,255,0.50); font-family: var(--font-mono)">--duration-normal: <strong style="color: rgba(240,244,255,0.80)">200ms</strong></div>
+          <div style="font-size: var(--text-13); color: rgba(240,244,255,0.50); font-family: var(--font-mono)">--duration-moderate: <strong style="color: rgba(240,244,255,0.80)">300ms</strong></div>
+          <div style="font-size: var(--text-13); color: rgba(240,244,255,0.50); font-family: var(--font-mono)">--duration-slow: <strong style="color: rgba(240,244,255,0.80)">400ms</strong></div>
+          <div style="font-size: var(--text-13); color: rgba(240,244,255,0.50); font-family: var(--font-mono)">--ease-standard: <strong style="color: rgba(240,244,255,0.80)">cubic-bezier(.25,.46,.45,.94)</strong></div>
+          <div style="font-size: var(--text-13); color: rgba(240,244,255,0.50); font-family: var(--font-mono)">--ease-spring: <strong style="color: rgba(240,244,255,0.80)">cubic-bezier(.34,1.40,.64,1)</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       16. MODALS (static showcase)
+       ========================================================================= -->
+  <section class="ds-section-mid">
+    <div class="container">
+      <div class="ds-heading">Modal Components</div>
+      <div style="max-width: 640px;">
+        <div class="modal modal-dark" style="position: relative;">
+          <div class="modal-header">
+            <div style="display: flex; align-items: flex-start; gap: var(--space-4);">
+              <div class="modal-header-accent">🚀</div>
+              <div>
+                <h2 class="modal-title">Request a Personalized Demo</h2>
+                <p class="modal-subtitle">Our specialists will design a demo around your use case and scale requirements.</p>
+              </div>
+            </div>
+            <button class="modal-close" aria-label="Close">✕</button>
+          </div>
+          <div class="modal-body">
+            <form class="form-contact" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" style="color: rgba(240,244,255,0.75)">First Name</label>
+                  <input class="input-enterprise input-dark" type="text" placeholder="Alex">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" style="color: rgba(240,244,255,0.75)">Last Name</label>
+                  <input class="input-enterprise input-dark" type="text" placeholder="Chen">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" style="color: rgba(240,244,255,0.75)">Work Email <span class="required">*</span></label>
+                <input class="input-enterprise input-dark" type="email" placeholder="alex@company.com">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" style="color: rgba(240,244,255,0.75)">Company</label>
+                  <input class="input-enterprise input-dark" type="text" placeholder="Company">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" style="color: rgba(240,244,255,0.75)">Use Case</label>
+                  <select class="select-enterprise input-dark">
+                    <option value="">Select...</option>
+                    <option>AI / ML</option>
+                    <option>HPC</option>
+                    <option>Private Cloud</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer" style="border-top-color: var(--color-liqid-navy-border)">
+            <button class="btn btn-ghost-light">Cancel</button>
+            <button class="btn btn-gradient btn-lg">Request Demo →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       17. FOOTER
+       ========================================================================= -->
+  <footer class="footer-enterprise" role="contentinfo">
+    <div class="container">
+      <div class="footer-enterprise-main">
+        <!-- Brand column -->
+        <div class="footer-brand-col">
+          <a href="#" class="brand-logo" aria-label="Liqid">
+            <div class="brand-logo-mark">
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="36" height="36" rx="8" fill="#0070F3" fill-opacity="0.15"/>
+                <rect x="1" y="1" width="34" height="34" rx="7" stroke="#0070F3" stroke-opacity="0.30" stroke-width="1"/>
+                <path d="M10 8 L10 24 L26 24" stroke="#0070F3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="10" cy="24" r="2.5" fill="#00C8FF"/>
+                <circle cx="10" cy="8" r="2" fill="#0070F3" fill-opacity="0.60"/>
+                <circle cx="26" cy="24" r="2" fill="#0070F3" fill-opacity="0.60"/>
+                <line x1="14" y1="12" x2="22" y2="20" stroke="#00C8FF" stroke-width="1" stroke-opacity="0.40" stroke-dasharray="2 2"/>
+              </svg>
+            </div>
+            <span class="brand-logo-wordmark">Liqid<span>.</span></span>
+          </a>
+          <p class="footer-tagline">Composable infrastructure for AI, HPC, and enterprise data centers. Disaggregate, pool, and dynamically compose any resource at wire speed.</p>
+          <div class="footer-social">
+            <a href="#" class="footer-social-link" aria-label="Twitter / X">𝕏</a>
+            <a href="#" class="footer-social-link" aria-label="LinkedIn">in</a>
+            <a href="#" class="footer-social-link" aria-label="YouTube">▶</a>
+            <a href="#" class="footer-social-link" aria-label="GitHub">⌥</a>
+          </div>
+        </div>
+
+        <!-- Products -->
+        <div class="footer-nav-col">
+          <div class="footer-nav-heading">Products</div>
+          <ul class="footer-nav-list">
+            <li><a href="#">Liqid Matrix™</a></li>
+            <li><a href="#">GPU Compose</a></li>
+            <li><a href="#">NVMe-oF Storage</a></li>
+            <li><a href="#">Compute Pools</a></li>
+            <li><a href="#">Fabric Networking</a></li>
+            <li><a href="#">Liqid Command™</a></li>
+          </ul>
+        </div>
+
+        <!-- Solutions -->
+        <div class="footer-nav-col">
+          <div class="footer-nav-heading">Solutions</div>
+          <ul class="footer-nav-list">
+            <li><a href="#">AI / ML Infrastructure</a></li>
+            <li><a href="#">High Performance Computing</a></li>
+            <li><a href="#">Private Cloud</a></li>
+            <li><a href="#">Government / DoD</a></li>
+            <li><a href="#">Edge Computing</a></li>
+            <li><a href="#">Telecommunications</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div class="footer-nav-col">
+          <div class="footer-nav-heading">Resources</div>
+          <ul class="footer-nav-list">
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">API Reference</a></li>
+            <li><a href="#">Data Sheets</a></li>
+            <li><a href="#">White Papers</a></li>
+            <li><a href="#">Case Studies</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- Company -->
+        <div class="footer-nav-col">
+          <div class="footer-nav-heading">Company</div>
+          <ul class="footer-nav-list">
+            <li><a href="#">About Liqid</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press &amp; News</a></li>
+            <li><a href="#">Partners</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="footer-divider">
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          © 2024 Liqid Inc. All rights reserved. Liqid® and Liqid Matrix™ are registered trademarks of Liqid Inc.
+        </div>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Settings</a>
+          <a href="#">Accessibility</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

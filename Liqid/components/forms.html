@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms — Liqid Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    body { background: var(--color-bg-primary); padding: var(--space-10); }
+    .demo-section { margin-bottom: var(--space-16); }
+    .demo-label {
+      font-size: var(--text-11);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--color-separator);
+    }
+    .dark-panel {
+      background: var(--color-liqid-navy);
+      border: 1px solid var(--color-liqid-navy-border);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-10);
+    }
+    .form-card {
+      background: var(--color-surface-primary);
+      border: 1px solid var(--color-separator);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-10);
+      max-width: 640px;
+    }
+    .form-card-dark {
+      background: var(--color-liqid-navy);
+      border: 1px solid var(--color-liqid-navy-border);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-10);
+      max-width: 640px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-h2" style="margin-bottom: var(--space-2)">Forms</h1>
+    <p class="text-body" style="margin-bottom: var(--space-12)">Enterprise form components including inputs, selects, and checkboxes.</p>
+
+    <!-- INPUT STATES -->
+    <div class="demo-section">
+      <div class="demo-label">Input States — Light</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); max-width: 640px;">
+        <div class="form-group">
+          <label class="form-label">Default Input</label>
+          <input class="input-enterprise" type="text" placeholder="Enter value...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">With Value</label>
+          <input class="input-enterprise" type="text" value="Liqid Matrix v4">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Focused (click to see)</label>
+          <input class="input-enterprise" type="text" placeholder="Focus state..." autofocus>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Error State</label>
+          <input class="input-enterprise error" type="text" value="Invalid entry">
+          <span class="form-hint" style="color: var(--color-status-error)">This field is required.</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Disabled</label>
+          <input class="input-enterprise" type="text" value="Read only value" disabled>
+        </div>
+        <div class="form-group">
+          <label class="form-label">With Hint</label>
+          <input class="input-enterprise" type="email" placeholder="name@company.com">
+          <span class="form-hint">Use your work email address.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- INPUT STATES — DARK -->
+    <div class="demo-section">
+      <div class="demo-label">Input States — Dark</div>
+      <div class="dark-panel">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5);">
+          <div class="form-group">
+            <label class="form-label" style="color: rgba(240,244,255,0.80)">Default Dark</label>
+            <input class="input-enterprise input-dark" type="text" placeholder="Enter value...">
+          </div>
+          <div class="form-group">
+            <label class="form-label" style="color: rgba(240,244,255,0.80)">With Value</label>
+            <input class="input-enterprise input-dark" type="text" value="Liqid Matrix v4">
+          </div>
+          <div class="form-group">
+            <label class="form-label" style="color: rgba(240,244,255,0.80)">Select Dark</label>
+            <select class="select-enterprise input-dark">
+              <option>PCIe Gen 4</option>
+              <option>PCIe Gen 5</option>
+              <option>NVMe-oF TCP</option>
+              <option>NVMe-oF RoCE</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" style="color: rgba(240,244,255,0.80)">Textarea Dark</label>
+            <textarea class="textarea-enterprise textarea-dark" rows="3" placeholder="Describe your use case..."></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT / DEMO REQUEST FORM -->
+    <div class="demo-section">
+      <div class="demo-label">Contact / Demo Request Form — Light</div>
+      <div class="form-card">
+        <h2 class="text-h4" style="margin-bottom: var(--space-2)">Request a Demo</h2>
+        <p class="text-sm" style="margin-bottom: var(--space-8); color: var(--color-label-secondary)">Our team will reach out within one business day to schedule your personalized demo.</p>
+        <form class="form-contact" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">First Name <span class="required">*</span></label>
+              <input class="input-enterprise" type="text" placeholder="Alex" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name <span class="required">*</span></label>
+              <input class="input-enterprise" type="text" placeholder="Chen" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Work Email <span class="required">*</span></label>
+            <input class="input-enterprise" type="email" placeholder="alex.chen@company.com" required>
+            <span class="form-hint">Use your corporate email address.</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Company <span class="required">*</span></label>
+            <input class="input-enterprise" type="text" placeholder="Acme National Lab" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Job Title</label>
+              <input class="input-enterprise" type="text" placeholder="Infrastructure Architect">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Company Size</label>
+              <select class="select-enterprise">
+                <option value="">Select size...</option>
+                <option>1–50 employees</option>
+                <option>51–500 employees</option>
+                <option>501–5,000 employees</option>
+                <option>5,000+ employees</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Primary Use Case</label>
+            <select class="select-enterprise">
+              <option value="">Select use case...</option>
+              <option>AI / Machine Learning</option>
+              <option>High Performance Computing</option>
+              <option>Private Cloud / Virtualization</option>
+              <option>Edge Computing</option>
+              <option>Government / Defense</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tell us about your infrastructure challenge</label>
+            <textarea class="textarea-enterprise" rows="4" placeholder="Describe your current setup, scale requirements, and goals..."></textarea>
+          </div>
+          <label class="checkbox-enterprise">
+            <input type="checkbox">
+            <span class="checkbox-label">I agree to receive product updates, news, and event invitations from Liqid. I can unsubscribe at any time.</span>
+          </label>
+          <div class="btn-group">
+            <button type="submit" class="btn btn-primary btn-lg" style="flex: 1; justify-content: center;">Request Demo</button>
+          </div>
+          <p class="text-legal" style="text-align: center; margin-top: var(--space-2)">By submitting, you agree to our <a href="#" style="color: var(--color-label-tertiary)">Privacy Policy</a> and <a href="#" style="color: var(--color-label-tertiary)">Terms of Service</a>.</p>
+        </form>
+      </div>
+    </div>
+
+    <!-- DEMO REQUEST FORM — DARK -->
+    <div class="demo-section">
+      <div class="demo-label">Contact Form — Dark</div>
+      <div class="form-card-dark">
+        <h2 class="text-h4" style="margin-bottom: var(--space-2); color: #F0F4FF">Contact Sales</h2>
+        <p class="text-sm" style="margin-bottom: var(--space-8); color: rgba(240,244,255,0.55)">Speak with a composable infrastructure specialist about your requirements.</p>
+        <form class="form-contact" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" style="color: rgba(240,244,255,0.80)">First Name</label>
+              <input class="input-enterprise input-dark" type="text" placeholder="First">
+            </div>
+            <div class="form-group">
+              <label class="form-label" style="color: rgba(240,244,255,0.80)">Last Name</label>
+              <input class="input-enterprise input-dark" type="text" placeholder="Last">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" style="color: rgba(240,244,255,0.80)">Work Email</label>
+            <input class="input-enterprise input-dark" type="email" placeholder="name@company.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" style="color: rgba(240,244,255,0.80)">Message</label>
+            <textarea class="textarea-enterprise textarea-dark" rows="4" placeholder="Describe your project..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-gradient btn-lg" style="width: 100%; justify-content: center;">Send Message</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- NEWSLETTER FORM -->
+    <div class="demo-section">
+      <div class="demo-label">Newsletter / Email Signup</div>
+      <div style="background: var(--color-liqid-navy-mid); border-radius: var(--radius-2xl); padding: var(--space-8); display: flex; flex-direction: column; align-items: center; gap: var(--space-4); text-align: center; max-width: 540px;">
+        <h4 style="color: #F0F4FF; margin: 0; font-size: var(--text-20); font-weight: var(--weight-semibold)">Stay current on composable infrastructure</h4>
+        <p style="color: rgba(240,244,255,0.50); font-size: var(--text-14); margin: 0;">Product updates, technical deep-dives, and event news — no spam.</p>
+        <form class="form-newsletter" style="width: 100%;">
+          <input class="input-enterprise input-dark" type="email" placeholder="Enter your work email" style="flex: 1">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+        <p class="text-legal">We respect your privacy. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

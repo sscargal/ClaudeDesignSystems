@@ -1,0 +1,456 @@
+/* =============================================================================
+   Liqid Design System — Design Tokens
+   Version 1.0.0 | Composable Infrastructure Design Language
+
+   Brand Research Notes:
+   Liqid is an enterprise composable infrastructure company specializing in
+   PCIe fabric-based disaggregation of compute, storage, GPU, and networking
+   resources. Their aesthetic is: dark/deep navy backgrounds, electric blue
+   primary accent (#0070F3 / #00A8E8 range), cyan highlights, technical
+   precision with monospace data elements, geometric grid motifs.
+
+   Primary palette derived from Liqid's known brand identity:
+   - Deep Navy:   #0A0F1E (primary bg)
+   - Dark Navy:   #111827 (secondary bg)
+   - Mid Navy:    #1C2B45 (surface)
+   - Electric Blue: #0070F3 (primary accent)
+   - Bright Cyan:   #00C8FF (secondary accent / glow)
+   - Liqid Blue:    #005FCC (hover state)
+   - Off-White:     #F0F4FF (primary text on dark)
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     COLOR SYSTEM — Light Mode (Enterprise Light Theme)
+     --------------------------------------------------------------------------- */
+
+  /* Backgrounds */
+  --color-bg-primary:              #F4F6FA;
+  --color-bg-secondary:            #FFFFFF;
+  --color-bg-tertiary:             #EDF0F7;
+  --color-bg-dark:                 #0A0F1E;
+  --color-bg-navy:                 #111827;
+
+  /* Surface Colors */
+  --color-surface-primary:         #FFFFFF;
+  --color-surface-secondary:       rgba(255, 255, 255, 0.85);
+  --color-surface-tertiary:        rgba(255, 255, 255, 0.60);
+  --color-surface-glass:           rgba(255, 255, 255, 0.75);
+  --color-surface-glass-heavy:     rgba(255, 255, 255, 0.92);
+  --color-surface-overlay:         rgba(10, 15, 30, 0.60);
+  --color-surface-dark:            #1C2B45;
+  --color-surface-dark-secondary:  #162035;
+
+  /* Label Colors */
+  --color-label-primary:           #0A0F1E;
+  --color-label-secondary:         rgba(10, 15, 30, 0.65);
+  --color-label-tertiary:          rgba(10, 15, 30, 0.42);
+  --color-label-quaternary:        rgba(10, 15, 30, 0.22);
+
+  /* Separator & Fill Colors */
+  --color-separator:               rgba(10, 15, 30, 0.12);
+  --color-separator-opaque:        #D0D8E8;
+  --color-fill-primary:            rgba(0, 112, 243, 0.12);
+  --color-fill-secondary:          rgba(0, 112, 243, 0.08);
+  --color-fill-tertiary:           rgba(10, 15, 30, 0.06);
+  --color-fill-quaternary:         rgba(10, 15, 30, 0.04);
+
+  /* ---------------------------------------------------------------------------
+     LIQID BRAND COLORS
+     --------------------------------------------------------------------------- */
+
+  /* Primary — Electric Blue */
+  --color-liqid-blue:              #0070F3;
+  --color-liqid-blue-hover:        #005FCC;
+  --color-liqid-blue-active:       #004FAA;
+  --color-liqid-blue-light:        rgba(0, 112, 243, 0.12);
+  --color-liqid-blue-glow:         rgba(0, 112, 243, 0.35);
+
+  /* Secondary — Cyan / Aqua */
+  --color-liqid-cyan:              #00C8FF;
+  --color-liqid-cyan-hover:        #00AADE;
+  --color-liqid-cyan-light:        rgba(0, 200, 255, 0.15);
+  --color-liqid-cyan-glow:         rgba(0, 200, 255, 0.30);
+
+  /* Deep Navy — Structural Dark */
+  --color-liqid-navy-deepest:      #050A14;
+  --color-liqid-navy-deep:         #0A0F1E;
+  --color-liqid-navy:              #111827;
+  --color-liqid-navy-mid:          #1C2B45;
+  --color-liqid-navy-light:        #263550;
+  --color-liqid-navy-border:       #2E405E;
+
+  /* Accent — Gradient */
+  --color-liqid-gradient-start:    #0070F3;
+  --color-liqid-gradient-end:      #00C8FF;
+  --color-liqid-gradient:          linear-gradient(135deg, #0070F3 0%, #00C8FF 100%);
+  --color-liqid-gradient-dark:     linear-gradient(135deg, #005FCC 0%, #00AADE 100%);
+  --color-liqid-gradient-hero:     linear-gradient(135deg, #0A0F1E 0%, #111827 40%, #1C2B45 100%);
+
+  /* Status / Semantic on Navy */
+  --color-status-active:           #00D97E;
+  --color-status-active-light:     rgba(0, 217, 126, 0.15);
+  --color-status-warning:          #F59E0B;
+  --color-status-warning-light:    rgba(245, 158, 11, 0.15);
+  --color-status-error:            #EF4444;
+  --color-status-error-light:      rgba(239, 68, 68, 0.15);
+  --color-status-offline:          #64748B;
+  --color-status-offline-light:    rgba(100, 116, 139, 0.15);
+
+  /* Product Category Colors */
+  --color-cat-compute:             #8B5CF6;   /* purple */
+  --color-cat-compute-light:       rgba(139, 92, 246, 0.15);
+  --color-cat-storage:             #06B6D4;   /* teal */
+  --color-cat-storage-light:       rgba(6, 182, 212, 0.15);
+  --color-cat-networking:          #10B981;   /* green */
+  --color-cat-networking-light:    rgba(16, 185, 129, 0.15);
+  --color-cat-fabric:              #0070F3;   /* blue */
+  --color-cat-fabric-light:        rgba(0, 112, 243, 0.15);
+  --color-cat-gpu:                 #F59E0B;   /* amber */
+  --color-cat-gpu-light:           rgba(245, 158, 11, 0.15);
+
+  /* Grays */
+  --color-gray-50:                 #F8FAFF;
+  --color-gray-100:                #EDF0F7;
+  --color-gray-200:                #D0D8E8;
+  --color-gray-300:                #A8B8CC;
+  --color-gray-400:                #7890A8;
+  --color-gray-500:                #526580;
+  --color-gray-600:                #3A4E68;
+  --color-gray-700:                #263550;
+  --color-gray-800:                #1C2B45;
+  --color-gray-900:                #111827;
+
+  /* Semantic Aliases */
+  --color-accent:                  var(--color-liqid-blue);
+  --color-accent-hover:            var(--color-liqid-blue-hover);
+  --color-accent-light:            var(--color-liqid-blue-light);
+  --color-accent-glow:             var(--color-liqid-blue-glow);
+  --color-accent-secondary:        var(--color-liqid-cyan);
+  --color-success:                 var(--color-status-active);
+  --color-success-light:           var(--color-status-active-light);
+  --color-warning:                 var(--color-status-warning);
+  --color-warning-light:           var(--color-status-warning-light);
+  --color-destructive:             var(--color-status-error);
+  --color-destructive-light:       var(--color-status-error-light);
+
+  /* ---------------------------------------------------------------------------
+     TYPOGRAPHY
+     --------------------------------------------------------------------------- */
+
+  /* Liqid uses a clean, modern sans-serif. Based on their enterprise positioning,
+     they use a geometric sans (similar to Inter/Manrope). System fonts map to this. */
+  --font-display:   "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-text:      "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-mono:      "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, "SF Mono", "Cascadia Code", Consolas, "Liberation Mono", monospace;
+
+  /* Type Scale */
+  --text-96:   96px;
+  --text-80:   80px;
+  --text-72:   72px;
+  --text-56:   56px;
+  --text-48:   48px;
+  --text-40:   40px;
+  --text-36:   36px;
+  --text-32:   32px;
+  --text-28:   28px;
+  --text-24:   24px;
+  --text-20:   20px;
+  --text-18:   18px;
+  --text-16:   16px;
+  --text-14:   14px;
+  --text-13:   13px;
+  --text-12:   12px;
+  --text-11:   11px;
+
+  /* Font Weights */
+  --weight-light:     300;
+  --weight-regular:   400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+  --weight-bold:      700;
+  --weight-extrabold: 800;
+  --weight-black:     900;
+
+  /* Line Heights */
+  --leading-display:   1.05;
+  --leading-hero:      1.10;
+  --leading-title:     1.15;
+  --leading-headline:  1.25;
+  --leading-subhead:   1.35;
+  --leading-body:      1.60;
+  --leading-relaxed:   1.75;
+  --leading-tight:     1.20;
+  --leading-caption:   1.40;
+  --leading-mono:      1.50;
+
+  /* Letter Spacing */
+  --tracking-tightest: -0.025em;
+  --tracking-tight:    -0.015em;
+  --tracking-normal:    0em;
+  --tracking-wide:      0.025em;
+  --tracking-wider:     0.05em;
+  --tracking-widest:    0.10em;
+  --tracking-caps:      0.12em;
+
+  /* ---------------------------------------------------------------------------
+     SPACING — 4px Base Grid
+     --------------------------------------------------------------------------- */
+
+  --space-px:   1px;
+  --space-0:    0px;
+  --space-1:    4px;
+  --space-2:    8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-7:   28px;
+  --space-8:   32px;
+  --space-9:   36px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-14:  56px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-28: 112px;
+  --space-32: 128px;
+  --space-40: 160px;
+
+  /* ---------------------------------------------------------------------------
+     BORDER RADIUS
+     --------------------------------------------------------------------------- */
+
+  --radius-none:   0px;
+  --radius-xs:     2px;
+  --radius-sm:     4px;
+  --radius-md:     6px;
+  --radius-lg:     8px;
+  --radius-xl:    12px;
+  --radius-2xl:   16px;
+  --radius-3xl:   20px;
+  --radius-4xl:   24px;
+  --radius-pill:  9999px;
+
+  /* Semantic radius — enterprise is more angular than consumer */
+  --radius-button:  var(--radius-md);
+  --radius-card:    var(--radius-xl);
+  --radius-input:   var(--radius-md);
+  --radius-modal:   var(--radius-2xl);
+  --radius-badge:   var(--radius-sm);
+  --radius-rack:    var(--radius-xs);
+
+  /* ---------------------------------------------------------------------------
+     SHADOWS
+     --------------------------------------------------------------------------- */
+
+  /* Light mode shadows */
+  --shadow-xs:      0 1px 2px rgba(10, 15, 30, 0.05);
+  --shadow-sm:      0 1px 3px rgba(10, 15, 30, 0.08), 0 1px 2px rgba(10, 15, 30, 0.04);
+  --shadow-md:      0 4px 12px rgba(10, 15, 30, 0.08), 0 2px 4px rgba(10, 15, 30, 0.04);
+  --shadow-lg:      0 8px 24px rgba(10, 15, 30, 0.10), 0 4px 8px rgba(10, 15, 30, 0.06);
+  --shadow-xl:      0 16px 40px rgba(10, 15, 30, 0.12), 0 8px 16px rgba(10, 15, 30, 0.08);
+  --shadow-2xl:     0 24px 64px rgba(10, 15, 30, 0.16), 0 12px 24px rgba(10, 15, 30, 0.10);
+  --shadow-overlay: 0 32px 80px rgba(10, 15, 30, 0.24), 0 16px 32px rgba(10, 15, 30, 0.16);
+
+  /* Brand glow shadows */
+  --shadow-blue:    0 8px 32px rgba(0, 112, 243, 0.28), 0 2px 8px rgba(0, 112, 243, 0.16);
+  --shadow-cyan:    0 8px 32px rgba(0, 200, 255, 0.25), 0 2px 8px rgba(0, 200, 255, 0.14);
+  --shadow-blue-lg: 0 16px 48px rgba(0, 112, 243, 0.36), 0 4px 16px rgba(0, 112, 243, 0.22);
+
+  /* Dark surface shadows — deeper with blue tinting */
+  --shadow-dark-sm: 0 2px 8px rgba(0, 0, 0, 0.40);
+  --shadow-dark-md: 0 4px 16px rgba(0, 0, 0, 0.50), 0 2px 6px rgba(0, 0, 0, 0.30);
+  --shadow-dark-lg: 0 8px 32px rgba(0, 0, 0, 0.60), 0 4px 12px rgba(0, 0, 0, 0.40);
+  --shadow-dark-xl: 0 16px 56px rgba(0, 0, 0, 0.70), 0 8px 20px rgba(0, 0, 0, 0.50);
+
+  --shadow-inset:      inset 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-inset-dark: inset 0 1px 4px rgba(0, 0, 0, 0.40);
+
+  /* ---------------------------------------------------------------------------
+     BLUR / BACKDROP FILTER
+     --------------------------------------------------------------------------- */
+
+  --blur-xs:   blur(4px);
+  --blur-sm:   blur(8px);
+  --blur-md:   blur(16px);
+  --blur-lg:   blur(24px);
+  --blur-xl:   blur(40px);
+
+  --glass-light: blur(16px) saturate(150%) brightness(1.05);
+  --glass-dark:  blur(20px) saturate(180%) brightness(0.90);
+
+  /* ---------------------------------------------------------------------------
+     MOTION
+     --------------------------------------------------------------------------- */
+
+  --duration-instant:    50ms;
+  --duration-fast:      150ms;
+  --duration-normal:    200ms;
+  --duration-moderate:  300ms;
+  --duration-slow:      400ms;
+  --duration-deliberate:600ms;
+  --duration-enter:     350ms;
+  --duration-exit:      200ms;
+
+  --ease-standard:    cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-decelerate:  cubic-bezier(0.00, 0.00, 0.20, 1.00);
+  --ease-accelerate:  cubic-bezier(0.40, 0.00, 1.00, 1.00);
+  --ease-spring:      cubic-bezier(0.34, 1.40, 0.64, 1.00);
+  --ease-out-back:    cubic-bezier(0.34, 1.56, 0.64, 1.00);
+  --ease-in-out:      cubic-bezier(0.42, 0.00, 0.58, 1.00);
+
+  --transition-fast:     all var(--duration-fast) var(--ease-standard);
+  --transition-normal:   all var(--duration-normal) var(--ease-standard);
+  --transition-moderate: all var(--duration-moderate) var(--ease-standard);
+  --transition-spring:   all var(--duration-moderate) var(--ease-spring);
+
+  /* ---------------------------------------------------------------------------
+     BORDERS
+     --------------------------------------------------------------------------- */
+
+  --border-color:          var(--color-separator);
+  --border-color-opaque:   var(--color-separator-opaque);
+  --border-color-focused:  var(--color-liqid-blue);
+  --border-color-brand:    var(--color-liqid-blue);
+  --border-default:        1px solid var(--color-separator);
+  --border-opaque:         1px solid var(--color-separator-opaque);
+  --border-focused:        1.5px solid var(--color-liqid-blue);
+  --border-brand:          1px solid var(--color-liqid-blue);
+
+  /* Dark surface borders */
+  --border-dark:           1px solid var(--color-liqid-navy-border);
+  --border-dark-subtle:    1px solid rgba(255, 255, 255, 0.06);
+  --border-dark-bright:    1px solid rgba(0, 112, 243, 0.35);
+
+  /* ---------------------------------------------------------------------------
+     Z-INDEX
+     --------------------------------------------------------------------------- */
+
+  --z-base:       0;
+  --z-raised:    10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-toast:    500;
+  --z-tooltip:  600;
+
+  /* ---------------------------------------------------------------------------
+     COMPONENT DIMENSIONS
+     --------------------------------------------------------------------------- */
+
+  --btn-height-sm:    36px;
+  --btn-height-md:    44px;
+  --btn-height-lg:    52px;
+  --btn-height-xl:    60px;
+  --input-height-sm:  36px;
+  --input-height-md:  44px;
+  --input-height-lg:  52px;
+  --nav-height:       72px;
+  --sidebar-width:    280px;
+  --max-width-site:  1200px;
+  --max-width-wide:  1440px;
+  --rack-unit-height: 28px;
+  --rack-width:       320px;
+
+  /* ---------------------------------------------------------------------------
+     GRID OVERLAY (subtle background pattern)
+     --------------------------------------------------------------------------- */
+
+  --grid-pattern: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba(0, 112, 243, 0.04) 39px,
+      rgba(0, 112, 243, 0.04) 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 39px,
+      rgba(0, 112, 243, 0.04) 39px,
+      rgba(0, 112, 243, 0.04) 40px
+    );
+
+}
+
+/* =============================================================================
+   DARK MODE — Primary brand mode for Liqid (enterprise dark UI)
+   ============================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Backgrounds */
+    --color-bg-primary:              #0A0F1E;
+    --color-bg-secondary:            #111827;
+    --color-bg-tertiary:             #1C2B45;
+
+    /* Surface Colors */
+    --color-surface-primary:         #111827;
+    --color-surface-secondary:       rgba(28, 43, 69, 0.90);
+    --color-surface-tertiary:        rgba(38, 53, 80, 0.70);
+    --color-surface-glass:           rgba(17, 24, 39, 0.80);
+    --color-surface-glass-heavy:     rgba(17, 24, 39, 0.95);
+    --color-surface-overlay:         rgba(5, 10, 20, 0.80);
+
+    /* Label Colors */
+    --color-label-primary:           #F0F4FF;
+    --color-label-secondary:         rgba(240, 244, 255, 0.65);
+    --color-label-tertiary:          rgba(240, 244, 255, 0.38);
+    --color-label-quaternary:        rgba(240, 244, 255, 0.20);
+
+    /* Separator & Fill Colors */
+    --color-separator:               rgba(255, 255, 255, 0.08);
+    --color-separator-opaque:        #2E405E;
+    --color-fill-primary:            rgba(0, 112, 243, 0.18);
+    --color-fill-secondary:          rgba(0, 112, 243, 0.12);
+    --color-fill-tertiary:           rgba(255, 255, 255, 0.06);
+    --color-fill-quaternary:         rgba(255, 255, 255, 0.03);
+
+    /* Brand — intensified for dark backgrounds */
+    --color-liqid-blue:              #3B82F6;
+    --color-liqid-blue-hover:        #60A5FA;
+    --color-liqid-blue-active:       #93C5FD;
+    --color-liqid-blue-light:        rgba(59, 130, 246, 0.20);
+    --color-liqid-blue-glow:         rgba(59, 130, 246, 0.40);
+
+    --color-liqid-cyan:              #22D3EE;
+    --color-liqid-cyan-hover:        #67E8F9;
+    --color-liqid-cyan-light:        rgba(34, 211, 238, 0.18);
+    --color-liqid-cyan-glow:         rgba(34, 211, 238, 0.35);
+
+    /* Shadows — deeper on dark */
+    --shadow-xs:      0 1px 2px rgba(0, 0, 0, 0.40);
+    --shadow-sm:      0 1px 3px rgba(0, 0, 0, 0.50), 0 1px 2px rgba(0, 0, 0, 0.30);
+    --shadow-md:      0 4px 12px rgba(0, 0, 0, 0.55), 0 2px 4px rgba(0, 0, 0, 0.35);
+    --shadow-lg:      0 8px 24px rgba(0, 0, 0, 0.60), 0 4px 8px rgba(0, 0, 0, 0.40);
+    --shadow-xl:      0 16px 40px rgba(0, 0, 0, 0.65), 0 8px 16px rgba(0, 0, 0, 0.45);
+    --shadow-2xl:     0 24px 64px rgba(0, 0, 0, 0.70), 0 12px 24px rgba(0, 0, 0, 0.55);
+    --shadow-overlay: 0 32px 80px rgba(0, 0, 0, 0.85), 0 16px 32px rgba(0, 0, 0, 0.65);
+
+    --shadow-blue:    0 8px 32px rgba(59, 130, 246, 0.35), 0 2px 8px rgba(59, 130, 246, 0.20);
+    --shadow-cyan:    0 8px 32px rgba(34, 211, 238, 0.30), 0 2px 8px rgba(34, 211, 238, 0.16);
+    --shadow-blue-lg: 0 16px 48px rgba(59, 130, 246, 0.42), 0 4px 16px rgba(59, 130, 246, 0.26);
+
+    /* Borders */
+    --border-color:         rgba(255, 255, 255, 0.08);
+    --border-color-opaque:  #2E405E;
+    --border-dark-bright:   1px solid rgba(59, 130, 246, 0.40);
+
+    /* Status */
+    --color-status-active:   #34D399;
+    --color-status-warning:  #FBBF24;
+    --color-status-error:    #F87171;
+    --color-status-offline:  #94A3B8;
+
+    /* Product Category Colors — brighter on dark */
+    --color-cat-compute:     #A78BFA;
+    --color-cat-storage:     #22D3EE;
+    --color-cat-networking:  #34D399;
+    --color-cat-fabric:      #60A5FA;
+    --color-cat-gpu:         #FBBF24;
+  }
+}

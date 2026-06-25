@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cards — Liqid Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    body { background: var(--color-bg-primary); padding: var(--space-10); }
+    .demo-section { margin-bottom: var(--space-16); }
+    .demo-label {
+      font-size: var(--text-11);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--color-separator);
+    }
+    .dark-bg {
+      background: var(--color-liqid-navy-deep);
+      padding: var(--space-8);
+      border-radius: var(--radius-2xl);
+      margin-bottom: var(--space-6);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-h2" style="margin-bottom: var(--space-2)">Cards</h1>
+    <p class="text-body" style="margin-bottom: var(--space-12)">Product, solution, and resource cards for the Liqid design system.</p>
+
+    <!-- PRODUCT CARDS — Dark surface -->
+    <div class="demo-section">
+      <div class="demo-label">Product Cards</div>
+      <div class="dark-bg">
+        <div class="grid-3">
+          <!-- PCIe Fabric -->
+          <div class="card-product">
+            <div class="card-product-header">
+              <div>
+                <span class="badge badge-fabric" style="margin-bottom: var(--space-3)">PCIe Fabric</span>
+                <h3 class="card-product-name">Liqid Matrix™</h3>
+              </div>
+              <div class="card-product-icon" style="background: rgba(0,112,243,0.12); border-color: rgba(0,112,243,0.25); color: var(--color-liqid-blue)">
+                🔗
+              </div>
+            </div>
+            <p class="card-product-desc">Gen 4 PCIe fabric controller enabling dynamic composition of compute, storage, GPU, and network resources at wire speed.</p>
+            <ul class="card-product-specs">
+              <li class="card-product-spec-item">PCIe Gen 4 / Gen 5 support</li>
+              <li class="card-product-spec-item">Up to 400 Gbps fabric bandwidth</li>
+              <li class="card-product-spec-item">&lt;1µs switching latency</li>
+              <li class="card-product-spec-item">100+ node scale-out</li>
+            </ul>
+            <div class="card-product-footer">
+              <a href="#" class="btn btn-outline-light btn-sm" style="width:100%; justify-content: center;">Learn More →</a>
+            </div>
+          </div>
+
+          <!-- GPU Compute -->
+          <div class="card-product">
+            <div class="card-product-header">
+              <div>
+                <span class="badge badge-gpu" style="margin-bottom: var(--space-3)">GPU</span>
+                <h3 class="card-product-name">AI Compute Pool</h3>
+              </div>
+              <div class="card-product-icon" style="background: rgba(245,158,11,0.12); border-color: rgba(245,158,11,0.25); color: var(--color-cat-gpu)">
+                ⬡
+              </div>
+            </div>
+            <p class="card-product-desc">Disaggregated GPU resources shared across workloads. Dynamically assign GPU capacity to training, inference, or rendering jobs.</p>
+            <ul class="card-product-specs">
+              <li class="card-product-spec-item">NVIDIA H100 / A100 / L40S</li>
+              <li class="card-product-spec-item">Dynamic GPU partitioning</li>
+              <li class="card-product-spec-item">NVLink fabric integration</li>
+              <li class="card-product-spec-item">Software-defined allocation</li>
+            </ul>
+            <div class="card-product-footer">
+              <a href="#" class="btn btn-outline-light btn-sm" style="width:100%; justify-content: center;">Learn More →</a>
+            </div>
+          </div>
+
+          <!-- NVMe Storage -->
+          <div class="card-product">
+            <div class="card-product-header">
+              <div>
+                <span class="badge badge-storage" style="margin-bottom: var(--space-3)">Storage</span>
+                <h3 class="card-product-name">NVMe-oF Pool</h3>
+              </div>
+              <div class="card-product-icon" style="background: rgba(6,182,212,0.12); border-color: rgba(6,182,212,0.25); color: var(--color-cat-storage)">
+                💾
+              </div>
+            </div>
+            <p class="card-product-desc">Composable NVMe-over-Fabrics storage providing petabyte-scale, low-latency block storage disaggregated from compute hosts.</p>
+            <ul class="card-product-specs">
+              <li class="card-product-spec-item">NVMe-oF over PCIe/RoCE/TCP</li>
+              <li class="card-product-spec-item">Petabyte-scale capacity</li>
+              <li class="card-product-spec-item">60+ GB/s sequential read</li>
+              <li class="card-product-spec-item">Sub-100µs access latency</li>
+            </ul>
+            <div class="card-product-footer">
+              <a href="#" class="btn btn-outline-light btn-sm" style="width:100%; justify-content: center;">Learn More →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOLUTION CARDS — Light surface -->
+    <div class="demo-section">
+      <div class="demo-label">Solution Cards</div>
+      <div class="grid-3">
+        <div class="card-solution">
+          <div class="card-solution-icon">🤖</div>
+          <span class="badge badge-new">New</span>
+          <h3 class="card-solution-title">AI / ML Infrastructure</h3>
+          <p class="card-solution-body">Purpose-built composable clusters for large-scale AI training and inference. Scale GPU and NVMe capacity independently as workloads evolve.</p>
+          <a href="#" class="card-solution-link">Explore Solution →</a>
+        </div>
+
+        <div class="card-solution">
+          <div class="card-solution-icon" style="background: rgba(6,182,212,0.10); border-color: rgba(6,182,212,0.20); color: var(--color-cat-storage)">🖧</div>
+          <span class="badge badge-category">HPC</span>
+          <h3 class="card-solution-title">High-Performance Computing</h3>
+          <p class="card-solution-body">Composable HPC clusters that eliminate resource silos. Dynamically re-allocate CPU, GPU, and NVMe resources between simulation jobs.</p>
+          <a href="#" class="card-solution-link">Explore Solution →</a>
+        </div>
+
+        <div class="card-solution">
+          <div class="card-solution-icon" style="background: rgba(139,92,246,0.10); border-color: rgba(139,92,246,0.20); color: var(--color-cat-compute)">☁</div>
+          <span class="badge badge-featured">Featured</span>
+          <h3 class="card-solution-title">Private Cloud Modernization</h3>
+          <p class="card-solution-body">Replace rigid 3-tier infrastructure with a composable fabric that delivers cloud economics and agility in your own data center.</p>
+          <a href="#" class="card-solution-link">Explore Solution →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESOURCE CARDS -->
+    <div class="demo-section">
+      <div class="demo-label">Resource / Download Cards</div>
+      <div class="grid-4">
+        <div class="card-resource">
+          <div class="card-resource-type-bar pdf"></div>
+          <div class="card-resource-body">
+            <div class="card-resource-meta">
+              <div class="card-resource-doc-icon">📄</div>
+              <span class="badge badge-error" style="font-size:10px; padding: 2px 5px;">PDF</span>
+            </div>
+            <h4 class="card-resource-title">Liqid Matrix Data Sheet</h4>
+            <p class="card-resource-desc">Complete technical specifications for the Liqid Matrix PCIe fabric controller, including performance benchmarks and form factors.</p>
+          </div>
+          <div class="card-resource-footer">
+            <span class="card-resource-size">2.4 MB</span>
+            <a href="#" class="btn btn-secondary btn-sm">Download</a>
+          </div>
+        </div>
+
+        <div class="card-resource">
+          <div class="card-resource-type-bar brief"></div>
+          <div class="card-resource-body">
+            <div class="card-resource-meta">
+              <div class="card-resource-doc-icon">📋</div>
+              <span class="badge badge-fabric" style="font-size:10px; padding: 2px 5px;">Brief</span>
+            </div>
+            <h4 class="card-resource-title">Composable Infrastructure for AI: Solution Brief</h4>
+            <p class="card-resource-desc">How composable disaggregated infrastructure reduces AI infrastructure costs by up to 40% while improving GPU utilization.</p>
+          </div>
+          <div class="card-resource-footer">
+            <span class="card-resource-size">840 KB</span>
+            <a href="#" class="btn btn-secondary btn-sm">Download</a>
+          </div>
+        </div>
+
+        <div class="card-resource">
+          <div class="card-resource-type-bar video"></div>
+          <div class="card-resource-body">
+            <div class="card-resource-meta">
+              <div class="card-resource-doc-icon">▶</div>
+              <span class="badge badge-compute" style="font-size:10px; padding: 2px 5px;">Video</span>
+            </div>
+            <h4 class="card-resource-title">Composable Infrastructure Demo: Live Provisioning</h4>
+            <p class="card-resource-desc">Watch a live demonstration of Liqid's software composing a GPU cluster in under 60 seconds with zero downtime.</p>
+          </div>
+          <div class="card-resource-footer">
+            <span class="card-resource-size">12 min</span>
+            <a href="#" class="btn btn-secondary btn-sm">Watch</a>
+          </div>
+        </div>
+
+        <div class="card-resource">
+          <div class="card-resource-type-bar case"></div>
+          <div class="card-resource-body">
+            <div class="card-resource-meta">
+              <div class="card-resource-doc-icon">🏛</div>
+              <span class="badge badge-networking" style="font-size:10px; padding: 2px 5px;">Case Study</span>
+            </div>
+            <h4 class="card-resource-title">National Lab Achieves 3x Simulation Throughput</h4>
+            <p class="card-resource-desc">A US national laboratory reduced HPC idle time from 38% to 6% using Liqid composable infrastructure across 2,000 nodes.</p>
+          </div>
+          <div class="card-resource-footer">
+            <span class="card-resource-size">1.1 MB</span>
+            <a href="#" class="btn btn-secondary btn-sm">Read</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKELETON LOADING -->
+    <div class="demo-section">
+      <div class="demo-label">Skeleton / Loading States</div>
+      <div class="grid-3">
+        <div class="card" style="padding: var(--space-6);">
+          <div class="skeleton" style="height: 48px; width: 48px; border-radius: var(--radius-xl); margin-bottom: var(--space-4)"></div>
+          <div class="skeleton-text skeleton-text--medium" style="margin-bottom: var(--space-2)"></div>
+          <div class="skeleton-text skeleton-text--long" style="margin-bottom: var(--space-2)"></div>
+          <div class="skeleton-text skeleton-text--short"></div>
+        </div>
+        <div class="card-dark" style="padding: var(--space-6);">
+          <div class="skeleton-dark" style="height: 48px; width: 48px; border-radius: var(--radius-xl); margin-bottom: var(--space-4)"></div>
+          <div class="skeleton-dark" style="height: 14px; width: 70%; border-radius: var(--radius-xs); margin-bottom: var(--space-2)"></div>
+          <div class="skeleton-dark" style="height: 14px; width: 90%; border-radius: var(--radius-xs); margin-bottom: var(--space-2)"></div>
+          <div class="skeleton-dark" style="height: 14px; width: 45%; border-radius: var(--radius-xs)"></div>
+        </div>
+        <div class="skeleton-card"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

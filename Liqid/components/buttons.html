@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buttons — Liqid Design System</title>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../typography.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    body { background: var(--color-bg-primary); padding: var(--space-10); }
+    .demo-section { margin-bottom: var(--space-12); }
+    .demo-section-title {
+      font-size: var(--text-11);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-label-tertiary);
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--color-separator);
+    }
+    .demo-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-5);
+    }
+    .dark-bg {
+      background: var(--color-liqid-navy-deep);
+      padding: var(--space-8);
+      border-radius: var(--radius-2xl);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-h2" style="margin-bottom: var(--space-2)">Buttons</h1>
+    <p class="text-body" style="margin-bottom: var(--space-12)">Enterprise-grade button system for Liqid design system. Primary actions use electric blue; CTAs use gradient.</p>
+
+    <!-- PRIMARY ACTIONS -->
+    <div class="demo-section">
+      <div class="demo-section-title">Primary Actions</div>
+      <div class="demo-row">
+        <button class="btn btn-primary btn-sm">Small Primary</button>
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-primary btn-lg">Large Primary</button>
+        <button class="btn btn-primary btn-xl">XL Primary</button>
+      </div>
+      <div class="demo-row">
+        <button class="btn btn-gradient">Gradient CTA</button>
+        <button class="btn btn-gradient btn-lg">Large Gradient</button>
+        <button class="btn btn-demo btn-lg">Request Demo</button>
+      </div>
+    </div>
+
+    <!-- SECONDARY ACTIONS -->
+    <div class="demo-section">
+      <div class="demo-section-title">Secondary Actions</div>
+      <div class="demo-row">
+        <button class="btn btn-secondary btn-sm">Small Secondary</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-secondary btn-lg">Large Secondary</button>
+      </div>
+      <div class="demo-row">
+        <button class="btn btn-cyan">Cyan Accent</button>
+        <button class="btn btn-ghost">Ghost / Text</button>
+        <button class="btn btn-ghost btn-lg">Ghost Large</button>
+      </div>
+    </div>
+
+    <!-- ON DARK BACKGROUNDS -->
+    <div class="demo-section">
+      <div class="demo-section-title">On Dark Backgrounds</div>
+      <div class="dark-bg">
+        <div class="demo-row">
+          <button class="btn btn-primary">Primary</button>
+          <button class="btn btn-gradient">Gradient</button>
+          <button class="btn btn-outline-light">Outline Light</button>
+          <button class="btn btn-ghost-light">Ghost Light</button>
+          <button class="btn btn-demo">Request Demo</button>
+        </div>
+        <div class="demo-row">
+          <button class="btn btn-primary btn-sm">Small</button>
+          <button class="btn btn-outline-light btn-sm">Outline SM</button>
+          <button class="btn btn-ghost-light btn-sm">Ghost SM</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATUS BUTTONS -->
+    <div class="demo-section">
+      <div class="demo-section-title">Status Variants</div>
+      <div class="demo-row">
+        <button class="btn btn-success">
+          <span>✓</span> Success
+        </button>
+        <button class="btn btn-destructive">
+          <span>✕</span> Destructive
+        </button>
+      </div>
+    </div>
+
+    <!-- STATES -->
+    <div class="demo-section">
+      <div class="demo-section-title">States</div>
+      <div class="demo-row">
+        <button class="btn btn-primary">Default</button>
+        <button class="btn btn-primary loading">Loading</button>
+        <button class="btn btn-primary" disabled>Disabled</button>
+        <button class="btn btn-primary" aria-disabled="true">Aria Disabled</button>
+      </div>
+      <div class="demo-row">
+        <button class="btn btn-secondary">Default</button>
+        <button class="btn btn-secondary loading">Loading</button>
+        <button class="btn btn-secondary" disabled>Disabled</button>
+      </div>
+    </div>
+
+    <!-- ICON BUTTONS -->
+    <div class="demo-section">
+      <div class="demo-section-title">Icon Buttons</div>
+      <div class="demo-row">
+        <button class="btn btn-primary btn-icon btn-sm" aria-label="Settings">⚙</button>
+        <button class="btn btn-primary btn-icon" aria-label="Add">+</button>
+        <button class="btn btn-primary btn-icon btn-lg" aria-label="Search">⌕</button>
+        <button class="btn btn-secondary btn-icon" aria-label="Filter">⊟</button>
+        <button class="btn btn-ghost btn-icon" aria-label="Close">✕</button>
+      </div>
+    </div>
+
+    <!-- BUTTON GROUPS -->
+    <div class="demo-section">
+      <div class="demo-section-title">Button Groups</div>
+      <div class="demo-row">
+        <div class="btn-group">
+          <button class="btn btn-primary btn-lg">Request Demo</button>
+          <button class="btn btn-outline-light btn-lg" style="border-color: var(--color-liqid-blue); color: var(--color-liqid-blue);">View Products</button>
+        </div>
+      </div>
+      <div class="demo-row">
+        <div class="btn-group">
+          <button class="btn btn-secondary btn-sm">Cancel</button>
+          <button class="btn btn-primary btn-sm">Confirm</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BADGES alongside buttons -->
+    <div class="demo-section">
+      <div class="demo-section-title">Badges</div>
+      <div class="demo-row" style="align-items: flex-start; flex-wrap: wrap; gap: var(--space-2)">
+        <span class="badge badge-new">New</span>
+        <span class="badge badge-featured">Featured</span>
+        <span class="badge badge-category">Enterprise</span>
+        <span class="badge badge-compute">Compute</span>
+        <span class="badge badge-storage">Storage</span>
+        <span class="badge badge-networking">Networking</span>
+        <span class="badge badge-fabric">PCIe Fabric</span>
+        <span class="badge badge-gpu">GPU</span>
+        <span class="badge badge-active">Active</span>
+        <span class="badge badge-warning">Warning</span>
+        <span class="badge badge-error">Error</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

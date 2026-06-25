@@ -1,0 +1,468 @@
+/* =============================================================================
+   Liqid Design System — Typography
+   Version 1.0.0 | Enterprise Composable Infrastructure
+
+   Type system calibrated for a technical enterprise B2B brand:
+   - Display/hero: large, bold, tight tracking (impact at scale)
+   - Body: generous line-height for readability in spec-heavy content
+   - Mono: JetBrains Mono stack for data, specs, CLI output, rack labels
+   - Utility/caps: small, tracked uppercase for category labels and badges
+   ============================================================================= */
+
+/* =============================================================================
+   FONT FACE DECLARATIONS
+   No external dependencies — system font stack only.
+   "Inter" will resolve if available on the system (common in enterprise),
+   otherwise falls to Segoe UI (Windows) / system-ui (macOS/Linux).
+   ============================================================================= */
+
+/* Base reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-text);
+  font-size: var(--text-16);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  color: var(--color-label-primary);
+  background-color: var(--color-bg-primary);
+}
+
+/* =============================================================================
+   DISPLAY / HERO HEADINGS
+   Used for hero banners and homepage marquee text.
+   ============================================================================= */
+
+.text-display-2xl {
+  font-family: var(--font-display);
+  font-size: var(--text-96);
+  font-weight: var(--weight-extrabold);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-tightest);
+  color: var(--color-label-primary);
+}
+
+.text-display-xl {
+  font-family: var(--font-display);
+  font-size: var(--text-80);
+  font-weight: var(--weight-extrabold);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-tightest);
+  color: var(--color-label-primary);
+}
+
+.text-display-lg {
+  font-family: var(--font-display);
+  font-size: var(--text-72);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-hero);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-label-primary);
+}
+
+.text-display {
+  font-family: var(--font-display);
+  font-size: var(--text-56);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-hero);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-label-primary);
+}
+
+/* =============================================================================
+   SECTION HEADINGS
+   ============================================================================= */
+
+h1, .text-h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-48);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-title);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-label-primary);
+  margin: 0 0 var(--space-6);
+}
+
+h2, .text-h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-36);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-title);
+  letter-spacing: -0.010em;
+  color: var(--color-label-primary);
+  margin: 0 0 var(--space-5);
+}
+
+h3, .text-h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-28);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-headline);
+  letter-spacing: -0.005em;
+  color: var(--color-label-primary);
+  margin: 0 0 var(--space-4);
+}
+
+h4, .text-h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-24);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-headline);
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-label-primary);
+  margin: 0 0 var(--space-3);
+}
+
+h5, .text-h5 {
+  font-family: var(--font-display);
+  font-size: var(--text-20);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-headline);
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-label-primary);
+  margin: 0 0 var(--space-3);
+}
+
+h6, .text-h6 {
+  font-family: var(--font-display);
+  font-size: var(--text-18);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-subhead);
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-label-primary);
+  margin: 0 0 var(--space-2);
+}
+
+/* =============================================================================
+   SUBHEADINGS / EYEBROWS
+   ============================================================================= */
+
+.text-eyebrow {
+  font-family: var(--font-text);
+  font-size: var(--text-12);
+  font-weight: var(--weight-semibold);
+  line-height: 1;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-liqid-cyan);
+}
+
+.text-eyebrow-blue {
+  font-family: var(--font-text);
+  font-size: var(--text-12);
+  font-weight: var(--weight-semibold);
+  line-height: 1;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-liqid-blue);
+}
+
+.text-section-label {
+  font-family: var(--font-text);
+  font-size: var(--text-11);
+  font-weight: var(--weight-semibold);
+  line-height: 1;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--color-label-tertiary);
+}
+
+/* =============================================================================
+   BODY TEXT
+   ============================================================================= */
+
+.text-xl {
+  font-size: var(--text-20);
+  line-height: var(--leading-relaxed);
+  color: var(--color-label-secondary);
+}
+
+.text-lg {
+  font-size: var(--text-18);
+  line-height: var(--leading-body);
+  color: var(--color-label-primary);
+}
+
+.text-base {
+  font-size: var(--text-16);
+  line-height: var(--leading-body);
+  color: var(--color-label-primary);
+}
+
+.text-sm {
+  font-size: var(--text-14);
+  line-height: var(--leading-body);
+  color: var(--color-label-secondary);
+}
+
+.text-xs {
+  font-size: var(--text-12);
+  line-height: var(--leading-caption);
+  color: var(--color-label-secondary);
+}
+
+.text-body {
+  font-size: var(--text-16);
+  line-height: var(--leading-body);
+  color: var(--color-label-secondary);
+  max-width: 68ch;
+}
+
+.text-body-lg {
+  font-size: var(--text-18);
+  line-height: var(--leading-relaxed);
+  color: var(--color-label-secondary);
+  max-width: 68ch;
+}
+
+/* =============================================================================
+   TECHNICAL / DATA TEXT
+   Monospace for specs, rack labels, CLI, measurements.
+   ============================================================================= */
+
+.text-mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-14);
+  line-height: var(--leading-mono);
+  letter-spacing: -0.01em;
+  color: var(--color-label-primary);
+}
+
+.text-mono-lg {
+  font-family: var(--font-mono);
+  font-size: var(--text-16);
+  line-height: var(--leading-mono);
+  letter-spacing: -0.01em;
+}
+
+.text-mono-sm {
+  font-family: var(--font-mono);
+  font-size: var(--text-12);
+  line-height: var(--leading-mono);
+  letter-spacing: 0;
+  color: var(--color-label-secondary);
+}
+
+.text-spec {
+  font-family: var(--font-mono);
+  font-size: var(--text-13);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-mono);
+  color: var(--color-liqid-cyan);
+  letter-spacing: -0.01em;
+}
+
+.text-stat {
+  font-family: var(--font-display);
+  font-size: var(--text-48);
+  font-weight: var(--weight-extrabold);
+  line-height: 1;
+  letter-spacing: var(--tracking-tightest);
+  color: var(--color-label-primary);
+}
+
+.text-stat-lg {
+  font-family: var(--font-display);
+  font-size: var(--text-72);
+  font-weight: var(--weight-extrabold);
+  line-height: 0.95;
+  letter-spacing: var(--tracking-tightest);
+  color: var(--color-label-primary);
+}
+
+.text-stat-unit {
+  font-family: var(--font-mono);
+  font-size: var(--text-18);
+  font-weight: var(--weight-medium);
+  color: var(--color-liqid-cyan);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+}
+
+/* =============================================================================
+   CAPTION / METADATA
+   ============================================================================= */
+
+.text-caption {
+  font-size: var(--text-12);
+  line-height: var(--leading-caption);
+  color: var(--color-label-tertiary);
+}
+
+.text-overline {
+  font-size: var(--text-11);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-label-tertiary);
+  line-height: 1;
+}
+
+.text-legal {
+  font-size: var(--text-11);
+  line-height: var(--leading-caption);
+  color: var(--color-label-quaternary);
+}
+
+/* =============================================================================
+   BUTTON / LABEL TEXT
+   ============================================================================= */
+
+.text-btn {
+  font-family: var(--font-text);
+  font-size: var(--text-14);
+  font-weight: var(--weight-semibold);
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+
+.text-btn-lg {
+  font-family: var(--font-text);
+  font-size: var(--text-16);
+  font-weight: var(--weight-semibold);
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+
+.text-label {
+  font-size: var(--text-13);
+  font-weight: var(--weight-medium);
+  color: var(--color-label-secondary);
+  letter-spacing: 0.005em;
+}
+
+/* =============================================================================
+   GRADIENT TEXT UTILITY
+   ============================================================================= */
+
+.text-gradient {
+  background: var(--color-liqid-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, var(--color-liqid-blue) 0%, var(--color-liqid-cyan) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* =============================================================================
+   LINKS
+   ============================================================================= */
+
+a {
+  color: var(--color-liqid-blue);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+a:hover {
+  color: var(--color-liqid-blue-hover);
+  text-decoration: underline;
+}
+
+.link-subtle {
+  color: var(--color-label-secondary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.link-subtle:hover {
+  color: var(--color-label-primary);
+  text-decoration: none;
+}
+
+.link-arrow::after {
+  content: ' →';
+  display: inline;
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+.link-arrow:hover::after {
+  transform: translateX(3px);
+}
+
+/* =============================================================================
+   PROSE (long-form content blocks)
+   ============================================================================= */
+
+.prose {
+  max-width: 72ch;
+  color: var(--color-label-secondary);
+  line-height: var(--leading-body);
+}
+
+.prose h2 { margin-top: var(--space-10); }
+.prose h3 { margin-top: var(--space-8); }
+.prose p  { margin: 0 0 var(--space-5); }
+
+.prose strong {
+  font-weight: var(--weight-semibold);
+  color: var(--color-label-primary);
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--color-fill-tertiary);
+  border: 1px solid var(--color-separator);
+  border-radius: var(--radius-sm);
+  padding: 0.1em 0.4em;
+  color: var(--color-liqid-cyan);
+}
+
+.prose pre {
+  font-family: var(--font-mono);
+  font-size: var(--text-13);
+  background: var(--color-liqid-navy-deep);
+  border: 1px solid var(--color-liqid-navy-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  overflow-x: auto;
+  color: #E2E8F0;
+  line-height: var(--leading-mono);
+}
+
+/* =============================================================================
+   RESPONSIVE TYPOGRAPHY
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  .text-display-2xl { font-size: var(--text-56); }
+  .text-display-xl  { font-size: var(--text-48); }
+  .text-display-lg  { font-size: var(--text-40); }
+  .text-display     { font-size: var(--text-36); }
+
+  h1, .text-h1 { font-size: var(--text-36); }
+  h2, .text-h2 { font-size: var(--text-28); }
+  h3, .text-h3 { font-size: var(--text-24); }
+  h4, .text-h4 { font-size: var(--text-20); }
+
+  .text-stat    { font-size: var(--text-36); }
+  .text-stat-lg { font-size: var(--text-48); }
+}
+
+@media (max-width: 480px) {
+  .text-display-2xl { font-size: var(--text-40); }
+  .text-display-xl  { font-size: var(--text-36); }
+  .text-display-lg  { font-size: var(--text-32); }
+  .text-display     { font-size: var(--text-28); }
+
+  h1, .text-h1 { font-size: var(--text-32); }
+  h2, .text-h2 { font-size: var(--text-24); }
+  h3, .text-h3 { font-size: var(--text-20); }
+}

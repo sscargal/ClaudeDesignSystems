@@ -1,0 +1,515 @@
+/* =============================================================================
+   Liqid Design System — Animations
+   Version 1.0.0 | Enterprise Composable Infrastructure
+
+   Animation philosophy:
+   - Purposeful and precise — no decorative flourish
+   - Performance-focused: transform/opacity only (no layout-triggering props)
+   - Respects prefers-reduced-motion: all animations disable gracefully
+   - Timing aligned to human perception thresholds for enterprise data density
+   ============================================================================= */
+
+/* =============================================================================
+   KEYFRAME LIBRARY
+   ============================================================================= */
+
+/* --- Fade In --------------------------------------------------------------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* --- Fade Out -------------------------------------------------------------- */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* --- Fade In + Scale (card reveal) ---------------------------------------- */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- Slide In Up ----------------------------------------------------------- */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Slide In Down --------------------------------------------------------- */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Slide In Left --------------------------------------------------------- */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* --- Slide In Right -------------------------------------------------------- */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* --- Shimmer (skeleton loading) ------------------------------------------- */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* --- Pulse (status indicator, active node) --------------------------------- */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.70;
+    transform: scale(0.97);
+  }
+}
+
+/* --- Ping (network activity dot) ------------------------------------------ */
+@keyframes ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.80;
+  }
+  75%, 100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* --- Spin (loading spinner) ------------------------------------------------ */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* --- Count Up (stat number reveal) ---------------------------------------- */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.92);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+/* --- Glow Pulse (brand highlight / CTA button) ----------------------------- */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 112, 243, 0.0),
+                0 4px 16px rgba(0, 112, 243, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(0, 112, 243, 0.0),
+                0 4px 32px rgba(0, 112, 243, 0.50);
+  }
+}
+
+/* --- Cyan Glow Pulse ------------------------------------------------------- */
+@keyframes cyanGlowPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 200, 255, 0.0),
+                0 0 16px rgba(0, 200, 255, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(0, 200, 255, 0.0),
+                0 0 32px rgba(0, 200, 255, 0.40);
+  }
+}
+
+/* --- Data Flow (connection line animation, fabric visualization) ----------- */
+@keyframes dataFlow {
+  0% {
+    stroke-dashoffset: 100%;
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0%;
+    opacity: 0.3;
+  }
+}
+
+/* --- Rack Unit Activate (1U slot highlight) -------------------------------- */
+@keyframes rackActivate {
+  0% {
+    background-color: transparent;
+    box-shadow: none;
+  }
+  40% {
+    background-color: rgba(0, 112, 243, 0.20);
+    box-shadow: inset 0 0 0 1px rgba(0, 112, 243, 0.60),
+                0 0 12px rgba(0, 112, 243, 0.30);
+  }
+  100% {
+    background-color: rgba(0, 112, 243, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(0, 112, 243, 0.35),
+                0 0 6px rgba(0, 112, 243, 0.15);
+  }
+}
+
+/* --- Throughput Bar Fill --------------------------------------------------- */
+@keyframes fillBar {
+  from {
+    width: 0%;
+  }
+  to {
+    width: var(--bar-fill, 100%);
+  }
+}
+
+/* --- Progress Line --------------------------------------------------------- */
+@keyframes progressLine {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* --- Hero Background Drift (very subtle, ambient) -------------------------- */
+@keyframes heroDrift {
+  0%, 100% {
+    transform: scale(1.00) translate(0px, 0px);
+  }
+  33% {
+    transform: scale(1.02) translate(-6px, -4px);
+  }
+  66% {
+    transform: scale(1.01) translate(4px, 6px);
+  }
+}
+
+/* --- Ticker Line (scanning line in rack diagram) --------------------------- */
+@keyframes scanLine {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+/* --- Float (hero element vertical drift) ----------------------------------- */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* --- Blink (cursor / live indicator) --------------------------------------- */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* =============================================================================
+   ANIMATION UTILITY CLASSES
+   ============================================================================= */
+
+.animate-fade-in {
+  animation: fadeIn var(--duration-moderate) var(--ease-decelerate) both;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale var(--duration-moderate) var(--ease-decelerate) both;
+}
+
+.animate-slide-up {
+  animation: slideInUp var(--duration-moderate) var(--ease-decelerate) both;
+}
+
+.animate-slide-down {
+  animation: slideInDown var(--duration-moderate) var(--ease-decelerate) both;
+}
+
+.animate-slide-left {
+  animation: slideInLeft var(--duration-moderate) var(--ease-decelerate) both;
+}
+
+.animate-slide-right {
+  animation: slideInRight var(--duration-moderate) var(--ease-decelerate) both;
+}
+
+.animate-count-up {
+  animation: countUp var(--duration-slow) var(--ease-decelerate) both;
+}
+
+.animate-pulse {
+  animation: pulse 2.5s var(--ease-in-out) infinite;
+}
+
+.animate-ping {
+  animation: ping 1.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animate-spin {
+  animation: spin 0.75s linear infinite;
+}
+
+.animate-float {
+  animation: float 4s var(--ease-in-out) infinite;
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 2.5s var(--ease-in-out) infinite;
+}
+
+.animate-cyan-glow {
+  animation: cyanGlowPulse 2s var(--ease-in-out) infinite;
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Staggered delay helpers */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }
+
+/* =============================================================================
+   SKELETON / SHIMMER LOADING
+   Enterprise data loading states for dashboards and tables.
+   ============================================================================= */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-fill-tertiary) 25%,
+    var(--color-fill-secondary) 50%,
+    var(--color-fill-tertiary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+.skeleton-text {
+  height: 14px;
+  border-radius: var(--radius-xs);
+  background: linear-gradient(
+    90deg,
+    var(--color-fill-tertiary) 25%,
+    var(--color-fill-secondary) 50%,
+    var(--color-fill-tertiary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+.skeleton-text--short { width: 45%; }
+.skeleton-text--medium { width: 70%; }
+.skeleton-text--long { width: 90%; }
+
+.skeleton-stat {
+  height: 48px;
+  width: 120px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    90deg,
+    var(--color-fill-tertiary) 25%,
+    var(--color-fill-secondary) 50%,
+    var(--color-fill-tertiary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+.skeleton-card {
+  height: 200px;
+  border-radius: var(--radius-card);
+  background: linear-gradient(
+    90deg,
+    var(--color-fill-tertiary) 25%,
+    var(--color-fill-secondary) 50%,
+    var(--color-fill-tertiary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+/* Dark surface skeleton */
+.skeleton-dark {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04) 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.04) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+/* =============================================================================
+   LIVE STATUS DOT
+   ============================================================================= */
+
+.status-dot {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+}
+
+.status-dot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.status-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: currentColor;
+  animation: ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.status-dot--active  { color: var(--color-status-active); }
+.status-dot--warning { color: var(--color-status-warning); }
+.status-dot--error   { color: var(--color-status-error); }
+.status-dot--offline { color: var(--color-status-offline); animation: none; }
+.status-dot--offline::after { display: none; }
+
+/* =============================================================================
+   TRANSITION PRESETS (for JS-driven state changes)
+   ============================================================================= */
+
+.transition-opacity {
+  transition: opacity var(--duration-normal) var(--ease-standard);
+}
+
+.transition-transform {
+  transition: transform var(--duration-normal) var(--ease-standard);
+}
+
+.transition-colors {
+  transition: color var(--duration-fast) var(--ease-standard),
+              background-color var(--duration-fast) var(--ease-standard),
+              border-color var(--duration-fast) var(--ease-standard);
+}
+
+.transition-all {
+  transition: all var(--duration-normal) var(--ease-standard);
+}
+
+/* =============================================================================
+   REDUCED MOTION — Respect user preferences
+   All animations replaced with instantaneous transitions or removed.
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .skeleton,
+  .skeleton-text,
+  .skeleton-stat,
+  .skeleton-card,
+  .skeleton-dark {
+    animation: none !important;
+    background: var(--color-fill-tertiary);
+  }
+
+  .animate-pulse,
+  .animate-ping,
+  .animate-spin,
+  .animate-float,
+  .animate-glow-pulse,
+  .animate-cyan-glow,
+  .animate-blink {
+    animation: none !important;
+  }
+
+  .status-dot::after {
+    animation: none !important;
+  }
+}
